@@ -1,0 +1,60 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<PriInfo>
+	<ResourceMap name="Xamarin.Forms.Platform.UAP" version="1.0" primary="true">
+		<Qualifiers/>
+		<ResourceMapSubtree name="Files">
+			<ResourceMapSubtree name="Xamarin.Forms.Platform.UAP">
+				<NamedResource name="AutoSuggestStyle.xbf" uri="ms-resource://Xamarin.Forms.Platform.UAP/Files/Xamarin.Forms.Platform.UAP/AutoSuggestStyle.xbf">
+					<Candidate type="EmbeddedData">
+						<Base64Value>[Embedded Binary Data]</Base64Value>
+					</Candidate>
+				</NamedResource>
+				<NamedResource name="FormsCommandBarStyle.xbf" uri="ms-resource://Xamarin.Forms.Platform.UAP/Files/Xamarin.Forms.Platform.UAP/FormsCommandBarStyle.xbf">
+					<Candidate type="EmbeddedData">
+						<Base64Value>[Embedded Binary Data]</Base64Value>
+					</Candidate>
+				</NamedResource>
+				<NamedResource name="FormsEmbeddedPageWrapper.xbf" uri="ms-resource://Xamarin.Forms.Platform.UAP/Files/Xamarin.Forms.Platform.UAP/FormsEmbeddedPageWrapper.xbf">
+					<Candidate type="EmbeddedData">
+						<Base64Value>[Embedded Binary Data]</Base64Value>
+					</Candidate>
+				</NamedResource>
+				<NamedResource name="FormsProgressBarStyle.xbf" uri="ms-resource://Xamarin.Forms.Platform.UAP/Files/Xamarin.Forms.Platform.UAP/FormsProgressBarStyle.xbf">
+					<Candidate type="EmbeddedData">
+						<Base64Value>[Embedded Binary Data]</Base64Value>
+					</Candidate>
+				</NamedResource>
+				<NamedResource name="FormsTextBoxStyle.xbf" uri="ms-resource://Xamarin.Forms.Platform.UAP/Files/Xamarin.Forms.Platform.UAP/FormsTextBoxStyle.xbf">
+					<Candidate type="EmbeddedData">
+						<Base64Value>[Embedded Binary Data]</Base64Value>
+					</Candidate>
+				</NamedResource>
+				<NamedResource name="MasterDetailControlStyle.xbf" uri="ms-resource://Xamarin.Forms.Platform.UAP/Files/Xamarin.Forms.Platform.UAP/MasterDetailControlStyle.xbf">
+					<Candidate type="EmbeddedData">
+						<Base64Value>[Embedded Binary Data]</Base64Value>
+					</Candidate>
+				</NamedResource>
+				<NamedResource name="PageControlStyle.xbf" uri="ms-resource://Xamarin.Forms.Platform.UAP/Files/Xamarin.Forms.Platform.UAP/PageControlStyle.xbf">
+					<Candidate type="EmbeddedData">
+						<Base64Value>[Embedded Binary Data]</Base64Value>
+					</Candidate>
+				</NamedResource>
+				<NamedResource name="Resources.xbf" uri="ms-resource://Xamarin.Forms.Platform.UAP/Files/Xamarin.Forms.Platform.UAP/Resources.xbf">
+					<Candidate type="EmbeddedData">
+						<Base64Value>[Embedded Binary Data]</Base64Value>
+					</Candidate>
+				</NamedResource>
+				<NamedResource name="TabbedPageStyle.xbf" uri="ms-resource://Xamarin.Forms.Platform.UAP/Files/Xamarin.Forms.Platform.UAP/TabbedPageStyle.xbf">
+					<Candidate type="EmbeddedData">
+						<Base64Value>[Embedded Binary Data]</Base64Value>
+					</Candidate>
+				</NamedResource>
+				<NamedResource name="Xamarin.Forms.Platform.UAP.xr.xml" uri="ms-resource://Xamarin.Forms.Platform.UAP/Files/Xamarin.Forms.Platform.UAP/Xamarin.Forms.Platform.UAP.xr.xml">
+					<Candidate type="Path">
+						<Value>Xamarin.Forms.Platform.UAP\Xamarin.Forms.Platform.UAP.xr.xml</Value>
+					</Candidate>
+				</NamedResource>
+			</ResourceMapSubtree>
+		</ResourceMapSubtree>
+	</ResourceMap>
+</PriInfo>

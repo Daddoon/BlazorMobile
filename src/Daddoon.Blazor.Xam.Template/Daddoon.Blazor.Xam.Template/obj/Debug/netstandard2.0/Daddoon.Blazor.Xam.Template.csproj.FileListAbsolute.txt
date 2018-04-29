@@ -1,0 +1,11 @@
+C:\Appizeo\Dev\Allogaia\Allogaia\BlazorComponents\Blazor.Xamarin\Blazor.Xamarin\src\Daddoon.Blazor.Xam.Template\Daddoon.Blazor.Xam.Template\bin\Debug\netstandard2.0\Daddoon.Blazor.Xam.Template.deps.json
+C:\Appizeo\Dev\Allogaia\Allogaia\BlazorComponents\Blazor.Xamarin\Blazor.Xamarin\src\Daddoon.Blazor.Xam.Template\Daddoon.Blazor.Xam.Template\bin\Debug\netstandard2.0\Daddoon.Blazor.Xam.Template.dll
+C:\Appizeo\Dev\Allogaia\Allogaia\BlazorComponents\Blazor.Xamarin\Blazor.Xamarin\src\Daddoon.Blazor.Xam.Template\Daddoon.Blazor.Xam.Template\bin\Debug\netstandard2.0\Daddoon.Blazor.Xam.Template.pdb
+C:\Appizeo\Dev\Allogaia\Allogaia\BlazorComponents\Blazor.Xamarin\Blazor.Xamarin\src\Daddoon.Blazor.Xam.Template\Daddoon.Blazor.Xam.Template\obj\Debug\netstandard2.0\Daddoon.Blazor.Xam.Template.csprojResolveAssemblyReference.cache
+C:\Appizeo\Dev\Allogaia\Allogaia\BlazorComponents\Blazor.Xamarin\Blazor.Xamarin\src\Daddoon.Blazor.Xam.Template\Daddoon.Blazor.Xam.Template\obj\Debug\netstandard2.0\Daddoon.Blazor.Xam.Template.csproj.CoreCompileInputs.cache
+C:\Appizeo\Dev\Allogaia\Allogaia\BlazorComponents\Blazor.Xamarin\Blazor.Xamarin\src\Daddoon.Blazor.Xam.Template\Daddoon.Blazor.Xam.Template\obj\Debug\netstandard2.0\Daddoon.Blazor.Xam.Template.App.xaml.g.cs
+C:\Appizeo\Dev\Allogaia\Allogaia\BlazorComponents\Blazor.Xamarin\Blazor.Xamarin\src\Daddoon.Blazor.Xam.Template\Daddoon.Blazor.Xam.Template\obj\Debug\netstandard2.0\Daddoon.Blazor.Xam.Template.MainPage.xaml.g.cs
+C:\Appizeo\Dev\Allogaia\Allogaia\BlazorComponents\Blazor.Xamarin\Blazor.Xamarin\src\Daddoon.Blazor.Xam.Template\Daddoon.Blazor.Xam.Template\obj\Debug\netstandard2.0\Daddoon.Blazor.Xam.Template.AssemblyInfoInputs.cache
+C:\Appizeo\Dev\Allogaia\Allogaia\BlazorComponents\Blazor.Xamarin\Blazor.Xamarin\src\Daddoon.Blazor.Xam.Template\Daddoon.Blazor.Xam.Template\obj\Debug\netstandard2.0\Daddoon.Blazor.Xam.Template.AssemblyInfo.cs
+C:\Appizeo\Dev\Allogaia\Allogaia\BlazorComponents\Blazor.Xamarin\Blazor.Xamarin\src\Daddoon.Blazor.Xam.Template\Daddoon.Blazor.Xam.Template\obj\Debug\netstandard2.0\Daddoon.Blazor.Xam.Template.dll
+C:\Appizeo\Dev\Allogaia\Allogaia\BlazorComponents\Blazor.Xamarin\Blazor.Xamarin\src\Daddoon.Blazor.Xam.Template\Daddoon.Blazor.Xam.Template\obj\Debug\netstandard2.0\Daddoon.Blazor.Xam.Template.pdb

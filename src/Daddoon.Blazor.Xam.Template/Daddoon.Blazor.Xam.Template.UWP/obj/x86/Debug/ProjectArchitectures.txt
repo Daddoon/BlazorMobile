@@ -1,0 +1,1 @@
+C:\Appizeo\Dev\Allogaia\Allogaia\BlazorComponents\Blazor.Xamarin\Blazor.Xamarin\src\Daddoon.Blazor.Xam.Template\Daddoon.Blazor.Xam.Template.UWP\Daddoon.Blazor.Xam.Template.UWP.csproj;x86
