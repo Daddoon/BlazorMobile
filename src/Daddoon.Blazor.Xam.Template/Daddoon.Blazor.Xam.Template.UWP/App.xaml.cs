@@ -1,4 +1,5 @@
-﻿using System;
+﻿using Daddoon.Blazor.Xam.Template.UWP.Interop.Interfaces;
+using System;
 using System.Collections.Generic;
 using System.IO;
 using System.Linq;
@@ -53,6 +54,12 @@ namespace Daddoon.Blazor.Xam.Template.UWP
                 rootFrame.NavigationFailed += OnNavigationFailed;
 
                 Xamarin.Forms.Forms.Init(e);
+
+                #region Register Services
+
+                Xamarin.Forms.DependencyService.Register<BaseUrl>();
+
+                #endregion
 
                 if (e.PreviousExecutionState == ApplicationExecutionState.Terminated)
                 {
