@@ -67,7 +67,7 @@
   </PropertyGroup>
   <PropertyGroup Condition="'$(Configuration)|$(Platform)' == 'Debug|x86'">
     <DebugSymbols>true</DebugSymbols>
-    <OutputPath>bin\x86\Debug\</OutputPath>
+    <OutputPath>zbin\x86\Debug\</OutputPath>
     <DefineConstants>DEBUG;TRACE;NETFX_CORE;WINDOWS_UWP</DefineConstants>
     <NoWarn>;2008</NoWarn>
     <DebugType>full</DebugType>
@@ -131,7 +131,26 @@
     <Content Include="Assets\Wide310x150Logo.scale-100.png" />
     <Content Include="Assets\Wide310x150Logo.scale-200.png" />
     <Content Include="Assets\Wide310x150Logo.scale-400.png" />
+    <Content Include="css\bootstrap\bootstrap-native.min.js" />
+    <Content Include="css\bootstrap\bootstrap.min.css" />
+    <Content Include="css\fonts\glyphicons-halflings-regular.svg" />
+    <Content Include="css\site.css" />
+    <Content Include="index.html" />
     <Content Include="Properties\Default.rd.xml" />
+    <Content Include="_framework\asmjs\mono.asm.js" />
+    <Content Include="_framework\asmjs\mono.js" />
+    <Content Include="_framework\blazor.js" />
+    <Content Include="_framework\wasm\mono.js" />
+    <Content Include="_framework\_bin\Daddoon.Blazor.Xam.BlazorApp.dll" />
+    <Content Include="_framework\_bin\Microsoft.AspNetCore.Blazor.Browser.dll" />
+    <Content Include="_framework\_bin\Microsoft.AspNetCore.Blazor.dll" />
+    <Content Include="_framework\_bin\Microsoft.Extensions.DependencyInjection.Abstractions.dll" />
+    <Content Include="_framework\_bin\Microsoft.Extensions.DependencyInjection.dll" />
+    <Content Include="_framework\_bin\mscorlib.dll" />
+    <Content Include="_framework\_bin\netstandard.dll" />
+    <Content Include="_framework\_bin\System.Core.dll" />
+    <Content Include="_framework\_bin\System.dll" />
+    <Content Include="_framework\_bin\System.Net.Http.dll" />
   </ItemGroup>
   <ItemGroup>
     <ApplicationDefinition Include="App.xaml">
@@ -158,6 +177,16 @@
       <SpecificVersion>False</SpecificVersion>
       <HintPath>C:\Program Files\dotnet\sdk\NuGetFallbackFolder\netstandard.library\2.0.1\build\netstandard2.0\ref\netstandard.dll</HintPath>
     </Reference>
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="css\bootstrap\bootstrap.min.css.map" />
+    <None Include="css\fonts\glyphicons-halflings-regular.eot" />
+    <Content Include="css\fonts\glyphicons-halflings-regular.ttf" />
+    <None Include="css\fonts\glyphicons-halflings-regular.woff" />
+    <None Include="css\fonts\glyphicons-halflings-regular.woff2" />
+    <None Include="sample-data\weather.json" />
+    <None Include="_framework\asmjs\mono.js.mem" />
+    <None Include="_framework\wasm\mono.wasm" />
   </ItemGroup>
   <PropertyGroup Condition=" '$(VisualStudioVersion)' == '' or '$(VisualStudioVersion)' &lt; '14.0' ">
     <VisualStudioVersion>14.0</VisualStudioVersion>

@@ -18,10 +18,23 @@ namespace Daddoon.Blazor.Xam.Template
 
             var source = new HtmlWebViewSource();
             source.BaseUrl = DependencyService.Get<IBaseUrl>().Get();
-            source.Html = @"<html><body>
-                          <h1>Xamarin.Forms</h1>
-                          <p>Welcome to WebView.</p>
-                          </body></html>";
+            source.Html = @"<!DOCTYPE html>
+                            <html>
+                            <head>
+                                <meta charset=""utf-8"" />
+                                <title>Daddoon.Blazor.Xam.BlazorApp</title>
+                                <base href=""/"" />
+                                <link href=""css/bootstrap/bootstrap.min.css"" rel=""stylesheet"" />
+                                <link href=""css/site.css"" rel=""stylesheet"" />
+                            </head>
+                            <body>
+                                <app>Loading...</app>
+
+                                <script src=""css/bootstrap/bootstrap-native.min.js""></script>
+                                <script src=""_framework/blazor.js"" main=""Daddoon.Blazor.Xam.BlazorApp.dll"" entrypoint=""Daddoon.Blazor.Xam.BlazorApp.Program::Main"" references=""Microsoft.AspNetCore.Blazor.Browser.dll,Microsoft.AspNetCore.Blazor.dll,Microsoft.Extensions.DependencyInjection.Abstractions.dll,Microsoft.Extensions.DependencyInjection.dll,mscorlib.dll,netstandard.dll,System.Core.dll,System.dll,System.Net.Http.dll"" linker-enabled=""true""></script>
+                            </body>
+                            </html>
+                            ";
 
             WebView webview = new WebView()
             {
