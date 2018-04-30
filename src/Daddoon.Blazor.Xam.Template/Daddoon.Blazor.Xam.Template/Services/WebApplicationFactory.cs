@@ -60,9 +60,21 @@ namespace Daddoon.Blazor.Xam.Template.Services
             return MimeTypes.GetMimeType(path);
         }
 
+        private const int HttpPort = 8282;
+
+        public static int GetHttpPort()
+        {
+            return HttpPort;
+        }
+
+        public static string GetBaseURL()
+        {
+            return $"http://localhost:{GetHttpPort()}";
+        }
+
         public static void StartWebServer()
         {
-            server = new HttpServer(8282);
+            server = new HttpServer(HttpPort);
             server.Register(string.Empty, (req, resp) =>
             {
                 //req.SubPath doesn't return QueryString, so we don't have to do additional operations for ZIP search
