@@ -5,7 +5,7 @@ VisualStudioVersion = 15.0.27520.0
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Daddoon.Blazor.Xam.BlazorApp", "src\Daddoon.Blazor.Xam.BlazorApp\Daddoon.Blazor.Xam.BlazorApp.csproj", "{AE8C616B-8638-4B7F-8EA6-361F0B6B823F}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Daddoon.Blazor.Xam.Template", "src\Daddoon.Blazor.Xam.Template\Daddoon.Blazor.Xam.Template\Daddoon.Blazor.Xam.Template.csproj", "{C4E7F7B7-6078-4407-9E78-7CDD174A9F1D}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Daddoon.Blazor.Xam.Template", "src\Daddoon.Blazor.Xam.Template\Daddoon.Blazor.Xam.Template\Daddoon.Blazor.Xam.Template.csproj", "{C4E7F7B7-6078-4407-9E78-7CDD174A9F1D}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Daddoon.Blazor.Xam.Template.Android", "src\Daddoon.Blazor.Xam.Template\Daddoon.Blazor.Xam.Template.Android\Daddoon.Blazor.Xam.Template.Android.csproj", "{C1FF3E05-FA69-4ABC-96C5-EF9F3089819A}"
 EndProject

@@ -1,11 +1,16 @@
-﻿using Daddoon.Blazor.Xam.Template.UWP.Interop.Interfaces;
-using System;
+﻿using System;
 using System.Collections.Generic;
 using System.IO;
 using System.Linq;
 using System.Runtime.InteropServices.WindowsRuntime;
+using System.Threading;
+using System.Threading.Tasks;
+using Waher.Networking.HTTP;
+using Waher.Networking.Sniffers;
 using Windows.ApplicationModel;
 using Windows.ApplicationModel.Activation;
+using Windows.ApplicationModel.AppService;
+using Windows.ApplicationModel.Background;
 using Windows.Foundation;
 using Windows.Foundation.Collections;
 using Windows.UI.Xaml;
@@ -40,7 +45,7 @@ namespace Daddoon.Blazor.Xam.Template.UWP
         /// <param name="e">Details about the launch request and process.</param>
         protected override void OnLaunched(LaunchActivatedEventArgs e)
         {
-
+            //LaunchWebServer();
 
             Frame rootFrame = Window.Current.Content as Frame;
 
@@ -54,12 +59,6 @@ namespace Daddoon.Blazor.Xam.Template.UWP
                 rootFrame.NavigationFailed += OnNavigationFailed;
 
                 Xamarin.Forms.Forms.Init(e);
-
-                #region Register Services
-
-                Xamarin.Forms.DependencyService.Register<BaseUrl>();
-
-                #endregion
 
                 if (e.PreviousExecutionState == ApplicationExecutionState.Terminated)
                 {
@@ -100,6 +99,8 @@ namespace Daddoon.Blazor.Xam.Template.UWP
         /// <param name="e">Details about the suspend request.</param>
         private void OnSuspending(object sender, SuspendingEventArgs e)
         {
+            //TODO: CHERCHER ON RESUME SUR UWP
+
             var deferral = e.SuspendingOperation.GetDeferral();
             //TODO: Save application state and stop any background activity
             deferral.Complete();

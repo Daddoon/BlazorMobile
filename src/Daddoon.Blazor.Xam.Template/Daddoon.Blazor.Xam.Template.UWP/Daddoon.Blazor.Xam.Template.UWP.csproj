@@ -92,7 +92,6 @@
     <Compile Include="App.xaml.cs">
       <DependentUpon>App.xaml</DependentUpon>
     </Compile>
-    <Compile Include="Interop\Interfaces\IBaseUrl.cs" />
     <Compile Include="MainPage.xaml.cs">
       <DependentUpon>MainPage.xaml</DependentUpon>
     </Compile>
@@ -137,6 +136,7 @@
     <Content Include="css\site.css" />
     <Content Include="index.html" />
     <Content Include="Properties\Default.rd.xml" />
+    <Content Include="README.txt" />
     <Content Include="_framework\asmjs\mono.asm.js" />
     <Content Include="_framework\asmjs\mono.js" />
     <Content Include="_framework\blazor.js" />
@@ -164,7 +164,9 @@
   </ItemGroup>
   <ItemGroup>
     <PackageReference Include="Xamarin.Forms" Version="2.5.*" />
-    <PackageReference Include="Microsoft.NETCore.UniversalWindowsPlatform" Version="6.0.1" />
+    <PackageReference Include="Microsoft.NETCore.UniversalWindowsPlatform">
+      <Version>6.1.2</Version>
+    </PackageReference>
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\Daddoon.Blazor.Xam.Template\Daddoon.Blazor.Xam.Template.csproj">
@@ -188,8 +190,14 @@
     <None Include="_framework\asmjs\mono.js.mem" />
     <None Include="_framework\wasm\mono.wasm" />
   </ItemGroup>
+  <ItemGroup>
+    <Folder Include="Interop\Interfaces\" />
+  </ItemGroup>
   <PropertyGroup Condition=" '$(VisualStudioVersion)' == '' or '$(VisualStudioVersion)' &lt; '14.0' ">
     <VisualStudioVersion>14.0</VisualStudioVersion>
   </PropertyGroup>
   <Import Project="$(MSBuildExtensionsPath)\Microsoft\WindowsXaml\v$(VisualStudioVersion)\Microsoft.Windows.UI.Xaml.CSharp.targets" />
+  <PropertyGroup>
+    <PreBuildEvent>echo For UWP local debug please start an instance of 'CheckNetIsolation.exe  LoopbackExempt -is -n=ID' where ID is your package family name, otherwise internal Http server will not be accessible!</PreBuildEvent>
+  </PropertyGroup>
 </Project>

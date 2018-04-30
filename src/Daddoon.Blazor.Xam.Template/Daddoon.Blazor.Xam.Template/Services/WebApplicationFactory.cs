@@ -1,145 +1,108 @@
-﻿using Daddoon.Blazor.Xam.Template.Interfaces;
-using System;
-using System.Collections.Generic;
-using System.Text;
-using System.Threading;
-using System.Threading.Tasks;
-using Unosquare.Labs.EmbedIO;
-using Windows.ApplicationModel.Background;
-using Xamarin.Forms;
+﻿using System;
+using System.IO;
+using System.IO.Compression;
+using System.Net;
+using Waher.Networking.HTTP;
 
 namespace Daddoon.Blazor.Xam.Template.Services
 {
-    public sealed class WebApplicationFactory : IDisposable, IBackgroundTask
+    public static class WebApplicationFactory
     {
-        private WebServer _server { get; set; }
-        private Task _execution { get; set; }
+        private static HttpServer server;
+        private static bool _isStarted = false;
 
-        private CancellationTokenSource cts { get; set; }
-
-        private bool _started = false;
-
-        public bool Start()
+        private static bool IsStarted()
         {
-            return Start("localhost", 46930);
+            return _isStarted;
         }
 
-        public bool Start(string host, int port)
+        private static Stream dataSource = null;
+        private static ZipArchive archive = null;
+
+        private static byte[] GetResource(string path)
         {
-            if (String.IsNullOrEmpty(host) || port < 1024)
+            MemoryStream data = new MemoryStream();
+            if (dataSource == null)
             {
-                return false;
+                dataSource = new MemoryStream(BlazorSources.app);
+                archive = new ZipArchive(dataSource);
             }
 
-            return Start($"http://{host}:{port}/");
+            //Not the best approach in term of performance, will optimize further.
+            //BTW everthing is then done locally
+            foreach (ZipArchiveEntry entry in archive.Entries)
+            {
+                if (entry.FullName.Equals(path, StringComparison.OrdinalIgnoreCase))
+                {
+                    entry.Open().CopyTo(data);
+                    byte[] result = data.ToArray();
+                    data.Dispose();
+                    return data.ToArray();
+                }
+            }
+
+            //If not found
+            return null;
         }
 
-        public bool Start(string url)
+        private static string GetContentType(string path)
         {
-            if (String.IsNullOrEmpty(url) || _started)
+            if (path.EndsWith(".wasm"))
             {
-                return false;
+                return "application/wasm";
+            }
+            if (path.EndsWith(".dll"))
+            {
+                return "application/octet-stream";
             }
 
-            if (!url.EndsWith("/"))
-            {
-                //Ending slash is mandatory for the webserver
-                url = url + "/";
-            }
-
-            // Our web server is disposable.
-            _server = new WebServer(url, Unosquare.Labs.EmbedIO.Constants.RoutingStrategy.Wildcard);
-            // First, we will configure our web server by adding Modules.
-            // Please note that order DOES matter.
-            // ================================================================================================
-            // If we want to enable sessions, we simply register the LocalSessionModule
-            // Beware that this is an in-memory session storage mechanism so, avoid storing very large objects.
-            // You can use the server.GetSession() method to get the SessionInfo object and manupulate it.
-            // You could potentially implement a distributed session module using something like Redis
-            //_server.RegisterModule(new Unosquare.Labs.EmbedIO.Modules.LocalSessionModule());
-
-            //Get BaseURI folder
-            string baseUrl = DependencyService.Get<IBaseUrl>().Get();
-
-            // Here we setup serving of static files
-            _server.RegisterModule(new Unosquare.Labs.EmbedIO.Modules.StaticFilesModule(baseUrl));
-            // The static files module will cache small files in ram until it detects they have been modified.
-            _server.Module<Unosquare.Labs.EmbedIO.Modules.StaticFilesModule>().UseRamCache = true;
-            _server.Module<Unosquare.Labs.EmbedIO.Modules.StaticFilesModule>().DefaultExtension = ".html";
-
-            // We don't need to add the line below. The default document is always index.html.
-            //server.Module<modules.staticfileswebmodule>().DefaultDocument = "index.html";
-
-            cts = new CancellationTokenSource();
-
-            // Once we've registered our modules and configured them, we call the RunAsync() method.
-            _execution = _server.RunAsync(cts.Token);
-
-            return true;
+            //No critical mimetypes to check
+            return MimeTypes.GetMimeType(path);
         }
 
-        public void Dispose()
+        public static void StartWebServer()
         {
-            cts.Cancel();
-            try
+            server = new HttpServer(8282);
+            server.Register(string.Empty, (req, resp) =>
             {
-                _execution.Wait();
-            }
-            catch (AggregateException)
-            {
-                _execution = null;
-                _server?.Dispose();
-                _server = null;
-                _started = false;
-            }
+                //req.SubPath doesn't return QueryString, so we don't have to do additional operations for ZIP search
+                string path = WebUtility.UrlDecode(req.SubPath.TrimStart('/'));
+
+                if (string.IsNullOrEmpty(path))
+                {
+                    //We are calling the index page. We must call index.html but hide it from url for Blazor routing.
+                    path = "index.html";
+                }
+
+                byte[] content = GetResource(path);
+
+                if (content == null)
+                {
+                    //Content not found
+                    resp.StatusCode = 404;
+                    return;
+                }
+
+                resp.StatusCode = 200;
+                resp.ContentType = GetContentType(path);
+                resp.Write(content);
+            }, true, true);
+
+            _isStarted = true;
         }
 
-        public void Run(IBackgroundTaskInstance taskInstance)
+        public static void StopWebServer()
         {
-            var deferral = taskInstance.GetDeferral();
+            server?.Dispose();
+            server = null;
 
-            var url = "http://localhost:46930/";
+            archive?.Dispose();
+            archive = null;
 
-            if (String.IsNullOrEmpty(url) || _started)
-            {
-                return;
-            }
+            dataSource?.Dispose();
+            dataSource = null;
 
-            if (!url.EndsWith("/"))
-            {
-                //Ending slash is mandatory for the webserver
-                url = url + "/";
-            }
-
-            // Our web server is disposable.
-            _server = new WebServer(url, Unosquare.Labs.EmbedIO.Constants.RoutingStrategy.Wildcard);
-            // First, we will configure our web server by adding Modules.
-            // Please note that order DOES matter.
-            // ================================================================================================
-            // If we want to enable sessions, we simply register the LocalSessionModule
-            // Beware that this is an in-memory session storage mechanism so, avoid storing very large objects.
-            // You can use the server.GetSession() method to get the SessionInfo object and manupulate it.
-            // You could potentially implement a distributed session module using something like Redis
-            //_server.RegisterModule(new Unosquare.Labs.EmbedIO.Modules.LocalSessionModule());
-
-            //Get BaseURI folder
-            string baseUrl = DependencyService.Get<IBaseUrl>().Get();
-
-            // Here we setup serving of static files
-            _server.RegisterModule(new Unosquare.Labs.EmbedIO.Modules.StaticFilesModule(baseUrl));
-            // The static files module will cache small files in ram until it detects they have been modified.
-            _server.Module<Unosquare.Labs.EmbedIO.Modules.StaticFilesModule>().UseRamCache = true;
-            _server.Module<Unosquare.Labs.EmbedIO.Modules.StaticFilesModule>().DefaultExtension = ".html";
-
-            // We don't need to add the line below. The default document is always index.html.
-            //server.Module<modules.staticfileswebmodule>().DefaultDocument = "index.html";
-
-            cts = new CancellationTokenSource();
-
-            // Once we've registered our modules and configured them, we call the RunAsync() method.
-            _execution = _server.RunAsync(cts.Token);
-
-            deferral.Complete();
+            _isStarted = false;
         }
     }
 }
