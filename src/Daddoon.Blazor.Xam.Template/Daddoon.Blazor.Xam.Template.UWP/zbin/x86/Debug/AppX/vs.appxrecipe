@@ -1,7 +1,7 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
 <Project ToolsVersion="4.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
   <PropertyGroup>
-    <Machine>GOW</Machine>
+    <Machine>APGZAHRA</Machine>
     <WindowsUser>blyzz</WindowsUser>
     <TargetPlatformIdentifier>UAP</TargetPlatformIdentifier>
     <TargetOsVersion>10.0</TargetOsVersion>
@@ -10,7 +10,7 @@
     <PackageArchitecture>x86</PackageArchitecture>
     <PackageIdentityName>ec0cc741-fd3e-485c-81be-68815c480690</PackageIdentityName>
     <PackageIdentityPublisher>CN=0dbe752c-d097-4d90-b85f-967e2a4a2177</PackageIdentityPublisher>
-    <IntermediateOutputPath>G:\Blazor.Xamarin\src\Daddoon.Blazor.Xam.Template\Daddoon.Blazor.Xam.Template.UWP\obj\x86\Debug\</IntermediateOutputPath>
+    <IntermediateOutputPath>C:\Blazor.Xamarin\src\Daddoon.Blazor.Xam.Template\Daddoon.Blazor.Xam.Template.UWP\obj\x86\Debug\</IntermediateOutputPath>
     <RemoteDeploymentType>
     </RemoteDeploymentType>
     <PackageRegistrationPath>
@@ -18,8 +18,8 @@
     <RemoveNonLayoutFiles>true</RemoveNonLayoutFiles>
     <DeployOptionalPackages>false</DeployOptionalPackages>
     <WindowsSdkPath>C:\Program Files %28x86%29\Windows Kits\10\</WindowsSdkPath>
-    <LayoutDir>G:\Blazor.Xamarin\src\Daddoon.Blazor.Xam.Template\Daddoon.Blazor.Xam.Template.UWP\zbin\x86\Debug\AppX</LayoutDir>
-    <RegisteredManifestChecksum>67FD979DFB3B50798AFEE6673E1B0BC3524205344148A171583A66C946990CDE</RegisteredManifestChecksum>
+    <LayoutDir>C:\Blazor.Xamarin\src\Daddoon.Blazor.Xam.Template\Daddoon.Blazor.Xam.Template.UWP\zbin\x86\Debug\AppX</LayoutDir>
+    <RegisteredManifestChecksum>86769DF32F0C91570CC51A14233AE898AF59D6427CD00A4C297A6EBF58565BD9</RegisteredManifestChecksum>
     <RegisteredPackageMoniker>03897d03-6dc4-4755-b61a-2c7d2af10ab2_1.0.0.0_x86__3bdkh6gfma3qp</RegisteredPackageMoniker>
     <RegisteredUserModeAppID>03897d03-6dc4-4755-b61a-2c7d2af10ab2_3bdkh6gfma3qp!App</RegisteredUserModeAppID>
     <RegisteredPackageID>03897d03-6dc4-4755-b61a-2c7d2af10ab2</RegisteredPackageID>
@@ -28,16 +28,20 @@
     <JitOptimizationSuppressed>True</JitOptimizationSuppressed>
   </PropertyGroup>
   <ItemGroup>
-    <AppXManifest Include="G:\Blazor.Xamarin\src\Daddoon.Blazor.Xam.Template\Daddoon.Blazor.Xam.Template.UWP\zbin\x86\Debug\Core\AppxManifest.xml">
+    <AppXManifest Include="C:\Blazor.Xamarin\src\Daddoon.Blazor.Xam.Template\Daddoon.Blazor.Xam.Template.UWP\zbin\x86\Debug\Core\AppxManifest.xml">
       <PackagePath>AppxManifest.xml</PackagePath>
       <ReRegisterAppIfChanged>true</ReRegisterAppIfChanged>
-      <Modified>2018-04-29T17:48:31.884</Modified>
+      <Modified>2018-04-29T22:48:57.487</Modified>
     </AppXManifest>
   </ItemGroup>
   <ItemGroup>
-    <AppxPackagedFile Include="G:\Blazor.Xamarin\src\Daddoon.Blazor.Xam.Template\Daddoon.Blazor.Xam.Template.UWP\zbin\x86\Debug\Daddoon.Blazor.Xam.Template.UWP.exe">
+    <AppxPackagedFile Include="C:\Blazor.Xamarin\src\Daddoon.Blazor.Xam.Template\Daddoon.Blazor.Xam.Template.UWP\zbin\x86\Debug\Daddoon.Blazor.Xam.Template.UWP.exe">
       <PackagePath>entrypoint\Daddoon.Blazor.Xam.Template.UWP.exe</PackagePath>
-      <Modified>2018-04-29T17:48:30.309</Modified>
+      <Modified>2018-04-29T22:48:56.847</Modified>
+    </AppxPackagedFile>
+    <AppxPackagedFile Include="C:\Users\blyzz\.nuget\packages\embedio\1.13.0\lib\uap10.0\Unosquare.Labs.EmbedIO.dll">
+      <PackagePath>Unosquare.Labs.EmbedIO.dll</PackagePath>
+      <Modified>2018-03-07T15:11:50.000</Modified>
     </AppxPackagedFile>
     <AppxPackagedFile Include="C:\Users\blyzz\.nuget\packages\runtime.win10-x86.microsoft.netcore.universalwindowsplatform\6.0.1\runtimes\win10-x86\nativeassets\uap10.0.15138\clrcompression.dll">
       <PackagePath>clrcompression.dll</PackagePath>
@@ -695,6 +699,10 @@
       <PackagePath>netstandard.dll</PackagePath>
       <Modified>2017-09-30T18:26:12.000</Modified>
     </AppxPackagedFile>
+    <AppxPackagedFile Include="C:\Users\blyzz\.nuget\packages\unosquare.swan.lite\0.26.0\lib\uap10.0\Unosquare.Swan.Lite.dll">
+      <PackagePath>Unosquare.Swan.Lite.dll</PackagePath>
+      <Modified>2018-03-05T21:24:48.000</Modified>
+    </AppxPackagedFile>
     <AppxPackagedFile Include="C:\Users\blyzz\.nuget\packages\xamarin.forms\2.5.1.444934\lib\uap10.0\Xamarin.Forms.Core.dll">
       <PackagePath>Xamarin.Forms.Core.dll</PackagePath>
       <Modified>2018-04-03T15:24:08.000</Modified>
@@ -711,240 +719,244 @@
       <PackagePath>Xamarin.Forms.Xaml.dll</PackagePath>
       <Modified>2018-04-03T15:24:10.000</Modified>
     </AppxPackagedFile>
-    <AppxPackagedFile Include="G:\Blazor.Xamarin\src\Daddoon.Blazor.Xam.Template\Daddoon.Blazor.Xam.Template\bin\Debug\netstandard2.0\Daddoon.Blazor.Xam.Template.dll">
+    <AppxPackagedFile Include="C:\Blazor.Xamarin\src\Daddoon.Blazor.Xam.Template\Daddoon.Blazor.Xam.Template\bin\Debug\netstandard2.0\Daddoon.Blazor.Xam.Template.dll">
       <PackagePath>Daddoon.Blazor.Xam.Template.dll</PackagePath>
-      <Modified>2018-04-29T17:47:51.842</Modified>
+      <Modified>2018-04-29T22:48:51.171</Modified>
     </AppxPackagedFile>
-    <AppxPackagedFile Include="G:\Blazor.Xamarin\src\Daddoon.Blazor.Xam.Template\Daddoon.Blazor.Xam.Template.UWP\Assets\LargeTile.scale-100.png">
+    <AppxPackagedFile Include="C:\Blazor.Xamarin\src\Daddoon.Blazor.Xam.Template\Daddoon.Blazor.Xam.Template\bin\Debug\netstandard2.0\Windows.Foundation.UniversalApiContract.winmd">
+      <PackagePath>Windows.Foundation.UniversalApiContract.winmd</PackagePath>
+      <Modified>2017-09-28T15:15:20.000</Modified>
+    </AppxPackagedFile>
+    <AppxPackagedFile Include="C:\Blazor.Xamarin\src\Daddoon.Blazor.Xam.Template\Daddoon.Blazor.Xam.Template.UWP\Assets\LargeTile.scale-100.png">
       <PackagePath>Assets\LargeTile.scale-100.png</PackagePath>
       <ReRegisterAppIfChanged>true</ReRegisterAppIfChanged>
-      <Modified>2018-04-29T16:34:44.659</Modified>
+      <Modified>2018-04-29T21:01:26.695</Modified>
     </AppxPackagedFile>
-    <AppxPackagedFile Include="G:\Blazor.Xamarin\src\Daddoon.Blazor.Xam.Template\Daddoon.Blazor.Xam.Template.UWP\Assets\LargeTile.scale-200.png">
+    <AppxPackagedFile Include="C:\Blazor.Xamarin\src\Daddoon.Blazor.Xam.Template\Daddoon.Blazor.Xam.Template.UWP\Assets\LargeTile.scale-200.png">
       <PackagePath>Assets\LargeTile.scale-200.png</PackagePath>
       <ReRegisterAppIfChanged>true</ReRegisterAppIfChanged>
-      <Modified>2018-04-29T16:34:44.660</Modified>
+      <Modified>2018-04-29T21:01:26.695</Modified>
     </AppxPackagedFile>
-    <AppxPackagedFile Include="G:\Blazor.Xamarin\src\Daddoon.Blazor.Xam.Template\Daddoon.Blazor.Xam.Template.UWP\Assets\LargeTile.scale-400.png">
+    <AppxPackagedFile Include="C:\Blazor.Xamarin\src\Daddoon.Blazor.Xam.Template\Daddoon.Blazor.Xam.Template.UWP\Assets\LargeTile.scale-400.png">
       <PackagePath>Assets\LargeTile.scale-400.png</PackagePath>
       <ReRegisterAppIfChanged>true</ReRegisterAppIfChanged>
-      <Modified>2018-04-29T16:34:44.661</Modified>
+      <Modified>2018-04-29T21:01:26.695</Modified>
     </AppxPackagedFile>
-    <AppxPackagedFile Include="G:\Blazor.Xamarin\src\Daddoon.Blazor.Xam.Template\Daddoon.Blazor.Xam.Template.UWP\Assets\SmallTile.scale-100.png">
+    <AppxPackagedFile Include="C:\Blazor.Xamarin\src\Daddoon.Blazor.Xam.Template\Daddoon.Blazor.Xam.Template.UWP\Assets\SmallTile.scale-100.png">
       <PackagePath>Assets\SmallTile.scale-100.png</PackagePath>
       <ReRegisterAppIfChanged>true</ReRegisterAppIfChanged>
-      <Modified>2018-04-29T16:34:44.662</Modified>
+      <Modified>2018-04-29T21:01:26.695</Modified>
     </AppxPackagedFile>
-    <AppxPackagedFile Include="G:\Blazor.Xamarin\src\Daddoon.Blazor.Xam.Template\Daddoon.Blazor.Xam.Template.UWP\Assets\SmallTile.scale-200.png">
+    <AppxPackagedFile Include="C:\Blazor.Xamarin\src\Daddoon.Blazor.Xam.Template\Daddoon.Blazor.Xam.Template.UWP\Assets\SmallTile.scale-200.png">
       <PackagePath>Assets\SmallTile.scale-200.png</PackagePath>
       <ReRegisterAppIfChanged>true</ReRegisterAppIfChanged>
-      <Modified>2018-04-29T16:34:44.662</Modified>
+      <Modified>2018-04-29T21:01:26.695</Modified>
     </AppxPackagedFile>
-    <AppxPackagedFile Include="G:\Blazor.Xamarin\src\Daddoon.Blazor.Xam.Template\Daddoon.Blazor.Xam.Template.UWP\Assets\SmallTile.scale-400.png">
+    <AppxPackagedFile Include="C:\Blazor.Xamarin\src\Daddoon.Blazor.Xam.Template\Daddoon.Blazor.Xam.Template.UWP\Assets\SmallTile.scale-400.png">
       <PackagePath>Assets\SmallTile.scale-400.png</PackagePath>
       <ReRegisterAppIfChanged>true</ReRegisterAppIfChanged>
-      <Modified>2018-04-29T16:34:44.662</Modified>
+      <Modified>2018-04-29T21:01:26.695</Modified>
     </AppxPackagedFile>
-    <AppxPackagedFile Include="G:\Blazor.Xamarin\src\Daddoon.Blazor.Xam.Template\Daddoon.Blazor.Xam.Template.UWP\Assets\SplashScreen.scale-100.png">
+    <AppxPackagedFile Include="C:\Blazor.Xamarin\src\Daddoon.Blazor.Xam.Template\Daddoon.Blazor.Xam.Template.UWP\Assets\SplashScreen.scale-100.png">
       <PackagePath>Assets\SplashScreen.scale-100.png</PackagePath>
       <ReRegisterAppIfChanged>true</ReRegisterAppIfChanged>
-      <Modified>2018-04-29T16:34:44.663</Modified>
+      <Modified>2018-04-29T21:01:26.695</Modified>
     </AppxPackagedFile>
-    <AppxPackagedFile Include="G:\Blazor.Xamarin\src\Daddoon.Blazor.Xam.Template\Daddoon.Blazor.Xam.Template.UWP\Assets\SplashScreen.scale-200.png">
+    <AppxPackagedFile Include="C:\Blazor.Xamarin\src\Daddoon.Blazor.Xam.Template\Daddoon.Blazor.Xam.Template.UWP\Assets\SplashScreen.scale-200.png">
       <PackagePath>Assets\SplashScreen.scale-200.png</PackagePath>
       <ReRegisterAppIfChanged>true</ReRegisterAppIfChanged>
-      <Modified>2018-04-29T16:34:44.663</Modified>
+      <Modified>2018-04-29T21:01:26.695</Modified>
     </AppxPackagedFile>
-    <AppxPackagedFile Include="G:\Blazor.Xamarin\src\Daddoon.Blazor.Xam.Template\Daddoon.Blazor.Xam.Template.UWP\Assets\SplashScreen.scale-400.png">
+    <AppxPackagedFile Include="C:\Blazor.Xamarin\src\Daddoon.Blazor.Xam.Template\Daddoon.Blazor.Xam.Template.UWP\Assets\SplashScreen.scale-400.png">
       <PackagePath>Assets\SplashScreen.scale-400.png</PackagePath>
       <ReRegisterAppIfChanged>true</ReRegisterAppIfChanged>
-      <Modified>2018-04-29T16:34:44.664</Modified>
+      <Modified>2018-04-29T21:01:26.695</Modified>
     </AppxPackagedFile>
-    <AppxPackagedFile Include="G:\Blazor.Xamarin\src\Daddoon.Blazor.Xam.Template\Daddoon.Blazor.Xam.Template.UWP\Assets\Square150x150Logo.scale-100.png">
+    <AppxPackagedFile Include="C:\Blazor.Xamarin\src\Daddoon.Blazor.Xam.Template\Daddoon.Blazor.Xam.Template.UWP\Assets\Square150x150Logo.scale-100.png">
       <PackagePath>Assets\Square150x150Logo.scale-100.png</PackagePath>
       <ReRegisterAppIfChanged>true</ReRegisterAppIfChanged>
-      <Modified>2018-04-29T16:34:44.664</Modified>
+      <Modified>2018-04-29T21:01:26.695</Modified>
     </AppxPackagedFile>
-    <AppxPackagedFile Include="G:\Blazor.Xamarin\src\Daddoon.Blazor.Xam.Template\Daddoon.Blazor.Xam.Template.UWP\Assets\Square150x150Logo.scale-200.png">
+    <AppxPackagedFile Include="C:\Blazor.Xamarin\src\Daddoon.Blazor.Xam.Template\Daddoon.Blazor.Xam.Template.UWP\Assets\Square150x150Logo.scale-200.png">
       <PackagePath>Assets\Square150x150Logo.scale-200.png</PackagePath>
       <ReRegisterAppIfChanged>true</ReRegisterAppIfChanged>
-      <Modified>2018-04-29T16:34:44.665</Modified>
+      <Modified>2018-04-29T21:01:26.695</Modified>
     </AppxPackagedFile>
-    <AppxPackagedFile Include="G:\Blazor.Xamarin\src\Daddoon.Blazor.Xam.Template\Daddoon.Blazor.Xam.Template.UWP\Assets\Square150x150Logo.scale-400.png">
+    <AppxPackagedFile Include="C:\Blazor.Xamarin\src\Daddoon.Blazor.Xam.Template\Daddoon.Blazor.Xam.Template.UWP\Assets\Square150x150Logo.scale-400.png">
       <PackagePath>Assets\Square150x150Logo.scale-400.png</PackagePath>
       <ReRegisterAppIfChanged>true</ReRegisterAppIfChanged>
-      <Modified>2018-04-29T16:34:44.665</Modified>
+      <Modified>2018-04-29T21:01:26.695</Modified>
     </AppxPackagedFile>
-    <AppxPackagedFile Include="G:\Blazor.Xamarin\src\Daddoon.Blazor.Xam.Template\Daddoon.Blazor.Xam.Template.UWP\Assets\Square44x44Logo.altform-unplated_targetsize-16.png">
+    <AppxPackagedFile Include="C:\Blazor.Xamarin\src\Daddoon.Blazor.Xam.Template\Daddoon.Blazor.Xam.Template.UWP\Assets\Square44x44Logo.altform-unplated_targetsize-16.png">
       <PackagePath>Assets\Square44x44Logo.altform-unplated_targetsize-16.png</PackagePath>
       <ReRegisterAppIfChanged>true</ReRegisterAppIfChanged>
-      <Modified>2018-04-29T16:34:44.666</Modified>
+      <Modified>2018-04-29T21:01:26.695</Modified>
     </AppxPackagedFile>
-    <AppxPackagedFile Include="G:\Blazor.Xamarin\src\Daddoon.Blazor.Xam.Template\Daddoon.Blazor.Xam.Template.UWP\Assets\Square44x44Logo.altform-unplated_targetsize-256.png">
+    <AppxPackagedFile Include="C:\Blazor.Xamarin\src\Daddoon.Blazor.Xam.Template\Daddoon.Blazor.Xam.Template.UWP\Assets\Square44x44Logo.altform-unplated_targetsize-256.png">
       <PackagePath>Assets\Square44x44Logo.altform-unplated_targetsize-256.png</PackagePath>
       <ReRegisterAppIfChanged>true</ReRegisterAppIfChanged>
-      <Modified>2018-04-29T16:34:44.666</Modified>
+      <Modified>2018-04-29T21:01:26.695</Modified>
     </AppxPackagedFile>
-    <AppxPackagedFile Include="G:\Blazor.Xamarin\src\Daddoon.Blazor.Xam.Template\Daddoon.Blazor.Xam.Template.UWP\Assets\Square44x44Logo.altform-unplated_targetsize-48.png">
+    <AppxPackagedFile Include="C:\Blazor.Xamarin\src\Daddoon.Blazor.Xam.Template\Daddoon.Blazor.Xam.Template.UWP\Assets\Square44x44Logo.altform-unplated_targetsize-48.png">
       <PackagePath>Assets\Square44x44Logo.altform-unplated_targetsize-48.png</PackagePath>
       <ReRegisterAppIfChanged>true</ReRegisterAppIfChanged>
-      <Modified>2018-04-29T16:34:44.666</Modified>
+      <Modified>2018-04-29T21:01:26.695</Modified>
     </AppxPackagedFile>
-    <AppxPackagedFile Include="G:\Blazor.Xamarin\src\Daddoon.Blazor.Xam.Template\Daddoon.Blazor.Xam.Template.UWP\Assets\Square44x44Logo.scale-100.png">
+    <AppxPackagedFile Include="C:\Blazor.Xamarin\src\Daddoon.Blazor.Xam.Template\Daddoon.Blazor.Xam.Template.UWP\Assets\Square44x44Logo.scale-100.png">
       <PackagePath>Assets\Square44x44Logo.scale-100.png</PackagePath>
       <ReRegisterAppIfChanged>true</ReRegisterAppIfChanged>
-      <Modified>2018-04-29T16:34:44.667</Modified>
+      <Modified>2018-04-29T21:01:26.695</Modified>
     </AppxPackagedFile>
-    <AppxPackagedFile Include="G:\Blazor.Xamarin\src\Daddoon.Blazor.Xam.Template\Daddoon.Blazor.Xam.Template.UWP\Assets\Square44x44Logo.scale-200.png">
+    <AppxPackagedFile Include="C:\Blazor.Xamarin\src\Daddoon.Blazor.Xam.Template\Daddoon.Blazor.Xam.Template.UWP\Assets\Square44x44Logo.scale-200.png">
       <PackagePath>Assets\Square44x44Logo.scale-200.png</PackagePath>
       <ReRegisterAppIfChanged>true</ReRegisterAppIfChanged>
-      <Modified>2018-04-29T16:34:44.668</Modified>
+      <Modified>2018-04-29T21:01:26.695</Modified>
     </AppxPackagedFile>
-    <AppxPackagedFile Include="G:\Blazor.Xamarin\src\Daddoon.Blazor.Xam.Template\Daddoon.Blazor.Xam.Template.UWP\Assets\Square44x44Logo.scale-400.png">
+    <AppxPackagedFile Include="C:\Blazor.Xamarin\src\Daddoon.Blazor.Xam.Template\Daddoon.Blazor.Xam.Template.UWP\Assets\Square44x44Logo.scale-400.png">
       <PackagePath>Assets\Square44x44Logo.scale-400.png</PackagePath>
       <ReRegisterAppIfChanged>true</ReRegisterAppIfChanged>
-      <Modified>2018-04-29T16:34:44.668</Modified>
+      <Modified>2018-04-29T21:01:26.695</Modified>
     </AppxPackagedFile>
-    <AppxPackagedFile Include="G:\Blazor.Xamarin\src\Daddoon.Blazor.Xam.Template\Daddoon.Blazor.Xam.Template.UWP\Assets\Square44x44Logo.targetsize-16.png">
+    <AppxPackagedFile Include="C:\Blazor.Xamarin\src\Daddoon.Blazor.Xam.Template\Daddoon.Blazor.Xam.Template.UWP\Assets\Square44x44Logo.targetsize-16.png">
       <PackagePath>Assets\Square44x44Logo.targetsize-16.png</PackagePath>
       <ReRegisterAppIfChanged>true</ReRegisterAppIfChanged>
-      <Modified>2018-04-29T16:34:44.668</Modified>
+      <Modified>2018-04-29T21:01:26.695</Modified>
     </AppxPackagedFile>
-    <AppxPackagedFile Include="G:\Blazor.Xamarin\src\Daddoon.Blazor.Xam.Template\Daddoon.Blazor.Xam.Template.UWP\Assets\Square44x44Logo.targetsize-256.png">
+    <AppxPackagedFile Include="C:\Blazor.Xamarin\src\Daddoon.Blazor.Xam.Template\Daddoon.Blazor.Xam.Template.UWP\Assets\Square44x44Logo.targetsize-256.png">
       <PackagePath>Assets\Square44x44Logo.targetsize-256.png</PackagePath>
       <ReRegisterAppIfChanged>true</ReRegisterAppIfChanged>
-      <Modified>2018-04-29T16:34:44.669</Modified>
+      <Modified>2018-04-29T21:01:26.695</Modified>
     </AppxPackagedFile>
-    <AppxPackagedFile Include="G:\Blazor.Xamarin\src\Daddoon.Blazor.Xam.Template\Daddoon.Blazor.Xam.Template.UWP\Assets\Square44x44Logo.targetsize-48.png">
+    <AppxPackagedFile Include="C:\Blazor.Xamarin\src\Daddoon.Blazor.Xam.Template\Daddoon.Blazor.Xam.Template.UWP\Assets\Square44x44Logo.targetsize-48.png">
       <PackagePath>Assets\Square44x44Logo.targetsize-48.png</PackagePath>
       <ReRegisterAppIfChanged>true</ReRegisterAppIfChanged>
-      <Modified>2018-04-29T16:34:44.669</Modified>
+      <Modified>2018-04-29T21:01:26.695</Modified>
     </AppxPackagedFile>
-    <AppxPackagedFile Include="G:\Blazor.Xamarin\src\Daddoon.Blazor.Xam.Template\Daddoon.Blazor.Xam.Template.UWP\Assets\StoreLogo.scale-100.png">
+    <AppxPackagedFile Include="C:\Blazor.Xamarin\src\Daddoon.Blazor.Xam.Template\Daddoon.Blazor.Xam.Template.UWP\Assets\StoreLogo.scale-100.png">
       <PackagePath>Assets\StoreLogo.scale-100.png</PackagePath>
       <ReRegisterAppIfChanged>true</ReRegisterAppIfChanged>
-      <Modified>2018-04-29T16:34:44.670</Modified>
+      <Modified>2018-04-29T21:01:26.695</Modified>
     </AppxPackagedFile>
-    <AppxPackagedFile Include="G:\Blazor.Xamarin\src\Daddoon.Blazor.Xam.Template\Daddoon.Blazor.Xam.Template.UWP\Assets\StoreLogo.scale-200.png">
+    <AppxPackagedFile Include="C:\Blazor.Xamarin\src\Daddoon.Blazor.Xam.Template\Daddoon.Blazor.Xam.Template.UWP\Assets\StoreLogo.scale-200.png">
       <PackagePath>Assets\StoreLogo.scale-200.png</PackagePath>
       <ReRegisterAppIfChanged>true</ReRegisterAppIfChanged>
-      <Modified>2018-04-29T16:34:44.671</Modified>
+      <Modified>2018-04-29T21:01:26.695</Modified>
     </AppxPackagedFile>
-    <AppxPackagedFile Include="G:\Blazor.Xamarin\src\Daddoon.Blazor.Xam.Template\Daddoon.Blazor.Xam.Template.UWP\Assets\StoreLogo.scale-400.png">
+    <AppxPackagedFile Include="C:\Blazor.Xamarin\src\Daddoon.Blazor.Xam.Template\Daddoon.Blazor.Xam.Template.UWP\Assets\StoreLogo.scale-400.png">
       <PackagePath>Assets\StoreLogo.scale-400.png</PackagePath>
       <ReRegisterAppIfChanged>true</ReRegisterAppIfChanged>
-      <Modified>2018-04-29T16:34:44.671</Modified>
+      <Modified>2018-04-29T21:01:26.711</Modified>
     </AppxPackagedFile>
-    <AppxPackagedFile Include="G:\Blazor.Xamarin\src\Daddoon.Blazor.Xam.Template\Daddoon.Blazor.Xam.Template.UWP\Assets\Wide310x150Logo.scale-100.png">
+    <AppxPackagedFile Include="C:\Blazor.Xamarin\src\Daddoon.Blazor.Xam.Template\Daddoon.Blazor.Xam.Template.UWP\Assets\Wide310x150Logo.scale-100.png">
       <PackagePath>Assets\Wide310x150Logo.scale-100.png</PackagePath>
       <ReRegisterAppIfChanged>true</ReRegisterAppIfChanged>
-      <Modified>2018-04-29T16:34:44.671</Modified>
+      <Modified>2018-04-29T21:01:26.711</Modified>
     </AppxPackagedFile>
-    <AppxPackagedFile Include="G:\Blazor.Xamarin\src\Daddoon.Blazor.Xam.Template\Daddoon.Blazor.Xam.Template.UWP\Assets\Wide310x150Logo.scale-200.png">
+    <AppxPackagedFile Include="C:\Blazor.Xamarin\src\Daddoon.Blazor.Xam.Template\Daddoon.Blazor.Xam.Template.UWP\Assets\Wide310x150Logo.scale-200.png">
       <PackagePath>Assets\Wide310x150Logo.scale-200.png</PackagePath>
       <ReRegisterAppIfChanged>true</ReRegisterAppIfChanged>
-      <Modified>2018-04-29T16:34:44.673</Modified>
+      <Modified>2018-04-29T21:01:26.711</Modified>
     </AppxPackagedFile>
-    <AppxPackagedFile Include="G:\Blazor.Xamarin\src\Daddoon.Blazor.Xam.Template\Daddoon.Blazor.Xam.Template.UWP\Assets\Wide310x150Logo.scale-400.png">
+    <AppxPackagedFile Include="C:\Blazor.Xamarin\src\Daddoon.Blazor.Xam.Template\Daddoon.Blazor.Xam.Template.UWP\Assets\Wide310x150Logo.scale-400.png">
       <PackagePath>Assets\Wide310x150Logo.scale-400.png</PackagePath>
       <ReRegisterAppIfChanged>true</ReRegisterAppIfChanged>
-      <Modified>2018-04-29T16:34:44.673</Modified>
+      <Modified>2018-04-29T21:01:26.711</Modified>
     </AppxPackagedFile>
-    <AppxPackagedFile Include="G:\Blazor.Xamarin\src\Daddoon.Blazor.Xam.Template\Daddoon.Blazor.Xam.Template.UWP\css\bootstrap\bootstrap-native.min.js">
+    <AppxPackagedFile Include="C:\Blazor.Xamarin\src\Daddoon.Blazor.Xam.Template\Daddoon.Blazor.Xam.Template.UWP\css\bootstrap\bootstrap-native.min.js">
       <PackagePath>css\bootstrap\bootstrap-native.min.js</PackagePath>
-      <Modified>2018-04-29T16:34:44.768</Modified>
+      <Modified>2018-04-29T21:01:26.805</Modified>
     </AppxPackagedFile>
-    <AppxPackagedFile Include="G:\Blazor.Xamarin\src\Daddoon.Blazor.Xam.Template\Daddoon.Blazor.Xam.Template.UWP\_framework\asmjs\mono.asm.js">
+    <AppxPackagedFile Include="C:\Blazor.Xamarin\src\Daddoon.Blazor.Xam.Template\Daddoon.Blazor.Xam.Template.UWP\_framework\asmjs\mono.asm.js">
       <PackagePath>_framework\asmjs\mono.asm.js</PackagePath>
-      <Modified>2018-04-29T16:34:44.743</Modified>
+      <Modified>2018-04-29T21:01:26.773</Modified>
     </AppxPackagedFile>
-    <AppxPackagedFile Include="G:\Blazor.Xamarin\src\Daddoon.Blazor.Xam.Template\Daddoon.Blazor.Xam.Template.UWP\_framework\asmjs\mono.js">
+    <AppxPackagedFile Include="C:\Blazor.Xamarin\src\Daddoon.Blazor.Xam.Template\Daddoon.Blazor.Xam.Template.UWP\_framework\asmjs\mono.js">
       <PackagePath>_framework\asmjs\mono.js</PackagePath>
-      <Modified>2018-04-29T16:34:44.745</Modified>
+      <Modified>2018-04-29T21:01:26.773</Modified>
     </AppxPackagedFile>
-    <AppxPackagedFile Include="G:\Blazor.Xamarin\src\Daddoon.Blazor.Xam.Template\Daddoon.Blazor.Xam.Template.UWP\_framework\blazor.js">
+    <AppxPackagedFile Include="C:\Blazor.Xamarin\src\Daddoon.Blazor.Xam.Template\Daddoon.Blazor.Xam.Template.UWP\_framework\blazor.js">
       <PackagePath>_framework\blazor.js</PackagePath>
-      <Modified>2018-04-29T16:34:44.751</Modified>
+      <Modified>2018-04-29T21:01:26.789</Modified>
     </AppxPackagedFile>
-    <AppxPackagedFile Include="G:\Blazor.Xamarin\src\Daddoon.Blazor.Xam.Template\Daddoon.Blazor.Xam.Template.UWP\_framework\wasm\mono.js">
+    <AppxPackagedFile Include="C:\Blazor.Xamarin\src\Daddoon.Blazor.Xam.Template\Daddoon.Blazor.Xam.Template.UWP\_framework\wasm\mono.js">
       <PackagePath>_framework\wasm\mono.js</PackagePath>
-      <Modified>2018-04-29T16:34:44.752</Modified>
+      <Modified>2018-04-29T21:01:26.789</Modified>
     </AppxPackagedFile>
-    <AppxPackagedFile Include="G:\Blazor.Xamarin\src\Daddoon.Blazor.Xam.Template\Daddoon.Blazor.Xam.Template.UWP\css\bootstrap\bootstrap.min.css">
+    <AppxPackagedFile Include="C:\Blazor.Xamarin\src\Daddoon.Blazor.Xam.Template\Daddoon.Blazor.Xam.Template.UWP\css\bootstrap\bootstrap.min.css">
       <PackagePath>css\bootstrap\bootstrap.min.css</PackagePath>
-      <Modified>2018-04-29T16:34:44.769</Modified>
+      <Modified>2018-04-29T21:01:26.805</Modified>
     </AppxPackagedFile>
-    <AppxPackagedFile Include="G:\Blazor.Xamarin\src\Daddoon.Blazor.Xam.Template\Daddoon.Blazor.Xam.Template.UWP\css\site.css">
+    <AppxPackagedFile Include="C:\Blazor.Xamarin\src\Daddoon.Blazor.Xam.Template\Daddoon.Blazor.Xam.Template.UWP\css\site.css">
       <PackagePath>css\site.css</PackagePath>
-      <Modified>2018-04-29T16:34:44.777</Modified>
+      <Modified>2018-04-29T21:01:26.820</Modified>
     </AppxPackagedFile>
-    <AppxPackagedFile Include="G:\Blazor.Xamarin\src\Daddoon.Blazor.Xam.Template\Daddoon.Blazor.Xam.Template.UWP\css\fonts\glyphicons-halflings-regular.svg">
+    <AppxPackagedFile Include="C:\Blazor.Xamarin\src\Daddoon.Blazor.Xam.Template\Daddoon.Blazor.Xam.Template.UWP\css\fonts\glyphicons-halflings-regular.svg">
       <PackagePath>css\fonts\glyphicons-halflings-regular.svg</PackagePath>
-      <Modified>2018-04-29T16:34:44.774</Modified>
+      <Modified>2018-04-29T21:01:26.820</Modified>
     </AppxPackagedFile>
-    <AppxPackagedFile Include="G:\Blazor.Xamarin\src\Daddoon.Blazor.Xam.Template\Daddoon.Blazor.Xam.Template.UWP\index.html">
+    <AppxPackagedFile Include="C:\Blazor.Xamarin\src\Daddoon.Blazor.Xam.Template\Daddoon.Blazor.Xam.Template.UWP\index.html">
       <PackagePath>index.html</PackagePath>
-      <Modified>2018-04-29T17:16:33.387</Modified>
+      <Modified>2018-04-29T21:01:26.820</Modified>
     </AppxPackagedFile>
-    <AppxPackagedFile Include="G:\Blazor.Xamarin\src\Daddoon.Blazor.Xam.Template\Daddoon.Blazor.Xam.Template.UWP\Properties\Default.rd.xml">
+    <AppxPackagedFile Include="C:\Blazor.Xamarin\src\Daddoon.Blazor.Xam.Template\Daddoon.Blazor.Xam.Template.UWP\Properties\Default.rd.xml">
       <PackagePath>Properties\Default.rd.xml</PackagePath>
-      <Modified>2018-04-29T16:34:44.677</Modified>
+      <Modified>2018-04-29T21:01:26.711</Modified>
     </AppxPackagedFile>
-    <AppxPackagedFile Include="G:\Blazor.Xamarin\src\Daddoon.Blazor.Xam.Template\Daddoon.Blazor.Xam.Template.UWP\_framework\_bin\Daddoon.Blazor.Xam.BlazorApp.dll">
+    <AppxPackagedFile Include="C:\Blazor.Xamarin\src\Daddoon.Blazor.Xam.Template\Daddoon.Blazor.Xam.Template.UWP\_framework\_bin\Daddoon.Blazor.Xam.BlazorApp.dll">
       <PackagePath>_framework\_bin\Daddoon.Blazor.Xam.BlazorApp.dll</PackagePath>
-      <Modified>2018-04-29T16:34:44.678</Modified>
+      <Modified>2018-04-29T21:01:26.711</Modified>
     </AppxPackagedFile>
-    <AppxPackagedFile Include="G:\Blazor.Xamarin\src\Daddoon.Blazor.Xam.Template\Daddoon.Blazor.Xam.Template.UWP\_framework\_bin\Microsoft.AspNetCore.Blazor.Browser.dll">
+    <AppxPackagedFile Include="C:\Blazor.Xamarin\src\Daddoon.Blazor.Xam.Template\Daddoon.Blazor.Xam.Template.UWP\_framework\_bin\Microsoft.AspNetCore.Blazor.Browser.dll">
       <PackagePath>_framework\_bin\Microsoft.AspNetCore.Blazor.Browser.dll</PackagePath>
-      <Modified>2018-04-29T16:34:44.679</Modified>
+      <Modified>2018-04-29T21:01:26.711</Modified>
     </AppxPackagedFile>
-    <AppxPackagedFile Include="G:\Blazor.Xamarin\src\Daddoon.Blazor.Xam.Template\Daddoon.Blazor.Xam.Template.UWP\_framework\_bin\Microsoft.AspNetCore.Blazor.dll">
+    <AppxPackagedFile Include="C:\Blazor.Xamarin\src\Daddoon.Blazor.Xam.Template\Daddoon.Blazor.Xam.Template.UWP\_framework\_bin\Microsoft.AspNetCore.Blazor.dll">
       <PackagePath>_framework\_bin\Microsoft.AspNetCore.Blazor.dll</PackagePath>
-      <Modified>2018-04-29T16:34:44.681</Modified>
+      <Modified>2018-04-29T21:01:26.711</Modified>
     </AppxPackagedFile>
-    <AppxPackagedFile Include="G:\Blazor.Xamarin\src\Daddoon.Blazor.Xam.Template\Daddoon.Blazor.Xam.Template.UWP\_framework\_bin\Microsoft.Extensions.DependencyInjection.Abstractions.dll">
+    <AppxPackagedFile Include="C:\Blazor.Xamarin\src\Daddoon.Blazor.Xam.Template\Daddoon.Blazor.Xam.Template.UWP\_framework\_bin\Microsoft.Extensions.DependencyInjection.Abstractions.dll">
       <PackagePath>_framework\_bin\Microsoft.Extensions.DependencyInjection.Abstractions.dll</PackagePath>
-      <Modified>2018-04-29T16:34:44.682</Modified>
+      <Modified>2018-04-29T21:01:26.711</Modified>
     </AppxPackagedFile>
-    <AppxPackagedFile Include="G:\Blazor.Xamarin\src\Daddoon.Blazor.Xam.Template\Daddoon.Blazor.Xam.Template.UWP\_framework\_bin\Microsoft.Extensions.DependencyInjection.dll">
+    <AppxPackagedFile Include="C:\Blazor.Xamarin\src\Daddoon.Blazor.Xam.Template\Daddoon.Blazor.Xam.Template.UWP\_framework\_bin\Microsoft.Extensions.DependencyInjection.dll">
       <PackagePath>_framework\_bin\Microsoft.Extensions.DependencyInjection.dll</PackagePath>
-      <Modified>2018-04-29T16:34:44.682</Modified>
+      <Modified>2018-04-29T21:01:26.711</Modified>
     </AppxPackagedFile>
-    <AppxPackagedFile Include="G:\Blazor.Xamarin\src\Daddoon.Blazor.Xam.Template\Daddoon.Blazor.Xam.Template.UWP\_framework\_bin\mscorlib.dll">
+    <AppxPackagedFile Include="C:\Blazor.Xamarin\src\Daddoon.Blazor.Xam.Template\Daddoon.Blazor.Xam.Template.UWP\_framework\_bin\mscorlib.dll">
       <PackagePath>_framework\_bin\mscorlib.dll</PackagePath>
-      <Modified>2018-04-29T16:34:44.702</Modified>
+      <Modified>2018-04-29T21:01:26.742</Modified>
     </AppxPackagedFile>
-    <AppxPackagedFile Include="G:\Blazor.Xamarin\src\Daddoon.Blazor.Xam.Template\Daddoon.Blazor.Xam.Template.UWP\_framework\_bin\netstandard.dll">
+    <AppxPackagedFile Include="C:\Blazor.Xamarin\src\Daddoon.Blazor.Xam.Template\Daddoon.Blazor.Xam.Template.UWP\_framework\_bin\netstandard.dll">
       <PackagePath>_framework\_bin\netstandard.dll</PackagePath>
-      <Modified>2018-04-29T16:34:44.703</Modified>
+      <Modified>2018-04-29T21:01:26.742</Modified>
     </AppxPackagedFile>
-    <AppxPackagedFile Include="G:\Blazor.Xamarin\src\Daddoon.Blazor.Xam.Template\Daddoon.Blazor.Xam.Template.UWP\_framework\_bin\System.Core.dll">
+    <AppxPackagedFile Include="C:\Blazor.Xamarin\src\Daddoon.Blazor.Xam.Template\Daddoon.Blazor.Xam.Template.UWP\_framework\_bin\System.Core.dll">
       <PackagePath>_framework\_bin\System.Core.dll</PackagePath>
-      <Modified>2018-04-29T16:34:44.686</Modified>
+      <Modified>2018-04-29T21:01:26.711</Modified>
     </AppxPackagedFile>
-    <AppxPackagedFile Include="G:\Blazor.Xamarin\src\Daddoon.Blazor.Xam.Template\Daddoon.Blazor.Xam.Template.UWP\_framework\_bin\System.dll">
+    <AppxPackagedFile Include="C:\Blazor.Xamarin\src\Daddoon.Blazor.Xam.Template\Daddoon.Blazor.Xam.Template.UWP\_framework\_bin\System.dll">
       <PackagePath>_framework\_bin\System.dll</PackagePath>
-      <Modified>2018-04-29T16:34:44.688</Modified>
+      <Modified>2018-04-29T21:01:26.727</Modified>
     </AppxPackagedFile>
-    <AppxPackagedFile Include="G:\Blazor.Xamarin\src\Daddoon.Blazor.Xam.Template\Daddoon.Blazor.Xam.Template.UWP\_framework\_bin\System.Net.Http.dll">
+    <AppxPackagedFile Include="C:\Blazor.Xamarin\src\Daddoon.Blazor.Xam.Template\Daddoon.Blazor.Xam.Template.UWP\_framework\_bin\System.Net.Http.dll">
       <PackagePath>_framework\_bin\System.Net.Http.dll</PackagePath>
-      <Modified>2018-04-29T16:34:44.687</Modified>
+      <Modified>2018-04-29T21:01:26.727</Modified>
     </AppxPackagedFile>
-    <AppxPackagedFile Include="G:\Blazor.Xamarin\src\Daddoon.Blazor.Xam.Template\Daddoon.Blazor.Xam.Template.UWP\css\fonts\glyphicons-halflings-regular.ttf">
+    <AppxPackagedFile Include="C:\Blazor.Xamarin\src\Daddoon.Blazor.Xam.Template\Daddoon.Blazor.Xam.Template.UWP\css\fonts\glyphicons-halflings-regular.ttf">
       <PackagePath>css\fonts\glyphicons-halflings-regular.ttf</PackagePath>
-      <Modified>2018-04-29T16:34:44.776</Modified>
+      <Modified>2018-04-29T21:01:26.820</Modified>
     </AppxPackagedFile>
-    <AppxPackagedFile Include="G:\Blazor.Xamarin\src\Daddoon.Blazor.Xam.Template\Daddoon.Blazor.Xam.Template.UWP\zbin\x86\Debug\Daddoon.Blazor.Xam.Template.UWP.xr.xml">
+    <AppxPackagedFile Include="C:\Blazor.Xamarin\src\Daddoon.Blazor.Xam.Template\Daddoon.Blazor.Xam.Template.UWP\zbin\x86\Debug\Daddoon.Blazor.Xam.Template.UWP.xr.xml">
       <PackagePath>Daddoon.Blazor.Xam.Template.UWP.xr.xml</PackagePath>
-      <Modified>2018-04-29T16:35:30.548</Modified>
+      <Modified>2018-04-29T22:12:11.672</Modified>
     </AppxPackagedFile>
-    <AppxPackagedFile Include="G:\Blazor.Xamarin\src\Daddoon.Blazor.Xam.Template\Daddoon.Blazor.Xam.Template.UWP\zbin\x86\Debug\App.xbf">
+    <AppxPackagedFile Include="C:\Blazor.Xamarin\src\Daddoon.Blazor.Xam.Template\Daddoon.Blazor.Xam.Template.UWP\zbin\x86\Debug\App.xbf">
       <PackagePath>App.xbf</PackagePath>
-      <Modified>2018-04-29T17:48:30.141</Modified>
+      <Modified>2018-04-29T22:48:56.681</Modified>
     </AppxPackagedFile>
-    <AppxPackagedFile Include="G:\Blazor.Xamarin\src\Daddoon.Blazor.Xam.Template\Daddoon.Blazor.Xam.Template.UWP\zbin\x86\Debug\MainPage.xbf">
+    <AppxPackagedFile Include="C:\Blazor.Xamarin\src\Daddoon.Blazor.Xam.Template\Daddoon.Blazor.Xam.Template.UWP\zbin\x86\Debug\MainPage.xbf">
       <PackagePath>MainPage.xbf</PackagePath>
-      <Modified>2018-04-29T17:48:30.141</Modified>
+      <Modified>2018-04-29T22:48:56.681</Modified>
     </AppxPackagedFile>
     <AppxPackagedFile Include="C:\Program Files %28x86%29\Windows Kits\10\UnionMetadata\10.0.16299.0\Windows.winmd">
       <PackagePath>WinMetadata\Windows.winmd</PackagePath>
@@ -954,14 +966,14 @@
       <PackagePath>Xamarin.Forms.Platform.UAP\Xamarin.Forms.Platform.UAP.xr.xml</PackagePath>
       <Modified>2018-04-03T15:24:04.000</Modified>
     </AppxPackagedFile>
-    <AppxPackagedFile Include="G:\Blazor.Xamarin\src\Daddoon.Blazor.Xam.Template\Daddoon.Blazor.Xam.Template.UWP\zbin\x86\Debug\resources.pri">
+    <AppxPackagedFile Include="C:\Blazor.Xamarin\src\Daddoon.Blazor.Xam.Template\Daddoon.Blazor.Xam.Template.UWP\zbin\x86\Debug\resources.pri">
       <PackagePath>resources.pri</PackagePath>
       <ReRegisterAppIfChanged>true</ReRegisterAppIfChanged>
-      <Modified>2018-04-29T17:40:05.516</Modified>
+      <Modified>2018-04-29T22:12:13.488</Modified>
     </AppxPackagedFile>
-    <AppxPackagedFile Include="G:\Blazor.Xamarin\src\Daddoon.Blazor.Xam.Template\Daddoon.Blazor.Xam.Template.UWP\zbin\x86\Debug\Core\Daddoon.Blazor.Xam.Template.UWP.exe">
+    <AppxPackagedFile Include="C:\Blazor.Xamarin\src\Daddoon.Blazor.Xam.Template\Daddoon.Blazor.Xam.Template.UWP\zbin\x86\Debug\Core\Daddoon.Blazor.Xam.Template.UWP.exe">
       <PackagePath>Daddoon.Blazor.Xam.Template.UWP.exe</PackagePath>
-      <Modified>2018-04-29T17:48:31.879</Modified>
+      <Modified>2018-04-29T22:48:57.483</Modified>
     </AppxPackagedFile>
   </ItemGroup>
   <ItemGroup>
@@ -994,27 +1006,27 @@
     </ResolvedSDKReference>
     <ResolvedSDKReference Include="C:\Program Files %28x86%29\Microsoft SDKs\Windows Kits\10\ExtensionSDKs\Microsoft.VCLibs\14.0\">
       <Name>Microsoft.VCLibs.140.00.Debug</Name>
-      <Version>14.0.26412.0</Version>
+      <Version>14.0.26316.0</Version>
       <Architecture>ARM</Architecture>
-      <FrameworkIdentity>Name = Microsoft.VCLibs.140.00.Debug, MinVersion = 14.0.26412.0, Publisher = %27CN=Microsoft Corporation, O=Microsoft Corporation, L=Redmond, S=Washington, C=US%27</FrameworkIdentity>
+      <FrameworkIdentity>Name = Microsoft.VCLibs.140.00.Debug, MinVersion = 14.0.26316.0, Publisher = %27CN=Microsoft Corporation, O=Microsoft Corporation, L=Redmond, S=Washington, C=US%27</FrameworkIdentity>
       <AppxLocation>C:\Program Files %28x86%29\Microsoft SDKs\Windows Kits\10\ExtensionSDKs\Microsoft.VCLibs\14.0\.\AppX\Debug\ARM\Microsoft.VCLibs.ARM.Debug.14.00.appx</AppxLocation>
       <MoreInfo>
       </MoreInfo>
     </ResolvedSDKReference>
     <ResolvedSDKReference Include="C:\Program Files %28x86%29\Microsoft SDKs\Windows Kits\10\ExtensionSDKs\Microsoft.VCLibs\14.0\">
       <Name>Microsoft.VCLibs.140.00.Debug</Name>
-      <Version>14.0.26412.0</Version>
+      <Version>14.0.26316.0</Version>
       <Architecture>x64</Architecture>
-      <FrameworkIdentity>Name = Microsoft.VCLibs.140.00.Debug, MinVersion = 14.0.26412.0, Publisher = %27CN=Microsoft Corporation, O=Microsoft Corporation, L=Redmond, S=Washington, C=US%27</FrameworkIdentity>
+      <FrameworkIdentity>Name = Microsoft.VCLibs.140.00.Debug, MinVersion = 14.0.26316.0, Publisher = %27CN=Microsoft Corporation, O=Microsoft Corporation, L=Redmond, S=Washington, C=US%27</FrameworkIdentity>
       <AppxLocation>C:\Program Files %28x86%29\Microsoft SDKs\Windows Kits\10\ExtensionSDKs\Microsoft.VCLibs\14.0\.\AppX\Debug\x64\Microsoft.VCLibs.x64.Debug.14.00.appx</AppxLocation>
       <MoreInfo>
       </MoreInfo>
     </ResolvedSDKReference>
     <ResolvedSDKReference Include="C:\Program Files %28x86%29\Microsoft SDKs\Windows Kits\10\ExtensionSDKs\Microsoft.VCLibs\14.0\">
       <Name>Microsoft.VCLibs.140.00.Debug</Name>
-      <Version>14.0.26412.0</Version>
+      <Version>14.0.26316.0</Version>
       <Architecture>x86</Architecture>
-      <FrameworkIdentity>Name = Microsoft.VCLibs.140.00.Debug, MinVersion = 14.0.26412.0, Publisher = %27CN=Microsoft Corporation, O=Microsoft Corporation, L=Redmond, S=Washington, C=US%27</FrameworkIdentity>
+      <FrameworkIdentity>Name = Microsoft.VCLibs.140.00.Debug, MinVersion = 14.0.26316.0, Publisher = %27CN=Microsoft Corporation, O=Microsoft Corporation, L=Redmond, S=Washington, C=US%27</FrameworkIdentity>
       <AppxLocation>C:\Program Files %28x86%29\Microsoft SDKs\Windows Kits\10\ExtensionSDKs\Microsoft.VCLibs\14.0\.\AppX\Debug\x86\Microsoft.VCLibs.x86.Debug.14.00.appx</AppxLocation>
       <MoreInfo>
       </MoreInfo>

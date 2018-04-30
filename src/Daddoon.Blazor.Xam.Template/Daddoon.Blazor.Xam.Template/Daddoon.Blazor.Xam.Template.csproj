@@ -8,4 +8,11 @@
     <PackageReference Include="EmbedIO" Version="1.13.0" />
     <PackageReference Include="Xamarin.Forms" Version="2.5.*" />
   </ItemGroup>
+
+  <ItemGroup>
+    <Reference Include="Windows.Foundation.UniversalApiContract">
+      <HintPath>..\..\..\..\Program Files (x86)\Windows Kits\10\References\10.0.16299.0\Windows.Foundation.UniversalApiContract\5.0.0.0\Windows.Foundation.UniversalApiContract.winmd</HintPath>
+      <IsWinMDFile>true</IsWinMDFile>
+    </Reference>
+  </ItemGroup>
 </Project>
