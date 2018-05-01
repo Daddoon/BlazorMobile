@@ -7,6 +7,7 @@
   <ItemGroup>
     <PackageReference Include="MimeTypes" Version="1.0.6" />
     <PackageReference Include="System.IO.Compression.ZipFile" Version="4.3.0" />
+    <PackageReference Include="Waher.Content" Version="1.0.8" />
     <PackageReference Include="Waher.Networking.HTTP" Version="1.0.6" />
     <PackageReference Include="Xamarin.Forms" Version="2.5.*" />
   </ItemGroup>

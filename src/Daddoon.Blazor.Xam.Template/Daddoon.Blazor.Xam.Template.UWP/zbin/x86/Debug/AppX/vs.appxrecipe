@@ -31,13 +31,13 @@
     <AppXManifest Include="G:\Blazor.Xamarin\src\Daddoon.Blazor.Xam.Template\Daddoon.Blazor.Xam.Template.UWP\zbin\x86\Debug\Core\AppxManifest.xml">
       <PackagePath>AppxManifest.xml</PackagePath>
       <ReRegisterAppIfChanged>true</ReRegisterAppIfChanged>
-      <Modified>2018-04-30T17:35:03.007</Modified>
+      <Modified>2018-05-01T10:13:25.650</Modified>
     </AppXManifest>
   </ItemGroup>
   <ItemGroup>
     <AppxPackagedFile Include="G:\Blazor.Xamarin\src\Daddoon.Blazor.Xam.Template\Daddoon.Blazor.Xam.Template.UWP\zbin\x86\Debug\Daddoon.Blazor.Xam.Template.UWP.exe">
       <PackagePath>entrypoint\Daddoon.Blazor.Xam.Template.UWP.exe</PackagePath>
-      <Modified>2018-04-30T17:34:05.437</Modified>
+      <Modified>2018-05-01T10:13:24.941</Modified>
     </AppxPackagedFile>
     <AppxPackagedFile Include="C:\Program Files %28x86%29\Microsoft SDKs\UWPNuGetPackages\runtime.win10-x86.microsoft.netcore.universalwindowsplatform\6.1.2\runtimes\win10-x86\nativeassets\uap10.0.15138\clrcompression.dll">
       <PackagePath>clrcompression.dll</PackagePath>
@@ -749,7 +749,7 @@
     </AppxPackagedFile>
     <AppxPackagedFile Include="G:\Blazor.Xamarin\src\Daddoon.Blazor.Xam.Template\Daddoon.Blazor.Xam.Template\bin\Debug\netstandard2.0\Daddoon.Blazor.Xam.Template.dll">
       <PackagePath>Daddoon.Blazor.Xam.Template.dll</PackagePath>
-      <Modified>2018-04-30T17:33:59.461</Modified>
+      <Modified>2018-05-01T10:13:18.342</Modified>
     </AppxPackagedFile>
     <AppxPackagedFile Include="G:\Blazor.Xamarin\src\Daddoon.Blazor.Xam.Template\Daddoon.Blazor.Xam.Template.UWP\Assets\LargeTile.scale-100.png">
       <PackagePath>Assets\LargeTile.scale-100.png</PackagePath>
@@ -926,6 +926,10 @@
       <PackagePath>Properties\Default.rd.xml</PackagePath>
       <Modified>2018-04-29T16:34:44.677</Modified>
     </AppxPackagedFile>
+    <AppxPackagedFile Include="G:\Blazor.Xamarin\src\Daddoon.Blazor.Xam.Template\Daddoon.Blazor.Xam.Template.UWP\README.txt">
+      <PackagePath>README.txt</PackagePath>
+      <Modified>2018-04-30T20:39:16.854</Modified>
+    </AppxPackagedFile>
     <AppxPackagedFile Include="G:\Blazor.Xamarin\src\Daddoon.Blazor.Xam.Template\Daddoon.Blazor.Xam.Template.UWP\_framework\_bin\Daddoon.Blazor.Xam.BlazorApp.dll">
       <PackagePath>_framework\_bin\Daddoon.Blazor.Xam.BlazorApp.dll</PackagePath>
       <Modified>2018-04-29T16:34:44.678</Modified>
@@ -976,11 +980,11 @@
     </AppxPackagedFile>
     <AppxPackagedFile Include="G:\Blazor.Xamarin\src\Daddoon.Blazor.Xam.Template\Daddoon.Blazor.Xam.Template.UWP\zbin\x86\Debug\App.xbf">
       <PackagePath>App.xbf</PackagePath>
-      <Modified>2018-04-30T17:35:02.162</Modified>
+      <Modified>2018-05-01T10:13:24.780</Modified>
     </AppxPackagedFile>
     <AppxPackagedFile Include="G:\Blazor.Xamarin\src\Daddoon.Blazor.Xam.Template\Daddoon.Blazor.Xam.Template.UWP\zbin\x86\Debug\MainPage.xbf">
       <PackagePath>MainPage.xbf</PackagePath>
-      <Modified>2018-04-30T17:35:02.163</Modified>
+      <Modified>2018-05-01T10:13:24.780</Modified>
     </AppxPackagedFile>
     <AppxPackagedFile Include="C:\Program Files %28x86%29\Windows Kits\10\UnionMetadata\10.0.16299.0\Windows.winmd">
       <PackagePath>WinMetadata\Windows.winmd</PackagePath>
@@ -993,11 +997,11 @@
     <AppxPackagedFile Include="G:\Blazor.Xamarin\src\Daddoon.Blazor.Xam.Template\Daddoon.Blazor.Xam.Template.UWP\zbin\x86\Debug\resources.pri">
       <PackagePath>resources.pri</PackagePath>
       <ReRegisterAppIfChanged>true</ReRegisterAppIfChanged>
-      <Modified>2018-04-30T17:30:55.234</Modified>
+      <Modified>2018-05-01T10:07:50.305</Modified>
     </AppxPackagedFile>
     <AppxPackagedFile Include="G:\Blazor.Xamarin\src\Daddoon.Blazor.Xam.Template\Daddoon.Blazor.Xam.Template.UWP\zbin\x86\Debug\Core\Daddoon.Blazor.Xam.Template.UWP.exe">
       <PackagePath>Daddoon.Blazor.Xam.Template.UWP.exe</PackagePath>
-      <Modified>2018-04-30T17:35:03.002</Modified>
+      <Modified>2018-05-01T10:13:25.646</Modified>
     </AppxPackagedFile>
   </ItemGroup>
   <ItemGroup>

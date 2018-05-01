@@ -700,6 +700,9 @@
     <AppxPackagedFile Include="G:\Blazor.Xamarin\src\Daddoon.Blazor.Xam.Template\Daddoon.Blazor.Xam.Template.UWP\Properties\Default.rd.xml">
       <PackagePath>Properties\Default.rd.xml</PackagePath>
     </AppxPackagedFile>
+    <AppxPackagedFile Include="G:\Blazor.Xamarin\src\Daddoon.Blazor.Xam.Template\Daddoon.Blazor.Xam.Template.UWP\README.txt">
+      <PackagePath>README.txt</PackagePath>
+    </AppxPackagedFile>
     <AppxPackagedFile Include="G:\Blazor.Xamarin\src\Daddoon.Blazor.Xam.Template\Daddoon.Blazor.Xam.Template.UWP\_framework\_bin\Daddoon.Blazor.Xam.BlazorApp.dll">
       <PackagePath>_framework\_bin\Daddoon.Blazor.Xam.BlazorApp.dll</PackagePath>
     </AppxPackagedFile>

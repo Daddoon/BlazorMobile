@@ -23,7 +23,6 @@ namespace Daddoon.Blazor.Xam.Template
                 Source = WebApplicationFactory.GetBaseURL()
             };
             content.Children.Add(webview);
-
         }
 	}
 }
