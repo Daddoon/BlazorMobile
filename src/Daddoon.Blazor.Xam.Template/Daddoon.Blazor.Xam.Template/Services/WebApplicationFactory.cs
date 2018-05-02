@@ -25,7 +25,7 @@ namespace Daddoon.Blazor.Xam.Template.Services
             if (dataSource == null)
             {
                 dataSource = new MemoryStream(BlazorSources.app);
-                archive = new ZipArchive(dataSource);
+                archive = new ZipArchive(dataSource, ZipArchiveMode.Read);
             }
 
             //Not the best approach in term of performance, will optimize further.
@@ -60,7 +60,7 @@ namespace Daddoon.Blazor.Xam.Template.Services
             return MimeTypes.GetMimeType(path);
         }
 
-        private const int HttpPort = 8282;
+        private const int HttpPort = 43500;
 
         public static int GetHttpPort()
         {
@@ -95,6 +95,8 @@ namespace Daddoon.Blazor.Xam.Template.Services
                     return;
                 }
 
+                //Prevent caching in local browser
+                resp.SetHeader("Cache-Control", "no-cache");
                 resp.StatusCode = 200;
                 resp.ContentType = GetContentType(path);
                 resp.Write(content);

@@ -520,7 +520,7 @@
     <AppxPackagedFile Include="C:\Program Files %28x86%29\Microsoft SDKs\UWPNuGetPackages\runtime.win10-x86.microsoft.netcore.universalwindowsplatform\6.1.2\runtimes\win10-x86\lib\uap10.0.15138\netstandard.dll">
       <PackagePath>netstandard.dll</PackagePath>
     </AppxPackagedFile>
-    <AppxPackagedFile Include="C:\Users\blyzz\.nuget\packages\waher.content\1.0.5\lib\netstandard1.3\Waher.Content.dll">
+    <AppxPackagedFile Include="C:\Users\blyzz\.nuget\packages\waher.content\1.0.8\lib\netstandard1.3\Waher.Content.dll">
       <PackagePath>Waher.Content.dll</PackagePath>
     </AppxPackagedFile>
     <AppxPackagedFile Include="C:\Users\blyzz\.nuget\packages\waher.events\1.0.5\lib\netstandard1.3\Waher.Events.dll">
@@ -538,10 +538,10 @@
     <AppxPackagedFile Include="C:\Users\blyzz\.nuget\packages\waher.runtime.cache\1.0.1\lib\netstandard1.3\Waher.Runtime.Cache.dll">
       <PackagePath>Waher.Runtime.Cache.dll</PackagePath>
     </AppxPackagedFile>
-    <AppxPackagedFile Include="C:\Users\blyzz\.nuget\packages\waher.runtime.inventory\1.0.4\lib\netstandard1.3\Waher.Runtime.Inventory.dll">
+    <AppxPackagedFile Include="C:\Users\blyzz\.nuget\packages\waher.runtime.inventory\1.0.5\lib\netstandard1.3\Waher.Runtime.Inventory.dll">
       <PackagePath>Waher.Runtime.Inventory.dll</PackagePath>
     </AppxPackagedFile>
-    <AppxPackagedFile Include="C:\Users\blyzz\.nuget\packages\waher.script\1.0.9\lib\netstandard1.3\Waher.Script.dll">
+    <AppxPackagedFile Include="C:\Users\blyzz\.nuget\packages\waher.script\1.0.11\lib\netstandard1.3\Waher.Script.dll">
       <PackagePath>Waher.Script.dll</PackagePath>
     </AppxPackagedFile>
     <AppxPackagedFile Include="C:\Users\blyzz\.nuget\packages\waher.security\1.0.1\lib\netstandard1.3\Waher.Security.dll">

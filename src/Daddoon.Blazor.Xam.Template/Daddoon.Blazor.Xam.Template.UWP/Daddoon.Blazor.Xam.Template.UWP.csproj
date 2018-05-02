@@ -198,6 +198,7 @@
   </PropertyGroup>
   <Import Project="$(MSBuildExtensionsPath)\Microsoft\WindowsXaml\v$(VisualStudioVersion)\Microsoft.Windows.UI.Xaml.CSharp.targets" />
   <PropertyGroup>
-    <PreBuildEvent>echo For UWP local debug please start an instance of 'CheckNetIsolation.exe  LoopbackExempt -is -n=ID' where ID is your package family name, otherwise internal Http server will not be accessible!</PreBuildEvent>
+    <PreBuildEvent>
+    </PreBuildEvent>
   </PropertyGroup>
 </Project>
