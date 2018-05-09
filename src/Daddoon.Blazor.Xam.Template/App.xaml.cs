@@ -1,5 +1,4 @@
-﻿using Daddoon.Blazor.Xam.Template.Services;
-using Waher.Networking.HTTP;
+﻿using Daddoon.Blazor.Xam.Services;
 using Xamarin.Forms;
 
 namespace Daddoon.Blazor.Xam.Template
@@ -9,6 +8,10 @@ namespace Daddoon.Blazor.Xam.Template
         public App ()
 		{
 			InitializeComponent();
+
+            //Regiser Blazor app resolver
+            WebApplicationFactory.RegisterAppStreamResolver(BlazorAppResolver.GetAppStream);
+
 			MainPage = new MainPage();
 		}
 

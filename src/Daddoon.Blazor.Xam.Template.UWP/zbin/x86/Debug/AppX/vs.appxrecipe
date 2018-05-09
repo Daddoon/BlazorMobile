@@ -31,13 +31,13 @@
     <AppXManifest Include="C:\Blazor.Xamarin\src\Daddoon.Blazor.Xam.Template.UWP\zbin\x86\Debug\Core\AppxManifest.xml">
       <PackagePath>AppxManifest.xml</PackagePath>
       <ReRegisterAppIfChanged>true</ReRegisterAppIfChanged>
-      <Modified>2018-05-09T10:50:31.484</Modified>
+      <Modified>2018-05-09T16:55:59.201</Modified>
     </AppXManifest>
   </ItemGroup>
   <ItemGroup>
     <AppxPackagedFile Include="C:\Blazor.Xamarin\src\Daddoon.Blazor.Xam.Template.UWP\zbin\x86\Debug\Daddoon.Blazor.Xam.Template.UWP.exe">
       <PackagePath>entrypoint\Daddoon.Blazor.Xam.Template.UWP.exe</PackagePath>
-      <Modified>2018-05-09T10:50:30.834</Modified>
+      <Modified>2018-05-09T16:55:58.583</Modified>
     </AppxPackagedFile>
     <AppxPackagedFile Include="C:\Users\blyzz\.nuget\packages\runtime.win10-x86.microsoft.netcore.universalwindowsplatform\6.1.2\runtimes\win10-x86\nativeassets\uap10.0.15138\clrcompression.dll">
       <PackagePath>clrcompression.dll</PackagePath>
@@ -699,21 +699,21 @@
       <PackagePath>Waher.Content.dll</PackagePath>
       <Modified>2018-02-21T09:29:36.000</Modified>
     </AppxPackagedFile>
-    <AppxPackagedFile Include="C:\Users\blyzz\.nuget\packages\waher.events\1.0.5\lib\netstandard1.3\Waher.Events.dll">
+    <AppxPackagedFile Include="C:\Users\blyzz\.nuget\packages\waher.events\1.0.6\lib\netstandard1.3\Waher.Events.dll">
       <PackagePath>Waher.Events.dll</PackagePath>
-      <Modified>2017-11-24T09:48:04.000</Modified>
+      <Modified>2018-03-02T10:02:54.000</Modified>
     </AppxPackagedFile>
-    <AppxPackagedFile Include="C:\Users\blyzz\.nuget\packages\waher.events.statistics\1.0.2\lib\netstandard1.3\Waher.Events.Statistics.dll">
+    <AppxPackagedFile Include="C:\Users\blyzz\.nuget\packages\waher.events.statistics\1.0.3\lib\netstandard1.3\Waher.Events.Statistics.dll">
       <PackagePath>Waher.Events.Statistics.dll</PackagePath>
-      <Modified>2017-06-26T07:43:30.000</Modified>
+      <Modified>2018-03-02T10:03:52.000</Modified>
     </AppxPackagedFile>
-    <AppxPackagedFile Include="C:\Users\blyzz\.nuget\packages\waher.networking\1.0.3\lib\netstandard1.3\Waher.Networking.dll">
+    <AppxPackagedFile Include="C:\Users\blyzz\.nuget\packages\waher.networking\1.0.6\lib\netstandard1.3\Waher.Networking.dll">
       <PackagePath>Waher.Networking.dll</PackagePath>
-      <Modified>2017-11-24T09:07:54.000</Modified>
+      <Modified>2018-03-20T10:44:36.000</Modified>
     </AppxPackagedFile>
-    <AppxPackagedFile Include="C:\Users\blyzz\.nuget\packages\waher.networking.http\1.0.6\lib\netstandard1.3\Waher.Networking.HTTP.dll">
+    <AppxPackagedFile Include="C:\Users\blyzz\.nuget\packages\waher.networking.http\1.0.8\lib\netstandard1.3\Waher.Networking.HTTP.dll">
       <PackagePath>Waher.Networking.HTTP.dll</PackagePath>
-      <Modified>2017-11-26T22:31:46.000</Modified>
+      <Modified>2018-05-02T13:41:24.000</Modified>
     </AppxPackagedFile>
     <AppxPackagedFile Include="C:\Users\blyzz\.nuget\packages\waher.runtime.cache\1.0.1\lib\netstandard1.3\Waher.Runtime.Cache.dll">
       <PackagePath>Waher.Runtime.Cache.dll</PackagePath>
@@ -727,9 +727,9 @@
       <PackagePath>Waher.Script.dll</PackagePath>
       <Modified>2018-02-18T16:38:46.000</Modified>
     </AppxPackagedFile>
-    <AppxPackagedFile Include="C:\Users\blyzz\.nuget\packages\waher.security\1.0.1\lib\netstandard1.3\Waher.Security.dll">
+    <AppxPackagedFile Include="C:\Users\blyzz\.nuget\packages\waher.security\1.0.2\lib\netstandard1.3\Waher.Security.dll">
       <PackagePath>Waher.Security.dll</PackagePath>
-      <Modified>2017-09-04T15:52:08.000</Modified>
+      <Modified>2018-04-27T09:29:44.000</Modified>
     </AppxPackagedFile>
     <AppxPackagedFile Include="C:\Users\blyzz\.nuget\packages\xamarin.forms\2.5.1.527436\lib\uap10.0\Xamarin.Forms.Core.dll">
       <PackagePath>Xamarin.Forms.Core.dll</PackagePath>
@@ -749,7 +749,11 @@
     </AppxPackagedFile>
     <AppxPackagedFile Include="C:\Blazor.Xamarin\src\Daddoon.Blazor.Xam.Template\bin\Debug\netstandard2.0\Daddoon.Blazor.Xam.Template.dll">
       <PackagePath>Daddoon.Blazor.Xam.Template.dll</PackagePath>
-      <Modified>2018-05-09T10:50:24.871</Modified>
+      <Modified>2018-05-09T16:55:36.509</Modified>
+    </AppxPackagedFile>
+    <AppxPackagedFile Include="C:\Blazor.Xamarin\src\Daddoon.Blazor.Xamarin\bin\Debug\netstandard2.0\Daddoon.Blazor.Xamarin.dll">
+      <PackagePath>Daddoon.Blazor.Xamarin.dll</PackagePath>
+      <Modified>2018-05-09T16:55:36.078</Modified>
     </AppxPackagedFile>
     <AppxPackagedFile Include="C:\Blazor.Xamarin\src\Daddoon.Blazor.Xam.Template.UWP\Assets\LargeTile.scale-100.png">
       <PackagePath>Assets\LargeTile.scale-100.png</PackagePath>
@@ -896,15 +900,15 @@
     </AppxPackagedFile>
     <AppxPackagedFile Include="C:\Blazor.Xamarin\src\Daddoon.Blazor.Xam.Template.UWP\zbin\x86\Debug\Daddoon.Blazor.Xam.Template.UWP.xr.xml">
       <PackagePath>Daddoon.Blazor.Xam.Template.UWP.xr.xml</PackagePath>
-      <Modified>2018-05-09T10:48:42.340</Modified>
+      <Modified>2018-05-09T16:55:42.261</Modified>
     </AppxPackagedFile>
     <AppxPackagedFile Include="C:\Blazor.Xamarin\src\Daddoon.Blazor.Xam.Template.UWP\zbin\x86\Debug\App.xbf">
       <PackagePath>App.xbf</PackagePath>
-      <Modified>2018-05-09T10:50:30.670</Modified>
+      <Modified>2018-05-09T16:55:58.400</Modified>
     </AppxPackagedFile>
     <AppxPackagedFile Include="C:\Blazor.Xamarin\src\Daddoon.Blazor.Xam.Template.UWP\zbin\x86\Debug\MainPage.xbf">
       <PackagePath>MainPage.xbf</PackagePath>
-      <Modified>2018-05-09T10:50:30.670</Modified>
+      <Modified>2018-05-09T16:55:58.400</Modified>
     </AppxPackagedFile>
     <AppxPackagedFile Include="C:\Program Files %28x86%29\Windows Kits\10\UnionMetadata\10.0.16299.0\Windows.winmd">
       <PackagePath>WinMetadata\Windows.winmd</PackagePath>
@@ -917,11 +921,11 @@
     <AppxPackagedFile Include="C:\Blazor.Xamarin\src\Daddoon.Blazor.Xam.Template.UWP\zbin\x86\Debug\resources.pri">
       <PackagePath>resources.pri</PackagePath>
       <ReRegisterAppIfChanged>true</ReRegisterAppIfChanged>
-      <Modified>2018-05-09T10:48:45.771</Modified>
+      <Modified>2018-05-09T16:55:43.612</Modified>
     </AppxPackagedFile>
     <AppxPackagedFile Include="C:\Blazor.Xamarin\src\Daddoon.Blazor.Xam.Template.UWP\zbin\x86\Debug\Core\Daddoon.Blazor.Xam.Template.UWP.exe">
       <PackagePath>Daddoon.Blazor.Xam.Template.UWP.exe</PackagePath>
-      <Modified>2018-05-09T10:50:31.480</Modified>
+      <Modified>2018-05-09T16:55:59.197</Modified>
     </AppxPackagedFile>
   </ItemGroup>
   <ItemGroup>

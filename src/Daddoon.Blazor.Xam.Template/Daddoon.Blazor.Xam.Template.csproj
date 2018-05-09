@@ -4,23 +4,29 @@
     <TargetFramework>netstandard2.0</TargetFramework>
   </PropertyGroup>
 
-  <PropertyGroup>
-    <DebugType>full</DebugType>
-  </PropertyGroup>
-
   <ItemGroup>
-    <PackageReference Include="MimeTypes" Version="1.0.6" />
-    <PackageReference Include="System.IO.Compression.ZipFile" Version="4.3.0" />
-    <PackageReference Include="Waher.Content" Version="1.0.8" />
-    <PackageReference Include="Waher.Networking.HTTP" Version="1.0.6" />
-    <PackageReference Include="Xamarin.Forms" Version="2.5.*" />
+    <PackageReference Include="Xamarin.Forms" Version="2.5.1.527436" />
   </ItemGroup>
 
   <ItemGroup>
-    <Folder Include="Mobile\bin\" />
+    <Compile Update="App.xaml.cs">
+      <DependentUpon>%(Filename)</DependentUpon>
+    </Compile>
+    <Compile Update="MainPage.xaml.cs">
+      <DependentUpon>%(Filename)</DependentUpon>
+    </Compile>
   </ItemGroup>
 
   <ItemGroup>
-    <EmbeddedResource Include="..\Daddoon.Blazor.Xam.BlazorApp\BuildTools\Mobile\bin\app.zip" Link="Mobile\bin\app.zip" />
+    <Folder Include="Mobile\package\" />
   </ItemGroup>
+
+  <ItemGroup>
+    <EmbeddedResource Include="..\Daddoon.Blazor.Xam.BlazorApp\BuildTools\Mobile\bin\app.zip" Link="Mobile\package\app.zip" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <ProjectReference Include="..\Daddoon.Blazor.Xamarin\Daddoon.Blazor.Xamarin.csproj" />
+  </ItemGroup>
+
 </Project>

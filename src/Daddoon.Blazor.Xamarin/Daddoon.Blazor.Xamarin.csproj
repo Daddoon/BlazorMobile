@@ -1,0 +1,20 @@
+<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <TargetFramework>netstandard2.0</TargetFramework>
+  </PropertyGroup>
+
+  <PropertyGroup>
+    <DebugType>full</DebugType>
+    <AssemblyName>Daddoon.Blazor.Xamarin</AssemblyName>
+    <RootNamespace>Daddoon.Blazor.Xam</RootNamespace>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <PackageReference Include="MimeTypes" Version="1.0.6" />
+    <PackageReference Include="System.IO.Compression.ZipFile" Version="4.3.0" />
+    <PackageReference Include="Waher.Content" Version="1.0.8" />
+    <PackageReference Include="Waher.Networking.HTTP" Version="1.0.8" />
+    <PackageReference Include="Xamarin.Forms" Version="2.5.1.527436" />
+  </ItemGroup>
+</Project>

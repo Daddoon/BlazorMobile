@@ -1,11 +1,14 @@
-﻿using Daddoon.Blazor.Xam.Template.Interop;
+﻿using Daddoon.Blazor.Xam.Interop;
+using System;
 using System.IO;
 using System.IO.Compression;
 using System.Net;
+using System.Runtime.CompilerServices;
 using Waher.Networking.HTTP;
 using Xamarin.Forms;
 
-namespace Daddoon.Blazor.Xam.Template.Services
+[assembly: InternalsVisibleTo("Daddoon.Blazor.Xamarin.Android")]
+namespace Daddoon.Blazor.Xam.Services
 {
     public static class WebApplicationFactory
     {
@@ -17,28 +20,37 @@ namespace Daddoon.Blazor.Xam.Template.Services
             return _isStarted;
         }
 
-        private static object streamLock = new object();
-
-        private static string BlazorPackageFolder = "Mobile.bin.app.zip";
+        private static Func<Stream> _appResolver = null;
 
         /// <summary>
-        /// Only work for on this assembly
+        /// Register how you get the Stream to your Blazor zipped application
+        /// <para>For a performant unique entry point, getting a Stream from an</para>
+        /// <para>Assembly manifest resource stream is recommended.</para>
+        /// <para></para>
+        /// <para>See <see cref="System.Reflection.Assembly.GetManifestResourceStream(string)"/></para>
         /// </summary>
-        /// <param name="folder"></param>
-        /// <returns></returns>
-        public static void SetBlazorPackageRelativePath(string path)
+        public static void RegisterAppStreamResolver(Func<Stream> resolver)
         {
-            path = path.Replace(@"\", ".");
-            path = path.Replace("/", ".");
-            BlazorPackageFolder = path;
+            _appResolver = resolver;
+
+            //Calling Init if not yet done. This will be a no-op if already called
+            //We register init like this, as because of some linker problem with Xamarin,
+            //we need to call the initializer from the "specialized project" (like Android)
+            //that init itself and his components/renderer, then initializing this
+            //
+            //As iOS and UWP doesn't need a specific initialize at the moment but we may need
+            //to call a generic init, the generic init is call in RegisterAppStream
+            Init();
         }
 
-        public static MemoryStream GetResourceStream(string path)
+        internal static MemoryStream GetResourceStream(string path)
         {
-            var assembly = typeof(WebApplicationFactory).Assembly;
+            if (_appResolver == null)
+            {
+                throw new NullReferenceException("The Blazor app resolver was not set! Please call WebApplicationFactory.RegisterAppStreamResolver method before launching your app");
+            }
 
-            string appPackage = $"{assembly.GetName().Name}.{BlazorPackageFolder}";
-            using (Stream dataSource = assembly.GetManifestResourceStream(appPackage))
+            using (Stream dataSource = _appResolver())
             {
                 ZipArchive archive = null;
                 archive = new ZipArchive(dataSource, ZipArchiveMode.Read);
@@ -64,7 +76,7 @@ namespace Daddoon.Blazor.Xam.Template.Services
             }
         }
 
-        public static byte[] GetResource(string path)
+        internal static byte[] GetResource(string path)
         {
             MemoryStream content = GetResourceStream(path);
             if (content == null)
@@ -75,7 +87,7 @@ namespace Daddoon.Blazor.Xam.Template.Services
             return resultSet;
         }
 
-        public static string GetContentType(string path)
+        internal static string GetContentType(string path)
         {
             if (path.EndsWith(".wasm"))
             {
@@ -102,7 +114,7 @@ namespace Daddoon.Blazor.Xam.Template.Services
             return $"http://localhost:{GetHttpPort()}";
         }
 
-        public static string GetQueryPath(string path)
+        internal static string GetQueryPath(string path)
         {
             path = WebUtility.UrlDecode(path.TrimStart('/'));
 
@@ -115,7 +127,7 @@ namespace Daddoon.Blazor.Xam.Template.Services
             return path;
         }
 
-        public static void ManageRequest(IWebResponse response)
+        internal static void ManageRequest(IWebResponse response)
         {
             response.SetEncoding("UTF-8");
 
@@ -139,8 +151,31 @@ namespace Daddoon.Blazor.Xam.Template.Services
             response.SetData(content);
         }
 
+        private static bool _firstCall = true;
+
+        /// <summary>
+        /// Init the WebApplicationFactory with the given app stream resolver.
+        /// Shorthand for <see cref="WebApplicationFactory.RegisterAppStreamResolver" />
+        /// </summary>
+        /// <param name="appStreamResolver"></param>
+        internal static void Init(Func<Stream> appStreamResolver)
+        {
+            RegisterAppStreamResolver(appStreamResolver);
+        }
+
+        internal static void Init()
+        {
+            if (_firstCall)
+            {
+                //Do something in the future if required
+                _firstCall = false;
+            }
+        }
+
         public static void StartWebServer()
         {
+            Init(); //No-op if called twice
+
             //Request are managed by the WebView on Android
             if (Device.RuntimePlatform != Device.Android)
             {

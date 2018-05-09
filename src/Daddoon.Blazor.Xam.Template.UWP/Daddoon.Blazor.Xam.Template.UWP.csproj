@@ -144,25 +144,32 @@
     </Page>
   </ItemGroup>
   <ItemGroup>
-    <PackageReference Include="Xamarin.Forms" Version="2.5.*" />
+    <PackageReference Include="NETStandard.Library">
+      <Version>2.0.1</Version>
+    </PackageReference>
+    <PackageReference Include="System.IO.Compression.ZipFile">
+      <Version>4.3.0</Version>
+    </PackageReference>
+    <PackageReference Include="System.IO.FileSystem.Primitives">
+      <Version>4.3.0</Version>
+    </PackageReference>
+    <PackageReference Include="Xamarin.Forms" Version="2.5.1.527436" />
     <PackageReference Include="Microsoft.NETCore.UniversalWindowsPlatform">
       <Version>6.1.2</Version>
     </PackageReference>
   </ItemGroup>
   <ItemGroup>
+    <Folder Include="Interop\" />
+  </ItemGroup>
+  <ItemGroup>
     <ProjectReference Include="..\Daddoon.Blazor.Xam.Template\Daddoon.Blazor.Xam.Template.csproj">
-      <Project>{C76AB371-A7FC-404D-9F1B-83B244997E12}</Project>
+      <Project>{2d23861d-4ee5-4b72-a8e2-81725b81de5f}</Project>
       <Name>Daddoon.Blazor.Xam.Template</Name>
     </ProjectReference>
-  </ItemGroup>
-  <ItemGroup>
-    <Reference Include="netstandard, Version=2.0.0.0, Culture=neutral, PublicKeyToken=cc7b13ffcd2ddd51, processorArchitecture=MSIL">
-      <SpecificVersion>False</SpecificVersion>
-      <HintPath>C:\Program Files\dotnet\sdk\NuGetFallbackFolder\netstandard.library\2.0.1\build\netstandard2.0\ref\netstandard.dll</HintPath>
-    </Reference>
-  </ItemGroup>
-  <ItemGroup>
-    <Folder Include="Interop\" />
+    <ProjectReference Include="..\Daddoon.Blazor.Xamarin\Daddoon.Blazor.Xamarin.csproj">
+      <Project>{c4e7f7b7-6078-4407-9e78-7cdd174a9f1d}</Project>
+      <Name>Daddoon.Blazor.Xamarin</Name>
+    </ProjectReference>
   </ItemGroup>
   <PropertyGroup Condition=" '$(VisualStudioVersion)' == '' or '$(VisualStudioVersion)' &lt; '14.0' ">
     <VisualStudioVersion>14.0</VisualStudioVersion>

@@ -1,9 +1,5 @@
-﻿using Daddoon.Blazor.Xam.Template.Services;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+﻿using Daddoon.Blazor.Xam.Components;
+using Daddoon.Blazor.Xam.Services;
 using Xamarin.Forms;
 
 namespace Daddoon.Blazor.Xam.Template
@@ -19,14 +15,7 @@ namespace Daddoon.Blazor.Xam.Template
                 Url = WebApplicationFactory.GetBaseURL()
             };
 
-            //var url = new HtmlWebViewSource()
-            //{
-            //    BaseUrl = WebApplicationFactory.GetBaseURL(),
-            //    //BaseUrl = "/",
-            //    Html = System.Text.Encoding.UTF8.GetString(WebApplicationFactory.GetResource("index.html"))
-            //};
-
-            WebView webview = new WebView()
+            BlazorWebView webview = new BlazorWebView()
             {
                 VerticalOptions = LayoutOptions.FillAndExpand,
                 HorizontalOptions = LayoutOptions.FillAndExpand,

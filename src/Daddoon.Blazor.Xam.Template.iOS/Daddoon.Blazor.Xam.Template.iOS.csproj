@@ -148,13 +148,17 @@
     <Reference Include="Xamarin.iOS" />
   </ItemGroup>
   <ItemGroup>
-    <PackageReference Include="Xamarin.Forms" Version="2.5.*" />
+    <PackageReference Include="Xamarin.Forms" Version="2.5.1.527436" />
   </ItemGroup>
   <Import Project="$(MSBuildExtensionsPath)\Xamarin\iOS\Xamarin.iOS.CSharp.targets" />
   <ItemGroup>
     <ProjectReference Include="..\Daddoon.Blazor.Xam.Template\Daddoon.Blazor.Xam.Template.csproj">
-      <Project>{C76AB371-A7FC-404D-9F1B-83B244997E12}</Project>
+      <Project>{2d23861d-4ee5-4b72-a8e2-81725b81de5f}</Project>
       <Name>Daddoon.Blazor.Xam.Template</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\Daddoon.Blazor.Xamarin\Daddoon.Blazor.Xamarin.csproj">
+      <Project>{C4E7F7B7-6078-4407-9E78-7CDD174A9F1D}</Project>
+      <Name>Daddoon.Blazor.Xamarin</Name>
     </ProjectReference>
   </ItemGroup>
   <ItemGroup>

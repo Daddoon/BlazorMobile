@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using System.IO;
 using System.Text;
 
-namespace Daddoon.Blazor.Xam.Template.Interop
+namespace Daddoon.Blazor.Xam.Interop
 {
     public interface IWebResponse
     {

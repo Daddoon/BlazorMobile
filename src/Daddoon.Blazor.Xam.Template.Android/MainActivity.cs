@@ -7,6 +7,8 @@ using Android.Views;
 using Android.Widget;
 using Android.OS;
 using Android.Content.Res;
+using Daddoon.Blazor.Xam.Droid;
+using Daddoon.Blazor.Xam.Droid.Services;
 
 namespace Daddoon.Blazor.Xam.Template.Droid
 {
@@ -25,6 +27,8 @@ namespace Daddoon.Blazor.Xam.Template.Droid
             assetManager = this.Assets;
 
             global::Xamarin.Forms.Forms.Init(this, bundle);
+            BlazorWebViewService.Init();
+
             LoadApplication(new App());
         }
     }

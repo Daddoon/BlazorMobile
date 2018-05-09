@@ -4,7 +4,7 @@ using System.IO;
 using System.Text;
 using Waher.Networking.HTTP;
 
-namespace Daddoon.Blazor.Xam.Template.Interop
+namespace Daddoon.Blazor.Xam.Interop
 {
     public class StdWebResponse : IWebResponse
     {

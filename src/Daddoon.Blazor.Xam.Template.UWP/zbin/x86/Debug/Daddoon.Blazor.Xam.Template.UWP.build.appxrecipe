@@ -523,16 +523,16 @@
     <AppxPackagedFile Include="C:\Users\blyzz\.nuget\packages\waher.content\1.0.8\lib\netstandard1.3\Waher.Content.dll">
       <PackagePath>Waher.Content.dll</PackagePath>
     </AppxPackagedFile>
-    <AppxPackagedFile Include="C:\Users\blyzz\.nuget\packages\waher.events\1.0.5\lib\netstandard1.3\Waher.Events.dll">
+    <AppxPackagedFile Include="C:\Users\blyzz\.nuget\packages\waher.events\1.0.6\lib\netstandard1.3\Waher.Events.dll">
       <PackagePath>Waher.Events.dll</PackagePath>
     </AppxPackagedFile>
-    <AppxPackagedFile Include="C:\Users\blyzz\.nuget\packages\waher.events.statistics\1.0.2\lib\netstandard1.3\Waher.Events.Statistics.dll">
+    <AppxPackagedFile Include="C:\Users\blyzz\.nuget\packages\waher.events.statistics\1.0.3\lib\netstandard1.3\Waher.Events.Statistics.dll">
       <PackagePath>Waher.Events.Statistics.dll</PackagePath>
     </AppxPackagedFile>
-    <AppxPackagedFile Include="C:\Users\blyzz\.nuget\packages\waher.networking\1.0.3\lib\netstandard1.3\Waher.Networking.dll">
+    <AppxPackagedFile Include="C:\Users\blyzz\.nuget\packages\waher.networking\1.0.6\lib\netstandard1.3\Waher.Networking.dll">
       <PackagePath>Waher.Networking.dll</PackagePath>
     </AppxPackagedFile>
-    <AppxPackagedFile Include="C:\Users\blyzz\.nuget\packages\waher.networking.http\1.0.6\lib\netstandard1.3\Waher.Networking.HTTP.dll">
+    <AppxPackagedFile Include="C:\Users\blyzz\.nuget\packages\waher.networking.http\1.0.8\lib\netstandard1.3\Waher.Networking.HTTP.dll">
       <PackagePath>Waher.Networking.HTTP.dll</PackagePath>
     </AppxPackagedFile>
     <AppxPackagedFile Include="C:\Users\blyzz\.nuget\packages\waher.runtime.cache\1.0.1\lib\netstandard1.3\Waher.Runtime.Cache.dll">
@@ -544,7 +544,7 @@
     <AppxPackagedFile Include="C:\Users\blyzz\.nuget\packages\waher.script\1.0.11\lib\netstandard1.3\Waher.Script.dll">
       <PackagePath>Waher.Script.dll</PackagePath>
     </AppxPackagedFile>
-    <AppxPackagedFile Include="C:\Users\blyzz\.nuget\packages\waher.security\1.0.1\lib\netstandard1.3\Waher.Security.dll">
+    <AppxPackagedFile Include="C:\Users\blyzz\.nuget\packages\waher.security\1.0.2\lib\netstandard1.3\Waher.Security.dll">
       <PackagePath>Waher.Security.dll</PackagePath>
     </AppxPackagedFile>
     <AppxPackagedFile Include="C:\Users\blyzz\.nuget\packages\xamarin.forms\2.5.1.527436\lib\uap10.0\Xamarin.Forms.Core.dll">
@@ -561,6 +561,9 @@
     </AppxPackagedFile>
     <AppxPackagedFile Include="C:\Blazor.Xamarin\src\Daddoon.Blazor.Xam.Template\bin\Debug\netstandard2.0\Daddoon.Blazor.Xam.Template.dll">
       <PackagePath>Daddoon.Blazor.Xam.Template.dll</PackagePath>
+    </AppxPackagedFile>
+    <AppxPackagedFile Include="C:\Blazor.Xamarin\src\Daddoon.Blazor.Xamarin\bin\Debug\netstandard2.0\Daddoon.Blazor.Xamarin.dll">
+      <PackagePath>Daddoon.Blazor.Xamarin.dll</PackagePath>
     </AppxPackagedFile>
     <AppxPackagedFile Include="C:\Blazor.Xamarin\src\Daddoon.Blazor.Xam.Template.UWP\Assets\LargeTile.scale-100.png">
       <PackagePath>Assets\LargeTile.scale-100.png</PackagePath>

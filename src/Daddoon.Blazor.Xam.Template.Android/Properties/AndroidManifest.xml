@@ -2,5 +2,5 @@
 <manifest xmlns:android="http://schemas.android.com/apk/res/android" android:versionCode="1" android:versionName="1.0" package="com.companyname.Daddoon.Blazor.Xam.Template" android:installLocation="auto">
 	<uses-sdk android:minSdkVersion="19" />
 	<uses-permission android:name="android.permission.INTERNET" />
-	<application android:label="Daddoon.Blazor.Xam.Template.Android" android:hardwareAccelerated="false" android:largeHeap="true"></application>
+	<application android:label="Daddoon.Blazor.Xam.Template.Androidfdfd" android:hardwareAccelerated="false" android:largeHeap="true"></application>
 </manifest>

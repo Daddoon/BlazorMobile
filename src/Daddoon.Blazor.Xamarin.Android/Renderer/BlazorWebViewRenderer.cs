@@ -1,26 +1,18 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.IO;
-using System.Linq;
-using System.Text;
-
-using Android.App;
 using Android.Content;
-using Android.OS;
-using Android.Runtime;
-using Android.Views;
 using Android.Webkit;
-using Android.Widget;
-using Daddoon.Blazor.Xam.Template.Droid.Interop;
-using Daddoon.Blazor.Xam.Template.Droid.Renderer;
-using Daddoon.Blazor.Xam.Template.Services;
+using Daddoon.Blazor.Xam.Components;
+using Daddoon.Blazor.Xam.Droid.Interop;
+using Daddoon.Blazor.Xam.Droid.Renderer;
+using Daddoon.Blazor.Xam.Services;
 using Xamarin.Forms;
 using Xamarin.Forms.Platform.Android;
 
-[assembly: ExportRenderer(typeof(Xamarin.Forms.WebView), typeof(BlazorWebViewRenderer))]
-namespace Daddoon.Blazor.Xam.Template.Droid.Renderer
+[assembly: ExportRenderer(typeof(BlazorWebView), typeof(BlazorWebViewRenderer))]
+namespace Daddoon.Blazor.Xam.Droid.Renderer
 {
-    public class WebViewClientExtended : WebViewClient
+    [Android.Runtime.Preserve(AllMembers = true)]
+    public class BlazorWebViewClient : WebViewClient
     {
         private string GetBaseUrlFromWebResourceRequest(IWebResourceRequest request)
         {
@@ -96,8 +88,14 @@ namespace Daddoon.Blazor.Xam.Template.Droid.Renderer
         }
     }
 
+    [Android.Runtime.Preserve(AllMembers = true)]
     public class BlazorWebViewRenderer : WebViewRenderer
     {
+        internal static void Init()
+        {
+            //Nothing to do, just force the compiler to not strip our component
+        }
+
         Context _context = null;
 
         public BlazorWebViewRenderer(Context context) : base(context)
@@ -106,11 +104,14 @@ namespace Daddoon.Blazor.Xam.Template.Droid.Renderer
         }
 
         private bool _init = false;
-        protected override void OnElementChanged(ElementChangedEventArgs<Xamarin.Forms.WebView> e)
+        protected override void OnElementChanged(ElementChangedEventArgs<global::Xamarin.Forms.WebView> e)
         {
             base.OnElementChanged(e);
             if (_init == false)
             {
+
+                //TODO: Maybe too much option enabled, must do some refactor and test here
+
                 // perform initial setup
                 var webView = Control;
                 webView.Settings.JavaScriptEnabled = true;
@@ -124,7 +125,7 @@ namespace Daddoon.Blazor.Xam.Template.Droid.Renderer
                 webView.Settings.JavaScriptCanOpenWindowsAutomatically = true;
 
                 webView.SetWebChromeClient(new WebChromeClient());
-                var webViewClient = new WebViewClientExtended();
+                var webViewClient = new BlazorWebViewClient();
                 webView.SetWebViewClient(webViewClient);
                 //webView.SetWebChromeClient(GetFormsWebChromeClient());
 
