@@ -31,13 +31,13 @@
     <AppXManifest Include="C:\Blazor.Xamarin\src\Daddoon.Blazor.Xam.Template.UWP\zbin\x86\Debug\Core\AppxManifest.xml">
       <PackagePath>AppxManifest.xml</PackagePath>
       <ReRegisterAppIfChanged>true</ReRegisterAppIfChanged>
-      <Modified>2018-05-03T17:40:22.948</Modified>
+      <Modified>2018-05-09T10:50:31.484</Modified>
     </AppXManifest>
   </ItemGroup>
   <ItemGroup>
     <AppxPackagedFile Include="C:\Blazor.Xamarin\src\Daddoon.Blazor.Xam.Template.UWP\zbin\x86\Debug\Daddoon.Blazor.Xam.Template.UWP.exe">
       <PackagePath>entrypoint\Daddoon.Blazor.Xam.Template.UWP.exe</PackagePath>
-      <Modified>2018-05-03T17:40:22.342</Modified>
+      <Modified>2018-05-09T10:50:30.834</Modified>
     </AppxPackagedFile>
     <AppxPackagedFile Include="C:\Users\blyzz\.nuget\packages\runtime.win10-x86.microsoft.netcore.universalwindowsplatform\6.1.2\runtimes\win10-x86\nativeassets\uap10.0.15138\clrcompression.dll">
       <PackagePath>clrcompression.dll</PackagePath>
@@ -731,25 +731,25 @@
       <PackagePath>Waher.Security.dll</PackagePath>
       <Modified>2017-09-04T15:52:08.000</Modified>
     </AppxPackagedFile>
-    <AppxPackagedFile Include="C:\Users\blyzz\.nuget\packages\xamarin.forms\2.5.1.444934\lib\uap10.0\Xamarin.Forms.Core.dll">
+    <AppxPackagedFile Include="C:\Users\blyzz\.nuget\packages\xamarin.forms\2.5.1.527436\lib\uap10.0\Xamarin.Forms.Core.dll">
       <PackagePath>Xamarin.Forms.Core.dll</PackagePath>
-      <Modified>2018-04-03T15:24:08.000</Modified>
+      <Modified>2018-04-26T18:09:56.000</Modified>
     </AppxPackagedFile>
-    <AppxPackagedFile Include="C:\Users\blyzz\.nuget\packages\xamarin.forms\2.5.1.444934\lib\uap10.0\Xamarin.Forms.Platform.UAP.dll">
+    <AppxPackagedFile Include="C:\Users\blyzz\.nuget\packages\xamarin.forms\2.5.1.527436\lib\uap10.0\Xamarin.Forms.Platform.UAP.dll">
       <PackagePath>Xamarin.Forms.Platform.UAP.dll</PackagePath>
-      <Modified>2018-04-03T15:24:10.000</Modified>
+      <Modified>2018-04-26T18:09:56.000</Modified>
     </AppxPackagedFile>
-    <AppxPackagedFile Include="C:\Users\blyzz\.nuget\packages\xamarin.forms\2.5.1.444934\lib\uap10.0\Xamarin.Forms.Platform.dll">
+    <AppxPackagedFile Include="C:\Users\blyzz\.nuget\packages\xamarin.forms\2.5.1.527436\lib\uap10.0\Xamarin.Forms.Platform.dll">
       <PackagePath>Xamarin.Forms.Platform.dll</PackagePath>
-      <Modified>2018-04-03T15:24:10.000</Modified>
+      <Modified>2018-04-26T18:09:56.000</Modified>
     </AppxPackagedFile>
-    <AppxPackagedFile Include="C:\Users\blyzz\.nuget\packages\xamarin.forms\2.5.1.444934\lib\uap10.0\Xamarin.Forms.Xaml.dll">
+    <AppxPackagedFile Include="C:\Users\blyzz\.nuget\packages\xamarin.forms\2.5.1.527436\lib\uap10.0\Xamarin.Forms.Xaml.dll">
       <PackagePath>Xamarin.Forms.Xaml.dll</PackagePath>
-      <Modified>2018-04-03T15:24:10.000</Modified>
+      <Modified>2018-04-26T18:09:56.000</Modified>
     </AppxPackagedFile>
     <AppxPackagedFile Include="C:\Blazor.Xamarin\src\Daddoon.Blazor.Xam.Template\bin\Debug\netstandard2.0\Daddoon.Blazor.Xam.Template.dll">
       <PackagePath>Daddoon.Blazor.Xam.Template.dll</PackagePath>
-      <Modified>2018-05-03T17:40:16.081</Modified>
+      <Modified>2018-05-09T10:50:24.871</Modified>
     </AppxPackagedFile>
     <AppxPackagedFile Include="C:\Blazor.Xamarin\src\Daddoon.Blazor.Xam.Template.UWP\Assets\LargeTile.scale-100.png">
       <PackagePath>Assets\LargeTile.scale-100.png</PackagePath>
@@ -894,38 +894,34 @@
       <PackagePath>README.txt</PackagePath>
       <Modified>2018-05-02T21:06:59.016</Modified>
     </AppxPackagedFile>
-    <AppxPackagedFile Include="C:\Blazor.Xamarin\src\Daddoon.Blazor.Xam.BlazorApp\BuildTools\Mobile\bin\app.zip">
-      <PackagePath>Assets\Mobile\bin\app.zip</PackagePath>
-      <Modified>2018-05-03T17:40:15.593</Modified>
-    </AppxPackagedFile>
     <AppxPackagedFile Include="C:\Blazor.Xamarin\src\Daddoon.Blazor.Xam.Template.UWP\zbin\x86\Debug\Daddoon.Blazor.Xam.Template.UWP.xr.xml">
       <PackagePath>Daddoon.Blazor.Xam.Template.UWP.xr.xml</PackagePath>
-      <Modified>2018-04-29T22:12:11.672</Modified>
+      <Modified>2018-05-09T10:48:42.340</Modified>
     </AppxPackagedFile>
     <AppxPackagedFile Include="C:\Blazor.Xamarin\src\Daddoon.Blazor.Xam.Template.UWP\zbin\x86\Debug\App.xbf">
       <PackagePath>App.xbf</PackagePath>
-      <Modified>2018-05-03T17:40:22.175</Modified>
+      <Modified>2018-05-09T10:50:30.670</Modified>
     </AppxPackagedFile>
     <AppxPackagedFile Include="C:\Blazor.Xamarin\src\Daddoon.Blazor.Xam.Template.UWP\zbin\x86\Debug\MainPage.xbf">
       <PackagePath>MainPage.xbf</PackagePath>
-      <Modified>2018-05-03T17:40:22.175</Modified>
+      <Modified>2018-05-09T10:50:30.670</Modified>
     </AppxPackagedFile>
     <AppxPackagedFile Include="C:\Program Files %28x86%29\Windows Kits\10\UnionMetadata\10.0.16299.0\Windows.winmd">
       <PackagePath>WinMetadata\Windows.winmd</PackagePath>
       <Modified>2017-09-28T16:28:16.000</Modified>
     </AppxPackagedFile>
-    <AppxPackagedFile Include="C:\Users\blyzz\.nuget\packages\xamarin.forms\2.5.1.444934\lib\uap10.0\Xamarin.Forms.Platform.UAP\Xamarin.Forms.Platform.UAP.xr.xml">
+    <AppxPackagedFile Include="C:\Users\blyzz\.nuget\packages\xamarin.forms\2.5.1.527436\lib\uap10.0\Xamarin.Forms.Platform.UAP\Xamarin.Forms.Platform.UAP.xr.xml">
       <PackagePath>Xamarin.Forms.Platform.UAP\Xamarin.Forms.Platform.UAP.xr.xml</PackagePath>
-      <Modified>2018-04-03T15:24:04.000</Modified>
+      <Modified>2018-04-26T18:09:50.000</Modified>
     </AppxPackagedFile>
     <AppxPackagedFile Include="C:\Blazor.Xamarin\src\Daddoon.Blazor.Xam.Template.UWP\zbin\x86\Debug\resources.pri">
       <PackagePath>resources.pri</PackagePath>
       <ReRegisterAppIfChanged>true</ReRegisterAppIfChanged>
-      <Modified>2018-05-03T17:40:10.166</Modified>
+      <Modified>2018-05-09T10:48:45.771</Modified>
     </AppxPackagedFile>
     <AppxPackagedFile Include="C:\Blazor.Xamarin\src\Daddoon.Blazor.Xam.Template.UWP\zbin\x86\Debug\Core\Daddoon.Blazor.Xam.Template.UWP.exe">
       <PackagePath>Daddoon.Blazor.Xam.Template.UWP.exe</PackagePath>
-      <Modified>2018-05-03T17:40:22.943</Modified>
+      <Modified>2018-05-09T10:50:31.480</Modified>
     </AppxPackagedFile>
   </ItemGroup>
   <ItemGroup>

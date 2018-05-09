@@ -95,9 +95,6 @@
   <ItemGroup>
     <Compile Include="Main.cs" />
     <Compile Include="AppDelegate.cs" />
-    <Content Include="..\Daddoon.Blazor.Xam.BlazorApp\BuildTools\Mobile\bin\app.zip">
-      <Link>Mobile\bin\app.zip</Link>
-    </Content>
     <None Include="Entitlements.plist" />
     <None Include="Info.plist" />
     <Compile Include="Properties\AssemblyInfo.cs" />
@@ -161,6 +158,6 @@
     </ProjectReference>
   </ItemGroup>
   <ItemGroup>
-    <Folder Include="Interop\Interfaces\" />
+    <Folder Include="Interop\" />
   </ItemGroup>
 </Project>

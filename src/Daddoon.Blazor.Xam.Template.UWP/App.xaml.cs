@@ -1,25 +1,8 @@
-﻿using Daddoon.Blazor.Xam.Template.UWP.Interop;
-using System;
-using System.Collections.Generic;
-using System.IO;
-using System.Linq;
-using System.Runtime.InteropServices.WindowsRuntime;
-using System.Threading;
-using System.Threading.Tasks;
-using Waher.Networking.HTTP;
-using Waher.Networking.Sniffers;
+﻿using System;
 using Windows.ApplicationModel;
 using Windows.ApplicationModel.Activation;
-using Windows.ApplicationModel.AppService;
-using Windows.ApplicationModel.Background;
-using Windows.Foundation;
-using Windows.Foundation.Collections;
 using Windows.UI.Xaml;
 using Windows.UI.Xaml.Controls;
-using Windows.UI.Xaml.Controls.Primitives;
-using Windows.UI.Xaml.Data;
-using Windows.UI.Xaml.Input;
-using Windows.UI.Xaml.Media;
 using Windows.UI.Xaml.Navigation;
 
 namespace Daddoon.Blazor.Xam.Template.UWP
@@ -60,7 +43,6 @@ namespace Daddoon.Blazor.Xam.Template.UWP
                 rootFrame.NavigationFailed += OnNavigationFailed;
 
                 Xamarin.Forms.Forms.Init(e);
-                Xamarin.Forms.DependencyService.Register<BlazorApp>();
 
                 if (e.PreviousExecutionState == ApplicationExecutionState.Terminated)
                 {

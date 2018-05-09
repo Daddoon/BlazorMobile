@@ -92,7 +92,6 @@
     <Compile Include="App.xaml.cs">
       <DependentUpon>App.xaml</DependentUpon>
     </Compile>
-    <Compile Include="Interop\BlazorApp.cs" />
     <Compile Include="MainPage.xaml.cs">
       <DependentUpon>MainPage.xaml</DependentUpon>
     </Compile>
@@ -163,11 +162,8 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
-    <Content Include="..\Daddoon.Blazor.Xam.BlazorApp\BuildTools\Mobile\bin\app.zip">
-      <Link>Assets\Mobile\bin\app.zip</Link>
-    </Content>
+    <Folder Include="Interop\" />
   </ItemGroup>
-  <ItemGroup />
   <PropertyGroup Condition=" '$(VisualStudioVersion)' == '' or '$(VisualStudioVersion)' &lt; '14.0' ">
     <VisualStudioVersion>14.0</VisualStudioVersion>
   </PropertyGroup>

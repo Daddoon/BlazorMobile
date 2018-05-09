@@ -58,16 +58,13 @@
     <PackageReference Include="Xamarin.Android.Support.v7.MediaRouter" Version="25.*" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Interop\BlazorApp.cs" />
+    <Compile Include="Interop\AndroidWebResponse.cs" />
     <Compile Include="MainActivity.cs" />
     <Compile Include="Renderer\WebViewRenderer.cs" />
     <Compile Include="Resources\Resource.Designer.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
-    <AndroidAsset Include="..\Daddoon.Blazor.Xam.BlazorApp\BuildTools\Mobile\bin\app.zip">
-      <Link>Mobile\bin\app.zip</Link>
-    </AndroidAsset>
     <None Include="Resources\AboutResources.txt" />
     <None Include="Assets\AboutAssets.txt" />
     <None Include="Properties\AndroidManifest.xml">

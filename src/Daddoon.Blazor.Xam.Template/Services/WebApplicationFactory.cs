@@ -1,9 +1,7 @@
 ﻿using Daddoon.Blazor.Xam.Template.Interop;
-using System;
 using System.IO;
 using System.IO.Compression;
 using System.Net;
-using System.Threading.Tasks;
 using Waher.Networking.HTTP;
 using Xamarin.Forms;
 
@@ -117,36 +115,43 @@ namespace Daddoon.Blazor.Xam.Template.Services
             return path;
         }
 
-        public static void StartWebServer()
+        public static void ManageRequest(IWebResponse response)
         {
-            //Request are managed by the WebView on Android
-            if (Device.RuntimePlatform == Device.Android)
+            response.SetEncoding("UTF-8");
+
+            string path = GetQueryPath(response.GetRequestedPath());
+
+            var content = GetResourceStream(path);
+
+            if (content == null)
             {
-                _isStarted = true;
+                //Content not found
+                response.SetStatutCode(404);
+                response.SetReasonPhrase("Not found");
+                response.SetMimeType("text/plain");
                 return;
             }
 
-            server = new HttpServer(HttpPort);
-            server.Register(string.Empty, (req, resp) =>
+            response.AddResponseHeader("Cache-Control", "no-cache");
+            response.SetStatutCode(200);
+            response.SetReasonPhrase("OK");
+            response.SetMimeType(GetContentType(path));
+            response.SetData(content);
+        }
+
+        public static void StartWebServer()
+        {
+            //Request are managed by the WebView on Android
+            if (Device.RuntimePlatform != Device.Android)
             {
-                //req.SubPath doesn't return QueryString, so we don't have to do additional operations for ZIP search
-                string path = GetQueryPath(req.SubPath);
-
-                byte[] content = GetResource(path);
-
-                if (content == null)
+                server = new HttpServer(HttpPort);
+                server.Register(string.Empty, (req, resp) =>
                 {
-                    //Content not found
-                    resp.StatusCode = 404;
-                    return;
-                }
-
-                //Prevent caching in local browser
-                resp.SetHeader("Cache-Control", "no-cache");
-                resp.StatusCode = 200;
-                resp.ContentType = GetContentType(path);
-                resp.Write(content);
-            }, true, true);
+                    var response = new StdWebResponse(req, resp);
+                    ManageRequest(response);
+                }, true, true);
+                return;
+            }
 
             _isStarted = true;
         }

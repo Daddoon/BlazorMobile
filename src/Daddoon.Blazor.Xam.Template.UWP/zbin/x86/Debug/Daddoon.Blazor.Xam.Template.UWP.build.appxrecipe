@@ -547,16 +547,16 @@
     <AppxPackagedFile Include="C:\Users\blyzz\.nuget\packages\waher.security\1.0.1\lib\netstandard1.3\Waher.Security.dll">
       <PackagePath>Waher.Security.dll</PackagePath>
     </AppxPackagedFile>
-    <AppxPackagedFile Include="C:\Users\blyzz\.nuget\packages\xamarin.forms\2.5.1.444934\lib\uap10.0\Xamarin.Forms.Core.dll">
+    <AppxPackagedFile Include="C:\Users\blyzz\.nuget\packages\xamarin.forms\2.5.1.527436\lib\uap10.0\Xamarin.Forms.Core.dll">
       <PackagePath>Xamarin.Forms.Core.dll</PackagePath>
     </AppxPackagedFile>
-    <AppxPackagedFile Include="C:\Users\blyzz\.nuget\packages\xamarin.forms\2.5.1.444934\lib\uap10.0\Xamarin.Forms.Platform.UAP.dll">
+    <AppxPackagedFile Include="C:\Users\blyzz\.nuget\packages\xamarin.forms\2.5.1.527436\lib\uap10.0\Xamarin.Forms.Platform.UAP.dll">
       <PackagePath>Xamarin.Forms.Platform.UAP.dll</PackagePath>
     </AppxPackagedFile>
-    <AppxPackagedFile Include="C:\Users\blyzz\.nuget\packages\xamarin.forms\2.5.1.444934\lib\uap10.0\Xamarin.Forms.Platform.dll">
+    <AppxPackagedFile Include="C:\Users\blyzz\.nuget\packages\xamarin.forms\2.5.1.527436\lib\uap10.0\Xamarin.Forms.Platform.dll">
       <PackagePath>Xamarin.Forms.Platform.dll</PackagePath>
     </AppxPackagedFile>
-    <AppxPackagedFile Include="C:\Users\blyzz\.nuget\packages\xamarin.forms\2.5.1.444934\lib\uap10.0\Xamarin.Forms.Xaml.dll">
+    <AppxPackagedFile Include="C:\Users\blyzz\.nuget\packages\xamarin.forms\2.5.1.527436\lib\uap10.0\Xamarin.Forms.Xaml.dll">
       <PackagePath>Xamarin.Forms.Xaml.dll</PackagePath>
     </AppxPackagedFile>
     <AppxPackagedFile Include="C:\Blazor.Xamarin\src\Daddoon.Blazor.Xam.Template\bin\Debug\netstandard2.0\Daddoon.Blazor.Xam.Template.dll">
@@ -676,9 +676,6 @@
     <AppxPackagedFile Include="C:\Blazor.Xamarin\src\Daddoon.Blazor.Xam.Template.UWP\README.txt">
       <PackagePath>README.txt</PackagePath>
     </AppxPackagedFile>
-    <AppxPackagedFile Include="C:\Blazor.Xamarin\src\Daddoon.Blazor.Xam.BlazorApp\BuildTools\Mobile\bin\app.zip">
-      <PackagePath>Assets\Mobile\bin\app.zip</PackagePath>
-    </AppxPackagedFile>
     <AppxPackagedFile Include="C:\Blazor.Xamarin\src\Daddoon.Blazor.Xam.Template.UWP\zbin\x86\Debug\Daddoon.Blazor.Xam.Template.UWP.xr.xml">
       <PackagePath>Daddoon.Blazor.Xam.Template.UWP.xr.xml</PackagePath>
     </AppxPackagedFile>
@@ -691,7 +688,7 @@
     <AppxPackagedFile Include="C:\Program Files %28x86%29\Windows Kits\10\UnionMetadata\10.0.16299.0\Windows.winmd">
       <PackagePath>WinMetadata\Windows.winmd</PackagePath>
     </AppxPackagedFile>
-    <AppxPackagedFile Include="C:\Users\blyzz\.nuget\packages\xamarin.forms\2.5.1.444934\lib\uap10.0\Xamarin.Forms.Platform.UAP\Xamarin.Forms.Platform.UAP.xr.xml">
+    <AppxPackagedFile Include="C:\Users\blyzz\.nuget\packages\xamarin.forms\2.5.1.527436\lib\uap10.0\Xamarin.Forms.Platform.UAP\Xamarin.Forms.Platform.UAP.xr.xml">
       <PackagePath>Xamarin.Forms.Platform.UAP\Xamarin.Forms.Platform.UAP.xr.xml</PackagePath>
     </AppxPackagedFile>
     <AppxPackagedFile Include="C:\Blazor.Xamarin\src\Daddoon.Blazor.Xam.Template.UWP\zbin\x86\Debug\resources.pri">

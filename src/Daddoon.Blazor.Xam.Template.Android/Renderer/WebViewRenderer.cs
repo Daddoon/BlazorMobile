@@ -11,6 +11,7 @@ using Android.Runtime;
 using Android.Views;
 using Android.Webkit;
 using Android.Widget;
+using Daddoon.Blazor.Xam.Template.Droid.Interop;
 using Daddoon.Blazor.Xam.Template.Droid.Renderer;
 using Daddoon.Blazor.Xam.Template.Services;
 using Xamarin.Forms;
@@ -21,83 +22,76 @@ namespace Daddoon.Blazor.Xam.Template.Droid.Renderer
 {
     public class WebViewClientExtended : WebViewClient
     {
-        public static Stream GenerateStreamFromString(string s)
+        private string GetBaseUrlFromWebResourceRequest(IWebResourceRequest request)
         {
-            var stream = new MemoryStream();
-            var writer = new StreamWriter(stream);
-            writer.Write(s);
-            writer.Flush();
-            stream.Position = 0;
-            return stream;
+            if (request == null)
+                return null;
+
+            string protocol = request.Url.Scheme;
+            string host = request.Url.Host;
+            int port = request.Url.Port;
+
+            // if the port is not explicitly specified in the input, it will be -1.
+            if (port == -1)
+            {
+                return $"{protocol}://{host}";
+            }
+            else
+            {
+                return $"{protocol}://{host}:{port}";
+            }
         }
 
-        private WebResourceResponse SendResponse(string mimeType, string encoding, int statusCode, string reasonPhrase, IDictionary<string, string> responseHeaders, Stream data)
+        public bool ShouldManageUrl(IWebResourceRequest request)
         {
-            var resp = new WebResourceResponse(mimeType, encoding, data);
-
-            if (Android.OS.Build.VERSION.SdkInt > BuildVersionCodes.KitkatWatch)
-            {
-                resp.SetStatusCodeAndReasonPhrase(statusCode, reasonPhrase);
-                resp.ResponseHeaders = responseHeaders;
-            }
-
-            return resp;
+            string url = GetBaseUrlFromWebResourceRequest(request);
+            return ShouldManageUrl(url);
         }
 
-        private WebResourceResponse ManageResponse (Android.Webkit.WebView view, string path)
+        public bool ShouldManageUrl(string url)
         {
-            var content = WebApplicationFactory.GetResourceStream(path);
-
-            WebResourceResponse resp = null;
-
-            //Content was not found
-            if (content == null)
-            {
-                resp = SendResponse(
-                    "text/plain",
-                    "UTF8",
-                    404,
-                    "Not Found",
-                    new Dictionary<string, string>() { { "Cache-Control", "no-cache" } },
-                    GenerateStreamFromString("Page not found"));
-
-                return resp;
-            }
-
-            resp = SendResponse(
-            WebApplicationFactory.GetContentType(path),
-            "UTF8",
-            200,
-            "OK",
-            new Dictionary<string, string>() { { "Cache-Control", "no-cache" } },
-            content);
-            return resp;
+            if (string.IsNullOrEmpty(url) || !url.StartsWith(WebApplicationFactory.GetBaseURL()))
+                return false;
+            return true;
         }
 
         [Obsolete]
         public override WebResourceResponse ShouldInterceptRequest(Android.Webkit.WebView view, string url)
         {
-            var uri = new Uri(url, UriKind.Absolute);
-            string path = uri.AbsolutePath;
-            path = WebApplicationFactory.GetQueryPath(path);
+            if (!ShouldManageUrl(url))
+                return base.ShouldInterceptRequest(view, url);
 
-            return ManageResponse(view, path);
+            var response = new AndroidWebResponse(url);
+            //Common management method
+            WebApplicationFactory.ManageRequest(response);
+            return response.GetWebResourceResponse();
         }
 
         public override WebResourceResponse ShouldInterceptRequest(Android.Webkit.WebView view, IWebResourceRequest request)
         {
-            string path = WebApplicationFactory.GetQueryPath(request.Url.Path);
-            return ManageResponse(view, path);
+            if (!ShouldManageUrl(request))
+                return base.ShouldInterceptRequest(view, request);
+
+            var response = new AndroidWebResponse(request);
+            //Common management method
+            WebApplicationFactory.ManageRequest(response);
+            return response.GetWebResourceResponse();
         }
 
         public override bool ShouldOverrideUrlLoading(Android.Webkit.WebView view, IWebResourceRequest request)
         {
+            if (!ShouldManageUrl(request))
+                return base.ShouldOverrideUrlLoading(view, request);
+
             return true;
         }
 
         [Obsolete]
         public override bool ShouldOverrideUrlLoading(Android.Webkit.WebView view, string url)
         {
+            if (!ShouldManageUrl(url))
+                return base.ShouldOverrideUrlLoading(view, url);
+
             return true;
         }
     }
