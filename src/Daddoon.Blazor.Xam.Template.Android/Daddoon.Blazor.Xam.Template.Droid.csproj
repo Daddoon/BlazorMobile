@@ -104,7 +104,7 @@
       <Name>Daddoon.Blazor.Xamarin.Android</Name>
     </ProjectReference>
     <ProjectReference Include="..\Daddoon.Blazor.Xamarin\Daddoon.Blazor.Xamarin.csproj">
-      <Project>{C4E7F7B7-6078-4407-9E78-7CDD174A9F1D}</Project>
+      <Project>{c4e7f7b7-6078-4407-9e78-7cdd174a9f1d}</Project>
       <Name>Daddoon.Blazor.Xamarin</Name>
     </ProjectReference>
   </ItemGroup>

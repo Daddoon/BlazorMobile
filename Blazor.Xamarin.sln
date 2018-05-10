@@ -17,7 +17,7 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Templates", "Templates", "{
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Daddoon.Blazor.Xamarin.Android", "src\Daddoon.Blazor.Xamarin.Android\Daddoon.Blazor.Xamarin.Android.csproj", "{E97E970B-9B46-44FF-A19E-E7B7FA6AA671}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Daddoon.Blazor.Xam.Template", "src\Daddoon.Blazor.Xam.Template\Daddoon.Blazor.Xam.Template.csproj", "{2D23861D-4EE5-4B72-A8E2-81725B81DE5F}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Daddoon.Blazor.Xam.Template", "src\Daddoon.Blazor.Xam.Template\Daddoon.Blazor.Xam.Template.csproj", "{2D23861D-4EE5-4B72-A8E2-81725B81DE5F}"
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Core", "Core", "{4DF546F0-13E2-45A8-B63D-C28BC0D41A8B}"
 EndProject
