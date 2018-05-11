@@ -15,6 +15,8 @@ You then should have your solution this type of configuration:
 
 **YourApp** project will be used as the Blazor app container, it's not mandatory but highly recommended.
 
+
+
 **2. ZIP your Blazor app project ! Our plugin need to read a Blazor app zipped in an archive for maintenability convenience.**
 
 As you surely want to always have you Blazor app in sync in your mobile standalone app, you may want to automate your ZIP archive content.
@@ -30,14 +32,20 @@ Of course adapt the path to your development environement. If use this method, n
 
 **NOTE:** There could be some issue with old browsers that doesn't support some ECMA script standards. You may want to fill the gap in your Blazor project by adding some polyfills. If so, take a look at my [Blazor.Polyfill](https://github.com/Daddoon/Blazor.Polyfill) repository.
 
+
+
 **3. Add your Blazor ZIP file as link in YourApp project**
 
 On YourApp project, add your generated ZIP from the Blazor project, as a "link" => Right click on the project => Add existing file => Browse to your file => Click on the little arrow => Then click on **Add as link**
+
+
 
 **4. Set your linked file as Embedded Resource**
 
 Do right click on your newly added as link file in YourApp project, and click **Properties**
 Then check that the **Build Action property** is on **Embedded Resource**
+
+
 
 **5. Add Daddoon.Blazor.Xamarin NuGet package**
 
@@ -47,6 +55,8 @@ Add **Daddoon.Blazor.Xamarin** NuGet package on the following projects:
 - YourApp.Droid
 
 The package is available on the nuget.org feed, but you can also download the file manually [in the release page](https://github.com/Daddoon/Blazor.Xamarin/releases)
+
+
 
 **6. Platform specific configuration**
 
@@ -70,6 +80,8 @@ namespace YourApp.Droid
      }
 }
 ```
+
+
 
 **7. Shared/Common project configuration**
 
