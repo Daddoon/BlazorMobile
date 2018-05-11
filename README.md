@@ -84,34 +84,34 @@ using Xamarin.Forms;
 namespace YourApp
 {
     public partial class App : Application
-	{
+    {
         public App ()
-		{
-			InitializeComponent();
+	{
+	    InitializeComponent();
 
             //Regiser Blazor app resolver
             WebApplicationFactory.RegisterAppStreamResolver(BlazorAppResolver.GetAppStream);
 
-			MainPage = new MainPage();
-		}
+	    MainPage = new MainPage();
+	}
 
-		protected override void OnStart ()
-		{
+	protected override void OnStart ()
+	{
             // Handle when your app starts
             WebApplicationFactory.StartWebServer();
-		}
+	}
 
-		protected override void OnSleep ()
-		{
+	protected override void OnSleep ()
+	{
             // Handle when your app sleeps
             WebApplicationFactory.StopWebServer();
         }
 
-		protected override void OnResume ()
-		{
+	protected override void OnResume ()
+	{
             WebApplicationFactory.StartWebServer();
         }
-	}
+    }
 }
 ```
 
@@ -171,11 +171,11 @@ using Xamarin.Forms;
 
 namespace YourApp
 {
-	public partial class MainPage : ContentPage
+    public partial class MainPage : ContentPage
+    {
+	public MainPage()
 	{
-		public MainPage()
-		{
-			InitializeComponent();
+	    InitializeComponent();
 
             var url = new UrlWebViewSource
             {
@@ -192,13 +192,14 @@ namespace YourApp
             };
             content.Children.Add(webview);
         }
-	}
+    }
 }
 ```
 
 ## 9. That's all !
 
 You may now try to launch your app on your Device/Simulator, your Blazor app should start!
+
 **NOTE:** There is some buggy Chrome (version 55.x) on Android 7.1 on the simulator that may crash the app (Out of Memory error within the Chrome activity). This behavior as not been seen on other and even older versions.
 
 # COMMUNICATION BETWEEN BLAZOR/XAMARIN.FORMS
