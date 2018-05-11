@@ -4,10 +4,14 @@
     <TargetFramework>netstandard2.0</TargetFramework>
     <RunCommand>dotnet</RunCommand>
     <RunArguments>blazor serve</RunArguments>
+    <RestoreSources>
+      $(RestoreSources);
+      https://api.nuget.org/v3/index.json;
+      https://dotnet.myget.org/f/blazor-dev/api/v3/index.json;
+    </RestoreSources>
   </PropertyGroup>
 
   <ItemGroup>
-    <PackageReference Include="Daddoon.Blazor.Extensions" Version="0.1.0" />
     <PackageReference Include="Microsoft.AspNetCore.Razor.Design" Version="2.1.0-preview2-final" PrivateAssets="all" />
     <PackageReference Include="Microsoft.AspNetCore.Blazor.Browser" Version="0.2.1" />
     <PackageReference Include="Microsoft.AspNetCore.Blazor.Build" Version="0.2.1" />
@@ -16,7 +20,6 @@
 
   <ItemGroup>
     <Folder Include="BuildTools\Mobile\bin\" />
-    <Folder Include="wwwroot\js\" />
   </ItemGroup>
 
   <Target Name="PostBuild" AfterTargets="PostBuildEvent">
