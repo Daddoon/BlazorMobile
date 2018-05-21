@@ -38,18 +38,12 @@ namespace Daddoon.Blazor.Xam.Common.Interop
         /// <returns></returns>
         public Type ResolvedType()
         {
-            try
-            {
-                if (string.IsNullOrEmpty(SerializedData))
-                    return null;
 
-                var type = BridgeSerializer.Deserialize<Type>(SerializedData);
-                return type;
-            }
-            catch (Exception)
-            {
-                return null;
-            }
+            if (string.IsNullOrEmpty(SerializedData))
+                throw new NullReferenceException();
+
+            var type = BridgeSerializer.Deserialize<Type>(SerializedData);
+            return type;
         }
     }
 

@@ -2,6 +2,7 @@
 using Daddoon.Blazor.Xam.Common.Serialization;
 using System;
 using System.Collections.Generic;
+using System.Linq;
 using System.Reflection;
 using System.Text;
 using Xamarin.Forms;
@@ -40,8 +41,19 @@ namespace Daddoon.Blazor.Xam.Interop
 
                 //In case of failure, getting Default Return Type
                 defaultValue = GetDefault(baseMethod.ReturnType);
-                methodProxy.ReturnValue = baseMethod.Invoke(concreteService, methodProxy.Parameters);
-                methodProxy.TaskSuccess = true;
+
+                if (methodProxy.GenericTypes != null && methodProxy.GenericTypes.Length > 0)
+                {
+                    Type[] genericTypes = methodProxy.GenericTypes.Select(p => p.ResolvedType()).ToArray();
+
+                    methodProxy.ReturnValue = baseMethod.MakeGenericMethod(genericTypes).Invoke(concreteService, methodProxy.Parameters);
+                    methodProxy.TaskSuccess = true;
+                }
+                else
+                {
+                    methodProxy.ReturnValue = baseMethod.Invoke(concreteService, methodProxy.Parameters);
+                    methodProxy.TaskSuccess = true;
+                }
             }
             catch (Exception)
             {
