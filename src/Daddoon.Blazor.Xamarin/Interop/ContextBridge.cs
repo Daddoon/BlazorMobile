@@ -13,6 +13,11 @@ namespace Daddoon.Blazor.Xam.Interop
     {
         private static object GetDefault(Type type)
         {
+            if (type == typeof(void))
+            {
+                return null;
+            }
+
             if (type.IsValueType)
             {
                 return Activator.CreateInstance(type);
