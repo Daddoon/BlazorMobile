@@ -8,6 +8,7 @@ using Waher.Networking.HTTP;
 using Xamarin.Forms;
 
 [assembly: InternalsVisibleTo("Daddoon.Blazor.Xamarin.Android")]
+[assembly: InternalsVisibleTo("Daddoon.Blazor.Xamarin.UWP")]
 namespace Daddoon.Blazor.Xam.Services
 {
     public static class WebApplicationFactory
@@ -135,6 +136,9 @@ namespace Daddoon.Blazor.Xam.Services
 
             var content = GetResourceStream(path);
 
+            response.AddResponseHeader("Cache-Control", "no-cache");
+            response.AddResponseHeader("Access-Control-Allow-Origin", GetBaseURL());
+
             if (content == null)
             {
                 //Content not found
@@ -144,7 +148,6 @@ namespace Daddoon.Blazor.Xam.Services
                 return;
             }
 
-            response.AddResponseHeader("Cache-Control", "no-cache");
             response.SetStatutCode(200);
             response.SetReasonPhrase("OK");
             response.SetMimeType(GetContentType(path));

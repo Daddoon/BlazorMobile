@@ -28,6 +28,21 @@
     <AppxPackagedFile Include="G:\Blazor.Xamarin\src\Daddoon.Blazor.Xam.Template.UWP\zbin\x86\Debug\Daddoon.Blazor.Xam.Template.UWP.exe">
       <PackagePath>entrypoint\Daddoon.Blazor.Xam.Template.UWP.exe</PackagePath>
     </AppxPackagedFile>
+    <AppxPackagedFile Include="C:\Users\blyzz\.nuget\packages\microsoft.aspnetcore.blazor\0.2.1\lib\netstandard2.0\Microsoft.AspNetCore.Blazor.dll">
+      <PackagePath>Microsoft.AspNetCore.Blazor.dll</PackagePath>
+    </AppxPackagedFile>
+    <AppxPackagedFile Include="C:\Users\blyzz\.nuget\packages\microsoft.aspnetcore.blazor.browser\0.2.1\lib\netstandard2.0\Microsoft.AspNetCore.Blazor.Browser.dll">
+      <PackagePath>Microsoft.AspNetCore.Blazor.Browser.dll</PackagePath>
+    </AppxPackagedFile>
+    <AppxPackagedFile Include="C:\Users\blyzz\.nuget\packages\microsoft.extensions.dependencyinjection\2.0.0\lib\netstandard2.0\Microsoft.Extensions.DependencyInjection.dll">
+      <PackagePath>Microsoft.Extensions.DependencyInjection.dll</PackagePath>
+    </AppxPackagedFile>
+    <AppxPackagedFile Include="C:\Users\blyzz\.nuget\packages\microsoft.extensions.dependencyinjection.abstractions\2.0.0\lib\netstandard2.0\Microsoft.Extensions.DependencyInjection.Abstractions.dll">
+      <PackagePath>Microsoft.Extensions.DependencyInjection.Abstractions.dll</PackagePath>
+    </AppxPackagedFile>
+    <AppxPackagedFile Include="C:\Users\blyzz\.nuget\packages\newtonsoft.json\11.0.2\lib\netstandard2.0\Newtonsoft.Json.dll">
+      <PackagePath>Newtonsoft.Json.dll</PackagePath>
+    </AppxPackagedFile>
     <AppxPackagedFile Include="C:\Program Files %28x86%29\Microsoft SDKs\UWPNuGetPackages\runtime.win10-x86.microsoft.netcore.universalwindowsplatform\6.1.2\runtimes\win10-x86\nativeassets\uap10.0.15138\clrcompression.dll">
       <PackagePath>clrcompression.dll</PackagePath>
     </AppxPackagedFile>
@@ -562,7 +577,7 @@
     <AppxPackagedFile Include="G:\Blazor.Xamarin\src\Daddoon.Blazor.Xam.Template\bin\Debug\netstandard2.0\Daddoon.Blazor.Xam.Template.dll">
       <PackagePath>Daddoon.Blazor.Xam.Template.dll</PackagePath>
     </AppxPackagedFile>
-    <AppxPackagedFile Include="G:\Blazor.Xamarin\src\Daddoon.Blazor.Xamarin\bin\Debug\netstandard2.0\Daddoon.Blazor.Xamarin.dll">
+    <AppxPackagedFile Include="G:\Blazor.Xamarin\src\Daddoon.Blazor.Xam.Template\bin\Debug\netstandard2.0\Daddoon.Blazor.Xamarin.dll">
       <PackagePath>Daddoon.Blazor.Xamarin.dll</PackagePath>
     </AppxPackagedFile>
     <AppxPackagedFile Include="G:\Blazor.Xamarin\src\Daddoon.Blazor.Xam.Template.UWP\Assets\LargeTile.scale-100.png">

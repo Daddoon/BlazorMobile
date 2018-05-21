@@ -40,6 +40,10 @@
     <PackageReference Include="Xamarin.Forms" Version="2.5.1.527436" />
   </ItemGroup>
 
+  <ItemGroup>
+    <ProjectReference Include="..\Daddoon.Blazor.Xamarin.Common\Daddoon.Blazor.Xamarin.Common.csproj" />
+  </ItemGroup>
+
   <Target Name="PostBuild" AfterTargets="PostBuildEvent">
     <Exec Command="nuget pack Daddoon.Blazor.Xamarin.nuspec -OutputDirectory .\artifacts&#xD;&#xA;del /F /S /Q %UserProfile%\.nuget\packages\daddoon.blazor.xamarin &gt;nul 2&gt;&amp;1" />
   </Target>

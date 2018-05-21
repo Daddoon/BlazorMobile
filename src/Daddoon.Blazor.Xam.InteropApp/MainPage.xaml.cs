@@ -15,19 +15,16 @@ namespace Daddoon.Blazor.Xam.InteropApp
 		{
             InitializeComponent();
 
-            var url = new UrlWebViewSource
-            {
-                Url = WebApplicationFactory.GetBaseURL()
-            };
-
             BlazorWebView webview = new BlazorWebView()
             {
                 VerticalOptions = LayoutOptions.FillAndExpand,
                 HorizontalOptions = LayoutOptions.FillAndExpand,
                 HeightRequest = 1000,
-                WidthRequest = 1000,
-                Source = url
+                WidthRequest = 1000
             };
+
+            webview.LaunchBlazorApp();
+
             content.Children.Add(webview);
         }
 	}

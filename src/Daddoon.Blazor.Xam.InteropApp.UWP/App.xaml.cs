@@ -1,4 +1,6 @@
-﻿using Daddoon.Blazor.Xam.UWP.Services;
+﻿using Daddoon.Blazor.Xam.InteropApp.Services;
+using Daddoon.Blazor.Xam.InteropApp.UWP.Test;
+using Daddoon.Blazor.Xam.UWP.Services;
 using System;
 using System.Collections.Generic;
 using System.IO;
@@ -53,7 +55,10 @@ namespace Daddoon.Blazor.Xam.InteropApp.UWP
 
                 rootFrame.NavigationFailed += OnNavigationFailed;
 
+                //TestMethods.Test();
                 Xamarin.Forms.Forms.Init(e);
+                Xamarin.Forms.DependencyService.Register<XamarinBridge>();
+
                 BlazorWebViewService.Init();
 
                 if (e.PreviousExecutionState == ApplicationExecutionState.Terminated)

@@ -13,10 +13,11 @@
   </ItemGroup>
 
   <ItemGroup>
-    <EmbeddedResource Include="..\Daddoon.Blazor.Xam.BlazorApp\BuildTools\Mobile\bin\app.zip" Link="Mobile\package\app.zip" />
+    <EmbeddedResource Include="..\Daddoon.Blazor.Xam.InteropBlazorApp\BuildTools\Mobile\bin\app.zip" Link="Mobile\package\app.zip" />
   </ItemGroup>
 
   <ItemGroup>
+    <ProjectReference Include="..\Daddoon.Blazor.Xam.InteropApp.Common\Daddoon.Blazor.Xam.InteropApp.Common.csproj" />
     <ProjectReference Include="..\Daddoon.Blazor.Xamarin\Daddoon.Blazor.Xamarin.csproj" />
   </ItemGroup>
 </Project>

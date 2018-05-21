@@ -1,8 +1,10 @@
 ﻿using System;
-
+using System.Collections.Generic;
 using Daddoon.Blazor.Xam.Components;
 using Daddoon.Blazor.Xam.Interop;
+using Daddoon.Blazor.Xam.Services;
 using Daddoon.Blazor.Xam.UWP.Renderer;
+using Xamarin.Forms;
 using Xamarin.Forms.Platform.UWP;
 
 [assembly: ExportRenderer(typeof(BlazorWebView), typeof(BlazorWebViewRenderer))]
@@ -17,17 +19,19 @@ namespace Daddoon.Blazor.Xam.UWP.Renderer
 
         private bool _init = false;
 
-        public BlazorWebViewRenderer() : base()
+        protected override void OnElementChanged(ElementChangedEventArgs<WebView> e)
         {
-            Control.ScriptNotify += Control_ScriptNotify;
-
-            _init = true;
+            base.OnElementChanged(e);
+            if (_init == false && Control != null)
+            {
+                Control.ScriptNotify += Control_ScriptNotify;
+                _init = true;
+            }
         }
 
-        private async void Control_ScriptNotify(object sender, Windows.UI.Xaml.Controls.NotifyEventArgs e)
+        private void Control_ScriptNotify(object sender, Windows.UI.Xaml.Controls.NotifyEventArgs e)
         {
-            //TODO
-            //throw new NotImplementedException();
+            ContextBridge.Receive(e.Value);
         }
     }
 }

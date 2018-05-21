@@ -1,16 +1,35 @@
 ﻿@page "/counter"
-
+@using Daddoon.Blazor.Xam.Common.Services
+@using Daddoon.Blazor.Xam.InteropApp.Common.Interfaces
+@using Mono.Cecil
+@using System.IO
+@using System.Threading.Tasks
+@inject HttpClient Http
 <h1>Counter</h1>
 
 <p>Current count: @currentCount</p>
 
-<button class="btn btn-primary" onclick="@IncrementCount">Click me</button>
+<button onclick="@(async() => await IncrementCount())">Click me</button>
 
 @functions {
     int currentCount = 0;
 
-    void IncrementCount()
+    private async Task IncrementCount()
     {
+        var assemblyPath = "/_framework/_bin/" + Path.GetFileName(typeof(IXamarinBridge).Assembly.Location);
+        Console.WriteLine("AssemblyPath: " + assemblyPath);
+
+        var response = await Http.GetByteArrayAsync(assemblyPath);
+
+        var mem = new MemoryStream(response);
+
+        Console.WriteLine("Stream Size: " + mem.Length);
+
+        var asmDef = AssemblyDefinition.ReadAssembly(mem);
+
+        //var service = DependencyService.Get<IXamarinBridge>();
+        //service.DisplayAlert("MyTitle", "Blazor to Xamarin.Forms call works!", "Thanks!");
+
         currentCount++;
     }
 }
