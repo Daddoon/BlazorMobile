@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using Daddoon.Blazor.Xam.Common.Interop;
 using Daddoon.Blazor.Xam.Components;
 using Daddoon.Blazor.Xam.Interop;
 using Daddoon.Blazor.Xam.Services;
@@ -31,7 +32,8 @@ namespace Daddoon.Blazor.Xam.UWP.Renderer
 
         private void Control_ScriptNotify(object sender, Windows.UI.Xaml.Controls.NotifyEventArgs e)
         {
-            ContextBridge.Receive(e.Value);
+            MethodProxy returnValue = ContextBridge.Receive(e.Value);
+            ContextBridge.SendReturnValue(returnValue);
         }
     }
 }

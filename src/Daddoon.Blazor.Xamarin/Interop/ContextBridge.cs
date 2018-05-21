@@ -10,21 +10,46 @@ namespace Daddoon.Blazor.Xam.Interop
 {
     public static class ContextBridge
     {
-        public static void Send()
+        private static object GetDefault(Type type)
+        {
+            if (type.IsValueType)
+            {
+                return Activator.CreateInstance(type);
+            }
+            return null;
+        }
+
+        public static void SendReturnValue(MethodProxy methodResult)
         {
 
         }
 
-        public static void Receive(string methodProxyJson)
+        public static MethodProxy Receive(string methodProxyJson)
         {
-            MethodProxy methodProxy = BridgeSerializer.Deserialize<MethodProxy>(methodProxyJson);
+            object defaultValue = default(object);
+            MethodProxy methodProxy = null;
 
-            Type iface = methodProxy.InterfaceType.ResolvedType();
-            object concreteService = DependencyServiceExtension.Get(iface);
+            try
+            {
+                methodProxy = BridgeSerializer.Deserialize<MethodProxy>(methodProxyJson);
 
-            MethodInfo baseMethod = MethodProxyHelper.GetClassMethodInfo(concreteService.GetType(), iface, methodProxy.MethodIndex);
+                Type iface = methodProxy.InterfaceType.ResolvedType();
+                object concreteService = DependencyServiceExtension.Get(iface);
 
-            baseMethod.Invoke(concreteService, methodProxy.Parameters);
+                MethodInfo baseMethod = MethodProxyHelper.GetClassMethodInfo(concreteService.GetType(), iface, methodProxy.MethodIndex);
+
+                //In case of failure, getting Default Return Type
+                defaultValue = GetDefault(baseMethod.ReturnType);
+                methodProxy.ReturnValue = baseMethod.Invoke(concreteService, methodProxy.Parameters);
+                methodProxy.TaskSuccess = true;
+            }
+            catch (Exception)
+            {
+                methodProxy.ReturnValue = defaultValue;
+                methodProxy.TaskSuccess = false;
+            }
+
+            return methodProxy;
         }
     }
 }

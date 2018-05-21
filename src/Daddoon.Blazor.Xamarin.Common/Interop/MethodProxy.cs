@@ -58,22 +58,11 @@ namespace Daddoon.Blazor.Xam.Common.Interop
     [Serializable]
     public class MethodProxy
     {
-        //[JsonIgnore]
-        //private TypeProxy _interfaceType = null;
+        public int TaskIdentity { get; set; }
 
-        //[JsonIgnore]
-        //public TypeProxy InterfaceType
-        //{
-        //    get
-        //    {
-        //        return _interfaceType;
-        //    }
-        //    set
-        //    {
-        //        _interfaceType = value;
-        //        InterfaceTypeJson = _interfaceType.GetJson();
-        //    }
-        //}
+        public bool TaskSuccess { get; set; }
+
+        public object ReturnValue { get; set; }
 
         public TypeProxy InterfaceType { get; set; }
 
