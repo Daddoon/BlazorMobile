@@ -9,7 +9,8 @@ using System.Text;
 [assembly: InternalsVisibleTo("Daddoon.Blazor.Xamarin")]
 namespace Daddoon.Blazor.Xam.Common.Interop
 {
-    internal class TypeProxy
+    [Serializable]
+    public class TypeProxy
     {
         public TypeProxy()
         {
@@ -21,7 +22,15 @@ namespace Daddoon.Blazor.Xam.Common.Interop
             SerializedData = BridgeSerializer.Serialize(type);
         }
 
-        private string SerializedData { get; set; }
+        public static TypeProxy CreateFromJson(string json)
+        {
+            return new TypeProxy()
+            {
+                SerializedData = json
+            };
+        }
+
+        public string SerializedData { get; set; }
 
         /// <summary>
         /// Get resolved type from given AssemblyName & TypeName
@@ -46,9 +55,30 @@ namespace Daddoon.Blazor.Xam.Common.Interop
 
     //NOTE: We can actually store Type instead of TypeProxy, as we are serializing
     //But if we need to add more metadata on objects in the futur, it will be more easier to refactore the code this way
-    internal class MethodProxy
+    [Serializable]
+    public class MethodProxy
     {
-        public TypeProxy InterfaceType { get; set; } 
+        //[JsonIgnore]
+        //private TypeProxy _interfaceType = null;
+
+        //[JsonIgnore]
+        //public TypeProxy InterfaceType
+        //{
+        //    get
+        //    {
+        //        return _interfaceType;
+        //    }
+        //    set
+        //    {
+        //        _interfaceType = value;
+        //        InterfaceTypeJson = _interfaceType.GetJson();
+        //    }
+        //}
+
+        public TypeProxy InterfaceType { get; set; }
+
+        //public string InterfaceTypeJson { get; set; }
+
         public int MethodIndex { get; set; }
 
         /// <summary>

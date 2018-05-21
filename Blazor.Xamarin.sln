@@ -30,6 +30,9 @@ EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Daddoon.Blazor.Xam.InteropApp.iOS", "src\Daddoon.Blazor.Xam.InteropApp.iOS\Daddoon.Blazor.Xam.InteropApp.iOS.csproj", "{E664C2D3-8AA5-43A0-BB09-03F79D7A840B}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Daddoon.Blazor.Xam.InteropApp.UWP", "src\Daddoon.Blazor.Xam.InteropApp.UWP\Daddoon.Blazor.Xam.InteropApp.UWP.csproj", "{582E7E23-0E2B-4F3B-95C6-4869066C865E}"
+	ProjectSection(ProjectDependencies) = postProject
+		{5C099FA8-7AF5-4847-AD0E-B82503F69392} = {5C099FA8-7AF5-4847-AD0E-B82503F69392}
+	EndProjectSection
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Daddoon.Blazor.Xam.InteropBlazorApp", "src\Daddoon.Blazor.Xam.InteropBlazorApp\Daddoon.Blazor.Xam.InteropBlazorApp.csproj", "{5C099FA8-7AF5-4847-AD0E-B82503F69392}"
 EndProject
@@ -37,7 +40,7 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Daddoon.Blazor.Xamarin.UWP"
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Daddoon.Blazor.Xamarin.Common", "src\Daddoon.Blazor.Xamarin.Common\Daddoon.Blazor.Xamarin.Common.csproj", "{C212A056-8DEF-45D2-BB87-92E63886EFA2}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Daddoon.Blazor.Xam.InteropApp.Common", "src\Daddoon.Blazor.Xam.InteropApp.Common\Daddoon.Blazor.Xam.InteropApp.Common.csproj", "{D2385CE8-C7E3-40D6-B2DB-8C4A4255A5AC}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Daddoon.Blazor.Xam.InteropApp.Common", "src\Daddoon.Blazor.Xam.InteropApp.Common\Daddoon.Blazor.Xam.InteropApp.Common.csproj", "{D2385CE8-C7E3-40D6-B2DB-8C4A4255A5AC}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution

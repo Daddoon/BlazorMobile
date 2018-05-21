@@ -31,7 +31,7 @@ namespace Daddoon.Blazor.Xam.Common.Serialization
         public static BridgeSerializerSettings GetSerializerSettings()
         {
             var _settings = new BridgeSerializerSettings();
-            _settings.TypeNameAssemblyFormatHandling = TypeNameAssemblyFormatHandling.Simple;
+            //_settings.TypeNameAssemblyFormatHandling = TypeNameAssemblyFormatHandling.Simple;
             _settings.TypeNameHandling = TypeNameHandling.All;
             _settings.Converters.Insert(0, new PrimitiveJsonConverter());
 

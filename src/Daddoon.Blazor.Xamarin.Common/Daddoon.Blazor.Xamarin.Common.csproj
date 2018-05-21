@@ -11,8 +11,6 @@
 
   <ItemGroup>
     <PackageReference Include="Microsoft.AspNetCore.Blazor.Browser" Version="0.2.1" />
-    <PackageReference Include="Mono.Cecil" Version="0.10.0" />
-    <PackageReference Include="Newtonsoft.Json" Version="11.0.2" />
   </ItemGroup>
 
   <ItemGroup>
@@ -28,6 +26,17 @@
       <Generator>ResXFileCodeGenerator</Generator>
       <LastGenOutput>Strings.Designer.cs</LastGenOutput>
     </EmbeddedResource>
+  </ItemGroup>
+
+  <ItemGroup>
+    <Folder Include="DLL\" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <Reference Include="Newtonsoft.Json, Version=9.0.0.0, Culture=neutral, PublicKeyToken=null">
+      <HintPath>DLL\Newtonsoft.Json.dll</HintPath>
+      <SpecificVersion>true</SpecificVersion>
+    </Reference>
   </ItemGroup>
 
 </Project>
