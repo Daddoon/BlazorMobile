@@ -11,9 +11,18 @@ namespace Daddoon.Blazor.Xam.InteropApp.Services
 {
     public class XamarinBridge : IXamarinBridge
     {
-        public Task DisplayAlert(string title, string msg, string cancel)
+        public Task<List<string>> DisplayAlert(string title, string msg, string cancel)
         {
-            return App.Current.MainPage.DisplayAlert(title, msg, cancel);
+            App.Current.MainPage.DisplayAlert(title, msg, cancel);
+
+            List<string> result = new List<string>()
+            {
+                "Lorem",
+                "Ipsum",
+                "Dolorem",
+            };
+
+            return Task.FromResult(result);
         }
     }
 }

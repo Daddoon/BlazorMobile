@@ -11,9 +11,9 @@ namespace Daddoon.Blazor.Xam.InteropApp.UWP.Services
 {
     public class XamarinBridgeProxy : IXamarinBridge
     {
-        public Task DisplayAlert(string title, string msg, string cancel)
+        public Task<List<string>> DisplayAlert(string title, string msg, string cancel)
         {
-            return MethodDispatcher.CallVoidMethod(MethodBase.GetCurrentMethod(), title, msg, cancel);
+            return MethodDispatcher.CallMethodAsync<List<string>>(MethodBase.GetCurrentMethod(), title, msg, cancel);
         }
     }
 }

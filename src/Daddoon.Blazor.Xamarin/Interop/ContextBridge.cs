@@ -5,6 +5,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Reflection;
 using System.Text;
+using System.Threading.Tasks;
 using Xamarin.Forms;
 
 namespace Daddoon.Blazor.Xam.Interop
@@ -25,9 +26,44 @@ namespace Daddoon.Blazor.Xam.Interop
             return null;
         }
 
-        public static void SendReturnValue(MethodProxy methodResult)
+        public static void ClearRequestValues(MethodProxy methodResult)
         {
+            if (methodResult == null)
+                return;
 
+            methodResult.GenericTypes = null;
+            methodResult.InterfaceType = null;
+            methodResult.Parameters = null;
+        }
+
+        private static object GetResultFromTask(Type returnType, Task taskResult)
+        {
+            if (returnType == null || returnType == typeof(void) || returnType == typeof(Task))
+            {
+                return null;
+            }
+
+            try
+            {
+                if (taskResult.IsCompleted == false)
+                {
+                    taskResult.GetAwaiter().GetResult();
+                }
+
+                var result = taskResult.GetType().GetProperty("Result").GetValue(taskResult);
+
+                return result;
+            }
+            catch (Exception)
+            {
+                return GetDefault(returnType);
+            }
+        }
+
+        public static string GetJSONReturnValue(MethodProxy methodResult)
+        {
+            ClearRequestValues(methodResult);
+            return BridgeSerializer.Serialize(methodResult);
         }
 
         public static MethodProxy Receive(string methodProxyJson)
@@ -58,6 +94,11 @@ namespace Daddoon.Blazor.Xam.Interop
                 {
                     methodProxy.ReturnValue = baseMethod.Invoke(concreteService, methodProxy.Parameters);
                     methodProxy.TaskSuccess = true;
+                }
+
+                if (methodProxy.AsyncTask)
+                {
+                    methodProxy.ReturnValue = GetResultFromTask(methodProxy.ReturnType.ResolvedType(), (Task)methodProxy.ReturnValue);
                 }
             }
             catch (Exception)

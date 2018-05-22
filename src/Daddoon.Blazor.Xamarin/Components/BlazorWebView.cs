@@ -3,6 +3,7 @@ using Daddoon.Blazor.Xam.Services;
 using System;
 using System.Collections.Generic;
 using System.Text;
+using System.Web;
 using Xamarin.Forms;
 
 namespace Daddoon.Blazor.Xam.Components
@@ -55,6 +56,23 @@ namespace Daddoon.Blazor.Xam.Components
                 string content = ContextBridgeHelper.GetInjectableJavascript();
                 Eval(content);
             }
+        }
+
+        public string GetReceiveEvaluator(string param)
+        {
+            param = JavascriptStringEscape(param);
+
+            string javascriptEval = $@"window.contextBridge.receive(""{param}"")";
+
+            return javascriptEval;
+        }
+
+        public string JavascriptStringEscape(string source)
+        {
+            if (source == null)
+                source = string.Empty;
+
+            return HttpUtility.JavaScriptStringEncode(source);
         }
     }
 }

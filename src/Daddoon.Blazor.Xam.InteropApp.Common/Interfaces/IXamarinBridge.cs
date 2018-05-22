@@ -10,6 +10,6 @@ namespace Daddoon.Blazor.Xam.InteropApp.Common.Interfaces
     [ProxyInterface]
     public interface IXamarinBridge
     {
-        Task DisplayAlert(string title, string msg, string cancel);
+        Task<List<string>> DisplayAlert(string title, string msg, string cancel);
     }
 }

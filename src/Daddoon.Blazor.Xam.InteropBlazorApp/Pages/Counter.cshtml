@@ -15,7 +15,14 @@
 
     private async Task IncrementCount()
     {
-        XamarinBridge.DisplayAlert("MyTitle", "Blazor to Xamarin.Forms call works!", "Thanks!");
+        var resultContent = await XamarinBridge.DisplayAlert("MyTitle", "Blazor to Xamarin.Forms call works!", "Thanks!");
+        if (resultContent != null)
+        {
+            foreach (var result in resultContent)
+            {
+                Console.WriteLine(result);
+            }
+        }
 
         currentCount++;
     }

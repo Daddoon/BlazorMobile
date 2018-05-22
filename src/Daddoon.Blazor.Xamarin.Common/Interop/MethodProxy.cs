@@ -56,6 +56,10 @@ namespace Daddoon.Blazor.Xam.Common.Interop
 
         public bool TaskSuccess { get; set; }
 
+        public bool AsyncTask { get; set; }
+
+        public TypeProxy ReturnType { get; set; }
+
         public object ReturnValue { get; set; }
 
         public TypeProxy InterfaceType { get; set; }

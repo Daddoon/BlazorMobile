@@ -120,6 +120,10 @@
     </PackageReference>
   </ItemGroup>
   <ItemGroup>
+    <ProjectReference Include="..\Daddoon.Blazor.Xamarin.Common\Daddoon.Blazor.Xamarin.Common.csproj">
+      <Project>{C212A056-8DEF-45D2-BB87-92E63886EFA2}</Project>
+      <Name>Daddoon.Blazor.Xamarin.Common</Name>
+    </ProjectReference>
     <ProjectReference Include="..\Daddoon.Blazor.Xamarin\Daddoon.Blazor.Xamarin.csproj">
       <Project>{c4e7f7b7-6078-4407-9e78-7cdd174a9f1d}</Project>
       <Name>Daddoon.Blazor.Xamarin</Name>

@@ -1,19 +1,40 @@
-﻿window.contextBridge = {
-    getNewToken: function () {
-        window.contextBridge.currentToken++;
-        return window.contextBridge.currentToken.currentToken;
+﻿
+const XamarinCommonAssemblyName = 'Daddoon.Blazor.Xamarin.Common';
+const BlazorToXamarinDispatcherNamespace = 'Daddoon.Blazor.Xamarin.Common';
+const BlazorToXamarinDispatcherTypeName = 'BlazorToXamarinDispatcher';
+const BlazorToXamarinDispatcherReceiveMethodName = 'Receive';
+
+var BlazorToXamarinDispatcherReceiveMethodInfo = null;
+
+function ResolveBlazorToXamarinReceiver() {
+
+    if (BlazorToXamarinDispatcherReceiveMethodInfo == null || BlazorToXamarinDispatcherReceiveMethodInfo == undefined) {
+        BlazorToXamarinDispatcherReceiveMethodInfo = Blazor.platform.findMethod(
+            XamarinCommonAssemblyName,
+            BlazorToXamarinDispatcherNamespace,
+            BlazorToXamarinDispatcherTypeName,
+            BlazorToXamarinDispatcherReceiveMethodName);
+    }
+
+    return BlazorToXamarinDispatcherReceiveMethodInfo;
+}
+
+window.contextBridge = {
+    send: function (csharpProxy) {
     },
-    currentToken: 0,
-    send: function () {
-    },
-    receive: function () {
+    receive: function (csharpProxy) {
+        var receiver = ResolveBlazorToXamarinReceiver();
+        if (receiver == null || receiver == undefined)
+            return;
+
+        let jsonDotNet = Blazor.platform.toDotNetString(csharpProxy);
+
+        Blazor.platform.callMethod(receiver, null, [
+            jsonDotNet
+        ]);
     }
 };
 
 Blazor.registerFunction('contextBridgeSend', (data) => {
-    var token = window.contextBridge.getNewToken();
     window.contextBridge.send(data);
-
-    //TODO: Register a generic Task for this call and return it
-    return token;
 });

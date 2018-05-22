@@ -1,4 +1,6 @@
-﻿using Microsoft.AspNetCore.Blazor.Browser.Interop;
+﻿using Daddoon.Blazor.Xam.Common.Interop;
+using Daddoon.Blazor.Xam.Common.Serialization;
+using Microsoft.AspNetCore.Blazor.Browser.Interop;
 using System;
 using System.Collections.Generic;
 using System.Text;
@@ -7,12 +9,27 @@ namespace Daddoon.Blazor.Xam.Common.Services
 {
     public static class BlazorToXamarinDispatcher
     {
-        public static object Send(string csharpProxy)
+        public static void Send(MethodProxy methodProxy)
         {
-            var result = RegisteredFunction.Invoke<string>("contextBridgeSend", csharpProxy);
+            string csharpProxy = BridgeSerializer.Serialize(methodProxy);
+            RegisteredFunction.Invoke<string>("contextBridgeSend", csharpProxy);
+        }
 
-            //TODO: Return something useful
-            return null;
+        public static void Receive(string methodProxyJson)
+        {
+            if (string.IsNullOrEmpty(methodProxyJson))
+                return;
+
+            MethodProxy resultProxy = BridgeSerializer.Deserialize<MethodProxy>(methodProxyJson);
+            var taskToReturn = MethodDispatcher.GetTaskDispatcher(resultProxy.TaskIdentity);
+            MethodDispatcher.SetTaskResult(resultProxy.TaskIdentity, resultProxy);
+
+            if (taskToReturn == null)
+                return;
+
+            taskToReturn.Start();
+
+            MethodDispatcher.ClearTask(resultProxy.TaskIdentity);
         }
     }
 }

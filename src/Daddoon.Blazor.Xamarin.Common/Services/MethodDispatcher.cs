@@ -7,6 +7,8 @@ using System.Threading.Tasks;
 using System.Linq;
 using Daddoon.Blazor.Xam.Common.Attributes;
 using Daddoon.Blazor.Xam.Common.Serialization;
+using Daddoon.Blazor.Xam.Common.Models;
+using System.Threading;
 
 namespace Daddoon.Blazor.Xam.Common.Services
 {
@@ -20,59 +22,174 @@ namespace Daddoon.Blazor.Xam.Common.Services
 
         }
 
-        #region VOID CALL
+        private static Dictionary<int, TaskDispatch> _taskDispatcher = new Dictionary<int, TaskDispatch>();
 
-        public static Task CallVoidMethod(MethodBase method)
+        private static int taskQueueId = 0;
+
+        internal static Task<TReturnType> CreateTaskDispatcher<TReturnType>(out int taskIdentity)
         {
-            return InternalCallMethod<IgnoredType>(method, null, null);
+            taskQueueId++;
+            taskIdentity = taskQueueId;
+
+            var taskDispatch = new TaskDispatch();
+            _taskDispatcher.Add(taskIdentity, taskDispatch);
+
+            taskDispatch.CancelTokenSource = new CancellationTokenSource();
+            taskDispatch.CancelToken = taskDispatch.CancelTokenSource.Token;
+
+            var taskAction = new Task<TReturnType>(() =>
+            {
+                //Check if we are first from a CancellationContext
+                if (taskDispatch.CancelToken.IsCancellationRequested)
+                {
+                    taskDispatch.CancelToken.ThrowIfCancellationRequested();
+                }
+
+                if (taskDispatch.ResultData == null || !taskDispatch.ResultData.TaskSuccess)
+                    return default;
+
+                return (TReturnType)taskDispatch.ResultData.ReturnValue;
+
+            }, taskDispatch.CancelToken);
+
+            taskDispatch.TaskId = taskIdentity;
+            taskDispatch.ResultAction = taskAction;
+
+            return taskAction;
         }
 
-        public static Task CallVoidMethod(MethodBase method, params object[] args)
+        internal static void SetTaskResult(int taskIdentity, MethodProxy resultProxy)
         {
-            return InternalCallMethod<IgnoredType>(method, null, args);
+            if (!_taskDispatcher.ContainsKey(taskIdentity))
+                return;
+            _taskDispatcher[taskIdentity].ResultData = resultProxy;
+        }
+
+        internal static Task GetTaskDispatcher(int taskIdentity)
+        {
+            if (_taskDispatcher.ContainsKey(taskIdentity))
+                return _taskDispatcher[taskIdentity].ResultAction;
+            return null;
+        }
+
+        internal static void ClearTask(int taskIdentity)
+        {
+            if (_taskDispatcher.ContainsKey(taskIdentity))
+            {
+                var task = _taskDispatcher[taskIdentity];
+                if (!task.ResultAction.IsCompleted)
+                {
+                    task.CancelTask();
+                }
+
+                _taskDispatcher.Remove(taskIdentity);
+            }
+        }
+
+        #region VOID CALL
+
+        public static void CallVoidMethod(MethodBase method)
+        {
+            InternalCallMethod<IgnoredType>(method, null, null, false);
+        }
+
+        public static void CallVoidMethod(MethodBase method, params object[] args)
+        {
+            InternalCallMethod<IgnoredType>(method, null, args, false);
         }
 
         #region SYNTACTIC SUGAR HELPER
 
         //Just a Generic argument signature for easier signature call
 
-        public static Task CallVoidMethod<TGenericArg>(MethodBase method, params object[] args)
+        public static void CallVoidMethod<TGenericArg>(MethodBase method, params object[] args)
         {
-            return InternalCallMethod<IgnoredType>(
+            InternalCallMethod<IgnoredType>(
                 method,
                 new Type[] { typeof(TGenericArg) }
-                , args);
+                , args, false);
         }
 
-        public static Task CallVoidMethod<TGenericArg1, TGenericArg2>(MethodBase method, params object[] args)
+        public static void CallVoidMethod<TGenericArg1, TGenericArg2>(MethodBase method, params object[] args)
         {
-            return InternalCallMethod<IgnoredType>(
+            InternalCallMethod<IgnoredType>(
                 method,
                 new Type[] { typeof(TGenericArg1), typeof(TGenericArg2) }
-                , args);
+                , args, false);
         }
 
-        public static Task CallVoidMethod<TGenericArg1, TGenericArg2, TGenericArg3>(MethodBase method, params object[] args)
+        public static void CallVoidMethod<TGenericArg1, TGenericArg2, TGenericArg3>(MethodBase method, params object[] args)
         {
-            return InternalCallMethod<IgnoredType>(
+            InternalCallMethod<IgnoredType>(
                 method,
                 new Type[] { typeof(TGenericArg1), typeof(TGenericArg2), typeof(TGenericArg3) }
-                , args);
+                , args, false);
         }
 
-        public static Task CallVoidMethod<TGenericArg1, TGenericArg2, TGenericArg3, TGenericArg4>(MethodBase method, params object[] args)
+        public static void CallVoidMethod<TGenericArg1, TGenericArg2, TGenericArg3, TGenericArg4>(MethodBase method, params object[] args)
         {
-            return InternalCallMethod<IgnoredType>(
+            InternalCallMethod<IgnoredType>(
                 method,
                 new Type[] { typeof(TGenericArg1), typeof(TGenericArg2), typeof(TGenericArg4) }
-                , args);
+                , args, false);
         }
 
         #endregion
 
-        public static Task CallVoidMethod(MethodBase method, Type[] genericParameters, params object[] args)
+        public static void CallVoidMethod(MethodBase method, Type[] genericParameters, params object[] args)
         {
-            return InternalCallMethod<IgnoredType>(method, genericParameters, args);
+            InternalCallMethod<IgnoredType>(method, genericParameters, args, false);
+        }
+
+        #endregion
+
+        #region VOID CALL ASYNC
+
+        public static Task CallVoidMethodAsync(MethodBase method)
+        {
+            return InternalCallMethod<IgnoredType>(method, null, null, true);
+        }
+
+        public static Task CallVoidMethodAsync(MethodBase method, params object[] args)
+        {
+            return InternalCallMethod<IgnoredType>(method, null, args, true);
+        }
+
+        public static Task CallVoidMethodAsync<TGenericArg>(MethodBase method, params object[] args)
+        {
+            return InternalCallMethod<IgnoredType>(
+                method,
+                new Type[] { typeof(TGenericArg) }
+                , args, true);
+        }
+
+        public static Task CallVoidMethodAsync<TGenericArg1, TGenericArg2>(MethodBase method, params object[] args)
+        {
+            return InternalCallMethod<IgnoredType>(
+                method,
+                new Type[] { typeof(TGenericArg1), typeof(TGenericArg2) }
+                , args, true);
+        }
+
+        public static Task CallVoidMethodAsync<TGenericArg1, TGenericArg2, TGenericArg3>(MethodBase method, params object[] args)
+        {
+            return InternalCallMethod<IgnoredType>(
+                method,
+                new Type[] { typeof(TGenericArg1), typeof(TGenericArg2), typeof(TGenericArg3) }
+                , args, true);
+        }
+
+        public static Task CallVoidMethodAsync<TGenericArg1, TGenericArg2, TGenericArg3, TGenericArg4>(MethodBase method, params object[] args)
+        {
+            return InternalCallMethod<IgnoredType>(
+                method,
+                new Type[] { typeof(TGenericArg1), typeof(TGenericArg2), typeof(TGenericArg4) }
+                , args, true);
+        }
+
+        public static Task CallVoidMethodAsync(MethodBase method, Type[] genericParameters, params object[] args)
+        {
+            return InternalCallMethod<IgnoredType>(method, genericParameters, args, true);
         }
 
         #endregion
@@ -80,60 +197,105 @@ namespace Daddoon.Blazor.Xam.Common.Services
 
         #region WITH RETURN VALUE
 
-        public static Task<TReturnType> CallMethod<TReturnType>(MethodBase method)
+        public static TReturnType CallMethod<TReturnType>(MethodBase method)
         {
-            return InternalCallMethod<TReturnType>(method, null, null);
+            return InternalCallMethod<TReturnType>(method, null, null, false).GetAwaiter().GetResult();
         }
 
-        public static Task<TReturnType> CallMethod<TReturnType>(MethodBase method, params object[] args)
+        public static TReturnType CallMethod<TReturnType>(MethodBase method, params object[] args)
         {
-            return InternalCallMethod<TReturnType>(method, null, args);
+            return InternalCallMethod<TReturnType>(method, null, args, false).GetAwaiter().GetResult();
         }
 
-        #region SYNTACTIC SUGAR HELPER
-
-        //Just a Generic argument signature for easier signature call
-
-        public static Task<TReturnType> CallMethod<TReturnType, TGenericArg>(MethodBase method, params object[] args)
+        public static TReturnType CallMethod<TReturnType, TGenericArg>(MethodBase method, params object[] args)
         {
             return InternalCallMethod<TReturnType>(
                 method,
                 new Type[] { typeof(TGenericArg) }
-                , args);
+                , args, false).GetAwaiter().GetResult();
         }
 
-        public static Task<TReturnType> CallMethod<TReturnType, TGenericArg1, TGenericArg2>(MethodBase method, params object[] args)
+        public static TReturnType CallMethod<TReturnType, TGenericArg1, TGenericArg2>(MethodBase method, params object[] args)
         {
             return InternalCallMethod<TReturnType>(
                 method,
                 new Type[] { typeof(TGenericArg1), typeof(TGenericArg2) }
-                , args);
+                , args, false).GetAwaiter().GetResult();
         }
 
-        public static Task<TReturnType> CallMethod<TReturnType, TGenericArg1, TGenericArg2, TGenericArg3>(MethodBase method, params object[] args)
+        public static TReturnType CallMethod<TReturnType, TGenericArg1, TGenericArg2, TGenericArg3>(MethodBase method, params object[] args)
         {
             return InternalCallMethod<TReturnType>(
                 method,
                 new Type[] { typeof(TGenericArg1), typeof(TGenericArg2), typeof(TGenericArg3) }
-                , args);
+                , args, false).GetAwaiter().GetResult();
         }
 
-        public static Task<TReturnType> CallMethod<TReturnType, TGenericArg1, TGenericArg2, TGenericArg3, TGenericArg4>(MethodBase method, params object[] args)
+        public static TReturnType CallMethod<TReturnType, TGenericArg1, TGenericArg2, TGenericArg3, TGenericArg4>(MethodBase method, params object[] args)
         {
             return InternalCallMethod<TReturnType>(
                 method,
                 new Type[] { typeof(TGenericArg1), typeof(TGenericArg2), typeof(TGenericArg4) }
-                , args);
+                , args, false).GetAwaiter().GetResult();
+        }
+
+        public static TReturnType CallMethod<TReturnType>(MethodBase method, Type[] genericParameters, params object[] args)
+        {
+            return InternalCallMethod<TReturnType>(method, genericParameters, args, false).GetAwaiter().GetResult();
+        }
+
+        #region WITH RETURN VALUE ASYNC
+
+        public static Task<TReturnType> CallMethodAsync<TReturnType>(MethodBase method)
+        {
+            return InternalCallMethod<TReturnType>(method, null, null, true);
+        }
+
+        public static Task<TReturnType> CallMethodAsync<TReturnType>(MethodBase method, params object[] args)
+        {
+            return InternalCallMethod<TReturnType>(method, null, args, true);
+        }
+
+        public static Task<TReturnType> CallMethodAsync<TReturnType, TGenericArg>(MethodBase method, params object[] args)
+        {
+            return InternalCallMethod<TReturnType>(
+                method,
+                new Type[] { typeof(TGenericArg) }
+                , args, true);
+        }
+
+        public static Task<TReturnType> CallMethodAsync<TReturnType, TGenericArg1, TGenericArg2>(MethodBase method, params object[] args)
+        {
+            return InternalCallMethod<TReturnType>(
+                method,
+                new Type[] { typeof(TGenericArg1), typeof(TGenericArg2) }
+                , args, true);
+        }
+
+        public static Task<TReturnType> CallMethodAsync<TReturnType, TGenericArg1, TGenericArg2, TGenericArg3>(MethodBase method, params object[] args)
+        {
+            return InternalCallMethod<TReturnType>(
+                method,
+                new Type[] { typeof(TGenericArg1), typeof(TGenericArg2), typeof(TGenericArg3) }
+                , args, true);
+        }
+
+        public static Task<TReturnType> CallMethodAsync<TReturnType, TGenericArg1, TGenericArg2, TGenericArg3, TGenericArg4>(MethodBase method, params object[] args)
+        {
+            return InternalCallMethod<TReturnType>(
+                method,
+                new Type[] { typeof(TGenericArg1), typeof(TGenericArg2), typeof(TGenericArg4) }
+                , args, true);
+        }
+
+        public static Task<TReturnType> CallMethodAsync<TReturnType>(MethodBase method, Type[] genericParameters, params object[] args)
+        {
+            return InternalCallMethod<TReturnType>(method, genericParameters, args, true);
         }
 
         #endregion
 
-        public static Task<TReturnType> CallMethod<TReturnType>(MethodBase method, Type[] genericParameters, params object[] args)
-        {
-            return InternalCallMethod<TReturnType>(method, genericParameters, args);
-        }
-
-        private static Task<TReturnType> InternalCallMethod<TReturnType>(MethodBase methodBase, Type[] genericParameters, object[] args)
+        private static Task<TReturnType> InternalCallMethod<TReturnType>(MethodBase methodBase, Type[] genericParameters, object[] args, bool isAsync)
         {
             MethodInfo method = (MethodInfo)methodBase;
 
@@ -169,24 +331,31 @@ namespace Daddoon.Blazor.Xam.Common.Services
             //On this case, the DeclaringType should be the Interface type
             methodProxy.InterfaceType = new TypeProxy(iface);
 
+            methodProxy.ReturnType = new TypeProxy(typeof(TReturnType));
+
+            //NOTE: We must flag if the current Task is Async or not, as explicit Async method must wrap the result out on a Task.FromResult.
+            //This way, the Receive dispatcher know that it must Serialize the Task result, and not the Task object itself
+            methodProxy.AsyncTask = isAsync;
+
             //We will let the serializer do the thing for RunTime values
             methodProxy.Parameters = args;
-
-            var jsonMethodProxy = BridgeSerializer.Serialize(methodProxy);
 
             switch (ContextHelper.GetExecutingContext())
             {
                 case Models.ExecutingContext.Blazor:
-                    BlazorToXamarinDispatcher.Send(jsonMethodProxy);
-                    return Task.FromResult<TReturnType>(default);
+                    int taskId = 0;
+                    var task = CreateTaskDispatcher<TReturnType>(out taskId);
+
+                    methodProxy.TaskIdentity = taskId;
+
+                    BlazorToXamarinDispatcher.Send(methodProxy);
+
+                    return task;
                 default:
-                    throw new NotImplementedException();
+                    return Task.FromResult<TReturnType>(default);
             }
 
             #endregion
-
-            //TODO: Proper call
-            return null;
         }
 
         #endregion
