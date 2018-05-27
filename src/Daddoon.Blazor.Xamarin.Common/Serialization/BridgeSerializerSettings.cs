@@ -1,6 +1,8 @@
-﻿using Newtonsoft.Json;
+﻿using Daddoon.Blazor.Xam.Common.Helpers;
+using Newtonsoft.Json;
 using System;
 using System.Collections.Generic;
+using System.IO;
 using System.Text;
 
 namespace Daddoon.Blazor.Xam.Common.Serialization
@@ -12,12 +14,25 @@ namespace Daddoon.Blazor.Xam.Common.Serialization
     {
         public static string Serialize(object value)
         {
-            return JsonConvert.SerializeObject(value, BridgeSerializerSettings.GetSerializerSettings());
+            string data = JsonConvert.SerializeObject(value, BridgeSerializerSettings.GetSerializerSettings());
+
+            if (EnvironmentHelper.RunOnCLR())
+                data = data.Replace("System.Private.CoreLib", "%CORE%");
+            else
+                data = data.Replace("mscorlib", "%CORE%");
+
+
+            return data;
         }
 
-        public static T Deserialize<T>(string json)
+        public static T Deserialize<T>(string data)
         {
-            return JsonConvert.DeserializeObject<T>(json, BridgeSerializerSettings.GetSerializerSettings());
+            if (EnvironmentHelper.RunOnCLR())
+                data = data.Replace("%CORE%", EnvironmentHelper.GetNetCoreVersion());
+            else
+                data = data.Replace("%CORE%", "mscorlib");
+
+            return (T)JsonConvert.DeserializeObject<T>(data, BridgeSerializerSettings.GetSerializerSettings());
         }
 
         public static object Deserialize(string json)

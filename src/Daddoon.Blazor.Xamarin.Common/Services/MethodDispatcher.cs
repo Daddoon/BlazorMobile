@@ -46,7 +46,7 @@ namespace Daddoon.Blazor.Xam.Common.Services
                 }
 
                 if (taskDispatch.ResultData == null || !taskDispatch.ResultData.TaskSuccess)
-                    return default;
+                    return default(TReturnType);
 
                 return (TReturnType)taskDispatch.ResultData.ReturnValue;
 
@@ -323,7 +323,7 @@ namespace Daddoon.Blazor.Xam.Common.Services
             int index = MethodProxyHelper.GetInterfaceMethodIndex(methodBase.DeclaringType, method, iface);
 
             if (index == -1)
-                return default;
+                return Task.FromResult(default(TReturnType));
 
             methodProxy.MethodIndex = index;
             methodProxy.GenericTypes = genericParameters.Select(p => new TypeProxy(p)).ToArray();
@@ -352,7 +352,7 @@ namespace Daddoon.Blazor.Xam.Common.Services
 
                     return task;
                 default:
-                    return Task.FromResult<TReturnType>(default);
+                    return Task.FromResult(default(TReturnType));
             }
 
             #endregion

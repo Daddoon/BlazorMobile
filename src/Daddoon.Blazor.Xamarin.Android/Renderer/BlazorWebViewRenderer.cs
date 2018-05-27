@@ -133,6 +133,15 @@ namespace Daddoon.Blazor.Xam.Droid.Renderer
                 webView.Reload();
                 _init = true;
             }
+
+            if (e.OldElement != null)
+            {
+                Control.RemoveJavascriptInterface("blazorxamarinJsBridge");
+            }
+            if (e.NewElement != null)
+            {
+                Control.AddJavascriptInterface(new JSBridge(this), "blazorxamarinJsBridge");
+            }
         }
     }
 }

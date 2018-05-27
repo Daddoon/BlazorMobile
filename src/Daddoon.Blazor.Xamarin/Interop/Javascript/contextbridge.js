@@ -1,6 +1,6 @@
 ﻿
 const XamarinCommonAssemblyName = 'Daddoon.Blazor.Xamarin.Common';
-const BlazorToXamarinDispatcherNamespace = 'Daddoon.Blazor.Xamarin.Common';
+const BlazorToXamarinDispatcherNamespace = 'Daddoon.Blazor.Xam.Common.Services';
 const BlazorToXamarinDispatcherTypeName = 'BlazorToXamarinDispatcher';
 const BlazorToXamarinDispatcherReceiveMethodName = 'Receive';
 

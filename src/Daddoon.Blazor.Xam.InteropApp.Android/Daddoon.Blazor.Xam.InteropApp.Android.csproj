@@ -91,6 +91,10 @@
     <Folder Include="Resources\drawable\" />
   </ItemGroup>
   <ItemGroup>
+    <ProjectReference Include="..\..\..\Json.Net.Unity3D\src\Newtonsoft.Json\Newtonsoft.Json.csproj">
+      <Project>{1e3bdf4f-d894-4b39-808a-a7162e87326e}</Project>
+      <Name>Newtonsoft.Json</Name>
+    </ProjectReference>
     <ProjectReference Include="..\Daddoon.Blazor.Xam.InteropApp\Daddoon.Blazor.Xam.InteropApp.csproj">
       <Project>{28601C22-99D5-4992-ABA3-00345FC730A9}</Project>
       <Name>Daddoon.Blazor.Xam.InteropApp</Name>

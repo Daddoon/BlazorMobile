@@ -32,10 +32,7 @@ namespace Daddoon.Blazor.Xam.UWP.Renderer
 
         private void Control_ScriptNotify(object sender, Windows.UI.Xaml.Controls.NotifyEventArgs e)
         {
-            MethodProxy returnValue = ContextBridge.Receive(e.Value);
-            string jsonReturnValue = ContextBridge.GetJSONReturnValue(returnValue);
-
-            Element.Eval(((BlazorWebView)Element).GetReceiveEvaluator(jsonReturnValue));
+            ContextBridge.BridgeEvaluator((BlazorWebView)Element, e.Value);
         }
     }
 }

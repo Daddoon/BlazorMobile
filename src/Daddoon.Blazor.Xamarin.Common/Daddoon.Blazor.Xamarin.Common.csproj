@@ -1,4 +1,4 @@
-<Project Sdk="Microsoft.NET.Sdk">
+﻿<Project Sdk="Microsoft.NET.Sdk">
 
   <PropertyGroup>
     <TargetFramework>netstandard2.0</TargetFramework>
@@ -33,10 +33,7 @@
   </ItemGroup>
 
   <ItemGroup>
-    <Reference Include="Newtonsoft.Json, Version=9.0.0.0, Culture=neutral, PublicKeyToken=null">
-      <HintPath>DLL\Newtonsoft.Json.dll</HintPath>
-      <SpecificVersion>true</SpecificVersion>
-    </Reference>
+    <ProjectReference Include="..\..\..\Json.Net.Unity3D\src\Newtonsoft.Json\Newtonsoft.Json.csproj" />
   </ItemGroup>
 
 </Project>

@@ -40,6 +40,17 @@ namespace Daddoon.Blazor.Xam.Interop
         {
             StringBuilder sb = new StringBuilder();
 
+            switch (Device.RuntimePlatform)
+            {
+                case Device.Android:
+                    sb.Append("javascript: ");
+                    break;
+                case Device.iOS:
+                case Device.UWP:
+                default:
+                    break;
+            }
+
             sb.Append(GetFileContent(MainResourceFile));
             sb.AppendLine();
             sb.AppendLine();

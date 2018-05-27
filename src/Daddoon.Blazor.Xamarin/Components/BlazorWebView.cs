@@ -19,23 +19,6 @@ namespace Daddoon.Blazor.Xam.Components
         {
             switch (Device.RuntimePlatform)
             {
-                //NOT WORKING: Blazor complaining about the current url being about:blank not matching with the rewritten base uri
-
-                //case Device.UWP:
-                //    //UWP does not support ScriptNotify if using a HTTP url. Using instead a HTML + BaseUrl as a workaround
-
-                //    var htmlPageBytes = WebApplicationFactory.GetResource("index.html");
-                //    var htmlPage = Encoding.UTF8.GetString(htmlPageBytes);
-                //    htmlPageBytes = null;
-
-                //    //HACK: Replacing base tag for UWP
-                //    htmlPage = htmlPage.Replace(@"<base href=""/""", $@"<base href=""{WebApplicationFactory.GetBaseURL()}/""");
-
-                //    Source = new HtmlWebViewSource()
-                //    {
-                //        Html = htmlPage
-                //    };
-                //    break;
                 default:
                     Source = new UrlWebViewSource()
                     {
@@ -62,7 +45,18 @@ namespace Daddoon.Blazor.Xam.Components
         {
             param = JavascriptStringEscape(param);
 
-            string javascriptEval = $@"window.contextBridge.receive(""{param}"")";
+            string javascriptEval = string.Empty;
+
+            switch (Device.RuntimePlatform)
+            {
+                case Device.Android:
+                    javascriptEval += "javascript: ";
+                    break;
+                default:
+                    break;
+            }
+
+            javascriptEval += $@"window.contextBridge.receive(""{param}"");";
 
             return javascriptEval;
         }

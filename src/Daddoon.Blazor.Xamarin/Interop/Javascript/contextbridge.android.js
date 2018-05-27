@@ -6,3 +6,7 @@ if (Android.OS.Build.VERSION.SdkInt >= Android.OS.BuildVersionCodes.Kitkat) {
     webView.LoadUrl("javascript:GoBack();");
 }
 */
+
+window.contextBridge.send = function (csharpProxy) {
+    blazorxamarinJsBridge.invokeAction(csharpProxy);
+};

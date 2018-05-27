@@ -27,7 +27,7 @@ namespace Daddoon.Blazor.Xam.Common.Services
             if (taskToReturn == null)
                 return;
 
-            taskToReturn.Start();
+            taskToReturn.RunSynchronously();
 
             MethodDispatcher.ClearTask(resultProxy.TaskIdentity);
         }

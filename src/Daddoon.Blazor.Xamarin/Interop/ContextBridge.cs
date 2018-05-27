@@ -1,5 +1,6 @@
 ﻿using Daddoon.Blazor.Xam.Common.Interop;
 using Daddoon.Blazor.Xam.Common.Serialization;
+using Daddoon.Blazor.Xam.Components;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -108,6 +109,20 @@ namespace Daddoon.Blazor.Xam.Interop
             }
 
             return methodProxy;
+        }
+
+
+        /// <summary>
+        /// Manage In and Out call of Method
+        /// </summary>
+        /// <param name="webview"></param>
+        /// <param name="json"></param>
+        public static void BridgeEvaluator(BlazorWebView webview, string json)
+        {
+            MethodProxy returnValue = Receive(json);
+            string jsonReturnValue = GetJSONReturnValue(returnValue);
+
+            webview.Eval(webview.GetReceiveEvaluator(jsonReturnValue));
         }
     }
 }
