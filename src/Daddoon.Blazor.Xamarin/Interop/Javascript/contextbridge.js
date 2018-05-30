@@ -21,7 +21,6 @@ function ResolveBlazorToXamarinReceiver() {
 
 window.contextBridge = {
     send: function (csharpProxy) {
-        console.log("NO-OP call on contextBridge.send");
     },
     receive: function (csharpProxy) {
         var receiver = ResolveBlazorToXamarinReceiver();
@@ -37,6 +36,5 @@ window.contextBridge = {
 };
 
 Blazor.registerFunction('contextBridgeSend', function (data) {
-    console.log("Blazor.contextBridgeSend called");
     window.contextBridge.send(data);
 });
