@@ -17,7 +17,10 @@ namespace Daddoon.Blazor.Xam.InteropBlazorApp
                 // Add any custom services here
             });
 
-            new BrowserRenderer(serviceProvider).AddComponent<App>("app");
+            var br = new BrowserRenderer(serviceProvider);
+
+            br.AddComponent<DaddoonBlazorExtensionScripts>("daddoon");
+            br.AddComponent<App>("app");
         }
     }
 }

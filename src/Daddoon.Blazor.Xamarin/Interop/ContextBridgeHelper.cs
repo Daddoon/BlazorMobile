@@ -40,17 +40,6 @@ namespace Daddoon.Blazor.Xam.Interop
         {
             StringBuilder sb = new StringBuilder();
 
-            switch (Device.RuntimePlatform)
-            {
-                case Device.Android:
-                    sb.Append("javascript: ");
-                    break;
-                case Device.iOS:
-                case Device.UWP:
-                default:
-                    break;
-            }
-
             sb.Append(GetFileContent(MainResourceFile));
             sb.AppendLine();
             sb.AppendLine();
@@ -69,7 +58,23 @@ namespace Daddoon.Blazor.Xam.Interop
             }
 
             sb.AppendLine();
-            return sb.ToString();
+            var content = sb.ToString();
+
+            content = $"(function() {{ {content} }})();";
+
+            switch (Device.RuntimePlatform)
+            {
+                case Device.Android:
+                    //javascript: "
+                    content = "var xInit = " + content;
+                    break;
+                case Device.iOS:
+                case Device.UWP:
+                default:
+                    break;
+            }
+
+            return content;
         }
     }
 }

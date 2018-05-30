@@ -1,9 +1,5 @@
 ﻿@page "/counter"
-@using Daddoon.Blazor.Xam.Common.Services
-@using Daddoon.Blazor.Xam.InteropApp.Common.Interfaces
-@using System.IO
 @using System.Threading.Tasks
-@inject IXamarinBridge XamarinBridge
 <h1>Counter</h1>
 
 <p>Current count: @currentCount</p>
@@ -15,15 +11,6 @@
 
     private async Task IncrementCount()
     {
-        var resultContent = await XamarinBridge.DisplayAlert("MyTitle", "Blazor to Xamarin.Forms call works!", "Thanks!");
-        if (resultContent != null)
-        {
-            foreach (var result in resultContent)
-            {
-                Console.WriteLine(result);
-            }
-        }
-
         currentCount++;
     }
 }

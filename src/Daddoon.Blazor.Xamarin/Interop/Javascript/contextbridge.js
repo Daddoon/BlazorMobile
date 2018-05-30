@@ -1,14 +1,14 @@
-﻿
-const XamarinCommonAssemblyName = 'Daddoon.Blazor.Xamarin.Common';
-const BlazorToXamarinDispatcherNamespace = 'Daddoon.Blazor.Xam.Common.Services';
-const BlazorToXamarinDispatcherTypeName = 'BlazorToXamarinDispatcher';
-const BlazorToXamarinDispatcherReceiveMethodName = 'Receive';
+﻿var XamarinCommonAssemblyName = 'Daddoon.Blazor.Xamarin.Common';
+var BlazorToXamarinDispatcherNamespace = 'Daddoon.Blazor.Xam.Common.Services';
+var BlazorToXamarinDispatcherTypeName = 'BlazorToXamarinDispatcher';
+var BlazorToXamarinDispatcherReceiveMethodName = 'Receive';
+
 
 var BlazorToXamarinDispatcherReceiveMethodInfo = null;
 
 function ResolveBlazorToXamarinReceiver() {
 
-    if (BlazorToXamarinDispatcherReceiveMethodInfo == null || BlazorToXamarinDispatcherReceiveMethodInfo == undefined) {
+    if (BlazorToXamarinDispatcherReceiveMethodInfo === null || BlazorToXamarinDispatcherReceiveMethodInfo === undefined) {
         BlazorToXamarinDispatcherReceiveMethodInfo = Blazor.platform.findMethod(
             XamarinCommonAssemblyName,
             BlazorToXamarinDispatcherNamespace,
@@ -21,13 +21,14 @@ function ResolveBlazorToXamarinReceiver() {
 
 window.contextBridge = {
     send: function (csharpProxy) {
+        console.log("NO-OP call on contextBridge.send");
     },
     receive: function (csharpProxy) {
         var receiver = ResolveBlazorToXamarinReceiver();
-        if (receiver == null || receiver == undefined)
+        if (receiver === null || receiver === undefined)
             return;
 
-        let jsonDotNet = Blazor.platform.toDotNetString(csharpProxy);
+        var jsonDotNet = Blazor.platform.toDotNetString(csharpProxy);
 
         Blazor.platform.callMethod(receiver, null, [
             jsonDotNet
@@ -35,6 +36,7 @@ window.contextBridge = {
     }
 };
 
-Blazor.registerFunction('contextBridgeSend', (data) => {
+Blazor.registerFunction('contextBridgeSend', function (data) {
+    console.log("Blazor.contextBridgeSend called");
     window.contextBridge.send(data);
 });

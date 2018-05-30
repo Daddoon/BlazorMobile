@@ -119,10 +119,15 @@ namespace Daddoon.Blazor.Xam.Interop
         /// <param name="json"></param>
         public static void BridgeEvaluator(BlazorWebView webview, string json)
         {
-            MethodProxy returnValue = Receive(json);
-            string jsonReturnValue = GetJSONReturnValue(returnValue);
-
-            webview.Eval(webview.GetReceiveEvaluator(jsonReturnValue));
+            //We must evaluate data on main thread, as some platform doesn't
+            //support to be executed from a non-UI thread for UI 
+            //or Webview bridge
+            Device.BeginInvokeOnMainThread(delegate ()
+            {
+                MethodProxy returnValue = Receive(json);
+                string jsonReturnValue = GetJSONReturnValue(returnValue);
+                webview.Eval(webview.GetReceiveEvaluator(jsonReturnValue));
+            });
         }
     }
 }

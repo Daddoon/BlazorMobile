@@ -32,11 +32,15 @@ namespace Daddoon.Blazor.Xam.Components
         private bool blazorAppLaunched = false;
         private void BlazorWebView_Navigated(object sender, WebNavigatedEventArgs e)
         {
-            //TODO: See behavior(specially on Android) for Navigated event if we handle GoBack or GoForward
+            OnNavigated();
+        }
 
+        public void OnNavigated()
+        {
             if (blazorAppLaunched)
             {
                 string content = ContextBridgeHelper.GetInjectableJavascript();
+
                 Eval(content);
             }
         }

@@ -14,6 +14,18 @@ namespace Daddoon.Blazor.Xam.Droid.Renderer
     [Android.Runtime.Preserve(AllMembers = true)]
     public class BlazorWebViewClient : WebViewClient
     {
+        public BlazorWebViewClient()
+        {
+
+        }
+
+        private BlazorWebView _parent;
+
+        public BlazorWebViewClient(BlazorWebView parent) : this()
+        {
+            _parent = parent;
+        }
+
         private string GetBaseUrlFromWebResourceRequest(IWebResourceRequest request)
         {
             if (request == null)
@@ -86,6 +98,12 @@ namespace Daddoon.Blazor.Xam.Droid.Renderer
 
             return true;
         }
+
+        public override void OnPageFinished(Android.Webkit.WebView view, string url)
+        {
+            _parent.OnNavigated();
+            base.OnPageFinished(view, url);
+        }
     }
 
     [Android.Runtime.Preserve(AllMembers = true)]
@@ -125,7 +143,7 @@ namespace Daddoon.Blazor.Xam.Droid.Renderer
                 webView.Settings.JavaScriptCanOpenWindowsAutomatically = true;
 
                 webView.SetWebChromeClient(new WebChromeClient());
-                var webViewClient = new BlazorWebViewClient();
+                var webViewClient = new BlazorWebViewClient((BlazorWebView)e.NewElement);
                 webView.SetWebViewClient(webViewClient);
                 //webView.SetWebChromeClient(GetFormsWebChromeClient());
 
