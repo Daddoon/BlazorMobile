@@ -12,6 +12,7 @@
   </PropertyGroup>
 
   <ItemGroup>
+    <PackageReference Include="Json.NET.Aot" Version="9.0.1" />
     <PackageReference Include="Microsoft.AspNetCore.Blazor.Browser" Version="0.2.1" />
   </ItemGroup>
 
@@ -32,10 +33,6 @@
 
   <ItemGroup>
     <Folder Include="DLL\" />
-  </ItemGroup>
-
-  <ItemGroup>
-    <ProjectReference Include="..\..\..\Json.Net.Unity3D\src\Newtonsoft.Json\Newtonsoft.Json.csproj" />
   </ItemGroup>
 
 </Project>

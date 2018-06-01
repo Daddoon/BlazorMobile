@@ -143,14 +143,13 @@
     </Page>
   </ItemGroup>
   <ItemGroup>
+    <PackageReference Include="Json.NET.Aot">
+      <Version>9.0.1</Version>
+    </PackageReference>
     <PackageReference Include="Xamarin.Forms" Version="2.5.1.527436" />
     <PackageReference Include="Microsoft.NETCore.UniversalWindowsPlatform" Version="6.1.4" />
   </ItemGroup>
   <ItemGroup>
-    <ProjectReference Include="..\..\..\Json.Net.Unity3D\src\Newtonsoft.Json\Newtonsoft.Json.csproj">
-      <Project>{1e3bdf4f-d894-4b39-808a-a7162e87326e}</Project>
-      <Name>Newtonsoft.Json</Name>
-    </ProjectReference>
     <ProjectReference Include="..\Daddoon.Blazor.Xam.InteropApp.Common\Daddoon.Blazor.Xam.InteropApp.Common.csproj">
       <Project>{D2385CE8-C7E3-40D6-B2DB-8C4A4255A5AC}</Project>
       <Name>Daddoon.Blazor.Xam.InteropApp.Common</Name>
