@@ -39,9 +39,16 @@ namespace Daddoon.Blazor.Xam.Components
         {
             if (blazorAppLaunched)
             {
-                string content = ContextBridgeHelper.GetInjectableJavascript();
-
-                Eval(content);
+                switch (Device.RuntimePlatform)
+                {
+                    case Device.iOS:
+                        //Using Controller.AddUserScript on iOS from the custom renderer
+                        break;
+                    default:
+                        string content = ContextBridgeHelper.GetInjectableJavascript();
+                        Eval(content);
+                        break;
+                }
             }
         }
 

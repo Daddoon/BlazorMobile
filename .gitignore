@@ -7,3 +7,4 @@ launchSettings.json
 artifacts/
 msbuild.binlog
 .vscode/
+packages/

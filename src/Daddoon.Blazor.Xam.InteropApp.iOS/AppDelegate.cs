@@ -1,7 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
-
+using Daddoon.Blazor.Xam.iOS.Services;
 using Foundation;
 using UIKit;
 
@@ -23,6 +23,7 @@ namespace Daddoon.Blazor.Xam.InteropApp.iOS
         public override bool FinishedLaunching(UIApplication app, NSDictionary options)
         {
             global::Xamarin.Forms.Forms.Init();
+            BlazorWebViewService.Init();
             LoadApplication(new App());
 
             return base.FinishedLaunching(app, options);

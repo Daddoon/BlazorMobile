@@ -36,7 +36,7 @@ namespace Daddoon.Blazor.Xam.Interop
         private const string UWPResourceFile = "contextbridge.uwp.js";
 
 
-        public static string GetInjectableJavascript()
+        public static string GetInjectableJavascript(bool isAnonymousAutoEvalMethod = true)
         {
             StringBuilder sb = new StringBuilder();
 
@@ -60,12 +60,15 @@ namespace Daddoon.Blazor.Xam.Interop
             sb.AppendLine();
             var content = sb.ToString();
 
+
+            if (!isAnonymousAutoEvalMethod)
+                return content;
+
             content = $"(function() {{ {content} }})();";
 
             switch (Device.RuntimePlatform)
             {
                 case Device.Android:
-                    //javascript: "
                     content = "var xInit = " + content;
                     break;
                 case Device.iOS:
