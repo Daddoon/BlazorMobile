@@ -20,7 +20,7 @@ namespace Daddoon.Blazor.Xam.InteropApp
                 VerticalOptions = LayoutOptions.FillAndExpand,
                 HorizontalOptions = LayoutOptions.FillAndExpand,
                 HeightRequest = 1000,
-                WidthRequest = 1000
+                WidthRequest = 1000,
             };
 
             webview.LaunchBlazorApp();

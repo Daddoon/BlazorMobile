@@ -72,6 +72,12 @@ namespace Daddoon.Blazor.Xam.Interop
                     content = "var xInit = " + content;
                     break;
                 case Device.iOS:
+                    content = $"var xInit = setInterval(function () " +
+                        $"{{ " +
+                            $"if (Blazor == null || Blazor == undefined) {{ return; }}" +
+                            $"else {{ {content} clearInterval(xInit); }}" +
+                        $"}}, 10);";
+                    break;
                 case Device.UWP:
                 default:
                     break;

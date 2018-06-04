@@ -42,7 +42,7 @@ namespace Daddoon.Blazor.Xam.Components
                 switch (Device.RuntimePlatform)
                 {
                     case Device.iOS:
-                        //Using Controller.AddUserScript on iOS from the custom renderer
+                        //WKWebview is wrapped over UIWebview. WkWebview has it's own delegate for this.
                         break;
                     default:
                         string content = ContextBridgeHelper.GetInjectableJavascript();
@@ -60,9 +60,9 @@ namespace Daddoon.Blazor.Xam.Components
 
             switch (Device.RuntimePlatform)
             {
-                case Device.Android:
-                    javascriptEval += "javascript: ";
-                    break;
+                //case Device.Android:
+                //    javascriptEval += "javascript: ";
+                //    break;
                 default:
                     break;
             }

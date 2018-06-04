@@ -14,13 +14,14 @@ Welcome to your new app.
 {
     protected override Task OnInitAsync()
     {
-        Browser.SetTimeout(async delegate () {
+        Browser.SetTimeout(async delegate ()
+        {
             var resultContent = await XamarinBridge.DisplayAlert("MyTitle", "Blazor to Xamarin.Forms call works!", "Thanks!");
             if (resultContent != null)
             {
                 foreach (var result in resultContent)
                 {
-                    Console.WriteLine(result);
+                    await XamarinBridge.DisplayAlert("Result", result, "Ok");
                 }
             }
         }, 2000);
