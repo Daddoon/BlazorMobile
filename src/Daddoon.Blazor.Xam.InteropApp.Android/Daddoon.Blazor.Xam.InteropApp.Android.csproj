@@ -49,8 +49,8 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <PackageReference Include="Json.NET.Aot">
-      <Version>9.0.1</Version>
+    <PackageReference Include="Daddoon.Blazor.Xamarin">
+      <Version>0.2.0</Version>
     </PackageReference>
     <PackageReference Include="Xamarin.Forms" Version="2.5.*" />
     <PackageReference Include="Xamarin.Android.Support.Design" Version="25.*" />
@@ -98,14 +98,6 @@
     <ProjectReference Include="..\Daddoon.Blazor.Xam.InteropApp\Daddoon.Blazor.Xam.InteropApp.csproj">
       <Project>{28601C22-99D5-4992-ABA3-00345FC730A9}</Project>
       <Name>Daddoon.Blazor.Xam.InteropApp</Name>
-    </ProjectReference>
-    <ProjectReference Include="..\Daddoon.Blazor.Xamarin.Android\Daddoon.Blazor.Xamarin.Android.csproj">
-      <Project>{e97e970b-9b46-44ff-a19e-e7b7fa6aa671}</Project>
-      <Name>Daddoon.Blazor.Xamarin.Android</Name>
-    </ProjectReference>
-    <ProjectReference Include="..\Daddoon.Blazor.Xamarin\Daddoon.Blazor.Xamarin.csproj">
-      <Project>{c4e7f7b7-6078-4407-9e78-7cdd174a9f1d}</Project>
-      <Name>Daddoon.Blazor.Xamarin</Name>
     </ProjectReference>
   </ItemGroup>
   <Import Project="$(MSBuildExtensionsPath)\Xamarin\Android\Xamarin.Android.CSharp.targets" />

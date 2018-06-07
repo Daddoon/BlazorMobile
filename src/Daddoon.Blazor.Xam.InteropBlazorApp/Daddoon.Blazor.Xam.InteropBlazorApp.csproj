@@ -13,6 +13,7 @@
 
   <ItemGroup>
     <PackageReference Include="Daddoon.Blazor.Extensions" Version="0.1.0" />
+    <PackageReference Include="Daddoon.Blazor.Xamarin.Common" Version="0.2.0" />
     <PackageReference Include="Microsoft.AspNetCore.Razor.Design" Version="2.1.0-preview2-final" PrivateAssets="all" />
     <PackageReference Include="Microsoft.AspNetCore.Blazor.Browser" Version="0.2.1" />
     <PackageReference Include="Microsoft.AspNetCore.Blazor.Build" Version="0.2.1" />
@@ -25,7 +26,6 @@
 
   <ItemGroup>
     <ProjectReference Include="..\Daddoon.Blazor.Xam.InteropApp.Common\Daddoon.Blazor.Xam.InteropApp.Common.csproj" />
-    <ProjectReference Include="..\Daddoon.Blazor.Xamarin.Common\Daddoon.Blazor.Xamarin.Common.csproj" />
   </ItemGroup>
 
   <Target Name="PostBuild" AfterTargets="PostBuildEvent">
