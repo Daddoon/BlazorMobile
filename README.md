@@ -8,12 +8,16 @@ A Nuget package for launching Blazor application as standalone application on Xa
 The ideal scenario, as the given templates in this repository, is to create a Cross-plateform Xamarin project template.
 You then should have your solution this type of configuration:
 
-- YourApp (.NetStandard 2.0)
+- YourApp (.netstandard2.0)
 - YourApp.Droid (MonoDroid)
 - YourApp.iOS (Xamarin.iOS)
 - YourApp.UWP (UWP)
 
 **YourApp** project will be used as the Blazor app container, it's not mandatory but highly recommended.
+
+**NOTE:** It is also advised to create an additional shared project (.netstandard2.0) with no Xamarin.Forms reference, in order to use it to share interface contracts between Blazor and Xamarin domains for interop communication.
+
+Assuming this shared project called **YourApp.Shared** !
 
 ## 2. ZIP your Blazor app project ! Our plugin need to read a Blazor app zipped in an archive for maintenability convenience.
 
@@ -28,29 +32,43 @@ $(ProjectDir)\BuildTools\7za.exe a $(ProjectDir)\BuildTools\Mobile\bin\app.zip $
 
 Of course adapt the path to your development environement. If use this method, notice to respect the current order, first **wwwroot**, then **dist**, as the dist folder contain also an index.html file, but processed by Blazor tooling: This is the right one to use, not the one you see available in your solution when coding.
 
-**NOTE:** There could be some issue with old browsers that doesn't support some ECMA script standards. You may want to fill the gap in your Blazor project by adding some polyfills. If so, take a look at my [Blazor.Polyfill](https://github.com/Daddoon/Blazor.Polyfill) repository.
+## 3. Blazor changes for mobile
 
-## 3. Add your Blazor ZIP file as link in YourApp project
+You may need to do some changes on your Blazor project, in order to render and work correctly under Xamarin and/or mobile web browsers.
+
+**All:**
+- There could be some issue with old browsers that doesn't support some ECMA script standards. You may want to fill the gap in your Blazor project by adding some polyfills. If so, take a look at my [Blazor.Polyfill](https://github.com/Daddoon/Blazor.Polyfill) repository.
+
+**iOS:**
+
+## 4. Add your Blazor ZIP file as link in YourApp project
 
 On YourApp project, add your generated ZIP from the Blazor project, as a "link" => Right click on the project => Add existing file => Browse to your file => Click on the little arrow => Then click on **Add as link**
 
-## 4. Set your linked file as Embedded Resource
+## 5. Set your linked file as Embedded Resource
 
 Do right click on your newly added as link file in YourApp project, and click **Properties**
 Then check that the **Build Action property** is on **Embedded Resource**
 
-## 5. Add Daddoon.Blazor.Xamarin NuGet package
+## 6. Add Daddoon.Blazor.Xamarin NuGet package
 
 Add **Daddoon.Blazor.Xamarin** NuGet package on the following projects:
 
 - YourApp
 - YourApp.Droid
+- YourApp.iOS
+- YourApp.UWP
 
-The package is available on the nuget.org feed, but you can also download the file manually [in the release page](https://github.com/Daddoon/Blazor.Xamarin/releases)
+Add **Daddoon.Blazor.Xamarin.Common** NuGet package on the following projects:
 
-## 6. Platform specific configuration
+- YourApp.Shared
+- Your Blazor project, but actually **YourApp.Shared may be sufficient**, as it will be referenced also on your Blazor project.
 
-You have **nothing to do** for **UWP** and **iOS**
+The packages are available on the nuget.org feed, but you can also download the file manually [in the release page](https://github.com/Daddoon/Blazor.Xamarin/releases)
+
+## 7. Platform specific configuration
+
+As there is often some strange behavior with IL stripping in Xamarin, you have to call an init method on each platform.
 
 For **Android** you have to set the following in **MainActivity.cs**
 ```csharp
@@ -71,7 +89,53 @@ namespace YourApp.Droid
 }
 ```
 
-## 7. Shared/Common project configuration
+For **iOS** you have to set the following in **AppDelegate.cs**
+```csharp
+using Daddoon.Blazor.Xam.iOS.Services;
+    
+namespace YourApp.iOS
+{
+    [Register("AppDelegate")]
+    public partial class AppDelegate : global::Xamarin.Forms.Platform.iOS.FormsApplicationDelegate
+    {
+        public override bool FinishedLaunching(UIApplication app, NSDictionary options)
+        {
+            /* Some other code */
+            global::Xamarin.Forms.Forms.Init(this, bundle);
+            BlazorWebViewService.Init();
+            /* Some other code */
+        }
+     }
+}
+```
+
+For **UWP** you have to set the following in **App.xaml.cs**
+```csharp
+using Daddoon.Blazor.Xam.UWP.Services;
+    
+namespace YourApp.UWP
+{
+    sealed partial class App : Application
+    {
+        protected override void OnLaunched(LaunchActivatedEventArgs e)
+        {
+            /* Some other code */
+ 	    Xamarin.Forms.Forms.Init(e);
+            BlazorWebViewService.Init();
+            /* Some other code */
+        }
+     }
+}
+```
+
+## 8. Cross-reference YourApp.Shared
+
+If you intend to do interop call from Blazor to Xamarin, you may now reference your shared project to Xamarin and Blazor projects.
+
+- Add reference **YourApp.Shared** on **YourApp** project
+- Add reference **YourApp.Shared** on **Your Blazor project**
+
+## 9. Shared/Common project configuration
 
 There are few, but still some lines to add to **YourApp** project
 
@@ -142,7 +206,7 @@ namespace YourApp.Resolver
 
 Our library will manage when to get and dispose the stream, don't worry about that !
 
-## 8. Add BlazorWebView component to your MainPage
+## 10. Add BlazorWebView component to your MainPage
 
 Add BlazorWebView component to your MainPage.xaml, or actually any Xamarin.Forms page you would like to the Blazor app to launch.
 
@@ -196,7 +260,7 @@ namespace YourApp
 }
 ```
 
-## 9. That's all !
+## 11. That's all !
 
 You may now try to launch your app on your Device/Simulator, your Blazor app should start!
 
