@@ -320,7 +320,70 @@ You may now try to launch your app on your Device/Simulator, your Blazor app sho
 
 # COMMUNICATION BETWEEN BLAZOR/XAMARIN.FORMS
 
-**TODO**: Not yet, but very soon!
+In order to communicate from Blazor to Xamarin you need to do some few steps, as JIT is disabled on AOT environment like Blazor.
+Here is a simple example to Display a Xamarin.Forms alert from Blazor.
+
+**In your YourApp.Shared project**, create an interface in an Interfaces folder, and add the ProxyInterface attribute on it. Assuming a **IXamarinBridge** interface class.
+
+Your file should look like this:
+
+```csharp
+using Daddoon.Blazor.Xam.Common.Attributes;
+using System;
+using System.Collections.Generic;
+using System.Runtime.CompilerServices;
+using System.Text;
+using System.Threading.Tasks;
+
+namespace YourApp.Shared.Interfaces
+{
+    [ProxyInterface]
+    public interface IXamarinBridge
+    {
+        Task<List<string>> DisplayAlert(string title, string msg, string cancel);
+    }
+}
+
+```
+
+**In your YourApp project**, implement the concrete implementation, also referenced as a DependencyService. On **UWP**, you may have to reference your service at startup with **Xamarin.Forms.DependencyService.Register<T>** as stated on this [DependencyService documentation](https://docs.microsoft.com/en-us/xamarin/xamarin-forms/app-fundamentals/dependency-service/introduction#universal-windows-platform-net-native-compilation)
+	
+Your implementation may look like this. Here a some idiotic example:
+
+```csharp
+using YourApp.Shared.Interfaces;
+using YourApp.Services;
+using System;
+using System.Collections.Generic;
+using System.Text;
+using System.Threading.Tasks;
+using Xamarin.Forms;
+
+[assembly: Dependency(typeof(XamarinBridge))]
+namespace YourApp.Services
+{
+    public class XamarinBridge : IXamarinBridge
+    {
+        public Task<List<string>> DisplayAlert(string title, string msg, string cancel)
+        {
+            App.Current.MainPage.DisplayAlert(title, msg, cancel);
+
+            List<string> result = new List<string>()
+            {
+                "Lorem",
+                "Ipsum",
+                "Dolorem",
+            };
+
+            return Task.FromResult(result);
+        }
+    }
+}
+```
+
+**In your Blazor project**, implement the proxy class implementation. It may look like this:
+
+
 
 # DISCLAIMER
 
