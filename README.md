@@ -41,6 +41,16 @@ You may need to do some changes on your Blazor project, in order to render and w
 
 **iOS:**
 
+Add:
+
+```html
+<meta name="viewport" content="initial-scale=1.0" />
+```
+
+As child of your **head** tag, in your **index.html** file of your Blazor project, in order to render the web application on iOS with the native scaling;
+
+
+
 ## 4. Add your Blazor ZIP file as link in YourApp project
 
 On YourApp project, add your generated ZIP from the Blazor project, as a "link" => Right click on the project => Add existing file => Browse to your file => Click on the little arrow => Then click on **Add as link**
@@ -107,6 +117,32 @@ namespace YourApp.iOS
         }
      }
 }
+```
+
+Also, you must update your **Info.plist** file to allow localhost requests inside your app. Your file should look like this:
+```
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+<dict>
+      /* OTHER ENTRIES */
+     <key>NSAppTransportSecurity</key>
+     <dict>
+	 <key>NSAllowsArbitraryLoads</key>
+	 <true/>
+	 <key>NSExceptionDomains</key>
+	 <dict>
+	     <key>localhost</key>
+	     <dict>
+	         <key>NSExceptionAllowsInsecureHTTPLoads</key>
+		 <true/>
+		 <key>NSIncludesSubdomains</key>
+		 <true/>
+	     </dict>
+	 </dict>
+     </dict>
+</dict>
+</plist>
 ```
 
 For **UWP** you have to set the following in **App.xaml.cs**
