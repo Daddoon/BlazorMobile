@@ -7,8 +7,8 @@ Please go to **Installation** section
 
 # TL;DR, i just want to use a base template
 
-You may just copy/re-use the Daddoon.Blazor.Xam.InteropApp projects, located in the **Test** solution folder of this project.
-But it's advised to read the **COMMUNICATION BETWEEN BLAZOR/XAMARIN.FORMS** section.
+You may just copy/re-use **all Daddoon.Blazor.Xam.InteropApp projects**, located in the **Test** solution folder of this project.
+But it's advised to read the [COMMUNICATION BETWEEN BLAZOR/XAMARIN.FORMS section](https://github.com/Daddoon/Blazor.Xamarin#communication-between-blazorxamarinforms).
 
 # INSTALLATION
 
