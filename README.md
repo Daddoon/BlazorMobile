@@ -119,8 +119,8 @@ namespace YourApp.iOS
 }
 ```
 
-Also, you must update your **Info.plist** file to allow localhost requests inside your app. Your file should look like this:
-```
+Also, you must update your **Info.plist** file to allow localhost requests inside your app by adding the **NSAppTransportSecurity** property. Your file should look like this:
+```xml
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
 <plist version="1.0">
@@ -163,6 +163,22 @@ namespace YourApp.UWP
      }
 }
 ```
+
+Also, you must update your **Package.appxmanifest** file to allow localhost requests inside your app, by adding the **ApplicationContentUriRules** property. You must add the following property in the following hierarchy:
+
+```xml
+<Package>
+	<Applications>
+		<Application Id="App">
+			 <uap:ApplicationContentUriRules>
+          		 	<uap:Rule Type="include" Match="http://localhost:8888/" WindowsRuntimeAccess="all" />
+      			 </uap:ApplicationContentUriRules>
+		</Application>
+	</Applications>
+</Package>
+```
+
+
 
 ## 8. Cross-reference YourApp.Shared
 
