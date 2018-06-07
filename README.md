@@ -1,6 +1,15 @@
 # Blazor.Xamarin
 A Nuget package for launching Blazor application as standalone application on Xamarin
 
+# INSTALLING Blazor.Xamarin from scratch
+
+Please go to **Installation** section
+
+# TL;DR, i just want to use a base template
+
+You may just copy/re-use the Daddoon.Blazor.Xam.InteropApp projects, located in the **Test** solution folder of this project.
+But it's advised to read the **COMMUNICATION BETWEEN BLAZOR/XAMARIN.FORMS** section.
+
 # INSTALLATION
 
 ## 1. Create your Xamarin.Forms application project in Visual Studio
@@ -381,9 +390,71 @@ namespace YourApp.Services
 }
 ```
 
-**In your Blazor project**, implement the proxy class implementation. It may look like this:
+**In your Blazor project**, implement the proxy class implementation, assuming the **BlazorApp** namespace is your Blazor application default namespace. For our example it look like this:
+
+```csharp
+using Daddoon.Blazor.Xam.Common.Services;
+using YourApp.Shared.Interfaces;
+using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Reflection;
+using System.Text;
+using System.Threading.Tasks;
+
+namespace BlazorApp.Services
+{
+    public class XamarinBridgeProxy : IXamarinBridge
+    {
+        public Task<List<string>> DisplayAlert(string title, string msg, string cancel)
+        {
+            return MethodDispatcher.CallMethodAsync<List<string>>(MethodBase.GetCurrentMethod(), title, msg, cancel);
+        }
+    }
+}
+```
+
+**The key is the MethodDispatcher** class, that will prepare every callback for you, but because of the lack of JIT, you have to give yourself some parameters. Take a look at the different implementations of MethodDispatcher methods, in order to accord everything to your context, like if your using Task (Async calls) or not, if you expect a return value, generic types etc.
+
+There is actually some syntactic sugar method calls in order to just mimic what you are expecting, by just recoying the same kind of signature, if using generic parameters etc. You may take a look at the [MethodDispatcher file](https://github.com/Daddoon/Blazor.Xamarin/blob/master/src/Daddoon.Blazor.Xamarin.Common/Services/MethodDispatcher.cs) if you want to see the available methods overload.
+
+**Note that if you want that the caller and receiver is actually the same method signature on the 2 ends (Blazor and Xamarin), you can safely use MethodBase.GetCurrentMethod() everytime for the MethodInfo parameter**
 
 
+## Test your interop with Xamarin in Blazor
+
+Don't forget to add your Blazor implementation in the dependency services of your Blazor app, even if it's not mandatory of course.
+Assuming in your **Program.cs** file of your **Blazor project**:
+
+```csharp
+    class Program
+    {
+        static void Main(string[] args)
+        {
+            var serviceProvider = new BrowserServiceProvider(services =>
+            {
+                services.AddSingleton<IXamarinBridge, XamarinBridgeProxy>();
+                // Add any custom services here
+            });
+
+            var br = new BrowserRenderer(serviceProvider);
+            br.AddComponent<App>("app");
+        }
+    }
+```
+
+Then in one of your desired cshtml page (or .cs file btw), juste add
+```csharp
+@inject IXamarinBridge XamarinBridge
+```
+
+On top of your cshtml file, then call your method in your desired callback, like:
+
+```csharp
+var result = await XamarinBridge.DisplayAlert("MyTitle", "Blazor to Xamarin.Forms call works!", "Thanks!");
+```
+
+Note that our implementation in Xamarin does not wait for the user input validation, just change the code to your needs.
 
 # DISCLAIMER
 
