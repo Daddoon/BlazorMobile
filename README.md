@@ -501,7 +501,7 @@ Where **blazorXamarin** is a tag name available in your **index.html** like:
 </html>
 ```
 
-It is necessary to inject a minimal javascript code in order to be able to check if we are on a pure browser context, or in an Hybrid app.
+...as it is necessary to inject a minimal javascript code in order to be able to check if we are on a pure browser context, or in an Hybrid app.
 
 The last parameter of the Init method is an optional callback to notify when the initialization is finished.
 
