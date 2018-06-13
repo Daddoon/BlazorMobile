@@ -1,6 +1,12 @@
 # Blazor.Xamarin
 A Nuget package for launching Blazor application as standalone application on Xamarin
 
+# Summary
+
+- [Installing Blazor.Xamarin from scratch](https://github.com/Daddoon/Blazor.Xamarin/#installing-blazorxamarin-from-scratch)
+- [Communication between Blazor/Xamarin.Forms](https://github.com/Daddoon/Blazor.Xamarin/#communication-between-blazorxamarinforms)
+- Detecting Runtime environment
+
 # INSTALLING Blazor.Xamarin from scratch
 
 Please go to **Installation** section
@@ -455,6 +461,59 @@ var result = await XamarinBridge.DisplayAlert("MyTitle", "Blazor to Xamarin.Form
 ```
 
 Note that our implementation in Xamarin does not wait for the user input validation, just change the code to your needs.
+
+# Detecting Runtime environment
+
+In order to detect the current runtime environment of your Blazor app within Blazor, you must set the following in your **Program.cs** file of your Blazor project:
+
+```csharp
+
+//SOME CODE
+br.AddComponent<App>("app");
+
+BlazorWebViewService.Init(br, "blazorXamarin", () =>
+{
+   //Your code
+});
+```
+
+Where **blazorXamarin** is a tag name available in your **index.html** like:
+
+```html
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="initial-scale=1.0" />
+    <title>Daddoon.Blazor.Xam.InteropBlazorApp</title>
+    <base href="/" />
+    <link href="css/bootstrap/bootstrap.min.css" rel="stylesheet" />
+    <link href="css/site.css" rel="stylesheet" />
+</head>
+<body>
+    <app>Loading...</app>
+    <blazorXamarin></blazorXamarin>
+    <script src="css/bootstrap/bootstrap-native.min.js"></script>
+    <script type="text/javascript" src="js/blazor.polyfill.js"></script>
+    <script type="blazor-boot"></script>
+    <script></script>
+</body>
+</html>
+```
+
+It is necessary to inject a minimal javascript code in order to be able to check if we are on a pure browser context, or in an Hybrid app.
+
+The last parameter of the Init method is an optional callback to notify when the initialization is finished.
+
+You can then detect your current at anytime by calling:
+
+```csharp
+Device.RuntimePlatform
+```
+
+In order to manage your application workflow and specific services/calls based on the underlying system.
+**Device.RuntimePlatform** namespace is **Daddoon.Blazor.Xam.Common** and does mimic the result of **Xamarin.Forms.Device.RuntimePlatform** with some minor change, as **Browser** is returned in a pure web app in a browser, and **Unknown** is returned if an error occur or if the initialization is not yet made.
+
 
 # DISCLAIMER
 
