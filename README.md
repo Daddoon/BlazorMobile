@@ -5,7 +5,7 @@ A Nuget package for launching Blazor application as standalone application on Xa
 
 - [Installing Blazor.Xamarin from scratch](https://github.com/Daddoon/Blazor.Xamarin/#installing-blazorxamarin-from-scratch)
 - [Communication between Blazor/Xamarin.Forms](https://github.com/Daddoon/Blazor.Xamarin/#communication-between-blazorxamarinforms)
-- [Detecting Runtime environment](https://github.com/Daddoon/Blazor.Xamarin/blob/master/README.md#detecting-runtime-environment)
+- [Detecting Runtime Platform](https://github.com/Daddoon/Blazor.Xamarin/blob/master/README.md#detecting-runtime-platform)
 
 # INSTALLING Blazor.Xamarin from scratch
 
@@ -462,7 +462,7 @@ var result = await XamarinBridge.DisplayAlert("MyTitle", "Blazor to Xamarin.Form
 
 Note that our implementation in Xamarin does not wait for the user input validation, just change the code to your needs.
 
-# Detecting Runtime environment
+# Detecting Runtime Platform
 
 In order to detect the current runtime environment of your Blazor app within Blazor, you must set the following in your **Program.cs** file of your Blazor project:
 
@@ -505,7 +505,7 @@ Where **blazorXamarin** is a tag name available in your **index.html** like:
 
 The last parameter of the Init method is an optional callback to notify when the initialization is finished.
 
-You can then detect your current at anytime by calling:
+You can then detect your current runtime platform at anytime by calling:
 
 ```csharp
 Device.RuntimePlatform
