@@ -2,7 +2,7 @@
 <package xmlns="http://schemas.microsoft.com/packaging/2012/06/nuspec.xsd">
     <metadata>
         <id>Daddoon.Blazor.Xamarin</id>
-        <version>0.2.0</version>
+        <version>0.2.1</version>
         <title>Daddoon.Blazor.Xamarin</title>
         <authors>Daddoon</authors>
         <owners>Daddoon</owners>
@@ -24,7 +24,7 @@
               <dependency id="Json.NET.Aot" version="9.0.1" />
               <dependency id="NETStandard.Library" version="2.0.1" />
               <dependency id="Microsoft.AspNetCore.Blazor.Browser" version="0.2.1" />
-			  <dependency id="Daddoon.Blazor.Xamarin.Common" version="0.2.0" />
+			  <dependency id="Daddoon.Blazor.Xamarin.Common" version="0.2.1" />
             </group>
 
             <group targetFramework="MonoAndroid1.0">
@@ -36,7 +36,7 @@
               <dependency id="Json.NET.Aot" version="9.0.1" />
               <dependency id="NETStandard.Library" version="2.0.1" />
               <dependency id="Microsoft.AspNetCore.Blazor.Browser" version="0.2.1" />
-			  <dependency id="Daddoon.Blazor.Xamarin.Common" version="0.2.0" />
+			  <dependency id="Daddoon.Blazor.Xamarin.Common" version="0.2.1" />
             </group>
 
           <group targetFramework="MonoAndroid7.0">
@@ -48,7 +48,7 @@
             <dependency id="Json.NET.Aot" version="9.0.1" />
             <dependency id="NETStandard.Library" version="2.0.1" />
             <dependency id="Microsoft.AspNetCore.Blazor.Browser" version="0.2.1" />
-		  <dependency id="Daddoon.Blazor.Xamarin.Common" version="0.2.0" />
+		  <dependency id="Daddoon.Blazor.Xamarin.Common" version="0.2.1" />
           </group>
 
           <group targetFramework="MonoAndroid7.1">
@@ -60,7 +60,7 @@
             <dependency id="Json.NET.Aot" version="9.0.1" />
             <dependency id="NETStandard.Library" version="2.0.1" />
             <dependency id="Microsoft.AspNetCore.Blazor.Browser" version="0.2.1" />
-			<dependency id="Daddoon.Blazor.Xamarin.Common" version="0.2.0" />
+			<dependency id="Daddoon.Blazor.Xamarin.Common" version="0.2.1" />
           </group>
 
           <group targetFramework="MonoAndroid8.0">
@@ -72,7 +72,7 @@
             <dependency id="Json.NET.Aot" version="9.0.1" />
             <dependency id="NETStandard.Library" version="2.0.1" />
             <dependency id="Microsoft.AspNetCore.Blazor.Browser" version="0.2.1" />
-		    <dependency id="Daddoon.Blazor.Xamarin.Common" version="0.2.0" />
+		    <dependency id="Daddoon.Blazor.Xamarin.Common" version="0.2.1" />
           </group>
 
           <group targetFramework="MonoAndroid8.1">
@@ -84,7 +84,7 @@
             <dependency id="Json.NET.Aot" version="9.0.1" />
             <dependency id="NETStandard.Library" version="2.0.1" />
             <dependency id="Microsoft.AspNetCore.Blazor.Browser" version="0.2.1" />
-		    <dependency id="Daddoon.Blazor.Xamarin.Common" version="0.2.0" />
+		    <dependency id="Daddoon.Blazor.Xamarin.Common" version="0.2.1" />
           </group>
 
             <group targetFramework="xamarinios10">
@@ -96,7 +96,7 @@
               <dependency id="Json.NET.Aot" version="9.0.1" />
               <dependency id="NETStandard.Library" version="2.0.1" />
               <dependency id="Microsoft.AspNetCore.Blazor.Browser" version="0.2.1" />
-			  <dependency id="Daddoon.Blazor.Xamarin.Common" version="0.2.0" />
+			  <dependency id="Daddoon.Blazor.Xamarin.Common" version="0.2.1" />
             </group>
 
             <group targetFramework="uap">
@@ -109,7 +109,7 @@
               <dependency id="Json.NET.Aot" version="9.0.1" />
               <dependency id="NETStandard.Library" version="2.0.1" />
               <dependency id="Microsoft.AspNetCore.Blazor.Browser" version="0.2.1" />
-			  <dependency id="Daddoon.Blazor.Xamarin.Common" version="0.2.0" />
+			  <dependency id="Daddoon.Blazor.Xamarin.Common" version="0.2.1" />
             </group>
         </dependencies>
     </metadata>

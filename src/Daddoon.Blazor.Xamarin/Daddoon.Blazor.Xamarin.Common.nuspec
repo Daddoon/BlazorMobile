@@ -2,7 +2,7 @@
 <package xmlns="http://schemas.microsoft.com/packaging/2012/06/nuspec.xsd">
     <metadata>
         <id>Daddoon.Blazor.Xamarin.Common</id>
-        <version>0.2.0</version>
+        <version>0.2.1</version>
         <title>Daddoon.Blazor.Xamarin.Common</title>
         <authors>Daddoon</authors>
         <owners>Daddoon</owners>

@@ -36,30 +36,10 @@ namespace Daddoon.Blazor.Xam.Common.Helpers
             if (_runTimeNetCoreVersionInitialized == false)
             {
                 var assembly = typeof(System.Runtime.GCSettings).GetTypeInfo().Assembly;
-                //var assemblyPath = assembly.CodeBase.Split(new[] { '/', '\\' }, StringSplitOptions.RemoveEmptyEntries);
-
                 if (assembly.GetName().Name.StartsWith("System.Private.CoreLib"))
                 {
                     RuntimeNetCoreVersion = "System.Private.CoreLib";
                 }
-
-                ////If NetCore.App
-
-                //int netCoreAppIndex = Array.IndexOf(assemblyPath, "Microsoft.NETCore.App");
-                //if (netCoreAppIndex > 0 && netCoreAppIndex < assemblyPath.Length - 2)
-                //{
-                //    RuntimeNetCoreVersion = assemblyPath[netCoreAppIndex + 1];
-                //    Console.WriteLine("NetCoreVersion: " + RuntimeNetCoreVersion);
-                //}
-                //else
-                //{
-                //    //If Net.CoreRuntime
-                //    //int netCoreRuntimIndex = assemblyPath.
-
-                //    RuntimeNetCoreVersion = null;
-                //    Console.WriteLine("NetCoreVersion: null");
-                //}
-
                 
                 _runTimeNetCoreVersionInitialized = true;
             }

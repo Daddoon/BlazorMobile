@@ -7,7 +7,7 @@ using System.Text;
 
 namespace Daddoon.Blazor.Xam.Common.Services
 {
-    public static class BlazorToXamarinDispatcher
+    internal static class BlazorToXamarinDispatcher
     {
         public static void Send(MethodProxy methodProxy)
         {

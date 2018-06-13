@@ -50,7 +50,7 @@
   </ItemGroup>
   <ItemGroup>
     <PackageReference Include="Daddoon.Blazor.Xamarin">
-      <Version>0.2.0</Version>
+      <Version>0.2.1</Version>
     </PackageReference>
     <PackageReference Include="Xamarin.Forms" Version="2.5.*" />
     <PackageReference Include="Xamarin.Android.Support.Design" Version="25.*" />

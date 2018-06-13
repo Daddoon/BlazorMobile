@@ -1,4 +1,6 @@
-﻿using Daddoon.Blazor.Xam.InteropApp.Common.Interfaces;
+﻿using Daddoon.Blazor.Xam.Common;
+using Daddoon.Blazor.Xam.Common.Services;
+using Daddoon.Blazor.Xam.InteropApp.Common.Interfaces;
 using Daddoon.Blazor.Xam.InteropApp.UWP.Services;
 using Microsoft.AspNetCore.Blazor.Browser.Rendering;
 using Microsoft.AspNetCore.Blazor.Browser.Services;
@@ -21,6 +23,11 @@ namespace Daddoon.Blazor.Xam.InteropBlazorApp
 
             br.AddComponent<DaddoonBlazorExtensionScripts>("daddoon");
             br.AddComponent<App>("app");
+
+            BlazorWebViewService.Init(br, "blazorXamarin", () =>
+            {
+                Console.WriteLine("Device is: " + Device.RuntimePlatform);
+            });
         }
     }
 }

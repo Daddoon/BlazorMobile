@@ -1,4 +1,5 @@
-﻿using Daddoon.Blazor.Xam.Interop;
+﻿using Daddoon.Blazor.Xam.Common.Interfaces;
+using Daddoon.Blazor.Xam.Interop;
 using System;
 using System.IO;
 using System.IO.Compression;
@@ -170,6 +171,9 @@ namespace Daddoon.Blazor.Xam.Services
         {
             if (_firstCall)
             {
+                //Register IBlazorXamarinDeviceService for getting base metadata for Blazor
+                DependencyService.Register<IBlazorXamarinDeviceService, BlazorXamarinDeviceService>();
+
                 //Do something in the future if required
                 _firstCall = false;
             }

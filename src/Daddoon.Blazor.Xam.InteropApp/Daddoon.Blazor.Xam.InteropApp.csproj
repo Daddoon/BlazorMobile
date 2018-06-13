@@ -5,7 +5,7 @@
   </PropertyGroup>
 
   <ItemGroup>
-    <PackageReference Include="Daddoon.Blazor.Xamarin" Version="0.2.0" />
+    <PackageReference Include="Daddoon.Blazor.Xamarin" Version="0.2.1" />
     <PackageReference Include="Xamarin.Forms" Version="2.5.*" />
   </ItemGroup>
 

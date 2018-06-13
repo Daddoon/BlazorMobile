@@ -5,7 +5,7 @@ using System.Text;
 
 namespace Daddoon.Blazor.Xam.Common.Services
 {
-    public static class ContextHelper
+    internal static class ContextHelper
     {
         /// <summary>
         /// Get the current executing context, if it's Blazor or Xamarin

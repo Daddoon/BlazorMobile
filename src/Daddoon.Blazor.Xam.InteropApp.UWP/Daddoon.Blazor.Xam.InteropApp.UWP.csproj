@@ -144,7 +144,7 @@
   </ItemGroup>
   <ItemGroup>
     <PackageReference Include="Daddoon.Blazor.Xamarin">
-      <Version>0.2.0</Version>
+      <Version>0.2.1</Version>
     </PackageReference>
     <PackageReference Include="Xamarin.Forms" Version="2.5.1.527436" />
     <PackageReference Include="Microsoft.NETCore.UniversalWindowsPlatform" Version="6.1.4" />
