@@ -5,7 +5,7 @@ A Nuget package for launching Blazor application as standalone application on Xa
 
 - [Installing Blazor.Xamarin from scratch](https://github.com/Daddoon/Blazor.Xamarin/#installing-blazorxamarin-from-scratch)
 - [Communication between Blazor/Xamarin.Forms](https://github.com/Daddoon/Blazor.Xamarin/#communication-between-blazorxamarinforms)
-- Detecting Runtime environment
+- [Detecting Runtime environment](https://github.com/Daddoon/Blazor.Xamarin/blob/master/README.md#detecting-runtime-environment)
 
 # INSTALLING Blazor.Xamarin from scratch
 
