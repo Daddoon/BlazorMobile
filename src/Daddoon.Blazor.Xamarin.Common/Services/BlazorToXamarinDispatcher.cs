@@ -1,20 +1,26 @@
-﻿using Daddoon.Blazor.Xam.Common.Interop;
+﻿using Daddoon.Blazor.Xam.Common.Helpers;
+using Daddoon.Blazor.Xam.Common.Interop;
 using Daddoon.Blazor.Xam.Common.Serialization;
-using Microsoft.AspNetCore.Blazor.Browser.Interop;
+using Microsoft.JSInterop;
 using System;
-using System.Collections.Generic;
-using System.Text;
+using System.Threading.Tasks;
 
 namespace Daddoon.Blazor.Xam.Common.Services
 {
     internal static class BlazorToXamarinDispatcher
     {
-        public static void Send(MethodProxy methodProxy)
+        [JSInvokable]
+        public static async Task Send(MethodProxy methodProxy)
         {
             string csharpProxy = BridgeSerializer.Serialize(methodProxy);
-            RegisteredFunction.Invoke<string>("contextBridgeSend", csharpProxy);
+            InternalHelper.SetTimeout(async () =>
+            {
+                Console.WriteLine(csharpProxy);
+                await JSRuntime.Current.InvokeAsync<bool>("contextBridgeSend", csharpProxy);
+            }, 100);
         }
 
+        [JSInvokable]
         public static void Receive(string methodProxyJson)
         {
             if (string.IsNullOrEmpty(methodProxyJson))

@@ -1,11 +1,10 @@
 ﻿using Daddoon.Blazor.Xam.Common.Components;
 using Daddoon.Blazor.Xam.Common.Helpers;
 using Daddoon.Blazor.Xam.Common.Services;
-using Microsoft.AspNetCore.Blazor.Browser.Interop;
-using Microsoft.AspNetCore.Blazor.Browser.Rendering;
+using Microsoft.AspNetCore.Components.Builder;
+using Microsoft.JSInterop;
 using System;
-using System.Collections.Generic;
-using System.Text;
+using System.Threading.Tasks;
 
 namespace Daddoon.Blazor.Xam.Common
 {
@@ -22,39 +21,45 @@ namespace Daddoon.Blazor.Xam.Common
         public static string RuntimePlatform { get; private set; } = Unknown;
 
         private static BlazorXamarinDeviceService xamService = null;
-        internal static void Init(BrowserRenderer br, string domElementSelector, Action onFinish)
+        internal static void Init(IComponentsApplicationBuilder app, string domElementSelector, Action<bool> onFinish)
         {
-            if (br == null)
+            bool success = false;
+
+            if (app == null)
             {
-                throw new NullReferenceException();
+                onFinish?.Invoke(success);
+                throw new NullReferenceException($"{nameof(IComponentsApplicationBuilder)} object is null");
             }
 
-            br.AddComponent<BlazorXamarinExtensionScript>(domElementSelector);
+            app.AddComponent<BlazorXamarinExtensionScript>(domElementSelector);
 
-            xamService = new BlazorXamarinDeviceService();
-
-            InternalHelper.SetTimeout(async () => {
-                //Safety for detect if RuntimePlatform is a Mobile app or a Browser
-                //First detect Browser context eligible for Xamarin, then returning the proper Xamarin RuntimePlatform
+            InternalHelper.SetTimeout(async () =>
+            {
+                xamService = new BlazorXamarinDeviceService();
+                Console.WriteLine("DEBUG 1");
                 try
                 {
-                    if (RegisteredFunction.Invoke<bool>("BlazorXamarinRuntimeCheck"))
+                    if (await JSRuntime.Current.InvokeAsync<bool>("BlazorXamarinRuntimeCheck"))
                     {
+                        Console.WriteLine("DEBUG 2");
                         string resultRuntimePlatform = await xamService.GetRuntimePlatform();
                         RuntimePlatform = resultRuntimePlatform;
+                        Console.WriteLine("DEBUG 3");
                     }
                     else
                     {
                         RuntimePlatform = Browser;
                     }
+
+                    success = true;
                 }
                 catch (Exception ex)
                 {
                     RuntimePlatform = Browser;
+                    throw;
                 }
-
-                onFinish?.Invoke();
-            }, 100);
+                onFinish?.Invoke(success);
+            }, 10);
         }
     }
 }

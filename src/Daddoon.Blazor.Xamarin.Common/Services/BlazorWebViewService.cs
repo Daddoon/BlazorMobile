@@ -1,18 +1,20 @@
-﻿using Microsoft.AspNetCore.Blazor.Browser.Rendering;
+﻿using Daddoon.Blazor.Xam.Common.Helpers;
+using Microsoft.AspNetCore.Components.Builder;
 using System;
 using System.Collections.Generic;
 using System.Text;
+using System.Threading.Tasks;
 
 namespace Daddoon.Blazor.Xam.Common.Services
 {
     public static class BlazorWebViewService
     {
         private static bool _isInit = false;
-        public static void Init(BrowserRenderer br, string domElementSelector, Action onFinish = null)
+        public static void Init(IComponentsApplicationBuilder app, string domElementSelector, Action<bool> onFinish = null)
         {
             if (!_isInit)
             {
-                Device.Init(br, domElementSelector, onFinish);
+                Device.Init(app, domElementSelector, onFinish);
                 _isInit = true;
             }
         }

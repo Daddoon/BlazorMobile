@@ -1,12 +1,12 @@
-﻿using Microsoft.AspNetCore.Blazor.Components;
-using Microsoft.AspNetCore.Blazor.RenderTree;
+﻿using Microsoft.AspNetCore.Components;
+using Microsoft.AspNetCore.Components.RenderTree;
 using System;
 using System.Collections.Generic;
 using System.Text;
 
 namespace Daddoon.Blazor.Xam.Common.Components
 {
-    public class BlazorXamarinExtensionScript : BlazorComponent
+    public class BlazorXamarinExtensionScript : ComponentBase
     {
         private static bool _isInitialized = false;
 
@@ -18,14 +18,15 @@ namespace Daddoon.Blazor.Xam.Common.Components
 
             builder.OpenElement(0, "script");
             builder.AddContent(1, @"
-Blazor.registerFunction(""BlazorXamarinRuntimeCheck"", function () {
-    if (window.contextBridge == null || window.contextBridge == undefined)
-    {
-        return false;
-    }
+    window.BlazorXamarinRuntimeCheck = function () {
+        if (window.contextBridge == null || window.contextBridge == undefined)
+        {
+            return false;
+        }
     
-    return true;
-});");
+        return true;
+    };
+");
             builder.CloseElement();
             _isInitialized = true;
         }

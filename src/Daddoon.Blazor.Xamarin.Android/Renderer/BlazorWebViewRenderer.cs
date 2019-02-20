@@ -1,5 +1,6 @@
 ﻿using System;
 using Android.Content;
+using Android.OS;
 using Android.Webkit;
 using Daddoon.Blazor.Xam.Components;
 using Daddoon.Blazor.Xam.Droid.Interop;
@@ -142,7 +143,16 @@ namespace Daddoon.Blazor.Xam.Droid.Renderer
                 webView.Settings.AllowFileAccess = true;
                 webView.Settings.JavaScriptCanOpenWindowsAutomatically = true;
 
-                webView.SetWebChromeClient(new WebChromeClient());
+                #if DEBUG
+
+                if (Build.VERSION.SdkInt >= Build.VERSION_CODES.Kitkat)
+                {
+                    Android.Webkit.WebView.SetWebContentsDebuggingEnabled(true);
+                }
+
+                #endif
+
+                webView.SetWebChromeClient(new BlazorWebChromeclient());
                 var webViewClient = new BlazorWebViewClient((BlazorWebView)e.NewElement);
                 webView.SetWebViewClient(webViewClient);
                 //webView.SetWebChromeClient(GetFormsWebChromeClient());
