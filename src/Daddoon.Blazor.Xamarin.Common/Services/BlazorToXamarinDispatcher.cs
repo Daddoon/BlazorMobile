@@ -7,7 +7,7 @@ using System.Threading.Tasks;
 
 namespace Daddoon.Blazor.Xam.Common.Services
 {
-    internal static class BlazorToXamarinDispatcher
+    public static class BlazorToXamarinDispatcher
     {
         [JSInvokable]
         public static async Task Send(MethodProxy methodProxy)
@@ -21,21 +21,29 @@ namespace Daddoon.Blazor.Xam.Common.Services
         }
 
         [JSInvokable]
-        public static void Receive(string methodProxyJson)
+        public static bool Receive(string methodProxyJson)
         {
+            Console.WriteLine("Data received from JS in Receiver");
+            Console.WriteLine(methodProxyJson);
+
             if (string.IsNullOrEmpty(methodProxyJson))
-                return;
+                return false;
 
-            MethodProxy resultProxy = BridgeSerializer.Deserialize<MethodProxy>(methodProxyJson);
-            var taskToReturn = MethodDispatcher.GetTaskDispatcher(resultProxy.TaskIdentity);
-            MethodDispatcher.SetTaskResult(resultProxy.TaskIdentity, resultProxy);
+            InternalHelper.SetTimeout(() =>
+            {
+                MethodProxy resultProxy = BridgeSerializer.Deserialize<MethodProxy>(methodProxyJson);
+                var taskToReturn = MethodDispatcher.GetTaskDispatcher(resultProxy.TaskIdentity);
+                MethodDispatcher.SetTaskResult(resultProxy.TaskIdentity, resultProxy);
 
-            if (taskToReturn == null)
-                return;
+                if (taskToReturn == null)
+                    return;
 
-            taskToReturn.RunSynchronously();
+                taskToReturn.RunSynchronously(TaskScheduler.Current);
 
-            MethodDispatcher.ClearTask(resultProxy.TaskIdentity);
+                MethodDispatcher.ClearTask(resultProxy.TaskIdentity);
+            }, 10);
+
+            return true;
         }
     }
 }
