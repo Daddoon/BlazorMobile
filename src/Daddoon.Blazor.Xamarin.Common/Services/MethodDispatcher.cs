@@ -348,7 +348,6 @@ namespace Daddoon.Blazor.Xam.Common.Services
 
                     methodProxy.TaskIdentity = taskId;
 
-                    Console.WriteLine($"{nameof(MethodDispatcher.InternalCallMethod)} debug");
                     BlazorToXamarinDispatcher.Send(methodProxy);
 
                     return task;

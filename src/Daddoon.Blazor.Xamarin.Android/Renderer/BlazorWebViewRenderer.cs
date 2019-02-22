@@ -126,9 +126,8 @@ namespace Daddoon.Blazor.Xam.Droid.Renderer
         protected override void OnElementChanged(ElementChangedEventArgs<global::Xamarin.Forms.WebView> e)
         {
             base.OnElementChanged(e);
-            if (_init == false)
+            if (!_init)
             {
-
                 //TODO: Maybe too much option enabled, must do some refactor and test here
 
                 // perform initial setup
@@ -136,12 +135,10 @@ namespace Daddoon.Blazor.Xam.Droid.Renderer
                 webView.Settings.JavaScriptEnabled = true;
                 webView.Settings.DomStorageEnabled = true;
                 webView.Settings.DefaultTextEncodingName = "utf-8";
-                webView.Settings.PluginsEnabled = true;
                 webView.Settings.AllowContentAccess = true;
                 webView.Settings.AllowUniversalAccessFromFileURLs = true;
                 webView.Settings.AllowFileAccessFromFileURLs = true;
                 webView.Settings.AllowFileAccess = true;
-                webView.Settings.JavaScriptCanOpenWindowsAutomatically = true;
 
                 #if DEBUG
 
@@ -152,11 +149,13 @@ namespace Daddoon.Blazor.Xam.Droid.Renderer
 
                 #endif
 
-                webView.SetWebChromeClient(new BlazorWebChromeclient());
+                //TODO: Calling SetWebChromeClient does crash the app after 30 sec
+                //Something must be wrong here. As we don't have any additional requirement for the moment,
+                //this will be stay as commented
+                //webView.SetWebChromeClient(new BlazorWebChromeclient());
+
                 var webViewClient = new BlazorWebViewClient((BlazorWebView)e.NewElement);
                 webView.SetWebViewClient(webViewClient);
-                //webView.SetWebChromeClient(GetFormsWebChromeClient());
-
                 SetNativeControl(webView);
                 webView.Reload();
                 _init = true;

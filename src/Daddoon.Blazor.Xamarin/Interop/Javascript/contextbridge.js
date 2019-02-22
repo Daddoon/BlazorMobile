@@ -7,8 +7,6 @@ window.contextBridge = {
     send: function (csharpProxy) {
     },
     receive: function (csharpProxy) {
-        console.log("receiver called");
-        console.log(csharpProxy);
         DotNet.invokeMethod(XamarinCommonAssemblyName, BlazorToXamarinDispatcherReceiveMethodName, csharpProxy);
     }
 };

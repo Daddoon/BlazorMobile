@@ -36,15 +36,12 @@ namespace Daddoon.Blazor.Xam.Common
             InternalHelper.SetTimeout(async () =>
             {
                 xamService = new BlazorXamarinDeviceService();
-                Console.WriteLine("DEBUG 1");
                 try
                 {
                     if (await JSRuntime.Current.InvokeAsync<bool>("BlazorXamarinRuntimeCheck"))
                     {
-                        Console.WriteLine("DEBUG 2");
                         string resultRuntimePlatform = await xamService.GetRuntimePlatform();
                         RuntimePlatform = resultRuntimePlatform;
-                        Console.WriteLine("DEBUG 3");
                     }
                     else
                     {

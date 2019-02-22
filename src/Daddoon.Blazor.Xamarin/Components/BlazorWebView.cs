@@ -37,7 +37,6 @@ namespace Daddoon.Blazor.Xam.Components
 
         public void OnNavigated()
         {
-            Console.WriteLine("Begin Inject context JS");
             if (blazorAppLaunched)
             {
                 switch (Device.RuntimePlatform)
@@ -46,9 +45,7 @@ namespace Daddoon.Blazor.Xam.Components
                         //WKWebview is wrapped over UIWebview. WkWebview has it's own delegate for this.
                         break;
                     default:
-                        Console.WriteLine("End Inject context JS");
                         string content = ContextBridgeHelper.GetInjectableJavascript();
-                        Console.WriteLine(content);
                         Eval(content);
                         break;
                 }

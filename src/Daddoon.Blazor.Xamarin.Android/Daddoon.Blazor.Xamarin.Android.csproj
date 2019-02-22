@@ -44,7 +44,6 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Client\BlazorWebChromeClient.cs" />
     <Compile Include="Interop\AndroidWebResponse.cs" />
     <Compile Include="Interop\JSBridge.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
@@ -56,7 +55,9 @@
       <Version>2.5.1.527436</Version>
     </PackageReference>
   </ItemGroup>
-  <ItemGroup />
+  <ItemGroup>
+    <Folder Include="Client\" />
+  </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\Daddoon.Blazor.Xamarin.Common\Daddoon.Blazor.Xamarin.Common.csproj">
       <Project>{c212a056-8def-45d2-bb87-92e63886efa2}</Project>

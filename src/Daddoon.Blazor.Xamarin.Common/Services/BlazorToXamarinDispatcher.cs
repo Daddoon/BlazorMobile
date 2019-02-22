@@ -15,7 +15,6 @@ namespace Daddoon.Blazor.Xam.Common.Services
             string csharpProxy = BridgeSerializer.Serialize(methodProxy);
             InternalHelper.SetTimeout(async () =>
             {
-                Console.WriteLine(csharpProxy);
                 await JSRuntime.Current.InvokeAsync<bool>("contextBridgeSend", csharpProxy);
             }, 100);
         }
@@ -23,9 +22,6 @@ namespace Daddoon.Blazor.Xam.Common.Services
         [JSInvokable]
         public static bool Receive(string methodProxyJson)
         {
-            Console.WriteLine("Data received from JS in Receiver");
-            Console.WriteLine(methodProxyJson);
-
             if (string.IsNullOrEmpty(methodProxyJson))
                 return false;
 
@@ -38,7 +34,7 @@ namespace Daddoon.Blazor.Xam.Common.Services
                 if (taskToReturn == null)
                     return;
 
-                taskToReturn.RunSynchronously(TaskScheduler.Current);
+                taskToReturn.RunSynchronously();
 
                 MethodDispatcher.ClearTask(resultProxy.TaskIdentity);
             }, 10);
