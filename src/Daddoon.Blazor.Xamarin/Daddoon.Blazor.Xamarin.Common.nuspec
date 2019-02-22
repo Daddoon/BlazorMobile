@@ -18,7 +18,7 @@
             <group targetFramework="netstandard2.0">
                 <dependency id="Json.NET.Aot" version="9.0.1" />
                 <dependency id="NETStandard.Library" version="2.0.1" />
-                <dependency id="Microsoft.AspNetCore.Blazor" version="(0.7.0,)" />
+                <dependency id="Microsoft.AspNetCore.Blazor" version="0.7.0" />
             </group>
         </dependencies>
     </metadata>

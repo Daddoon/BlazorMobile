@@ -5,7 +5,7 @@
   </PropertyGroup>
 
   <ItemGroup>
-    <PackageReference Include="Daddoon.Blazor.Xamarin.Common" Version="0.2.1" />
+    <PackageReference Include="Daddoon.Blazor.Xamarin.Common" Version="0.8.0" />
   </ItemGroup>
 
 </Project>

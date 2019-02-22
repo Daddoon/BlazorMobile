@@ -1,33 +1,16 @@
-﻿using Daddoon.Blazor.Xam.Common;
-using Daddoon.Blazor.Xam.Common.Services;
-using Daddoon.Blazor.Xam.InteropApp.Common.Interfaces;
-using Daddoon.Blazor.Xam.InteropApp.UWP.Services;
-using Microsoft.AspNetCore.Blazor.Browser.Rendering;
-using Microsoft.AspNetCore.Blazor.Browser.Services;
-using Microsoft.Extensions.DependencyInjection;
-using System;
+﻿using Microsoft.AspNetCore.Blazor.Hosting;
 
 namespace Daddoon.Blazor.Xam.InteropBlazorApp
 {
-    class Program
+    public class Program
     {
-        static void Main(string[] args)
+        public static void Main(string[] args)
         {
-            var serviceProvider = new BrowserServiceProvider(services =>
-            {
-                services.AddSingleton<IXamarinBridge, XamarinBridgeProxy>();
-                // Add any custom services here
-            });
-
-            var br = new BrowserRenderer(serviceProvider);
-
-            br.AddComponent<DaddoonBlazorExtensionScripts>("daddoon");
-            br.AddComponent<App>("app");
-
-            BlazorWebViewService.Init(br, "blazorXamarin", () =>
-            {
-                Console.WriteLine("Device is: " + Device.RuntimePlatform);
-            });
+            CreateHostBuilder(args).Build().Run();
         }
+
+        public static IWebAssemblyHostBuilder CreateHostBuilder(string[] args) =>
+            BlazorWebAssemblyHost.CreateDefaultBuilder()
+                .UseBlazorStartup<Startup>();
     }
 }

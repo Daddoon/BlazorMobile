@@ -23,7 +23,7 @@
               <dependency id="Xamarin.Forms" version="2.5.0" />
               <dependency id="Json.NET.Aot" version="9.0.1" />
               <dependency id="NETStandard.Library" version="2.0.1" />
-              <dependency id="Microsoft.AspNetCore.Blazor" version="(0.7.0,)" />
+              <dependency id="Microsoft.AspNetCore.Blazor" version="0.7.0" />
 			        <dependency id="Daddoon.Blazor.Xamarin.Common" version="0.8.0" />
             </group>
 
@@ -35,7 +35,7 @@
               <dependency id="Xamarin.Forms" version="2.5.0" />
               <dependency id="Json.NET.Aot" version="9.0.1" />
               <dependency id="NETStandard.Library" version="2.0.1" />
-              <dependency id="Microsoft.AspNetCore.Blazor" version="(0.7.0,)" />
+              <dependency id="Microsoft.AspNetCore.Blazor" version="0.7.0" />
 			        <dependency id="Daddoon.Blazor.Xamarin.Common" version="0.8.0" />
             </group>
 
@@ -47,7 +47,7 @@
             <dependency id="Xamarin.Forms" version="2.5.0" />
             <dependency id="Json.NET.Aot" version="9.0.1" />
             <dependency id="NETStandard.Library" version="2.0.1" />
-            <dependency id="Microsoft.AspNetCore.Blazor" version="(0.7.0,)" />
+            <dependency id="Microsoft.AspNetCore.Blazor" version="0.7.0" />
 		        <dependency id="Daddoon.Blazor.Xamarin.Common" version="0.8.0" />
           </group>
 
@@ -59,7 +59,7 @@
             <dependency id="Xamarin.Forms" version="2.5.0" />
             <dependency id="Json.NET.Aot" version="9.0.1" />
             <dependency id="NETStandard.Library" version="2.0.1" />
-            <dependency id="Microsoft.AspNetCore.Blazor" version="(0.7.0,)" />
+            <dependency id="Microsoft.AspNetCore.Blazor" version="0.7.0" />
             <dependency id="Daddoon.Blazor.Xamarin.Common" version="0.8.0" />
           </group>
 
@@ -71,7 +71,7 @@
             <dependency id="Xamarin.Forms" version="2.5.0" />
             <dependency id="Json.NET.Aot" version="9.0.1" />
             <dependency id="NETStandard.Library" version="2.0.1" />
-            <dependency id="Microsoft.AspNetCore.Blazor" version="(0.7.0,)" />
+            <dependency id="Microsoft.AspNetCore.Blazor" version="0.7.0" />
             <dependency id="Daddoon.Blazor.Xamarin.Common" version="0.8.0" />
           </group>
 
@@ -83,7 +83,7 @@
             <dependency id="Xamarin.Forms" version="2.5.0" />
             <dependency id="Json.NET.Aot" version="9.0.1" />
             <dependency id="NETStandard.Library" version="2.0.1" />
-            <dependency id="Microsoft.AspNetCore.Blazor" version="(0.7.0,)" />
+            <dependency id="Microsoft.AspNetCore.Blazor" version="0.7.0" />
             <dependency id="Daddoon.Blazor.Xamarin.Common" version="0.8.0" />
           </group>
 
@@ -95,7 +95,7 @@
               <dependency id="Xamarin.Forms" version="2.5.0" />
               <dependency id="Json.NET.Aot" version="9.0.1" />
               <dependency id="NETStandard.Library" version="2.0.1" />
-              <dependency id="Microsoft.AspNetCore.Blazor" version="(0.7.0,)" />
+              <dependency id="Microsoft.AspNetCore.Blazor" version="0.7.0" />
               <dependency id="Daddoon.Blazor.Xamarin.Common" version="0.8.0" />
             </group>
 
@@ -108,7 +108,7 @@
               <dependency id="Xamarin.Forms" version="2.5.0" />
               <dependency id="Json.NET.Aot" version="9.0.1" />
               <dependency id="NETStandard.Library" version="2.0.1" />
-              <dependency id="Microsoft.AspNetCore.Blazor" version="(0.7.0,)" />
+              <dependency id="Microsoft.AspNetCore.Blazor" version="0.7.0" />
               <dependency id="Daddoon.Blazor.Xamarin.Common" version="0.8.0" />
             </group>
         </dependencies>

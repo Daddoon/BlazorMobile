@@ -1,0 +1,35 @@
+﻿<Project Sdk="Microsoft.NET.Sdk.Web">
+
+  <PropertyGroup>
+    <TargetFramework>netstandard2.0</TargetFramework>
+    <RunCommand>dotnet</RunCommand>
+    <RunArguments>blazor serve</RunArguments>
+    <RestoreSources>
+      $(RestoreSources);
+      https://api.nuget.org/v3/index.json;
+      https://dotnet.myget.org/f/blazor-dev/api/v3/index.json;
+    </RestoreSources>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <PackageReference Include="Daddoon.Blazor.Extensions" Version="0.1.0" />
+    <PackageReference Include="Microsoft.AspNetCore.Razor.Design" Version="2.1.0-preview2-final" PrivateAssets="all" />
+    <PackageReference Include="Microsoft.AspNetCore.Blazor.Browser" Version="0.2.1" />
+    <PackageReference Include="Microsoft.AspNetCore.Blazor.Build" Version="0.2.1" />
+    <DotNetCliToolReference Include="Microsoft.AspNetCore.Blazor.Cli" Version="0.2.1" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <Folder Include="BuildTools\Mobile\bin\" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <ProjectReference Include="..\Daddoon.Blazor.Xam.InteropApp.Common\Daddoon.Blazor.Xam.InteropApp.Common.csproj" />
+    <ProjectReference Include="..\Daddoon.Blazor.Xamarin.Common\Daddoon.Blazor.Xamarin.Common.csproj" />
+  </ItemGroup>
+
+  <Target Name="PostBuild" AfterTargets="PostBuildEvent">
+    <Exec Command="rm $(ProjectDir)\BuildTools\Mobile\bin\app.zip &gt;nul 2&gt;&amp;1&#xD;&#xA;$(ProjectDir)\BuildTools\7za.exe a $(ProjectDir)\BuildTools\Mobile\bin\app.zip $(ProjectDir)wwwroot\* -mx1 -tzip&#xD;&#xA;$(ProjectDir)\BuildTools\7za.exe a $(ProjectDir)\BuildTools\Mobile\bin\app.zip $(ProjectDir)$(OutputPath)dist\* -mx1 -tzip" />
+  </Target>
+
+</Project>

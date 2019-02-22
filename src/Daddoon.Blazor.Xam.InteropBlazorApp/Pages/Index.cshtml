@@ -1,31 +1,7 @@
 ﻿@page "/"
-@using System.Threading.Tasks
-@using Daddoon.Blazor.Helpers
-@using Daddoon.Blazor.Xam.InteropApp.Common.Interfaces
-@inject IXamarinBridge XamarinBridge
 
 <h1>Hello, world!</h1>
 
 Welcome to your new app.
 
 <SurveyPrompt Title="How is Blazor working for you?" />
-
-@functions
-{
-    protected override Task OnInitAsync()
-    {
-        //Browser.SetTimeout(async delegate ()
-        //{
-        //    var resultContent = await XamarinBridge.DisplayAlert("MyTitle", "Blazor to Xamarin.Forms call works!", "Thanks!");
-        //    if (resultContent != null)
-        //    {
-        //        foreach (var result in resultContent)
-        //        {
-        //            await XamarinBridge.DisplayAlert("Result", result, "Ok");
-        //        }
-        //    }
-        //}, 2000);
-
-        return base.OnInitAsync();
-    }
-}

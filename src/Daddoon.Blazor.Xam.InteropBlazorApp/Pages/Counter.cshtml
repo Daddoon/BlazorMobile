@@ -1,16 +1,25 @@
 ﻿@page "/counter"
-@using System.Threading.Tasks
+@using Daddoon.Blazor.Xam.Common
+@using Daddoon.Blazor.Xam.InteropApp.Common.Interfaces
+@inject IXamarinBridge XamarinBridge
+
 <h1>Counter</h1>
 
 <p>Current count: @currentCount</p>
 
-<button onclick="@(async() => await IncrementCount())">Click me</button>
+<button class="btn btn-primary" onclick="@IncrementCount">Click me</button>
+<button class="btn btn-primary" onclick="@AlertMe">Alert me</button>
 
 @functions {
     int currentCount = 0;
 
-    private async Task IncrementCount()
+    void IncrementCount()
     {
         currentCount++;
+    }
+
+    async void AlertMe()
+    {
+        await XamarinBridge.DisplayAlert("Platform identity", $"Current platform is {Device.RuntimePlatform}", "Great!");
     }
 }
