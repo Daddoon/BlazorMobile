@@ -45,6 +45,21 @@ namespace Daddoon.Blazor.Xam.Services
             Init();
         }
 
+        private static ZipArchive _zipArchive = null;
+        private static object _zipLock = new object();
+        private static ZipArchive GetZipArchive()
+        {
+            if (_zipArchive != null)
+                return _zipArchive;
+
+            //Stream is not disposed as it can be called in the future
+            //Data source must be ideally loaded as a ressource like <see cref="Assembly.GetManifestResourceStream" /> for memory performance
+            Stream dataSource = _appResolver();
+            _zipArchive = new ZipArchive(dataSource, ZipArchiveMode.Read);
+
+            return _zipArchive;
+        }
+
         internal static MemoryStream GetResourceStream(string path)
         {
             if (_appResolver == null)
@@ -52,30 +67,37 @@ namespace Daddoon.Blazor.Xam.Services
                 throw new NullReferenceException("The Blazor app resolver was not set! Please call WebApplicationFactory.RegisterAppStreamResolver method before launching your app");
             }
 
-            using (Stream dataSource = _appResolver())
+            MemoryStream data = null;
+
+            lock (_zipLock)
             {
-                ZipArchive archive = null;
-                archive = new ZipArchive(dataSource, ZipArchiveMode.Read);
-
-                //data will contain found file output as stream
-                MemoryStream data = new MemoryStream();
-                ZipArchiveEntry entry = archive.GetEntry(path);
-
-                if (entry != null)
+                try
                 {
-                    entry.Open().CopyTo(data);
-                    data.Seek(0, SeekOrigin.Begin);
+                    ZipArchive archive = GetZipArchive();
+
+                    //Data will contain the found file, outputed as a stream
+                    data = new MemoryStream();
+                    ZipArchiveEntry entry = archive.GetEntry(path);
+
+                    if (entry != null)
+                    {
+                        Stream entryStream = entry.Open();
+                        entryStream.CopyTo(data);
+                        entryStream.Dispose();
+                        data.Seek(0, SeekOrigin.Begin);
+                    }
+                    else
+                    {
+                        data?.Dispose();
+                        data = null;
+                    }
                 }
-                else
+                catch (Exception ex)
                 {
-                    data?.Dispose();
-                    return null;
+                    Console.WriteLine($"{ex.Message}");
                 }
-
-                archive?.Dispose();
-
-                return data;
             }
+            return data;
         }
 
         internal static byte[] GetResource(string path)
