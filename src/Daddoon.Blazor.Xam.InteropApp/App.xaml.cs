@@ -10,6 +10,8 @@ namespace Daddoon.Blazor.Xam.InteropApp
         {
             InitializeComponent();
 
+            WebApplicationFactory.SetHttpPort(8888);
+
             //Regiser Blazor app resolver
             //CUSTOMIZE HERE YOUR OWN CODE LOGIC IF NEEDED !!
             WebApplicationFactory.RegisterAppStreamResolver(() =>

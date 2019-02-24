@@ -126,7 +126,26 @@ namespace Daddoon.Blazor.Xam.Services
             return MimeTypes.GetMimeType(path);
         }
 
-        private const int HttpPort = 8888;
+        private const int DefaultHttpPort = 8888;
+
+        private static int HttpPort = DefaultHttpPort;
+
+        /// <summary>
+        /// Define the HTTP port used for the webserver of your application.
+        /// Default is 8888.
+        /// </summary>
+        /// <param name="port"></param>
+        /// <returns></returns>
+        public static bool SetHttpPort(int port = DefaultHttpPort)
+        {
+            if (port <= 1024)
+            {
+                throw new InvalidOperationException("Cannot bind a port in the reserved port area !");
+            }
+
+            HttpPort = port;
+            return true;
+        }
 
         public static int GetHttpPort()
         {
