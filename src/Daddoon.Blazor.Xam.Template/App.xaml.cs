@@ -10,7 +10,19 @@ namespace Daddoon.Blazor.Xam.Template
 			InitializeComponent();
 
             //Regiser Blazor app resolver
-            WebApplicationFactory.RegisterAppStreamResolver(BlazorAppResolver.GetAppStream);
+            //CUSTOMIZE HERE YOUR OWN CODE LOGIC IF NEEDED !!
+            WebApplicationFactory.RegisterAppStreamResolver(() =>
+            {
+                //Get current class Assembly object
+                var assembly = typeof(App).Assembly;
+
+                //Name of our current Blazor package in this project, stored as a Embedded Resource
+                string BlazorPackageFolder = "Mobile.package.app.zip";
+
+                string appPackage = $"{assembly.GetName().Name}.{BlazorPackageFolder}";
+
+                return assembly.GetManifestResourceStream(appPackage);
+            });
 
 			MainPage = new MainPage();
 		}
