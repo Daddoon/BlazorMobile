@@ -1,24 +1,58 @@
 # Blazor.Xamarin
-A Nuget package for launching Blazor application as standalone application on Xamarin
+Create Hybrid-Apps for iOS, Android, UWP with Blazor and Xamarin !
+**Blazor.Xamarin** is a Nuget package for embedding Blazor application as standalone mobile application, hosted in Xamarin.
 
-# Summary
+## Platform requirements
+
+- **UWP:** Windows 10 Fall Creators Update (10.0 ; Build 16299) or greater
+- **Android:** Android 5.0 - Lollipop (API 21) or greater
+- **iOS:** iOS 12 or greater
+- **Blazor:** 0.8.0
+
+As Blazor is evolving very fast, this current plugin implementations may become obsolete on some future versions.
+**The current version has been developed and tested on Blazor 0.8.0-preview-19104-04**
+
+### Pro
+
+- You can now develop your application for Web, iOS, Android, UWP, with nearly the same code base !
+- Interop support between the Blazor Hybrid apps and Xamarin native apps
+- All in C# !
+
+### Cons
+
+- No direct access to FileSystem from the Blazor app. You should use the interop communication layer and Xamarin capabilities in order to emulate theses functionnalities.
+- Lack of debug functionnalities, like the official Blazor WASM-mode scenario
+- Harder to debug: As you don't have a direct access to the browser embbeding your Blazor application, you have to read the platform specific debug output in order to read console messages or other exceptions.
+
+**NOTE:** You may try to consider debugging from the **Microsoft SignalR** Blazor (Server Mode) implementation or calling an external logging API in order to follow your exceptions.
+
+**Also keep in mind that you can read platform specific outputs from Visual Studio output window when in debug mode !** 
+
+### Side note
+
+- The current tooling on Blazor 0.8.0 does **NOT** yet implement a full **mono-wasm-aot toolchain**. This mean that you Blazor app will still use the old JIT interpretation mode. Your app can be 10x slower than the native .NET...
+- **...On the other side**, this also mean that when the Blazor mono toolchain will be AOT compatible and available, your mobile Blazor app will also gain performance from that !
+- There is also an experimental Blazor support from Microsoft Team, on **UWP** and **MacOS**, that was made with **Electron.NET** .
+This is not affiliated with this project, and not officialy supported at the moment. But we may see some cool platform support in the future considering this.
+
+## Summary
 
 - [Installing Blazor.Xamarin from scratch](https://github.com/Daddoon/Blazor.Xamarin/#installing-blazorxamarin-from-scratch)
 - [Communication between Blazor/Xamarin.Forms](https://github.com/Daddoon/Blazor.Xamarin/#communication-between-blazorxamarinforms)
 - [Detecting Runtime Platform](https://github.com/Daddoon/Blazor.Xamarin/blob/master/README.md#detecting-runtime-platform)
 
-# INSTALLING Blazor.Xamarin from scratch
+### Easy installation
 
-Please go to **Installation** section
+You may just copy and use all **Daddoon.Blazor.Xam.InteropApp projects**, located in the **Test** solution folder of this project.
 
-# TL;DR, i just want to use a base template
+I advise you to also read the [installation guide](https://github.com/Daddoon/Blazor.Xamarin/#installing-blazorxamarin-from-scratch) to know how the initial setup works.
 
-You may just copy/re-use **all Daddoon.Blazor.Xam.InteropApp projects**, located in the **Test** solution folder of this project.
-But it's advised to read the [COMMUNICATION BETWEEN BLAZOR/XAMARIN.FORMS section](https://github.com/Daddoon/Blazor.Xamarin#communication-between-blazorxamarinforms).
+For communication between your **Blazor app and Native Xamarin app** [COMMUNICATION BETWEEN BLAZOR/XAMARIN.FORMS section](https://github.com/Daddoon/Blazor.Xamarin#communication-between-blazorxamarinforms).
 
-# INSTALLATION
 
-## 1. Create your Xamarin.Forms application project in Visual Studio
+## Installing Blazor.Xamarin from scratch
+
+### 1. Create your Xamarin.Forms application project in Visual Studio
 
 The ideal scenario, as the given templates in this repository, is to create a Cross-plateform Xamarin project template.
 You then should have your solution this type of configuration:
@@ -30,9 +64,7 @@ You then should have your solution this type of configuration:
 
 **YourApp** project will be used as the Blazor app container, it's not mandatory but highly recommended.
 
-**NOTE:** It is also advised to create an additional shared project (.netstandard2.0) with no Xamarin.Forms reference, in order to use it to share interface contracts between Blazor and Xamarin domains for interop communication.
-
-Assuming this shared project called **YourApp.Shared** !
+**NOTE:** It is also advised to create an additional shared project (.netstandard2.0) with no Xamarin.Forms reference, in order to use it to share interface contracts between Blazor and Xamarin domains for interop communication. We will assume that this shared project will be called **YourApp.Shared** !
 
 ## 2. ZIP your Blazor app project ! Our plugin need to read a Blazor app zipped in an archive for maintenability convenience.
 
@@ -52,7 +84,7 @@ Of course adapt the path to your development environement. If use this method, n
 You may need to do some changes on your Blazor project, in order to render and work correctly under Xamarin and/or mobile web browsers.
 
 **All:**
-- There could be some issue with old browsers that doesn't support some ECMA script standards. You may want to fill the gap in your Blazor project by adding some polyfills. If so, take a look at my [Blazor.Polyfill](https://github.com/Daddoon/Blazor.Polyfill) repository.
+- There could be some issue with old browsers that doesn't support some ECMA script standards. You may want to fill the gap in your Blazor project by adding some polyfills. If so, take a look at my [Blazor.Polyfill](https://github.com/Daddoon/Blazor.Polyfill) repository. This requirement is less mandatory here are i highly recommand to use a modern mobile Browser for WASM performance with Blazor.
 
 **iOS:**
 
@@ -193,6 +225,7 @@ Also, you must update your **Package.appxmanifest** file to allow localhost requ
 </Package>
 ```
 
+You may consider using an other port than **8888** in this rule, but you must be sure that your port rule here match with your port configuration in you app code (see below)
 
 
 ## 8. Cross-reference YourApp.Shared
@@ -220,8 +253,22 @@ namespace YourApp
 	{
 	    InitializeComponent();
 
+            WebApplicationFactory.SetHttpPort(8888);
+
             //Regiser Blazor app resolver
-            WebApplicationFactory.RegisterAppStreamResolver(BlazorAppResolver.GetAppStream);
+            //CUSTOMIZE HERE YOUR OWN CODE LOGIC IF NEEDED !!
+            WebApplicationFactory.RegisterAppStreamResolver(() =>
+            {
+                //Get current class Assembly object
+                var assembly = typeof(App).Assembly;
+
+                //Name of our current Blazor package in this project, stored as a Embedded Resource
+                string BlazorPackageFolder = "Mobile.package.app.zip";
+
+                string appPackage = $"{assembly.GetName().Name}.{BlazorPackageFolder}";
+
+                return assembly.GetManifestResourceStream(appPackage);
+            });
 
 	    MainPage = new MainPage();
 	}
@@ -246,32 +293,8 @@ namespace YourApp
 }
 ```
 
-Your IDE will complain that it don't find **BlazorAppResolver.GetAppStream** . It's totally fine, because you must provide your own delegate of **how do you get your Blazor app ZIP file**.
-
-Here is a code snippet of our template, assuming your ZIP file is in a **Mobile\package\app.zip** directory hierarchy in **YourApp** project:
-
-```csharp
-using System.IO;
-
-namespace YourApp.Resolver
-{
-    public static class BlazorAppResolver
-    {
-        private static string BlazorPackageFolder = "Mobile.package.app.zip";
-
-        public static Stream GetAppStream()
-        {
-            var assembly = typeof(BlazorAppResolver).Assembly;
-
-            string appPackage = $"{assembly.GetName().Name}.{BlazorPackageFolder}";
-
-            return assembly.GetManifestResourceStream(appPackage);
-        }
-    }
-}
-```
-
-Our library will manage when to get and dispose the stream, don't worry about that !
+As you can see you must provide yourself your own logic to retrieve the Blazor app ZIP file with the method **WebApplicationFactory.RegisterAppStreamResolver**.
+The method is waiting for a delegate method that will return the ZIP stream data of your Blazor app. You can use the same code logic, and juste modify the file/paths used, in accordance to your project.
 
 ## 10. Add BlazorWebView component to your MainPage
 
