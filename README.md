@@ -1,3 +1,5 @@
+# NOTE: Currently reworking on all the plugin for Blazor 0.8.0, stay tuned
+
 # Blazor.Xamarin
 A Nuget package for launching Blazor application as standalone application on Xamarin
 
