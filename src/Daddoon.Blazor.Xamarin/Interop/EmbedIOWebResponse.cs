@@ -2,16 +2,17 @@
 using System.Collections.Generic;
 using System.IO;
 using System.Text;
-using Waher.Networking.HTTP;
+using System.Threading.Tasks;
+using Unosquare.Labs.EmbedIO;
 
 namespace Daddoon.Blazor.Xam.Interop
 {
-    public class StdWebResponse : IWebResponse
+    public class EmbedIOWebResponse : IWebResponse
     {
-        private HttpRequest _request = null;
-        private HttpResponse _response = null;
+        private IHttpRequest _request = null;
+        private IHttpResponse _response = null;
 
-        public StdWebResponse(HttpRequest request, HttpResponse response)
+        public EmbedIOWebResponse(IHttpRequest request, IHttpResponse response)
         {
             _request = request;
             _response = response;
@@ -19,23 +20,20 @@ namespace Daddoon.Blazor.Xam.Interop
 
         public void AddResponseHeader(string key, string value)
         {
-            _response.SetHeader(key, value);
+            _response.AddHeader(key, value);
         }
 
         public string GetRequestedPath()
         {
-            return _request.SubPath;
+            return _request.Url.AbsolutePath;
         }
 
-        public void SetData(MemoryStream data)
+        public Task SetDataAsync(MemoryStream data)
         {
             //Sanity check
             data.Seek(0, SeekOrigin.Begin);
 
-            byte[] content = data.ToArray();
-            data.Dispose();
-
-            _response.Write(content);
+            return _response.BinaryResponseAsync(data, default, false);
         }
 
         public void SetEncoding(string encoding)
@@ -50,7 +48,7 @@ namespace Daddoon.Blazor.Xam.Interop
 
         public void SetReasonPhrase(string reasonPhrase)
         {
-            _response.StatusMessage = reasonPhrase;
+            _response.StatusDescription = reasonPhrase;
         }
 
         public void SetStatutCode(int statutCode)

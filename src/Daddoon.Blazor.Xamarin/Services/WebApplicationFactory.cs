@@ -1,4 +1,5 @@
 ﻿using Daddoon.Blazor.Xam.Common.Interfaces;
+using Daddoon.Blazor.Xam.Controller;
 using Daddoon.Blazor.Xam.Interop;
 using System;
 using System.IO;
@@ -6,7 +7,11 @@ using System.IO.Compression;
 using System.Net;
 using System.Net.Sockets;
 using System.Runtime.CompilerServices;
-using Waher.Networking.HTTP;
+using System.Threading;
+using System.Threading.Tasks;
+using Unosquare.Labs.EmbedIO;
+using Unosquare.Labs.EmbedIO.Constants;
+using Unosquare.Labs.EmbedIO.Modules;
 using Xamarin.Forms;
 
 [assembly: InternalsVisibleTo("Daddoon.Blazor.Xamarin.Android")]
@@ -15,7 +20,9 @@ namespace Daddoon.Blazor.Xam.Services
 {
     public static class WebApplicationFactory
     {
-        private static HttpServer server;
+        private static WebServer server;
+        private static CancellationTokenSource serverCts = new CancellationTokenSource();
+
         private static bool _isStarted = false;
 
         private static bool IsStarted()
@@ -198,7 +205,7 @@ namespace Daddoon.Blazor.Xam.Services
             return path;
         }
 
-        internal static void ManageRequest(IWebResponse response)
+        internal static async Task ManageRequest(IWebResponse response)
         {
             response.SetEncoding("UTF-8");
 
@@ -221,7 +228,7 @@ namespace Daddoon.Blazor.Xam.Services
             response.SetStatutCode(200);
             response.SetReasonPhrase("OK");
             response.SetMimeType(GetContentType(path));
-            response.SetData(content);
+            await response.SetDataAsync(content);
         }
 
         private static bool _firstCall = true;
@@ -258,12 +265,18 @@ namespace Daddoon.Blazor.Xam.Services
                 return;
             }
 
-            server = new HttpServer(HttpPort);
-            server.Register(string.Empty, (req, resp) =>
+            //EmbedIO test
+            server = new WebServer(GetBaseURL(), RoutingStrategy.Regex);
+            server.WithLocalSession();
+
+            server.RegisterModule(new WebApiModule());
+            server.Module<WebApiModule>().RegisterController<BlazorController>();
+
+            Task.Factory.StartNew(async () =>
             {
-                var response = new StdWebResponse(req, resp);
-                ManageRequest(response);
-            }, true, true);
+                Console.WriteLine("Starting Server...");
+                await server.RunAsync();
+            });
         }
 
         public static void StopWebServer()

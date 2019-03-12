@@ -6,11 +6,11 @@ using System.IO;
 namespace Daddoon.Blazor.Xam.Droid.Services
 {
     [Android.Runtime.Preserve(AllMembers = true)]
-    public class BlazorWebViewService
+    public static class BlazorWebViewService
     {
-        private static void InitComponent()
+        private static void InitComponent(Android.App.Activity activity)
         {
-            BlazorWebViewRenderer.Init();
+            BlazorGeckoViewRenderer.Init(activity);
         }
 
         /// <summary>
@@ -18,15 +18,15 @@ namespace Daddoon.Blazor.Xam.Droid.Services
         /// Shorthand for <see cref="WebApplicationFactory.RegisterAppStreamResolver" />
         /// </summary>
         /// <param name="appStreamResolver"></param>
-        public static void Init(Func<Stream> appStreamResolver)
+        public static void Init(Android.App.Activity activity, Func<Stream> appStreamResolver)
         {
-            InitComponent();
+            InitComponent(activity);
             WebApplicationFactory.Init(appStreamResolver);
         }
 
-        public static void Init()
+        public static void Init(Android.App.Activity activity)
         {
-            InitComponent();
+            InitComponent(activity);
             WebApplicationFactory.Init();
         }
     }

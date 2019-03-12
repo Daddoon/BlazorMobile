@@ -27,7 +27,7 @@ namespace Daddoon.Blazor.Xam.Template.Droid
             assetManager = this.Assets;
 
             global::Xamarin.Forms.Forms.Init(this, bundle);
-            BlazorWebViewService.Init();
+            BlazorWebViewService.Init(this);
 
             LoadApplication(new App());
         }

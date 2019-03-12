@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.IO;
 using System.Text;
+using System.Threading.Tasks;
 
 namespace Daddoon.Blazor.Xam.Interop
 {
@@ -13,6 +14,6 @@ namespace Daddoon.Blazor.Xam.Interop
         void SetStatutCode(int statutCode);
         void SetReasonPhrase(string reasonPhrase);
         void AddResponseHeader(string key, string value);
-        void SetData(MemoryStream data);
+        Task SetDataAsync(MemoryStream data);
     }
 }
