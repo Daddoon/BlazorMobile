@@ -15,31 +15,7 @@
         <copyright>Copyright 2019</copyright>
         <tags>Blazor Daddoon.Blazor.Xamarin Xamarin iOS Android UWP Hybrid</tags>
         <dependencies>
-            <group targetFramework="netstandard2.0">
-              <dependency id="System.IO.Compression.ZipFile" version="4.3.0" />
-              <dependency id="Waher.Content" version="1.0.8" />
-              <dependency id="Waher.Networking.HTTP" version="1.0.8" />
-              <dependency id="MimeTypes" version="1.0.6" />
-              <dependency id="Xamarin.Forms" version="2.5.0" />
-              <dependency id="Json.NET.Aot" version="9.0.1" />
-              <dependency id="NETStandard.Library" version="2.0.1" />
-              <dependency id="Microsoft.AspNetCore.Blazor" version="0.7.0" />
-			        <dependency id="Daddoon.Blazor.Xamarin.Common" version="0.8.0" />
-            </group>
-
-            <group targetFramework="MonoAndroid1.0">
-              <dependency id="System.IO.Compression.ZipFile" version="4.3.0" />
-              <dependency id="Waher.Content" version="1.0.8" />
-              <dependency id="Waher.Networking.HTTP" version="1.0.8" />
-              <dependency id="MimeTypes" version="1.0.6" />
-              <dependency id="Xamarin.Forms" version="2.5.0" />
-              <dependency id="Json.NET.Aot" version="9.0.1" />
-              <dependency id="NETStandard.Library" version="2.0.1" />
-              <dependency id="Microsoft.AspNetCore.Blazor" version="0.7.0" />
-			        <dependency id="Daddoon.Blazor.Xamarin.Common" version="0.8.0" />
-            </group>
-
-          <group targetFramework="MonoAndroid7.0">
+          <group targetFramework="netstandard2.0">
             <dependency id="System.IO.Compression.ZipFile" version="4.3.0" />
             <dependency id="Waher.Content" version="1.0.8" />
             <dependency id="Waher.Networking.HTTP" version="1.0.8" />
@@ -48,19 +24,7 @@
             <dependency id="Json.NET.Aot" version="9.0.1" />
             <dependency id="NETStandard.Library" version="2.0.1" />
             <dependency id="Microsoft.AspNetCore.Blazor" version="0.7.0" />
-		        <dependency id="Daddoon.Blazor.Xamarin.Common" version="0.8.0" />
-          </group>
-
-          <group targetFramework="MonoAndroid7.1">
-            <dependency id="System.IO.Compression.ZipFile" version="4.3.0" />
-            <dependency id="Waher.Content" version="1.0.8" />
-            <dependency id="Waher.Networking.HTTP" version="1.0.8" />
-            <dependency id="MimeTypes" version="1.0.6" />
-            <dependency id="Xamarin.Forms" version="2.5.0" />
-            <dependency id="Json.NET.Aot" version="9.0.1" />
-            <dependency id="NETStandard.Library" version="2.0.1" />
-            <dependency id="Microsoft.AspNetCore.Blazor" version="0.7.0" />
-            <dependency id="Daddoon.Blazor.Xamarin.Common" version="0.8.0" />
+			      <dependency id="Daddoon.Blazor.Xamarin.Common" version="0.8.0" />
           </group>
 
           <group targetFramework="MonoAndroid8.0">
@@ -76,6 +40,18 @@
           </group>
 
           <group targetFramework="MonoAndroid8.1">
+            <dependency id="System.IO.Compression.ZipFile" version="4.3.0" />
+            <dependency id="Waher.Content" version="1.0.8" />
+            <dependency id="Waher.Networking.HTTP" version="1.0.8" />
+            <dependency id="MimeTypes" version="1.0.6" />
+            <dependency id="Xamarin.Forms" version="2.5.0" />
+            <dependency id="Json.NET.Aot" version="9.0.1" />
+            <dependency id="NETStandard.Library" version="2.0.1" />
+            <dependency id="Microsoft.AspNetCore.Blazor" version="0.7.0" />
+            <dependency id="Daddoon.Blazor.Xamarin.Common" version="0.8.0" />
+          </group>
+
+          <group targetFramework="MonoAndroid9.0">
             <dependency id="System.IO.Compression.ZipFile" version="4.3.0" />
             <dependency id="Waher.Content" version="1.0.8" />
             <dependency id="Waher.Networking.HTTP" version="1.0.8" />

@@ -15,7 +15,7 @@
     <FileAlignment>512</FileAlignment>
     <AndroidResgenFile>Resources\Resource.Designer.cs</AndroidResgenFile>
     <GenerateSerializationAssemblies>Off</GenerateSerializationAssemblies>
-    <TargetFrameworkVersion>v8.1</TargetFrameworkVersion>
+    <TargetFrameworkVersion>v9.0</TargetFrameworkVersion>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
     <DebugSymbols>true</DebugSymbols>
@@ -47,10 +47,14 @@
     <Compile Include="Interop\AndroidWebResponse.cs" />
     <Compile Include="Interop\JSBridge.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Renderer\BlazorGeckoViewRenderer.cs" />
     <Compile Include="Renderer\BlazorWebViewRenderer.cs" />
     <Compile Include="Services\BlazorWebViewService.cs" />
   </ItemGroup>
   <ItemGroup>
+    <PackageReference Include="Xamarin.Android.GeckoView.Forms">
+      <Version>0.1.1</Version>
+    </PackageReference>
     <PackageReference Include="Xamarin.Forms">
       <Version>3.5.0.169047</Version>
     </PackageReference>

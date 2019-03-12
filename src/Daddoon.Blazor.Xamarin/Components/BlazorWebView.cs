@@ -8,7 +8,7 @@ using Xamarin.Forms;
 
 namespace Daddoon.Blazor.Xam.Components
 {
-    public class BlazorWebView : WebView
+    public class BlazorWebView : WebView, IBlazorWebView
     {
         public BlazorWebView()
         {
@@ -45,6 +45,7 @@ namespace Daddoon.Blazor.Xam.Components
                         //WKWebview is wrapped over UIWebview. WkWebview has it's own delegate for this.
                         break;
                     default:
+                        //TODO: We must verify that we are in the local URI context
                         string content = ContextBridgeHelper.GetInjectableJavascript();
                         Eval(content);
                         break;
@@ -78,6 +79,11 @@ namespace Daddoon.Blazor.Xam.Components
                 source = string.Empty;
 
             return HttpUtility.JavaScriptStringEncode(source);
+        }
+
+        public View GetView()
+        {
+            return this;
         }
     }
 }

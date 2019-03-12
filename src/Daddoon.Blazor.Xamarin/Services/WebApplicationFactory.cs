@@ -4,6 +4,7 @@ using System;
 using System.IO;
 using System.IO.Compression;
 using System.Net;
+using System.Net.Sockets;
 using System.Runtime.CompilerServices;
 using Waher.Networking.HTTP;
 using Xamarin.Forms;
@@ -152,9 +153,36 @@ namespace Daddoon.Blazor.Xam.Services
             return HttpPort;
         }
 
+        private static string _localIP = null;
+        private static string GetLocalWebServerIP()
+        {
+            if (_localIP == null)
+            {
+                //Some Android platform does not have a universal loopback address
+                //This is intended to detect the Loopback entry point
+                //Thanks to https://github.com/unosquare/embedio/issues/207#issuecomment-433437410
+                var listener = new TcpListener(IPAddress.Loopback, 0);
+                try
+                {
+                    listener.Start();
+                    _localIP = ((IPEndPoint)listener.LocalEndpoint).Address.ToString();
+                }
+                catch
+                {
+                    _localIP = "localhost";
+                }
+                finally
+                {
+                    listener.Stop();
+                }
+            }
+
+            return _localIP;
+        }
+
         public static string GetBaseURL()
         {
-            return $"http://localhost:{GetHttpPort()}";
+            return $"http://{GetLocalWebServerIP()}:{GetHttpPort()}";
         }
 
         internal static string GetQueryPath(string path)
@@ -224,19 +252,18 @@ namespace Daddoon.Blazor.Xam.Services
         {
             Init(); //No-op if called twice
 
-            //Request are managed by the WebView on Android
-            if (Device.RuntimePlatform != Device.Android)
+            if (IsStarted())
             {
-                server = new HttpServer(HttpPort);
-                server.Register(string.Empty, (req, resp) =>
-                {
-                    var response = new StdWebResponse(req, resp);
-                    ManageRequest(response);
-                }, true, true);
+                //Already started
                 return;
             }
 
-            _isStarted = true;
+            server = new HttpServer(HttpPort);
+            server.Register(string.Empty, (req, resp) =>
+            {
+                var response = new StdWebResponse(req, resp);
+                ManageRequest(response);
+            }, true, true);
         }
 
         public static void StopWebServer()

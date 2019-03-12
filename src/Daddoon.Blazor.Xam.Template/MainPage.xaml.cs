@@ -10,17 +10,17 @@ namespace Daddoon.Blazor.Xam.Template
 		{
 			InitializeComponent();
 
-            BlazorWebView webview = new BlazorWebView()
-            {
-                VerticalOptions = LayoutOptions.FillAndExpand,
-                HorizontalOptions = LayoutOptions.FillAndExpand,
-                HeightRequest = 1000,
-                WidthRequest = 1000
-            };
+            //Blazor WebView agnostic contoller logic
+            IBlazorWebView webview = BlazorWebViewFactory.Create();
+
+            //WebView rendering customization on page
+            View webviewView = webview.GetView();
+            webviewView.VerticalOptions = LayoutOptions.FillAndExpand;
+            webviewView.HorizontalOptions = LayoutOptions.FillAndExpand;
 
             webview.LaunchBlazorApp();
 
-            content.Children.Add(webview);
+            content.Children.Add(webviewView);
         }
 	}
 }

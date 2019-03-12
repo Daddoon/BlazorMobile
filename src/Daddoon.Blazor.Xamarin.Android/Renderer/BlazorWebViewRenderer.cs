@@ -9,9 +9,11 @@ using Daddoon.Blazor.Xam.Services;
 using Xamarin.Forms;
 using Xamarin.Forms.Platform.Android;
 
+
 [assembly: ExportRenderer(typeof(BlazorWebView), typeof(BlazorWebViewRenderer))]
 namespace Daddoon.Blazor.Xam.Droid.Renderer
 {
+    [Obsolete("Deprecated and will never be called")]
     [Android.Runtime.Preserve(AllMembers = true)]
     public class BlazorWebViewClient : WebViewClient
     {
