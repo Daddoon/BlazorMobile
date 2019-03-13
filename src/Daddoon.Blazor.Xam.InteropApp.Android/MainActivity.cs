@@ -14,15 +14,15 @@ namespace Daddoon.Blazor.Xam.InteropApp.Droid
     [Activity(Label = "Daddoon.Blazor.Xam.InteropApp", Icon = "@mipmap/icon", Theme = "@style/MainTheme", MainLauncher = true, ConfigurationChanges = ConfigChanges.ScreenSize | ConfigChanges.Orientation)]
     public class MainActivity : global::Xamarin.Forms.Platform.Android.FormsAppCompatActivity
     {
-        protected override void OnCreate(Bundle bundle)
+        protected override void OnCreate(Bundle savedInstanceState)
         {
             TabLayoutResource = Resource.Layout.Tabbar;
             ToolbarResource = Resource.Layout.Toolbar;
 
-            base.OnCreate(bundle);
+            base.OnCreate(savedInstanceState);
 
-            global::Xamarin.Forms.Forms.Init(this, bundle);
-            BlazorWebViewService.Init();
+            global::Xamarin.Forms.Forms.Init(this, savedInstanceState);
+            BlazorWebViewService.Init(this);
             LoadApplication(new App());
         }
     }

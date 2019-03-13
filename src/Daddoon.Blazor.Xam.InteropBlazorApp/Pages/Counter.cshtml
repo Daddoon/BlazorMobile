@@ -15,11 +15,13 @@
 
     void IncrementCount()
     {
+        Console.WriteLine("IncrementCount !");
         currentCount++;
     }
 
     async void AlertMe()
     {
+        Console.WriteLine("AlertMe clicked !");
         await XamarinBridge.DisplayAlert("Platform identity", $"Current platform is {Device.RuntimePlatform}", "Great!");
     }
 }

@@ -36,8 +36,6 @@
     <PackageReference Include="EmbedIO" Version="2.2.9" />
     <PackageReference Include="MimeTypes" Version="1.0.6" />
     <PackageReference Include="System.IO.Compression.ZipFile" Version="4.3.0" />
-    <PackageReference Include="Waher.Content" Version="1.0.8" />
-    <PackageReference Include="Waher.Networking.HTTP" Version="1.0.8" />
     <PackageReference Include="Xamarin.Android.GeckoView.Forms" Version="0.1.1" />
     <PackageReference Include="Xamarin.Forms" Version="3.5.0.169047" />
   </ItemGroup>

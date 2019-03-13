@@ -16,7 +16,7 @@ namespace Daddoon.Blazor.Xam.Controller
         {
         }
 
-        [WebApiHandler(HttpVerbs.Get, "/(.)*")]
+        [WebApiHandler(HttpVerbs.Get, @"^(?!\/contextBridge.*$).*")]
         public async Task<bool> BlazorAppRessources()
         {
             try

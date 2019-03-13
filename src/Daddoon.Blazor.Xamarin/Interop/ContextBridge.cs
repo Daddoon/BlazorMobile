@@ -1,6 +1,7 @@
 ﻿using Daddoon.Blazor.Xam.Common.Interop;
 using Daddoon.Blazor.Xam.Common.Serialization;
 using Daddoon.Blazor.Xam.Components;
+using Daddoon.Blazor.Xam.Services;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -126,16 +127,19 @@ namespace Daddoon.Blazor.Xam.Interop
                 MethodProxy returnValue = Receive(json);
                 string jsonReturnValue = GetJSONReturnValue(returnValue);
 
-                var receiveEvaluator = webview.GetReceiveEvaluator(jsonReturnValue);
+                //TODO: Manage missed returns value if the websocket disconnect, or discard them ?
+                WebApplicationFactory.GetBlazorContextBridgeServer().SendMessageToClient(jsonReturnValue);
 
-                if (outEvaluator != null)
-                {
-                    outEvaluator(receiveEvaluator);
-                }
-                else
-                {
-                    webview.Eval(receiveEvaluator);
-                }
+                //var receiveEvaluator = webview.GetReceiveEvaluator(jsonReturnValue);
+
+                //if (outEvaluator != null)
+                //{
+                //    outEvaluator(receiveEvaluator);
+                //}
+                //else
+                //{
+                //    webview.Eval(receiveEvaluator);
+                //}
             });
         }
     }

@@ -1,4 +1,5 @@
 ﻿using Daddoon.Blazor.Xam.Common.Interfaces;
+using Daddoon.Blazor.Xam.Consts;
 using Daddoon.Blazor.Xam.Controller;
 using Daddoon.Blazor.Xam.Interop;
 using System;
@@ -6,7 +7,9 @@ using System.IO;
 using System.IO.Compression;
 using System.Net;
 using System.Net.Sockets;
+using System.Net.WebSockets;
 using System.Runtime.CompilerServices;
+using System.Text;
 using System.Threading;
 using System.Threading.Tasks;
 using Unosquare.Labs.EmbedIO;
@@ -22,6 +25,8 @@ namespace Daddoon.Blazor.Xam.Services
     {
         private static WebServer server;
         private static CancellationTokenSource serverCts = new CancellationTokenSource();
+
+        private static BlazorContextBridge blazorContextBridgeServer = null;
 
         private static bool _isStarted = false;
 
@@ -155,6 +160,18 @@ namespace Daddoon.Blazor.Xam.Services
             return true;
         }
 
+        private static Func<string, string> _defaultPageDelegate;
+
+        internal static Func<string, string> GetDefaultPageResultDelegate()
+        {
+            return _defaultPageDelegate;
+        }
+
+        public static void SetDefaultPageResult(Func<string, string> defaultPageDelegate)
+        {
+            _defaultPageDelegate = defaultPageDelegate;
+        }
+
         public static int GetHttpPort()
         {
             return HttpPort;
@@ -199,10 +216,30 @@ namespace Daddoon.Blazor.Xam.Services
             if (string.IsNullOrEmpty(path))
             {
                 //We are calling the index page. We must call index.html but hide it from url for Blazor routing.
-                path = "index.html";
+                path = Constants.DefaultPage;
             }
 
             return path;
+        }
+
+        internal static MemoryStream ManageIndexPageRendering(MemoryStream originalContent)
+        {
+            string indexContent = Encoding.UTF8.GetString(originalContent.ToArray());
+            originalContent.Dispose();
+
+            //Do user logic
+            var userDelegate = GetDefaultPageResultDelegate();
+            if (userDelegate != null)
+            {
+                indexContent = userDelegate(indexContent);
+            }
+
+            //Do BlazorContextBridgeLogic
+            //Get content to INJECT
+            string injectableContent = ContextBridgeHelper.GetInjectableJavascript(false).Replace("%_contextBridgeURI%", GetContextBridgeURI());
+            indexContent = indexContent.Replace("</blazorXamarin>", "</blazorXamarin>\r\n<script type=\"application/javascript\">" + injectableContent + "\r\n</script>\r\n\r\n");
+
+            return new MemoryStream(Encoding.UTF8.GetBytes(indexContent));
         }
 
         internal static async Task ManageRequest(IWebResponse response)
@@ -212,6 +249,12 @@ namespace Daddoon.Blazor.Xam.Services
             string path = GetQueryPath(response.GetRequestedPath());
 
             var content = GetResourceStream(path);
+
+            //Manage Index content
+            if (path == Constants.DefaultPage)
+            {
+                content = ManageIndexPageRendering(content);
+            }
 
             response.AddResponseHeader("Cache-Control", "no-cache");
             response.AddResponseHeader("Access-Control-Allow-Origin", GetBaseURL());
@@ -255,6 +298,33 @@ namespace Daddoon.Blazor.Xam.Services
             }
         }
 
+        /// <summary>
+        /// As test for the moment. 10 seconds max
+        /// </summary>
+        private const int NativeSocketTimeout = 1000;
+
+        private const string _contextBridgeRelativeURI = "/contextBridge";
+
+        internal static string GetContextBridgeURI()
+        {
+            return GetBaseURL().Replace("http://", "ws://") + _contextBridgeRelativeURI;
+        }
+
+        internal static BlazorContextBridge GetBlazorContextBridgeServer()
+        {
+            return blazorContextBridgeServer;
+        }
+
+        internal static bool _debugFeatures = false;
+
+        /// <summary>
+        /// Add additionals features like Browser console.log output on logcat on Android
+        /// </summary>
+        public static void EnableDebugFeatures()
+        {
+            _debugFeatures = true;
+        }
+
         public static void StartWebServer()
         {
             Init(); //No-op if called twice
@@ -272,15 +342,46 @@ namespace Daddoon.Blazor.Xam.Services
             server.RegisterModule(new WebApiModule());
             server.Module<WebApiModule>().RegisterController<BlazorController>();
 
+            //Reference to the BlazorContextBridge Websocket service
+            blazorContextBridgeServer = new BlazorContextBridge();
+
+            server.RegisterModule(new WebSocketsModule());
+            server.Module<WebSocketsModule>().RegisterWebSocketsServer(_contextBridgeRelativeURI, blazorContextBridgeServer);
+
+            serverCts = new CancellationTokenSource();
+
             Task.Factory.StartNew(async () =>
             {
                 Console.WriteLine("Starting Server...");
-                await server.RunAsync();
+                await server.RunAsync(serverCts.Token);
             });
         }
 
         public static void StopWebServer()
         {
+            //In order to stop the waiting background thread
+            try
+            {
+                serverCts.Cancel();
+            }
+            catch (Exception ex)
+            {
+                Console.WriteLine($"{nameof(WebApplicationFactory)}.{nameof(WebApplicationFactory.StopWebServer)} - {nameof(serverCts)}: {ex.Message}");
+            }
+
+            try
+            {
+                if (blazorContextBridgeServer != null)
+                {
+                    blazorContextBridgeServer.Dispose();
+                    blazorContextBridgeServer = null;
+                }
+            }
+            catch (Exception ex)
+            {
+                Console.WriteLine($"{nameof(WebApplicationFactory)}.{nameof(WebApplicationFactory.StopWebServer)} - {nameof(blazorContextBridgeServer)}: {ex.Message}");
+            }
+
             server?.Dispose();
             server = null;
 

@@ -46,8 +46,8 @@ namespace Daddoon.Blazor.Xam.Components
                         break;
                     default:
                         //TODO: We must verify that we are in the local URI context
-                        string content = ContextBridgeHelper.GetInjectableJavascript();
-                        Eval(content);
+                        //string content = ContextBridgeHelper.GetInjectableJavascript();
+                        //Eval(content);
                         break;
                 }
             }

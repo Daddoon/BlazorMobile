@@ -11,7 +11,7 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Daddoon.Blazor.Xam.Template
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Daddoon.Blazor.Xam.Template.UWP", "src\Daddoon.Blazor.Xam.Template.UWP\Daddoon.Blazor.Xam.Template.UWP.csproj", "{A2B86F74-693D-416F-841B-61E67F0618AB}"
 EndProject
-Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Templates", "Templates", "{ACD7B449-ED19-4B4D-918D-AAB6204A6E68}"
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Templates Debug", "Templates Debug", "{ACD7B449-ED19-4B4D-918D-AAB6204A6E68}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Daddoon.Blazor.Xamarin.Android", "src\Daddoon.Blazor.Xamarin.Android\Daddoon.Blazor.Xamarin.Android.csproj", "{E97E970B-9B46-44FF-A19E-E7B7FA6AA671}"
 EndProject
@@ -67,7 +67,9 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Daddoon.NuGet", "src\Daddoo
 		{13E9CFFC-2F9E-4D40-B1AE-57F61E815642} = {13E9CFFC-2F9E-4D40-B1AE-57F61E815642}
 	EndProjectSection
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Daddoon.Blazor.Xam.BlazorApp", "src\Daddoon.Blazor.Xam.BlazorApp\Daddoon.Blazor.Xam.BlazorApp.csproj", "{DDA6FBB2-B7C0-41CE-A821-6092F015D1B0}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Daddoon.Blazor.Xam.BlazorApp", "src\Daddoon.Blazor.Xam.BlazorApp\Daddoon.Blazor.Xam.BlazorApp.csproj", "{DDA6FBB2-B7C0-41CE-A821-6092F015D1B0}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Templates Release", "Templates Release", "{DBD94519-AA46-49D9-A942-F5F0A1F5B88F}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution

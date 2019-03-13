@@ -42,20 +42,19 @@ namespace Daddoon.Blazor.Xam.Interop
 
             sb.Append(GetFileContent(MainResourceFile));
             sb.AppendLine();
-            sb.AppendLine();
 
-            switch (Device.RuntimePlatform)
-            {
-                case Device.UWP:
-                    sb.Append(GetFileContent(UWPResourceFile));
-                    break;
-                case Device.Android:
-                    sb.Append(GetFileContent(AndroidResourceFile));
-                    break;
-                case Device.iOS:
-                    sb.Append(GetFileContent(iOSResourceFile));
-                    break;
-            }
+            //switch (Device.RuntimePlatform)
+            //{
+            //    case Device.UWP:
+            //        sb.Append(GetFileContent(UWPResourceFile));
+            //        break;
+            //    case Device.Android:
+            //        sb.Append(GetFileContent(AndroidResourceFile));
+            //        break;
+            //    case Device.iOS:
+            //        sb.Append(GetFileContent(iOSResourceFile));
+            //        break;
+            //}
 
             sb.AppendLine();
             var content = sb.ToString();
@@ -66,22 +65,22 @@ namespace Daddoon.Blazor.Xam.Interop
 
             content = $"(function() {{ {content} }})();";
 
-            switch (Device.RuntimePlatform)
-            {
-                case Device.Android:
-                    content = "var xInit = " + content;
-                    break;
-                case Device.iOS:
-                    content = $"var xInit = setInterval(function () " +
-                        $"{{ " +
-                            $"if (Blazor == null || Blazor == undefined) {{ return; }}" +
-                            $"else {{ {content} clearInterval(xInit); }}" +
-                        $"}}, 10);";
-                    break;
-                case Device.UWP:
-                default:
-                    break;
-            }
+            //switch (Device.RuntimePlatform)
+            //{
+            //    case Device.Android:
+            //        content = "var xInit = " + content;
+            //        break;
+            //    case Device.iOS:
+            //        content = $"var xInit = setInterval(function () " +
+            //            $"{{ " +
+            //                $"if (Blazor == null || Blazor == undefined) {{ return; }}" +
+            //                $"else {{ {content} clearInterval(xInit); }}" +
+            //            $"}}, 10);";
+            //        break;
+            //    case Device.UWP:
+            //    default:
+            //        break;
+            //}
 
             return content;
         }

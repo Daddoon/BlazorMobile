@@ -12,6 +12,10 @@ namespace Daddoon.Blazor.Xam.InteropApp
 
             WebApplicationFactory.SetHttpPort(8888);
 
+#if DEBUG
+            WebApplicationFactory.EnableDebugFeatures();
+#endif
+
             //Regiser Blazor app resolver
             //CUSTOMIZE HERE YOUR OWN CODE LOGIC IF NEEDED !!
             WebApplicationFactory.RegisterAppStreamResolver(() =>
