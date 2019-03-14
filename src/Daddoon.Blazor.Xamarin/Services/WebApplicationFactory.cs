@@ -335,7 +335,6 @@ namespace Daddoon.Blazor.Xam.Services
                 return;
             }
 
-            //EmbedIO test
             server = new WebServer(GetBaseURL(), RoutingStrategy.Regex);
             server.WithLocalSession();
 
@@ -352,7 +351,7 @@ namespace Daddoon.Blazor.Xam.Services
 
             Task.Factory.StartNew(async () =>
             {
-                Console.WriteLine("Starting Server...");
+                Console.WriteLine("Blazor.Mobile: Starting Server...");
                 await server.RunAsync(serverCts.Token);
             });
         }

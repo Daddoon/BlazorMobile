@@ -1,4 +1,5 @@
 ﻿using Daddoon.Blazor.Xam.Common;
+using Daddoon.Blazor.Xam.Common.Interop;
 using Daddoon.Blazor.Xam.Interop;
 using System;
 using System.Collections.Generic;
@@ -41,18 +42,33 @@ namespace Daddoon.Blazor.Xam.Controller
 
         protected override void OnMessageReceived(IWebSocketContext context, byte[] buffer, IWebSocketReceiveResult result)
         {
-            //TODO: Considering to send data from client side as binary JSON for performance in the future !
+            //TODO: Considering to send data from client side as binary Streamed JSON for performance in the future !
+            //Value type reference as byte[] and/or string are not good for performance
             string methodProxyJson = buffer.ToText();
 
-            Xamarin.Forms.Device.BeginInvokeOnMainThread(delegate ()
+            Xamarin.Forms.Device.BeginInvokeOnMainThread(() =>
             {
+                MethodProxy taksInput = null;
+                MethodProxy taksOutput = null;
+
                 try
                 {
-                    ContextBridge.Receive(methodProxyJson);
+                    taksInput = ContextBridge.GetMethodProxyFromJSON(methodProxyJson);
+                    taksOutput = ContextBridge.Receive(taksInput);
                 }
                 catch (Exception ex)
                 {
-                    Console.WriteLine("Error: Unable to evaluate data received in BlazorContextBridge: " + ex.Message);
+                    Console.WriteLine("Error: [Native] - BlazorContextBridge.Receive: " + ex.Message);
+                }
+
+                try
+                {
+                    string jsonReturnValue = ContextBridge.GetJSONReturnValue(taksOutput);
+                    SendMessageToClient(jsonReturnValue);
+                }
+                catch (Exception ex)
+                {
+                    Console.WriteLine("Error: [Native] - BlazorContextBridge.Send: " + ex.Message);
                 }
             });
         }

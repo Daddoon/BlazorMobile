@@ -68,15 +68,17 @@ namespace Daddoon.Blazor.Xam.Interop
             return BridgeSerializer.Serialize(methodResult);
         }
 
-        public static MethodProxy Receive(string methodProxyJson)
+        public static MethodProxy GetMethodProxyFromJSON(string json)
+        {
+            return BridgeSerializer.Deserialize<MethodProxy>(json);
+        }
+
+        public static MethodProxy Receive(MethodProxy methodProxy)
         {
             object defaultValue = default(object);
-            MethodProxy methodProxy = null;
 
             try
             {
-                methodProxy = BridgeSerializer.Deserialize<MethodProxy>(methodProxyJson);
-
                 Type iface = methodProxy.InterfaceType.ResolvedType();
                 object concreteService = DependencyServiceExtension.Get(iface);
 
@@ -103,8 +105,10 @@ namespace Daddoon.Blazor.Xam.Interop
                     methodProxy.ReturnValue = GetResultFromTask(methodProxy.ReturnType.ResolvedType(), (Task)methodProxy.ReturnValue);
                 }
             }
-            catch (Exception)
+            catch (Exception ex)
             {
+                Console.WriteLine($"Error: [Native] - {nameof(ContextBridge)}.{nameof(Receive)}: {ex.Message}");
+
                 methodProxy.ReturnValue = defaultValue;
                 methodProxy.TaskSuccess = false;
             }
@@ -117,14 +121,14 @@ namespace Daddoon.Blazor.Xam.Interop
         /// </summary>
         /// <param name="webview"></param>
         /// <param name="json"></param>
-        public static void BridgeEvaluator(BlazorWebView webview, string json, Action<string> outEvaluator = null)
+        public static void BridgeEvaluator(BlazorWebView webview, MethodProxy taskInput, Action<string> outEvaluator = null)
         {
             //We must evaluate data on main thread, as some platform doesn't
             //support to be executed from a non-UI thread for UI 
             //or Webview bridge
             Device.BeginInvokeOnMainThread(delegate ()
             {
-                MethodProxy returnValue = Receive(json);
+                MethodProxy returnValue = Receive(taskInput);
                 string jsonReturnValue = GetJSONReturnValue(returnValue);
 
                 //TODO: Manage missed returns value if the websocket disconnect, or discard them ?

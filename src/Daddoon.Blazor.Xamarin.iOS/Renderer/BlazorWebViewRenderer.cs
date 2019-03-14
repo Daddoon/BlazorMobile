@@ -1,4 +1,5 @@
-﻿using Daddoon.Blazor.Xam.Components;
+﻿using Daddoon.Blazor.Xam.Common.Interop;
+using Daddoon.Blazor.Xam.Components;
 using Daddoon.Blazor.Xam.Interop;
 using Daddoon.Blazor.Xam.iOS.Renderer;
 using Daddoon.Blazor.Xam.Services;
@@ -57,7 +58,8 @@ namespace Daddoon.Blazor.Xam.iOS.Renderer
 
         public void DidReceiveScriptMessage(WKUserContentController userContentController, WKScriptMessage message)
         {
-            ContextBridge.BridgeEvaluator(Element, message.Body.ToString(), delegate (string result)
+            MethodProxy taksInput = ContextBridge.GetMethodProxyFromJSON(message.Body.ToString());
+            ContextBridge.BridgeEvaluator(Element, taksInput, delegate (string result)
             {
                 Control.EvaluateJavaScript((NSString)result, GetJavascriptEvaluationResultHandler());
             });
