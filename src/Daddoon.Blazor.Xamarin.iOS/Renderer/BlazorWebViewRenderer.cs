@@ -5,14 +5,17 @@ using Daddoon.Blazor.Xam.iOS.Renderer;
 using Daddoon.Blazor.Xam.Services;
 using Foundation;
 using System;
+using System.ComponentModel;
+using System.Threading.Tasks;
 using WebKit;
 using Xamarin.Forms;
+using Xamarin.Forms.Internals;
 using Xamarin.Forms.Platform.iOS;
 
 [assembly: ExportRenderer(typeof(BlazorWebView), typeof(BlazorWebViewRenderer))]
 namespace Daddoon.Blazor.Xam.iOS.Renderer
 {
-    public class BlazorWebViewRenderer : ViewRenderer<BlazorWebView, WKWebView>, IWKScriptMessageHandler
+    public class BlazorWebViewRenderer : ViewRenderer<BlazorWebView, WKWebView>, IWKScriptMessageHandler, IWebViewDelegate
     {
         /// <summary>
         /// Using an other method keyname as Init already exist on NSObject on iOS...
@@ -30,9 +33,6 @@ namespace Daddoon.Blazor.Xam.iOS.Renderer
             if (Control == null && e.NewElement != null)
             {
                 userController = new WKUserContentController();
-                //var script = new WKUserScript(new NSString(ContextBridgeHelper.GetInjectableJavascript(false)), WKUserScriptInjectionTime.AtDocumentEnd, false);
-                //userController.AddUserScript(script);
-                userController.AddScriptMessageHandler(this, "invokeAction");
 
                 var config = new WKWebViewConfiguration { UserContentController = userController, Preferences = new WKPreferences()
                 {
@@ -48,42 +48,96 @@ namespace Daddoon.Blazor.Xam.iOS.Renderer
             if (e.OldElement != null)
             {
                 userController.RemoveAllUserScripts();
-                userController.RemoveScriptMessageHandler("invokeAction");
+
+                var oldElementController = e.OldElement as IWebViewController;
+                oldElementController.EvalRequested -= OnEvalRequested;
+                oldElementController.EvaluateJavaScriptRequested -= OnEvaluateJavaScriptRequested;
+                oldElementController.GoBackRequested -= OnGoBackRequested;
+                oldElementController.GoForwardRequested -= OnGoForwardRequested;
+                oldElementController.ReloadRequested -= OnReloadRequested;
             }
             if (e.NewElement != null)
             {
-                Control.LoadRequest(new NSUrlRequest(new NSUrl(WebApplicationFactory.GetBaseURL())));
+                var newElementController = e.NewElement as IWebViewController;
+                newElementController.EvalRequested += OnEvalRequested;
+                newElementController.EvaluateJavaScriptRequested += OnEvaluateJavaScriptRequested;
+                newElementController.GoBackRequested += OnGoBackRequested;
+                newElementController.GoForwardRequested += OnGoForwardRequested;
+                newElementController.ReloadRequested += OnReloadRequested;
+            }
+
+            Load();
+        }
+
+        protected virtual void OnReloadRequested(object sender, EventArgs e)
+        {
+            Control.Reload();
+        }
+
+        protected virtual void OnGoForwardRequested(object sender, EventArgs e)
+        {
+            Control.GoForward();
+        }
+
+        protected virtual void OnGoBackRequested(object sender, EventArgs e)
+        {
+            Control.GoBack();
+        }
+
+        protected virtual Task<string> OnEvaluateJavaScriptRequested(string script)
+        {
+            throw new NotImplementedException($"{nameof(OnEvaluateJavaScriptRequested)}: Javascript evaluation is not yet reimplemented on the WKWebView Blazor renderer");
+        }
+
+        protected virtual void OnEvalRequested(object sender, EvalRequested e)
+        {
+            throw new NotImplementedException($"{nameof(OnEvalRequested)}: Javascript evaluation is not yet reimplemented on the WKWebView Blazor renderer");
+        }
+
+        protected virtual void Load()
+        {
+            WebViewSource source = Element.Source;
+            UrlWebViewSource uri = source as UrlWebViewSource;
+
+            if (uri != null)
+            {
+                Control.LoadRequest(new NSUrlRequest(new NSUrl(uri.Url)));
+            }
+            else
+            {
+                HtmlWebViewSource html = source as HtmlWebViewSource;
+                if (html != null)
+                {
+                    Control.LoadHtmlString(html.Html, new NSUrl("/"));
+                }
+            }
+        }
+
+        protected override void OnElementPropertyChanged(object sender, PropertyChangedEventArgs e)
+        {
+            base.OnElementPropertyChanged(sender, e);
+
+            switch (e.PropertyName)
+            {
+                case "Source":
+                    Load();
+                    break;
             }
         }
 
         public void DidReceiveScriptMessage(WKUserContentController userContentController, WKScriptMessage message)
         {
-            MethodProxy taksInput = ContextBridge.GetMethodProxyFromJSON(message.Body.ToString());
-            ContextBridge.BridgeEvaluator(Element, taksInput, delegate (string result)
-            {
-                Control.EvaluateJavaScript((NSString)result, GetJavascriptEvaluationResultHandler());
-            });
+            //No-op
         }
 
-        private WKJavascriptEvaluationResult _handler = null;
-        public WKJavascriptEvaluationResult GetJavascriptEvaluationResultHandler()
+        public void LoadHtml(string html, string baseUrl)
         {
-            if (_handler == null)
-            {
-                _handler = (NSObject result, NSError err) =>
-                {
-                    if (err != null)
-                    {
-                        System.Console.WriteLine(err);
-                    }
-                    if (result != null)
-                    {
-                        System.Console.WriteLine(result);
-                    }
-                };
-            }
+            Control.LoadHtmlString(html, new NSUrl(baseUrl));
+        }
 
-            return _handler;
+        public void LoadUrl(string url)
+        {
+            Control.LoadRequest(new NSUrlRequest(new NSUrl(url)));
         }
     }
 
@@ -126,10 +180,6 @@ namespace Daddoon.Blazor.Xam.iOS.Renderer
         [Export("webView:didFinishNavigation:")]
         public override void DidFinishNavigation(WKWebView webView, WKNavigation navigation)
         {
-            var content = ContextBridgeHelper.GetInjectableJavascript();
-            var handler = _renderer.GetJavascriptEvaluationResultHandler();
-
-            _renderer.Control.EvaluateJavaScript((NSString)content, handler);
         }
 
         [Export("webView:didFailNavigation:withError:")]

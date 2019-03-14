@@ -19,15 +19,11 @@
   </PropertyGroup>
 
   <ItemGroup>
-    <None Remove="Interop\Javascript\contextbridge.android.js" />
-    <None Remove="Interop\Javascript\contextbridge.ios.js" />
     <None Remove="Interop\Javascript\contextbridge.js" />
     <None Remove="Interop\Javascript\contextbridge.uwp.js" />
   </ItemGroup>
 
   <ItemGroup>
-    <EmbeddedResource Include="Interop\Javascript\contextbridge.android.js" />
-    <EmbeddedResource Include="Interop\Javascript\contextbridge.ios.js" />
     <EmbeddedResource Include="Interop\Javascript\contextbridge.js" />
     <EmbeddedResource Include="Interop\Javascript\contextbridge.uwp.js" />
   </ItemGroup>
