@@ -1,6 +1,6 @@
-# Blazor.Xamarin
+# BlazorMobile
 Create Hybrid-Apps for iOS, Android, UWP with Blazor and Xamarin !
-**Blazor.Xamarin** is a Nuget package for embedding Blazor application as standalone mobile application, hosted in Xamarin.
+**BlazorMobile** is a Nuget package for embedding Blazor application as standalone mobile application, hosted in Xamarin.
 
 ## Platform requirements
 
@@ -37,20 +37,20 @@ This is not affiliated with this project, and not officialy supported at the mom
 
 ## Summary
 
-- [Installing Blazor.Xamarin from scratch](https://github.com/Daddoon/Blazor.Xamarin/#installing-blazorxamarin-from-scratch)
-- [Communication between Blazor/Xamarin.Forms](https://github.com/Daddoon/Blazor.Xamarin/#communication-between-blazorxamarinforms)
-- [Detecting Runtime Platform](https://github.com/Daddoon/Blazor.Xamarin/blob/master/README.md#detecting-runtime-platform)
+- [Installing BlazorMobile from scratch](https://github.com/Daddoon/BlazorMobile/#installing-blazorxamarin-from-scratch)
+- [Communication between Blazor/Xamarin.Forms](https://github.com/Daddoon/BlazorMobile/#communication-between-blazorxamarinforms)
+- [Detecting Runtime Platform](https://github.com/Daddoon/BlazorMobile/blob/master/README.md#detecting-runtime-platform)
 
 ### Easy installation
 
-You may just copy and use all **Daddoon.Blazor.Xam.InteropApp projects**, located in the **Test** solution folder of this project.
+You may just copy and use all **BlazorMobile.InteropApp projects**, located in the **Test** solution folder of this project.
 
-I advise you to also read the [installation guide](https://github.com/Daddoon/Blazor.Xamarin/#installing-blazorxamarin-from-scratch) to know how the initial setup works.
+I advise you to also read the [installation guide](https://github.com/Daddoon/BlazorMobile/#installing-blazorxamarin-from-scratch) to know how the initial setup works.
 
-For communication between your **Blazor app and Native Xamarin app** [COMMUNICATION BETWEEN BLAZOR/XAMARIN.FORMS section](https://github.com/Daddoon/Blazor.Xamarin#communication-between-blazorxamarinforms).
+For communication between your **Blazor app and Native Xamarin app** [COMMUNICATION BETWEEN BLAZOR/XAMARIN.FORMS section](https://github.com/Daddoon/BlazorMobile#communication-between-blazorxamarinforms).
 
 
-## Installing Blazor.Xamarin from scratch
+## Installing BlazorMobile from scratch
 
 ### 1. Create your Xamarin.Forms application project in Visual Studio
 
@@ -107,21 +107,21 @@ On YourApp project, add your generated ZIP from the Blazor project, as a "link" 
 Do right click on your newly added as link file in YourApp project, and click **Properties**
 Then check that the **Build Action property** is on **Embedded Resource**
 
-## 6. Add Daddoon.Blazor.Xamarin NuGet package
+## 6. Add BlazorMobile NuGet package
 
-Add **Daddoon.Blazor.Xamarin** NuGet package on the following projects:
+Add **BlazorMobile** NuGet package on the following projects:
 
 - YourApp
 - YourApp.Droid
 - YourApp.iOS
 - YourApp.UWP
 
-Add **Daddoon.Blazor.Xamarin.Common** NuGet package on the following projects:
+Add **BlazorMobile.Common** NuGet package on the following projects:
 
 - YourApp.Shared
 - Your Blazor project, but actually **YourApp.Shared may be sufficient**, as it will be referenced also on your Blazor project.
 
-The packages are available on the nuget.org feed, but you can also download the file manually [in the release page](https://github.com/Daddoon/Blazor.Xamarin/releases)
+The packages are available on the nuget.org feed, but you can also download the file manually [in the release page](https://github.com/Daddoon/BlazorMobile/releases)
 
 ## 7. Platform specific configuration
 
@@ -129,7 +129,7 @@ As there is often some strange behavior with IL stripping in Xamarin, you have t
 
 For **Android** you have to set the following in **MainActivity.cs**
 ```csharp
-using Daddoon.Blazor.Xam.Droid.Services;
+using BlazorMobile.Droid.Services;
     
 namespace YourApp.Droid
 {
@@ -148,7 +148,7 @@ namespace YourApp.Droid
 
 For **iOS** you have to set the following in **AppDelegate.cs**
 ```csharp
-using Daddoon.Blazor.Xam.iOS.Services;
+using BlazorMobile.iOS.Services;
     
 namespace YourApp.iOS
 {
@@ -194,7 +194,7 @@ Also, you must update your **Info.plist** file to allow localhost requests insid
 
 For **UWP** you have to set the following in **App.xaml.cs**
 ```csharp
-using Daddoon.Blazor.Xam.UWP.Services;
+using BlazorMobile.UWP.Services;
     
 namespace YourApp.UWP
 {
@@ -242,7 +242,7 @@ There are few, but still some lines to add to **YourApp** project
 Open **App.xaml.cs** and make it look like this:
 
 ```csharp
-using Daddoon.Blazor.Xam.Services;
+using BlazorMobile.Services;
 using Xamarin.Forms;
 
 namespace YourApp
@@ -319,8 +319,8 @@ Here is a example of how your **MainPage.xaml** and **MainPage.xaml.cs** could l
 
 **MainPage.xaml.cs**
 ```csharp
-using Daddoon.Blazor.Xam.Components;
-using Daddoon.Blazor.Xam.Services;
+using BlazorMobile.Components;
+using BlazorMobile.Services;
 using Xamarin.Forms;
 
 namespace YourApp
@@ -366,7 +366,7 @@ Here is a simple example to Display a Xamarin.Forms alert from Blazor.
 Your file should look like this:
 
 ```csharp
-using Daddoon.Blazor.Xam.Common.Attributes;
+using BlazorMobile.Common.Attributes;
 using System;
 using System.Collections.Generic;
 using System.Runtime.CompilerServices;
@@ -422,7 +422,7 @@ namespace YourApp.Services
 **In your Blazor project**, implement the proxy class implementation, assuming the **BlazorApp** namespace is your Blazor application default namespace. For our example it look like this:
 
 ```csharp
-using Daddoon.Blazor.Xam.Common.Services;
+using BlazorMobile.Common.Services;
 using YourApp.Shared.Interfaces;
 using System;
 using System.Collections.Generic;
@@ -445,7 +445,7 @@ namespace BlazorApp.Services
 
 **The key is the MethodDispatcher** class, that will prepare every callback for you, but because of the lack of JIT, you have to give yourself some parameters. Take a look at the different implementations of MethodDispatcher methods, in order to accord everything to your context, like if your using Task (Async calls) or not, if you expect a return value, generic types etc.
 
-There is actually some syntactic sugar method calls in order to just mimic what you are expecting, by just recoying the same kind of signature, if using generic parameters etc. You may take a look at the [MethodDispatcher file](https://github.com/Daddoon/Blazor.Xamarin/blob/master/src/Daddoon.Blazor.Xamarin.Common/Services/MethodDispatcher.cs) if you want to see the available methods overload.
+There is actually some syntactic sugar method calls in order to just mimic what you are expecting, by just recoying the same kind of signature, if using generic parameters etc. You may take a look at the [MethodDispatcher file](https://github.com/Daddoon/BlazorMobile/blob/master/src/BlazorMobile.Common/Services/MethodDispatcher.cs) if you want to see the available methods overload.
 
 **Note that if you want that the caller and receiver is actually the same method signature on the 2 ends (Blazor and Xamarin), you can safely use MethodBase.GetCurrentMethod() everytime for the MethodInfo parameter**
 
@@ -508,7 +508,7 @@ Where **blazorXamarin** is a tag name available in your **index.html** like:
 <head>
     <meta charset="utf-8" />
     <meta name="viewport" content="initial-scale=1.0" />
-    <title>Daddoon.Blazor.Xam.InteropBlazorApp</title>
+    <title>BlazorMobile.InteropBlazorApp</title>
     <base href="/" />
     <link href="css/bootstrap/bootstrap.min.css" rel="stylesheet" />
     <link href="css/site.css" rel="stylesheet" />
@@ -535,7 +535,7 @@ Device.RuntimePlatform
 ```
 
 In order to manage your application workflow and specific services/calls based on the underlying system.
-**Device.RuntimePlatform** namespace is **Daddoon.Blazor.Xam.Common** and does mimic the result of **Xamarin.Forms.Device.RuntimePlatform** with some minor change, as **Browser** is returned in a pure web app in a browser, and **Unknown** is returned if an error occur or if the initialization is not yet made.
+**Device.RuntimePlatform** namespace is **BlazorMobile.Common** and does mimic the result of **Xamarin.Forms.Device.RuntimePlatform** with some minor change, as **Browser** is returned in a pure web app in a browser, and **Unknown** is returned if an error occur or if the initialization is not yet made.
 
 
 # DISCLAIMER

@@ -1,0 +1,13 @@
+﻿<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <TargetFramework>netstandard2.0</TargetFramework>
+    <AssemblyName>BlazorMobile.Sample.Common</AssemblyName>
+    <RootNamespace>BlazorMobile.Sample.Common</RootNamespace>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <PackageReference Include="BlazorMobile.Common" Version="0.8.0" />
+  </ItemGroup>
+
+</Project>
