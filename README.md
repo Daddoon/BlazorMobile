@@ -24,9 +24,9 @@ As Blazor is evolving very fast, this current plugin implementations may become 
 ## Summary
 
 - [Getting started from sample](https://github.com/Daddoon/BlazorMobile#getting-started-from-sample)
-- [Installing BlazorMobile from scratch](https://github.com/Daddoon/BlazorMobile/#installing-blazorxamarin-from-scratch)
-- [Communication between Blazor/Xamarin.Forms](https://github.com/Daddoon/BlazorMobile/#communication-between-blazorxamarinforms)
-- [Detecting Runtime Platform](https://github.com/Daddoon/BlazorMobile/blob/master/README.md#detecting-runtime-platform)
+- [Installing BlazorMobile from scratch](https://github.com/Daddoon/BlazorMobile#installing-blazormobile-from-scratch)
+- [Communication between Blazor/Xamarin.Forms](https://github.com/Daddoon/BlazorMobile#communication-between-blazorxamarinforms)
+- [Detecting Runtime Platform](https://github.com/Daddoon/BlazorMobile#detecting-runtime-platform)
 
 ### Getting started from sample
 
