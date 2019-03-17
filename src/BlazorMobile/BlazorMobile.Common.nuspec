@@ -1,0 +1,30 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<package xmlns="http://schemas.microsoft.com/packaging/2012/06/nuspec.xsd">
+    <metadata>
+        <id>BlazorMobile.Common</id>
+        <version>0.8.0</version>
+        <title>BlazorMobile.Common</title>
+        <authors>Guillaume ZAHRA</authors>
+        <owners>Daddoon</owners>
+        <licenseUrl>https://github.com/Daddoon/BlazorMobile/blob/master/LICENSE</licenseUrl>
+        <projectUrl>https://github.com/Daddoon/BlazorMobile</projectUrl>
+        <iconUrl>https://www.nuget.org/Content/gallery/img/default-package-icon-256x256.png</iconUrl>
+        <requireLicenseAcceptance>true</requireLicenseAcceptance>
+        <description>This NuGet package intended for the Blazor application side of the BlazorMobile package. Use BlazorMobile page for the native side.</description>
+        <releaseNotes>Added support for Blazor 0.8.0. Support for UWP removed temporarily</releaseNotes>
+        <copyright>Copyright 2019</copyright>
+        <tags>Blazor BlazorMobile Xamarin iOS Android Hybrid</tags>
+        <dependencies>
+            <group targetFramework="netstandard2.0">
+                <dependency id="Newtonsoft.Json" version="11.0.2" />
+                <dependency id="NETStandard.Library" version="2.0.1" />
+                <dependency id="Microsoft.AspNetCore.Blazor" version="0.7.0" />
+            </group>
+        </dependencies>
+    </metadata>
+    <files>
+        <!-- Cross-platform reference assemblies -->
+        <file src="lib\netstandard2.0\BlazorMobile.Common.dll" target="lib\netstandard2.0\BlazorMobile.Common.dll" />
+        <file src="lib\BlazorMobile.Common.xml" target="lib\netstandard2.0\BlazorMobile.Common.xml" />
+    </files>
+</package>

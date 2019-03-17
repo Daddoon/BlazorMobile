@@ -1,0 +1,13 @@
+﻿<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <TargetFramework>netstandard2.0</TargetFramework>
+    <AssemblyName>BlazorMobile.NuGet</AssemblyName>
+    <RootNamespace>BlazorMobile.NuGet</RootNamespace>
+  </PropertyGroup>
+
+  <Target Name="PostBuild" AfterTargets="PostBuildEvent">
+    <Exec Command="nuget pack .\..\BlazorMobile\BlazorMobile.nuspec -OutputDirectory .\artifacts&#xD;&#xA;nuget pack .\..\BlazorMobile\BlazorMobile.Common.nuspec -OutputDirectory .\artifacts" />
+  </Target>
+
+</Project>
