@@ -30,7 +30,7 @@ As Blazor is evolving very fast, this current plugin implementations may become 
 
 ### Getting started from sample
 
-The easiest way in order to start is to [download the sample projects](https://github.com/Daddoon/BlazorMobile/releases/download/v0.8.0/BlazorMobile.Samples.zip). Unzip, and open the solution, and you are good to go.
+The easiest way in order to start is to [download the sample projects](https://github.com/Daddoon/BlazorMobile/releases/download/0.8.0/BlazorMobile.Samples.zip). Unzip, and open the solution, and you are good to go.
 
 If you want to install from scratch, read below.
 
