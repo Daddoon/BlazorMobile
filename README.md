@@ -23,14 +23,14 @@ As Blazor is evolving very fast, this current plugin implementations may become 
 
 ## Summary
 
-- [Getting started from sample](https://github.com/Daddoon/BlazorMobile/#getting-stated-from-sample)
-- [Installing BlazorMobile from scratch](https://github.com/Daddoon/BlazorMobile/#installing-blazorxamarin-from-scratch)
-- [Communication between Blazor/Xamarin.Forms](https://github.com/Daddoon/BlazorMobile/#communication-between-blazorxamarinforms)
-- [Detecting Runtime Platform](https://github.com/Daddoon/BlazorMobile/blob/master/README.md#detecting-runtime-platform)
+- [Getting started from sample](https://github.com/Daddoon/BlazorMobile#getting-started-from-sample)
+- [Installing BlazorMobile from scratch](https://github.com/Daddoon/BlazorMobile#installing-blazormobile-from-scratch)
+- [Communication between Blazor/Xamarin.Forms](https://github.com/Daddoon/BlazorMobile#communication-between-blazorxamarinforms)
+- [Detecting Runtime Platform](https://github.com/Daddoon/BlazorMobile#detecting-runtime-platform)
 
 ### Getting started from sample
 
-The easiest way in order to start is to [download the sample projects](https://github.com/Daddoon/BlazorMobile/releases/download/v0.8.0/BlazorMobile.Samples.zip). Unzip, and open the solution, and you are good to go.
+The easiest way in order to start is to [download the sample projects](https://github.com/Daddoon/BlazorMobile/releases/download/0.8.0/BlazorMobile.Samples.zip). Unzip, and open the solution, and you are good to go.
 
 If you want to install from scratch, read below.
 
