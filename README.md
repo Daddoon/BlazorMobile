@@ -501,3 +501,11 @@ Device.RuntimePlatform
 
 In order to manage your application workflow and specific services/calls based on the underlying system.
 **Device.RuntimePlatform** namespace is **BlazorMobile.Common** and does mimic the result of **Xamarin.Forms.Device.RuntimePlatform** with some minor change, as **Browser** is returned in a pure web app in a browser, and **Unknown** is returned if an error occur or if the initialization is not yet made.
+
+## Authors
+
+* **Guillaume ZAHRA** - [Daddoon](https://github.com/Daddoon)
+
+## License
+
+This project is licensed under the MIT License - see the [LICENSE](LICENSE) file for details
