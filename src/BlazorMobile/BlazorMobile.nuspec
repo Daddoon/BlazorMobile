@@ -2,7 +2,7 @@
 <package xmlns="http://schemas.microsoft.com/packaging/2012/06/nuspec.xsd">
     <metadata>
         <id>BlazorMobile</id>
-        <version>0.8.0</version>
+        <version>3.0.0</version>
         <title>BlazorMobile</title>
         <authors>Guillaume ZAHRA</authors>
         <owners>Daddoon</owners>
@@ -11,7 +11,7 @@
         <iconUrl>https://www.nuget.org/Content/gallery/img/default-package-icon-256x256.png</iconUrl>
         <requireLicenseAcceptance>true</requireLicenseAcceptance>
         <description>BlazorMobile allow hosting a Blazor application as a standalone mobile application, with native communication support. Support iOS 12+, Android 4.4 &gt;=</description>
-        <releaseNotes>Added support for Blazor 0.8.0. Support for UWP removed temporarily</releaseNotes>
+        <releaseNotes>Added support for Blazor 3.0.0.</releaseNotes>
         <copyright>Copyright 2019</copyright>
         <tags>Blazor BlazorMobile Xamarin iOS Android Hybrid</tags>
         <dependencies>
@@ -23,7 +23,7 @@
             <dependency id="Newtonsoft.Json" version="11.0.2" />
             <dependency id="NETStandard.Library" version="2.0.1" />
             <dependency id="Microsoft.AspNetCore.Blazor" version="0.7.0" />
-			      <dependency id="BlazorMobile.Common" version="0.8.0" />
+            <dependency id="BlazorMobile.Common" version="3.0.0" />
           </group>
 
           <group targetFramework="MonoAndroid8.0">
@@ -34,7 +34,7 @@
             <dependency id="Newtonsoft.Json" version="11.0.2" />
             <dependency id="NETStandard.Library" version="2.0.1" />
             <dependency id="Microsoft.AspNetCore.Blazor" version="0.7.0" />
-            <dependency id="BlazorMobile.Common" version="0.8.0" />
+            <dependency id="BlazorMobile.Common" version="3.0.0" />
             <dependency id="Xamarin.Android.GeckoView.Forms" version="0.1.1" />
           </group>
 
@@ -46,7 +46,7 @@
             <dependency id="Newtonsoft.Json" version="11.0.2" />
             <dependency id="NETStandard.Library" version="2.0.1" />
             <dependency id="Microsoft.AspNetCore.Blazor" version="0.7.0" />
-            <dependency id="BlazorMobile.Common" version="0.8.0" />
+            <dependency id="BlazorMobile.Common" version="3.0.0" />
             <dependency id="Xamarin.Android.GeckoView.Forms" version="0.1.1" />
           </group>
 
@@ -58,7 +58,7 @@
             <dependency id="Newtonsoft.Json" version="11.0.2" />
             <dependency id="NETStandard.Library" version="2.0.1" />
             <dependency id="Microsoft.AspNetCore.Blazor" version="0.7.0" />
-            <dependency id="BlazorMobile.Common" version="0.8.0" />
+            <dependency id="BlazorMobile.Common" version="3.0.0" />
             <dependency id="Xamarin.Android.GeckoView.Forms" version="0.1.1" />
           </group>
 
@@ -70,7 +70,7 @@
             <dependency id="Newtonsoft.Json" version="11.0.2" />
             <dependency id="NETStandard.Library" version="2.0.1" />
             <dependency id="Microsoft.AspNetCore.Blazor" version="0.7.0" />
-            <dependency id="BlazorMobile.Common" version="0.8.0" />
+            <dependency id="BlazorMobile.Common" version="3.0.0" />
             <dependency id="Xamarin.Android.GeckoView.Forms" version="0.1.1" />
           </group>
           
