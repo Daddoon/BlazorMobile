@@ -15,8 +15,8 @@
 
   <ItemGroup>
     <PackageReference Include="BlazorMobile.Common" Version="0.8.0" />
-    <PackageReference Include="Microsoft.AspNetCore.Blazor" Version="0.8.0-preview-19104-04" />
-    <PackageReference Include="Microsoft.AspNetCore.Blazor.Build" Version="0.8.0-preview-19104-04" PrivateAssets="all" />
+    <PackageReference Include="Microsoft.AspNetCore.Blazor" Version="3.0.0-preview6.19307.2" />
+    <PackageReference Include="Microsoft.AspNetCore.Blazor.Build" Version="3.0.0-preview6.19307.2" PrivateAssets="all" />
 
     <DotNetCliToolReference Include="Microsoft.AspNetCore.Blazor.Cli" Version="0.8.0-preview-19104-04" />
   </ItemGroup>
