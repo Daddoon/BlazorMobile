@@ -15,10 +15,6 @@ namespace BlazorMobile.Sample.Droid
     [Activity(Label = "BlazorMobile.Sample", Icon = "@mipmap/icon", Theme = "@style/MainTheme", MainLauncher = true, ConfigurationChanges = ConfigChanges.ScreenSize | ConfigChanges.Orientation)]
     public class MainActivity : global::Xamarin.Forms.Platform.Android.FormsAppCompatActivity
     {
-        static MainActivity() {
-            AppCompatDelegate.CompatVectorFromResourcesEnabled = true;
-        }
-
         protected override void OnCreate(Bundle savedInstanceState)
         {
             TabLayoutResource = Resource.Layout.Tabbar;
