@@ -10,7 +10,7 @@
         <projectUrl>https://github.com/Daddoon/BlazorMobile</projectUrl>
         <iconUrl>https://www.nuget.org/Content/gallery/img/default-package-icon-256x256.png</iconUrl>
         <requireLicenseAcceptance>true</requireLicenseAcceptance>
-        <description>BlazorMobile allow hosting a Blazor application as a standalone mobile application, with native communication support. Support iOS 12+, Android 4.4 &gt;=</description>
+        <description>BlazorMobile allow hosting a Blazor application as a standalone mobile application, with native communication support. Support iOS 12+, Android 5.0 &gt;=</description>
         <releaseNotes>Added support for Blazor 3.0.0.</releaseNotes>
         <copyright>Copyright 2019</copyright>
         <tags>Blazor BlazorMobile Xamarin iOS Android Hybrid</tags>
