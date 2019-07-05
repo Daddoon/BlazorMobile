@@ -314,7 +314,7 @@ namespace YourApp
 <body>
     <app>Loading...</app>
     <script type="text/javascript" src="js/blazor.polyfill.js"></script>
-    <script src="_framework/components.webassembly.js"></script>
+    <script src="_framework/blazor.webassembly.js"></script>
     <blazorXamarin></blazorXamarin>
 </body> 
 </html>
@@ -480,7 +480,7 @@ Where **blazorXamarin** is a tag name available in your **index.html** like:
 <body>
     <app>Loading...</app>
     <script type="text/javascript" src="js/blazor.polyfill.js"></script>
-    <script src="_framework/components.webassembly.js"></script>
+    <script src="_framework/blazor.webassembly.js"></script>
     <blazorXamarin></blazorXamarin>
 </body> 
 </html>
