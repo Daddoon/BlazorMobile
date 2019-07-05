@@ -8,6 +8,7 @@ using Android.Widget;
 using Android.OS;
 using BlazorMobile.InteropApp;
 using BlazorMobile.Droid.Services;
+using Android.Support.V7.App;
 
 namespace BlazorMobile.InteropApp.Droid
 {
@@ -18,6 +19,8 @@ namespace BlazorMobile.InteropApp.Droid
         {
             TabLayoutResource = Resource.Layout.Tabbar;
             ToolbarResource = Resource.Layout.Toolbar;
+
+            AppCompatDelegate.CompatVectorFromResourcesEnabled = true;
 
             base.OnCreate(savedInstanceState);
 

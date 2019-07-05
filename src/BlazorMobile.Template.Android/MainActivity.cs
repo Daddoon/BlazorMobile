@@ -9,6 +9,7 @@ using Android.OS;
 using Android.Content.Res;
 using BlazorMobile.Droid;
 using BlazorMobile.Droid.Services;
+using Android.Support.V7.App;
 
 namespace BlazorMobile.Template.Droid
 {
@@ -21,6 +22,8 @@ namespace BlazorMobile.Template.Droid
         {
             TabLayoutResource = Resource.Layout.Tabbar;
             ToolbarResource = Resource.Layout.Toolbar;
+
+            AppCompatDelegate.CompatVectorFromResourcesEnabled = true;
 
             base.OnCreate(bundle);
 
