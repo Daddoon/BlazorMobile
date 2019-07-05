@@ -2,7 +2,7 @@
 <package xmlns="http://schemas.microsoft.com/packaging/2012/06/nuspec.xsd">
     <metadata>
         <id>BlazorMobile.Common</id>
-        <version>0.8.0</version>
+        <version>3.0.0</version>
         <title>BlazorMobile.Common</title>
         <authors>Guillaume ZAHRA</authors>
         <owners>Daddoon</owners>
@@ -11,7 +11,7 @@
         <iconUrl>https://www.nuget.org/Content/gallery/img/default-package-icon-256x256.png</iconUrl>
         <requireLicenseAcceptance>true</requireLicenseAcceptance>
         <description>This NuGet package intended for the Blazor application side of the BlazorMobile package. Use BlazorMobile page for the native side.</description>
-        <releaseNotes>Added support for Blazor 0.8.0. Support for UWP removed temporarily</releaseNotes>
+        <releaseNotes>Added support for Blazor 3.0.0. Support for UWP removed temporarily</releaseNotes>
         <copyright>Copyright 2019</copyright>
         <tags>Blazor BlazorMobile Xamarin iOS Android Hybrid</tags>
         <dependencies>

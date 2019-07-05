@@ -4,21 +4,18 @@ Create full C# driven hybrid-apps for iOS & Android!
 **BlazorMobile** - formerly Blazor.Xamarin - is a Nuget package for embedding a Blazor application as a standalone mobile application, hosted in a Xamarin app.
 
 ## Platform requirements
-
-- ~~**UWP:** Windows 10 Fall Creators Update (10.0 ; Build 16299) or greater~~ (Removed for this release)
-- **Android:** Android 4.4 or greater
+  
+- **Android:** Android 5.0 or greater
 - **iOS:** iOS 12 or greater
-- **Blazor:** 0.8.0
+- **Blazor:** 3.0.0-preview6
 
 As Blazor is evolving very fast, this current plugin implementations may become obsolete on some future versions.
 
 
-**The current version has been developed and tested on Blazor 0.8.0-preview-19104-04**
+**The current version has been developed and tested on Blazor 3.0.0-preview6.19307.2**
 
 ### Side note
 
-- The current tooling on Blazor 0.8.0 does **NOT** yet implement a full **mono-wasm-aot toolchain**. This mean that you Blazor app will still use the old JIT interpretation mode. Your app can be 10x slower than the native .NET.
-- This also mean that when the Blazor mono toolchain will be AOT compatible and available, your mobile Blazor app will also gain performance from that.
 - This documentation may lack of some integration details, feel free to ask question in issues, if the sample code is not sufficient.
 
 ## Summary

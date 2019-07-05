@@ -1,4 +1,5 @@
-﻿using BlazorMobile.Common.Helpers;
+﻿using BlazorMobile.Common.Components;
+using BlazorMobile.Common.Helpers;
 using BlazorMobile.Common.Interop;
 using BlazorMobile.Common.Serialization;
 using Microsoft.JSInterop;
@@ -15,7 +16,7 @@ namespace BlazorMobile.Common.Services
             string csharpProxy = BridgeSerializer.Serialize(methodProxy);
             InternalHelper.SetTimeout(async () =>
             {
-                await JSRuntime.Current.InvokeAsync<bool>("contextBridgeSend", csharpProxy);
+                await BlazorXamarinExtensionScript.GetJSRuntime().InvokeAsync<bool>("contextBridgeSend", csharpProxy);
             }, 100);
         }
 

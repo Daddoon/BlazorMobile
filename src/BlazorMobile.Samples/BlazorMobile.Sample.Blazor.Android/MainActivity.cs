@@ -8,6 +8,7 @@ using Android.Widget;
 using Android.OS;
 using BlazorMobile.Sample;
 using BlazorMobile.Droid.Services;
+using Android.Support.V7.App;
 
 namespace BlazorMobile.Sample.Droid
 {
