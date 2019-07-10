@@ -55,13 +55,14 @@ namespace BlazorMobile.InteropBlazorApp
             app.UseEndpoints(endpoints =>
             {
                 var componentEndpointConvention = endpoints.MapBlazorHub();
-                endpoints.MapFallbackToPage("/_Host");
+                componentEndpointConvention.AddComponent(typeof(App), "app");
 
                 BlazorWebViewService.Init(componentEndpointConvention, "blazorXamarin", (bool success) =>
                 {
                     Console.WriteLine($"Initialization success: {success}");
                     Console.WriteLine("Device is: " + Device.RuntimePlatform);
                 });
+                endpoints.MapFallbackToFile("index.html");
             });
         }
     }
