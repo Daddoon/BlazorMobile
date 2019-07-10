@@ -2,7 +2,7 @@
 <package xmlns="http://schemas.microsoft.com/packaging/2012/06/nuspec.xsd">
     <metadata>
         <id>BlazorMobile</id>
-        <version>3.0.0</version>
+        <version>3.0.1</version>
         <title>BlazorMobile</title>
         <authors>Guillaume ZAHRA</authors>
         <owners>Daddoon</owners>
@@ -23,7 +23,7 @@
             <dependency id="Newtonsoft.Json" version="11.0.2" />
             <dependency id="NETStandard.Library" version="2.0.1" />
             <dependency id="Microsoft.AspNetCore.Blazor" version="0.7.0" />
-            <dependency id="BlazorMobile.Common" version="3.0.0" />
+            <dependency id="BlazorMobile.Common" version="3.0.1" />
           </group>
 
           <group targetFramework="MonoAndroid8.0">
@@ -34,7 +34,7 @@
             <dependency id="Newtonsoft.Json" version="11.0.2" />
             <dependency id="NETStandard.Library" version="2.0.1" />
             <dependency id="Microsoft.AspNetCore.Blazor" version="0.7.0" />
-            <dependency id="BlazorMobile.Common" version="3.0.0" />
+            <dependency id="BlazorMobile.Common" version="3.0.1" />
             <dependency id="Xamarin.Android.GeckoView.Forms" version="0.1.1" />
           </group>
 
@@ -46,7 +46,7 @@
             <dependency id="Newtonsoft.Json" version="11.0.2" />
             <dependency id="NETStandard.Library" version="2.0.1" />
             <dependency id="Microsoft.AspNetCore.Blazor" version="0.7.0" />
-            <dependency id="BlazorMobile.Common" version="3.0.0" />
+            <dependency id="BlazorMobile.Common" version="3.0.1" />
             <dependency id="Xamarin.Android.GeckoView.Forms" version="0.1.1" />
           </group>
 
@@ -58,7 +58,7 @@
             <dependency id="Newtonsoft.Json" version="11.0.2" />
             <dependency id="NETStandard.Library" version="2.0.1" />
             <dependency id="Microsoft.AspNetCore.Blazor" version="0.7.0" />
-            <dependency id="BlazorMobile.Common" version="3.0.0" />
+            <dependency id="BlazorMobile.Common" version="3.0.1" />
             <dependency id="Xamarin.Android.GeckoView.Forms" version="0.1.1" />
           </group>
 
@@ -70,7 +70,7 @@
             <dependency id="Newtonsoft.Json" version="11.0.2" />
             <dependency id="NETStandard.Library" version="2.0.1" />
             <dependency id="Microsoft.AspNetCore.Blazor" version="0.7.0" />
-            <dependency id="BlazorMobile.Common" version="3.0.0" />
+            <dependency id="BlazorMobile.Common" version="3.0.1" />
             <dependency id="Xamarin.Android.GeckoView.Forms" version="0.1.1" />
           </group>
           

@@ -10,6 +10,11 @@ namespace BlazorMobile.Common.Components
     public class BlazorXamarinExtensionScript : ComponentBase
     {
         [Inject]
+        IUriHelper _injectedUriHelper { get; set; }
+
+        private static IUriHelper UriHelper { get; set; }
+
+        [Inject]
         IJSRuntime Runtime { get; set; }
 
         private static IJSRuntime JSRuntime { get; set; }
@@ -17,6 +22,7 @@ namespace BlazorMobile.Common.Components
         protected override void OnInit()
         {
             JSRuntime = Runtime;
+            UriHelper = _injectedUriHelper;
         }
 
         /// <summary>
@@ -26,6 +32,15 @@ namespace BlazorMobile.Common.Components
         public static IJSRuntime GetJSRuntime()
         {
             return JSRuntime;
+        }
+
+        /// <summary>
+        /// Return the current IUriHelper initialized with the BlazorMobile plugin
+        /// </summary>
+        /// <returns></returns>
+        public static IUriHelper GetUriHelper()
+        {
+            return UriHelper;
         }
 
         private static bool _isInitialized = false;
