@@ -32,7 +32,9 @@ namespace BlazorMobile.Common
                 xamService = new BlazorXamarinDeviceService();
                 try
                 {
-                    if (await BlazorXamarinExtensionScript.GetJSRuntime()?.InvokeAsync<bool>("BlazorXamarinRuntimeCheck"))
+                    var jsRuntime = BlazorXamarinExtensionScript.GetJSRuntime();
+
+                    if (jsRuntime != null && await jsRuntime.InvokeAsync<bool>("BlazorXamarinRuntimeCheck"))
                     {
                         string resultRuntimePlatform = await xamService.GetRuntimePlatform();
                         RuntimePlatform = resultRuntimePlatform;
