@@ -11,6 +11,7 @@ namespace BlazorMobile.Common.Helpers
         {
             ElapsedEventHandler tmElapsed = null;
             Timer tm = new Timer(timeout);
+            tm.AutoReset = false;
 
             tmElapsed = delegate (object sender, ElapsedEventArgs e)
             {
