@@ -57,12 +57,13 @@ namespace BlazorMobile.InteropBlazorApp
                 var componentEndpointConvention = endpoints.MapBlazorHub();
                 componentEndpointConvention.AddComponent(typeof(App), "app");
 
+                endpoints.MapFallbackToFile("index.html");
+
                 BlazorWebViewService.Init(componentEndpointConvention, "blazorXamarin", (bool success) =>
                 {
                     Console.WriteLine($"Initialization success: {success}");
                     Console.WriteLine("Device is: " + Device.RuntimePlatform);
                 });
-                endpoints.MapFallbackToFile("index.html");
             });
         }
     }

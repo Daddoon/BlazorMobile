@@ -27,7 +27,7 @@ namespace BlazorMobile.Common
         {
             bool success = false;
 
-            InternalHelper.SetTimeout(async () =>
+            InternalHelper.SetConditionalIntervalDelegate(async () =>
             {
                 xamService = new BlazorXamarinDeviceService();
                 try
@@ -52,7 +52,7 @@ namespace BlazorMobile.Common
                     RuntimePlatform = Browser;
                 }
                 onFinish?.Invoke(success);
-            }, 10);
+            }, 10, () => BlazorXamarinExtensionScript.GetJSRuntime() != null, 50);
         }
 
         internal static void Init(IComponentsApplicationBuilder app, string domElementSelector, Action<bool> onFinish)
