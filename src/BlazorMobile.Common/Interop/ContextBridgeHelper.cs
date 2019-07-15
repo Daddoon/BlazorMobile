@@ -3,7 +3,6 @@ using System.Collections.Generic;
 using System.IO;
 using System.Runtime.CompilerServices;
 using System.Text;
-using Xamarin.Forms;
 
 [assembly: InternalsVisibleTo("BlazorMobile.Android")]
 [assembly: InternalsVisibleTo("BlazorMobile.iOS")]
@@ -19,7 +18,7 @@ namespace BlazorMobile.Interop
             var assembly = typeof(ContextBridgeHelper).Assembly;
 
             //Assembly name and Assembly namespace differ in this project
-            string JsNamespace = $"BlazorMobile.{JsFilesPath}";
+            string JsNamespace = $"BlazorMobile.Common.{JsFilesPath}";
 
             using (var contentStream = assembly.GetManifestResourceStream($"{JsNamespace}{filename}"))
             {

@@ -1,4 +1,5 @@
 ﻿using BlazorMobile.Common.Interfaces;
+using BlazorMobile.Common.Services;
 using BlazorMobile.Consts;
 using BlazorMobile.Controller;
 using BlazorMobile.Interop;
@@ -17,6 +18,7 @@ using Unosquare.Labs.EmbedIO.Constants;
 using Unosquare.Labs.EmbedIO.Modules;
 using Xamarin.Forms;
 
+[assembly: InternalsVisibleTo("BlazorMobile.iOS")]
 [assembly: InternalsVisibleTo("BlazorMobile.Android")]
 [assembly: InternalsVisibleTo("BlazorMobile.UWP")]
 namespace BlazorMobile.Services
@@ -303,7 +305,7 @@ namespace BlazorMobile.Services
         /// </summary>
         private const int NativeSocketTimeout = 1000;
 
-        private const string _contextBridgeRelativeURI = "/contextBridge";
+        private const string _contextBridgeRelativeURI = BlazorWebViewService._contextBridgeRelativeURI;
 
         internal static string GetContextBridgeURI()
         {

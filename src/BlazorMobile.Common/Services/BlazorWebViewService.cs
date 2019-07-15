@@ -15,6 +15,34 @@ namespace BlazorMobile.Common.Services
 
         internal const string ComponentEndpointConventionBuilderExtensionsGetType = "Microsoft.AspNetCore.Builder.ComponentEndpointConventionBuilderExtensions, Microsoft.AspNetCore.Components.Server";
 
+
+        internal static string _serverSideClientIP = null;
+
+        internal const string _contextBridgeRelativeURI = "/contextBridge";
+
+        internal static string GetContextBridgeRelativeURI()
+        {
+            if (!ServerSideToClientRemoteDebuggingEnabled())
+                return string.Empty;
+
+            return "ws://" + _serverSideClientIP + _contextBridgeRelativeURI;
+        }
+
+        internal static bool ServerSideToClientRemoteDebuggingEnabled()
+        {
+            return _serverSideClientIP != null;
+        }
+
+        /// <summary>
+        /// Enable server-side web application to connect to a remote allowed native client (iOS, Android) running on a BlazorMobile Xamarin.Forms application
+        /// in order to simulate the Blazor client-side device communication, through web call
+        /// </summary>
+        /// <param name="ip"></param>
+        public static void EnableServerSideToClientRemoteDebugging(string ip)
+        {
+            _serverSideClientIP = ip;
+        }
+
         /// <summary>
         /// Initialize BlazorWebViewService from Blazor client-side app
         /// </summary>

@@ -57,6 +57,8 @@ namespace BlazorMobile.Common
 
         internal static void Init(IComponentsApplicationBuilder app, string domElementSelector, Action<bool> onFinish)
         {
+            BlazorXamarinExtensionScript.IsWebAssembly = true;
+
             if (app == null)
             {
                 onFinish?.Invoke(false);
@@ -70,6 +72,8 @@ namespace BlazorMobile.Common
 
         internal static void InitServer(object appObject, string domElementSelector, Action<bool> onFinish)
         {
+            BlazorXamarinExtensionScript.IsWebAssembly = false;
+
             if (appObject == null)
             {
                 onFinish?.Invoke(false);

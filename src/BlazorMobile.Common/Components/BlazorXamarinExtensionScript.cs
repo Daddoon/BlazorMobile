@@ -1,4 +1,6 @@
-﻿using Microsoft.AspNetCore.Components;
+﻿using BlazorMobile.Common.Services;
+using BlazorMobile.Interop;
+using Microsoft.AspNetCore.Components;
 using Microsoft.AspNetCore.Components.RenderTree;
 using Microsoft.JSInterop;
 using System;
@@ -45,6 +47,8 @@ namespace BlazorMobile.Common.Components
 
         private static bool _isInitialized = false;
 
+        internal static bool IsWebAssembly = true;
+
         protected override void BuildRenderTree(RenderTreeBuilder builder)
         {
             //This component must be rendered once!
@@ -63,6 +67,15 @@ namespace BlazorMobile.Common.Components
     };
 ");
             builder.CloseElement();
+
+            if (IsWebAssembly == false && BlazorWebViewService.ServerSideToClientRemoteDebuggingEnabled())
+            {
+                //Add server side remote to client remote debugging
+                builder.OpenElement(0, "script");
+                builder.AddContent(1, ContextBridgeHelper.GetInjectableJavascript(false).Replace("%_contextBridgeURI%", BlazorWebViewService.GetContextBridgeRelativeURI()));
+                builder.CloseElement();
+            }
+
             _isInitialized = true;
         }
     }
