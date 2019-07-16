@@ -8,14 +8,13 @@ using Microsoft.AspNetCore.Hosting;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
-using BlazorMobile.InteropBlazorApp.Data;
 using BlazorMobile.InteropBlazorApp.Services;
 using BlazorMobile.InteropApp.Common.Interfaces;
 using BlazorMobile.Common.Services;
 using BlazorMobile.Common;
-using BlazorMobile.InteropBlazorApp.Services.ServerMock;
+using BlazorMobile.InteropBlazorApp;
 
-namespace BlazorMobile.InteropBlazorApp
+namespace BlazorMobile.InteropBlazorServerApp
 {
     public class Startup
     {
@@ -32,8 +31,7 @@ namespace BlazorMobile.InteropBlazorApp
         {
             services.AddRazorPages();
             services.AddServerSideBlazor();
-            services.AddSingleton<WeatherForecastService>();
-            services.AddSingleton<IXamarinBridge, XamarinBridgeProxyMock>();
+            services.AddSingleton<IXamarinBridge, XamarinBridgeProxy>();
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
@@ -55,7 +53,7 @@ namespace BlazorMobile.InteropBlazorApp
             app.UseEndpoints(endpoints =>
             {
                 var componentEndpointConvention = endpoints.MapBlazorHub();
-                componentEndpointConvention.AddComponent(typeof(App), "app");
+                componentEndpointConvention.AddComponent(typeof(AppServer), "app");
 
                 endpoints.MapFallbackToFile("index.html");
 

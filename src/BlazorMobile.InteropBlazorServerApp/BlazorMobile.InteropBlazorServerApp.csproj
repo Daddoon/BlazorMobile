@@ -15,6 +15,7 @@
   <ItemGroup>
     <ProjectReference Include="..\BlazorMobile.Common\BlazorMobile.Common.csproj" />
     <ProjectReference Include="..\BlazorMobile.InteropApp.Common\BlazorMobile.InteropApp.Common.csproj" />
+    <ProjectReference Include="..\BlazorMobile.InteropBlazorApp\BlazorMobile.InteropBlazorApp.csproj" />
   </ItemGroup>
 
 </Project>

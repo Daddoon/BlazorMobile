@@ -22,7 +22,7 @@ namespace BlazorMobile.InteropBlazorApp
             Host.CreateDefaultBuilder(args)
                 .ConfigureWebHostDefaults(webBuilder =>
                 {
-                    webBuilder.UseStartup<Startup>();
+                    webBuilder.UseStartup<InteropBlazorServerApp.Startup>();
                 });
     }
 }

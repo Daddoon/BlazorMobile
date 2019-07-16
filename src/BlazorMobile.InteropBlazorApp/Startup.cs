@@ -1,7 +1,7 @@
 using BlazorMobile.Common;
 using BlazorMobile.Common.Services;
 using BlazorMobile.InteropApp.Common.Interfaces;
-using BlazorMobile.InteropApp.UWP.Services;
+using BlazorMobile.InteropBlazorApp.Services;
 using Microsoft.AspNetCore.Components.Builder;
 using Microsoft.Extensions.DependencyInjection;
 using System;
