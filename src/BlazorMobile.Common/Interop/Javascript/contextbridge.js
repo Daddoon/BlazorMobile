@@ -90,7 +90,7 @@ window.contextBridge = {
         });
     },
     receive: function (csharpProxy) {
-        DotNet.invokeMethod(window.contextBridge.metadata.GetBlazorMobileCommonAssemblyName(),
+        DotNet.invokeMethodAsync(window.contextBridge.metadata.GetBlazorMobileCommonAssemblyName(),
             window.contextBridge.metadata.GetBlazorMobileReceiveMethodName(), csharpProxy);
     }
 };

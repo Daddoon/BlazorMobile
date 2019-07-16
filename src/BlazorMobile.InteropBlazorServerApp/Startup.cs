@@ -55,9 +55,9 @@ namespace BlazorMobile.InteropBlazorServerApp
                 var componentEndpointConvention = endpoints.MapBlazorHub();
                 componentEndpointConvention.AddComponent(typeof(AppServer), "app");
 
-                endpoints.MapFallbackToFile("index.html");
+                endpoints.MapFallbackToFile("indexServer.html");
 
-                BlazorWebViewService.EnableServerSideToClientRemoteDebugging("127.0.0.1");
+                BlazorWebViewService.EnableServerSideToClientRemoteDebugging("192.168.1.118", 8888);
                 BlazorWebViewService.Init(componentEndpointConvention, "blazorXamarin", (bool success) =>
                 {
                     Console.WriteLine($"Initialization success: {success}");

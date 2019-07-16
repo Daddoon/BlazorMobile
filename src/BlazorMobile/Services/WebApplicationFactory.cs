@@ -342,7 +342,19 @@ namespace BlazorMobile.Services
                 return;
             }
 
-            server = new WebServer(GetBaseURL(), RoutingStrategy.Regex);
+            WebServer server = null;
+
+            if (AreDebugFeaturesEnabled())
+            {
+                //All wildcard url
+                server = new WebServer(GetHttpPort(), RoutingStrategy.Regex);
+            }
+            else
+            {
+                //Restrict ip's to localhost
+                server = new WebServer(GetBaseURL(), RoutingStrategy.Regex);
+            }
+            
             server.WithLocalSession();
 
             if (AreDebugFeaturesEnabled())

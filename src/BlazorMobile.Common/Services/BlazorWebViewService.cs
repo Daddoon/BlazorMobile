@@ -15,6 +15,7 @@ namespace BlazorMobile.Common.Services
 
         internal const string ComponentEndpointConventionBuilderExtensionsGetType = "Microsoft.AspNetCore.Builder.ComponentEndpointConventionBuilderExtensions, Microsoft.AspNetCore.Components.Server";
 
+        internal static int _serverSideClientPort = -1;
 
         internal static string _serverSideClientIP = null;
 
@@ -25,12 +26,12 @@ namespace BlazorMobile.Common.Services
             if (!ServerSideToClientRemoteDebuggingEnabled())
                 return string.Empty;
 
-            return "ws://" + _serverSideClientIP + _contextBridgeRelativeURI;
+            return "ws://" + _serverSideClientIP + ":" + _serverSideClientPort + _contextBridgeRelativeURI;
         }
 
         internal static bool ServerSideToClientRemoteDebuggingEnabled()
         {
-            return _serverSideClientIP != null;
+            return _serverSideClientIP != null && _serverSideClientPort != -1;
         }
 
         /// <summary>
@@ -38,9 +39,11 @@ namespace BlazorMobile.Common.Services
         /// in order to simulate the Blazor client-side device communication, through web call
         /// </summary>
         /// <param name="ip"></param>
-        public static void EnableServerSideToClientRemoteDebugging(string ip)
+        /// <param name="port"></param>
+        public static void EnableServerSideToClientRemoteDebugging(string ip, int port)
         {
             _serverSideClientIP = ip;
+            _serverSideClientPort = port;
         }
 
         /// <summary>
