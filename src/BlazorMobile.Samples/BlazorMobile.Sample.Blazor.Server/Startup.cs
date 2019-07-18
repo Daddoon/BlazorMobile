@@ -11,9 +11,8 @@ using Microsoft.AspNetCore.ResponseCompression;
 using BlazorMobile.Common.Services;
 using BlazorMobile.Common;
 using BlazorMobile.Sample.Blazor.Helpers;
-using BlazorMobile.Sample.Blazor;
 
-namespace BlazorMobile.Sample.Server
+namespace BlazorMobile.Sample.Blazor.Server
 {
     public class Startup
     {

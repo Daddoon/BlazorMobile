@@ -64,7 +64,7 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "BlazorMobile.Sample.iOS", "
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "BlazorMobile.InteropBlazorApp.Server", "src\BlazorMobile.InteropBlazorApp.Server\BlazorMobile.InteropBlazorApp.Server.csproj", "{F7CE09EF-B803-4DAC-8ED4-7F6F5ED49610}"
 EndProject
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "BlazorMobile.Sample.Server", "src\BlazorMobile.Samples\BlazorMobile.Sample.Server\BlazorMobile.Sample.Server.csproj", "{0F429CE3-2D96-4C3A-B667-C8BA2EE36CB8}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "BlazorMobile.Sample.Blazor.Server", "src\BlazorMobile.Samples\BlazorMobile.Sample.Blazor.Server\BlazorMobile.Sample.Blazor.Server.csproj", "{0F429CE3-2D96-4C3A-B667-C8BA2EE36CB8}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
