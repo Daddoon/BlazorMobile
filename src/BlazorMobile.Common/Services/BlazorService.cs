@@ -7,7 +7,7 @@ using System.Threading.Tasks;
 
 namespace BlazorMobile.Common.Services
 {
-    public static class BlazorWebViewService
+    public static class BlazorService
     {
         private static bool _isInit = false;
 
@@ -21,15 +21,15 @@ namespace BlazorMobile.Common.Services
 
         internal const string _contextBridgeRelativeURI = "/contextBridge";
 
-        internal static string GetContextBridgeRelativeURI()
+        internal static string GetContextBridgeURI()
         {
-            if (!ServerSideToClientRemoteDebuggingEnabled())
+            if (!IsEnableClientToDeviceRemoteDebuggingEnabled())
                 return string.Empty;
 
             return "ws://" + _serverSideClientIP + ":" + _serverSideClientPort + _contextBridgeRelativeURI;
         }
 
-        internal static bool ServerSideToClientRemoteDebuggingEnabled()
+        internal static bool IsEnableClientToDeviceRemoteDebuggingEnabled()
         {
             return _serverSideClientIP != null && _serverSideClientPort != -1;
         }
@@ -40,23 +40,23 @@ namespace BlazorMobile.Common.Services
         /// </summary>
         /// <param name="ip"></param>
         /// <param name="port"></param>
-        public static void EnableServerSideToClientRemoteDebugging(string ip, int port)
+        public static void EnableClientToDeviceRemoteDebugging(string ip, int port)
         {
             _serverSideClientIP = ip;
             _serverSideClientPort = port;
         }
 
         /// <summary>
-        /// Initialize BlazorWebViewService from Blazor client-side app
+        /// Initialize BlazorService from Blazor client-side app
         /// </summary>
         /// <param name="app"></param>
         /// <param name="domElementSelector"></param>
         /// <param name="onFinish"></param>
-        public static void Init(IComponentsApplicationBuilder app, string domElementSelector, Action<bool> onFinish = null)
+        public static void Init(IComponentsApplicationBuilder app, Action<bool> onFinish = null)
         {
             if (!_isInit)
             {
-                Device.Init(app, domElementSelector, onFinish);
+                Device.Init(app, onFinish);
                 _isInit = true;
             }
         }
@@ -69,17 +69,16 @@ namespace BlazorMobile.Common.Services
         /// <param name="app"></param>
         /// <param name="domElementSelector"></param>
         /// <param name="onFinish"></param>
-        public static void Init(object app, string domElementSelector, Action<bool> onFinish = null)
+        public static void Init(object app, Action<bool> onFinish = null)
         {
             if (app == null)
             {
-                onFinish?.Invoke(false);
                 throw new NullReferenceException($"{nameof(IComponentsApplicationBuilder)} object is null");
             }
 
             if (app is IComponentsApplicationBuilder)
             {
-                Init((IComponentsApplicationBuilder)app, domElementSelector, onFinish);
+                Init((IComponentsApplicationBuilder)app, onFinish);
                 return;
             }
             else
@@ -90,7 +89,7 @@ namespace BlazorMobile.Common.Services
                 {
                     if (!_isInit)
                     {
-                        Device.InitServer(app, domElementSelector, onFinish);
+                        Device.InitServer(app, onFinish);
                         _isInit = true;
                         return;
                     }
@@ -98,7 +97,6 @@ namespace BlazorMobile.Common.Services
                 else
                 {
                     //If here, that mean the given app object is invalid
-                    onFinish?.Invoke(false);
                     throw new InvalidCastException($"{nameof(app)} object does not have an expected type of {ComponentEndpointConventionBuilder} or {nameof(IComponentsApplicationBuilder)}");
                 }
             }
