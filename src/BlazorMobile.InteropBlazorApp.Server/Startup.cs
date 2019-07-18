@@ -14,6 +14,7 @@ using BlazorMobile.InteropApp.Common.Interfaces;
 using BlazorMobile.InteropBlazorApp.Services;
 using BlazorMobile.Common.Services;
 using BlazorMobile.Common;
+using BlazorMobile.InteropBlazorApp.Helpers;
 
 namespace BlazorMobile.InteropBlazorApp.Server
 {
@@ -53,7 +54,7 @@ namespace BlazorMobile.InteropBlazorApp.Server
                 });
             }
 
-            services.AddSingleton<IXamarinBridge, XamarinBridgeProxy>();
+            ServicesHelper.ConfigureCommonServices(services);
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
