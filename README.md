@@ -278,3 +278,11 @@ Default **BlazorMobile.Sample.Blazor.Server** project should listen on http://lo
 When the server console will show up during your debugging session, you need to open a tab in your favorite browser and browse http://localhost:5080/?mode=server url, in order to connect and debug your Blazor NET Core application.
 
 If you omit the mode=server argument, the Blazor application will be launched as the WASM one.
+
+## Authors
+
+* **Guillaume ZAHRA** - [Daddoon](https://github.com/Daddoon)
+
+## License
+
+This project is licensed under the MIT License - see the [LICENSE](LICENSE) file for details
