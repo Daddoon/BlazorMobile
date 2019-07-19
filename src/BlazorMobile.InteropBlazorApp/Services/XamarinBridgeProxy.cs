@@ -7,7 +7,7 @@ using System.Reflection;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace BlazorMobile.InteropApp.UWP.Services
+namespace BlazorMobile.InteropBlazorApp.Services
 {
     public class XamarinBridgeProxy : IXamarinBridge
     {

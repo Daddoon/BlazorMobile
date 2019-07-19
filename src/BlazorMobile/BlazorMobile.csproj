@@ -21,16 +21,6 @@
   </PropertyGroup>
 
   <ItemGroup>
-    <None Remove="Interop\Javascript\contextbridge.js" />
-    <None Remove="Interop\Javascript\contextbridge.uwp.js" />
-  </ItemGroup>
-
-  <ItemGroup>
-    <EmbeddedResource Include="Interop\Javascript\contextbridge.js" />
-    <EmbeddedResource Include="Interop\Javascript\contextbridge.uwp.js" />
-  </ItemGroup>
-
-  <ItemGroup>
     <PackageReference Include="EmbedIO" Version="2.2.9" />
     <PackageReference Include="MimeTypes" Version="1.0.6" />
     <PackageReference Include="System.IO.Compression.ZipFile" Version="4.3.0" />
