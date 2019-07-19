@@ -13,10 +13,10 @@ Create full C# driven hybrid-apps for iOS & Android !
 
 ## Summary
 
-- [Getting started from sample](https://github.com/Daddoon/BlazorMobile#getting-started-from-sample)
-- [Detecting Runtime Platform](https://github.com/Daddoon/BlazorMobile#detecting-runtime-platform)
-- [Communication between Blazor & Xamarin.Forms](https://github.com/Daddoon/BlazorMobile#communication-between-blazorxamarinforms)
-- [Device remote debugging & Debugging from NET Core 3.0](https://github.com/Daddoon/BlazorMobile#device-remote-debugging-&-debugging-from-net-core-3.0)
+- [Getting started from sample](#getting-started-from-sample)
+- [Detecting Runtime Platform](#detecting-runtime-platform)
+- [Communication between Blazor & Xamarin.Forms](#communication-between-blazorxamarinforms)
+- [Device remote debugging & Debugging from NET Core 3.0](#device-remote-debugging--debugging-from-net-core-30)
 
 ## Getting started from sample
 
