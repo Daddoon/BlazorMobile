@@ -1,347 +1,44 @@
 # BlazorMobile
-Create full C# driven hybrid-apps for iOS & Android!
+Create full C# driven hybrid-apps for iOS & Android !
 
-**BlazorMobile** - formerly Blazor.Xamarin - is a Nuget package for embedding a Blazor application as a standalone mobile application, hosted in a Xamarin app.
+**BlazorMobile** - is a Nuget package for embedding a Blazor web application as a standalone mobile application, hosted in Xamarin.
 
 ## Platform requirements
   
 - **Android:** Android 5.0 or greater
 - **iOS:** iOS 12 or greater
-- **Blazor:** 3.0.0-preview6
-
-As Blazor is evolving very fast, this current plugin implementations may become obsolete on some future versions.
-
+- **Blazor:** 3.0.0-preview6.19307.2
 
 **The current version has been developed and tested on Blazor 3.0.0-preview6.19307.2**
 
-### Side note
-
-- This documentation may lack of some integration details, feel free to ask question in issues, if the sample code is not sufficient.
-
 ## Summary
 
-- [Getting started from sample](https://github.com/Daddoon/BlazorMobile#getting-started-from-sample)
-- [Installing BlazorMobile from scratch](https://github.com/Daddoon/BlazorMobile#installing-blazormobile-from-scratch)
-- [Communication between Blazor/Xamarin.Forms](https://github.com/Daddoon/BlazorMobile#communication-between-blazorxamarinforms)
-- [Detecting Runtime Platform](https://github.com/Daddoon/BlazorMobile#detecting-runtime-platform)
+- [Getting started from sample](#getting-started-from-sample)
+- [Detecting Runtime Platform](#detecting-runtime-platform)
+- [Communication between Blazor & Xamarin.Forms](#communication-between-blazorxamarinforms)
+- [Device remote debugging & Debugging from NET Core 3.0](#device-remote-debugging--debugging-from-net-core-30)
 
-### Getting started from sample
+## Getting started from sample
 
-The easiest way in order to start is to [download the sample projects](https://github.com/Daddoon/BlazorMobile/releases/download/0.8.0/BlazorMobile.Samples.zip). Unzip, and open the solution, and you are good to go.
+The easiest way in order to start is to [download the sample projects](https://github.com/Daddoon/BlazorMobile/releases/download/3.0.1-preview6.19307.2/BlazorMobile.Samples.zip). Unzip, and open the solution, and you are good to go.
 
 If you want to install from scratch, read below.
 
-
-### Installing BlazorMobile from scratch
-
-#### 1. Create your Xamarin.Forms application project in Visual Studio
-
-The ideal scenario, as the given templates in this repository, is to create a Cross-plateform Xamarin project template.
-You then should have your solution this type of configuration:
-
-- YourApp (.netstandard2.0)
-- YourApp.Droid (MonoDroid)
-- YourApp.iOS (Xamarin.iOS)
-
-**YourApp** project will be used as the Blazor app container, it's not mandatory but highly recommended.
-
-**NOTE:** It is also advised to create an additional shared project (.netstandard2.0) with no Xamarin.Forms reference, in order to use it to share interface contracts between Blazor and Xamarin domains for interop communication. We will assume that this shared project will be called **YourApp.Shared** !
-
-#### 2. Zip your Blazor application project.
-
-As you surely want to always have you Blazor app in sync in your mobile standalone app, you may want to automate your ZIP archive content.
-The Blazor example template use this command at PostBuild event:
-
-```
-rm $(ProjectDir)\BuildTools\Mobile\bin\app.zip >nul 2>&1
-$(ProjectDir)\BuildTools\7za.exe a $(ProjectDir)\BuildTools\Mobile\bin\app.zip $(ProjectDir)wwwroot\* -mx1 -tzip
-$(ProjectDir)\BuildTools\7za.exe a $(ProjectDir)\BuildTools\Mobile\bin\app.zip $(ProjectDir)$(OutputPath)dist\* -mx1 -tzip
-```
-
-Of course adapt the path to your development environement. If you use this method, notice to respect the current order:
-- First **wwwroot**
-- Then **dist**, as the dist folder contain also an index.html file, but processed by Blazor tooling. This is the right one to use.
-
-**Integrated project syncing may be included in the future, but for the moment, this is one of the easy way.**
-
-#### 3. Blazor changes for mobile
-
-You may need to do some changes on your Blazor project, in order to render and work correctly.
-
-**Mobile application scaling behavior**
-
-Add:
-
-```html
-<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no" />
-```
-
-As child of your **head** tag, in your **index.html** file of your Blazor project.
-
-
-
-#### 4. Add your Blazor Zip file as link in YourApp project
-
-On YourApp project, add your generated ZIP from the Blazor project, as a "link" => Right click on the project => Add existing file => Browse to your file => Click on the little arrow => Then click on **Add as link**
-
-#### 5. Set your linked file as Embedded Resource
-
-Do right click on your newly added as link file in YourApp project, and click **Properties**
-Then check that the **Build Action property** is on **Embedded Resource**
-
-#### 6. Add BlazorMobile NuGet package
-
-Add **BlazorMobile** NuGet package on the following projects:
-
-- YourApp
-- YourApp.Droid
-- YourApp.iOS
-
-Add **BlazorMobile.Common** NuGet package on the following projects:
-
-- YourApp.Shared
-- Your Blazor application
-
-The packages are available on the nuget.org feed, but you can also download the file manually [in the release page](https://github.com/Daddoon/BlazorMobile/releases)
-
-#### 7. Platform specific configuration
-
-As there is often some strange behavior with IL stripping in Xamarin, you have to call an init method on each platform.
-
-#### Android platform
-
-For **Android** you have to set the following in **MainActivity.cs**
-```csharp
-using BlazorMobile.Droid.Services;
-    
-namespace YourApp.Droid
-{
-    public class MainActivity : global::Xamarin.Forms.Platform.Android.FormsAppCompatActivity
-    {
-        protected override void OnCreate(Bundle savedInstanceState)
-        {
-            /* Some other code */
-            global::Xamarin.Forms.Forms.Init(this, savedInstanceState);
-            BlazorWebViewService.Init(this);
-            /* Some other code */
-        }
-     }
-}
-```
-
-#### iOS platform
-
-For **iOS** you have to set the following in **AppDelegate.cs**
-```csharp
-using BlazorMobile.iOS.Services;
-    
-namespace YourApp.iOS
-{
-    [Register("AppDelegate")]
-    public partial class AppDelegate : global::Xamarin.Forms.Platform.iOS.FormsApplicationDelegate
-    {
-        public override bool FinishedLaunching(UIApplication app, NSDictionary options)
-        {
-            /* Some other code */
-            global::Xamarin.Forms.Forms.Init(this, bundle);
-            BlazorWebViewService.Init();
-            /* Some other code */
-        }
-     }
-}
-```
-
-Also, you must update your **Info.plist** file to allow localhost requests inside your app by adding the **NSAppTransportSecurity** property. Your file should look like this:
-```xml
-<?xml version="1.0" encoding="UTF-8"?>
-<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
-<plist version="1.0">
-<dict>
-      /* OTHER ENTRIES */
-     <key>NSAppTransportSecurity</key>
-     <dict>
-	 <key>NSAllowsArbitraryLoads</key>
-	 <true/>
-	 <key>NSExceptionDomains</key>
-	 <dict>
-	     <key>localhost</key>
-	     <dict>
-	         <key>NSExceptionAllowsInsecureHTTPLoads</key>
-		 <true/>
-		 <key>NSIncludesSubdomains</key>
-		 <true/>
-	     </dict>
-	 </dict>
-     </dict>
-</dict>
-</plist>
-```
-
-
-#### 8. Cross-reference YourApp.Shared
-
-If you intend to do interop call from Blazor to Xamarin, you may now reference your shared project to Xamarin and Blazor projects.
-
-- Add reference **YourApp.Shared** on **YourApp** project
-- Add reference **YourApp.Shared** on **Your Blazor project**
-
-**NOTE:** A simpler communication system, for broadcasting messages, may come in future release.
-
-#### 9. Shared/Common project configuration
-
-There are few, but still some lines to add to **YourApp** project
-
-Open **App.xaml.cs** and make it look like this:
-
-```csharp
-using BlazorMobile.Services;
-using Xamarin.Forms;
-
-namespace YourApp
-{
-    public partial class App : Application
-    {
-        public App ()
-	{
-	    InitializeComponent();
-
-#if DEBUG
-            WebApplicationFactory.EnableDebugFeatures();
-#endif
-            //Change your application listening port
-            WebApplicationFactory.SetHttpPort(8888);
-
-            //Register Blazor application package resolver
-            WebApplicationFactory.RegisterAppStreamResolver(() =>
-            {
-                //This app assembly
-                var assembly = typeof(App).Assembly;
-
-                //Name of our current Blazor package in this project, stored as an "Embedded Resource"
-                //The file is resolved through AssemblyName.NamespaceFolder.app.zip
-                return assembly.GetManifestResourceStream($"{assembly.GetName().Name}.Package.app.zip");
-            });
-
-	    MainPage = new MainPage();
-	}
-
-	protected override void OnStart ()
-	{
-            // Handle when your app starts
-            WebApplicationFactory.StartWebServer();
-	}
-
-	protected override void OnSleep ()
-	{
-            // Handle when your app sleeps
-            WebApplicationFactory.StopWebServer();
-        }
-
-	protected override void OnResume ()
-	{
-            WebApplicationFactory.StartWebServer();
-        }
-    }
-}
-```
-
-You must provide yourself your own logic to retrieve the Blazor app ZIP file with the method **WebApplicationFactory.RegisterAppStreamResolver**.
-The method is waiting for a delegate method that will return the ZIP stream data of your Blazor app. You can use the same code logic, and juste modify the file/paths used, in accordance to your project.
-
-#### 10. Add BlazorWebView component to your MainPage
-
-Add BlazorWebView component to your MainPage.xaml, or actually any Xamarin.Forms page you would like to the Blazor app to launch.
-
-Here is a example of how your **MainPage.xaml** and **MainPage.xaml.cs** could look like. Actually pretty idiotic configuration about the bounds of you WebView, we strongly advise you to update everything to your requirement. There will be more exhaustive example here in the future.
-
-**MainPage.xaml**
-```xml
-<?xml version="1.0" encoding="utf-8" ?>
-<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
-             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
-             xmlns:local="clr-namespace:YourApp"
-             x:Class="YourApp.MainPage">
-    <ContentPage.Content>
-        <StackLayout x:Name="content" HorizontalOptions="FillAndExpand" VerticalOptions="FillAndExpand">
-        </StackLayout>
-    </ContentPage.Content>
-</ContentPage>
-```
-
-**MainPage.xaml.cs**
-```csharp
-using BlazorMobile.Components;
-using BlazorMobile.Services;
-using Xamarin.Forms;
-
-namespace YourApp
-{
-    public partial class MainPage : ContentPage
-    {
-	public MainPage()
-	{
-            InitializeComponent();
-
-            //Blazor WebView agnostic contoller logic
-            IBlazorWebView webview = BlazorWebViewFactory.Create();
-
-            //WebView rendering customization on page
-            View webviewView = webview.GetView();
-            webviewView.VerticalOptions = LayoutOptions.FillAndExpand;
-            webviewView.HorizontalOptions = LayoutOptions.FillAndExpand;
-
-            webview.LaunchBlazorApp();
-
-            content.Children.Add(webviewView);
-        }
-    }
-}
-```
-
-#### 11. Add blazorXamarin tag to your index.html file
-
-```html
-<!DOCTYPE html>
-<html>
-<head>
-    <meta charset="utf-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no" />
-    <title>BlazorMobile.BlazorApp</title>
-    <base href="/" />
-    <link href="css/bootstrap/bootstrap.min.css" rel="stylesheet" />
-    <link href="css/site.css" rel="stylesheet" />
-</head>
-<body>
-    <app>Loading...</app>
-    <script type="text/javascript" src="js/blazor.polyfill.js"></script>
-    <script src="_framework/components.webassembly.js"></script>
-    <blazorXamarin></blazorXamarin>
-</body> 
-</html>
-```
-
-#### 12. Device test
-
-You may now try to launch your app on your Device/Simulator, your Blazor app should start!
-
-### Communication between Blazor/Xamarin.Forms
+## Communication between Blazor & Xamarin.Forms
 
 In order to communicate from Blazor to Xamarin you need to do some few steps, as JIT is disabled on AOT environment like Blazor.
 Here is a simple example to Display a Xamarin.Forms alert from Blazor.
 
-**In your YourApp.Shared project**, create an interface in an Interfaces folder, and add the ProxyInterface attribute on it. Assuming a **IXamarinBridge** interface class.
+**In your shared project for Blazor & Xamarin**, create an interface in an Interfaces folder, and add the ProxyInterface attribute on it. Assuming a **IXamarinBridge** interface class, present on the **BlazorMobile.Sample.Common project**.
 
-Your file should look like this:
+Your file could look like this:
 
 ```csharp
 using BlazorMobile.Common.Attributes;
-using System;
 using System.Collections.Generic;
-using System.Runtime.CompilerServices;
-using System.Text;
 using System.Threading.Tasks;
 
-namespace YourApp.Shared.Interfaces
+namespace BlazorMobile.Sample.Common.Interfaces
 {
     [ProxyInterface]
     public interface IXamarinBridge
@@ -352,21 +49,19 @@ namespace YourApp.Shared.Interfaces
 
 ```
 
-**In your YourApp project**, implement the concrete implementation, also referenced as a DependencyService.
+**In your Xamarin shared application project**, implement the Device implementation, also referenced as a DependencyService (notice the attribute here). Assuming adding it like in **BlazorMobile.Sample project**.
 	
-Your implementation may look like this. Here a some idiotic example:
+Your implementation may look like this. Here a kind of useless example:
 
 ```csharp
-using YourApp.Shared.Interfaces;
-using YourApp.Services;
-using System;
+using BlazorMobile.Sample.Common.Interfaces;
+using BlazorMobile.Sample.Services;
 using System.Collections.Generic;
-using System.Text;
 using System.Threading.Tasks;
 using Xamarin.Forms;
 
 [assembly: Dependency(typeof(XamarinBridge))]
-namespace YourApp.Services
+namespace BlazorMobile.Sample.Services
 {
     public class XamarinBridge : IXamarinBridge
     {
@@ -387,19 +82,20 @@ namespace YourApp.Services
 }
 ```
 
-**In your Blazor project**, implement the proxy class implementation, assuming the **BlazorApp** namespace is your Blazor application default namespace. For our example it look like this:
+**In your Blazor project**, implement the proxy service class implementation.
+
+_**Note:** We must help the call the proxy by ourself, as the Blazor WASM implementation does not support any kind of dynamic dispatcher, as **System.Reflection.Emit is not available in this context**. Just keep using the same logic as in the example below._
+
+For our example it look like this in our **BlazorMobile.Sample.Blazor** project:
 
 ```csharp
 using BlazorMobile.Common.Services;
-using YourApp.Shared.Interfaces;
-using System;
+using BlazorMobile.Sample.Common.Interfaces;
 using System.Collections.Generic;
-using System.Linq;
 using System.Reflection;
-using System.Text;
 using System.Threading.Tasks;
 
-namespace BlazorApp.Services
+namespace BlazorMobile.Sample.Blazor.Services
 {
     public class XamarinBridgeProxy : IXamarinBridge
     {
@@ -411,14 +107,28 @@ namespace BlazorApp.Services
 }
 ```
 
-**The key is the MethodDispatcher** class, that will prepare every callback for you, but because of the lack of JIT, you have to give yourself some parameters. Take a look at the different implementations of MethodDispatcher methods, in order to accord everything to your context, like if your using Task (Async calls) or not, if you expect a return value, generic types etc.
+The **MethodDispatcher** class, that will prepare every callback for you, calling the right interface and parameters types on the Xamarin side, if you wrote everything right.
 
-There is actually some syntactic sugar method calls in order to just mimic what you are expecting, by just recoying the same kind of signature, if using generic parameters etc. You may take a look at the [MethodDispatcher file](https://github.com/Daddoon/BlazorMobile/blob/master/src/BlazorMobile.Common/Services/MethodDispatcher.cs) if you want to see the available methods overload.
+Because of the lack of JIT, you have to give yourself some parameters. Take a look at the different implementations of MethodDispatcher methods, in order to accord everything to your context, like if your using Task (Async calls) or not, if you expect a return value, generic types...
 
-**Note that if you want that the caller and receiver is actually the same method signature on the 2 ends (Blazor and Xamarin), you can safely use MethodBase.GetCurrentMethod() everytime for the MethodInfo parameter**
+There is actually some syntactic sugar method calls in order to just mimic what you are expecting, by just recognizing the same kind of signature, if using generic parameters etc. You may take a look at the [MethodDispatcher file](https://github.com/Daddoon/BlazorMobile/blob/master/src/BlazorMobile.Common/Services/MethodDispatcher.cs) if you want to see the available methods overload.
 
+If you want that the caller and receiver method are actually the same method signature on the 2 ends (Blazor & Xamarin), you can safely use MethodBase.GetCurrentMethod() everytime for the MethodInfo parameter, like in our example.
 
-#### Test your interop with Xamarin in Blazor
+## Detecting Runtime Platform
+
+If your Blazor application is ready by taking the samples or followed the installation from scratch, you should have the **BlazorService.Init()** already called in the **Startup.cs** file.
+Then you only need to call:
+
+```csharp
+Device.RuntimePlatform
+```
+
+...In order to retrieve the current device runtime platform.
+
+Note that the **BlazorService.Init()** has an **onFinish** optional callback delegate. Every call to **Device.RuntimePlatform** before the onFinish delegate call will return **Device.Unkown** instead of the detected platform.
+
+### Test your interop with Xamarin in Blazor
 
 Don't forget to add your Blazor implementation in the dependency services of your Blazor app.
 In your **Startup.cs** file of your **Blazor project**:
@@ -433,68 +143,138 @@ In your **Startup.cs** file of your **Blazor project**:
 
         public void Configure(IComponentsApplicationBuilder app)
         {
-            app.AddComponent<App>("app");
+            app.AddComponent<MobileApp>("app");
         }
     }
 ```
 
-Then in one of your desired cshtml page (or .cs file btw), juste add
+In our sample project **BlazorMobile.Sample.Blazor**, we moved services initialization in **ServicesHelper.ConfigureCommonServices** static method.
+
+Then in one of your desired **razor** page (or plain **C# ComponentBase**), juste add...
 ```csharp
 @inject IXamarinBridge XamarinBridge
 ```
 
-On top of your cshtml file, then call your method in your desired callback, like:
+...on the top of your razor file, then call your method in your desired callback, like:
 
 ```csharp
-var result = await XamarinBridge.DisplayAlert("MyTitle", "Blazor to Xamarin.Forms call works!", "Thanks!");
+var result = await XamarinBridge.DisplayAlert("Platform identity", $"Current platform is {Device.RuntimePlatform}", "Great!");
 ```
 
-### Detecting Runtime Platform
+If using this example the sample project, clicking on the **Alert Me** button on the **Counter page** should show you the **native device alert**, with the given parameters, and showing you the **current detected device runtime platform**, like iOS or Android.
 
-In order to detect the current runtime environment of your Blazor app within Blazor, you must set the following in your **Startup.cs** file of your Blazor project:
+## Device remote debugging & Debugging from NET Core 3.0
+
+Even if there is now some debug functionalities in the Blazor WASM version in Chrome, it is pretty limited compared to the pure server-side debugging with NET Core 3.0.
+
+A small server-side Blazor application sample has been added in order to test and debug your code from it. See **BlazorMobile.Sample.Blazor.Server** project.
+You don't have to code anything in it, as it will use all the code logic you have done with the **BlazorMobile.Sample.Blazor** project (the WASM one).
+
+This is very usefull if you need to debug your Blazor application logic, and also your device.
+
+Credits to **@Suchiman**,  for the [BlazorDualMode](https://github.com/Suchiman/BlazorDualMode) project, taken as reference for server sharing client-side Blazor model.
+
+_**"But wait ! I cannot ship a server-side version of my Blazor application as a mobile app !"**_
+
+Of you course you can't. But you can do remote debugging on your device in order to mimic your mobile application environment, from your development environment.
+
+**You should be able:**
+
+- To test, debug, inspect from your PC with the NET Core (Server side version)
+- Get all your real device informations and behaviors, while debugging on your PC.
+- Also validate the WASM version behavior from your PC
+
+**You won't be able:**
+
+- To validate any specific / faulty behavior due to the device browser
+
+For this last critical point, you should remember that you may have some tools shipped for device browser debugging.
+On **iOS**, you should debug from **Safari on OSX** (see online documentation), and on **Android**, you should debug from **WebIDE** tool in **Firefox** (see online documentation).
+
+### Enable remote debugging
+
+There is some, but little configuration to make in order to allow remote debugging.
+
+#### Xamarin side
+
+On the Xamarin side, you must allow debug features in order to allow external source to connect to your Device.
+On the **BlazorMobile.Sample** project, in **App.cs** constructor, we will allow debug features. see:
 
 ```csharp
-
-//SOME CODE
-br.AddComponent<App>("app");
-
-BlazorWebViewService.Init(br, "blazorXamarin", (bool success) =>
+public App()
 {
-   //Your code
-});
+    ...
+
+    #if DEBUG
+    //This allow remote debugging features
+    WebApplicationFactory.EnableDebugFeatures();
+    #endif
+
+    WebApplicationFactory.SetHttpPort(8888);
+    ...
+}
 ```
 
-Where **blazorXamarin** is a tag name available in your **index.html** like:
+Also note the initialization and usage of the **8888** port. You may and want to use any other valid port. Just keep in mind the current used port in your application, for the remote debugging.
 
-```html
-<!DOCTYPE html>
-<html>
-<head>
-    <meta charset="utf-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no" />
-    <title>BlazorMobile.BlazorApp</title>
-    <base href="/" />
-    <link href="css/bootstrap/bootstrap.min.css" rel="stylesheet" />
-    <link href="css/site.css" rel="stylesheet" />
-</head>
-<body>
-    <app>Loading...</app>
-    <script type="text/javascript" src="js/blazor.polyfill.js"></script>
-    <script src="_framework/components.webassembly.js"></script>
-    <blazorXamarin></blazorXamarin>
-</body> 
-</html>
-```
+#### Blazor side
 
-...as it is necessary to inject a minimal javascript code in order to be able to check if we are on a pure browser context, or in an Hybrid app.
-
-The last parameter of the Init method is an optional callback to notify when the initialization is finished.
-
-You can then detect your current runtime platform at anytime by calling:
-
+On the Blazor project, both on **WASM** and **Server** projects if you want to test on both, you must call **BlazorService.EnableClientToDeviceRemoteDebugging** in your **Statup.cs**, **Configure** method. see:
 ```csharp
-Device.RuntimePlatform
+using BlazorMobile.Common;
+using BlazorMobile.Common.Services;
+using Microsoft.AspNetCore.Components.Builder;
+using Microsoft.Extensions.DependencyInjection;
+using System;
+using BlazorMobile.Sample.Blazor.Helpers;
+
+namespace BlazorMobile.Sample.Blazor
+{
+    public class Startup
+    {
+        public void ConfigureServices(IServiceCollection services)
+        {
+            ServicesHelper.ConfigureCommonServices(services);
+        }
+
+        public void Configure(IComponentsApplicationBuilder app)
+        {
+            #region DEBUG
+
+            //Only if you want to test WebAssembly with remote debugging from a dev machine
+            BlazorService.EnableClientToDeviceRemoteDebugging("192.168.1.118", 8888);
+
+            #endregion
+
+            BlazorService.Init(app, (bool success) =>
+            {
+                Console.WriteLine($"Initialization success: {success}");
+                Console.WriteLine("Device is: " + Device.RuntimePlatform);
+            });
+
+            app.AddComponent<MobileApp>("app");
+        }
+    }
+}
 ```
 
-In order to manage your application workflow and specific services/calls based on the underlying system.
-**Device.RuntimePlatform** namespace is **BlazorMobile.Common** and does mimic the result of **Xamarin.Forms.Device.RuntimePlatform** with some minor change, as **Browser** is returned in a pure web app in a browser, and **Unknown** is returned if an error occur or if the initialization is not yet made.
+**NOTE:** You must call **BlazorService.EnableClientToDeviceRemoteDebugging** before the **BlazorService.Init** call !
+
+Replace of course the first parameter by your own **device IP address**, and use the **same port** as configured in your Xamarin project.
+
+#### Deploy & Launch mobile application, debug from PC
+
+Then, you just need to deploy your application to your phone, and launch it in order to allow external source to connect to it.
+You may just launch it on the device, and only debug Blazor from your PC, or you may also launch it with the Xamarin debugger, in order to test Xamarin code during Blazor session.
+
+If you want to debug both Blazor side and Xamarin side, i suggest to open two Visual Studio instances, one for launching debug on the Xamarin project on your device, and the other instance for debugging the Blazor application.
+The Blazor application will be launched from your PC, and it will try to connect to the remote application instance.
+
+Values from Xamarin context will be returned, and your code will behave as launched within the device.
+
+**NOTE:** You **need** to add the **?mode=server** URI parameters on your PC when debugging your Blazor app in order to debug from the NET Core version.
+Default **BlazorMobile.Sample.Blazor.Server** project should listen on http://localhost:5080/.
+
+When the server console will show up during your debugging session, you need to open a tab in your favorite browser and browse http://localhost:5080/?mode=server url, in order to connect and debug your Blazor NET Core application.
+
+If you omit the mode=server argument, the Blazor application will be launched as the WASM one.

@@ -4,6 +4,7 @@ using BlazorMobile.Common.Services;
 using Microsoft.AspNetCore.Components.Builder;
 using Microsoft.JSInterop;
 using System;
+using System.Reflection;
 using System.Threading.Tasks;
 
 namespace BlazorMobile.Common
@@ -18,45 +19,41 @@ namespace BlazorMobile.Common
         public const string UWP = "UWP";
         public const string Browser = "Browser";
         public const string Unknown = "Unknown";
-        public static string RuntimePlatform { get; private set; } = Unknown;
+        public static string RuntimePlatform { get; internal set; } = Unknown;
 
-        private static BlazorXamarinDeviceService xamService = null;
-        internal static void Init(IComponentsApplicationBuilder app, string domElementSelector, Action<bool> onFinish)
+
+
+        internal static Action<bool> _onFinishCallback = null;
+
+        private static void InitCommon(Action<bool> onFinish)
         {
-            bool success = false;
+            //Other code has finally migrated in BlazorMobileComponent for Server only behavior compatibility in plugin initialization
+            //_onFinishCallback will be taken from the static field. Not attended to be used in a pure multi-client web scenario of course
+            _onFinishCallback = onFinish;
+        }
+
+        internal static void Init(IComponentsApplicationBuilder app, Action<bool> onFinish)
+        {
+            BlazorMobileComponent.IsWebAssembly = true;
 
             if (app == null)
             {
-                onFinish?.Invoke(success);
                 throw new NullReferenceException($"{nameof(IComponentsApplicationBuilder)} object is null");
             }
 
-            app.AddComponent<BlazorXamarinExtensionScript>(domElementSelector);
+            InitCommon(onFinish);
+        }
 
-            InternalHelper.SetTimeout(async () =>
+        internal static void InitServer(object appObject, Action<bool> onFinish)
+        {
+            BlazorMobileComponent.IsWebAssembly = false;
+
+            if (appObject == null)
             {
-                xamService = new BlazorXamarinDeviceService();
-                try
-                {
-                    if (await BlazorXamarinExtensionScript.GetJSRuntime().InvokeAsync<bool>("BlazorXamarinRuntimeCheck"))
-                    {
-                        string resultRuntimePlatform = await xamService.GetRuntimePlatform();
-                        RuntimePlatform = resultRuntimePlatform;
-                    }
-                    else
-                    {
-                        RuntimePlatform = Browser;
-                    }
+                throw new NullReferenceException($"{nameof(BlazorService.ComponentEndpointConventionBuilder)} object is null");
+            }
 
-                    success = true;
-                }
-                catch (Exception ex)
-                {
-                    RuntimePlatform = Browser;
-                    throw;
-                }
-                onFinish?.Invoke(success);
-            }, 10);
+            InitCommon(onFinish);
         }
     }
 }

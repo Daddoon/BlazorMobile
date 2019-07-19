@@ -1,8 +1,6 @@
 ﻿using BlazorMobile.Sample.Common.Interfaces;
 using BlazorMobile.Sample.Services;
-using System;
 using System.Collections.Generic;
-using System.Text;
 using System.Threading.Tasks;
 using Xamarin.Forms;
 

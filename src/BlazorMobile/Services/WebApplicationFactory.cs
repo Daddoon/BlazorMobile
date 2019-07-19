@@ -1,4 +1,5 @@
 ﻿using BlazorMobile.Common.Interfaces;
+using BlazorMobile.Common.Services;
 using BlazorMobile.Consts;
 using BlazorMobile.Controller;
 using BlazorMobile.Interop;
@@ -17,6 +18,7 @@ using Unosquare.Labs.EmbedIO.Constants;
 using Unosquare.Labs.EmbedIO.Modules;
 using Xamarin.Forms;
 
+[assembly: InternalsVisibleTo("BlazorMobile.iOS")]
 [assembly: InternalsVisibleTo("BlazorMobile.Android")]
 [assembly: InternalsVisibleTo("BlazorMobile.UWP")]
 namespace BlazorMobile.Services
@@ -234,10 +236,10 @@ namespace BlazorMobile.Services
                 indexContent = userDelegate(indexContent);
             }
 
-            //Do BlazorContextBridgeLogic
-            //Get content to INJECT
-            string injectableContent = ContextBridgeHelper.GetInjectableJavascript(false).Replace("%_contextBridgeURI%", GetContextBridgeURI());
-            indexContent = indexContent.Replace("</blazorXamarin>", "</blazorXamarin>\r\n<script type=\"application/javascript\">" + injectableContent + "\r\n</script>\r\n\r\n");
+            //We inject the local contextBridgeURI from the mobile app
+            //If this value is not null or unedefined during mobile app runtime, that mean the app is shipped and not external
+            //App must be tied to this URI and not the component generated one
+            indexContent = indexContent.Replace("</body>", $"<script type=\"application/javascript\">window.blazorContextBridgeURI = '{GetContextBridgeURI()}';\r\n</script>\r\n</body>");
 
             return new MemoryStream(Encoding.UTF8.GetBytes(indexContent));
         }
@@ -303,7 +305,7 @@ namespace BlazorMobile.Services
         /// </summary>
         private const int NativeSocketTimeout = 1000;
 
-        private const string _contextBridgeRelativeURI = "/contextBridge";
+        private const string _contextBridgeRelativeURI = BlazorService._contextBridgeRelativeURI;
 
         internal static string GetContextBridgeURI()
         {
@@ -340,7 +342,19 @@ namespace BlazorMobile.Services
                 return;
             }
 
-            server = new WebServer(GetBaseURL(), RoutingStrategy.Regex);
+            WebServer server = null;
+
+            if (AreDebugFeaturesEnabled())
+            {
+                //All wildcard url
+                server = new WebServer(GetHttpPort(), RoutingStrategy.Regex);
+            }
+            else
+            {
+                //Restrict ip's to localhost
+                server = new WebServer(GetBaseURL(), RoutingStrategy.Regex);
+            }
+            
             server.WithLocalSession();
 
             if (AreDebugFeaturesEnabled())
