@@ -1,6 +1,5 @@
 using BlazorMobile.Common;
 using BlazorMobile.Common.Services;
-using BlazorMobile.Sample.Common.Interfaces;
 using Microsoft.AspNetCore.Components.Builder;
 using Microsoft.Extensions.DependencyInjection;
 using System;
