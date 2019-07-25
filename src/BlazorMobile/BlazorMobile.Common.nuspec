@@ -2,7 +2,7 @@
 <package xmlns="http://schemas.microsoft.com/packaging/2012/06/nuspec.xsd">
     <metadata>
         <id>BlazorMobile.Common</id>
-        <version>3.0.1-preview6.19307.2</version>
+        <version>3.0.2-preview7.19365.7</version>
         <title>BlazorMobile.Common</title>
         <authors>Guillaume ZAHRA</authors>
         <owners>Daddoon</owners>
@@ -11,14 +11,14 @@
         <iconUrl>https://www.nuget.org/Content/gallery/img/default-package-icon-256x256.png</iconUrl>
         <requireLicenseAcceptance>true</requireLicenseAcceptance>
         <description>This NuGet package intended for the Blazor application side of the BlazorMobile package. Use BlazorMobile page for the native side.</description>
-        <releaseNotes>Added support for Blazor 3.0.0-preview6. Added support of remote device debugging from both WASM and NET Core version of Blazor</releaseNotes>
+        <releaseNotes>Updated NuGet package to be based on Blazor 3.0.0-preview7.19365.7.</releaseNotes>
         <copyright>Copyright 2019</copyright>
         <tags>Blazor BlazorMobile Xamarin iOS Android Hybrid</tags>
         <dependencies>
             <group targetFramework="netstandard2.0">
                 <dependency id="Newtonsoft.Json" version="11.0.2" />
                 <dependency id="NETStandard.Library" version="2.0.1" />
-                <dependency id="Microsoft.AspNetCore.Blazor" version="3.0.0-preview6.19307.2" />
+                <dependency id="Microsoft.AspNetCore.Blazor" version="3.0.0-preview7.19365.7" />
             </group>
         </dependencies>
     </metadata>

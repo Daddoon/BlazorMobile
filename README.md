@@ -7,9 +7,7 @@ Create full C# driven hybrid-apps for iOS & Android !
   
 - **Android:** Android 5.0 or greater
 - **iOS:** iOS 12 or greater
-- **Blazor:** 3.0.0-preview6.19307.2
-
-**The current version has been developed and tested on Blazor 3.0.0-preview6.19307.2**
+- **Blazor:** 3.0.0-preview7.19365.7
 
 ## Summary
 
