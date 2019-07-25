@@ -7,9 +7,7 @@ Create full C# driven hybrid-apps for iOS & Android !
   
 - **Android:** Android 5.0 or greater
 - **iOS:** iOS 12 or greater
-- **Blazor:** 3.0.0-preview6.19307.2
-
-**The current version has been developed and tested on Blazor 3.0.0-preview6.19307.2**
+- **Blazor:** 3.0.0-preview7.19365.7
 
 ## Summary
 
@@ -17,6 +15,10 @@ Create full C# driven hybrid-apps for iOS & Android !
 - [Detecting Runtime Platform](#detecting-runtime-platform)
 - [Communication between Blazor & Xamarin.Forms](#communication-between-blazorxamarinforms)
 - [Device remote debugging & Debugging from NET Core 3.0](#device-remote-debugging--debugging-from-net-core-30)
+
+## Migration
+
+- [BlazorMobile 0.8.0 or 3.0.0-preview6 to 3.0.1-preview6.19307.2](#blazormobile-080-or-300-preview6-to-301-preview6193072)
 
 ## Getting started from sample
 
@@ -278,6 +280,12 @@ Default **BlazorMobile.Sample.Blazor.Server** project should listen on http://lo
 When the server console will show up during your debugging session, you need to open a tab in your favorite browser and browse http://localhost:5080/?mode=server url, in order to connect and debug your Blazor NET Core application.
 
 If you omit the mode=server argument, the Blazor application will be launched as the WASM one.
+
+## Migration
+
+### BlazorMobile 0.8.0 or 3.0.0-preview6 to 3.0.1-preview6.19307.2
+
+Coming very soon
 
 ## Authors
 

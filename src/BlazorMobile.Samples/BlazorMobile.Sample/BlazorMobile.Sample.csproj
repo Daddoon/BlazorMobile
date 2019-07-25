@@ -7,7 +7,7 @@
   </PropertyGroup>
 
   <ItemGroup>
-    <PackageReference Include="BlazorMobile" Version="3.0.1-preview6.19307.2" />
+    <PackageReference Include="BlazorMobile" Version="3.0.2-preview7.19365.7" />
     <PackageReference Include="Xamarin.Forms" Version="3.5.0.169047" />
   </ItemGroup>
 
