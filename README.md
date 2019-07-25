@@ -18,7 +18,7 @@ Create full C# driven hybrid-apps for iOS & Android !
 
 ## Migration
 
-- [BlazorMobile 0.8.0 or 3.0.0-preview6 to 3.0.2-preview7.19365.7](#blazormobile-080-or-300-preview6-to-301-preview6193072)
+- [BlazorMobile 0.8.0 or 3.0.0-preview6 to 3.0.2-preview7.19365.7](#blazormobile-080-or-300-preview6-to-302-preview7193072)
 
 ## Getting started from sample
 
