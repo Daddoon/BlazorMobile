@@ -6,7 +6,7 @@ using System.Text;
 
 [assembly: InternalsVisibleTo("BlazorMobile.Android")]
 [assembly: InternalsVisibleTo("BlazorMobile.iOS")]
-[assembly: InternalsVisibleTo("BlazorMobile.UWP")]
+[assembly: InternalsVisibleTo("BlazorMobile.Web")]
 namespace BlazorMobile.Interop
 {
     internal static class ContextBridgeHelper
