@@ -11,6 +11,8 @@ namespace BlazorMobile.Interop
 {
     internal static class ContextBridgeHelper
     {
+        internal const string _contextBridgeRelativeURI = "/contextBridge";
+
         private static string JsFilesPath = "Interop.Javascript.";
 
         private static string GetFileContent(string filename)
@@ -42,19 +44,6 @@ namespace BlazorMobile.Interop
             sb.Append(GetFileContent(MainResourceFile));
             sb.AppendLine();
 
-            //switch (Device.RuntimePlatform)
-            //{
-            //    case Device.UWP:
-            //        sb.Append(GetFileContent(UWPResourceFile));
-            //        break;
-            //    case Device.Android:
-            //        sb.Append(GetFileContent(AndroidResourceFile));
-            //        break;
-            //    case Device.iOS:
-            //        sb.Append(GetFileContent(iOSResourceFile));
-            //        break;
-            //}
-
             sb.AppendLine();
             var content = sb.ToString();
 
@@ -63,23 +52,6 @@ namespace BlazorMobile.Interop
                 return content;
 
             content = $"(function() {{ {content} }})();";
-
-            //switch (Device.RuntimePlatform)
-            //{
-            //    case Device.Android:
-            //        content = "var xInit = " + content;
-            //        break;
-            //    case Device.iOS:
-            //        content = $"var xInit = setInterval(function () " +
-            //            $"{{ " +
-            //                $"if (Blazor == null || Blazor == undefined) {{ return; }}" +
-            //                $"else {{ {content} clearInterval(xInit); }}" +
-            //            $"}}, 10);";
-            //        break;
-            //    case Device.UWP:
-            //    default:
-            //        break;
-            //}
 
             return content;
         }

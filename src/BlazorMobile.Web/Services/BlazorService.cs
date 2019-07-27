@@ -1,4 +1,5 @@
 ﻿using BlazorMobile.Common.Helpers;
+using BlazorMobile.Interop;
 using Microsoft.AspNetCore.Components.Builder;
 using System;
 using System.Collections.Generic;
@@ -19,14 +20,12 @@ namespace BlazorMobile.Common.Services
 
         internal static string _serverSideClientIP = null;
 
-        internal const string _contextBridgeRelativeURI = "/contextBridge";
-
         internal static string GetContextBridgeURI()
         {
             if (!IsEnableClientToDeviceRemoteDebuggingEnabled())
                 return string.Empty;
 
-            return "ws://" + _serverSideClientIP + ":" + _serverSideClientPort + _contextBridgeRelativeURI;
+            return "ws://" + _serverSideClientIP + ":" + _serverSideClientPort + ContextBridgeHelper._contextBridgeRelativeURI;
         }
 
         internal static bool IsEnableClientToDeviceRemoteDebuggingEnabled()

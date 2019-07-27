@@ -305,7 +305,7 @@ namespace BlazorMobile.Services
         /// </summary>
         private const int NativeSocketTimeout = 1000;
 
-        private const string _contextBridgeRelativeURI = BlazorService._contextBridgeRelativeURI;
+        private const string _contextBridgeRelativeURI = ContextBridgeHelper._contextBridgeRelativeURI;
 
         internal static string GetContextBridgeURI()
         {
