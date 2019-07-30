@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="utf-8"?>
+<package xmlns="http://schemas.microsoft.com/packaging/2012/06/nuspec.xsd">
+  <metadata>
+    <id>BlazorMobile.Build</id>
+    <version>3.0.3-preview7.19365.7</version>
+    <title>BlazorMobile.Build</title>
+    <authors>Guillaume ZAHRA</authors>
+    <owners>Daddoon</owners>
+    <licenseUrl>https://github.com/Daddoon/BlazorMobile/blob/master/LICENSE</licenseUrl>
+    <projectUrl>https://github.com/Daddoon/BlazorMobile</projectUrl>
+    <iconUrl>https://www.nuget.org/Content/gallery/img/default-package-icon-256x256.png</iconUrl>
+    <requireLicenseAcceptance>true</requireLicenseAcceptance>
+    <description>This NuGet package is intended for packaging your Blazor application for use with the BlazorMobile plugin. This must be referenced in your Blazor web application project</description>
+    <releaseNotes>First release</releaseNotes>
+    <copyright>Copyright 2019</copyright>
+    <tags>Blazor BlazorMobile Xamarin iOS Android Hybrid</tags>
+    <dependencies>
+      <dependency id="Microsoft.AspNetCore.Blazor.Build" version="3.0.0-preview7.19365.7" include="all" />
+      <dependency id="Microsoft.Extensions.CommandLineUtils" version="1.1.1" include="all" />
+      <dependency id="Microsoft.Extensions.FileProviders.Composite" version="3.0.0-preview7.19362.4" include="all" />
+      <dependency id="Microsoft.Extensions.FileProviders.Physical" version="3.0.0-preview7.19362.4" include="all" />
+    </dependencies>
+  </metadata>
+  <files>
+    <file src="..\..\..\THIRD-PARTY-NOTICES.txt" />
+    <file src="build\**" target="build" />
+    <file src="targets\**" target="targets" />
+    <file src="$publishdir$**\*" target="tools/" />
+    <file src="..\..\..\Web.JS\dist\$configuration$\blazor.*.js" target="tools/blazor" />
+  </files>
+</package>
