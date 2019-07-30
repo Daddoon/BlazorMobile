@@ -6,6 +6,10 @@
     <RootNamespace>BlazorMobile.NuGet</RootNamespace>
   </PropertyGroup>
 
+  <ItemGroup>
+    <Folder Include="artifacts\" />
+  </ItemGroup>
+
   <Target Name="PostBuild" AfterTargets="PostBuildEvent">
     <Exec Command="nuget pack .\..\BlazorMobile\BlazorMobile.nuspec -OutputDirectory .\artifacts&#xD;&#xA;nuget pack .\..\BlazorMobile\BlazorMobile.Common.nuspec -OutputDirectory .\artifacts&#xD;&#xA;nuget pack .\..\BlazorMobile\BlazorMobile.Web.nuspec -OutputDirectory .\artifacts" />
   </Target>

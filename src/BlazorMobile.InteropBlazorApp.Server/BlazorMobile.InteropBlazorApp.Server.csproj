@@ -12,6 +12,7 @@
   
    <ItemGroup>
      <ProjectReference Include="..\BlazorMobile.InteropBlazorApp\BlazorMobile.InteropBlazorApp.csproj" />
+     <ProjectReference Include="..\BlazorMobile.Web\BlazorMobile.Web.csproj" />
    </ItemGroup>
 
 </Project>
