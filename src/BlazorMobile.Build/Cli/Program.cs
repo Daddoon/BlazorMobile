@@ -14,8 +14,7 @@ namespace BlazorMobile.Build
             };
             app.HelpOption("-?|-h|--help");
 
-            app.Command("resolve-dependencies", ResolveRuntimeDependenciesCommand.Command);
-            app.Command("write-boot-json", WriteBootJsonCommand.Command);
+            app.Command("pack-blazor-app", PackBlazorAppCommand.Command);
 
             if (args.Length > 0)
             {

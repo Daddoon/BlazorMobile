@@ -2,32 +2,18 @@
 
   <PropertyGroup>
     <TargetFramework>netcoreapp3.0</TargetFramework>
-    <Description>Build mechanism for ASP.NET Core Blazor applications.</Description>
+    <AssemblyName>BlazorMobile.Build</AssemblyName>
+    <Description>Build mechanism for BlazorMobile applications.</Description>
     <OutputType>Exe</OutputType>
-    <IsShippingPackage>true</IsShippingPackage>
-    <HasReferenceAssembly>false</HasReferenceAssembly>
   </PropertyGroup>
-
-  <!-- Pack settings -->
-  <PropertyGroup>
-    <!-- Producing this package requires building with NodeJS enabled. -->
-    <IsPackable Condition="'$(BuildNodeJS)' == 'false'">false</IsPackable>
-    <GenerateNuspecDependsOn>$(GenerateNuspecDependsOn);Publish</GenerateNuspecDependsOn>
-    <NoPackageAnalysis>true</NoPackageAnalysis>
-    <NuspecFile>Microsoft.AspNetCore.Blazor.Build.nuspec</NuspecFile>
-  </PropertyGroup>
-
-  <ItemGroup>
-    <NuspecProperty Include="configuration=$(Configuration)" />
-    <NuspecProperty Include="publishDir=$(PublishDir)" />
-    <NuspecProperty Include="componentsversion=$(ComponentsPackageVersion)" />
-    <NuspecProperty Include="razorversion=$(MicrosoftAspNetCoreRazorDesignPackageVersion)" />
-    <NuspecProperty Include="blazormonoversion=$(MicrosoftAspNetCoreBlazorMonoPackageVersion)" />
-  </ItemGroup>
 
   <ItemGroup>
     <PackageReference Include="Microsoft.Extensions.CommandLineUtils" Version="1.1.1" />
     <PackageReference Include="Microsoft.Extensions.FileProviders.Composite" Version="3.0.0-preview7.19362.4" />
     <PackageReference Include="Microsoft.Extensions.FileProviders.Physical" Version="3.0.0-preview7.19362.4" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <Folder Include="Properties\" />
   </ItemGroup>
 </Project>
