@@ -2,17 +2,19 @@
 using System.Collections.Generic;
 using System.Diagnostics;
 using System.IO;
+using System.IO.Compression;
+using System.Linq;
 using System.Text;
 
 namespace BlazorMobile.Build.Core
 {
     internal static class PublishAndZipHelper
     {
-        internal const string artifactName = "app";
+        internal static string artifactName = "app";
 
-        internal const string artifactZipName = artifactName + ".zip";
+        internal static string artifactZipName { get { return artifactName + ".zip"; } }
 
-        internal const string artifactFolderName = artifactName + "_folder";
+        internal static string artifactFolderName { get { return artifactName + "_folder"; } }
 
         public static void PublishAndZip(string inputFile, string outputPath, string configuration)
         {
@@ -20,6 +22,8 @@ namespace BlazorMobile.Build.Core
             {
                 throw new InvalidOperationException("The input file does not exist or is not a Blazor csproj file");
             }
+
+            artifactName = Path.GetFileNameWithoutExtension(inputFile);
 
             //Warning invalid outputPath
             if (string.IsNullOrEmpty(outputPath))
@@ -62,16 +66,42 @@ namespace BlazorMobile.Build.Core
             //Publish folder
             if (!PublishInTempFolder(inputFile, artifactPublishTempDirectory, configuration))
             {
-                Console.WriteLine("ERROR: The BlazorMobile.Build temp publish task did not ended with success");
-                return;
+                throw new InvalidOperationException("The BlazorMobile.Build temp publish task did not ended with success");
             }
 
-            //TODO: Zip only the good folder and create the zip in the right directory
+            //Zip only the good folder and create the zip in the right directory
+            string folderToZip = GetAppFolderToZip(outputPath);
+            ZipAppFolder(folderToZip, GetArtifactZipAbsolutePath(outputPath));
 
-            //TODO: Clear only app_folder temp path after build
+            //Clear only app_folder temp path after build
+            ClearTempPublishDirectory(outputPath);
         }
 
-        internal static bool PublishInTempFolder(string projectPath, string outputPath, string configuration)
+
+        /// <summary>
+        /// Zip the given app folder, and return the 
+        /// </summary>
+        /// <param name="appFolder"></param>
+        /// <returns></returns>
+        private static void ZipAppFolder(string appFolder, string outputZip)
+        {
+            ZipFile.CreateFromDirectory(appFolder, outputZip);
+        }
+
+        private static string GetAppFolderToZip(string outputPath)
+        {
+            string appPublishFolder = GetArtifactPublishTempFolderAbsolutePath(outputPath);
+
+            string distFolder = Directory.GetDirectories(outputPath, "dist", SearchOption.AllDirectories).FirstOrDefault();
+            if (string.IsNullOrEmpty(distFolder))
+            {
+                throw new InvalidOperationException("dist folder was not found for package creation");
+            }
+
+            return distFolder;
+        }
+
+        private static bool PublishInTempFolder(string projectPath, string outputPath, string configuration)
         {
             var process = new Process()
             {
@@ -111,6 +141,16 @@ namespace BlazorMobile.Build.Core
             return directory + Path.DirectorySeparatorChar + artifactFolderName;
         }
 
+        private static void ClearTempPublishDirectory(string directoryToClear)
+        {
+            //Remove publish result
+            var absolutePathToArtifactPublishFolder = GetArtifactPublishTempFolderAbsolutePath(directoryToClear);
+            if (Directory.Exists(absolutePathToArtifactPublishFolder))
+            {
+                Directory.Delete(absolutePathToArtifactPublishFolder, true);
+            }
+        }
+
         private static void ClearDirectory(string directoryToClear)
         {
             try
@@ -123,11 +163,7 @@ namespace BlazorMobile.Build.Core
                 }
 
                 //Remove publish result
-                var absolutePathToArtifactPublishFolder = GetArtifactPublishTempFolderAbsolutePath(directoryToClear);
-                if (Directory.Exists(absolutePathToArtifactPublishFolder))
-                {
-                    Directory.Delete(absolutePathToArtifactPublishFolder, true);
-                }
+                ClearTempPublishDirectory(directoryToClear);
             }
             catch (Exception)
             {

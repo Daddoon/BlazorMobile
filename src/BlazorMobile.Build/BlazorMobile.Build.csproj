@@ -11,6 +11,7 @@
     <PackageReference Include="Microsoft.Extensions.CommandLineUtils" Version="1.1.1" />
     <PackageReference Include="Microsoft.Extensions.FileProviders.Composite" Version="3.0.0-preview7.19362.4" />
     <PackageReference Include="Microsoft.Extensions.FileProviders.Physical" Version="3.0.0-preview7.19362.4" />
+    <PackageReference Include="System.IO.Compression" Version="4.3.0" />
   </ItemGroup>
 
   <ItemGroup>
