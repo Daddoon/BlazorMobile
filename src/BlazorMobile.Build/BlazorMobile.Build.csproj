@@ -7,14 +7,32 @@
     <OutputType>Exe</OutputType>
   </PropertyGroup>
 
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|AnyCPU'">
+    <OutputPath>tools\</OutputPath>
+  </PropertyGroup>
+
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|AnyCPU'">
+    <OutputPath>tools\</OutputPath>
+  </PropertyGroup>
+
   <ItemGroup>
     <PackageReference Include="Microsoft.Extensions.CommandLineUtils" Version="1.1.1" />
-    <PackageReference Include="Microsoft.Extensions.FileProviders.Composite" Version="3.0.0-preview7.19362.4" />
-    <PackageReference Include="Microsoft.Extensions.FileProviders.Physical" Version="3.0.0-preview7.19362.4" />
     <PackageReference Include="System.IO.Compression" Version="4.3.0" />
   </ItemGroup>
 
   <ItemGroup>
+    <Folder Include="lib\" />
     <Folder Include="Properties\" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <None Include="tools\GenerateBlazorMobileBuild.targets" />
+    <None Include="tools\netcoreapp3.0\BlazorMobile.Build.deps.json" />
+    <None Include="tools\netcoreapp3.0\BlazorMobile.Build.dll" />
+    <None Include="tools\netcoreapp3.0\BlazorMobile.Build.exe" />
+    <None Include="tools\netcoreapp3.0\BlazorMobile.Build.pdb" />
+    <None Include="tools\netcoreapp3.0\BlazorMobile.Build.runtimeconfig.dev.json" />
+    <None Include="tools\netcoreapp3.0\BlazorMobile.Build.runtimeconfig.json" />
+    <None Include="tools\netcoreapp3.0\Microsoft.Extensions.CommandLineUtils.dll" />
   </ItemGroup>
 </Project>

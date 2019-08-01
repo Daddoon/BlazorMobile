@@ -1,0 +1,13 @@
+﻿<!-- GenerateBlazorMobileBuild.targets -->
+<Project>
+  <PropertyGroup>
+    <BlazorMobileBuildFileExe Condition="'$(TargetFrameworkIdentifier)' == '.NETCoreApp' OR '$(TargetFrameworkIdentifier)' == '.NETStandard'">dotnet "$(MSBuildThisFileDirectory)/netcoreapp3.0/BlazorMobile.Build.dll"</BlazorMobileBuildFileExe>
+    <BlazorMobileBuildOutput>"$(MSBuildProjectDir)/bin"</BlazorMobileBuildOutput>
+    <BlazorMobileBuildInput>"$(MSBuildProjectPath)"</BlazorMobileBuildInput>
+    <BlazorMobileBuildConfiguration>"$(MSBuildConfiguration)"</BlazorMobileBuildConfiguration>
+  </PropertyGroup>
+
+  <Target Name="GenerateBlazorMobileBuild" AfterTargets="BlazorGetCopyToPublishDirectoryItems">
+    <Exec Command="$(BlazorMobileBuildFileExe) pack-blazor-app --input $(BlazorMobileBuildInput) --outputPath $(BlazorMobileBuildOutput) --configuration $(BlazorMobileBuildConfiguration)" />
+  </Target>
+</Project>
