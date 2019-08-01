@@ -1,13 +1,20 @@
 ﻿<!-- GenerateBlazorMobileBuild.targets -->
 <Project>
+
+  <!-- Require rebuild if the targets change -->
   <PropertyGroup>
-    <BlazorMobileBuildFileExe Condition="'$(TargetFrameworkIdentifier)' == '.NETCoreApp' OR '$(TargetFrameworkIdentifier)' == '.NETStandard'">dotnet "$(MSBuildThisFileDirectory)/netcoreapp3.0/BlazorMobile.Build.dll"</BlazorMobileBuildFileExe>
-    <BlazorMobileBuildOutput>"$(MSBuildProjectDir)/bin"</BlazorMobileBuildOutput>
-    <BlazorMobileBuildInput>"$(MSBuildProjectPath)"</BlazorMobileBuildInput>
-    <BlazorMobileBuildConfiguration>"$(MSBuildConfiguration)"</BlazorMobileBuildConfiguration>
+    <MSBuildAllProjects>$(MSBuildAllProjects);$(MSBuildThisFileFullPath)</MSBuildAllProjects>
   </PropertyGroup>
 
-  <Target Name="GenerateBlazorMobileBuild" AfterTargets="BlazorGetCopyToPublishDirectoryItems">
-    <Exec Command="$(BlazorMobileBuildFileExe) pack-blazor-app --input $(BlazorMobileBuildInput) --outputPath $(BlazorMobileBuildOutput) --configuration $(BlazorMobileBuildConfiguration)" />
+  <PropertyGroup>
+    <BlazorMobileBuildDir Condition="'$(BlazorMobileBuildDir)' == ''">$(MSBuildThisFileDirectory)netcoreapp3.0/</BlazorMobileBuildDir>
+    <BlazorMobileBuildFileExe>dotnet &quot;$(BlazorMobileBuildDir)BlazorMobile.Build.dll&quot;</BlazorMobileBuildFileExe>
+    <BlazorMobileBuildOutput>&quot;$(MSBuildProjectDirectory)/bin&quot;</BlazorMobileBuildOutput>
+    <BlazorMobileBuildDistDir>&quot;$(OutDir)/dist&quot;</BlazorMobileBuildDistDir>
+    <BlazorMobileBuildInput>&quot;$(MSBuildProjectFullPath)&quot;</BlazorMobileBuildInput>
+  </PropertyGroup>
+
+  <Target Name="GenerateBlazorMobileBuild" AfterTargets="_BlazorBuildReport">
+    <Exec Command="$(BlazorMobileBuildFileExe) pack-blazor-app --input $(BlazorMobileBuildInput) --distDir $(BlazorMobileBuildDistDir) --outputPath $(BlazorMobileBuildOutput)" />
   </Target>
 </Project>

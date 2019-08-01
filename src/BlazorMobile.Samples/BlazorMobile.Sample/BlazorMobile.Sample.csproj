@@ -20,7 +20,7 @@
   </ItemGroup>
 
   <ItemGroup>
-    <EmbeddedResource Include="..\BlazorMobile.Sample.Blazor\BuildTools\artifacts\app.zip" Link="Package\app.zip" />
+    <EmbeddedResource Include="..\BlazorMobile.Sample.Blazor\bin\BlazorMobile.Sample.Blazor.zip" Link="Package\BlazorMobile.Sample.Blazor.zip" />
   </ItemGroup>
   
 </Project>

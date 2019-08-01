@@ -14,9 +14,7 @@ namespace BlazorMobile.Build.Core
 
         internal static string artifactZipName { get { return artifactName + ".zip"; } }
 
-        internal static string artifactFolderName { get { return artifactName + "_folder"; } }
-
-        public static void PublishAndZip(string inputFile, string outputPath, string configuration)
+        public static void PublishAndZip(string inputFile, string outputPath, string distDir)
         {
             if (!File.Exists(inputFile) || !inputFile.EndsWith(".csproj", StringComparison.InvariantCultureIgnoreCase))
             {
@@ -48,33 +46,15 @@ namespace BlazorMobile.Build.Core
             //If the base ouput exist, assuming we need to clean everything in it if we do consecutive call
             ClearDirectory(outputPath);
 
-            //If the base temp publish output directory does not exist, create it. As we cleaned previous build, this should create it
-            string artifactPublishTempDirectory = GetArtifactPublishTempFolderAbsolutePath(outputPath);
-            if (!Directory.Exists(artifactPublishTempDirectory))
-            {
-                try
-                {
-                    Directory.CreateDirectory(artifactPublishTempDirectory);
-                }
-                catch (Exception)
-                {
-                    //Let's bubble up
-                    throw;
-                }
-            }
+            string wwwrootFolder = Path.GetDirectoryName(inputFile) + Path.DirectorySeparatorChar + "wwwroot";
 
-            //Publish folder
-            if (!PublishInTempFolder(inputFile, artifactPublishTempDirectory, configuration))
-            {
-                throw new InvalidOperationException("The BlazorMobile.Build temp publish task did not ended with success");
-            }
+            string artifactAbsolutePath = GetArtifactZipAbsolutePath(outputPath);
 
             //Zip only the good folder and create the zip in the right directory
-            string folderToZip = GetAppFolderToZip(outputPath);
-            ZipAppFolder(folderToZip, GetArtifactZipAbsolutePath(outputPath));
+            ZipAppFolder(distDir, wwwrootFolder, artifactAbsolutePath);
 
-            //Clear only app_folder temp path after build
-            ClearTempPublishDirectory(outputPath);
+            //Show success message
+            Console.WriteLine($"BlazorMobile Build result -> App package present in {artifactAbsolutePath}.");
         }
 
 
@@ -83,72 +63,61 @@ namespace BlazorMobile.Build.Core
         /// </summary>
         /// <param name="appFolder"></param>
         /// <returns></returns>
-        private static void ZipAppFolder(string appFolder, string outputZip)
+        private static void ZipAppFolder(string appFolder, string wwwFolder, string outputZip)
         {
-            ZipFile.CreateFromDirectory(appFolder, outputZip);
-        }
+            //ZipFile.CreateFromDirectory(appFolder, outputZip);
 
-        private static string GetAppFolderToZip(string outputPath)
-        {
-            string appPublishFolder = GetArtifactPublishTempFolderAbsolutePath(outputPath);
-
-            string distFolder = Directory.GetDirectories(outputPath, "dist", SearchOption.AllDirectories).FirstOrDefault();
-            if (string.IsNullOrEmpty(distFolder))
+            using (FileStream zipToOpen = new FileStream(outputZip, FileMode.Create))
             {
-                throw new InvalidOperationException("dist folder was not found for package creation");
-            }
+                using (ZipArchive archive = new ZipArchive(zipToOpen, ZipArchiveMode.Create))
+                {
+                    //Adding files from dist folder
+                    string[] distFilesToAdd = Directory.GetFiles(appFolder, "*.*", SearchOption.AllDirectories);
 
-            return distFolder;
-        }
+                    //Add files from wwwroot
+                    string[] wwwrootFilesToAdd = Directory.GetFiles(wwwFolder, "*.*", SearchOption.AllDirectories);
 
-        private static bool PublishInTempFolder(string projectPath, string outputPath, string configuration)
-        {
-            var process = new Process()
-            {
-                StartInfo = new ProcessStartInfo
-                {				 
-                    FileName = "dotnet",
-                    Arguments = $"publish \"{projectPath}\" -o \"{outputPath}\" -c {configuration}",
-                    RedirectStandardOutput = false,
-                    UseShellExecute = false,
-                    CreateNoWindow = true,
+                    //Merging results
+                    var mergedFilesList = new List<string>();
+                    mergedFilesList.AddRange(wwwrootFilesToAdd);
+                    mergedFilesList.AddRange(distFilesToAdd);
+
+                    foreach (string distFile in mergedFilesList)
+                    {
+                        string distFileEntry = string.Empty;
+
+                        if (distFile.StartsWith(appFolder))
+                        {
+                            distFileEntry = distFile.Replace(appFolder, string.Empty).TrimStart('\\').TrimStart('/').Replace('\\', '/');
+                        }
+                        else if (distFile.StartsWith(wwwFolder))
+                        {
+                            distFileEntry = distFile.Replace(wwwFolder, string.Empty).TrimStart('\\').TrimStart('/').Replace('\\', '/');
+                        }
+                        else
+                        {
+                            //Sanity check. Should not happen
+                            continue;
+                        }
+
+                        ZipArchiveEntry currentFile = archive.CreateEntry(distFileEntry);
+                        using (Stream writer = currentFile.Open())
+                        {
+                            using (FileStream distFileStream = File.OpenRead(distFile))
+                            {
+                                distFileStream.CopyTo(writer);
+                            }
+                        }
+                    }
                 }
-            };
-
-            process.Start();
-            process.WaitForExit();
-
-            int result = process.ExitCode;
-            if (result != 0)
-            {
-                return false;
             }
-
-            return true;
         }
 
         private static string GetArtifactZipAbsolutePath(string directory)
         {
-            directory = directory.TrimEnd(Path.DirectorySeparatorChar);
+            directory = directory.TrimEnd(Path.DirectorySeparatorChar).Replace('/', Path.DirectorySeparatorChar).Replace('\\', Path.DirectorySeparatorChar);
 
             return directory + Path.DirectorySeparatorChar + artifactZipName;
-        }
-
-        private static string GetArtifactPublishTempFolderAbsolutePath(string directory)
-        {
-            directory = directory.TrimEnd(Path.DirectorySeparatorChar);
-
-            return directory + Path.DirectorySeparatorChar + artifactFolderName;
-        }
-
-        private static void ClearTempPublishDirectory(string directoryToClear)
-        {
-            //Remove publish result
-            var absolutePathToArtifactPublishFolder = GetArtifactPublishTempFolderAbsolutePath(directoryToClear);
-            if (Directory.Exists(absolutePathToArtifactPublishFolder))
-            {
-                Directory.Delete(absolutePathToArtifactPublishFolder, true);
-            }
         }
 
         private static void ClearDirectory(string directoryToClear)
@@ -161,9 +130,6 @@ namespace BlazorMobile.Build.Core
                 {
                     File.Delete(absolutePathToArtifactZipFile);
                 }
-
-                //Remove publish result
-                ClearTempPublishDirectory(directoryToClear);
             }
             catch (Exception)
             {

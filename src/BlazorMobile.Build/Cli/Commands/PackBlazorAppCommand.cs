@@ -20,18 +20,15 @@ namespace Microsoft.AspNetCore.Blazor.Build.DevServer.Commands
                 "Path to the output path",
                 CommandOptionType.SingleValue);
 
-            var configuration = command.Option("--configuration",
-                "The requested build configuration (Debug or Release)",
+            var distDir = command.Option("--distDir",
+                "Path to the Blazor dist folder",
                 CommandOptionType.SingleValue);
 
             command.OnExecute(() =>
             {
                 if (!referencesFile.HasValue()
                 || !outputPath.HasValue()
-                || !configuration.HasValue()
-                || (!string.Equals(configuration.Value(), "Debug"
-, StringComparison.InvariantCultureIgnoreCase)
-                && !string.Equals(configuration.Value(), "Release", StringComparison.InvariantCultureIgnoreCase)))
+                || !distDir.HasValue())
                 {
                     command.ShowHelp(command.Name);
                     return 1;
@@ -39,7 +36,7 @@ namespace Microsoft.AspNetCore.Blazor.Build.DevServer.Commands
 
                 try
                 {
-                    PublishAndZipHelper.PublishAndZip(referencesFile.Value(), outputPath.Value(), configuration.Value());
+                    PublishAndZipHelper.PublishAndZip(referencesFile.Value(), outputPath.Value(), distDir.Value());
                     return 0;
                 }
                 catch (Exception ex)
