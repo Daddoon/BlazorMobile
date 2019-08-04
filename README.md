@@ -15,7 +15,7 @@ Create full C# driven hybrid-apps for iOS & Android !
 - [Getting started from sample](#getting-started-from-sample)
 - [Linking your Blazor app to your Xamarin project](#linking-your-blazor-app-to-your-xamarin-project)
 - [Detecting Runtime Platform](#detecting-runtime-platform)
-- [Communication between Blazor & Xamarin.Forms](#communication-between-blazorxamarinforms)
+- [Communication between Blazor & Xamarin.Forms](#communication-between-blazor--xamarinforms)
 - [Device remote debugging & Debugging from NET Core 3.0](#device-remote-debugging--debugging-from-net-core-30)
 
 ## Migration
