@@ -7,11 +7,13 @@ Create full C# driven hybrid-apps for iOS & Android !
   
 - **Android:** Android 5.0 or greater
 - **iOS:** iOS 12 or greater
+- **UWP:** Build 16299 or greater
 - **Blazor:** 3.0.0-preview7.19365.7
 
 ## Summary
 
 - [Getting started from sample](#getting-started-from-sample)
+- [Linking your Blazor app to your Xamarin project](#linking-your-blazor-app-to-your-xamarin-project)
 - [Detecting Runtime Platform](#detecting-runtime-platform)
 - [Communication between Blazor & Xamarin.Forms](#communication-between-blazorxamarinforms)
 - [Device remote debugging & Debugging from NET Core 3.0](#device-remote-debugging--debugging-from-net-core-30)
@@ -24,7 +26,102 @@ Create full C# driven hybrid-apps for iOS & Android !
 
 The easiest way in order to start is to [download the sample projects](https://github.com/Daddoon/BlazorMobile/releases/download/3.0.1-preview6.19307.2/BlazorMobile.Samples.zip). Unzip, and open the solution, and you are good to go.
 
-If you want to install from scratch, read below.
+## Linking your Blazor app to your Xamarin project
+
+In order to ship your Blazor application within your Xamarin apps, you need to pack it and make it available to Xamarin.
+
+Your Blazor app will be automatically packaged thanks to the **BlazorMobile.Build** NuGet package, that must be installed on your Blazor web application project. The package location will be written in the build output after the Blazor build mecanism.
+
+Here are the steps in order to link it in Xamarin:
+
+- Add your package **as a link** in your Xamarin.Forms shared project, from the Blazor web app bin directory.
+- Set the property of your package file as an **Embedded Resource** from Visual Studio.
+- **Optional**: Add a project dependency on your Xamarin.Forms shared project, and check your Blazor web application as a dependency. **This way we will be assured that even if there is no direct reference between the shared project and the blazor web application assembly, the blazor project and our zip are always updated before building our mobile application project**.
+- Set the path to your package in your Xamarin.Forms shared project. In the **App.xaml.cs** file, set the path in your **RegisterAppStreamResolver** delegate.
+
+As seen on the **BlazorMobile.Sample** project, assuming a file linked as in a folder called **Package**, we would have a code like this:
+
+```csharp
+namespace BlazorMobile.Sample
+{
+	public partial class App : Application
+	{
+        public const string BlazorAppPackageName = "BlazorMobile.Sample.Blazor.zip";
+
+        public App()
+        {
+            InitializeComponent();
+
+            //Some code
+
+            //Register Blazor application package resolver
+            WebApplicationFactory.RegisterAppStreamResolver(() =>
+            {
+                //This app assembly
+                var assembly = typeof(App).Assembly;
+
+                //Name of our current Blazor package in this project, stored as an "Embedded Resource"
+                //The file is resolved through AssemblyName.FolderAsNamespace.YourPackageNameFile
+
+                //In this example, the result would be BlazorMobile.Sample.Package.BlazorMobile.Sample.Blazor.zip
+                return assembly.GetManifestResourceStream($"{assembly.GetName().Name}.Package.{BlazorAppPackageName}");
+            });
+
+            //Some code
+
+            MainPage = new MainPage();
+        }
+    }
+}
+```
+
+## Detecting Runtime Platform
+
+If your Blazor application is ready by taking the samples or followed the installation from scratch, you should have the **BlazorService.Init()** already called in the **Startup.cs** file.
+Then you only need to call:
+
+```csharp
+Device.RuntimePlatform
+```
+
+...In order to retrieve the current device runtime platform.
+
+Note that the **BlazorService.Init()** has an **onFinish** optional callback delegate. Every call to **Device.RuntimePlatform** before the onFinish delegate call will return **Device.Unkown** instead of the detected platform.
+
+### Test your interop with Xamarin in Blazor
+
+Don't forget to add your Blazor implementation in the dependency services of your Blazor app.
+In your **Startup.cs** file of your **Blazor project**:
+
+```csharp
+    public class Startup
+    {
+        public void ConfigureServices(IServiceCollection services)
+        {
+            services.AddSingleton<IXamarinBridge, XamarinBridgeProxy>();
+        }
+
+        public void Configure(IComponentsApplicationBuilder app)
+        {
+            app.AddComponent<MobileApp>("app");
+        }
+    }
+```
+
+In our sample project **BlazorMobile.Sample.Blazor**, we moved services initialization in **ServicesHelper.ConfigureCommonServices** static method.
+
+Then in one of your desired **razor** page (or plain **C# ComponentBase**), juste add...
+```csharp
+@inject IXamarinBridge XamarinBridge
+```
+
+...on the top of your razor file, then call your method in your desired callback, like:
+
+```csharp
+var result = await XamarinBridge.DisplayAlert("Platform identity", $"Current platform is {Device.RuntimePlatform}", "Great!");
+```
+
+If using this example the sample project, clicking on the **Alert Me** button on the **Counter page** should show you the **native device alert**, with the given parameters, and showing you the **current detected device runtime platform**, like iOS or Android.
 
 ## Communication between Blazor & Xamarin.Forms
 
@@ -116,54 +213,6 @@ Because of the lack of JIT, you have to give yourself some parameters. Take a lo
 There is actually some syntactic sugar method calls in order to just mimic what you are expecting, by just recognizing the same kind of signature, if using generic parameters etc. You may take a look at the [MethodDispatcher file](https://github.com/Daddoon/BlazorMobile/blob/master/src/BlazorMobile.Common/Services/MethodDispatcher.cs) if you want to see the available methods overload.
 
 If you want that the caller and receiver method are actually the same method signature on the 2 ends (Blazor & Xamarin), you can safely use MethodBase.GetCurrentMethod() everytime for the MethodInfo parameter, like in our example.
-
-## Detecting Runtime Platform
-
-If your Blazor application is ready by taking the samples or followed the installation from scratch, you should have the **BlazorService.Init()** already called in the **Startup.cs** file.
-Then you only need to call:
-
-```csharp
-Device.RuntimePlatform
-```
-
-...In order to retrieve the current device runtime platform.
-
-Note that the **BlazorService.Init()** has an **onFinish** optional callback delegate. Every call to **Device.RuntimePlatform** before the onFinish delegate call will return **Device.Unkown** instead of the detected platform.
-
-### Test your interop with Xamarin in Blazor
-
-Don't forget to add your Blazor implementation in the dependency services of your Blazor app.
-In your **Startup.cs** file of your **Blazor project**:
-
-```csharp
-    public class Startup
-    {
-        public void ConfigureServices(IServiceCollection services)
-        {
-            services.AddSingleton<IXamarinBridge, XamarinBridgeProxy>();
-        }
-
-        public void Configure(IComponentsApplicationBuilder app)
-        {
-            app.AddComponent<MobileApp>("app");
-        }
-    }
-```
-
-In our sample project **BlazorMobile.Sample.Blazor**, we moved services initialization in **ServicesHelper.ConfigureCommonServices** static method.
-
-Then in one of your desired **razor** page (or plain **C# ComponentBase**), juste add...
-```csharp
-@inject IXamarinBridge XamarinBridge
-```
-
-...on the top of your razor file, then call your method in your desired callback, like:
-
-```csharp
-var result = await XamarinBridge.DisplayAlert("Platform identity", $"Current platform is {Device.RuntimePlatform}", "Great!");
-```
-
-If using this example the sample project, clicking on the **Alert Me** button on the **Counter page** should show you the **native device alert**, with the given parameters, and showing you the **current detected device runtime platform**, like iOS or Android.
 
 ## Device remote debugging & Debugging from NET Core 3.0
 
@@ -283,7 +332,7 @@ If you omit the mode=server argument, the Blazor application will be launched as
 
 ## Migration
 
-### BlazorMobile 0.8.0 or 3.0.0-preview6 to 3.0.1-preview6.19307.2
+### BlazorMobile 0.8.0 to 3.0.1-preview6.19307.2
 
 Coming very soon
 
