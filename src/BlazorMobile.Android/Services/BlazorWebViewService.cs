@@ -1,4 +1,5 @@
-﻿using BlazorMobile.Droid.Renderer;
+﻿using BlazorMobile.Components;
+using BlazorMobile.Droid.Renderer;
 using BlazorMobile.Services;
 using System;
 using System.IO;
@@ -10,6 +11,9 @@ namespace BlazorMobile.Droid.Services
     {
         private static void InitComponent(Android.App.Activity activity)
         {
+            //Instanciate GeckoView type in BlazorMobile assemnly for Android
+            BlazorWebViewFactory.SetInternalBlazorGeckoViewType(typeof(BlazorGeckoView));
+
             BlazorGeckoViewRenderer.Init(activity);
         }
 

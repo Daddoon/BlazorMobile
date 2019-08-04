@@ -23,9 +23,9 @@ namespace BlazorMobile.InteropApp
                 var assembly = typeof(App).Assembly;
 
                 //Name of our current Blazor package in this project, stored as a Embedded Resource
-                string BlazorPackageFolder = "Mobile.package.app.zip";
+                string BlazorPackageFolder = "BlazorMobile.InteropBlazorApp.zip";
 
-                string appPackage = $"{assembly.GetName().Name}.{BlazorPackageFolder}";
+                string appPackage = $"{assembly.GetName().Name}.Package.{BlazorPackageFolder}";
 
                 return assembly.GetManifestResourceStream(appPackage);
             });

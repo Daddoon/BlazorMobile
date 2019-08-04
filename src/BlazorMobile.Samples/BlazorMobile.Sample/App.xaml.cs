@@ -6,6 +6,8 @@ namespace BlazorMobile.Sample
 {
 	public partial class App : Application
 	{
+        public const string BlazorAppPackageName = "BlazorMobile.Sample.Blazor.zip";
+
         public App()
         {
             InitializeComponent();
@@ -22,8 +24,10 @@ namespace BlazorMobile.Sample
                 var assembly = typeof(App).Assembly;
 
                 //Name of our current Blazor package in this project, stored as an "Embedded Resource"
-                //The file is resolved through AssemblyName.NamespaceFolder.app.zip
-                return assembly.GetManifestResourceStream($"{assembly.GetName().Name}.Package.app.zip");
+                //The file is resolved through AssemblyName.FolderAsNamespace.YourPackageNameFile
+
+                //In this example, the result would be BlazorMobile.Sample.Package.BlazorMobile.Sample.Blazor.zip
+                return assembly.GetManifestResourceStream($"{assembly.GetName().Name}.Package.{BlazorAppPackageName}");
             });
 
             MainPage = new MainPage();

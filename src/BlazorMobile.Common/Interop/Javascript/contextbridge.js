@@ -68,8 +68,8 @@ window.contextBridge = {
         }
     },
     metadata: {
-        GetBlazorMobileCommonAssemblyName: function () {
-            return 'BlazorMobile.Common';
+        GetBlazorMobileWebAssemblyName: function () {
+            return 'BlazorMobile.Web';
         },
         GetBlazorMobileReceiveMethodName: function () {
             return 'Receive';
@@ -99,7 +99,7 @@ window.contextBridge = {
         });
     },
     receive: function (csharpProxy) {
-        DotNet.invokeMethodAsync(window.contextBridge.metadata.GetBlazorMobileCommonAssemblyName(),
+        DotNet.invokeMethodAsync(window.contextBridge.metadata.GetBlazorMobileWebAssemblyName(),
             window.contextBridge.metadata.GetBlazorMobileReceiveMethodName(), csharpProxy);
     }
 };

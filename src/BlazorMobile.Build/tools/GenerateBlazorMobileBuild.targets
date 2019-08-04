@@ -1,0 +1,20 @@
+﻿<!-- GenerateBlazorMobileBuild.targets -->
+<Project>
+
+  <!-- Require rebuild if the targets change -->
+  <PropertyGroup>
+    <MSBuildAllProjects>$(MSBuildAllProjects);$(MSBuildThisFileFullPath)</MSBuildAllProjects>
+  </PropertyGroup>
+
+  <PropertyGroup>
+    <BlazorMobileBuildDir Condition="'$(BlazorMobileBuildDir)' == ''">$(MSBuildThisFileDirectory)netcoreapp3.0/</BlazorMobileBuildDir>
+    <BlazorMobileBuildFileExe>dotnet &quot;$(BlazorMobileBuildDir)BlazorMobile.Build.dll&quot;</BlazorMobileBuildFileExe>
+    <BlazorMobileBuildOutput>&quot;$(MSBuildProjectDirectory)/bin&quot;</BlazorMobileBuildOutput>
+    <BlazorMobileBuildDistDir>&quot;$(OutDir)/dist&quot;</BlazorMobileBuildDistDir>
+    <BlazorMobileBuildInput>&quot;$(MSBuildProjectFullPath)&quot;</BlazorMobileBuildInput>
+  </PropertyGroup>
+
+  <Target Name="GenerateBlazorMobileBuild" AfterTargets="_BlazorBuildReport">
+    <Exec Command="$(BlazorMobileBuildFileExe) pack-blazor-app --input $(BlazorMobileBuildInput) --distDir $(BlazorMobileBuildDistDir) --outputPath $(BlazorMobileBuildOutput)" />
+  </Target>
+</Project>
