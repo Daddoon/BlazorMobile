@@ -10,7 +10,7 @@
         <projectUrl>https://github.com/Daddoon/BlazorMobile</projectUrl>
         <iconUrl>https://www.nuget.org/Content/gallery/img/default-package-icon-256x256.png</iconUrl>
         <requireLicenseAcceptance>true</requireLicenseAcceptance>
-        <description>This NuGet package intended for the Blazor application side of the BlazorMobile package. Use BlazorMobile page for the native side.</description>
+        <description>This NuGet package intended for the Blazor application side of the BlazorMobile package. Use BlazorMobile package for the native side.</description>
         <releaseNotes>Updated NuGet package to be based on Blazor 3.0.0-preview7.19365.7. Migrated Blazor dependencies in BlazorMobile.Web</releaseNotes>
         <copyright>Copyright 2019</copyright>
         <tags>Blazor BlazorMobile Xamarin iOS Android Hybrid</tags>
