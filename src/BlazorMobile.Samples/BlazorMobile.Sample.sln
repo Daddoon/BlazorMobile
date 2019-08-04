@@ -12,7 +12,7 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "BlazorMobile.Sample", "Blaz
 		{4C4999FD-A0E2-4466-8753-D436C6953402} = {4C4999FD-A0E2-4466-8753-D436C6953402}
 	EndProjectSection
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "BlazorMobile.Sample.Android", "BlazorMobile.Sample.Blazor.Android\BlazorMobile.Sample.Android.csproj", "{30BBEA69-16A0-4578-8904-51641700B8A5}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "BlazorMobile.Sample.Android", "BlazorMobile.Sample.Android\BlazorMobile.Sample.Android.csproj", "{30BBEA69-16A0-4578-8904-51641700B8A5}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "BlazorMobile.Sample.iOS", "BlazorMobile.Sample.iOS\BlazorMobile.Sample.iOS.csproj", "{F62FB8D8-B450-4C86-BF17-B8FE5784125C}"
 EndProject
