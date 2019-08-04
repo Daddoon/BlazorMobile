@@ -14,6 +14,7 @@ EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "BlazorMobile.InteropApp", "src\BlazorMobile.InteropApp\BlazorMobile.InteropApp.csproj", "{AF4EDF5B-354C-48DA-AC7D-9715C02E1795}"
 	ProjectSection(ProjectDependencies) = postProject
 		{8E5A3052-2D73-4646-A158-D206F4DC589D} = {8E5A3052-2D73-4646-A158-D206F4DC589D}
+		{5C099FA8-7AF5-4847-AD0E-B82503F69392} = {5C099FA8-7AF5-4847-AD0E-B82503F69392}
 	EndProjectSection
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "BlazorMobile.InteropApp.Android", "src\BlazorMobile.InteropApp.Android\BlazorMobile.InteropApp.Android.csproj", "{CE09DF20-2617-4F25-BDE3-B45EEBF3E094}"

@@ -3,6 +3,7 @@ using BlazorMobile.Services;
 using System;
 using System.Collections.Generic;
 using System.Text;
+using System.Threading.Tasks;
 using System.Web;
 using Xamarin.Forms;
 
@@ -15,16 +16,33 @@ namespace BlazorMobile.Components
             Navigated += BlazorWebView_Navigated;
         }
 
+
+        private void LaunchBlazorAppUri()
+        {
+            Source = new UrlWebViewSource()
+            {
+                Url = WebApplicationFactory.GetBaseURL()
+            };
+            blazorAppLaunched = true;
+        }
+
+        private void LaunchBlazorAppUri(int delayedMilliseconds)
+        {
+            Task.Run(async () => {
+                await Task.Delay(delayedMilliseconds);
+                Device.BeginInvokeOnMainThread(LaunchBlazorAppUri);
+            });
+        }
+
         public void LaunchBlazorApp()
         {
             switch (Device.RuntimePlatform)
             {
+                case Device.UWP:
+                    LaunchBlazorAppUri(1000);
+                    break;
                 default:
-                    Source = new UrlWebViewSource()
-                    {
-                        Url = WebApplicationFactory.GetBaseURL()
-                    };
-                    blazorAppLaunched = true;
+                    LaunchBlazorAppUri();
                     break;
             }
         }
