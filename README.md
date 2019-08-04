@@ -24,7 +24,7 @@ Create full C# driven hybrid-apps for iOS & Android !
 
 ## Getting started from sample
 
-The easiest way in order to start is to [download the sample projects](https://github.com/Daddoon/BlazorMobile/releases/download/3.0.1-preview6.19307.2/BlazorMobile.Samples.zip). Unzip, and open the solution, and you are good to go.
+The easiest way in order to start is to [download the sample projects](https://github.com/Daddoon/BlazorMobile/releases/download/3.0.3-preview7.19365.7/BlazorMobile.Samples.zip). Unzip, and open the solution, and you are good to go.
 
 ## Linking your Blazor app to your Xamarin project
 
