@@ -46,6 +46,7 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Components\BlazorGeckoView.cs" />
     <Compile Include="Interop\AndroidWebResponse.cs" />
     <Compile Include="Interop\JSBridge.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
