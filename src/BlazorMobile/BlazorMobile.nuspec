@@ -2,7 +2,7 @@
 <package xmlns="http://schemas.microsoft.com/packaging/2012/06/nuspec.xsd">
     <metadata>
         <id>BlazorMobile</id>
-        <version>3.0.2-preview7.19365.7</version>
+        <version>3.0.3-preview7.19365.7</version>
         <title>BlazorMobile</title>
         <authors>Guillaume ZAHRA</authors>
         <owners>Daddoon</owners>
@@ -10,8 +10,8 @@
         <projectUrl>https://github.com/Daddoon/BlazorMobile</projectUrl>
         <iconUrl>https://www.nuget.org/Content/gallery/img/default-package-icon-256x256.png</iconUrl>
         <requireLicenseAcceptance>true</requireLicenseAcceptance>
-        <description>BlazorMobile allow hosting a Blazor application as a standalone mobile application, with native communication support. Support iOS 12+, Android 5.0 &gt;=</description>
-        <releaseNotes>Updated NuGet package to be based on Blazor 3.0.0-preview7.19365.7.</releaseNotes>
+        <description>BlazorMobile allow hosting a Blazor application as a standalone mobile application, with native communication support. Support iOS 12+, Android 5.0 &gt;= and UWP</description>
+        <releaseNotes>Added UWP support, removed any Blazor assembly reference from this package, removed Xamarin.Android.GeckoView.Forms dependency when targeting other platforms than Android</releaseNotes>
         <copyright>Copyright 2019</copyright>
         <tags>Blazor BlazorMobile Xamarin iOS Android Hybrid</tags>
         <dependencies>
@@ -20,10 +20,8 @@
             <dependency id="EmbedIO" version="2.2.9" />
             <dependency id="MimeTypes" version="1.0.6" />
             <dependency id="Xamarin.Forms" version="3.5.0" />
-            <dependency id="Newtonsoft.Json" version="11.0.2" />
-            <dependency id="NETStandard.Library" version="2.0.1" />
-            <dependency id="Microsoft.AspNetCore.Blazor" version="3.0.0-preview7.19365.7" />
-            <dependency id="BlazorMobile.Common" version="3.0.2-preview7.19365.7" />
+            <dependency id="NETStandard.Library" version="2.0.3" />
+            <dependency id="BlazorMobile.Common" version="3.0.3-preview7.19365.7" />
           </group>
 
           <group targetFramework="MonoAndroid8.0">
@@ -31,10 +29,8 @@
             <dependency id="EmbedIO" version="2.2.9" />
             <dependency id="MimeTypes" version="1.0.6" />
             <dependency id="Xamarin.Forms" version="3.5.0" />
-            <dependency id="Newtonsoft.Json" version="11.0.2" />
-            <dependency id="NETStandard.Library" version="2.0.1" />
-            <dependency id="Microsoft.AspNetCore.Blazor" version="3.0.0-preview7.19365.7" />
-            <dependency id="BlazorMobile.Common" version="3.0.2-preview7.19365.7" />
+            <dependency id="NETStandard.Library" version="2.0.3" />
+            <dependency id="BlazorMobile.Common" version="3.0.3-preview7.19365.7" />
             <dependency id="Xamarin.Android.GeckoView.Forms" version="0.1.1" />
           </group>
 
@@ -43,10 +39,8 @@
             <dependency id="EmbedIO" version="2.2.9" />
             <dependency id="MimeTypes" version="1.0.6" />
             <dependency id="Xamarin.Forms" version="3.5.0" />
-            <dependency id="Newtonsoft.Json" version="11.0.2" />
-            <dependency id="NETStandard.Library" version="2.0.1" />
-            <dependency id="Microsoft.AspNetCore.Blazor" version="3.0.0-preview7.19365.7" />
-            <dependency id="BlazorMobile.Common" version="3.0.2-preview7.19365.7" />
+            <dependency id="NETStandard.Library" version="2.0.3" />
+            <dependency id="BlazorMobile.Common" version="3.0.3-preview7.19365.7" />
             <dependency id="Xamarin.Android.GeckoView.Forms" version="0.1.1" />
           </group>
 
@@ -55,10 +49,8 @@
             <dependency id="EmbedIO" version="2.2.9" />
             <dependency id="MimeTypes" version="1.0.6" />
             <dependency id="Xamarin.Forms" version="3.5.0" />
-            <dependency id="Newtonsoft.Json" version="11.0.2" />
-            <dependency id="NETStandard.Library" version="2.0.1" />
-            <dependency id="Microsoft.AspNetCore.Blazor" version="3.0.0-preview7.19365.7" />
-            <dependency id="BlazorMobile.Common" version="3.0.2-preview7.19365.7" />
+            <dependency id="NETStandard.Library" version="2.0.3" />
+            <dependency id="BlazorMobile.Common" version="3.0.3-preview7.19365.7" />
             <dependency id="Xamarin.Android.GeckoView.Forms" version="0.1.1" />
           </group>
 
@@ -67,11 +59,18 @@
             <dependency id="EmbedIO" version="2.2.9" />
             <dependency id="MimeTypes" version="1.0.6" />
             <dependency id="Xamarin.Forms" version="3.5.0" />
-            <dependency id="Newtonsoft.Json" version="11.0.2" />
-            <dependency id="NETStandard.Library" version="2.0.1" />
-            <dependency id="Microsoft.AspNetCore.Blazor" version="3.0.0-preview7.19365.7" />
-            <dependency id="BlazorMobile.Common" version="3.0.2-preview7.19365.7" />
-            <dependency id="Xamarin.Android.GeckoView.Forms" version="0.1.1" />
+            <dependency id="NETStandard.Library" version="2.0.3" />
+            <dependency id="BlazorMobile.Common" version="3.0.3-preview7.19365.7" />
+          </group>
+
+          <group targetFramework="UAP10.0.16299">
+            <dependency id="Microsoft.NETCore.UniversalWindowsPlatform" version="6.2.8" />
+            <dependency id="System.IO.Compression.ZipFile" version="4.3.0" />
+            <dependency id="EmbedIO" version="2.2.9" />
+            <dependency id="MimeTypes" version="1.0.6" />
+            <dependency id="Xamarin.Forms" version="3.5.0" />
+            <dependency id="NETStandard.Library" version="2.0.3" />
+            <dependency id="BlazorMobile.Common" version="3.0.3-preview7.19365.7" />
           </group>
           
         </dependencies>
@@ -94,6 +93,13 @@
         
         <file src="lib\MonoAndroid\BlazorMobile.dll" target="lib\MonoAndroid\BlazorMobile.dll" />
         <file src="lib\MonoAndroid\BlazorMobile.xml" target="lib\MonoAndroid\BlazorMobile.xml" />
+
+        <!-- UWP reference assemblies -->
+        <file src="lib\UAP10\BlazorMobile.UWP.dll" target="lib\UAP10\BlazorMobile.UWP.dll" />
+        <file src="lib\UAP10\BlazorMobile.UWP.xml" target="lib\UAP10\BlazorMobile.UWP.xml" />
+      
+        <file src="lib\UAP10\BlazorMobile.dll" target="lib\UAP10\BlazorMobile.dll" />
+        <file src="lib\UAP10\BlazorMobile.xml" target="lib\UAP10\BlazorMobile.xml" />
       
     </files>
 </package>

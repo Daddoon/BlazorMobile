@@ -1,8 +1,10 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Runtime.CompilerServices;
 using System.Text;
 using Xamarin.Forms;
 
+[assembly: InternalsVisibleTo("BlazorMobile.Android")]
 namespace BlazorMobile.Components
 {
     public static class BlazorWebViewFactory
@@ -17,10 +19,22 @@ namespace BlazorMobile.Components
             switch (Device.RuntimePlatform)
             {
                 case Device.Android:
-                    return new BlazorGeckoView();
+                    return CreateBlazorGeckoViewInstance();
                 default:
                     return new BlazorWebView();
             }
+        }
+
+        private static Type _geckoViewType = null;
+
+        internal static void SetInternalBlazorGeckoViewType(Type geckoViewType)
+        {
+            _geckoViewType = geckoViewType;
+        }
+
+        internal static IBlazorWebView CreateBlazorGeckoViewInstance()
+        {
+            return (IBlazorWebView)Activator.CreateInstance(_geckoViewType);
         }
     }
 }
