@@ -20,7 +20,7 @@ Create full C# driven hybrid-apps for iOS & Android !
 
 ## Migration
 
-- [BlazorMobile 0.8.0 or 3.0.0-preview6 to 3.0.1-preview6.19307.2](#blazormobile-080-or-300-preview6-to-301-preview6193072)
+- [BlazorMobile 0.8.0 to 3.0.3-preview7.19365.7](#blazormobile-080-to-303-preview7193657)
 
 ## Getting started from sample
 
@@ -332,9 +332,136 @@ If you omit the mode=server argument, the Blazor application will be launched as
 
 ## Migration
 
-### BlazorMobile 0.8.0 to 3.0.1-preview6.19307.2
+### BlazorMobile 0.8.0 to 3.0.3-preview7.19365.7
 
-Coming very soon
+In your Blazor project, edit your ***.csproj** file:
+
+- Remove the **BlazorMobile.Common PackageReference**
+- Remove the manual PostBuild event, that look like this:
+
+```xml
+<Target Name="PostBuild" AfterTargets="PostBuildEvent">
+    <Exec Command="rm $(ProjectDir)\BuildTools\artifacts\app.zip &gt;nul 2&gt;&amp;1&#xD;&#xA;$(ProjectDir)\BuildTools\7za.exe a $(ProjectDir)\BuildTools\artifacts\app.zip $(ProjectDir)wwwroot\* -mx1 -tzip&#xD;&#xA;$(ProjectDir)\BuildTools\7za.exe a $(ProjectDir)\BuildTools\artifacts\app.zip $(ProjectDir)$(OutputPath)dist\* -mx1 -tzip" />
+</Target>
+```
+- In this same project file, add a PackageReference to **BlazorMobile.Build** and **BlazorMobile.Web**. This should look like this:
+
+```xml
+<ItemGroup>
+  <PackageReference Include="BlazorMobile.Build" Version="3.0.3-preview7.19365.7" />
+  <PackageReference Include="BlazorMobile.Web" Version="3.0.3-preview7.19365.7" />
+  <PackageReference Include="Microsoft.AspNetCore.Blazor" Version="3.0.0-preview7.19365.7" />
+  <PackageReference Include="Microsoft.AspNetCore.Blazor.Build" Version="3.0.0-preview7.19365.7" PrivateAssets="all" />
+  <PackageReference Include="Microsoft.AspNetCore.Blazor.DevServer" Version="3.0.0-preview7.19365.7" />
+</ItemGroup>
+```
+
+- In all of your projects, update any reference of **BlazorMobile** or **BlazorMobile.Common** to the **3.0.3-preview7.19365.7** version.
+
+In your **Startup.cs** file, in **Configure**, replace:
+
+```csharp
+public void Configure(IComponentsApplicationBuilder app)
+{
+    app.AddComponent<App>("app");
+
+    BlazorWebViewService.Init(app, "blazorXamarin", (bool success) =>
+    {
+        Console.WriteLine($"Initialization success: {success}");
+        Console.WriteLine("Device is: " + Device.RuntimePlatform);
+    });
+}
+```
+
+to:
+
+```csharp
+public void Configure(IComponentsApplicationBuilder app)
+{
+    #if DEBUG
+
+    //Only if you want to test WebAssembly with remote debugging from a dev machine
+    BlazorService.EnableClientToDeviceRemoteDebugging("192.168.1.118", 8888);
+
+    #endif
+
+    BlazorService.Init(app, (bool success) =>
+    {
+        Console.WriteLine($"Initialization success: {success}");
+        Console.WriteLine("Device is: " + Device.RuntimePlatform);
+    });
+
+    app.AddComponent<MobileApp>("app");
+}
+```
+
+Actually, change the onSuccess delegate to anything you want.
+But notice the **MobileApp** instead of **App** component.
+
+You should create your own component inherited from **App**. Create a **MobileApp.cs** file in your Blazor project and copy/paste this:
+
+```csharp
+using BlazorMobile.Common.Components;
+using Microsoft.AspNetCore.Components;
+using Microsoft.AspNetCore.Components.RenderTree;
+using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Threading.Tasks;
+
+namespace BlazorMobile.Sample.Blazor
+{
+    public class MobileApp : App
+    {
+        protected override void BuildRenderTree(RenderTreeBuilder builder)
+        {
+            builder.OpenElement(0, nameof(BlazorMobileComponent));
+            builder.OpenComponent(1, typeof(BlazorMobileComponent));
+            builder.CloseComponent();
+            builder.CloseElement();
+
+            base.BuildRenderTree(builder);
+        }
+    }
+}
+```
+
+Of course, replace the given namespaces by the one used by your own project.
+
+- In your **index.html** from your Blazor project, you can safely remove the **blazorXamarin** tag.
+- If you intent to use the server-mode to debug (see related documentation), you can also update the blazor script tag. In the current sample, **index.html** look like this:
+
+```html
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no" />
+    <title>BlazorMobile.BlazorApp</title>
+    <base href="/" />
+    <link href="css/bootstrap/bootstrap.min.css" rel="stylesheet" />
+    <link href="css/site.css" rel="stylesheet" />
+</head>
+<body>
+    <app>Loading...</app>
+    <script type="text/javascript" src="js/blazor.polyfill.js"></script>
+    <script id="blazorMode"></script>
+    <script>
+        document.getElementById("blazorMode").src = window.location.search.includes("mode=server") ? "_framework/blazor.server.js" : "_framework/blazor.webassembly.js";
+    </script>
+</body> 
+</html>
+```
+
+See the documentation, about how to switch from WASM to .NET Core debugging if needed.
+
+- Update your **RegisterAppStreamResolver** code if needed. See the linking Blazor to Xamarin section for this.
+- Add missing additionnals project if needed from samples, to your project.
+
+New projects are:
+
+- **BlazorMobile.Sample.Blazor.Server**, for testing your Blazor app with the .NET Core runtime
+- **BlazorMobile.Sample.UWP**, for deploying your Blazor app to UWP (Windows 10).
 
 ## Authors
 
