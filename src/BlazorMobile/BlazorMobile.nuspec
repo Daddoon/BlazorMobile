@@ -2,7 +2,7 @@
 <package xmlns="http://schemas.microsoft.com/packaging/2012/06/nuspec.xsd">
     <metadata>
         <id>BlazorMobile</id>
-        <version>3.0.4-preview7.19365.7</version>
+        <version>$version$</version>
         <title>BlazorMobile</title>
         <authors>Guillaume ZAHRA</authors>
         <owners>Daddoon</owners>
@@ -21,7 +21,7 @@
             <dependency id="MimeTypes" version="1.0.6" />
             <dependency id="Xamarin.Forms" version="3.5.0" />
             <dependency id="NETStandard.Library" version="2.0.3" />
-            <dependency id="BlazorMobile.Common" version="3.0.3-preview7.19365.7" />
+            <dependency id="BlazorMobile.Common" version="$version$" />
           </group>
 
           <group targetFramework="MonoAndroid8.0">
@@ -30,7 +30,7 @@
             <dependency id="MimeTypes" version="1.0.6" />
             <dependency id="Xamarin.Forms" version="3.5.0" />
             <dependency id="NETStandard.Library" version="2.0.3" />
-            <dependency id="BlazorMobile.Common" version="3.0.3-preview7.19365.7" />
+            <dependency id="BlazorMobile.Common" version="$version$" />
             <dependency id="Xamarin.Android.GeckoView.Forms" version="0.1.1" />
           </group>
 
@@ -40,7 +40,7 @@
             <dependency id="MimeTypes" version="1.0.6" />
             <dependency id="Xamarin.Forms" version="3.5.0" />
             <dependency id="NETStandard.Library" version="2.0.3" />
-            <dependency id="BlazorMobile.Common" version="3.0.3-preview7.19365.7" />
+            <dependency id="BlazorMobile.Common" version="$version$" />
             <dependency id="Xamarin.Android.GeckoView.Forms" version="0.1.1" />
           </group>
 
@@ -50,7 +50,7 @@
             <dependency id="MimeTypes" version="1.0.6" />
             <dependency id="Xamarin.Forms" version="3.5.0" />
             <dependency id="NETStandard.Library" version="2.0.3" />
-            <dependency id="BlazorMobile.Common" version="3.0.3-preview7.19365.7" />
+            <dependency id="BlazorMobile.Common" version="$version$" />
             <dependency id="Xamarin.Android.GeckoView.Forms" version="0.1.1" />
           </group>
 
@@ -60,7 +60,7 @@
             <dependency id="MimeTypes" version="1.0.6" />
             <dependency id="Xamarin.Forms" version="3.5.0" />
             <dependency id="NETStandard.Library" version="2.0.3" />
-            <dependency id="BlazorMobile.Common" version="3.0.3-preview7.19365.7" />
+            <dependency id="BlazorMobile.Common" version="$version$" />
           </group>
 
           <group targetFramework="UAP10.0.16299">
@@ -70,7 +70,7 @@
             <dependency id="MimeTypes" version="1.0.6" />
             <dependency id="Xamarin.Forms" version="3.5.0" />
             <dependency id="NETStandard.Library" version="2.0.3" />
-            <dependency id="BlazorMobile.Common" version="3.0.3-preview7.19365.7" />
+            <dependency id="BlazorMobile.Common" version="$version$" />
           </group>
           
         </dependencies>
