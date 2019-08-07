@@ -2,7 +2,7 @@
 <package xmlns="http://schemas.microsoft.com/packaging/2012/06/nuspec.xsd">
     <metadata>
         <id>BlazorMobile.Common</id>
-        <version>3.0.3-preview7.19365.7</version>
+        <version>3.0.4-preview7.19365.7</version>
         <title>BlazorMobile.Common</title>
         <authors>Guillaume ZAHRA</authors>
         <owners>Daddoon</owners>
