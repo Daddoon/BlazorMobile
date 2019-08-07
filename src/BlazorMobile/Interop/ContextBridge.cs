@@ -1,4 +1,5 @@
-﻿using BlazorMobile.Common.Interop;
+﻿using BlazorMobile.Common.Helpers;
+using BlazorMobile.Common.Interop;
 using BlazorMobile.Common.Serialization;
 using BlazorMobile.Components;
 using BlazorMobile.Services;
@@ -107,7 +108,7 @@ namespace BlazorMobile.Interop
             }
             catch (Exception ex)
             {
-                Console.WriteLine($"Error: [Native] - {nameof(ContextBridge)}.{nameof(Receive)}: {ex.Message}");
+                ConsoleHelper.WriteLine($"Error: [Native] - {nameof(ContextBridge)}.{nameof(Receive)}: {ex.Message}");
 
                 methodProxy.ReturnValue = defaultValue;
                 methodProxy.TaskSuccess = false;

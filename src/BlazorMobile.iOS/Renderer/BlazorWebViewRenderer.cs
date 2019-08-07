@@ -1,4 +1,5 @@
-﻿using BlazorMobile.Common.Interop;
+﻿using BlazorMobile.Common.Helpers;
+using BlazorMobile.Common.Interop;
 using BlazorMobile.Components;
 using BlazorMobile.Interop;
 using BlazorMobile.iOS.Renderer;
@@ -186,14 +187,14 @@ namespace BlazorMobile.iOS.Renderer
         public override void DidFailNavigation(WKWebView webView, WKNavigation navigation, NSError error)
         {
             // If navigation fails, this gets called
-            Console.WriteLine("DidFailNavigation:" + error.ToString());
+            ConsoleHelper.WriteLine("DidFailNavigation:" + error.ToString());
         }
 
         [Export("webView:didFailProvisionalNavigation:withError:")]
         public override void DidFailProvisionalNavigation(WKWebView webView, WKNavigation navigation, NSError error)
         {
             // If navigation fails, this gets called
-            Console.WriteLine("DidFailProvisionalNavigation" + error.ToString());
+            ConsoleHelper.WriteLine("DidFailProvisionalNavigation" + error.ToString());
         }
     }
 }

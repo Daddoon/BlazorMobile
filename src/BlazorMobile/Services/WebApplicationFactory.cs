@@ -1,4 +1,5 @@
-﻿using BlazorMobile.Common.Interfaces;
+﻿using BlazorMobile.Common.Helpers;
+using BlazorMobile.Common.Interfaces;
 using BlazorMobile.Common.Services;
 using BlazorMobile.Consts;
 using BlazorMobile.Controller;
@@ -109,7 +110,7 @@ namespace BlazorMobile.Services
                 }
                 catch (Exception ex)
                 {
-                    Console.WriteLine($"{ex.Message}");
+                    ConsoleHelper.WriteException(ex);
                 }
             }
             return data;
@@ -375,7 +376,7 @@ namespace BlazorMobile.Services
 
             Task.Factory.StartNew(async () =>
             {
-                Console.WriteLine("Blazor.Mobile: Starting Server...");
+                ConsoleHelper.WriteLine("BlazorMobile: Starting Server...");
                 await server.RunAsync(serverCts.Token);
             });
         }
@@ -389,7 +390,7 @@ namespace BlazorMobile.Services
             }
             catch (Exception ex)
             {
-                Console.WriteLine($"{nameof(WebApplicationFactory)}.{nameof(WebApplicationFactory.StopWebServer)} - {nameof(serverCts)}: {ex.Message}");
+                ConsoleHelper.WriteLine($"{nameof(WebApplicationFactory)}.{nameof(WebApplicationFactory.StopWebServer)} - {nameof(serverCts)}: {ex.Message}");
             }
 
             try
@@ -402,7 +403,7 @@ namespace BlazorMobile.Services
             }
             catch (Exception ex)
             {
-                Console.WriteLine($"{nameof(WebApplicationFactory)}.{nameof(WebApplicationFactory.StopWebServer)} - {nameof(blazorContextBridgeServer)}: {ex.Message}");
+                ConsoleHelper.WriteLine($"{nameof(WebApplicationFactory)}.{nameof(WebApplicationFactory.StopWebServer)} - {nameof(blazorContextBridgeServer)}: {ex.Message}");
             }
 
             server?.Dispose();

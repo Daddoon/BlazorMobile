@@ -1,4 +1,5 @@
 ﻿using BlazorMobile.Common;
+using BlazorMobile.Common.Helpers;
 using BlazorMobile.Common.Interop;
 using BlazorMobile.Interop;
 using System;
@@ -58,7 +59,7 @@ namespace BlazorMobile.Controller
                 }
                 catch (Exception ex)
                 {
-                    Console.WriteLine("Error: [Native] - BlazorContextBridge.Receive: " + ex.Message);
+                    ConsoleHelper.WriteLine("Error: [Native] - BlazorContextBridge.Receive: " + ex.Message);
                 }
 
                 try
@@ -68,7 +69,7 @@ namespace BlazorMobile.Controller
                 }
                 catch (Exception ex)
                 {
-                    Console.WriteLine("Error: [Native] - BlazorContextBridge.Send: " + ex.Message);
+                    ConsoleHelper.WriteLine("Error: [Native] - BlazorContextBridge.Send: " + ex.Message);
                 }
             });
         }
