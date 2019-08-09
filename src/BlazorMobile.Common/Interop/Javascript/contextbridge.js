@@ -8,7 +8,7 @@ window.contextBridge = {
         _contextBridgeSocket: null,
         getOrOpenConnection: function (onSuccess, onError) {
             if (window.contextBridge.connectivity._contextBridgeSocket === null) {
-                console.log("contextBridge.getOrOpenConnection: trying to open new connection");
+                console.log("BlazorMobile: trying to open a new connection");
                 window.contextBridge.connectivity.openWSConnection(window.contextBridge.connectivity._contextBridgeURI, onSuccess, onError);
             }
             else {
@@ -32,11 +32,11 @@ window.contextBridge = {
         openWSConnection: function (uri, onOpen, onError) {
             var webSocketURL = null;
             webSocketURL = uri;
-            console.log("open WS Connection::Connecting to: " + webSocketURL);
+            console.log("BlazorMobile: Connecting to websocket server: " + webSocketURL);
             try {
                 window.contextBridge.connectivity._contextBridgeSocket = new WebSocket(webSocketURL);
                 window.contextBridge.connectivity._contextBridgeSocket.onopen = function (openEvent) {
-                    console.log("WebSocket onOpen: " + JSON.stringify(openEvent, null, 4));
+                    console.log("BlazorMobile: Connected to websocket server");
                     window.contextBridge.connectivity._contextBridgeIsOpen = true;
                     onOpen(window.contextBridge.connectivity._contextBridgeSocket);
                 };
