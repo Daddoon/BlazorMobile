@@ -21,7 +21,7 @@ namespace BlazorMobile.Common.Services
         }
 
         [JSInvokable]
-        public static bool Receive(string methodProxyJson)
+        public static bool Receive(string methodProxyJson, bool success)
         {
             if (string.IsNullOrEmpty(methodProxyJson))
                 return false;
@@ -30,13 +30,21 @@ namespace BlazorMobile.Common.Services
             {
                 MethodProxy resultProxy = BridgeSerializer.Deserialize<MethodProxy>(methodProxyJson);
                 var taskToReturn = MethodDispatcher.GetTaskDispatcher(resultProxy.TaskIdentity);
-                MethodDispatcher.SetTaskResult(resultProxy.TaskIdentity, resultProxy);
 
                 if (taskToReturn == null)
                     return;
 
-                taskToReturn.RunSynchronously();
+                if (success)
+                {
+                    MethodDispatcher.SetTaskResult(resultProxy.TaskIdentity, resultProxy);
+                    taskToReturn.RunSynchronously();
+                }
+                else
+                {
+                    MethodDispatcher.CancelTask(resultProxy.TaskIdentity);
+                }
 
+                //Clear task from task list. Should then call the task to execute. It will throw if it has been cancelled
                 MethodDispatcher.ClearTask(resultProxy.TaskIdentity);
             }, 10);
 

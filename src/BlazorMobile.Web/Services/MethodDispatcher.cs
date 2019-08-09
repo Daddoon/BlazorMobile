@@ -72,14 +72,34 @@ namespace BlazorMobile.Common.Services
             return null;
         }
 
+        internal static void CancelTask(int taskIdentity)
+        {
+            if (_taskDispatcher.ContainsKey(taskIdentity))
+            {
+                var task = _taskDispatcher[taskIdentity];
+
+                if (!task.CancelTokenSource.IsCancellationRequested)
+                {
+                    task.CancelTokenSource.Cancel();
+                }
+            }
+        }
+
         internal static void ClearTask(int taskIdentity)
         {
             if (_taskDispatcher.ContainsKey(taskIdentity))
             {
                 var task = _taskDispatcher[taskIdentity];
+
                 if (!task.ResultAction.IsCompleted)
                 {
-                    task.CancelTask();
+                    try
+                    {
+                        CancelTask(taskIdentity);
+                    }
+                    catch (Exception)
+                    {
+                    }
                 }
 
                 _taskDispatcher.Remove(taskIdentity);

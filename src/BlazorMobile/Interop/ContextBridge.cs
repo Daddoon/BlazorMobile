@@ -134,17 +134,6 @@ namespace BlazorMobile.Interop
 
                 //TODO: Manage missed returns value if the websocket disconnect, or discard them ?
                 WebApplicationFactory.GetBlazorContextBridgeServer().SendMessageToClient(jsonReturnValue);
-
-                //var receiveEvaluator = webview.GetReceiveEvaluator(jsonReturnValue);
-
-                //if (outEvaluator != null)
-                //{
-                //    outEvaluator(receiveEvaluator);
-                //}
-                //else
-                //{
-                //    webview.Eval(receiveEvaluator);
-                //}
             });
         }
     }
