@@ -24,5 +24,10 @@ namespace BlazorMobile.InteropApp.Services
 
             return Task.FromResult(result);
         }
+
+        public Task CallFaultyTask()
+        {
+            throw new InvalidOperationException("This is an expected exception");
+        }
     }
 }

@@ -39,11 +39,8 @@ namespace BlazorMobile.Common.Services
 
             var taskAction = new Task<TReturnType>(() =>
             {
-                //Check if we are first from a CancellationContext
-                if (taskDispatch.CancelToken.IsCancellationRequested)
-                {
-                    taskDispatch.CancelToken.ThrowIfCancellationRequested();
-                }
+                //Will throw here if task faulted
+                taskDispatch.ThrowExceptionIfFaulted();
 
                 if (taskDispatch.ResultData == null || !taskDispatch.ResultData.TaskSuccess)
                     return default(TReturnType);
@@ -70,6 +67,15 @@ namespace BlazorMobile.Common.Services
             if (_taskDispatcher.ContainsKey(taskIdentity))
                 return _taskDispatcher[taskIdentity].ResultAction;
             return null;
+        }
+
+        internal static void SetTaskAsFaulted<T>(int taskIdentity, T ex) where T : Exception
+        {
+            if (_taskDispatcher.ContainsKey(taskIdentity))
+            {
+                var task = _taskDispatcher[taskIdentity];
+                task.SetTaskAsFaulted<T>(ex);
+            }
         }
 
         internal static void CancelTask(int taskIdentity)
