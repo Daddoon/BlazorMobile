@@ -333,7 +333,7 @@ namespace BlazorMobile.Services
             return _debugFeatures;
         }
 
-        public static void StartWebServer()
+        internal static void StartWebServer()
         {
             Init(); //No-op if called twice
 
@@ -429,7 +429,7 @@ namespace BlazorMobile.Services
             _isStarted = false;
         }
 
-        public static void StopWebServer()
+        internal static void StopWebServer()
         {
             //In order to stop the waiting background thread
             try
