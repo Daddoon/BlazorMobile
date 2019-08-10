@@ -108,8 +108,9 @@ namespace BlazorMobile.Interop
             }
             catch (Exception ex)
             {
-                ConsoleHelper.WriteLine($"Error: [Native] - {nameof(ContextBridge)}.{nameof(Receive)}: {ex.Message}");
+                ConsoleHelper.WriteError($"[Native] - {ex.Message}");
 
+                methodProxy.ExceptionDescriptor = new ExceptionDescriptor(ex.InnerException != null ? ex.InnerException : ex);
                 methodProxy.ReturnValue = defaultValue;
                 methodProxy.TaskSuccess = false;
             }

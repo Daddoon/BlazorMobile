@@ -38,6 +38,20 @@ namespace BlazorMobile.Common.Helpers
             }
         }
 
+        public static void WriteError(string message)
+        {
+            message = $"ERROR: {message}";
+
+            if (_useDebugWriteLine)
+            {
+                Debug.WriteLine(message);
+            }
+            else
+            {
+                Console.WriteLine(message);
+            }
+        }
+
         public static void WriteException(Exception ex)
         {
             if (ex == null)
