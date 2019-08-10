@@ -377,9 +377,56 @@ namespace BlazorMobile.Services
 
             Task.Factory.StartNew(async () =>
             {
-                ConsoleHelper.WriteLine("BlazorMobile: Starting Server...");
-                await server.RunAsync(serverCts.Token);
+                ConsoleHelper.WriteLine("BlazorMobile: Starting server...");
+        
+                try
+                {
+                    await server.RunAsync(serverCts.Token);
+                }
+                catch (InvalidOperationException e)
+                {
+                    ConsoleHelper.WriteException(e);
+
+                    //This call may be redundant with the previous case, but we must ensure that the StartWebServer invokation is done after clearing resources
+                    ClearWebserverResources();
+
+                    //If we are from the InvalidOperationException, the crash was not expected...Restarting webserver
+                    Device.BeginInvokeOnMainThread(StartWebServer);
+                }
+                catch (OperationCanceledException e)
+                {
+                    ClearWebserverResources();
+                }
             });
+        }
+
+        /// <summary>
+        /// Clear Webserver resources and set it as not started
+        /// </summary>
+        private static void ClearWebserverResources()
+        {
+            try
+            {
+                if (blazorContextBridgeServer != null)
+                {
+                    blazorContextBridgeServer.Dispose();
+                }
+            }
+            catch (Exception ex)
+            {
+            }
+
+            try
+            {
+                server?.Dispose();
+            }
+            catch (Exception ex)
+            {
+            }
+
+            blazorContextBridgeServer = null;
+            server = null;
+            _isStarted = false;
         }
 
         public static void StopWebServer()
@@ -392,32 +439,8 @@ namespace BlazorMobile.Services
             }
             catch (Exception ex)
             {
-                ConsoleHelper.WriteLine($"{nameof(WebApplicationFactory)}.{nameof(WebApplicationFactory.StopWebServer)} - {nameof(serverCts)}: {ex.Message}");
             }
 
-            try
-            {
-                if (blazorContextBridgeServer != null)
-                {
-                    blazorContextBridgeServer.Dispose();
-                }
-            }
-            catch (Exception ex)
-            {
-                ConsoleHelper.WriteLine($"{nameof(WebApplicationFactory)}.{nameof(WebApplicationFactory.StopWebServer)} - {nameof(blazorContextBridgeServer)}: {ex.Message}");
-            }
-
-            try
-            {
-                server?.Dispose();
-            }
-            catch (Exception ex)
-            {
-                ConsoleHelper.WriteLine($"{nameof(WebApplicationFactory)}.{nameof(WebApplicationFactory.StopWebServer)} - {nameof(server)}: {ex.Message}");
-            }
-
-            blazorContextBridgeServer = null;
-            server = null;
             _isStarted = false;
         }
     }
