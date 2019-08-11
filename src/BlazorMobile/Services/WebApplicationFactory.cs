@@ -207,7 +207,7 @@ namespace BlazorMobile.Services
             return _localIP;
         }
 
-        public static string GetBaseURL()
+        internal static string GetBaseURL()
         {
             return $"http://{GetLocalWebServerIP()}:{GetHttpPort()}";
         }
