@@ -42,11 +42,8 @@ namespace BlazorMobile.Components
 
         public void LaunchBlazorApp()
         {
-            if (WebApplicationFactory.ClearCookiesRequested())
-            {
-                var webViewService = DependencyService.Get<IWebViewService>();
-                webViewService.ClearCookies();
-            }
+            var webViewService = DependencyService.Get<IWebViewService>();
+            webViewService.ClearCookies();
 
             switch (Device.RuntimePlatform)
             {

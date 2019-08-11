@@ -7,6 +7,10 @@ namespace BlazorMobile.Interop
 {
     internal interface IWebViewService
     {
+        /// <summary>
+        /// Clear cookies for the local web session / local uri. Does not affect other URIs.
+        /// Only needed for UWP that don't have private navigation mode
+        /// </summary>
         void ClearCookies();
 
         void ClearWebViewData();

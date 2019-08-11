@@ -9,12 +9,12 @@ namespace BlazorMobile.UWP.Interop
 {
     public class WebViewService : IWebViewService
     {
-        private void ClearCookiesURIs(string uri)
+        public void ClearCookies()
         {
             try
             {
                 HttpBaseProtocolFilter baseFilter = new HttpBaseProtocolFilter();
-                foreach (var cookie in baseFilter.CookieManager.GetCookies(new Uri(uri)))
+                foreach (var cookie in baseFilter.CookieManager.GetCookies(new Uri(WebApplicationFactory.GetBaseURL())))
                 {
                     baseFilter.CookieManager.DeleteCookie(cookie);
                 }
@@ -22,33 +22,6 @@ namespace BlazorMobile.UWP.Interop
             catch (Exception ex)
             {
                 ConsoleHelper.WriteException(ex);
-            }
-        }
-
-        public void ClearCookies()
-        {
-            try
-            {
-                ClearCookiesURIs(WebApplicationFactory.GetBaseURL());
-            }
-            catch (Exception ex)
-            {
-                ConsoleHelper.WriteException(ex);
-            }
-
-            if (WebApplicationFactory._cookiesURI != null)
-            {
-                foreach (string cookieURI in WebApplicationFactory._cookiesURI)
-                {
-                    try
-                    {
-                        ClearCookiesURIs(cookieURI);
-                    }
-                    catch (Exception ex)
-                    {
-                        ConsoleHelper.WriteException(ex);
-                    }
-                }
             }
         }
 

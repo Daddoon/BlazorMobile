@@ -318,38 +318,6 @@ namespace BlazorMobile.Services
             return blazorContextBridgeServer;
         }
 
-        internal static bool _clearCookies = false;
-
-        internal static bool ClearCookiesRequested()
-        {
-            return _clearCookies;
-        }
-
-        /// <summary>
-        /// If called, cookies will be cleared at Blazor launch. Note that there is some different behavior depending the platform.
-        /// On Android, cookies are always cleared even if this method is not called, because of the default usage of private navigation.
-        /// On iOS, cookies of all site of the Webview component will be cleared.
-        /// On UWP, only the Blazor app URI and given uris will be cleared from cookie.
-        /// </summary>
-        public static void ClearCookies(string[] uri)
-        {
-            _cookiesURI = uri;
-            ClearCookies();
-        }
-
-        internal static string[] _cookiesURI = null;
-
-        /// <summary>
-        /// If called, cookies will be cleared at Blazor launch. Note that there is some different behavior depending the platform.
-        /// On Android, cookies are always cleared even if this method is not called, because of the default usage of private navigation.
-        /// On iOS, cookies of all site of the Webview component will be cleared.
-        /// On UWP, only the Blazor app URI will be cleared from cookie. Use the overload if you need to clear specific websites on UWP
-        /// </summary>
-        public static void ClearCookies()
-        {
-            _clearCookies = true;
-        }
-
         internal static bool _debugFeatures = false;
 
         /// <summary>

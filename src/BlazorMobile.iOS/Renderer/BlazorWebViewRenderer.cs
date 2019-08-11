@@ -41,6 +41,9 @@ namespace BlazorMobile.iOS.Renderer
                     JavaScriptEnabled = true
                 }
                 };
+
+                config.WebsiteDataStore = WKWebsiteDataStore.NonPersistentDataStore;
+
                 var webView = new WKWebView(Frame, config);
                 webView.NavigationDelegate = new WebNavigationDelegate(this);
                 SetNativeControl(webView);
