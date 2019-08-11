@@ -8,7 +8,8 @@ namespace BlazorMobile.Droid.Interop
     {
         public void ClearWebViewData()
         {
-
+            //No need to do anything. Android implementation use GeckoView configured with 
+            //UsePrivaMode to true. Each session will not cache anything then
         }
     }
 }
