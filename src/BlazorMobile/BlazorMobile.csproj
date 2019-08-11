@@ -5,7 +5,6 @@
   </PropertyGroup>
 
   <PropertyGroup>
-    <DebugType>full</DebugType>
     <AssemblyName>BlazorMobile</AssemblyName>
     <RootNamespace>BlazorMobile</RootNamespace>
   </PropertyGroup>
@@ -13,11 +12,15 @@
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|AnyCPU'">
     <OutputPath>lib\</OutputPath>
     <DocumentationFile>lib\BlazorMobile.xml</DocumentationFile>
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
   </PropertyGroup>
 
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|AnyCPU'">
     <OutputPath>lib\</OutputPath>
     <DocumentationFile>lib\BlazorMobile.xml</DocumentationFile>
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>embedded</DebugType>
   </PropertyGroup>
 
   <ItemGroup>
