@@ -14,31 +14,13 @@ namespace BlazorMobile.Components
 
         public void LaunchBlazorApp()
         {
-            switch (Xamarin.Forms.Device.RuntimePlatform)
-            {
-                default:
-                    Source = new UrlWebViewSource()
-                    {
-                        Url = WebApplicationFactory.GetBaseURL()
-                    };
-                    blazorAppLaunched = true;
-                    break;
-            }
+            BlazorWebView.InternalLaunchBlazorApp(this);
         }
 
-        private bool blazorAppLaunched = false;
         private void BlazorWebView_Navigated(object sender, WebNavigatedEventArgs e)
         {
-            OnNavigated();
         }
 
-        public void OnNavigated()
-        {
-            if (blazorAppLaunched)
-            {
-                //TODO: Actually as GeckoView is unable to inject javascript, we must use a websocket implementation
-            }
-        }
 
         public View GetView()
         {

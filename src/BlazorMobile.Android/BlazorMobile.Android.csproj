@@ -47,8 +47,7 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Components\BlazorGeckoView.cs" />
-    <Compile Include="Interop\AndroidWebResponse.cs" />
-    <Compile Include="Interop\JSBridge.cs" />
+    <Compile Include="Interop\WebViewService.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Renderer\BlazorGeckoViewRenderer.cs" />
     <Compile Include="Services\BlazorWebViewService.cs" />

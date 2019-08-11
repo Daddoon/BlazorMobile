@@ -3,10 +3,9 @@ using BlazorMobile.Services;
 using System;
 using System.IO;
 using Xamarin.Forms;
-using BlazorMobile.Common.Interfaces;
-using BlazorMobile.Components;
-using System.Threading.Tasks;
 using BlazorMobile.Common.Helpers;
+using BlazorMobile.Interop;
+using BlazorMobile.UWP.Interop;
 
 namespace BlazorMobile.UWP.Services
 {
@@ -14,20 +13,9 @@ namespace BlazorMobile.UWP.Services
     {
         private static void InitComponent()
         {
-            ConsoleHelper.UseDebugWriteLine(true);
+            DependencyService.Register<IWebViewService, WebViewService>();
 
-            BlazorWebView.SetClearWebViewDelegate(async () =>
-            {
-                try
-                {
-                    await Windows.UI.Xaml.Controls.WebView.ClearTemporaryWebDataAsync();
-                    ConsoleHelper.WriteLine("UWP WebView Temporary Web Data cleared !");
-                }
-                catch (Exception ex)
-                {
-                    ConsoleHelper.WriteException(ex);
-                }
-            });
+            ConsoleHelper.UseDebugWriteLine(true);
 
             BlazorWebViewRenderer.Init();
         }
