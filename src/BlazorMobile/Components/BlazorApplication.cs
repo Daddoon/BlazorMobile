@@ -10,6 +10,8 @@ namespace BlazorMobile.Components
     {
         public BlazorApplication()
         {
+            WebApplicationFactory.SetHttpPort();
+
             try
             {
                 var webViewService = DependencyService.Get<IWebViewService>();

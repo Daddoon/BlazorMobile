@@ -148,19 +148,60 @@ namespace BlazorMobile.Services
 
         /// <summary>
         /// Define the HTTP port used for the webserver of your application.
+        /// The HTTP port availability is not guaranted, so the port usage may be different at runtime.
+        /// This method can be used for setting a fixed port during development for remote debugging functionnality
         /// Default is 8888.
         /// </summary>
         /// <param name="port"></param>
         /// <returns></returns>
-        public static bool SetHttpPort(int port = DefaultHttpPort)
+        public static void SetHttpPort(int port = DefaultHttpPort)
         {
-            if (port <= 1024)
+            //Try to bind user port first
+            var listener = new TcpListener(IPAddress.Loopback, port);
+            try
             {
-                throw new InvalidOperationException("Cannot bind a port in the reserved port area !");
+                listener.Start();
+                port = ((IPEndPoint)listener.LocalEndpoint).Port;
+                listener.Stop();
+            }
+            catch (Exception ex)
+            {
+                ConsoleHelper.WriteException(ex);
+
+                //Sanity check
+                try
+                {
+                    listener.Stop();
+                }
+                catch (Exception)
+                {
+                }
+
+                //Trying to fallback on another port
+                //The 0 port should return the first available port given by the OS
+                listener = new TcpListener(IPAddress.Loopback, 0);
+                try
+                {
+                    listener.Start();
+                    port = ((IPEndPoint)listener.LocalEndpoint).Port;
+                    listener.Stop();
+                }
+                catch (Exception)
+                {
+                    //Sanity check
+                    try
+                    {
+                        listener.Stop();
+                    }
+                    catch (Exception)
+                    {
+                    }
+                }
             }
 
+            //The port given must be the one given in parameter and available, or another one firstly available
+
             HttpPort = port;
-            return true;
         }
 
         private static Func<string, string> _defaultPageDelegate;
