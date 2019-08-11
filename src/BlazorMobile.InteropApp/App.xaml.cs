@@ -14,6 +14,8 @@ namespace BlazorMobile.InteropApp
 #if DEBUG
             WebApplicationFactory.EnableDebugFeatures();
 #endif
+            WebApplicationFactory.ClearCookies();
+
             WebApplicationFactory.SetHttpPort(8888);
 
             //Regiser Blazor app resolver

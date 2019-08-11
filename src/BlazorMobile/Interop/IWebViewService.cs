@@ -7,6 +7,8 @@ namespace BlazorMobile.Interop
 {
     internal interface IWebViewService
     {
+        void ClearCookies();
+
         void ClearWebViewData();
     }
 }

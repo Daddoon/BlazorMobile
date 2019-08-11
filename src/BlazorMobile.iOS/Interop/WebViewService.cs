@@ -16,48 +16,30 @@ namespace BlazorMobile.iOS.Interop
     {
         private void DeleteCachedFiles()
         {
-
-            if (UIDevice.CurrentDevice.CheckSystemVersion(9, 0))
+            try
             {
-                NSHttpCookieStorage.SharedStorage.RemoveCookiesSinceDate(NSDate.DistantPast);
-                WKWebsiteDataStore.DefaultDataStore.FetchDataRecordsOfTypes(WKWebsiteDataStore.AllWebsiteDataTypes, (NSArray records) =>
+                if (UIDevice.CurrentDevice.CheckSystemVersion(9, 0))
                 {
-                    for (nuint i = 0; i < records.Count; i++)
+                    WKWebsiteDataStore.DefaultDataStore.FetchDataRecordsOfTypes(WKWebsiteDataStore.AllWebsiteDataTypes, (NSArray records) =>
                     {
-                        var record = records.GetItem<WKWebsiteDataRecord>(i);
+                        for (nuint i = 0; i < records.Count; i++)
+                        {
+                            var record = records.GetItem<WKWebsiteDataRecord>(i);
 
-                        WKWebsiteDataStore.DefaultDataStore.RemoveDataOfTypes(record.DataTypes,
-                            new[] { record }, () => { Console.Write($"deleted: {record.DisplayName}"); });
-                    }
-                });
-
-                NSUrlCache.SharedCache.RemoveAllCachedResponses();
-            }
-            else
-            {
+                            WKWebsiteDataStore.DefaultDataStore.RemoveDataOfTypes(record.DataTypes,
+                                new[] { record }, () => { /* Nothing to do after completion */  });
+                        }
+                    });
+                }
 
                 // Remove the basic cache.
                 NSUrlCache.SharedCache.RemoveAllCachedResponses();
-                var cookies = NSHttpCookieStorage.SharedStorage.Cookies;
 
-                foreach (var c in cookies)
-                {
-                    NSHttpCookieStorage.SharedStorage.DeleteCookie(c);
-                }
-            }
-
-
-            try
-            {
                 // Clear web cache
                 DeleteLibraryFolderContents("Caches");
 
-                // Remove all cookies stored by the site. This includes localStorage, sessionStorage, and WebSQL/IndexedDB.
-                DeleteLibraryFolderContents("Cookies");
-
                 // Removes all app cache storage.
                 DeleteLibraryFolder("WebKit");
-
             }
             catch (Exception ex)
             {
@@ -116,6 +98,33 @@ namespace BlazorMobile.iOS.Interop
             catch (Exception ex)
             {
                 ConsoleHelper.WriteException(ex);
+            }
+        }
+
+        public void ClearCookies()
+        {
+            try
+            {
+                if (UIDevice.CurrentDevice.CheckSystemVersion(9, 0))
+                {
+                    NSHttpCookieStorage.SharedStorage.RemoveCookiesSinceDate(NSDate.DistantPast);
+                }
+                else
+                {
+                    var cookies = NSHttpCookieStorage.SharedStorage.Cookies;
+
+                    foreach (var c in cookies)
+                    {
+                        NSHttpCookieStorage.SharedStorage.DeleteCookie(c);
+                    }
+                }
+
+                // Remove all cookies stored by the site. This includes localStorage, sessionStorage, and WebSQL/IndexedDB.
+                DeleteLibraryFolderContents("Cookies");
+            }
+            catch (Exception ex)
+            {
+                ConsoleHelper.WriteError($"Error deleting cookies {ex.Message}");
             }
         }
     }
