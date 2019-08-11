@@ -1,5 +1,6 @@
 ﻿using BlazorMobile.Common;
 using BlazorMobile.Services;
+using System;
 using Xam.Droid.GeckoView.Forms;
 using Xamarin.Forms;
 
@@ -7,9 +8,15 @@ namespace BlazorMobile.Components
 {
     public class BlazorGeckoView : GeckoViewForms, IBlazorWebView
     {
-        public BlazorGeckoView()
+        internal BlazorGeckoView()
         {
             Navigated += BlazorWebView_Navigated;
+            WebApplicationFactory.BlazorAppNeedReload += ReloadBlazorAppEvent;
+        }
+
+        private void ReloadBlazorAppEvent(object sender, EventArgs e)
+        {
+            LaunchBlazorApp();
         }
 
         public void LaunchBlazorApp()

@@ -35,6 +35,7 @@ namespace BlazorMobile.Components
 
         protected override void OnResume()
         {
+            WebApplicationFactory.ResetBlazorViewIfHttpPortChanged();
             WebApplicationFactory.StartWebServer();
         }
     }

@@ -142,6 +142,44 @@ namespace BlazorMobile.Services
             return MimeTypes.GetMimeType(path);
         }
 
+        internal static void ResetBlazorViewIfHttpPortChanged()
+        {
+            if (IsStarted())
+            {
+                //Nothing to do
+                return;
+            }
+
+            int previousPort = GetHttpPort();
+
+            //Try rebind on same port
+            SetHttpPort(previousPort);
+
+            int newPort = GetHttpPort();
+
+            if (newPort != previousPort)
+            {
+                //If port changed between affectation, that mean that an other process took the port.
+                //We need to reload any Blazor webview instance
+                NotifyBlazorAppReload();
+            }
+        }
+
+        internal static event EventHandler BlazorAppNeedReload;
+
+        private static void NotifyBlazorAppReload()
+        {
+            Task.Run(async () =>
+            {
+                //Giving some time to new webserver with new port to load before raising event
+                await Task.Delay(100);
+                Device.BeginInvokeOnMainThread(() =>
+                {
+                    BlazorAppNeedReload?.Invoke(null, null);
+                });
+            });
+        }
+
         private const int DefaultHttpPort = 8888;
 
         private static int HttpPort = DefaultHttpPort;
