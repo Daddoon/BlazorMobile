@@ -1,0 +1,32 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<package xmlns="http://schemas.microsoft.com/packaging/2012/06/nuspec.xsd">
+    <metadata>
+        <id>BlazorMobile.Web</id>
+        <version>$version$</version>
+        <title>BlazorMobile.Web</title>
+        <authors>Guillaume ZAHRA</authors>
+        <owners>Daddoon</owners>
+        <licenseUrl>https://github.com/Daddoon/BlazorMobile/blob/master/LICENSE</licenseUrl>
+        <projectUrl>https://github.com/Daddoon/BlazorMobile</projectUrl>
+        <iconUrl>https://www.nuget.org/Content/gallery/img/default-package-icon-256x256.png</iconUrl>
+        <requireLicenseAcceptance>true</requireLicenseAcceptance>
+        <description>This NuGet package intended for the Blazor application side of the BlazorMobile package.</description>
+        <releaseNotes>Updated NuGet package to be based on Blazor 3.0.0-preview7.19365.7. Remove dependencies on BlazorMobile.Common package.</releaseNotes>
+        <copyright>Copyright 2019</copyright>
+        <tags>Blazor BlazorMobile Xamarin iOS Android Hybrid</tags>
+        <dependencies>
+            <group targetFramework="netstandard2.0">
+                <dependency id="NETStandard.Library" version="2.0.3" />
+                <dependency id="Microsoft.AspNetCore.Blazor" version="3.0.0-preview7.19365.7" />
+            </group>
+        </dependencies>
+    </metadata>
+    <files>
+        <!-- Cross-platform reference assemblies -->
+        <file src="lib\netstandard2.0\BlazorMobile.Web.dll" target="lib\netstandard2.0\BlazorMobile.Web.dll" />
+        <file src="lib\netstandard2.0\BlazorMobile.Web.pdb" target="lib\netstandard2.0\BlazorMobile.Web.pdb" />
+        <file src="lib\BlazorMobile.Web.xml" target="lib\netstandard2.0\BlazorMobile.Web.xml" />
+      
+        <file src="..\BlazorMobile.Web\**\*.cs" target="src" />
+    </files>
+</package>

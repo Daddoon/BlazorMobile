@@ -28,7 +28,7 @@
     <DocumentationFile>..\BlazorMobile\lib\Xamarin.iOS10\BlazorMobile.iOS.xml</DocumentationFile>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
-    <DebugType>embedded</DebugType>
+    <DebugType>portable</DebugType>
     <Optimize>true</Optimize>
     <OutputPath>..\BlazorMobile\lib\Xamarin.iOS10\</OutputPath>
     <ErrorReport>prompt</ErrorReport>
