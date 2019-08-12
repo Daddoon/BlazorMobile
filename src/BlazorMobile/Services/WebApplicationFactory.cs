@@ -366,13 +366,14 @@ namespace BlazorMobile.Services
             server.RegisterModule(new WebApiModule());
             server.Module<WebApiModule>().RegisterController<BlazorController>();
 
+            serverCts = new CancellationTokenSource();
+
             //Reference to the BlazorContextBridge Websocket service
             blazorContextBridgeServer = new BlazorContextBridge();
+            blazorContextBridgeServer.CancellationToken = serverCts.Token;
 
             server.RegisterModule(new WebSocketsModule());
             server.Module<WebSocketsModule>().RegisterWebSocketsServer(_contextBridgeRelativeURI, blazorContextBridgeServer);
-
-            serverCts = new CancellationTokenSource();
 
             Task.Factory.StartNew(async () =>
             {
@@ -386,6 +387,7 @@ namespace BlazorMobile.Services
             //In order to stop the waiting background thread
             try
             {
+                //Will try to both stop Webserver and Socket server
                 serverCts.Cancel();
             }
             catch (Exception ex)
@@ -398,7 +400,6 @@ namespace BlazorMobile.Services
                 if (blazorContextBridgeServer != null)
                 {
                     blazorContextBridgeServer.Dispose();
-                    blazorContextBridgeServer = null;
                 }
             }
             catch (Exception ex)
@@ -406,9 +407,17 @@ namespace BlazorMobile.Services
                 ConsoleHelper.WriteLine($"{nameof(WebApplicationFactory)}.{nameof(WebApplicationFactory.StopWebServer)} - {nameof(blazorContextBridgeServer)}: {ex.Message}");
             }
 
-            server?.Dispose();
-            server = null;
+            try
+            {
+                server?.Dispose();
+            }
+            catch (Exception ex)
+            {
+                ConsoleHelper.WriteLine($"{nameof(WebApplicationFactory)}.{nameof(WebApplicationFactory.StopWebServer)} - {nameof(server)}: {ex.Message}");
+            }
 
+            blazorContextBridgeServer = null;
+            server = null;
             _isStarted = false;
         }
     }

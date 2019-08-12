@@ -11,5 +11,7 @@ namespace BlazorMobile.InteropApp.Common.Interfaces
     public interface IXamarinBridge
     {
         Task<List<string>> DisplayAlert(string title, string msg, string cancel);
+
+        Task CallFaultyTask();
     }
 }

@@ -108,8 +108,9 @@ namespace BlazorMobile.Interop
             }
             catch (Exception ex)
             {
-                ConsoleHelper.WriteLine($"Error: [Native] - {nameof(ContextBridge)}.{nameof(Receive)}: {ex.Message}");
+                ConsoleHelper.WriteError($"[Native] - {ex.Message}");
 
+                methodProxy.ExceptionDescriptor = new ExceptionDescriptor(ex.InnerException != null ? ex.InnerException : ex);
                 methodProxy.ReturnValue = defaultValue;
                 methodProxy.TaskSuccess = false;
             }
@@ -134,17 +135,6 @@ namespace BlazorMobile.Interop
 
                 //TODO: Manage missed returns value if the websocket disconnect, or discard them ?
                 WebApplicationFactory.GetBlazorContextBridgeServer().SendMessageToClient(jsonReturnValue);
-
-                //var receiveEvaluator = webview.GetReceiveEvaluator(jsonReturnValue);
-
-                //if (outEvaluator != null)
-                //{
-                //    outEvaluator(receiveEvaluator);
-                //}
-                //else
-                //{
-                //    webview.Eval(receiveEvaluator);
-                //}
             });
         }
     }

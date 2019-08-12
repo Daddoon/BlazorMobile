@@ -15,5 +15,10 @@ namespace BlazorMobile.InteropBlazorApp.Services
         {
             return MethodDispatcher.CallMethodAsync<List<string>>(MethodBase.GetCurrentMethod(), title, msg, cancel);
         }
+
+        public Task CallFaultyTask()
+        {
+            return MethodDispatcher.CallVoidMethodAsync(MethodBase.GetCurrentMethod());
+        }
     }
 }

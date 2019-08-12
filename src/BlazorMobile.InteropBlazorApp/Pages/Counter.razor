@@ -9,6 +9,7 @@
 
 <button class="btn btn-primary" @onclick="@IncrementCount">Click me</button>
 <button class="btn btn-primary" @onclick="@AlertMe">Alert me</button>
+<button class="btn btn-primary" @onclick="@FaultyTaskCall">Fault Task call</button>
 
 @code {
     int currentCount = 0;
@@ -23,5 +24,18 @@
     {
         Console.WriteLine("AlertMe clicked !");
         await XamarinBridge.DisplayAlert("Platform identity", $"Current platform is {Device.RuntimePlatform}", "Great!");
+    }
+
+    async void FaultyTaskCall()
+    {
+        try
+        {
+            await XamarinBridge.CallFaultyTask();
+        }
+        catch (Exception ex)
+        {
+            await XamarinBridge.DisplayAlert("Call faulty task", $"{ex.Message}", "OK");
+            Console.WriteLine($"{ex.Message}");
+        }
     }
 }
