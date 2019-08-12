@@ -21,6 +21,7 @@ Create full C# driven hybrid-apps for iOS & Android !
 ## Migration
 
 - [BlazorMobile 0.8.0 to 3.0.3-preview7.19365.7](#blazormobile-080-to-303-preview7193657)
+- [BlazorMobile 3.0.3-preview7.19365.7 to 3.0.4-preview7.19365.7](#blazormobile-303-preview7193657-to-304-preview7193657)
 
 ## Getting started from sample
 
@@ -462,6 +463,67 @@ New projects are:
 
 - **BlazorMobile.Sample.Blazor.Server**, for testing your Blazor app with the .NET Core runtime
 - **BlazorMobile.Sample.UWP**, for deploying your Blazor app to UWP (Windows 10).
+
+### BlazorMobile 3.0.3-preview7.19365.7 to 3.0.4-preview7.19365.7
+
+In your Xamarin shared project, like **BlazorMobile.Sample** sample project you should:
+
+- Inherit from **BlazorApplication** instead of **Application** in **App.xaml.cs**
+
+```csharp
+using BlazorMobile.Components;
+using BlazorMobile.Services;
+using System;
+using Xamarin.Forms;
+
+namespace BlazorMobile.Sample
+{
+    public partial class App : BlazorApplication
+    {
+        public App()
+        {
+            ...Your code...
+        }
+    }
+}
+```
+
+- Inherit from **BlazorApplication** instead of **Application** in **App.xaml** too. Your code should look like this:
+
+```xml
+<?xml version="1.0" encoding="utf-8" ?>
+<components:BlazorApplication
+            xmlns:components="clr-namespace:BlazorMobile.Components;assembly=BlazorMobile"
+            xmlns="http://xamarin.com/schemas/2014/forms"
+            xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+            x:Class="BlazorMobile.Sample.App">
+	<Application.Resources>
+    
+	</Application.Resources>
+</components:BlazorApplication>
+```
+
+- You should remove any **WebApplicationFactory.StartWebServer** and **WebApplicationFactory.StopWebServer** reference in your **App.xaml.cs**, as they are now internals and managed by the **BlazorApplication** class. You can safely remove theses lines:
+
+```csharp
+protected override void OnStart()
+{
+    WebApplicationFactory.StartWebServer();
+}
+
+protected override void OnSleep()
+{
+    WebApplicationFactory.StopWebServer();
+}
+
+protected override void OnResume()
+{
+    WebApplicationFactory.ResetBlazorViewIfHttpPortChanged();
+    WebApplicationFactory.StartWebServer();
+}
+```
+
+**NOTE:** **WebApplicationFactory.SetHttpPort** is not mandatory anymore as if the app fail to bind on your specific port, it will fallback on another available port. But you can still use it for your specific needs and in order to assign a fixed port for remote debugging sessions.
 
 ## Authors
 

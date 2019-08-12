@@ -7,8 +7,26 @@ using System.Text;
 
 
 [assembly: InternalsVisibleTo("BlazorMobile")]
+[assembly: InternalsVisibleTo("BlazorMobile.Web")]
+[assembly: InternalsVisibleTo("BlazorMobile.Common")]
 namespace BlazorMobile.Common.Interop
 {
+    [Serializable]
+    public class ExceptionDescriptor
+    {
+        public string Message { get; set; }
+
+        public ExceptionDescriptor()
+        {
+            Message = string.Empty;
+        }
+
+        public ExceptionDescriptor(Exception ex) : this()
+        {
+            Message = ex.Message;
+        }
+    }
+
     [Serializable]
     public class TypeProxy
     {
@@ -42,8 +60,7 @@ namespace BlazorMobile.Common.Interop
             if (string.IsNullOrEmpty(SerializedData))
                 throw new NullReferenceException();
 
-            var type = BridgeSerializer.Deserialize<Type>(SerializedData);
-            return type;
+            return BridgeSerializer.Deserialize<Type>(this);
         }
     }
 
@@ -74,6 +91,8 @@ namespace BlazorMobile.Common.Interop
         public TypeProxy[] GenericTypes { get; set; }
 
         public object[] Parameters { get; set; }
+
+        public ExceptionDescriptor ExceptionDescriptor { get; set; }
 
         public MethodProxy()
         {

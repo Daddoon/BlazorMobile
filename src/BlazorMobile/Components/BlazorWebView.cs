@@ -1,12 +1,15 @@
-﻿using BlazorMobile.Interop;
+﻿using BlazorMobile.Common.Helpers;
+using BlazorMobile.Interop;
 using BlazorMobile.Services;
 using System;
 using System.Collections.Generic;
+using System.Runtime.CompilerServices;
 using System.Text;
 using System.Threading.Tasks;
 using System.Web;
 using Xamarin.Forms;
 
+[assembly: InternalsVisibleTo("BlazorMobile.UWP")]
 namespace BlazorMobile.Components
 {
     public class BlazorWebView : WebView, IBlazorWebView
@@ -14,16 +17,25 @@ namespace BlazorMobile.Components
         public BlazorWebView()
         {
             Navigated += BlazorWebView_Navigated;
+            WebApplicationFactory.BlazorAppNeedReload += ReloadBlazorAppEvent;
         }
 
-
-        private void LaunchBlazorAppUri()
+        private void ReloadBlazorAppEvent(object sender, EventArgs e)
         {
-            Source = new UrlWebViewSource()
+            LaunchBlazorApp();
+        }
+
+        internal static void InternalLaunchBlazorApp(IBlazorWebView webview)
+        {
+            webview.Source = new UrlWebViewSource()
             {
                 Url = WebApplicationFactory.GetBaseURL()
             };
-            blazorAppLaunched = true;
+        }
+
+        private void LaunchBlazorAppUri()
+        {
+            InternalLaunchBlazorApp(this);
         }
 
         private void LaunchBlazorAppUri(int delayedMilliseconds)
@@ -36,9 +48,13 @@ namespace BlazorMobile.Components
 
         public void LaunchBlazorApp()
         {
+            var webViewService = DependencyService.Get<IWebViewService>();
+            webViewService.ClearCookies();
+
             switch (Device.RuntimePlatform)
             {
                 case Device.UWP:
+                    //Giving some time on UWP, as it seem to fail to launch the new uri if called too soon
                     LaunchBlazorAppUri(1000);
                     break;
                 default:
@@ -47,56 +63,8 @@ namespace BlazorMobile.Components
             }
         }
 
-        private bool blazorAppLaunched = false;
         private void BlazorWebView_Navigated(object sender, WebNavigatedEventArgs e)
         {
-            OnNavigated();
-        }
-
-        public void OnNavigated()
-        {
-            if (blazorAppLaunched)
-            {
-                switch (Device.RuntimePlatform)
-                {
-                    case Device.iOS:
-                        //WKWebview is wrapped over UIWebview. WkWebview has it's own delegate for this.
-                        break;
-                    default:
-                        //TODO: We must verify that we are in the local URI context
-                        //string content = ContextBridgeHelper.GetInjectableJavascript();
-                        //Eval(content);
-                        break;
-                }
-            }
-        }
-
-        public string GetReceiveEvaluator(string param)
-        {
-            param = JavascriptStringEscape(param);
-
-            string javascriptEval = string.Empty;
-
-            switch (Device.RuntimePlatform)
-            {
-                //case Device.Android:
-                //    javascriptEval += "javascript: ";
-                //    break;
-                default:
-                    break;
-            }
-
-            javascriptEval += $@"window.contextBridge.receive(""{param}"");";
-
-            return javascriptEval;
-        }
-
-        public string JavascriptStringEscape(string source)
-        {
-            if (source == null)
-                source = string.Empty;
-
-            return HttpUtility.JavaScriptStringEncode(source);
         }
 
         public View GetView()

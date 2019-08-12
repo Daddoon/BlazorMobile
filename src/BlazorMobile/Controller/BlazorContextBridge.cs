@@ -1,4 +1,5 @@
 ﻿using BlazorMobile.Common;
+using BlazorMobile.Common.Helpers;
 using BlazorMobile.Common.Interop;
 using BlazorMobile.Interop;
 using System;
@@ -43,6 +44,7 @@ namespace BlazorMobile.Controller
         protected override void OnMessageReceived(IWebSocketContext context, byte[] buffer, IWebSocketReceiveResult result)
         {
             //TODO: Considering to send data from client side as binary Streamed JSON for performance in the future !
+            //TODO: Still, the mismatching CLR type namespace need to be fixed first
             //Value type reference as byte[] and/or string are not good for performance
             string methodProxyJson = buffer.ToText();
 
@@ -53,12 +55,12 @@ namespace BlazorMobile.Controller
 
                 try
                 {
-                    taksInput = ContextBridge.GetMethodProxyFromJSON(methodProxyJson);
+                    taksInput = ContextBridge.GetMethodProxyFromJSON(ref methodProxyJson);
                     taksOutput = ContextBridge.Receive(taksInput);
                 }
                 catch (Exception ex)
                 {
-                    Console.WriteLine("Error: [Native] - BlazorContextBridge.Receive: " + ex.Message);
+                    ConsoleHelper.WriteLine("Error: [Native] - BlazorContextBridge.Receive: " + ex.Message);
                 }
 
                 try
@@ -68,7 +70,7 @@ namespace BlazorMobile.Controller
                 }
                 catch (Exception ex)
                 {
-                    Console.WriteLine("Error: [Native] - BlazorContextBridge.Send: " + ex.Message);
+                    ConsoleHelper.WriteLine("Error: [Native] - BlazorContextBridge.Send: " + ex.Message);
                 }
             });
         }

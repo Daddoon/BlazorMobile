@@ -1,4 +1,5 @@
-﻿using BlazorMobile.Common.Interop;
+﻿using BlazorMobile.Common.Helpers;
+using BlazorMobile.Common.Interop;
 using BlazorMobile.Common.Serialization;
 using BlazorMobile.Components;
 using BlazorMobile.Services;
@@ -12,7 +13,7 @@ using Xamarin.Forms;
 
 namespace BlazorMobile.Interop
 {
-    public static class ContextBridge
+    internal static class ContextBridge
     {
         private static object GetDefault(Type type)
         {
@@ -68,9 +69,9 @@ namespace BlazorMobile.Interop
             return BridgeSerializer.Serialize(methodResult);
         }
 
-        public static MethodProxy GetMethodProxyFromJSON(string json)
+        public static MethodProxy GetMethodProxyFromJSON(ref string json)
         {
-            return BridgeSerializer.Deserialize<MethodProxy>(json);
+            return BridgeSerializer.Deserialize<MethodProxy>(ref json);
         }
 
         public static MethodProxy Receive(MethodProxy methodProxy)
@@ -107,44 +108,14 @@ namespace BlazorMobile.Interop
             }
             catch (Exception ex)
             {
-                Console.WriteLine($"Error: [Native] - {nameof(ContextBridge)}.{nameof(Receive)}: {ex.Message}");
+                ConsoleHelper.WriteError($"[Native] - {(ex.InnerException != null ? ex.InnerException.Message : ex.Message)}");
 
+                methodProxy.ExceptionDescriptor = new ExceptionDescriptor(ex.InnerException != null ? ex.InnerException : ex);
                 methodProxy.ReturnValue = defaultValue;
                 methodProxy.TaskSuccess = false;
             }
 
             return methodProxy;
-        }
-
-        /// <summary>
-        /// Manage In and Out call of Method
-        /// </summary>
-        /// <param name="webview"></param>
-        /// <param name="json"></param>
-        public static void BridgeEvaluator(BlazorWebView webview, MethodProxy taskInput, Action<string> outEvaluator = null)
-        {
-            //We must evaluate data on main thread, as some platform doesn't
-            //support to be executed from a non-UI thread for UI 
-            //or Webview bridge
-            Device.BeginInvokeOnMainThread(delegate ()
-            {
-                MethodProxy returnValue = Receive(taskInput);
-                string jsonReturnValue = GetJSONReturnValue(returnValue);
-
-                //TODO: Manage missed returns value if the websocket disconnect, or discard them ?
-                WebApplicationFactory.GetBlazorContextBridgeServer().SendMessageToClient(jsonReturnValue);
-
-                //var receiveEvaluator = webview.GetReceiveEvaluator(jsonReturnValue);
-
-                //if (outEvaluator != null)
-                //{
-                //    outEvaluator(receiveEvaluator);
-                //}
-                //else
-                //{
-                //    webview.Eval(receiveEvaluator);
-                //}
-            });
         }
     }
 }

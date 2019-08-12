@@ -7,7 +7,7 @@ using System.Threading.Tasks;
 
 namespace BlazorMobile.Common.Models
 {
-    public class TaskDispatch
+    internal class TaskDispatch
     {
         public int TaskId { get; set; }
 
@@ -19,9 +19,23 @@ namespace BlazorMobile.Common.Models
 
         public MethodProxy ResultData { get; set; }
 
-        public void CancelTask()
+        private bool _isFaulted = false;
+
+        private Exception _exception = null;
+
+        public void ThrowExceptionIfFaulted()
         {
-            CancelTokenSource.Cancel();
+            if (_isFaulted)
+            {
+                //Let's bubble up exception
+                throw _exception;
+            }
+        }
+
+        public void SetTaskAsFaulted<T>(T ex) where T : Exception
+        {
+            _exception = ex;
+            _isFaulted = true;
         }
     }
 }

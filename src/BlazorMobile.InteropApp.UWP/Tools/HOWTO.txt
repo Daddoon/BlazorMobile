@@ -1,0 +1,9 @@
+﻿Generation d'un certificat auto-signé si nécessaire pour UWP:
+
+Ouvrir powershell en admin et générer un certificat avec cette commande:
+
+New-SelfSignedCertificate -Type Custom -Subject "CN=Akor Consulting, O=Akor Consulting SARL, C=FR" -KeyUsage DigitalSignature -FriendlyName "CoocBoost" -CertStoreLocation "Cert:\CurrentUser\My" -TextExtension @("2.5.29.37={text}1.3.6.1.5.5.7.3.3", "2.5.29.19={text}")
+
+Pour plus d'info:
+
+https://docs.microsoft.com/en-us/windows/msix/package/create-certificate-package-signing

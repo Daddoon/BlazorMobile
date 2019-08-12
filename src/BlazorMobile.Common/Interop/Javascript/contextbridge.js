@@ -7,48 +7,50 @@ window.contextBridge = {
         _contextBridgeIsOpen: false,
         _contextBridgeSocket: null,
         getOrOpenConnection: function (onSuccess, onError) {
+            //First connection
             if (window.contextBridge.connectivity._contextBridgeSocket === null) {
-                console.log("contextBridge.getOrOpenConnection: trying to open new connection");
+                console.log("BlazorMobile: trying to open a new connection");
                 window.contextBridge.connectivity.openWSConnection(window.contextBridge.connectivity._contextBridgeURI, onSuccess, onError);
             }
+            else if (window.contextBridge.connectivity._contextBridgeIsOpen === true) {
+                //Common behavior
+                onSuccess(window.contextBridge.connectivity._contextBridgeSocket);
+            }
             else {
-                if (window.contextBridge.connectivity._contextBridgeIsOpen === true) {
-                    onSuccess(window.contextBridge.connectivity._contextBridgeSocket);
-                }
-                else {
-                    setTimeout(function () {
-                        //Second chance interval, if the connection is busy
-                        //This should be rare if everything is working
-                        if (window.contextBridge.connectivity._contextBridgeIsOpen === true) {
-                            onSuccess(window.contextBridge.connectivity._contextBridgeSocket);
-                        }
-                        else {
-                            onError();
-                        }
-                    }, 100);
-                }
+                //On case of error, the socket is cleared and contextBridgeIsOpen bool value to false
+                //So if we are here, that mean a new socket has been instanciated, but is not yet open
+
+                setTimeout(function () {
+                    //Second chance interval, if the connection is busy
+                    //This should be rare if everything is working
+                    if (window.contextBridge.connectivity._contextBridgeIsOpen === true) {
+                        onSuccess(window.contextBridge.connectivity._contextBridgeSocket);
+                    }
+                    else {
+                        //If we are here, returning the current task as failed
+                        onError();
+                    }
+                }, 500);
             }
         },
         openWSConnection: function (uri, onOpen, onError) {
             var webSocketURL = null;
             webSocketURL = uri;
-            console.log("open WS Connection::Connecting to: " + webSocketURL);
+            console.log("BlazorMobile: Connecting to websocket server: " + webSocketURL);
             try {
                 window.contextBridge.connectivity._contextBridgeSocket = new WebSocket(webSocketURL);
                 window.contextBridge.connectivity._contextBridgeSocket.onopen = function (openEvent) {
-                    console.log("WebSocket onOpen: " + JSON.stringify(openEvent, null, 4));
+                    console.log("BlazorMobile: Connected to websocket server");
                     window.contextBridge.connectivity._contextBridgeIsOpen = true;
                     onOpen(window.contextBridge.connectivity._contextBridgeSocket);
                 };
                 window.contextBridge.connectivity._contextBridgeSocket.onclose = function (closeEvent) {
-                    console.log("WebSocket onClose: " + JSON.stringify(closeEvent, null, 4));
-
                     if (closeEvent.code == 3001) {
-                        console.log("WebSocket onClose: Remote connection closed");
+                        console.log("BlazorMobile: Socket connection to native closed");
                         //The onError is not returned here, as the initial event was typically called at the time we wanted to launch the remote method
                     } else {
                         //If we fall in this case, that mean that the initial connection failed
-                        console.log("WebSocket onClose: Unable to connect to websocket server");
+                        console.log("BlazorMobile: Unable to connect socket to native");
                         onError();
                     }
 
@@ -56,7 +58,7 @@ window.contextBridge = {
                     window.contextBridge.connectivity._contextBridgeIsOpen = false;
                 };
                 window.contextBridge.connectivity._contextBridgeSocket.onerror = function (errorEvent) {
-                    console.log("WebSocket onError: " + JSON.stringify(errorEvent, null, 4));
+                    console.log("BlazorMobile: Socket error: " + JSON.stringify(errorEvent, null, 4));
                 };
                 window.contextBridge.connectivity._contextBridgeSocket.onmessage = function (messageEvent) {
                     var wsMsg = messageEvent.data;
@@ -76,8 +78,7 @@ window.contextBridge = {
         }
     },
     send: function (csharpProxy) {
-        //TODO: Manage connexion error in the ContextBridge in order to return a failed Task
-        console.log("contextBridge.send called");
+        //TODO: Manage connexion error in the ContextBridge in order to return a failed Task;
 
         //If window.blazorContextBridgeURI is not null when using 'send', we must use his url instead of the configured one
         //as window.blazorContextBridgeURI reflect the URI generated by the mobile application. This remove any debug/override ip adress
@@ -90,17 +91,18 @@ window.contextBridge = {
         window.contextBridge.connectivity.getOrOpenConnection(
             function (wsSocket) {
                 //On success
-                console.log("contextBridge.send: sending message");
                 wsSocket.send(csharpProxy);
 
         }, function () {
                 //On Error
-                console.log("contextBridge.send - error: unable to retrieve a valid socket");
+                console.log("BlazorMobile: Unable to connect to native, faulting current task");
+                DotNet.invokeMethodAsync(window.contextBridge.metadata.GetBlazorMobileWebAssemblyName(),
+                    window.contextBridge.metadata.GetBlazorMobileReceiveMethodName(), csharpProxy, false);
         });
     },
     receive: function (csharpProxy) {
         DotNet.invokeMethodAsync(window.contextBridge.metadata.GetBlazorMobileWebAssemblyName(),
-            window.contextBridge.metadata.GetBlazorMobileReceiveMethodName(), csharpProxy);
+            window.contextBridge.metadata.GetBlazorMobileReceiveMethodName(), csharpProxy, true);
     }
 };
 
