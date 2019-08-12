@@ -24,6 +24,7 @@
     <files>
         <!-- Cross-platform reference assemblies -->
         <file src="lib\netstandard2.0\BlazorMobile.Web.dll" target="lib\netstandard2.0\BlazorMobile.Web.dll" />
+        <file src="lib\netstandard2.0\BlazorMobile.Web.dll" target="lib\netstandard2.0\BlazorMobile.Web.pdb" />
         <file src="lib\BlazorMobile.Web.xml" target="lib\netstandard2.0\BlazorMobile.Web.xml" />
     </files>
 </package>

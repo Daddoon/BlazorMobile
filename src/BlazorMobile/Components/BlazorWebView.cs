@@ -14,7 +14,7 @@ namespace BlazorMobile.Components
 {
     public class BlazorWebView : WebView, IBlazorWebView
     {
-        internal BlazorWebView()
+        public BlazorWebView()
         {
             Navigated += BlazorWebView_Navigated;
             WebApplicationFactory.BlazorAppNeedReload += ReloadBlazorAppEvent;
@@ -65,7 +65,6 @@ namespace BlazorMobile.Components
 
         private void BlazorWebView_Navigated(object sender, WebNavigatedEventArgs e)
         {
-
         }
 
         public View GetView()

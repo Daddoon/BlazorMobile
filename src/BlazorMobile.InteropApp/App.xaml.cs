@@ -1,6 +1,9 @@
 ﻿using BlazorMobile.Components;
 using BlazorMobile.Services;
 using System;
+using System.Diagnostics;
+using System.Net;
+using System.Net.Sockets;
 using Xamarin.Forms;
 
 namespace BlazorMobile.InteropApp
@@ -33,6 +36,24 @@ namespace BlazorMobile.InteropApp
             });
 
             MainPage = new MainPage();
+        }
+
+        private bool firstCall = true;
+
+        protected override void OnResume()
+        {
+            Debug.WriteLine("OnResume called");
+
+            TcpListener listener = null;
+            if (firstCall)
+            {
+                //Mock the port already taken
+                listener = new TcpListener(IPAddress.Loopback, 8888);
+                listener.Start();
+                firstCall = false;
+            }
+
+            base.OnResume();
         }
     }
 }

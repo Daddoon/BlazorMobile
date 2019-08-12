@@ -8,7 +8,7 @@ namespace BlazorMobile.Components
 {
     public class BlazorGeckoView : GeckoViewForms, IBlazorWebView
     {
-        internal BlazorGeckoView()
+        public BlazorGeckoView()
         {
             Navigated += BlazorWebView_Navigated;
             WebApplicationFactory.BlazorAppNeedReload += ReloadBlazorAppEvent;
