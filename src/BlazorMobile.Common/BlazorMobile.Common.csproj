@@ -17,6 +17,8 @@
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|AnyCPU'">
     <OutputPath>..\BlazorMobile\lib</OutputPath>
     <DocumentationFile>..\BlazorMobile\lib\BlazorMobile.Common.xml</DocumentationFile>
+    <DebugType>portable</DebugType>
+    <DebugSymbols>true</DebugSymbols>
   </PropertyGroup>
 
   <ItemGroup>

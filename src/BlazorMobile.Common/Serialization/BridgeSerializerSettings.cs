@@ -1,4 +1,5 @@
 ﻿using BlazorMobile.Common.Helpers;
+using BlazorMobile.Common.Interop;
 using Newtonsoft.Json;
 using System;
 using System.Collections.Generic;
@@ -21,23 +22,34 @@ namespace BlazorMobile.Common.Serialization
             else
                 data = data.Replace("mscorlib", "%CORE%");
 
-
             return data;
         }
 
-        public static T Deserialize<T>(string data)
+        private static void JsonClrFixer()
+        {
+
+        }
+
+        public static T Deserialize<T>(ref string data)
         {
             if (EnvironmentHelper.RunOnCLR())
                 data = data.Replace("%CORE%", EnvironmentHelper.GetNetCoreVersion());
             else
                 data = data.Replace("%CORE%", "mscorlib");
 
-            return (T)JsonConvert.DeserializeObject<T>(data, BridgeSerializerSettings.GetSerializerSettings());
+            return JsonConvert.DeserializeObject<T>(data, BridgeSerializerSettings.GetSerializerSettings());
         }
 
-        public static object Deserialize(string json)
+        public static T Deserialize<T>(TypeProxy data)
         {
-            return JsonConvert.DeserializeObject(json);
+            string fixedJson;
+
+            if (EnvironmentHelper.RunOnCLR())
+                fixedJson = data.SerializedData.Replace("%CORE%", EnvironmentHelper.GetNetCoreVersion());
+            else
+                fixedJson = data.SerializedData.Replace("%CORE%", "mscorlib");
+
+            return JsonConvert.DeserializeObject<T>(fixedJson, BridgeSerializerSettings.GetSerializerSettings());
         }
     }
 

@@ -154,7 +154,7 @@
   </ItemGroup>
   <ItemGroup>
     <PackageReference Include="BlazorMobile">
-      <Version>3.0.3-preview7.19365.7</Version>
+      <Version>3.0.4-preview7.19365.7</Version>
     </PackageReference>
     <PackageReference Include="Xamarin.Forms" Version="3.5.0.169047" />
     <PackageReference Include="Microsoft.NETCore.UniversalWindowsPlatform" Version="6.2.8" />

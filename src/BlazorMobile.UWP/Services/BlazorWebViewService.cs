@@ -3,7 +3,9 @@ using BlazorMobile.Services;
 using System;
 using System.IO;
 using Xamarin.Forms;
-using BlazorMobile.Common.Interfaces;
+using BlazorMobile.Common.Helpers;
+using BlazorMobile.Interop;
+using BlazorMobile.UWP.Interop;
 
 namespace BlazorMobile.UWP.Services
 {
@@ -11,6 +13,10 @@ namespace BlazorMobile.UWP.Services
     {
         private static void InitComponent()
         {
+            DependencyService.Register<IWebViewService, WebViewService>();
+
+            ConsoleHelper.UseDebugWriteLine(true);
+
             BlazorWebViewRenderer.Init();
         }
 

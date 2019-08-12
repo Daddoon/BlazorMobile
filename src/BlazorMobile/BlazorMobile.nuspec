@@ -2,7 +2,7 @@
 <package xmlns="http://schemas.microsoft.com/packaging/2012/06/nuspec.xsd">
     <metadata>
         <id>BlazorMobile</id>
-        <version>3.0.3-preview7.19365.7</version>
+        <version>$version$</version>
         <title>BlazorMobile</title>
         <authors>Guillaume ZAHRA</authors>
         <owners>Daddoon</owners>
@@ -21,7 +21,7 @@
             <dependency id="MimeTypes" version="1.0.6" />
             <dependency id="Xamarin.Forms" version="3.5.0" />
             <dependency id="NETStandard.Library" version="2.0.3" />
-            <dependency id="BlazorMobile.Common" version="3.0.3-preview7.19365.7" />
+            <dependency id="BlazorMobile.Common" version="$version$" />
           </group>
 
           <group targetFramework="MonoAndroid8.0">
@@ -30,8 +30,8 @@
             <dependency id="MimeTypes" version="1.0.6" />
             <dependency id="Xamarin.Forms" version="3.5.0" />
             <dependency id="NETStandard.Library" version="2.0.3" />
-            <dependency id="BlazorMobile.Common" version="3.0.3-preview7.19365.7" />
-            <dependency id="Xamarin.Android.GeckoView.Forms" version="0.1.1" />
+            <dependency id="BlazorMobile.Common" version="$version$" />
+            <dependency id="Xamarin.Android.GeckoView.Forms" version="0.1.2" />
           </group>
 
           <group targetFramework="MonoAndroid8.1">
@@ -40,8 +40,8 @@
             <dependency id="MimeTypes" version="1.0.6" />
             <dependency id="Xamarin.Forms" version="3.5.0" />
             <dependency id="NETStandard.Library" version="2.0.3" />
-            <dependency id="BlazorMobile.Common" version="3.0.3-preview7.19365.7" />
-            <dependency id="Xamarin.Android.GeckoView.Forms" version="0.1.1" />
+            <dependency id="BlazorMobile.Common" version="$version$" />
+            <dependency id="Xamarin.Android.GeckoView.Forms" version="0.1.2" />
           </group>
 
           <group targetFramework="MonoAndroid9.0">
@@ -50,8 +50,8 @@
             <dependency id="MimeTypes" version="1.0.6" />
             <dependency id="Xamarin.Forms" version="3.5.0" />
             <dependency id="NETStandard.Library" version="2.0.3" />
-            <dependency id="BlazorMobile.Common" version="3.0.3-preview7.19365.7" />
-            <dependency id="Xamarin.Android.GeckoView.Forms" version="0.1.1" />
+            <dependency id="BlazorMobile.Common" version="$version$" />
+            <dependency id="Xamarin.Android.GeckoView.Forms" version="0.1.2" />
           </group>
 
           <group targetFramework="xamarinios10">
@@ -60,7 +60,7 @@
             <dependency id="MimeTypes" version="1.0.6" />
             <dependency id="Xamarin.Forms" version="3.5.0" />
             <dependency id="NETStandard.Library" version="2.0.3" />
-            <dependency id="BlazorMobile.Common" version="3.0.3-preview7.19365.7" />
+            <dependency id="BlazorMobile.Common" version="$version$" />
           </group>
 
           <group targetFramework="UAP10.0.16299">
@@ -70,35 +70,42 @@
             <dependency id="MimeTypes" version="1.0.6" />
             <dependency id="Xamarin.Forms" version="3.5.0" />
             <dependency id="NETStandard.Library" version="2.0.3" />
-            <dependency id="BlazorMobile.Common" version="3.0.3-preview7.19365.7" />
+            <dependency id="BlazorMobile.Common" version="$version$" />
           </group>
           
         </dependencies>
     </metadata>
     <files>
-		<!-- Cross-platform reference assemblies -->
+        <!-- Cross-platform reference assemblies -->
         <file src="lib\netstandard2.0\BlazorMobile.dll" target="lib\netstandard2.0\BlazorMobile.dll" />
+        <file src="lib\netstandard2.0\BlazorMobile.pdb" target="lib\netstandard2.0\BlazorMobile.pdb" />
         <file src="lib\BlazorMobile.xml" target="lib\netstandard2.0\BlazorMobile.xml" />
-	
+
         <!-- iOS reference assemblies -->
         <file src="lib\Xamarin.iOS10\BlazorMobile.iOS.dll" target="lib\Xamarin.iOS10\BlazorMobile.iOS.dll" />
+        <file src="lib\Xamarin.iOS10\BlazorMobile.iOS.pdb" target="lib\Xamarin.iOS10\BlazorMobile.iOS.pdb" />
         <file src="lib\Xamarin.iOS10\BlazorMobile.iOS.xml" target="lib\Xamarin.iOS10\BlazorMobile.iOS.xml" />
-        
+
         <file src="lib\Xamarin.iOS10\BlazorMobile.dll" target="lib\Xamarin.iOS10\BlazorMobile.dll" />
+        <file src="lib\Xamarin.iOS10\BlazorMobile.pdb" target="lib\Xamarin.iOS10\BlazorMobile.pdb" />
         <file src="lib\Xamarin.iOS10\BlazorMobile.xml" target="lib\Xamarin.iOS10\BlazorMobile.xml" />
 
         <!-- Android reference assemblies -->
         <file src="lib\MonoAndroid\BlazorMobile.Android.dll" target="lib\MonoAndroid\BlazorMobile.Android.dll" />
+        <file src="lib\MonoAndroid\BlazorMobile.Android.pdb" target="lib\MonoAndroid\BlazorMobile.Android.pdb" />
         <file src="lib\MonoAndroid\BlazorMobile.Android.xml" target="lib\MonoAndroid\BlazorMobile.Android.xml" />
-        
+
         <file src="lib\MonoAndroid\BlazorMobile.dll" target="lib\MonoAndroid\BlazorMobile.dll" />
+        <file src="lib\MonoAndroid\BlazorMobile.pdb" target="lib\MonoAndroid\BlazorMobile.pdb" />
         <file src="lib\MonoAndroid\BlazorMobile.xml" target="lib\MonoAndroid\BlazorMobile.xml" />
 
         <!-- UWP reference assemblies -->
         <file src="lib\UAP10\BlazorMobile.UWP.dll" target="lib\UAP10\BlazorMobile.UWP.dll" />
+        <file src="lib\UAP10\BlazorMobile.UWP.pdb" target="lib\UAP10\BlazorMobile.UWP.pdb" />
         <file src="lib\UAP10\BlazorMobile.UWP.xml" target="lib\UAP10\BlazorMobile.UWP.xml" />
-      
+
         <file src="lib\UAP10\BlazorMobile.dll" target="lib\UAP10\BlazorMobile.dll" />
+        <file src="lib\UAP10\BlazorMobile.pdb" target="lib\UAP10\BlazorMobile.pdb" />
         <file src="lib\UAP10\BlazorMobile.xml" target="lib\UAP10\BlazorMobile.xml" />
       
     </files>

@@ -2,7 +2,7 @@
 <package xmlns="http://schemas.microsoft.com/packaging/2012/06/nuspec.xsd">
     <metadata>
         <id>BlazorMobile.Common</id>
-        <version>3.0.3-preview7.19365.7</version>
+        <version>$version$</version>
         <title>BlazorMobile.Common</title>
         <authors>Guillaume ZAHRA</authors>
         <owners>Daddoon</owners>
@@ -24,6 +24,7 @@
     <files>
         <!-- Cross-platform reference assemblies -->
         <file src="lib\netstandard2.0\BlazorMobile.Common.dll" target="lib\netstandard2.0\BlazorMobile.Common.dll" />
+        <file src="lib\netstandard2.0\BlazorMobile.Common.pdb" target="lib\netstandard2.0\BlazorMobile.Common.pdb" />
         <file src="lib\BlazorMobile.Common.xml" target="lib\netstandard2.0\BlazorMobile.Common.xml" />
     </files>
 </package>

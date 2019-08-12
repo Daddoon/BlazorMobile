@@ -1,7 +1,10 @@
-﻿using BlazorMobile.iOS.Renderer;
+﻿using BlazorMobile.Interop;
+using BlazorMobile.iOS.Interop;
+using BlazorMobile.iOS.Renderer;
 using BlazorMobile.Services;
 using System;
 using System.IO;
+using Xamarin.Forms;
 
 namespace BlazorMobile.iOS.Services
 {
@@ -9,6 +12,7 @@ namespace BlazorMobile.iOS.Services
     {
         private static void InitComponent()
         {
+            DependencyService.Register<IWebViewService, WebViewService>();
             BlazorWebViewRenderer.BlazorInit();
         }
 
