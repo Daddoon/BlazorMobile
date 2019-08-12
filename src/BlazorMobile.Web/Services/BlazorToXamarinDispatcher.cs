@@ -29,7 +29,7 @@ namespace BlazorMobile.Common.Services
 
             InternalHelper.SetTimeout(() =>
             {
-                MethodProxy resultProxy = BridgeSerializer.Deserialize<MethodProxy>(methodProxyJson);
+                MethodProxy resultProxy = BridgeSerializer.Deserialize<MethodProxy>(ref methodProxyJson);
                 var taskToReturn = MethodDispatcher.GetTaskDispatcher(resultProxy.TaskIdentity);
 
                 if (taskToReturn == null)

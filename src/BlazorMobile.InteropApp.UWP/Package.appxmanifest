@@ -25,9 +25,6 @@
         </uap:DefaultTile>
         <uap:SplashScreen Image="Assets\SplashScreen.png" />
       </uap:VisualElements>
-      <uap:ApplicationContentUriRules>
-          <uap:Rule Type="include" Match="http://127.0.0.1:8888/" WindowsRuntimeAccess="none" />
-      </uap:ApplicationContentUriRules>
     </Application>
   </Applications>
   <Capabilities>

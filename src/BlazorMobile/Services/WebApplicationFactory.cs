@@ -142,25 +142,104 @@ namespace BlazorMobile.Services
             return MimeTypes.GetMimeType(path);
         }
 
+        internal static void ResetBlazorViewIfHttpPortChanged()
+        {
+            if (IsStarted())
+            {
+                //Nothing to do
+                return;
+            }
+
+            int previousPort = GetHttpPort();
+
+            //Try rebind on same port
+            SetHttpPort(previousPort);
+
+            int newPort = GetHttpPort();
+
+            if (newPort != previousPort)
+            {
+                //If port changed between affectation, that mean that an other process took the port.
+                //We need to reload any Blazor webview instance
+                NotifyBlazorAppReload();
+            }
+        }
+
+        internal static event EventHandler BlazorAppNeedReload;
+
+        private static void NotifyBlazorAppReload()
+        {
+            Task.Run(async () =>
+            {
+                //Giving some time to new webserver with new port to load before raising event
+                await Task.Delay(100);
+                Device.BeginInvokeOnMainThread(() =>
+                {
+                    BlazorAppNeedReload?.Invoke(null, null);
+                });
+            });
+        }
+
         private const int DefaultHttpPort = 8888;
 
         private static int HttpPort = DefaultHttpPort;
 
         /// <summary>
         /// Define the HTTP port used for the webserver of your application.
+        /// The HTTP port availability is not guaranted, so the port usage may be different at runtime.
+        /// This method can be used for setting a fixed port during development for remote debugging functionnality
         /// Default is 8888.
         /// </summary>
         /// <param name="port"></param>
         /// <returns></returns>
-        public static bool SetHttpPort(int port = DefaultHttpPort)
+        public static void SetHttpPort(int port = DefaultHttpPort)
         {
-            if (port <= 1024)
+            //Try to bind user port first
+            var listener = new TcpListener(IPAddress.Loopback, port);
+            try
             {
-                throw new InvalidOperationException("Cannot bind a port in the reserved port area !");
+                listener.Start();
+                port = ((IPEndPoint)listener.LocalEndpoint).Port;
+                listener.Stop();
+            }
+            catch (Exception ex)
+            {
+                ConsoleHelper.WriteException(ex);
+
+                //Sanity check
+                try
+                {
+                    listener.Stop();
+                }
+                catch (Exception)
+                {
+                }
+
+                //Trying to fallback on another port
+                //The 0 port should return the first available port given by the OS
+                listener = new TcpListener(IPAddress.Loopback, 0);
+                try
+                {
+                    listener.Start();
+                    port = ((IPEndPoint)listener.LocalEndpoint).Port;
+                    listener.Stop();
+                }
+                catch (Exception)
+                {
+                    //Sanity check
+                    try
+                    {
+                        listener.Stop();
+                    }
+                    catch (Exception)
+                    {
+                    }
+                }
             }
 
+            //The port given must be the one given in parameter and available, or another one firstly available
+
             HttpPort = port;
-            return true;
         }
 
         private static Func<string, string> _defaultPageDelegate;
@@ -207,7 +286,7 @@ namespace BlazorMobile.Services
             return _localIP;
         }
 
-        public static string GetBaseURL()
+        internal static string GetBaseURL()
         {
             return $"http://{GetLocalWebServerIP()}:{GetHttpPort()}";
         }
@@ -333,7 +412,7 @@ namespace BlazorMobile.Services
             return _debugFeatures;
         }
 
-        public static void StartWebServer()
+        internal static void StartWebServer()
         {
             Init(); //No-op if called twice
 
@@ -377,24 +456,34 @@ namespace BlazorMobile.Services
 
             Task.Factory.StartNew(async () =>
             {
-                ConsoleHelper.WriteLine("BlazorMobile: Starting Server...");
-                await server.RunAsync(serverCts.Token);
+                ConsoleHelper.WriteLine("BlazorMobile: Starting server...");
+        
+                try
+                {
+                    await server.RunAsync(serverCts.Token);
+                }
+                catch (InvalidOperationException e)
+                {
+                    ConsoleHelper.WriteException(e);
+
+                    //This call may be redundant with the previous case, but we must ensure that the StartWebServer invokation is done after clearing resources
+                    ClearWebserverResources();
+
+                    //If we are from the InvalidOperationException, the crash was not expected...Restarting webserver
+                    Device.BeginInvokeOnMainThread(StartWebServer);
+                }
+                catch (OperationCanceledException e)
+                {
+                    ClearWebserverResources();
+                }
             });
         }
 
-        public static void StopWebServer()
+        /// <summary>
+        /// Clear Webserver resources and set it as not started
+        /// </summary>
+        private static void ClearWebserverResources()
         {
-            //In order to stop the waiting background thread
-            try
-            {
-                //Will try to both stop Webserver and Socket server
-                serverCts.Cancel();
-            }
-            catch (Exception ex)
-            {
-                ConsoleHelper.WriteLine($"{nameof(WebApplicationFactory)}.{nameof(WebApplicationFactory.StopWebServer)} - {nameof(serverCts)}: {ex.Message}");
-            }
-
             try
             {
                 if (blazorContextBridgeServer != null)
@@ -404,7 +493,6 @@ namespace BlazorMobile.Services
             }
             catch (Exception ex)
             {
-                ConsoleHelper.WriteLine($"{nameof(WebApplicationFactory)}.{nameof(WebApplicationFactory.StopWebServer)} - {nameof(blazorContextBridgeServer)}: {ex.Message}");
             }
 
             try
@@ -413,11 +501,25 @@ namespace BlazorMobile.Services
             }
             catch (Exception ex)
             {
-                ConsoleHelper.WriteLine($"{nameof(WebApplicationFactory)}.{nameof(WebApplicationFactory.StopWebServer)} - {nameof(server)}: {ex.Message}");
             }
 
             blazorContextBridgeServer = null;
             server = null;
+            _isStarted = false;
+        }
+
+        internal static void StopWebServer()
+        {
+            //In order to stop the waiting background thread
+            try
+            {
+                //Will try to both stop Webserver and Socket server
+                serverCts.Cancel();
+            }
+            catch (Exception ex)
+            {
+            }
+
             _isStarted = false;
         }
     }

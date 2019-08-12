@@ -7,26 +7,30 @@ window.contextBridge = {
         _contextBridgeIsOpen: false,
         _contextBridgeSocket: null,
         getOrOpenConnection: function (onSuccess, onError) {
+            //First connection
             if (window.contextBridge.connectivity._contextBridgeSocket === null) {
                 console.log("BlazorMobile: trying to open a new connection");
                 window.contextBridge.connectivity.openWSConnection(window.contextBridge.connectivity._contextBridgeURI, onSuccess, onError);
             }
+            else if (window.contextBridge.connectivity._contextBridgeIsOpen === true) {
+                //Common behavior
+                onSuccess(window.contextBridge.connectivity._contextBridgeSocket);
+            }
             else {
-                if (window.contextBridge.connectivity._contextBridgeIsOpen === true) {
-                    onSuccess(window.contextBridge.connectivity._contextBridgeSocket);
-                }
-                else {
-                    setTimeout(function () {
-                        //Second chance interval, if the connection is busy
-                        //This should be rare if everything is working
-                        if (window.contextBridge.connectivity._contextBridgeIsOpen === true) {
-                            onSuccess(window.contextBridge.connectivity._contextBridgeSocket);
-                        }
-                        else {
-                            onError();
-                        }
-                    }, 100);
-                }
+                //On case of error, the socket is cleared and contextBridgeIsOpen bool value to false
+                //So if we are here, that mean a new socket has been instanciated, but is not yet open
+
+                setTimeout(function () {
+                    //Second chance interval, if the connection is busy
+                    //This should be rare if everything is working
+                    if (window.contextBridge.connectivity._contextBridgeIsOpen === true) {
+                        onSuccess(window.contextBridge.connectivity._contextBridgeSocket);
+                    }
+                    else {
+                        //If we are here, returning the current task as failed
+                        onError();
+                    }
+                }, 500);
             }
         },
         openWSConnection: function (uri, onOpen, onError) {

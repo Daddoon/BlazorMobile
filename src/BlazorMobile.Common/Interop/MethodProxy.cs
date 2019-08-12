@@ -60,8 +60,7 @@ namespace BlazorMobile.Common.Interop
             if (string.IsNullOrEmpty(SerializedData))
                 throw new NullReferenceException();
 
-            var type = BridgeSerializer.Deserialize<Type>(SerializedData);
-            return type;
+            return BridgeSerializer.Deserialize<Type>(this);
         }
     }
 

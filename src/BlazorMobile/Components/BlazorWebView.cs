@@ -17,16 +17,25 @@ namespace BlazorMobile.Components
         public BlazorWebView()
         {
             Navigated += BlazorWebView_Navigated;
+            WebApplicationFactory.BlazorAppNeedReload += ReloadBlazorAppEvent;
         }
 
-
-        private void LaunchBlazorAppUri()
+        private void ReloadBlazorAppEvent(object sender, EventArgs e)
         {
-            Source = new UrlWebViewSource()
+            LaunchBlazorApp();
+        }
+
+        internal static void InternalLaunchBlazorApp(IBlazorWebView webview)
+        {
+            webview.Source = new UrlWebViewSource()
             {
                 Url = WebApplicationFactory.GetBaseURL()
             };
-            blazorAppLaunched = true;
+        }
+
+        private void LaunchBlazorAppUri()
+        {
+            InternalLaunchBlazorApp(this);
         }
 
         private void LaunchBlazorAppUri(int delayedMilliseconds)
@@ -37,49 +46,16 @@ namespace BlazorMobile.Components
             });
         }
 
-        private static Func<Task> _clearWebView = null;
-        internal static void SetClearWebViewDelegate(Func<Task> clearWebView)
-        {
-            _clearWebView = clearWebView;
-        }
-
-        internal void ClearWebViewCache(Action onCacheCleared)
-        {
-            if (_clearWebView == null)
-            {
-                onCacheCleared?.Invoke();
-            }
-            else
-            {
-                bool onCacheClearedCalled = false;
-
-                try
-                {
-                    Device.BeginInvokeOnMainThread(async () =>
-                    {
-                        await _clearWebView();
-                        onCacheClearedCalled = true;
-                        onCacheCleared();
-                    });
-                }
-                catch (Exception ex)
-                {
-                    ConsoleHelper.WriteException(ex);
-
-                    if (!onCacheClearedCalled)
-                    {
-                        onCacheCleared?.Invoke();
-                    }
-                }
-            }
-        }
-
         public void LaunchBlazorApp()
         {
+            var webViewService = DependencyService.Get<IWebViewService>();
+            webViewService.ClearCookies();
+
             switch (Device.RuntimePlatform)
             {
                 case Device.UWP:
-                    ClearWebViewCache(() => LaunchBlazorAppUri(1000));
+                    //Giving some time on UWP, as it seem to fail to launch the new uri if called too soon
+                    LaunchBlazorAppUri(1000);
                     break;
                 default:
                     LaunchBlazorAppUri();
@@ -87,56 +63,8 @@ namespace BlazorMobile.Components
             }
         }
 
-        private bool blazorAppLaunched = false;
         private void BlazorWebView_Navigated(object sender, WebNavigatedEventArgs e)
         {
-            OnNavigated();
-        }
-
-        public void OnNavigated()
-        {
-            if (blazorAppLaunched)
-            {
-                switch (Device.RuntimePlatform)
-                {
-                    case Device.iOS:
-                        //WKWebview is wrapped over UIWebview. WkWebview has it's own delegate for this.
-                        break;
-                    default:
-                        //TODO: We must verify that we are in the local URI context
-                        //string content = ContextBridgeHelper.GetInjectableJavascript();
-                        //Eval(content);
-                        break;
-                }
-            }
-        }
-
-        public string GetReceiveEvaluator(string param)
-        {
-            param = JavascriptStringEscape(param);
-
-            string javascriptEval = string.Empty;
-
-            switch (Device.RuntimePlatform)
-            {
-                //case Device.Android:
-                //    javascriptEval += "javascript: ";
-                //    break;
-                default:
-                    break;
-            }
-
-            javascriptEval += $@"window.contextBridge.receive(""{param}"");";
-
-            return javascriptEval;
-        }
-
-        public string JavascriptStringEscape(string source)
-        {
-            if (source == null)
-                source = string.Empty;
-
-            return HttpUtility.JavaScriptStringEncode(source);
         }
 
         public View GetView()
