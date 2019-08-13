@@ -1,5 +1,5 @@
 # BlazorMobile
-Create full C# driven hybrid-apps for iOS & Android !
+Create full C# driven hybrid-apps for iOS, Android & UWP !
 
 **BlazorMobile** - is a Nuget package for embedding a Blazor web application as a standalone mobile application, hosted in Xamarin.
 
@@ -15,7 +15,7 @@ Create full C# driven hybrid-apps for iOS & Android !
 - [Getting started from sample](#getting-started-from-sample)
 - [Linking your Blazor app to your Xamarin project](#linking-your-blazor-app-to-your-xamarin-project)
 - [Detecting Runtime Platform](#detecting-runtime-platform)
-- [Communication between Blazor & Xamarin.Forms](#communication-between-blazorxamarinforms)
+- [Communication between Blazor & Xamarin.Forms](#communication-between-blazor--xamarinforms)
 - [Device remote debugging & Debugging from NET Core 3.0](#device-remote-debugging--debugging-from-net-core-30)
 
 ## Migration
@@ -25,7 +25,7 @@ Create full C# driven hybrid-apps for iOS & Android !
 
 ## Getting started from sample
 
-The easiest way in order to start is to [download the sample projects](https://github.com/Daddoon/BlazorMobile/releases/download/3.0.1-preview6.19307.2/BlazorMobile.Samples.zip). Unzip, and open the solution, and you are good to go.
+The easiest way in order to start is to [download the sample projects](https://github.com/Daddoon/BlazorMobile/releases/download/3.0.4-preview7.19365.7/BlazorMobile.Samples.zip). Unzip, and open the solution, and you are good to go.
 
 ## Linking your Blazor app to your Xamarin project
 
