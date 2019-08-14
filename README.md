@@ -1,4 +1,4 @@
-# BlazorMobile[<img src="logo.png?raw=true" align="right" width="128">]() 
+# BlazorMobile[<img src="logo.png?raw=true" align="right" width="200">]() 
 
 Create full C# driven hybrid-apps for iOS, Android & UWP !
 
