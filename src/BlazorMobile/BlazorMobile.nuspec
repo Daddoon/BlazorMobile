@@ -8,7 +8,7 @@
         <owners>Daddoon</owners>
         <licenseUrl>https://github.com/Daddoon/BlazorMobile/blob/master/LICENSE</licenseUrl>
         <projectUrl>https://github.com/Daddoon/BlazorMobile</projectUrl>
-        <iconUrl>https://raw.githubusercontent.com/Daddoon/BlazorMobile/master/logo.png</iconUrl>
+        <iconUrl>https://raw.githubusercontent.com/Daddoon/BlazorMobile/master/logo_blazormobile_256x256.png</iconUrl>
         <requireLicenseAcceptance>true</requireLicenseAcceptance>
         <description>BlazorMobile allow hosting a Blazor application as a standalone mobile application, with native communication support. Support iOS 12+, Android 5.0 &gt;= and UWP</description>
         <releaseNotes>Updated NuGet package to be compatible with Blazor 3.0.0-preview8.19405.7.</releaseNotes>
