@@ -1,4 +1,5 @@
-# BlazorMobile
+# BlazorMobile[<img src="logo_blazormobile_256x256.png?raw=true" align="right" width="200">]() 
+
 Create full C# driven hybrid-apps for iOS, Android & UWP !
 
 **BlazorMobile** - is a Nuget package for embedding a Blazor web application as a standalone mobile application, hosted in Xamarin.
@@ -12,17 +13,38 @@ Create full C# driven hybrid-apps for iOS, Android & UWP !
 
 ## Summary
 
+- [Difference between BlazorMobile & Progressive Web Apps (PWA)](#difference-between-blazormobile--progressive-web-apps-pwa)
 - [Getting started from sample](#getting-started-from-sample)
 - [Linking your Blazor app to your Xamarin project](#linking-your-blazor-app-to-your-xamarin-project)
 - [Detecting Runtime Platform](#detecting-runtime-platform)
 - [Communication between Blazor & Xamarin.Forms](#communication-between-blazor--xamarinforms)
 - [Device remote debugging & Debugging from NET Core 3.0](#device-remote-debugging--debugging-from-net-core-30)
 
+## Troubleshoot
+
+- [Cannot connect to a remote webserver on UWP](#cannot-connect-to-a-remote-webserver-on-uwp)
+
 ## Migration
 
 - [BlazorMobile 0.8.0 to 3.0.3-preview7.19365.7](#blazormobile-080-to-303-preview7193657)
 - [BlazorMobile 3.0.3-preview7.19365.7 to 3.0.4-preview7.19365.7](#blazormobile-303-preview7193657-to-304-preview7193657)
 - [BlazorMobile 3.0.4-preview7.19365.7 to 3.0.5-preview8.19405.7](#blazormobile-304-preview7193657-to-305-preview8194057)
+
+## Difference between BlazorMobile & Progressive Web Apps (PWA)
+
+Both creating an application as PWA or using BlazorMobile can be an option with Blazor
+
+The main differences / advantages of BlazorMobile are:
+
+- Access to native
+
+- Access from Web to native both in C#
+
+- More control about your application behaviors, depending your needs and complexity, some type of integration may be difficult with PWA. Still i think the majority of things can be done with PWA only.
+
+- You can support old versions of Android where WebAssembly was even not present. Actually because the WebView component used in the plugin is the excellent Mozilla GeckoView instead, so giving you some consistency accross Android devices. On the other side, PWA will never work on older devices, because of lack of PWA support, or because the browser implementation of the system does not have any support of WebAssembly, required by Blazor.
+
+- If you are good at designing your application, you can even make your application PWA and BlazorMobile compatible, as you can work intensively with DependencyInjection for services, and so, have multiple implementations of your app services in one or another use case !
 
 ## Getting started from sample
 
@@ -37,8 +59,11 @@ Your Blazor app will be automatically packaged thanks to the **BlazorMobile.Buil
 Here are the steps in order to link it in Xamarin:
 
 - Add your package **as a link** in your Xamarin.Forms shared project, from the Blazor web app bin directory.
+
 - Set the property of your package file as an **Embedded Resource** from Visual Studio.
+
 - **Optional**: Add a project dependency on your Xamarin.Forms shared project, and check your Blazor web application as a dependency. **This way we will be assured that even if there is no direct reference between the shared project and the blazor web application assembly, the blazor project and our zip are always updated before building our mobile application project**.
+
 - Set the path to your package in your Xamarin.Forms shared project. In the **App.xaml.cs** file, set the path in your **RegisterAppStreamResolver** delegate.
 
 As seen on the **BlazorMobile.Sample** project, assuming a file linked as in a folder called **Package**, we would have a code like this:
@@ -315,6 +340,18 @@ namespace BlazorMobile.Sample.Blazor
 
 Replace of course the first parameter by your own **device IP address**, and use the **same port** as configured in your Xamarin project.
 
+#### Additional configuration for UWP
+
+On UWP, because of the NetworkIsolation behavior, you cannot connect by default from your PC to the UWP app.
+
+You must execute this command in background during development in order to allow incoming remote connection, and so remote debugging, in your UWP app:
+
+```
+CheckNetIsolation loopbackexempt -is -n=YourUWPPackageFamilyName
+```
+
+Of course, replace **YourUWPPackageFamilyName** by your package name on UWP. You can find it in the **Packages** tab of your **Package.appxmanifest**, at the end.
+
 #### Deploy & Launch mobile application, debug from PC
 
 Then, you just need to deploy your application to your phone, and launch it in order to allow external source to connect to it.
@@ -331,6 +368,19 @@ Default **BlazorMobile.Sample.Blazor.Server** project should listen on http://lo
 When the server console will show up during your debugging session, you need to open a tab in your favorite browser and browse http://localhost:5080/?mode=server url, in order to connect and debug your Blazor NET Core application.
 
 If you omit the mode=server argument, the Blazor application will be launched as the WASM one.
+
+Of course you can change this behavior by your own logic, just take a look at **index.html** on how the Blazor javascript file is loaded.
+
+## Troubleshoot
+
+### Cannot connect to a remote webserver on UWP
+
+There is some behaviors that are specifics to UWP:
+
+- You cannot connect to a local webserver / socket endpoint, out of process, on the same machine. This mean that if your testing development about webservices from IIS, Kestrel or other, UWP will be unable to connect to them. The server must be present on an other machine.
+
+
+- If you are doing any web requests on with HTTPS, UWP will block them if the certificate is self-signed or not trusted. You may override this behavior if your are doing your requests from the native side instead as you may have more control about web requests behavior, but this may be less ideal from a Design point of view.
 
 ## Migration
 
