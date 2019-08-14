@@ -12,7 +12,7 @@ Create full C# driven hybrid-apps for iOS, Android & UWP !
 
 ## Summary
 
-- [Difference between BlazorMobile & Progressive Web Apps (PWA)]()
+- [Difference between BlazorMobile & Progressive Web Apps (PWA)](#difference-between-blazormobile--progressive-web-apps-pwa)
 - [Getting started from sample](#getting-started-from-sample)
 - [Linking your Blazor app to your Xamarin project](#linking-your-blazor-app-to-your-xamarin-project)
 - [Detecting Runtime Platform](#detecting-runtime-platform)
