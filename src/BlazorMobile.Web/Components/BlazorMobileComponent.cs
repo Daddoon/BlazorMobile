@@ -54,7 +54,7 @@ namespace BlazorMobile.Common.Components
             Device._onFinishCallback?.Invoke(success);
         }
 
-        protected override async Task OnInitAsync()
+        protected override void OnInitialized()
         {
             JSRuntime = Runtime;
             UriHelper = _injectedUriHelper;

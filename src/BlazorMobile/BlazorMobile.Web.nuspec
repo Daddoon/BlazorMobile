@@ -11,13 +11,13 @@
         <iconUrl>https://www.nuget.org/Content/gallery/img/default-package-icon-256x256.png</iconUrl>
         <requireLicenseAcceptance>true</requireLicenseAcceptance>
         <description>This NuGet package intended for the Blazor application side of the BlazorMobile package.</description>
-        <releaseNotes>Updated NuGet package to be based on Blazor 3.0.0-preview7.19365.7. Remove dependencies on BlazorMobile.Common package.</releaseNotes>
+        <releaseNotes>Updated NuGet package to be compatible with Blazor 3.0.0-preview8.19405.7.</releaseNotes>
         <copyright>Copyright 2019</copyright>
         <tags>Blazor BlazorMobile Xamarin iOS Android Hybrid</tags>
         <dependencies>
             <group targetFramework="netstandard2.0">
                 <dependency id="NETStandard.Library" version="2.0.3" />
-                <dependency id="Microsoft.AspNetCore.Blazor" version="3.0.0-preview7.19365.7" />
+                <dependency id="Microsoft.AspNetCore.Blazor" version="3.0.0-preview8.19405.7" />
             </group>
         </dependencies>
     </metadata>
