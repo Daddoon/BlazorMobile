@@ -14,14 +14,6 @@ namespace BlazorMobile.Common.Services
 {
     public static class MethodDispatcher
     {
-        /// <summary>
-        /// Fake type just to return void value wrapped around a simple Task type
-        /// </summary>
-        internal class IgnoredType
-        {
-
-        }
-
         private static Dictionary<int, TaskDispatch> _taskDispatcher = new Dictionary<int, TaskDispatch>();
 
         private static int taskQueueId = 0;
@@ -44,6 +36,12 @@ namespace BlazorMobile.Common.Services
 
                 if (taskDispatch.ResultData == null || !taskDispatch.ResultData.TaskSuccess)
                     return default(TReturnType);
+
+                //In case of a void call, we must return the IgnoredType for the caller instead of TaskComplete
+                if (typeof(TReturnType) == typeof(IgnoredType))
+                {
+                    taskDispatch.ResultData.ReturnValue = new IgnoredType();
+                }
 
                 return (TReturnType)taskDispatch.ResultData.ReturnValue;
 
