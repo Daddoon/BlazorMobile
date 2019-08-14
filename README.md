@@ -12,6 +12,7 @@ Create full C# driven hybrid-apps for iOS, Android & UWP !
 
 ## Summary
 
+- [Difference between BlazorMobile & Progressive Web Apps (PWA)]()
 - [Getting started from sample](#getting-started-from-sample)
 - [Linking your Blazor app to your Xamarin project](#linking-your-blazor-app-to-your-xamarin-project)
 - [Detecting Runtime Platform](#detecting-runtime-platform)
@@ -27,6 +28,24 @@ Create full C# driven hybrid-apps for iOS, Android & UWP !
 - [BlazorMobile 0.8.0 to 3.0.3-preview7.19365.7](#blazormobile-080-to-303-preview7193657)
 - [BlazorMobile 3.0.3-preview7.19365.7 to 3.0.4-preview7.19365.7](#blazormobile-303-preview7193657-to-304-preview7193657)
 - [BlazorMobile 3.0.4-preview7.19365.7 to 3.0.5-preview8.19405.7](#blazormobile-304-preview7193657-to-305-preview8194057)
+
+## Difference between BlazorMobile & Progressive Web Apps (PWA)
+
+Both creating an application as PWA or using BlazorMobile can be an option with Blazor
+
+The main differences / advantages of BlazorMobile are:
+
+- Access to native
+
+- Access from Web to native both in C#
+
+- More control about your application behaviors, depending your needs and complexity, some type of integration may be difficult with PWA. Still i think the majority of things can be done with PWA only.
+
+- You can support old versions of Android where WebAssembly was even not present. Actually because the WebView component used in the plugin is the excellent Mozilla GeckoView instead, so giving you some consistency accross Android devices.
+
+On the other side, PWA will never work on older devices, because of lack of PWA support, or because the browser implementation of the system does not have any support of WebAssembly, required by Blazor.
+
+- If you are good at designing your application, you can even make your application PWA and BlazorMobile compatible, as you can work intensively with DependencyInjection for services, and so, have multiple implementations of your app services in one or another use case !
 
 ## Getting started from sample
 
