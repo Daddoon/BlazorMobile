@@ -8,7 +8,7 @@
     <owners>Daddoon</owners>
     <licenseUrl>https://github.com/Daddoon/BlazorMobile/blob/master/LICENSE</licenseUrl>
     <projectUrl>https://github.com/Daddoon/BlazorMobile</projectUrl>
-    <iconUrl>https://www.nuget.org/Content/gallery/img/default-package-icon-256x256.png</iconUrl>
+    <iconUrl>https://raw.githubusercontent.com/Daddoon/BlazorMobile/master/logo.png</iconUrl>
     <requireLicenseAcceptance>true</requireLicenseAcceptance>
     <description>Build mechanism for BlazorMobile applications. This must be referenced in your Blazor web application project</description>
     <releaseNotes>First release</releaseNotes>
