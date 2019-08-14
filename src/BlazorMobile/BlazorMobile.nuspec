@@ -11,7 +11,7 @@
         <iconUrl>https://www.nuget.org/Content/gallery/img/default-package-icon-256x256.png</iconUrl>
         <requireLicenseAcceptance>true</requireLicenseAcceptance>
         <description>BlazorMobile allow hosting a Blazor application as a standalone mobile application, with native communication support. Support iOS 12+, Android 5.0 &gt;= and UWP</description>
-        <releaseNotes>Added UWP support, removed any Blazor assembly reference from this package, removed Xamarin.Android.GeckoView.Forms dependency when targeting other platforms than Android</releaseNotes>
+        <releaseNotes>Updated NuGet package to be compatible with Blazor 3.0.0-preview8.19405.7.</releaseNotes>
         <copyright>Copyright 2019</copyright>
         <tags>Blazor BlazorMobile Xamarin iOS Android Hybrid</tags>
         <dependencies>
