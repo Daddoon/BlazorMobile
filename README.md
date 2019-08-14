@@ -8,7 +8,7 @@ Create full C# driven hybrid-apps for iOS, Android & UWP !
 - **Android:** Android 5.0 or greater
 - **iOS:** iOS 12 or greater
 - **UWP:** Build 16299 or greater
-- **Blazor:** 3.0.0-preview7.19365.7
+- **Blazor:** 3.0.0-preview8.19405.7
 
 ## Summary
 
@@ -22,10 +22,11 @@ Create full C# driven hybrid-apps for iOS, Android & UWP !
 
 - [BlazorMobile 0.8.0 to 3.0.3-preview7.19365.7](#blazormobile-080-to-303-preview7193657)
 - [BlazorMobile 3.0.3-preview7.19365.7 to 3.0.4-preview7.19365.7](#blazormobile-303-preview7193657-to-304-preview7193657)
+- [BlazorMobile 3.0.4-preview7.19365.7 to 3.0.5-preview8.19405.7](#blazormobile-304-preview7193657-to-305-preview8194057)
 
 ## Getting started from sample
 
-The easiest way in order to start is to [download the sample projects](https://github.com/Daddoon/BlazorMobile/releases/download/3.0.4-preview7.19365.7/BlazorMobile.Samples.zip). Unzip, and open the solution, and you are good to go.
+The easiest way in order to start is to [download the sample projects](https://github.com/Daddoon/BlazorMobile/releases/download/3.0.5-preview8.19405.7/BlazorMobile.Samples.zip). Unzip, and open the solution, and you are good to go.
 
 ## Linking your Blazor app to your Xamarin project
 
@@ -524,6 +525,10 @@ protected override void OnResume()
 ```
 
 **NOTE:** **WebApplicationFactory.SetHttpPort** is not mandatory anymore as if the app fail to bind on your specific port, it will fallback on another available port. But you can still use it for your specific needs and in order to assign a fixed port for remote debugging sessions.
+
+### BlazorMobile 3.0.4-preview7.19365.7 to 3.0.5-preview8.19405.7
+
+Nothing to do ! You only need to update your Blazor project according to [Blazor 3.0.0-preview8.19405.7 requirements](https://devblogs.microsoft.com/aspnet/asp-net-core-and-blazor-updates-in-net-core-3-0-preview-8/).
 
 ## Authors
 
