@@ -237,7 +237,7 @@ The **MethodDispatcher** class, that will prepare every callback for you, callin
 
 Because of the lack of JIT, you have to give yourself some parameters. Take a look at the different implementations of MethodDispatcher methods, in order to accord everything to your context, like if your using Task (Async calls) or not, if you expect a return value, generic types...
 
-There is actually some syntactic sugar method calls in order to just mimic what you are expecting, by just recognizing the same kind of signature, if using generic parameters etc. You may take a look at the [MethodDispatcher file](https://github.com/Daddoon/BlazorMobile/blob/master/src/BlazorMobile.Common/Services/MethodDispatcher.cs) if you want to see the available methods overload.
+There is actually some syntactic sugar method calls in order to just mimic what you are expecting, by just recognizing the same kind of signature, if using generic parameters etc. You may take a look at the [MethodDispatcher file](https://github.com/Daddoon/BlazorMobile/blob/master/src/BlazorMobile.Web/Services/MethodDispatcher.cs) if you want to see the available methods overload.
 
 If you want that the caller and receiver method are actually the same method signature on the 2 ends (Blazor & Xamarin), you can safely use MethodBase.GetCurrentMethod() everytime for the MethodInfo parameter, like in our example.
 
