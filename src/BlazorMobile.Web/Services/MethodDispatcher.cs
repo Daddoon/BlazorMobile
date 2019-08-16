@@ -9,19 +9,18 @@ using BlazorMobile.Common.Attributes;
 using BlazorMobile.Common.Serialization;
 using BlazorMobile.Common.Models;
 using System.Threading;
+using System.Runtime.CompilerServices;
+using BlazorMobile.Common.Helpers;
 
 namespace BlazorMobile.Common.Services
 {
     public static class MethodDispatcher
     {
-        private static Dictionary<int, TaskDispatch> _taskDispatcher = new Dictionary<int, TaskDispatch>();
+        private static Dictionary<Guid, TaskDispatch> _taskDispatcher = new Dictionary<Guid, TaskDispatch>();
 
-        private static int taskQueueId = 0;
-
-        internal static Task<TReturnType> CreateTaskDispatcher<TReturnType>(out int taskIdentity)
+        internal static Task<TReturnType> CreateTaskDispatcher<TReturnType>(out Guid taskIdentity)
         {
-            taskQueueId++;
-            taskIdentity = taskQueueId;
+            taskIdentity = Guid.NewGuid();
 
             var taskDispatch = new TaskDispatch();
             _taskDispatcher.Add(taskIdentity, taskDispatch);
@@ -53,21 +52,21 @@ namespace BlazorMobile.Common.Services
             return taskAction;
         }
 
-        internal static void SetTaskResult(int taskIdentity, MethodProxy resultProxy)
+        internal static void SetTaskResult(Guid taskIdentity, MethodProxy resultProxy)
         {
             if (!_taskDispatcher.ContainsKey(taskIdentity))
                 return;
             _taskDispatcher[taskIdentity].ResultData = resultProxy;
         }
 
-        internal static Task GetTaskDispatcher(int taskIdentity)
+        internal static Task GetTaskDispatcher(Guid taskIdentity)
         {
             if (_taskDispatcher.ContainsKey(taskIdentity))
                 return _taskDispatcher[taskIdentity].ResultAction;
             return null;
         }
 
-        internal static void SetTaskAsFaulted<T>(int taskIdentity, T ex) where T : Exception
+        internal static void SetTaskAsFaulted<T>(Guid taskIdentity, T ex) where T : Exception
         {
             if (_taskDispatcher.ContainsKey(taskIdentity))
             {
@@ -76,7 +75,7 @@ namespace BlazorMobile.Common.Services
             }
         }
 
-        internal static void CancelTask(int taskIdentity)
+        internal static void CancelTask(Guid taskIdentity)
         {
             if (_taskDispatcher.ContainsKey(taskIdentity))
             {
@@ -89,7 +88,7 @@ namespace BlazorMobile.Common.Services
             }
         }
 
-        internal static void ClearTask(int taskIdentity)
+        internal static void ClearTask(Guid taskIdentity)
         {
             if (_taskDispatcher.ContainsKey(taskIdentity))
             {
@@ -338,9 +337,22 @@ namespace BlazorMobile.Common.Services
             MethodProxy methodProxy = new MethodProxy();
 
             var iface = methodBase.DeclaringType.GetInterfaces().FirstOrDefault(p => p.GetCustomAttribute<ProxyInterfaceAttribute>() != null);
+
             if (iface == null)
             {
-                throw new ArgumentException("Given class method does not contain any possible ProxyInterface. Be sure to add [ProxyInterface] attribute on top of your interface definition");
+                //First exception chance. We are maybe in an Async task context. Trying to retrieve base method
+                 MethodBase noAsyncMethodBase = GetRealMethodBaseFromAsyncMethod(methodBase);
+
+                if (noAsyncMethodBase != null)
+                {
+                    methodBase = noAsyncMethodBase;
+                    iface = methodBase.DeclaringType.GetInterfaces().FirstOrDefault(p => p.GetCustomAttribute<ProxyInterfaceAttribute>() != null);
+                }
+            }
+
+            if (iface == null)
+            {
+                throw new ArgumentException("Unable to find the method to call on the interface. Be sure to add the [ProxyInterface] attribute on top of your interface definition. If using MethodBase.GetCurrentMethod(), check that your calling method is not marked as 'async', as it hide the real method definition.");
             }
 
             //As we are using a DispatchProxy, the targetMethod should be the interface MethodInfo (and not a class MethodInfo)
@@ -367,7 +379,7 @@ namespace BlazorMobile.Common.Services
             switch (ContextHelper.GetExecutingContext())
             {
                 case Models.ExecutingContext.Blazor:
-                    int taskId = 0;
+                    Guid taskId = Guid.Empty;
                     var task = CreateTaskDispatcher<TReturnType>(out taskId);
 
                     methodProxy.TaskIdentity = taskId;
@@ -380,6 +392,30 @@ namespace BlazorMobile.Common.Services
             }
 
             #endregion
+        }
+
+        //See: https://stackoverflow.com/a/28633192/1417492
+        private static MethodBase GetRealMethodBaseFromAsyncMethod(MethodBase asyncMethod)
+        {
+            try
+            {
+                var generatedType = asyncMethod.DeclaringType;
+                var originalType = generatedType.DeclaringType;
+                var matchingMethods =
+                    from methodInfo in originalType.GetMethods()
+                    let attr = methodInfo.GetCustomAttribute<AsyncStateMachineAttribute>()
+                    where attr != null && attr.StateMachineType == generatedType
+                    select methodInfo;
+
+                // If this throws, the async method scanning failed.
+                return matchingMethods.Single();
+            }
+            catch (Exception ex)
+            {
+                ConsoleHelper.WriteException(ex);
+            }
+
+            return null;
         }
 
         #endregion
