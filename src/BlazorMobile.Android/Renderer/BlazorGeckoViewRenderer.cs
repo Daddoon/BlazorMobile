@@ -1,12 +1,16 @@
 ﻿
 using BlazorMobile.Components;
+using BlazorMobile.Droid.Helper;
 using BlazorMobile.Droid.Renderer;
+using BlazorMobile.Droid.Services;
 using BlazorMobile.Services;
 using Org.Mozilla.Geckoview;
 using System;
+using Xam.Droid.GeckoView.Forms;
 using Xam.Droid.GeckoView.Forms.Droid.Handlers;
 using Xam.Droid.GeckoView.Forms.Droid.Renderers;
 using Xamarin.Forms;
+using Xamarin.Forms.Platform.Android;
 
 [assembly: ExportRenderer(typeof(BlazorGeckoView), typeof(BlazorGeckoViewRenderer))]
 namespace BlazorMobile.Droid.Renderer
@@ -36,6 +40,28 @@ namespace BlazorMobile.Droid.Renderer
             }
 
             return Tuple.Create(_session, _runtime);
+        }
+
+        private KeyboardUtil keyboardHelper;
+
+        protected override void OnElementChanged(ElementChangedEventArgs<GeckoViewForms> e)
+        {
+            base.OnElementChanged(e);
+
+            if (keyboardHelper == null)
+            {
+                keyboardHelper = new KeyboardUtil(BlazorWebViewService.GetCurrentActivity(), Control);
+            }
+        }
+
+        protected override void Dispose(bool disposing)
+        {
+            if (keyboardHelper != null)
+            {
+                keyboardHelper.Disable();
+            }
+
+            base.Dispose();
         }
     }
 }
