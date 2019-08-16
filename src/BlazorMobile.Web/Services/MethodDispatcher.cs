@@ -345,14 +345,16 @@ namespace BlazorMobile.Common.Services
 
                 if (noAsyncMethodBase != null)
                 {
+                    //Replacing local references by the found one
                     methodBase = noAsyncMethodBase;
+                    method = (MethodInfo)methodBase;
                     iface = methodBase.DeclaringType.GetInterfaces().FirstOrDefault(p => p.GetCustomAttribute<ProxyInterfaceAttribute>() != null);
                 }
             }
 
             if (iface == null)
             {
-                throw new ArgumentException("Unable to find the method to call on the interface. Be sure to add the [ProxyInterface] attribute on top of your interface definition. If using MethodBase.GetCurrentMethod(), check that your calling method is not marked as 'async', as it hide the real method definition.");
+                throw new ArgumentException("Unable to find the method to call on the interface. Be sure to add the [ProxyInterface] attribute on top of your interface definition. If using MethodBase.GetCurrentMethod(), check that your calling method is not marked as 'async', as it may hide the real method definition.");
             }
 
             //As we are using a DispatchProxy, the targetMethod should be the interface MethodInfo (and not a class MethodInfo)
