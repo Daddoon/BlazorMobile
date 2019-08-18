@@ -2,12 +2,12 @@
 
 Create full C# driven hybrid-apps for iOS, Android & UWP !
 
-**BlazorMobile** - is a Nuget package for embedding a Blazor web application as a standalone mobile application, hosted in Xamarin.
+**BlazorMobile** - is a set of Nuget packages & project templates for embedding a Blazor web application as a standalone mobile application, hosted in Xamarin.
 
 ## Platform requirements
   
-- **Android:** Android 5.0 or greater
-- **iOS:** iOS 12 or greater
+- **Android:** Android 4.4 or greater
+- **iOS:** iOS 12.0 or greater
 - **UWP:** Build 16299 or greater
 - **Blazor:** 3.0.0-preview8.19405.7
 
