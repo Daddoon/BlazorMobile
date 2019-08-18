@@ -1,0 +1,22 @@
+﻿<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <TargetFramework>netstandard2.0</TargetFramework>
+    <NuspecFile>BlazorMobile.Templates.nuspec</NuspecFile>
+    <IsShippingPackage>true</IsShippingPackage>
+    <EnableDefaultItems>False</EnableDefaultItems>
+    <GenerateAssemblyInfo>False</GenerateAssemblyInfo>
+    <IncludeBuildOutput>False</IncludeBuildOutput>
+    <CopyBuildOutputToOutputDirectory>false</CopyBuildOutputToOutputDirectory>
+    <DebugType>none</DebugType>
+    <GenerateDocumentationFile>false</GenerateDocumentationFile>
+    <NoWarn>$(NoWarn);2008</NoWarn>
+    <Description>A project template for creating an iOS, Android &amp; UWP app from a Blazor app that runs on WebAssembly. This template can be used for web apps with rich dynamic user interfaces (UIs).</Description>
+    <PackageTags>aspnet;templates;blazor;spa;web;webassembly;xamarin;android;ios;uwp</PackageTags>
+    <IsProjectReferenceProvider>false</IsProjectReferenceProvider>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <None Include="BlazorMobile.Templates.nuspec" />
+  </ItemGroup>
+</Project>
