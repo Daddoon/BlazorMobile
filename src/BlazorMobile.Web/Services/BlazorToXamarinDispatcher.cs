@@ -12,13 +12,11 @@ namespace BlazorMobile.Common.Services
     public static class BlazorToXamarinDispatcher
     {
         [JSInvokable]
-        public static async Task Send(MethodProxy methodProxy)
+        public static Task Send(MethodProxy methodProxy)
         {
             string csharpProxy = BridgeSerializer.Serialize(methodProxy);
-            InternalHelper.SetTimeout(async () =>
-            {
-                await BlazorMobileComponent.GetJSRuntime().InvokeAsync<bool>("contextBridgeSend", csharpProxy);
-            }, 100);
+            BlazorMobileComponent.GetJSRuntime().InvokeAsync<bool>("contextBridgeSend", csharpProxy);
+            return Task.CompletedTask;
         }
 
         [JSInvokable]
@@ -27,13 +25,13 @@ namespace BlazorMobile.Common.Services
             if (string.IsNullOrEmpty(methodProxyJson))
                 return false;
 
-            InternalHelper.SetTimeout(() =>
+            try
             {
                 MethodProxy resultProxy = BridgeSerializer.Deserialize<MethodProxy>(ref methodProxyJson);
                 var taskToReturn = MethodDispatcher.GetTaskDispatcher(resultProxy.TaskIdentity);
 
                 if (taskToReturn == null)
-                    return;
+                    return false;
 
                 if (socketSuccess && resultProxy.TaskSuccess)
                 {
@@ -67,7 +65,12 @@ namespace BlazorMobile.Common.Services
 
                 //Clear task from task list. Should then call the task to execute. It will throw if it has been cancelled
                 MethodDispatcher.ClearTask(resultProxy.TaskIdentity);
-            }, 10);
+            }
+            catch (Exception ex)
+            {
+                ConsoleHelper.WriteException(ex);
+                return false;
+            }
 
             return true;
         }

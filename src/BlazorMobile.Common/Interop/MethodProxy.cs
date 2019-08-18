@@ -69,7 +69,7 @@ namespace BlazorMobile.Common.Interop
     [Serializable]
     public class MethodProxy
     {
-        public int TaskIdentity { get; set; }
+        public Guid TaskIdentity { get; set; }
 
         public bool TaskSuccess { get; set; }
 

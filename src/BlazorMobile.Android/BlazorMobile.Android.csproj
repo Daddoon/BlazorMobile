@@ -48,6 +48,7 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Components\BlazorGeckoView.cs" />
+    <Compile Include="Helper\KeyboardUtil.cs" />
     <Compile Include="Interop\WebViewService.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Renderer\BlazorGeckoViewRenderer.cs" />

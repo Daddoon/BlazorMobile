@@ -1,6 +1,6 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
 <Package xmlns="http://schemas.microsoft.com/appx/manifest/foundation/windows10" xmlns:mp="http://schemas.microsoft.com/appx/2014/phone/manifest" xmlns:uap="http://schemas.microsoft.com/appx/manifest/uap/windows10" IgnorableNamespaces="uap mp">
-  <Identity Name="07017C58-6F4E-455A-B172-06A5E41932B0" Publisher="CN=2Bee, O=2Bee SASU, C=FR" Version="1.0.8.0" />
+  <Identity Name="07017C58-6F4E-455A-B172-06A5E41932B0" Publisher="CN=MyCompany, O=MyCompany LTD, C=US" Version="1.0.0.0" />
   <mp:PhoneIdentity PhoneProductId="ec0cc741-fd3e-485c-81be-68815c480690" PhonePublisherId="00000000-0000-0000-0000-000000000000" />
   <Properties>
     <DisplayName>BlazorMobile.Sample.UWP</DisplayName>
@@ -25,9 +25,6 @@
         </uap:DefaultTile>
         <uap:SplashScreen Image="Assets\SplashScreen.png" />
       </uap:VisualElements>
-      <uap:ApplicationContentUriRules>
-          <uap:Rule Type="include" Match="http://127.0.0.1:8888/" WindowsRuntimeAccess="none" />
-      </uap:ApplicationContentUriRules>
     </Application>
   </Applications>
   <Capabilities>
