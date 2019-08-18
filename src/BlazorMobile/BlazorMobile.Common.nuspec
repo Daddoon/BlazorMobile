@@ -11,9 +11,9 @@
         <iconUrl>https://raw.githubusercontent.com/Daddoon/BlazorMobile/master/logo_blazormobile_256x256.png</iconUrl>
         <requireLicenseAcceptance>true</requireLicenseAcceptance>
         <description>This NuGet package intended for the Blazor application side of the BlazorMobile package. Use BlazorMobile package for the native side.</description>
-        <releaseNotes>Updated NuGet package to be compatible with Blazor 3.0.0-preview8.19405.7.</releaseNotes>
+        <releaseNotes>Updated for BlazorMobile 3.0.6-preview8.19405.7</releaseNotes>
         <copyright>Copyright 2019</copyright>
-        <tags>Blazor BlazorMobile Xamarin iOS Android Hybrid</tags>
+        <tags>aspnet templates blazor spa web webassembly xamarin android ios uwp</tags>
         <dependencies>
             <group targetFramework="netstandard2.0">
                 <dependency id="Newtonsoft.Json" version="11.0.2" />
