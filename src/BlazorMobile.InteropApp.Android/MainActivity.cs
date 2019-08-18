@@ -20,8 +20,6 @@ namespace BlazorMobile.InteropApp.Droid
             TabLayoutResource = Resource.Layout.Tabbar;
             ToolbarResource = Resource.Layout.Toolbar;
 
-            AppCompatDelegate.CompatVectorFromResourcesEnabled = true;
-
             base.OnCreate(savedInstanceState);
 
             global::Xamarin.Forms.Forms.Init(this, savedInstanceState);

@@ -9,7 +9,7 @@ namespace BlazorMobile.Common.Models
 {
     internal class TaskDispatch
     {
-        public int TaskId { get; set; }
+        public Guid TaskId { get; set; }
 
         public Task ResultAction { get; set; }
 

@@ -10,10 +10,10 @@
         <projectUrl>https://github.com/Daddoon/BlazorMobile</projectUrl>
         <iconUrl>https://raw.githubusercontent.com/Daddoon/BlazorMobile/master/logo_blazormobile_256x256.png</iconUrl>
         <requireLicenseAcceptance>true</requireLicenseAcceptance>
-        <description>BlazorMobile allow hosting a Blazor application as a standalone mobile application, with native communication support. Support iOS 12+, Android 5.0 &gt;= and UWP</description>
-        <releaseNotes>Updated NuGet package to be compatible with Blazor 3.0.0-preview8.19405.7.</releaseNotes>
+        <description>BlazorMobile: Launch Blazor as a mobile application on iOS, Android &amp; UWP, with native communication support. Support iOS 12+, Android 4.4 &gt;= and UWP</description>
+        <releaseNotes>See release notes on BlazorMobile project page</releaseNotes>
         <copyright>Copyright 2019</copyright>
-        <tags>Blazor BlazorMobile Xamarin iOS Android Hybrid</tags>
+        <tags>aspnet templates blazor spa web webassembly xamarin android ios uwp</tags>
         <dependencies>
           <group targetFramework="netstandard2.0">
             <dependency id="System.IO.Compression.ZipFile" version="4.3.0" />

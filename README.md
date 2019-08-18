@@ -2,12 +2,12 @@
 
 Create full C# driven hybrid-apps for iOS, Android & UWP !
 
-**BlazorMobile** - is a Nuget package for embedding a Blazor web application as a standalone mobile application, hosted in Xamarin.
+**BlazorMobile** - is a set of Nuget packages & project templates for embedding a Blazor web application as a standalone mobile application, hosted in Xamarin.
 
 ## Platform requirements
   
-- **Android:** Android 5.0 or greater
-- **iOS:** iOS 12 or greater
+- **Android:** Android 4.4 or greater
+- **iOS:** iOS 12.0 or greater
 - **UWP:** Build 16299 or greater
 - **Blazor:** 3.0.0-preview8.19405.7
 
@@ -19,6 +19,7 @@ Create full C# driven hybrid-apps for iOS, Android & UWP !
 - [Detecting Runtime Platform](#detecting-runtime-platform)
 - [Communication between Blazor & Xamarin.Forms](#communication-between-blazor--xamarinforms)
 - [Device remote debugging & Debugging from NET Core 3.0](#device-remote-debugging--debugging-from-net-core-30)
+- [Android Build size optimization](#android-build-size-optimization)
 
 ## Troubleshoot
 
@@ -237,7 +238,7 @@ The **MethodDispatcher** class, that will prepare every callback for you, callin
 
 Because of the lack of JIT, you have to give yourself some parameters. Take a look at the different implementations of MethodDispatcher methods, in order to accord everything to your context, like if your using Task (Async calls) or not, if you expect a return value, generic types...
 
-There is actually some syntactic sugar method calls in order to just mimic what you are expecting, by just recognizing the same kind of signature, if using generic parameters etc. You may take a look at the [MethodDispatcher file](https://github.com/Daddoon/BlazorMobile/blob/master/src/BlazorMobile.Common/Services/MethodDispatcher.cs) if you want to see the available methods overload.
+There is actually some syntactic sugar method calls in order to just mimic what you are expecting, by just recognizing the same kind of signature, if using generic parameters etc. You may take a look at the [MethodDispatcher file](https://github.com/Daddoon/BlazorMobile/blob/master/src/BlazorMobile.Web/Services/MethodDispatcher.cs) if you want to see the available methods overload.
 
 If you want that the caller and receiver method are actually the same method signature on the 2 ends (Blazor & Xamarin), you can safely use MethodBase.GetCurrentMethod() everytime for the MethodInfo parameter, like in our example.
 
@@ -370,6 +371,33 @@ When the server console will show up during your debugging session, you need to 
 If you omit the mode=server argument, the Blazor application will be launched as the WASM one.
 
 Of course you can change this behavior by your own logic, just take a look at **index.html** on how the Blazor javascript file is loaded.
+
+## Android Build size optimization
+
+The underlying Webview component used with BlazorMobile on Android is the excellent **Mozilla GeckoView** browser component, replacing the traditional Webview component shipped with the OS.
+This component allow us to:
+
+- Having WebAssembly available even on Android version that does not support it
+- Having a consistent Webview component accross recent and old Android versions.
+
+This with the downside that we ship the GeckoView component in the APK. Without any optimzations, this component take roughly **150 MB** because it ship all the CPU implementations by default.
+
+The solution to this problem is to ship one APK per ABI, as this will split the multiple ABI implementation of the GeckoView component to each specific APK ABI.
+The GeckoView component for Android in your APK will then respectively shrink to approximatively **50MB** per platform.
+
+**<u>Recommended readings:</u>**
+
+- Microsoft documentation about [Building ABI-Specific APKs](https://docs.microsoft.com/en-us/xamarin/android/deploy-test/building-apps/abi-specific-apks).
+- Google Play documentation about [Multiple APK support](https://developer.android.com/google/play/publishing/multiple-apks)
+- Google Play [64-bit mandatory publishing since 1st August 2019](https://developer.android.com/distribute/best-practices/develop/64-bit).
+- As stated in [this section](https://developer.android.com/distribute/best-practices/develop/64-bit#multi-apk-compliance) of the previous article, one important information to know coming from a Xamarin APK release is this:
+
+```
+Multi-APK and 64-bit compliance
+
+If you are using Google Play’s multiple-APK support to publish your app, note that compliance with the 64-bit requirement is evaluated at the release level. However, the 64-bit requirement does not apply to APKs or app bundles that are not distributed to devices running Android 9 Pie or later.
+If one of your APKs is marked as not being compliant, but is older and it’s not possible to bring it into compliance, one strategy is to add a maxSdkVersion="27" attribute in the uses-sdk element in that APK’s manifest. This APK won’t be delivered to devices running Android 9 Pie or later, and it will no longer block compliance.
+```
 
 ## Troubleshoot
 
