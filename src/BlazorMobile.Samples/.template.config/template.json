@@ -1,0 +1,107 @@
+{
+  "author": "Guillaume ZAHRA",
+  "classifications": [
+    "Web",
+    "Blazor",
+    "WebAssembly",
+	"Xamarin",
+	"BlazorMobile"
+  ],
+  "description": "A project template for creating an iOS, Android & UWP app from a Blazor app that runs on WebAssembly. This template can be used for web apps with rich dynamic user interfaces (UIs).",
+  "groupIdentity": "BlazorMobile",
+  "guids": [
+	"94424FB2-A268-4C07-9297-F5BD6D3C4E70"
+    "30BBEA69-16A0-4578-8904-51641700B8A5",
+    "F62FB8D8-B450-4C86-BF17-B8FE5784125C",
+    "5F96FBC1-8AA7-4951-97BE-252D808BBB81",
+	"A13CD863-4CAB-4EAC-BC21-4EBE60A1CEA8",
+	"4C4999FD-A0E2-4466-8753-D436C6953402",
+	"1584F31B-4854-4163-B378-2DE8BE06C76E",
+	"D663A270-6915-4E3F-B2DE-278DDF3251E0"
+  ],
+  "identity": "BlazorMobile.CSharp",
+  "name": "BlazorMobile App",
+  "preferNameDirectory": true,
+  "primaryOutputs": [
+    {
+      "path": "BlazorMobile.Sample.sln"
+    },
+    {
+      "path": "BlazorMobile.Sample/BlazorMobile.Sample.csproj"
+    },
+    {
+      "path": "BlazorMobile.Sample.Android/BlazorMobile.Sample.Android.csproj"
+    },
+    {
+      "path": "BlazorMobile.Sample.Blazor/BlazorMobile.Sample.Blazor.csproj"
+    },
+    {
+      "path": "BlazorMobile.Sample.Blazor.Common/BlazorMobile.Sample.Common.csproj"
+    },
+	{
+      "path": "BlazorMobile.Sample.Blazor.Server/BlazorMobile.Sample.Blazor.Server.csproj"
+    },
+	{
+      "path": "BlazorMobile.Sample.iOS/BlazorMobile.Sample.iOS.csproj"
+    },
+	{
+      "path": "BlazorMobile.Sample.UWP/BlazorMobile.Sample.UWP.csproj"
+    }
+  ],
+  "shortName": "blazormobile",
+  "sourceName": "BlazorMobile.Sample",
+  "sources": [
+    {
+      "source": "./",
+      "target": "./",
+      "exclude": [
+        ".template.config/**"
+      ]
+    }
+  ],
+  "symbols": {
+    "skipRestore": {
+      "type": "parameter",
+      "datatype": "bool",
+      "description": "If specified, skips the automatic restore of the project on create.",
+      "defaultValue": "false"
+    },
+    "Hosted": {
+      "type": "parameter",
+      "datatype": "bool",
+      "defaultValue": "false",
+      "description": "If specified, includes an ASP.NET Core host for the Blazor app."
+    }
+  },
+  "tags": {
+    "language": "C#",
+    "type": "project"
+  },
+  "postActions": [
+    {
+      "condition": "(!skipRestore && Hosted)",
+      "description": "Restore NuGet packages required by this project.",
+      "manualInstructions": [
+        {
+          "text": "Run 'dotnet restore'"
+        }
+      ],
+      "actionId": "210D431B-A78B-4D2F-B762-4ED3E3EA9025",
+      "continueOnError": true
+    },
+    {
+      "condition": "(!skipRestore && !Hosted)",
+      "description": "Restore NuGet packages required by this project.",
+      "manualInstructions": [
+        {
+          "text": "Run 'dotnet restore'"
+        }
+      ],
+      "args": {
+        "files": [ "BlazorMobile.Sample.sln" ]
+      },
+      "actionId": "210D431B-A78B-4D2F-B762-4ED3E3EA9025",
+      "continueOnError": true
+    }
+  ]
+}
