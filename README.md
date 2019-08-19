@@ -30,6 +30,7 @@ Create full C# driven hybrid-apps for iOS, Android & UWP !
 - [BlazorMobile 0.8.0 to 3.0.3-preview7.19365.7](#blazormobile-080-to-303-preview7193657)
 - [BlazorMobile 3.0.3-preview7.19365.7 to 3.0.4-preview7.19365.7](#blazormobile-303-preview7193657-to-304-preview7193657)
 - [BlazorMobile 3.0.4-preview7.19365.7 to 3.0.5-preview8.19405.7](#blazormobile-304-preview7193657-to-305-preview8194057)
+- [BlazorMobile 3.0.5-preview8.19405.7 to 3.0.6-preview8.19405.7](#blazormobile-305-preview8194057-to-306-preview8194057)
 
 ## Difference between BlazorMobile & Progressive Web Apps (PWA)
 
@@ -621,6 +622,10 @@ protected override void OnResume()
 ### BlazorMobile 3.0.4-preview7.19365.7 to 3.0.5-preview8.19405.7
 
 Nothing to do ! You only need to update your Blazor project according to [Blazor 3.0.0-preview8.19405.7 requirements](https://devblogs.microsoft.com/aspnet/asp-net-core-and-blazor-updates-in-net-core-3-0-preview-8/).
+
+### BlazorMobile 3.0.5-preview8.19405.7 to 3.0.6-preview8.19405.7
+
+Nothing to do !
 
 ## Authors
 
