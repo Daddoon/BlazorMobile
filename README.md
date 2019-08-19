@@ -420,10 +420,10 @@ If one of your APKs is marked as not being compliant, but is older and its not
 
 There is some behaviors that are specifics to UWP:
 
-- You cannot connect to a local webserver / socket endpoint, out of process, on the same machine. This mean that if your testing development about webservices from IIS, Kestrel or other, UWP will be unable to connect to them. The server must be present on an other machine.
+- You cannot connect to a local webserver / socket endpoint, out of process, from the same machine. This mean that if you are doing tests about webservices from IIS, Kestrel or other from the same computer, UWP will be unable to connect to them. The server must be present on an other machine.
 
 
-- If you are doing any web requests on with HTTPS, UWP will block them if the certificate is self-signed or not trusted. You may override this behavior if your are doing your requests from the native side instead as you may have more control about web requests behavior, but this may be less ideal from a Design point of view.
+- If you are doing any web requests with HTTPS, UWP will block them if the certificate is self-signed or not trusted, as it follow the Edge browser security policy. You may not override this behavior from the Webview component, but you may override it if your are doing your requests from the native side instead as you may have more control about web requests behavior, but this less ideal from a design point of view.
 
 ## Migration
 
