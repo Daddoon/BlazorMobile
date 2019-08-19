@@ -6,8 +6,8 @@ Create full C# driven hybrid-apps for iOS, Android & UWP !
 
 ## Platform requirements
   
-- **Android:** Android 4.4 or greater
-- **iOS:** iOS 12.0 or greater
+- **Android:** 4.4 or greater
+- **iOS:** 12.0 or greater
 - **UWP:** Build 16299 or greater
 - **Blazor:** 3.0.0-preview8.19405.7
 
