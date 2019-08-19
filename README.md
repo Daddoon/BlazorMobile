@@ -24,6 +24,7 @@ Create full C# driven hybrid-apps for iOS, Android & UWP !
 ## Troubleshoot
 
 - [Cannot connect to a remote webserver on UWP](#cannot-connect-to-a-remote-webserver-on-uwp)
+- [System.ArgumentOutOfRangeException when calling Blazor to native](#systemargumentoutofrangeexception-when-calling-blazor-to-native)
 
 ## Migration
 
@@ -424,6 +425,24 @@ There is some behaviors that are specifics to UWP:
 
 
 - If you are doing any web requests with HTTPS, UWP will block them if the certificate is self-signed or not trusted, as it follow the Edge browser security policy. You may not override this behavior from the Webview component, but you may override it if your are doing your requests from the native side instead as you may have more control about web requests behavior, but this less ideal from a design point of view.
+
+### System.ArgumentOutOfRangeException when calling Blazor to native
+
+This bug is a [regression from .NET Core 3.0-preview8](https://github.com/dotnet/corefx/issues/40409#issuecomment-522514553) that is already fixed for preview9.
+
+If you cannot wait for .NET Core 3.0-preview9 release and next BlazorMobile version, the temporary workaround, as quoted in this discussion:
+
+```quote
+Can you try with preview 9 bits (or latest nightly)? It is no longer reproducible on master.
+
+Please try the nightly SDK/runtime with the fix to verify it works (https://github.com/dotnet/core-sdk#installers-and-binaries), or wait till preview 9 ships. Alternatively, you could reference the latest S.T.Json NuGet package. For example:
+
+  <ItemGroup>
+    <PackageReference Include="System.Text.Json" Version="4.6.0-preview9.19413.13" />
+    <PackageReference Include="System.Text.Encodings.Web" Version="4.6.0-preview9.19413.13" />
+  </ItemGroup>
+This bug was introduced in preview 8 but has since been fixed (preview 9 and in master). See #39524 (comment)
+```
 
 ## Migration
 
