@@ -623,9 +623,11 @@ protected override void OnResume()
 
 Nothing to do ! You only need to update your Blazor project according to [Blazor 3.0.0-preview8.19405.7 requirements](https://devblogs.microsoft.com/aspnet/asp-net-core-and-blazor-updates-in-net-core-3-0-preview-8/).
 
+And of course, just update all your BlazorMobile.* NuGet packages to 3.0.5-preview8.19405.7
+
 ### BlazorMobile 3.0.5-preview8.19405.7 to 3.0.6-preview8.19405.7
 
-Nothing to do !
+Nothing to do ! Just update all your BlazorMobile.* NuGet packages to 3.0.6-preview8.19405.7
 
 ## Authors
 
