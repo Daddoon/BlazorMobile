@@ -49,9 +49,23 @@ The main differences / advantages of BlazorMobile are:
 
 ## Getting started from sample
 
-The easiest way in order to start is to [download the sample projects](https://github.com/Daddoon/BlazorMobile/releases/download/3.0.5-preview8.19405.7/BlazorMobile.Samples.zip). Unzip, and open the solution, and you are good to go.
+First install the template model with the following command from a command prompt:
+
+```console
+dotnet new -i BlazorMobile.Templates::3.0.6-preview8.19405.7
+```
+
+Then go the folder where you want your project to be created, and from a command prompt type the following command:
+
+```console
+dotnet new blazormobile
+```
+
+Open you newly created solution, and you are good to go!
 
 ## Linking your Blazor app to your Xamarin project
+
+**NOTE:** If you are beginning from a freshly installed BlazorMobile template, everything is already set by default. Keeping the following informations just for knowledge. 
 
 In order to ship your Blazor application within your Xamarin apps, you need to pack it and make it available to Xamarin.
 
@@ -395,8 +409,8 @@ The GeckoView component for Android in your APK will then respectively shrink to
 ```
 Multi-APK and 64-bit compliance
 
-If you are using Google Play’s multiple-APK support to publish your app, note that compliance with the 64-bit requirement is evaluated at the release level. However, the 64-bit requirement does not apply to APKs or app bundles that are not distributed to devices running Android 9 Pie or later.
-If one of your APKs is marked as not being compliant, but is older and it’s not possible to bring it into compliance, one strategy is to add a maxSdkVersion="27" attribute in the uses-sdk element in that APK’s manifest. This APK won’t be delivered to devices running Android 9 Pie or later, and it will no longer block compliance.
+If you are using Google PlayÂ’s multiple-APK support to publish your app, note that compliance with the 64-bit requirement is evaluated at the release level. However, the 64-bit requirement does not apply to APKs or app bundles that are not distributed to devices running Android 9 Pie or later.
+If one of your APKs is marked as not being compliant, but is older and itÂ’s not possible to bring it into compliance, one strategy is to add a maxSdkVersion="27" attribute in the uses-sdk element in that APKÂ’s manifest. This APK wonÂ’t be delivered to devices running Android 9 Pie or later, and it will no longer block compliance.
 ```
 
 ## Troubleshoot
