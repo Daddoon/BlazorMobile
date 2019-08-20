@@ -25,11 +25,6 @@ namespace BlazorMobile.Common.Serialization
             return data;
         }
 
-        private static void JsonClrFixer()
-        {
-
-        }
-
         public static T Deserialize<T>(ref string data)
         {
             if (EnvironmentHelper.RunOnCLR())
