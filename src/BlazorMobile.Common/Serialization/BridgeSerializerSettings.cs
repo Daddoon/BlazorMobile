@@ -22,29 +22,32 @@ namespace BlazorMobile.Common.Serialization
             else
                 data = data.Replace("mscorlib", "%CORE%");
 
-            return EncoderHelper.Base64Encode(data);
+            return data;
+        }
+
+        private static void JsonClrFixer()
+        {
+
         }
 
         public static T Deserialize<T>(ref string data)
         {
-            string dataNew = EncoderHelper.Base64Decode(data);
-
             if (EnvironmentHelper.RunOnCLR())
-                dataNew = dataNew.Replace("%CORE%", EnvironmentHelper.GetNetCoreVersion());
+                data = data.Replace("%CORE%", EnvironmentHelper.GetNetCoreVersion());
             else
-                dataNew = dataNew.Replace("%CORE%", "mscorlib");
+                data = data.Replace("%CORE%", "mscorlib");
 
-            return JsonConvert.DeserializeObject<T>(dataNew, BridgeSerializerSettings.GetSerializerSettings());
+            return JsonConvert.DeserializeObject<T>(data, BridgeSerializerSettings.GetSerializerSettings());
         }
 
         public static T Deserialize<T>(TypeProxy data)
         {
-            string fixedJson = EncoderHelper.Base64Decode(data.SerializedData);
+            string fixedJson;
 
             if (EnvironmentHelper.RunOnCLR())
-                fixedJson = fixedJson.Replace("%CORE%", EnvironmentHelper.GetNetCoreVersion());
+                fixedJson = data.SerializedData.Replace("%CORE%", EnvironmentHelper.GetNetCoreVersion());
             else
-                fixedJson = fixedJson.Replace("%CORE%", "mscorlib");
+                fixedJson = data.SerializedData.Replace("%CORE%", "mscorlib");
 
             return JsonConvert.DeserializeObject<T>(fixedJson, BridgeSerializerSettings.GetSerializerSettings());
         }
