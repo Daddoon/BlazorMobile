@@ -430,19 +430,9 @@ There is some behaviors that are specifics to UWP:
 
 This bug is a [regression from .NET Core 3.0-preview8](https://github.com/dotnet/corefx/issues/40409#issuecomment-522514553) that is already fixed for preview9.
 
-If you cannot wait for .NET Core 3.0-preview9 release and next BlazorMobile version, the temporary workaround, as quoted in this discussion:
+We have to wait top preview9 shipping, or working on an older version of Blazor & BlazorMobile running on preview7, or compiling by yourself current Microsoft nightly builds.
 
-```quote
-Can you try with preview 9 bits (or latest nightly)? It is no longer reproducible on master.
-
-Please try the nightly SDK/runtime with the fix to verify it works (https://github.com/dotnet/core-sdk#installers-and-binaries), or wait till preview 9 ships. Alternatively, you could reference the latest S.T.Json NuGet package. For example:
-
-  <ItemGroup>
-    <PackageReference Include="System.Text.Json" Version="4.6.0-preview9.19413.13" />
-    <PackageReference Include="System.Text.Encodings.Web" Version="4.6.0-preview9.19413.13" />
-  </ItemGroup>
-This bug was introduced in preview 8 but has since been fixed (preview 9 and in master). See #39524 (comment)
-```
+In my opinion, the best option is to wait.
 
 ## Migration
 
