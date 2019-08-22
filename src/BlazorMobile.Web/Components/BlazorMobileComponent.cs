@@ -1,8 +1,10 @@
-﻿using BlazorMobile.Common.Services;
+﻿using BlazorMobile.Common.Helpers;
+using BlazorMobile.Common.Services;
 using BlazorMobile.Interop;
 using Microsoft.AspNetCore.Components;
 using Microsoft.AspNetCore.Components.RenderTree;
 using Microsoft.JSInterop;
+using Mono.WebAssembly.Interop;
 using System;
 using System.Collections.Generic;
 using System.Text;
@@ -13,25 +15,19 @@ namespace BlazorMobile.Common.Components
     public class BlazorMobileComponent : ComponentBase
     {
         [Inject]
-        IUriHelper _injectedUriHelper { get; set; }
-
-        private static IUriHelper UriHelper { get; set; }
-
-        [Inject]
         IJSRuntime Runtime { get; set; }
 
         private static IJSRuntime JSRuntime { get; set; }
 
-        private static BlazorXamarinDeviceService xamService = null;
+        private readonly BlazorXamarinDeviceService xamService = new BlazorXamarinDeviceService();
+
+        private bool BlazorMobileSuccess = false;
 
         private async Task InitXamService()
         {
-            xamService = new BlazorXamarinDeviceService();
-            bool success;
-
             try
             {
-                if (Runtime != null && await Runtime.InvokeAsync<bool>("BlazorXamarinRuntimeCheck"))
+                if (await Runtime.InvokeAsync<bool>("BlazorXamarinRuntimeCheck"))
                 {
                     string resultRuntimePlatform = await xamService.GetRuntimePlatform();
                     Device.RuntimePlatform = resultRuntimePlatform;
@@ -42,22 +38,15 @@ namespace BlazorMobile.Common.Components
                     Device.RuntimePlatform = Device.Browser;
                 }
 
-                success = true;
+                BlazorMobileSuccess = true;
             }
             catch (Exception ex)
             {
-                Console.WriteLine(ex.Message);
+                xamService.WriteLine(ex.Message);
 
                 Device.RuntimePlatform = Device.Browser;
-                success = false;
+                BlazorMobileSuccess = false;
             }
-            Device._onFinishCallback?.Invoke(success);
-        }
-
-        protected override void OnInitialized()
-        {
-            JSRuntime = Runtime;
-            UriHelper = _injectedUriHelper;
         }
 
         /// <summary>
@@ -69,35 +58,32 @@ namespace BlazorMobile.Common.Components
             return JSRuntime;
         }
 
-        /// <summary>
-        /// Return the current IUriHelper initialized with the BlazorMobile plugin
-        /// </summary>
-        /// <returns></returns>
-        public static IUriHelper GetUriHelper()
-        {
-            return UriHelper;
-        }
-
         private bool _isInitialized = false;
 
-        internal static bool IsWebAssembly = true;
+        internal bool _isWebAssembly = true;
+
+        internal bool IsWebAssembly()
+        {
+            return _isWebAssembly;
+        }
 
         protected override void BuildRenderTree(RenderTreeBuilder builder)
         {
             //This component must be rendered once!
+            //If the component is disposed and then re-rendered, then something is wrong with the current project configuration
             if (_isInitialized)
                 return;
 
             builder.OpenElement(0, "script");
             builder.AddContent(1, @"
-    window.BlazorXamarinRuntimeCheck = function () {
-        if (window.contextBridge == null || window.contextBridge == undefined)
-        {
-            return false;
-        }
-    
-        return true;
-    };
+                window.BlazorXamarinRuntimeCheck = function () {
+	                if (window.contextBridge == null || window.contextBridge == undefined)
+	                {
+		                return false;
+	                }
+
+	                return true;
+                };
 ");
             builder.CloseElement();
 
@@ -110,18 +96,48 @@ namespace BlazorMobile.Common.Components
         }
 
 
-        private bool _isFirstRender = true;
-        protected override async Task OnAfterRenderAsync()
+        private void SetCurrentRuntime(IJSRuntime runtime)
         {
-            if (_isFirstRender)
+            string blazorVersion;
+
+            if (runtime is MonoWebAssemblyJSRuntime mono)
             {
-                await InitXamService();
-                _isFirstRender = false;
+                //WASM version
+                _isWebAssembly = true;
+                blazorVersion = "WebAssembly (Client-side)";
+            }
+            else
+            {
+                //Server-side version
+                _isWebAssembly = false;
+                blazorVersion = ".NET Core (Server-side)";
             }
 
+            xamService.WriteLine($"Detected Blazor implementation: {blazorVersion}");
+        }
+
+        internal void OnFinishEvent()
+        {
+            Device._onFinishCallback?.Invoke(BlazorMobileSuccess);
+        }
+
+        private bool _FirstInit = true;
+        protected override async Task OnAfterRenderAsync()
+        {
             await base.OnAfterRenderAsync();
 
-            return;
+            if (_FirstInit)
+            {
+                _FirstInit = false;
+
+                JSRuntime = Runtime;
+
+                SetCurrentRuntime(JSRuntime);
+
+                await InitXamService();
+
+                OnFinishEvent();
+            }
         }
     }
 }

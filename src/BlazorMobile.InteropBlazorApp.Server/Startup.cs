@@ -83,7 +83,7 @@ namespace BlazorMobile.InteropBlazorApp.Server
                 endpoints.MapFallbackToClientSideBlazor<InteropBlazorApp.Startup>("index.html");
 
                 BlazorService.EnableClientToDeviceRemoteDebugging("127.0.0.1", 8888);
-                BlazorService.Init(componentBuilder, (bool success) =>
+                BlazorService.Init((bool success) =>
                 {
                     Console.WriteLine($"Initialization success: {success}");
                     Console.WriteLine("Device is: " + Device.RuntimePlatform);

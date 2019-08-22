@@ -1,5 +1,6 @@
 ﻿using BlazorMobile.Common.Helpers;
 using BlazorMobile.Common.Interop;
+using BlazorMobile.Common.Models;
 using BlazorMobile.Common.Serialization;
 using BlazorMobile.Components;
 using BlazorMobile.Services;
@@ -41,7 +42,7 @@ namespace BlazorMobile.Interop
 
         private static object GetResultFromTask(Type returnType, Task taskResult)
         {
-            if (returnType == null || returnType == typeof(void) || returnType == typeof(Task))
+            if (returnType == null || returnType == typeof(void) || returnType == typeof(Task) || returnType == typeof(IgnoredType))
             {
                 return null;
             }

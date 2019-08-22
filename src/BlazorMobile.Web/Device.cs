@@ -3,6 +3,7 @@ using BlazorMobile.Common.Helpers;
 using BlazorMobile.Common.Services;
 using Microsoft.AspNetCore.Components.Builder;
 using Microsoft.JSInterop;
+using Mono.WebAssembly.Interop;
 using System;
 using System.Reflection;
 using System.Threading.Tasks;
@@ -21,39 +22,11 @@ namespace BlazorMobile.Common
         public const string Unknown = "Unknown";
         public static string RuntimePlatform { get; internal set; } = Unknown;
 
-
-
         internal static Action<bool> _onFinishCallback = null;
 
-        private static void InitCommon(Action<bool> onFinish)
+        internal static void Init(Action<bool> onFinish)
         {
-            //Other code has finally migrated in BlazorMobileComponent for Server only behavior compatibility in plugin initialization
-            //_onFinishCallback will be taken from the static field. Not attended to be used in a pure multi-client web scenario of course
             _onFinishCallback = onFinish;
-        }
-
-        internal static void Init(IComponentsApplicationBuilder app, Action<bool> onFinish)
-        {
-            BlazorMobileComponent.IsWebAssembly = true;
-
-            if (app == null)
-            {
-                throw new NullReferenceException($"{nameof(IComponentsApplicationBuilder)} object is null");
-            }
-
-            InitCommon(onFinish);
-        }
-
-        internal static void InitServer(object appObject, Action<bool> onFinish)
-        {
-            BlazorMobileComponent.IsWebAssembly = false;
-
-            if (appObject == null)
-            {
-                throw new NullReferenceException($"{nameof(BlazorService.ComponentEndpointConventionBuilder)} object is null");
-            }
-
-            InitCommon(onFinish);
         }
     }
 }

@@ -1,4 +1,5 @@
-﻿using BlazorMobile.Common.Interfaces;
+﻿using BlazorMobile.Common.Helpers;
+using BlazorMobile.Common.Interfaces;
 using System;
 using System.Collections.Generic;
 using System.Text;
@@ -12,6 +13,12 @@ namespace BlazorMobile.Services
         public Task<string> GetRuntimePlatform()
         {
             return Task.FromResult(Device.RuntimePlatform);
+        }
+
+        public Task WriteLine(string message)
+        {
+            ConsoleHelper.WriteLine(message);
+            return Task.CompletedTask;
         }
     }
 }

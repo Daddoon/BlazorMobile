@@ -25,7 +25,7 @@ namespace BlazorMobile.InteropBlazorApp
 
             #endregion
 
-            BlazorService.Init(app, (bool success) =>
+            BlazorService.Init((bool success) =>
             {
                 Console.WriteLine($"Initialization success: {success}");
                 Console.WriteLine("Device is: " + Device.RuntimePlatform);
