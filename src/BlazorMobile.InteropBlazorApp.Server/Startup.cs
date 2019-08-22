@@ -80,7 +80,7 @@ namespace BlazorMobile.InteropBlazorApp.Server
             {
                 var componentBuilder = endpoints.MapBlazorHub<MobileApp>("app");
                 endpoints.MapDefaultControllerRoute();
-                endpoints.MapFallbackToClientSideBlazor<InteropBlazorApp.Startup>("index.html");
+                endpoints.MapFallbackToClientSideBlazor<InteropBlazorApp.Startup>("server_index.html");
 
                 BlazorService.EnableClientToDeviceRemoteDebugging("127.0.0.1", 8888);
                 BlazorService.Init((bool success) =>
