@@ -17,4 +17,15 @@
   <Target Name="GenerateBlazorMobileBuild" AfterTargets="_BlazorBuildReport">
     <Exec Command="$(BlazorMobileBuildFileExe) pack-blazor-app --input $(BlazorMobileBuildInput) --distDir $(BlazorMobileBuildDistDir) --outputPath $(BlazorMobileBuildOutput)" />
   </Target>
+
+  <PropertyGroup>
+    <BlazorMobileBuildServerDir Condition="'$(BlazorMobileBuildServerDir)' == ''">$(MSBuildThisFileDirectory)netcoreapp3.0/</BlazorMobileBuildServerDir>
+    <BlazorMobileBuildServerdFileExe>dotnet &quot;$(BlazorMobileBuildServerDir)BlazorMobile.Build.dll&quot;</BlazorMobileBuildServerdFileExe>
+    <BlazorMobileBuildServerInput>&quot;$(MSBuildProjectDirectory)/wwwroot&quot;</BlazorMobileBuildServerInput>
+  </PropertyGroup>
+
+  <Target Name="GenerateBlazorMobileBuildServer" BeforeTargets="BeforeBuild">
+    <Exec Command="$(BlazorMobileBuildServerdFileExe) client-to-server-blazor-index --input $(BlazorMobileBuildServerInput)" />
+  </Target>
+  
 </Project>

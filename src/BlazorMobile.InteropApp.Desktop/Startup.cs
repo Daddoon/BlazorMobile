@@ -1,7 +1,5 @@
 using System;
-using System.Collections.Generic;
 using System.Linq;
-using System.Threading.Tasks;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.Extensions.Configuration;
@@ -10,13 +8,15 @@ using Microsoft.Extensions.Hosting;
 using System.Net.Http;
 using Microsoft.AspNetCore.Components;
 using Microsoft.AspNetCore.ResponseCompression;
-using BlazorMobile.InteropApp.Common.Interfaces;
-using BlazorMobile.InteropBlazorApp.Services;
 using BlazorMobile.Common.Services;
 using BlazorMobile.Common;
 using BlazorMobile.InteropBlazorApp.Helpers;
+using Microsoft.Extensions.FileProviders;
+using BlazorMobile.InteropBlazorApp;
+using System.Threading.Tasks;
+using ElectronNET.API;
 
-namespace BlazorMobile.InteropBlazorApp.Server
+namespace BlazorMobile.InteropApp.Desktop
 {
     public class Startup
     {
@@ -72,23 +72,26 @@ namespace BlazorMobile.InteropBlazorApp.Server
                 app.UseExceptionHandler("/Home/Error");
             }
 
+            app.UseElectronNETStaticFiles<InteropBlazorApp.Startup>();
+
             app.UseClientSideBlazorFiles<InteropBlazorApp.Startup>();
 
             app.UseRouting();
 
             app.UseEndpoints(endpoints =>
             {
-                var componentBuilder = endpoints.MapBlazorHub<MobileApp>("app");
+                endpoints.MapBlazorHub<MobileApp>("app");
                 endpoints.MapDefaultControllerRoute();
-                endpoints.MapFallbackToClientSideBlazor<InteropBlazorApp.Startup>("server_index.html");
-
-                BlazorService.EnableClientToDeviceRemoteDebugging("127.0.0.1", 8888);
-                BlazorService.Init((bool success) =>
-                {
-                    Console.WriteLine($"Initialization success: {success}");
-                    Console.WriteLine("Device is: " + Device.RuntimePlatform);
-                });
+                endpoints.MapFallbackToClientSideElectronNET<InteropBlazorApp.Startup>("server_index.html");
             });
+
+            BlazorService.Init((bool success) =>
+            {
+                Console.WriteLine($"Initialization success: {success}");
+                Console.WriteLine("Device is: " + Device.RuntimePlatform);
+            });
+
+            Task.Run(async () => await Electron.WindowManager.CreateWindowAsync());
         }
     }
 }
