@@ -82,7 +82,7 @@ namespace BlazorMobile.InteropApp.Desktop
             {
                 endpoints.MapBlazorHub<MobileApp>("app");
                 endpoints.MapDefaultControllerRoute();
-                endpoints.MapFallbackToClientSideElectronNET<InteropBlazorApp.Startup>("server_index.html");
+                endpoints.MapFallbackToClientSideBlazor<InteropBlazorApp.Startup>("server_index.html");
             });
 
             BlazorService.Init((bool success) =>
