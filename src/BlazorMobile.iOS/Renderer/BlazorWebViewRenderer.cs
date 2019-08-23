@@ -1,9 +1,6 @@
 ﻿using BlazorMobile.Common.Helpers;
-using BlazorMobile.Common.Interop;
 using BlazorMobile.Components;
-using BlazorMobile.Interop;
 using BlazorMobile.iOS.Renderer;
-using BlazorMobile.Services;
 using Foundation;
 using System;
 using System.ComponentModel;
@@ -26,26 +23,31 @@ namespace BlazorMobile.iOS.Renderer
             //Nothing to do, just force the compiler to not strip our component
         }
 
+        private WKWebView webView;
+
         WKUserContentController userController;
         protected override void OnElementChanged(ElementChangedEventArgs<BlazorWebView> e)
         {
             base.OnElementChanged(e);
 
-            if (Control == null && e.NewElement != null)
+            if (Control == null)
             {
-                userController = new WKUserContentController();
+               userController = new WKUserContentController();
 
-                var config = new WKWebViewConfiguration { UserContentController = userController, Preferences = new WKPreferences()
+                var config = new WKWebViewConfiguration
                 {
-                    JavaScriptCanOpenWindowsAutomatically = false,
-                    JavaScriptEnabled = true
-                }
+                    UserContentController = userController,
+                    Preferences = new WKPreferences()
+                    {
+                        JavaScriptCanOpenWindowsAutomatically = false,
+                        JavaScriptEnabled = true
+                    },
+                    WebsiteDataStore = WKWebsiteDataStore.NonPersistentDataStore
                 };
 
-                config.WebsiteDataStore = WKWebsiteDataStore.NonPersistentDataStore;
-
-                var webView = new WKWebView(Frame, config);
+                webView = new WKWebView(Frame, config);
                 webView.NavigationDelegate = new WebNavigationDelegate(this);
+
                 SetNativeControl(webView);
             }
 
@@ -71,6 +73,14 @@ namespace BlazorMobile.iOS.Renderer
             }
 
             Load();
+        }
+
+        public override void LayoutSubviews()
+        {
+            base.LayoutSubviews();
+
+            //Fix incorrect bounds/safe area with WkWebview when changing orientation
+            webView.Frame = UIKit.UIScreen.MainScreen.Bounds;
         }
 
         protected virtual void OnReloadRequested(object sender, EventArgs e)

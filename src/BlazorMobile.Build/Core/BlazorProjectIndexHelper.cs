@@ -1,4 +1,5 @@
-﻿using System;
+﻿using BlazorMobile.Build.Core.Helper;
+using System;
 using System.Collections.Generic;
 using System.Diagnostics;
 using System.IO;
@@ -66,8 +67,9 @@ namespace BlazorMobile.Build.Server.Core
 
             try
             {
-                string content = File.ReadAllText(sourceFile);
-                File.WriteAllText(outputDir + Path.DirectorySeparatorChar + NewFile, "<!-- AUTO-GENERATED FILE - DO NOT EDIT! -->\n" + content.Replace(SearchedOccurence, NewOccurence));
+                var encoding = TextFileEncodingDetector.DetectTextFileEncoding(sourceFile);
+                string content = File.ReadAllText(sourceFile, encoding);
+                File.WriteAllText(outputDir + Path.DirectorySeparatorChar + NewFile, $"<!-- AUTO-GENERATED FILE - DO NOT EDIT! -->{Environment.NewLine}" + content.Replace(SearchedOccurence, NewOccurence), encoding);
             }
             catch (Exception ex)
             {
