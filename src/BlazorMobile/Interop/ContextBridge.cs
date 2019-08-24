@@ -14,6 +14,7 @@ using System.Threading.Tasks;
 using Xamarin.Forms;
 
 [assembly: InternalsVisibleTo("BlazorMobile.Web")]
+[assembly: InternalsVisibleTo("BlazorMobile.ElectronNET")]
 namespace BlazorMobile.Interop
 {
     internal static class ContextBridge

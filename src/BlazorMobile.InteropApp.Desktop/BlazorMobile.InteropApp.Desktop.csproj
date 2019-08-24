@@ -16,9 +16,9 @@
     <PackageReference Include="Xamarin.Forms" Version="3.5.0.169047" />
   </ItemGroup>
   <ItemGroup>
+    <ProjectReference Include="..\BlazorMobile.ElectronNET\BlazorMobile.ElectronNET.csproj" />
     <ProjectReference Include="..\BlazorMobile.InteropApp\BlazorMobile.InteropApp.csproj" />
     <ProjectReference Include="..\BlazorMobile.InteropBlazorApp\BlazorMobile.InteropBlazorApp.csproj" />
-    <ProjectReference Include="..\BlazorMobile.Web\BlazorMobile.Web.csproj" />
   </ItemGroup>
   <ItemGroup>
     <Content Update="electron.manifest.json">

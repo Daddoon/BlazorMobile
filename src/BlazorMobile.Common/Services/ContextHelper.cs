@@ -1,7 +1,10 @@
-﻿using BlazorMobile.Common.Models;
+﻿using BlazorMobile.Common.Interop;
+using BlazorMobile.Common.Models;
+using System;
 using System.Runtime.CompilerServices;
 
 [assembly: InternalsVisibleTo("BlazorMobile.Web")]
+[assembly: InternalsVisibleTo("BlazorMobile.ElectronNET")]
 namespace BlazorMobile.Common.Services
 {
     internal static class ContextHelper
@@ -47,6 +50,35 @@ namespace BlazorMobile.Common.Services
         public static bool IsElectronNET()
         {
             return _isUsingElectron;
+        }
+
+        private static Func<MethodProxy, MethodProxy> _nativeReceiveMethod = null;
+
+        /// <summary>
+        /// This shorthand is only called from ElectronNET implementation / runtime.
+        /// The main reason is that BlazorMobile.Web does not have a direct to the native side Receive method even if in ElectronNET implementation
+        /// they are in the same memory space. This shorthand is used as a Bridge to this method, as *BlazorMobile.ElectronNET has access to both assemblies.
+        /// </summary>
+        /// <param name="methodProxy"></param>
+        /// <returns></returns>
+        public static MethodProxy CallNativeReceive(MethodProxy methodProxy)
+        {
+            if (_nativeReceiveMethod == null)
+            {
+                throw new InvalidOperationException("ERROR: Native receive delegate has not been set in BlazorMobile.Common");
+            }
+
+            return _nativeReceiveMethod(methodProxy);
+        }
+
+        internal static void SetNativeReceive(Func<MethodProxy, MethodProxy> nativeReceive)
+        {
+            if (_nativeReceiveMethod != null)
+            {
+                return;
+            }
+
+            _nativeReceiveMethod = nativeReceive;
         }
     }
 }

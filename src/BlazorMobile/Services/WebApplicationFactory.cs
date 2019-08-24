@@ -23,6 +23,7 @@ using Xamarin.Forms;
 [assembly: InternalsVisibleTo("BlazorMobile.Android")]
 [assembly: InternalsVisibleTo("BlazorMobile.UWP")]
 [assembly: InternalsVisibleTo("BlazorMobile.Web")]
+[assembly: InternalsVisibleTo("BlazorMobile.ElectronNET")]
 namespace BlazorMobile.Services
 {
     public static class WebApplicationFactory

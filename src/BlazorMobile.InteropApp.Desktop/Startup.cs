@@ -87,10 +87,9 @@ namespace BlazorMobile.InteropApp.Desktop
             });
 
 
-            Forms.Init();
-            Forms.RegisterApplication(typeof(App));
+            app.UseBlazorMobileWithElectronNET(typeof(App));
 
-            BlazorMobileService.UseElectronNET();
+           
             BlazorMobileService.Init((bool success) =>
             {
                 Console.WriteLine($"Initialization success: {success}");

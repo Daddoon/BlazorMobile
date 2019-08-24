@@ -8,7 +8,7 @@ using System.Net.Http;
 using BlazorMobile.Services;
 
 
-//This is largely inspired from Ooui.Forms
+//This is inspired from Ooui.Forms
 namespace Xamarin.Forms
 {
     public static class Forms

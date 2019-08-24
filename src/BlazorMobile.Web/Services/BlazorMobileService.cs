@@ -1,11 +1,5 @@
-﻿using BlazorMobile.Common.Helpers;
-using BlazorMobile.Interop;
-using Microsoft.AspNetCore.Components.Builder;
+﻿using BlazorMobile.Interop;
 using System;
-using System.Collections.Generic;
-using System.Reflection;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace BlazorMobile.Common.Services
 {
@@ -53,29 +47,6 @@ namespace BlazorMobile.Common.Services
                 BlazorDevice.Init(onFinish);
                 _isInit = true;
             }
-        }
-
-        private static void InitializeBlazorMobileXamarinForms()
-        {
-            Type ElectronFormsMock = Type.GetType("Xamarin.Forms.Forms, BlazorMobile");
-
-            if (ElectronFormsMock == null)
-            {
-                throw new InvalidOperationException("Unable to find BlazorMobile base assembly in executing runtime. Check that your shared device project is referenced on your ElectronNET project.");
-            }
-
-            ElectronFormsMock.GetMethod("Init", BindingFlags.Public | BindingFlags.Static).Invoke(null, null);
-        }
-
-        /// <summary>
-        /// Call of this method will notify to BlazorMobile that the runtime is actually running under ElectronNET (server-side)
-        /// NOTE: Usage of blazor.server.js in your starting page is mandatory.
-        /// If using BlazorMobile.Build on your Blazor base project, you should register 'server_index.html' at this app start.
-        /// </summary>
-        public static void UseElectronNET()
-        {
-            InitializeBlazorMobileXamarinForms();
-            ContextHelper.SetElectronNETUsage(true);
         }
     }
 }
