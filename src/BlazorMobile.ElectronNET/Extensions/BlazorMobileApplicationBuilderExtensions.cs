@@ -14,6 +14,8 @@ namespace Microsoft.AspNetCore.Builder
         /// </summary>
         public static IApplicationBuilder UseBlazorMobileWithElectronNET(this IApplicationBuilder app, Type applicationType)
         {
+            app.UseStaticFiles();
+
             Forms.Init();
             Forms.RegisterApplication(applicationType);
 

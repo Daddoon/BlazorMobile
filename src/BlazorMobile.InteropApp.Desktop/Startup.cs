@@ -73,8 +73,6 @@ namespace BlazorMobile.InteropApp.Desktop
                 app.UseExceptionHandler("/Home/Error");
             }
 
-            app.UseElectronNETStaticFiles<InteropBlazorApp.Startup>();
-
             app.UseClientSideBlazorFiles<InteropBlazorApp.Startup>();
 
             app.UseRouting();
