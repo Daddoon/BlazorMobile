@@ -27,14 +27,17 @@ namespace BlazorMobile.Common.Components
         {
             try
             {
-                if (await Runtime.InvokeAsync<bool>("BlazorXamarinRuntimeCheck"))
+                if ((ContextHelper.IsBlazorMobile() && await Runtime.InvokeAsync<bool>("BlazorXamarinRuntimeCheck"))
+                    || (ContextHelper.IsElectronNET()))
                 {
+                    //ElectronNET implementation does not rely on any JS Interop, nor Xamarin/Mono context
+
                     string resultRuntimePlatform = await xamService.GetRuntimePlatform();
                     Device.RuntimePlatform = resultRuntimePlatform;
                 }
                 else
                 {
-                    //If service return false or if JSRuntime is not yet ready (on server side scenario), we return the Browser default value
+                    //If service return false we return the Browser default value
                     Device.RuntimePlatform = Device.Browser;
                 }
 
@@ -74,8 +77,10 @@ namespace BlazorMobile.Common.Components
             if (_isInitialized)
                 return;
 
-            builder.OpenElement(0, "script");
-            builder.AddContent(1, @"
+            if (!ContextHelper.IsBlazorMobile())
+            {
+                builder.OpenElement(0, "script");
+                builder.AddContent(1, @"
                 window.BlazorXamarinRuntimeCheck = function () {
 	                if (window.contextBridge == null || window.contextBridge == undefined)
 	                {
@@ -85,12 +90,13 @@ namespace BlazorMobile.Common.Components
 	                return true;
                 };
 ");
-            builder.CloseElement();
+                builder.CloseElement();
 
-            //Add server side remote to client remote debugging
-            builder.OpenElement(0, "script");
-            builder.AddContent(1, ContextBridgeHelper.GetInjectableJavascript(false).Replace("%_contextBridgeURI%", BlazorService.GetContextBridgeURI()));
-            builder.CloseElement();
+                //Add server side remote to client remote debugging
+                builder.OpenElement(0, "script");
+                builder.AddContent(1, ContextBridgeHelper.GetInjectableJavascript(false).Replace("%_contextBridgeURI%", BlazorMobileService.GetContextBridgeURI()));
+                builder.CloseElement();
+            }
 
             _isInitialized = true;
         }
@@ -114,6 +120,12 @@ namespace BlazorMobile.Common.Components
             }
 
             xamService.WriteLine($"Detected Blazor implementation: {blazorVersion}");
+
+            //We should notify that this configuration is incorrect as BlazorMobile would not be able to 'communicate' on assemblies outside the BlazorMobile.Web scope
+            if (ContextHelper.IsElectronNET() && _isWebAssembly)
+            {
+                throw new PlatformNotSupportedException("ERROR: WebAssembly runtime detected while using ElectronNET with BlazorMobile. Use .NET Core (server-side) runtime by referencing blazor.server.js instead.");
+            }
         }
 
         internal void OnFinishEvent()

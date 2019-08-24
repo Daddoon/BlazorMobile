@@ -8,7 +8,7 @@ using System.Threading.Tasks;
 
 namespace BlazorMobile.Common.Services
 {
-    public static class BlazorService
+    public static class BlazorMobileService
     {
         private static bool _isInit = false;
 
@@ -56,6 +56,16 @@ namespace BlazorMobile.Common.Services
                 Device.Init(onFinish);
                 _isInit = true;
             }
+        }
+
+        /// <summary>
+        /// Call of this method will notify to BlazorMobile that the runtime is actually running under ElectronNET (server-side)
+        /// NOTE: Usage of blazor.server.js in your starting page is mandatory.
+        /// If using BlazorMobile.Build on your Blazor base project, you should register 'server_index.html' at this app start.
+        /// </summary>
+        public static void UseElectronNET()
+        {
+            ContextHelper.SetElectronNETUsage(true);
         }
     }
 }

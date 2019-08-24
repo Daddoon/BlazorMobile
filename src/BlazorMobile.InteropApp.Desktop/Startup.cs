@@ -85,7 +85,8 @@ namespace BlazorMobile.InteropApp.Desktop
                 endpoints.MapFallbackToClientSideBlazor<InteropBlazorApp.Startup>("server_index.html");
             });
 
-            BlazorService.Init((bool success) =>
+            BlazorMobileService.UseElectronNET();
+            BlazorMobileService.Init((bool success) =>
             {
                 Console.WriteLine($"Initialization success: {success}");
                 Console.WriteLine("Device is: " + Device.RuntimePlatform);
