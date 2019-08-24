@@ -2,6 +2,17 @@
 
   <PropertyGroup>
     <TargetFramework>netcoreapp2.2</TargetFramework>
+    <PreserveCompilationContext>false</PreserveCompilationContext>
+  </PropertyGroup>
+
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|AnyCPU'">
+    <DocumentationFile>C:\2Bee\Sources\BlazorMobile\src\BlazorMobile\lib\netcoreapp2.2\BlazorMobile.ElectronNET.xml</DocumentationFile>
+    <OutputPath>C:\2Bee\Sources\BlazorMobile\src\BlazorMobile\lib\</OutputPath>
+  </PropertyGroup>
+
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|AnyCPU'">
+    <DocumentationFile>C:\2Bee\Sources\BlazorMobile\src\BlazorMobile\lib\netcoreapp2.2\BlazorMobile.ElectronNET.xml</DocumentationFile>
+    <OutputPath>C:\2Bee\Sources\BlazorMobile\src\BlazorMobile\lib\</OutputPath>
   </PropertyGroup>
 
   <ItemGroup>

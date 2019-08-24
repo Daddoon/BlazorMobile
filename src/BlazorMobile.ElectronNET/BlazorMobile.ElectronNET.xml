@@ -1,0 +1,21 @@
+<?xml version="1.0"?>
+<doc>
+    <assembly>
+        <name>BlazorMobile.ElectronNET</name>
+    </assembly>
+    <members>
+        <member name="M:Microsoft.AspNetCore.Builder.BlazorHostingApplicationBuilderExtensions.UseBlazorMobileWithElectronNET(Microsoft.AspNetCore.Builder.IApplicationBuilder,System.Type)">
+            <summary>
+            Call of this method will notify to BlazorMobile that the runtime is actually running under ElectronNET (server-side)
+            NOTE: Usage of blazor.server.js in your starting page is mandatory.
+            If using BlazorMobile.Build on your Blazor base project, you should register 'server_index.html' at this app start.
+            </summary>
+        </member>
+        <member name="M:Xamarin.Forms.Forms.RegisterApplication(System.Type)">
+            <summary>
+            Register the Xamarin.Forms Application class
+            </summary>
+            <param name="application"></param>
+        </member>
+    </members>
+</doc>

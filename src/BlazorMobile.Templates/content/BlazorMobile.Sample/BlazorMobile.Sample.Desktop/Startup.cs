@@ -11,8 +11,11 @@ using Microsoft.AspNetCore.ResponseCompression;
 using BlazorMobile.Common.Services;
 using BlazorMobile.Common;
 using BlazorMobile.Sample.Blazor.Helpers;
+using System.Threading.Tasks;
+using ElectronNET.API;
+using BlazorMobile.Sample.Blazor;
 
-namespace BlazorMobile.Sample.Blazor.Server
+namespace BlazorMobile.Sample.Desktop
 {
     public class Startup
     {
@@ -79,12 +82,15 @@ namespace BlazorMobile.Sample.Blazor.Server
                 endpoints.MapFallbackToClientSideBlazor<BlazorMobile.Sample.Blazor.Startup>("server_index.html");
             });
 
-            BlazorMobileService.EnableClientToDeviceRemoteDebugging("192.168.1.118", 8888);
+            app.UseBlazorMobileWithElectronNET(typeof(App));
+
             BlazorMobileService.Init((bool success) =>
             {
                 Console.WriteLine($"Initialization success: {success}");
                 Console.WriteLine("Device is: " + BlazorDevice.RuntimePlatform);
             });
+
+            Task.Run(async () => await Electron.WindowManager.CreateWindowAsync());
         }
     }
 }

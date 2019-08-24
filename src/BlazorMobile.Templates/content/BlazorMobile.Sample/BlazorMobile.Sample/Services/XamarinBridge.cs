@@ -1,5 +1,7 @@
-﻿using BlazorMobile.Sample.Common.Interfaces;
+﻿using BlazorMobile.Common;
+using BlazorMobile.Sample.Common.Interfaces;
 using BlazorMobile.Sample.Services;
+using System;
 using System.Collections.Generic;
 using System.Threading.Tasks;
 using Xamarin.Forms;
@@ -11,7 +13,14 @@ namespace BlazorMobile.Sample.Services
     {
         public Task<List<string>> DisplayAlert(string title, string msg, string cancel)
         {
-            App.Current.MainPage.DisplayAlert(title, msg, cancel);
+            if (BlazorDevice.IsElectronNET())
+            {
+                Console.WriteLine(msg);
+            }
+            else
+            {
+                App.Current.MainPage.DisplayAlert(title, msg, cancel);
+            }
 
             List<string> result = new List<string>()
             {
