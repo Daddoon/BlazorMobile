@@ -23,7 +23,7 @@
     async void AlertMe()
     {
         Console.WriteLine("AlertMe clicked !");
-        await XamarinBridge.DisplayAlert("Platform identity", $"Current platform is {Device.RuntimePlatform}", "Great!");
+        await XamarinBridge.DisplayAlert("Platform identity", $"Current platform is {BlazorDevice.RuntimePlatform}", "Great!");
     }
 
     async void FaultyTaskCall()

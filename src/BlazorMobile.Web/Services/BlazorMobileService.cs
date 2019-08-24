@@ -3,6 +3,7 @@ using BlazorMobile.Interop;
 using Microsoft.AspNetCore.Components.Builder;
 using System;
 using System.Collections.Generic;
+using System.Reflection;
 using System.Text;
 using System.Threading.Tasks;
 
@@ -11,10 +12,6 @@ namespace BlazorMobile.Common.Services
     public static class BlazorMobileService
     {
         private static bool _isInit = false;
-
-        internal const string ComponentEndpointConventionBuilder = "ComponentEndpointConventionBuilder";
-
-        internal const string ComponentEndpointConventionBuilderExtensionsGetType = "Microsoft.AspNetCore.Builder.ComponentEndpointConventionBuilderExtensions, Microsoft.AspNetCore.Components.Server";
 
         internal static int _serverSideClientPort = -1;
 
@@ -53,9 +50,21 @@ namespace BlazorMobile.Common.Services
         {
             if (!_isInit)
             {
-                Device.Init(onFinish);
+                BlazorDevice.Init(onFinish);
                 _isInit = true;
             }
+        }
+
+        private static void InitializeBlazorMobileXamarinForms()
+        {
+            Type ElectronFormsMock = Type.GetType("Xamarin.Forms.Forms, BlazorMobile");
+
+            if (ElectronFormsMock == null)
+            {
+                throw new InvalidOperationException("Unable to find BlazorMobile base assembly in executing runtime. Check that your shared device project is referenced on your ElectronNET project.");
+            }
+
+            ElectronFormsMock.GetMethod("Init", BindingFlags.Public | BindingFlags.Static).Invoke(null, null);
         }
 
         /// <summary>
@@ -65,6 +74,7 @@ namespace BlazorMobile.Common.Services
         /// </summary>
         public static void UseElectronNET()
         {
+            InitializeBlazorMobileXamarinForms();
             ContextHelper.SetElectronNETUsage(true);
         }
     }

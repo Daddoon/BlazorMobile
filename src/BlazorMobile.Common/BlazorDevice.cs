@@ -6,7 +6,7 @@ using System.Runtime.CompilerServices;
 [assembly: InternalsVisibleTo("BlazorMobile.Web")]
 namespace BlazorMobile.Common
 {
-    public static class Device
+    public static class BlazorDevice
     {
         public const string iOS = "iOS";
         public const string Android = "Android";

@@ -29,7 +29,7 @@ namespace BlazorMobile.Common.Services
             try
             {
                 MethodProxy resultProxy = BridgeSerializer.Deserialize<MethodProxy>(ref methodProxyJson);
-                return BlazorCommonDispatcher.Receive(resultProxy);
+                return BlazorCommonDispatcher.Receive(resultProxy, socketSuccess);
             }
             catch (Exception ex)
             {

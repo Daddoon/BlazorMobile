@@ -23,7 +23,7 @@ namespace BlazorMobile.Services
     {
         public Task<string> GetRuntimePlatform()
         {
-            string device = BlazorMobile.Common.Device.Unknown;
+            string device = BlazorMobile.Common.BlazorDevice.Unknown;
 
             if (ContextHelper.IsBlazorMobile())
             {
@@ -33,17 +33,20 @@ namespace BlazorMobile.Services
             {
                 if (OperatingSystem.IsWindows())
                 {
-                    device = BlazorMobile.Common.Device.Windows;
+                    device = BlazorMobile.Common.BlazorDevice.Windows;
                 }
                 else if (OperatingSystem.IsLinux())
                 {
-                    device = BlazorMobile.Common.Device.Linux;
+                    device = BlazorMobile.Common.BlazorDevice.Linux;
                 }
                 else if (OperatingSystem.IsMacOS())
                 {
-                    device = BlazorMobile.Common.Device.macOS;
+                    device = BlazorMobile.Common.BlazorDevice.macOS;
                 }
             }
+
+            //Sync Blazor and native side
+            BlazorMobile.Common.BlazorDevice.RuntimePlatform = device;
 
             return Task.FromResult(device);
         }

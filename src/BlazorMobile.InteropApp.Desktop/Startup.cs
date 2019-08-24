@@ -15,6 +15,8 @@ using Microsoft.Extensions.FileProviders;
 using BlazorMobile.InteropBlazorApp;
 using System.Threading.Tasks;
 using ElectronNET.API;
+using BlazorMobile.InteropApp.Common.Interfaces;
+using BlazorMobile.InteropApp.Services;
 
 namespace BlazorMobile.InteropApp.Desktop
 {
@@ -86,10 +88,15 @@ namespace BlazorMobile.InteropApp.Desktop
             });
 
             BlazorMobileService.UseElectronNET();
+
+            //TO REMOVE
+            Xamarin.Forms.DependencyService.Register<IXamarinBridge, XamarinBridge>();
+            //TO REMOVE
+
             BlazorMobileService.Init((bool success) =>
             {
                 Console.WriteLine($"Initialization success: {success}");
-                Console.WriteLine("Device is: " + Device.RuntimePlatform);
+                Console.WriteLine("Device is: " + BlazorDevice.RuntimePlatform);
             });
 
             Task.Run(async () => await Electron.WindowManager.CreateWindowAsync());

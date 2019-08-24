@@ -87,7 +87,7 @@ namespace BlazorMobile.InteropBlazorApp.Server
             BlazorMobileService.Init((bool success) =>
             {
                 Console.WriteLine($"Initialization success: {success}");
-                Console.WriteLine("Device is: " + Device.RuntimePlatform);
+                Console.WriteLine("Device is: " + BlazorDevice.RuntimePlatform);
             });
         }
     }

@@ -33,12 +33,12 @@ namespace BlazorMobile.Common.Components
                     //ElectronNET implementation does not rely on any JS Interop, nor Xamarin/Mono context
 
                     string resultRuntimePlatform = await xamService.GetRuntimePlatform();
-                    Device.RuntimePlatform = resultRuntimePlatform;
+                    BlazorDevice.RuntimePlatform = resultRuntimePlatform;
                 }
                 else
                 {
                     //If service return false we return the Browser default value
-                    Device.RuntimePlatform = Device.Browser;
+                    BlazorDevice.RuntimePlatform = BlazorDevice.Browser;
                 }
 
                 BlazorMobileSuccess = true;
@@ -47,7 +47,7 @@ namespace BlazorMobile.Common.Components
             {
                 xamService.WriteLine(ex.Message);
 
-                Device.RuntimePlatform = Device.Browser;
+                BlazorDevice.RuntimePlatform = BlazorDevice.Browser;
                 BlazorMobileSuccess = false;
             }
         }
@@ -130,7 +130,7 @@ namespace BlazorMobile.Common.Components
 
         internal void OnFinishEvent()
         {
-            Device._onFinishCallback?.Invoke(BlazorMobileSuccess);
+            BlazorDevice._onFinishCallback?.Invoke(BlazorMobileSuccess);
         }
 
         private bool _FirstInit = true;

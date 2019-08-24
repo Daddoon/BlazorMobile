@@ -22,6 +22,7 @@ using Xamarin.Forms;
 [assembly: InternalsVisibleTo("BlazorMobile.iOS")]
 [assembly: InternalsVisibleTo("BlazorMobile.Android")]
 [assembly: InternalsVisibleTo("BlazorMobile.UWP")]
+[assembly: InternalsVisibleTo("BlazorMobile.Web")]
 namespace BlazorMobile.Services
 {
     public static class WebApplicationFactory
@@ -365,6 +366,7 @@ namespace BlazorMobile.Services
         /// <param name="appStreamResolver"></param>
         internal static void Init(Func<Stream> appStreamResolver)
         {
+            Init();
             RegisterAppStreamResolver(appStreamResolver);
         }
 
