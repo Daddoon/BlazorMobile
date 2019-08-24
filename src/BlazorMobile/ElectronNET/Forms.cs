@@ -28,8 +28,6 @@ namespace Xamarin.Forms
             Device.Info = new BlazorMobileDeviceInfo();
 
             WebApplicationFactory.Init();
-
-            //TODO: Register custom user services
         }
 
         public static HttpClientHandler HttpClientHandler { get; set; }
@@ -165,9 +163,14 @@ namespace Xamarin.Forms
             }
         }
 
-        public static void LoadApplication(Application application)
+        /// <summary>
+        /// Register the Xamarin.Forms Application class
+        /// </summary>
+        /// <param name="application"></param>
+        public static void RegisterApplication(Type application)
         {
-            Application.Current = application;
+            //Nothing to do. We only need the Xamarin.Forms app type passed in argument in order to load its assembly in AppDomain
+            //Not instanciating as we don't manage anything about how to construct / render Xamarin.Forms component
         }
     }
 }

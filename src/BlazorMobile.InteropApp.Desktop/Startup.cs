@@ -15,8 +15,7 @@ using Microsoft.Extensions.FileProviders;
 using BlazorMobile.InteropBlazorApp;
 using System.Threading.Tasks;
 using ElectronNET.API;
-using BlazorMobile.InteropApp.Common.Interfaces;
-using BlazorMobile.InteropApp.Services;
+using Xamarin.Forms;
 
 namespace BlazorMobile.InteropApp.Desktop
 {
@@ -87,12 +86,11 @@ namespace BlazorMobile.InteropApp.Desktop
                 endpoints.MapFallbackToClientSideBlazor<InteropBlazorApp.Startup>("server_index.html");
             });
 
+
+            Forms.Init();
+            Forms.RegisterApplication(typeof(App));
+
             BlazorMobileService.UseElectronNET();
-
-            //TO REMOVE
-            Xamarin.Forms.DependencyService.Register<IXamarinBridge, XamarinBridge>();
-            //TO REMOVE
-
             BlazorMobileService.Init((bool success) =>
             {
                 Console.WriteLine($"Initialization success: {success}");
