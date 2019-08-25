@@ -5,11 +5,19 @@ Create full C# driven hybrid-apps for iOS, Android & UWP !
 **BlazorMobile** - is a set of Nuget packages & project templates for embedding a Blazor web application as a standalone mobile application, hosted in Xamarin.
 
 ## Platform requirements
-  
+ 
 - **Android:** 4.4 or greater
 - **iOS:** 12.0 or greater
 - **UWP:** Build 16299 or greater
 - **Blazor:** 3.0.0-preview8.19405.7
+
+### Experimental
+
+- **Windows:** Electron.NET
+- **Linux:** Electron.NET
+- **macOS:** Electron.NET
+
+**NOTE:** See [Electron.NET support with BlazorMobile](#electronnet-support-with-blazormobile) section for more info.
 
 ## Summary
 
@@ -20,6 +28,7 @@ Create full C# driven hybrid-apps for iOS, Android & UWP !
 - [Communication between Blazor & Xamarin.Forms](#communication-between-blazor--xamarinforms)
 - [Device remote debugging & Debugging from NET Core 3.0](#device-remote-debugging--debugging-from-net-core-30)
 - [Android Build size optimization](#android-build-size-optimization)
+- [Electron.NET support with BlazorMobile](#electronnet-support-with-blazormobile)
 
 ## Troubleshoot
 
@@ -31,6 +40,7 @@ Create full C# driven hybrid-apps for iOS, Android & UWP !
 - [BlazorMobile 3.0.3-preview7.19365.7 to 3.0.4-preview7.19365.7](#blazormobile-303-preview7193657-to-304-preview7193657)
 - [BlazorMobile 3.0.4-preview7.19365.7 to 3.0.5-preview8.19405.7](#blazormobile-304-preview7193657-to-305-preview8194057)
 - [BlazorMobile 3.0.5-preview8.19405.7 to 3.0.6-preview8.19405.7](#blazormobile-305-preview8194057-to-306-preview8194057)
+- [BlazorMobile 3.0.6-preview8.19405.7 to 3.0.7-preview8.19405.7](#blazormobile-306-preview8194057-to-307-preview8194057)
 
 ## Difference between BlazorMobile & Progressive Web Apps (PWA)
 
@@ -53,13 +63,25 @@ The main differences / advantages of BlazorMobile are:
 First install the template model with the following command from a command prompt:
 
 ```console
-dotnet new -i BlazorMobile.Templates::3.0.6-preview8.19405.7
+dotnet new -i BlazorMobile.Templates::3.0.7-preview8.19405.7
 ```
 
 Then go the folder where you want your project to be created, and from a command prompt type the following command:
 
 ```console
 dotnet new blazormobile
+```
+
+If you plan to also use the Desktop project using Electron.NET, you must first execute this command in order to install the Electron tool on your system:
+
+```console
+dotnet tool install ElectronNET.CLI -g
+```
+
+Then from your Desktop project directory, execute the following command:
+
+```console
+electronize init
 ```
 
 Open you newly created solution, and you are good to go!
@@ -120,20 +142,21 @@ namespace BlazorMobile.Sample
 
 ## Detecting Runtime Platform
 
-If your Blazor application is ready by taking the samples or followed the installation from scratch, you should have the **BlazorService.Init()** already called in the **Startup.cs** file.
-Then you only need to call:
+Just call:
 
 ```csharp
-Device.RuntimePlatform
+BlazorDevice.RuntimePlatform
 ```
 
-...In order to retrieve the current device runtime platform.
+In order to retrieve the current device runtime platform.
 
-Note that the **BlazorService.Init()** has an **onFinish** optional callback delegate. Every call to **Device.RuntimePlatform** before the onFinish delegate call will return **Device.Unkown** instead of the detected platform.
+Note that the **BlazorMobilService.Init()** has an **onFinish** optional callback delegate. Every call to **BlazorDevice.RuntimePlatform** before the onFinish delegate call will return **BlazorDevice.Unkown** instead of the detected platform.
 
 ### Test your interop with Xamarin in Blazor
 
 Don't forget to add your Blazor implementation in the dependency services of your Blazor app.
+For more detail about how to configure a new service/communication between Blazor and Xamarin, read the [Communication between Blazor & Xamarin.Forms](#communication-between-blazor--xamarinforms) section.
+
 In your **Startup.cs** file of your **Blazor project**:
 
 ```csharp
@@ -151,7 +174,7 @@ In your **Startup.cs** file of your **Blazor project**:
     }
 ```
 
-In our sample project **BlazorMobile.Sample.Blazor**, we moved services initialization in **ServicesHelper.ConfigureCommonServices** static method.
+In our template **Blazor** project, we moved shared services initialization in **ServicesHelper.ConfigureCommonServices** static method, in order to not having to reconfigure each service on server-side and client Blazor projects.
 
 Then in one of your desired **razor** page (or plain **C# ComponentBase**), juste add...
 ```csharp
@@ -261,8 +284,8 @@ If you want that the caller and receiver method are actually the same method sig
 
 Even if there is now some debug functionalities in the Blazor WASM version in Chrome, it is pretty limited compared to the pure server-side debugging with NET Core 3.0.
 
-A small server-side Blazor application sample has been added in order to test and debug your code from it. See **BlazorMobile.Sample.Blazor.Server** project.
-You don't have to code anything in it, as it will use all the code logic you have done with the **BlazorMobile.Sample.Blazor** project (the WASM one).
+A small server-side Blazor application sample has been added in order to test and debug your code from it. See your **Blazor.Server** project.
+You don't have to code anything in it, as it will use all the code logic you have done with the **Blazor** project (the WASM one).
 
 This is very usefull if you need to debug your Blazor application logic, and also your device.
 
@@ -373,19 +396,21 @@ Of course, replace **YourUWPPackageFamilyName** by your package name on UWP. You
 Then, you just need to deploy your application to your phone, and launch it in order to allow external source to connect to it.
 You may just launch it on the device, and only debug Blazor from your PC, or you may also launch it with the Xamarin debugger, in order to test Xamarin code during Blazor session.
 
-If you want to debug both Blazor side and Xamarin side, i suggest to open two Visual Studio instances, one for launching debug on the Xamarin project on your device, and the other instance for debugging the Blazor application.
+If you want to debug both Blazor side and Xamarin side you may:
+
+- Open two Visual Studio instances, one for launching debug on the Xamarin project on your device, and the other instance for debugging the Blazor application.
+- Use only one Visual Studio instance, and set your solution in multiple-project debugging mode.
+
 The Blazor application will be launched from your PC, and it will try to connect to the remote application instance.
 
 Values from Xamarin context will be returned, and your code will behave as launched within the device.
 
-**NOTE:** You **need** to add the **?mode=server** URI parameters on your PC when debugging your Blazor app in order to debug from the NET Core version.
-Default **BlazorMobile.Sample.Blazor.Server** project should listen on http://localhost:5080/.
+**NOTE:** You need to register **server_index.html** instead of **index.html** on your Blazor.Server project in **Startup.cs** in order to debug from the NET Core version.
 
-When the server console will show up during your debugging session, you need to open a tab in your favorite browser and browse http://localhost:5080/?mode=server url, in order to connect and debug your Blazor NET Core application.
+The **server_index.html** file is automatically generated by **BlazorMobile.Build**, in order to have a synced copy of your Blazor application index.html, **replacing blazor.webassembly.js to blazor.server.js**.
+The server project should listen on http://localhost:5080/ by default.
 
-If you omit the mode=server argument, the Blazor application will be launched as the WASM one.
-
-Of course you can change this behavior by your own logic, just take a look at **index.html** on how the Blazor javascript file is loaded.
+When the server console will show up during your debugging session, you need to open a tab in your favorite browser and browse http://localhost:5080/ url, in order to connect and debug your Blazor .NET Core application.
 
 ## Android Build size optimization
 
@@ -413,6 +438,17 @@ Multi-APK and 64-bit compliance
 If you are using Google Plays multiple-APK support to publish your app, note that compliance with the 64-bit requirement is evaluated at the release level. However, the 64-bit requirement does not apply to APKs or app bundles that are not distributed to devices running Android 9 Pie or later.
 If one of your APKs is marked as not being compliant, but is older and its not possible to bring it into compliance, one strategy is to add a maxSdkVersion="27" attribute in the uses-sdk element in that APKs manifest. This APK wont be delivered to devices running Android 9 Pie or later, and it will no longer block compliance.
 ```
+
+## Electron.NET support with BlazorMobile
+
+Since **BlazorMobile 3.0.7-preview8.19405.7**, you can also deploy your application developped with Blazor & BlazorMobile as a desktop application with **Electron.NET**.
+The plugin has been updated in order to be aware of an Electron.NET executing context and behave correctly, with your same codebase and project structure.
+
+Be aware that even if a Xamarin.Forms library is present on the Electron.NET desktop application, there is no real support of the Xamarin.Forms API.
+
+If you need to call anything from Xamarin on your shared Xamarin.Forms project, be sure check if we are running through Electron or Xamarin, by calling **BlazorDevice.IsElectronNET()**.
+
+To get started about the Electron.NET Desktop project, it's highly recommended to create it from **BlazoreMobile.Templates**. See [Getting started from sample](#getting-started-from-sample) section.
 
 ## Troubleshoot
 
@@ -628,6 +664,75 @@ And of course, just update all your BlazorMobile.* NuGet packages to 3.0.5-previ
 ### BlazorMobile 3.0.5-preview8.19405.7 to 3.0.6-preview8.19405.7
 
 Nothing to do ! Just update all your BlazorMobile.* NuGet packages to 3.0.6-preview8.19405.7
+
+### BlazorMobile 3.0.6-preview8.19405.7 to 3.0.7-preview8.19405.7
+
+Update all your BlazorMobile.* NuGet packages to 3.0.7-preview8.19405.7.
+
+In all your project files replace all BlazorService class reference:
+
+```charp
+BlazorService
+```
+
+to
+
+```csharp
+BlazorMobileService
+```
+
+and all Device class reference from BlazorMobile assembly:
+
+
+```charp
+Device
+```
+
+to
+
+```csharp
+BlazorDevice
+```
+
+In your **BlazorMobileService.Init** calls, you should now remove the first argument.
+
+This:
+
+```csharp
+app.UseEndpoints(endpoints =>
+{
+    var componentBuilder = endpoints.MapBlazorHub<MobileApp>("app");
+    endpoints.MapDefaultControllerRoute();
+    endpoints.MapFallbackToClientSideBlazor<BlazorMobile.Sample.Blazor.Startup>("server_index.html");
+
+    BlazorService.EnableClientToDeviceRemoteDebugging("192.168.1.118", 8888);
+    BlazorService.Init(componentBuilder, (bool success) =>
+    {
+        Console.WriteLine($"Initialization success: {success}");
+        Console.WriteLine("Device is: " + Device.RuntimePlatform);
+    });
+});
+```
+
+Should now look like something like this:
+
+```csharp
+app.UseEndpoints(endpoints =>
+{
+    var componentBuilder = endpoints.MapBlazorHub<MobileApp>("app");
+    endpoints.MapDefaultControllerRoute();
+    endpoints.MapFallbackToClientSideBlazor<BlazorMobile.Sample.Blazor.Startup>("server_index.html");
+});
+
+BlazorMobileService.EnableClientToDeviceRemoteDebugging("192.168.1.118", 8888);
+BlazorMobileService.Init((bool success) =>
+{
+    Console.WriteLine($"Initialization success: {success}");
+    Console.WriteLine("Device is: " + BlazorDevice.RuntimePlatform);
+});
+```
+
+As you can see, your code can now safely be written outside the UseEndpoints scope.
 
 ## Authors
 
