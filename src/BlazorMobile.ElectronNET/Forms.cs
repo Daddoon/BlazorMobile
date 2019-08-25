@@ -6,6 +6,8 @@ using System.Threading;
 using System.Threading.Tasks;
 using System.Net.Http;
 using BlazorMobile.Services;
+using BlazorMobile.Components;
+using System.Runtime.Serialization;
 
 
 //This is inspired from Ooui.Forms
@@ -167,10 +169,9 @@ namespace Xamarin.Forms
         /// Register the Xamarin.Forms Application class
         /// </summary>
         /// <param name="application"></param>
-        public static void RegisterApplication(Type application)
+        internal static void LoadApplication(BlazorApplication application)
         {
-            //Nothing to do. We only need the Xamarin.Forms app type passed in argument in order to load its assembly in AppDomain
-            //Not instanciating as we don't manage anything about how to construct / render Xamarin.Forms component
+            Application.Current = application;
         }
     }
 }

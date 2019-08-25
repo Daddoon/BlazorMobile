@@ -9,6 +9,11 @@ namespace BlazorMobile.Components
 {
     public abstract class BlazorApplication : Application
     {
+        public BlazorApplication(bool isElectron)
+        {
+
+        }
+
         public BlazorApplication()
         {
             if (ContextHelper.IsElectronNET())

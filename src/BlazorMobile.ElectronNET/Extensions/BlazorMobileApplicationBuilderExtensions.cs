@@ -1,6 +1,8 @@
 ﻿using BlazorMobile.Common.Services;
+using BlazorMobile.Components;
 using BlazorMobile.Interop;
 using System;
+using System.Runtime.Serialization;
 using Xamarin.Forms;
 
 namespace Microsoft.AspNetCore.Builder
@@ -12,17 +14,18 @@ namespace Microsoft.AspNetCore.Builder
         /// NOTE: Usage of blazor.server.js in your starting page is mandatory.
         /// If using BlazorMobile.Build on your Blazor base project, you should register 'server_index.html' at this app start.
         /// </summary>
-        public static IApplicationBuilder UseBlazorMobileWithElectronNET(this IApplicationBuilder app, Type applicationType)
+        public static IApplicationBuilder UseBlazorMobileWithElectronNET<TFormsApplication>(this IApplicationBuilder app) where TFormsApplication : BlazorApplication
         {
-            app.UseStaticFiles();
-
-            Forms.Init();
-            Forms.RegisterApplication(applicationType);
-
             ContextHelper.SetElectronNETUsage(true);
 
             //Bridging Native receive method in memory on ElectronNET implementation
             ContextHelper.SetNativeReceive(ContextBridge.Receive);
+
+            app.UseStaticFiles();
+
+            Forms.Init();
+
+            Forms.LoadApplication((TFormsApplication)Activator.CreateInstance(typeof(TFormsApplication)));
 
             return app;
         }

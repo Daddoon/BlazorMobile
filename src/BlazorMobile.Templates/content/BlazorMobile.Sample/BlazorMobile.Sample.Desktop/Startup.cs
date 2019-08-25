@@ -82,7 +82,7 @@ namespace BlazorMobile.Sample.Desktop
                 endpoints.MapFallbackToClientSideBlazor<BlazorMobile.Sample.Blazor.Startup>("server_index.html");
             });
 
-            app.UseBlazorMobileWithElectronNET(typeof(App));
+            app.UseBlazorMobileWithElectronNET<App>();
 
             BlazorMobileService.Init((bool success) =>
             {

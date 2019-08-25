@@ -1,7 +1,6 @@
-﻿using BlazorMobile.Components;
+﻿using BlazorMobile.Common;
+using BlazorMobile.Components;
 using BlazorMobile.Services;
-using System;
-using Xamarin.Forms;
 
 namespace BlazorMobile.Sample
 {
@@ -12,6 +11,13 @@ namespace BlazorMobile.Sample
         public App()
         {
             InitializeComponent();
+
+            //We do not need to configure any embedded HTTP server from here with Electron as we are already on ASP.NET Core
+            //We do not need to set any package to load, nor loading any browser as it's already managed by Electron
+            if (BlazorDevice.IsElectronNET())
+            {
+                return;
+            }
 
 #if DEBUG
             WebApplicationFactory.EnableDebugFeatures();
