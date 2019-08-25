@@ -667,6 +667,12 @@ Nothing to do ! Just update all your BlazorMobile.* NuGet packages to 3.0.6-prev
 
 ### BlazorMobile 3.0.6-preview8.19405.7 to 3.0.7-preview8.19405.7
 
+You may update your installed BlazorMobile.Templates to this version by calling:
+
+```console
+dotnet new -i BlazorMobile.Templates::3.0.7-preview8.19405.7
+```
+
 Update all your BlazorMobile.* NuGet packages to 3.0.7-preview8.19405.7.
 
 In all your project files replace all BlazorService class reference:
