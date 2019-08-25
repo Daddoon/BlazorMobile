@@ -6,7 +6,7 @@
     "WebAssembly",
 	"Xamarin"
   ],
-  "description": "A project template for creating an iOS, Android & UWP app from a Blazor app that runs on WebAssembly. This template can be used for web apps with rich dynamic user interfaces (UIs).",
+  "description": "A project template for creating an iOS, Android & UWP app from a Blazor app that runs on WebAssembly & a Windows, Linux, macOS app from a Blazor app that run on Electron and .NET Core. This template can be used for web apps with rich dynamic user interfaces (UIs).",
   "groupIdentity": "BlazorMobile",
   "guids": [
 	"94424FB2-A268-4C07-9297-F5BD6D3C4E70",
@@ -17,7 +17,8 @@
 	"4C4999FD-A0E2-4466-8753-D436C6953402",
 	"1584F31B-4854-4163-B378-2DE8BE06C76E",
 	"D663A270-6915-4E3F-B2DE-278DDF3251E0",
-	"07017C58-6F4E-455A-B172-06A5E41932B0"
+	"07017C58-6F4E-455A-B172-06A5E41932B0",
+	"9F078D5C-A7F1-46BD-844C-9A5DD6260B7E"
   ],
   "identity": "BlazorMobile.CSharp",
   "name": "BlazorMobile App",
@@ -46,7 +47,10 @@
     },
 	{
       "path": "BlazorMobile.Sample.UWP/BlazorMobile.Sample.UWP.csproj"
-    }
+    },
+	{
+	  "path": "BlazorMobile.Sample.Desktop/BlazorMobile.Sample.Desktop.csproj"
+	}
   ],
   "shortName": "blazormobile",
   "sourceName": "BlazorMobile.Sample",
@@ -87,7 +91,7 @@
       "description": "Restore NuGet packages required by this project.",
       "manualInstructions": [
         {
-          "text": "Run 'dotnet restore'"
+          "text": "Run 'dotnet restore'. If you plan to use the ElectronNET Desktop project, run 'dotnet tool install ElectronNET.CLI -g' if not already installed on your system, and then run 'electronize init'"
         }
       ],
       "args": {
@@ -95,7 +99,8 @@
 			"BlazorMobile.Sample.csproj",
 			"BlazorMobile.Sample.Blazor.csproj",
 			"BlazorMobile.Sample.Common.csproj",
-			"BlazorMobile.Sample.Blazor.Server.csproj"
+			"BlazorMobile.Sample.Blazor.Server.csproj",
+			"BlazorMobile.Sample.Desktop.csproj"
 		]
       },
       "actionId": "210D431B-A78B-4D2F-B762-4ED3E3EA9025",

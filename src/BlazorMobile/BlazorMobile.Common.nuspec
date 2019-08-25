@@ -10,8 +10,8 @@
         <projectUrl>https://github.com/Daddoon/BlazorMobile</projectUrl>
         <iconUrl>https://raw.githubusercontent.com/Daddoon/BlazorMobile/master/logo_blazormobile_256x256.png</iconUrl>
         <requireLicenseAcceptance>true</requireLicenseAcceptance>
-        <description>This NuGet package intended for the Blazor application side of the BlazorMobile package. Use BlazorMobile package for the native side.</description>
-        <releaseNotes>Updated for BlazorMobile 3.0.6-preview8.19405.7</releaseNotes>
+        <description>This package is used by BlazorMobile, BlazorMobile.Web &amp; BlazorMobile.ElectronNET. You don't have to reference it directly.</description>
+        <releaseNotes>See release notes on BlazorMobile project page</releaseNotes>
         <copyright>Copyright 2019</copyright>
         <tags>aspnet templates blazor spa web webassembly xamarin android ios uwp</tags>
         <dependencies>

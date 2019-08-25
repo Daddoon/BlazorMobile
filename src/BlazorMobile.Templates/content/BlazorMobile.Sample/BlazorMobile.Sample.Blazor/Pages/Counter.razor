@@ -7,6 +7,8 @@
 
 <p>Current count: @currentCount</p>
 
+<p>NOTE: "Alert me" will not show any native device dialog on ElectronNET. See the console instead!</p>
+
 <button class="btn btn-primary" @onclick="@IncrementCount">Click me</button>
 <button class="btn btn-primary" @onclick="@AlertMe">Alert me</button>
 
@@ -22,6 +24,6 @@
     async void AlertMe()
     {
         Console.WriteLine("AlertMe clicked !");
-        await XamarinBridge.DisplayAlert("Platform identity", $"Current platform is {Device.RuntimePlatform}", "Great!");
+        await XamarinBridge.DisplayAlert("Platform identity", $"Current platform is {BlazorDevice.RuntimePlatform}", "Great!");
     }
 }

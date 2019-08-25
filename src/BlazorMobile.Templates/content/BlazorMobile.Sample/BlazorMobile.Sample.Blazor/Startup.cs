@@ -19,14 +19,14 @@ namespace BlazorMobile.Sample.Blazor
             #region DEBUG
 
             //Only if you want to test WebAssembly with remote debugging from a dev machine
-            BlazorService.EnableClientToDeviceRemoteDebugging("192.168.1.118", 8888);
+            BlazorMobileService.EnableClientToDeviceRemoteDebugging("192.168.1.118", 8888);
 
             #endregion
 
-            BlazorService.Init(app, (bool success) =>
+            BlazorMobileService.Init((bool success) =>
             {
                 Console.WriteLine($"Initialization success: {success}");
-                Console.WriteLine("Device is: " + Device.RuntimePlatform);
+                Console.WriteLine("Device is: " + BlazorDevice.RuntimePlatform);
             });
 
             app.AddComponent<MobileApp>("app");

@@ -1,5 +1,6 @@
 ﻿using BlazorMobile.Common.Helpers;
 using BlazorMobile.Common.Interop;
+using BlazorMobile.Common.Models;
 using BlazorMobile.Common.Serialization;
 using BlazorMobile.Components;
 using BlazorMobile.Services;
@@ -7,10 +8,13 @@ using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Reflection;
+using System.Runtime.CompilerServices;
 using System.Text;
 using System.Threading.Tasks;
 using Xamarin.Forms;
 
+[assembly: InternalsVisibleTo("BlazorMobile.Web")]
+[assembly: InternalsVisibleTo("BlazorMobile.ElectronNET")]
 namespace BlazorMobile.Interop
 {
     internal static class ContextBridge
@@ -41,7 +45,7 @@ namespace BlazorMobile.Interop
 
         private static object GetResultFromTask(Type returnType, Task taskResult)
         {
-            if (returnType == null || returnType == typeof(void) || returnType == typeof(Task))
+            if (returnType == null || returnType == typeof(void) || returnType == typeof(Task) || returnType == typeof(IgnoredType))
             {
                 return null;
             }

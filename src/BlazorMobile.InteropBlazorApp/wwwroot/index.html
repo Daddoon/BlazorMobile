@@ -11,9 +11,6 @@
 <body>
     <app>Loading...</app>
     <script type="text/javascript" src="js/blazor.polyfill.min.js"></script>
-    <script id="blazorMode"></script>
-    <script>
-        document.getElementById("blazorMode").src = window.location.search.includes("mode=server") ? "_framework/blazor.server.js" : "_framework/blazor.webassembly.js";
-    </script>
+    <script type="text/javascript" src="_framework/blazor.webassembly.js"></script>
 </body> 
 </html>
