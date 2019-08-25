@@ -80,14 +80,14 @@ namespace BlazorMobile.InteropBlazorApp.Server
             {
                 var componentBuilder = endpoints.MapBlazorHub<MobileApp>("app");
                 endpoints.MapDefaultControllerRoute();
-                endpoints.MapFallbackToClientSideBlazor<InteropBlazorApp.Startup>("index.html");
+                endpoints.MapFallbackToClientSideBlazor<InteropBlazorApp.Startup>("server_index.html");
+            });
 
-                BlazorService.EnableClientToDeviceRemoteDebugging("127.0.0.1", 8888);
-                BlazorService.Init(componentBuilder, (bool success) =>
-                {
-                    Console.WriteLine($"Initialization success: {success}");
-                    Console.WriteLine("Device is: " + Device.RuntimePlatform);
-                });
+            BlazorMobileService.EnableClientToDeviceRemoteDebugging("127.0.0.1", 8888);
+            BlazorMobileService.Init((bool success) =>
+            {
+                Console.WriteLine($"Initialization success: {success}");
+                Console.WriteLine("Device is: " + BlazorDevice.RuntimePlatform);
             });
         }
     }

@@ -18,6 +18,16 @@ namespace BlazorMobile.Common.Services
     {
         private static Dictionary<Guid, TaskDispatch> _taskDispatcher = new Dictionary<Guid, TaskDispatch>();
 
+        internal static Task<TReturnType> CreateTaskDispatcher<TReturnType>(MethodProxy methodProxy)
+        {
+            Guid taskId = Guid.Empty;
+            var task = CreateTaskDispatcher<TReturnType>(out taskId);
+
+            methodProxy.TaskIdentity = taskId;
+
+            return task;
+        }
+
         internal static Task<TReturnType> CreateTaskDispatcher<TReturnType>(out Guid taskIdentity)
         {
             taskIdentity = Guid.NewGuid();
@@ -378,20 +388,22 @@ namespace BlazorMobile.Common.Services
             //We will let the serializer do the thing for RunTime values
             methodProxy.Parameters = args;
 
+            Task<TReturnType> task = Task.FromResult(default(TReturnType));
+
+            //TODO: Should refactorate in order to avoid copy/past for this switch
             switch (ContextHelper.GetExecutingContext())
             {
                 case Models.ExecutingContext.Blazor:
-                    Guid taskId = Guid.Empty;
-                    var task = CreateTaskDispatcher<TReturnType>(out taskId);
-
-                    methodProxy.TaskIdentity = taskId;
-
+                    task = CreateTaskDispatcher<TReturnType>(methodProxy);
                     BlazorToXamarinDispatcher.Send(methodProxy);
-
-                    return task;
-                default:
-                    return Task.FromResult(default(TReturnType));
+                    break;
+                case Models.ExecutingContext.ElectronNET:
+                    task = CreateTaskDispatcher<TReturnType>(methodProxy);
+                    BlazorToElectronNETDispatcher.Send(methodProxy);
+                    break;
             }
+
+            return task;
 
             #endregion
         }

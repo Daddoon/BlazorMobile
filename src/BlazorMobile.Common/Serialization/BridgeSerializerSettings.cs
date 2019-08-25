@@ -1,5 +1,6 @@
 ﻿using BlazorMobile.Common.Helpers;
 using BlazorMobile.Common.Interop;
+using BlazorMobile.Common.Json.Binder;
 using Newtonsoft.Json;
 using System;
 using System.Collections.Generic;
@@ -15,52 +16,37 @@ namespace BlazorMobile.Common.Serialization
     {
         public static string Serialize(object value)
         {
-            string data = JsonConvert.SerializeObject(value, BridgeSerializerSettings.GetSerializerSettings());
-
-            if (EnvironmentHelper.RunOnCLR())
-                data = data.Replace("System.Private.CoreLib", "%CORE%");
-            else
-                data = data.Replace("mscorlib", "%CORE%");
-
-            return data;
-        }
-
-        private static void JsonClrFixer()
-        {
-
+            return JsonConvert.SerializeObject(value, BridgeSerializerSettings.GetSerializerSettings());
         }
 
         public static T Deserialize<T>(ref string data)
         {
-            if (EnvironmentHelper.RunOnCLR())
-                data = data.Replace("%CORE%", EnvironmentHelper.GetNetCoreVersion());
-            else
-                data = data.Replace("%CORE%", "mscorlib");
-
             return JsonConvert.DeserializeObject<T>(data, BridgeSerializerSettings.GetSerializerSettings());
         }
 
         public static T Deserialize<T>(TypeProxy data)
         {
-            string fixedJson;
-
-            if (EnvironmentHelper.RunOnCLR())
-                fixedJson = data.SerializedData.Replace("%CORE%", EnvironmentHelper.GetNetCoreVersion());
-            else
-                fixedJson = data.SerializedData.Replace("%CORE%", "mscorlib");
-
-            return JsonConvert.DeserializeObject<T>(fixedJson, BridgeSerializerSettings.GetSerializerSettings());
+            return JsonConvert.DeserializeObject<T>(data.SerializedData, BridgeSerializerSettings.GetSerializerSettings());
         }
     }
 
-    public class BridgeSerializerSettings : JsonSerializerSettings
+    internal class BridgeSerializerSettings : JsonSerializerSettings
     {
+        private static BridgeSerializerSettings _settings;
+
+        private BridgeSerializerSettings()
+        {
+            TypeNameHandling = TypeNameHandling.All; //Required for writing full assembly
+            Converters.Insert(0, new PrimitiveJsonConverter()); //Required for keeping full data information when returning unspecified type from JSON like 'object'.
+            SerializationBinder = new CrossPlatformTypeBinder(); //Required for resolving correct type assemblies when interoping between .NET Core Runtime & .NET Framework Runtime
+        }
+
         public static BridgeSerializerSettings GetSerializerSettings()
         {
-            var _settings = new BridgeSerializerSettings();
-            //_settings.TypeNameAssemblyFormatHandling = TypeNameAssemblyFormatHandling.Simple;
-            _settings.TypeNameHandling = TypeNameHandling.All;
-            _settings.Converters.Insert(0, new PrimitiveJsonConverter());
+            if (_settings == null)
+            {
+                _settings = new BridgeSerializerSettings();
+            }
 
             return _settings;
         }

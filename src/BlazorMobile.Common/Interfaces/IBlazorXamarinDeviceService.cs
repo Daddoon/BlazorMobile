@@ -10,5 +10,7 @@ namespace BlazorMobile.Common.Interfaces
     public interface IBlazorXamarinDeviceService
     {
         Task<string> GetRuntimePlatform();
+
+        Task WriteLine(string message);
     }
 }
