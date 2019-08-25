@@ -751,7 +751,7 @@ As you can see, your code can now safely be written outside the UseEndpoints sco
 
 ## Authors
 
-* **Guillaume ZAHRA** - [Daddoon](https://github.com/Daddoon)
+- **Guillaume ZAHRA** - [Daddoon](https://github.com/Daddoon) - Software Developer - from Joinville-le-Pont, France. Entrepreneur & founder of 2Bee SASU, working since 10 years with .NET and C#.
 
 ## License
 
