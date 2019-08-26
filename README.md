@@ -8,7 +8,7 @@ Create full C# driven hybrid-apps for iOS, Android & UWP !
 
 The BlazorMobile 3.0.7-preview8.19405.7 should not work, as during the shipping of the ElectronNET support functionnalities, is inverted some boolean values to compare in wich case we should render interop javascript libraries.
 
-You should stay on the 3.0.6 version or wait for the 3.0.8 version that will come very shortly.
+**You should stay on the 3.0.6 version or wait for the 3.0.8 version that will come very shortly.**
 
 Sorry for the inconvenience!
 
