@@ -13,11 +13,12 @@ namespace BlazorMobile.InteropApp.Desktop
 
         public static IHostBuilder CreateHostBuilder(string[] args) =>
             Host.CreateDefaultBuilder(args)
-                 .ConfigureWebHostDefaults(webBuilder =>
-                 {
-                     webBuilder
-                         .UseElectron(args)
-                         .UseStartup<Startup>();
-                 });
+                .ConfigureWebHostDefaults(webBuilder =>
+                {
+                    webBuilder
+                        .UseSetting(WebHostDefaults.DetailedErrorsKey, "true")
+                        .UseElectron(args)
+                        .UseStartup<Startup>();
+                });
     }
 }

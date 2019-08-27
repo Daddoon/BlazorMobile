@@ -33,6 +33,7 @@ Create full C# driven hybrid-apps for iOS, Android & UWP !
 ## Troubleshoot
 
 - [Cannot connect to a remote webserver on UWP](#cannot-connect-to-a-remote-webserver-on-uwp)
+- [System.ArgumentOutOfRangeException when calling Blazor to native](#systemargumentoutofrangeexception-when-calling-blazor-to-native)
 
 ## Migration
 
@@ -461,6 +462,14 @@ There is some behaviors that are specifics to UWP:
 
 - If you are doing any web requests with HTTPS, UWP will block them if the certificate is self-signed or not trusted, as it follow the Edge browser security policy. You may not override this behavior from the Webview component, but you may override it if your are doing your requests from the native side instead as you may have more control about web requests behavior, but this less ideal from a design point of view.
 
+### System.ArgumentOutOfRangeException when calling Blazor to native
+
+This bug is a [regression from .NET Core 3.0-preview8](https://github.com/dotnet/corefx/issues/40409#issuecomment-522514553) that is already fixed for preview9.
+
+We have to wait for preview9 shipping, or working on an older version of Blazor & BlazorMobile running on preview7, or compiling by yourself current Microsoft nightly builds.
+
+In my opinion, the best option is to wait.
+
 ## Migration
 
 ### BlazorMobile 0.8.0 to 3.0.3-preview7.19365.7
@@ -742,7 +751,7 @@ As you can see, your code can now safely be written outside the UseEndpoints sco
 
 ## Authors
 
-* **Guillaume ZAHRA** - [Daddoon](https://github.com/Daddoon)
+- **Guillaume ZAHRA** - [Daddoon](https://github.com/Daddoon) - Software Developer - from Joinville-le-Pont, France. Entrepreneur & founder of 2Bee SASU, working since 10 years with .NET and C#.
 
 ## License
 

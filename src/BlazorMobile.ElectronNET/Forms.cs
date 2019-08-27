@@ -8,6 +8,9 @@ using System.Net.Http;
 using BlazorMobile.Services;
 using BlazorMobile.Components;
 using System.Runtime.Serialization;
+using BlazorMobile.Common.Components;
+using Microsoft.JSInterop;
+using BlazorMobile.ElectronNET.Messaging;
 
 
 //This is inspired from Ooui.Forms
@@ -43,8 +46,20 @@ namespace Xamarin.Forms
             public override double ScalingFactor => 1;
         }
 
-        class BlazorMobilePlatformServices : IPlatformServices
+        internal class BlazorMobilePlatformServices : IPlatformServices, IDisposable
         {
+            ~BlazorMobilePlatformServices()
+            {
+                Dispose(false);
+            }
+
+            public BlazorMobilePlatformServices()
+            {
+                MessagingCenter.Subscribe<Page, bool>(this, Page.BusySetSignalName, BusySetSignalNameHandler);
+                MessagingCenter.Subscribe<Page, AlertArguments>(this, Page.AlertSignalName, AlertSignalNameHandler);
+                MessagingCenter.Subscribe<Page, ActionSheetArguments>(this, Page.ActionSheetSignalName, ActionSheetSignalNameHandler);
+            }
+
             public bool IsInvokeRequired => false;
 
             public string RuntimePlatform => "ElectronNET";
@@ -163,6 +178,52 @@ namespace Xamarin.Forms
             {
                 return new SizeRequest();
             }
+
+            private bool _disposed = false;
+
+            protected virtual void Dispose(bool disposing)
+            {
+                if (_disposed) return;
+                if (disposing)
+                {
+                    MessagingCenter.Unsubscribe<Page, AlertArguments>(this, "Xamarin.SendAlert");
+                    MessagingCenter.Unsubscribe<Page, bool>(this, "Xamarin.BusySet");
+                    MessagingCenter.Unsubscribe<Page, ActionSheetArguments>(this, "Xamarin.ShowActionSheet");
+                }
+                _disposed = true;
+            }
+
+            public void Dispose()
+            {
+                Dispose(true);
+                GC.SuppressFinalize(this);
+            }
+
+            void BusySetSignalNameHandler(Page sender, bool enabled)
+            {
+                //Noop
+            }
+
+            public void OnAlertSignalResult(AlertArguments arguments, bool isOk)
+            {
+                arguments.SetResult(isOk);
+            }
+
+            void AlertSignalNameHandler(Page sender, AlertArguments arguments)
+            {
+                //Electron documentation about dialog: https://github.com/electron/electron/blob/v5.0.10/docs/api/dialog.md
+
+                var applicationRef = DotNetObjectRef.Create(new ElectronBridge(this));
+                var alertRef = DotNetObjectRef.Create(arguments);
+
+                BlazorMobileComponent.GetJSRuntime().InvokeAsync<bool>("BlazorMobileElectron.AlertDialog", applicationRef, alertRef, arguments.Title, arguments.Message, arguments.Accept, arguments.Cancel);
+            }
+
+            void ActionSheetSignalNameHandler(Page sender, ActionSheetArguments arguments)
+            {
+                //Some inspiration can be taken from here: https://github.com/xamarin/Xamarin.Forms/blob/fda800ca4c9d9a24b531721d7a18114169e2d8ec/Xamarin.Forms.Platform.Tizen/Platform.cs
+            }
+
         }
 
         /// <summary>
