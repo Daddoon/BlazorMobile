@@ -112,7 +112,7 @@ As seen on the **BlazorMobile.Sample** project, assuming a file linked as in a f
 ```csharp
 namespace BlazorMobile.Sample
 {
-	public partial class App : Application
+	public partial class App : BlazorApplication
 	{
         public const string BlazorAppPackageName = "BlazorMobile.Sample.Blazor.zip";
 
