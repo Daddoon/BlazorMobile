@@ -456,8 +456,10 @@ To get started about the Electron.NET Desktop project, it's highly recommended t
 ### Xamarin.Forms support on Electron.NET
 
 - **DisplayAlert** - Like App.Current.MainPage.DisplayAlert(title, msg, cancel);
-- **Device.RuntimePlatform** will return "ElectronNET" in pure Xamarin context.
-- **BlazorDevice.RuntimePlatform** will returns regular Xamarin.Forms values, with in addition **Windows**, **Linux**. Consts values available on **BlazorDevice** for RuntimePlatforms comparison have been updated to all theses values. **NOTE:** BlazorDevice.RuntimePlatform never returns "ElectronNET" but ElectronNET presence can be checked by **BlazorDevice.IsElectronNET**.
+- **Device.RuntimePlatform** will return "ElectronNET".
+- **BlazorDevice.RuntimePlatform** will returns regular Xamarin.Forms values, with in addition **Windows**, **Linux**. Consts values available on **BlazorDevice** for RuntimePlatforms comparison have been updated to all theses values.
+
+**NOTE:** BlazorDevice.RuntimePlatform never returns "ElectronNET" but ElectronNET presence can be checked by **BlazorDevice.IsElectronNET**.
 
 ## Troubleshoot
 
