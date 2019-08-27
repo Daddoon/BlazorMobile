@@ -32,9 +32,7 @@ namespace BlazorMobile.Interop
         }
 
         private const string MainResourceFile = "contextbridge.js";
-        private const string AndroidResourceFile = "contextbridge.android.js";
-        private const string iOSResourceFile = "contextbridge.ios.js";
-        private const string UWPResourceFile = "contextbridge.uwp.js";
+        private const string ElectronNETResourceFile = "blazormobile.electron.js";
 
 
         public static string GetInjectableJavascript(bool isAnonymousAutoEvalMethod = true)
@@ -54,6 +52,11 @@ namespace BlazorMobile.Interop
             content = $"(function() {{ {content} }})();";
 
             return content;
+        }
+
+        public static string GetElectronNETJavascript()
+        {
+            return GetFileContent(ElectronNETResourceFile);
         }
     }
 }

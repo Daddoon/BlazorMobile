@@ -84,16 +84,13 @@ namespace BlazorMobile.InteropApp.Desktop
                 endpoints.MapFallbackToClientSideBlazor<InteropBlazorApp.Startup>("server_index.html");
             });
 
-            app.UseBlazorMobileWithElectronNET<App>();
-
-           
             BlazorMobileService.Init((bool success) =>
             {
                 Console.WriteLine($"Initialization success: {success}");
                 Console.WriteLine("Device is: " + BlazorDevice.RuntimePlatform);
             });
 
-            Task.Run(async () => await Electron.WindowManager.CreateWindowAsync());
+            app.UseBlazorMobileWithElectronNET<App>();
         }
     }
 }

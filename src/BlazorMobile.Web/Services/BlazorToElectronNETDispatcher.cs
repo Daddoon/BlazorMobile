@@ -13,13 +13,13 @@ namespace BlazorMobile.Common.Services
 {
     internal static class BlazorToElectronNETDispatcher
     {
-        public static Task Send(MethodProxy methodProxy)
+        public static async Task Send(MethodProxy methodProxy)
         {
             MethodProxy result = methodProxy;
 
             try
             {
-                result = ContextHelper.CallNativeReceive(methodProxy);
+                result = await ContextHelper.CallNativeReceive(methodProxy);
             }
             catch (Exception ex)
             {
@@ -30,7 +30,7 @@ namespace BlazorMobile.Common.Services
 
             BlazorCommonDispatcher.Receive(result);
 
-            return Task.CompletedTask;
+            return;
         }
     }
 }

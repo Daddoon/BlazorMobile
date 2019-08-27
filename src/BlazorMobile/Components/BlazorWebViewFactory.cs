@@ -1,10 +1,12 @@
-﻿using System;
+﻿using BlazorMobile.Common.Services;
+using System;
 using System.Collections.Generic;
 using System.Runtime.CompilerServices;
 using System.Text;
 using Xamarin.Forms;
 
 [assembly: InternalsVisibleTo("BlazorMobile.Android")]
+[assembly: InternalsVisibleTo("BlazorMobile.ElectronNET")]
 namespace BlazorMobile.Components
 {
     public static class BlazorWebViewFactory
@@ -16,6 +18,12 @@ namespace BlazorMobile.Components
         /// <returns></returns>
         public static IBlazorWebView Create()
         {
+            //ElectronNET case is managed separately as it is not on the Xamarin.Forms stack.
+            if (ContextHelper.IsElectronNET())
+            {
+                return CreateElectronBlazorWebViewInstance();
+            }
+
             switch (Device.RuntimePlatform)
             {
                 case Device.Android:
@@ -35,6 +43,18 @@ namespace BlazorMobile.Components
         internal static IBlazorWebView CreateBlazorGeckoViewInstance()
         {
             return (IBlazorWebView)Activator.CreateInstance(_geckoViewType);
+        }
+
+        private static Type _electronWebviewType = null;
+
+        internal static void SetInternalElectronBlazorWebView(Type electronWebviewType)
+        {
+            _electronWebviewType = electronWebviewType;
+        }
+
+        internal static IBlazorWebView CreateElectronBlazorWebViewInstance()
+        {
+            return (IBlazorWebView)Activator.CreateInstance(_electronWebviewType);
         }
     }
 }

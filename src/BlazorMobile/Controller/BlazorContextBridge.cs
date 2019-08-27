@@ -48,7 +48,7 @@ namespace BlazorMobile.Controller
             //Value type reference as byte[] and/or string are not good for performance
             string methodProxyJson = buffer.ToText();
 
-            Xamarin.Forms.Device.BeginInvokeOnMainThread(() =>
+            Xamarin.Forms.Device.BeginInvokeOnMainThread(async () =>
             {
                 MethodProxy taksInput = null;
                 MethodProxy taksOutput = null;
@@ -56,7 +56,7 @@ namespace BlazorMobile.Controller
                 try
                 {
                     taksInput = ContextBridge.GetMethodProxyFromJSON(ref methodProxyJson);
-                    taksOutput = ContextBridge.Receive(taksInput);
+                    taksOutput = await ContextBridge.Receive(taksInput);
                 }
                 catch (Exception ex)
                 {

@@ -12,16 +12,9 @@ namespace BlazorMobile.InteropApp.Services
 {
     public class XamarinBridge : IXamarinBridge
     {
-        public Task<List<string>> DisplayAlert(string title, string msg, string cancel)
+        public async Task<List<string>> DisplayAlert(string title, string msg, string cancel)
         {
-            if (!BlazorDevice.IsElectronNET())
-            {
-                App.Current.MainPage.DisplayAlert(title, msg, cancel);
-            }
-            else
-            {
-                Console.WriteLine(msg);
-            }
+            await App.Current.MainPage.DisplayAlert(title, msg, cancel);
 
             List<string> result = new List<string>()
             {
@@ -30,7 +23,7 @@ namespace BlazorMobile.InteropApp.Services
                 "Dolorem",
             };
 
-            return Task.FromResult(result);
+            return result;
         }
 
         public Task CallFaultyTask()

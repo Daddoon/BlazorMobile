@@ -1,6 +1,8 @@
 ﻿using BlazorMobile.Interop;
 using System;
+using System.Runtime.CompilerServices;
 
+[assembly: InternalsVisibleTo("BlazorMobile.ElectronNET")]
 namespace BlazorMobile.Common.Services
 {
     public static class BlazorMobileService
@@ -34,6 +36,11 @@ namespace BlazorMobile.Common.Services
         {
             _serverSideClientIP = ip;
             _serverSideClientPort = port;
+        }
+
+        internal static bool IsInitCalled()
+        {
+            return _isInit;
         }
 
         /// <summary>

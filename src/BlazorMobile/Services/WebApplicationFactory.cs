@@ -196,6 +196,11 @@ namespace BlazorMobile.Services
         /// <returns></returns>
         public static void SetHttpPort(int port = DefaultHttpPort)
         {
+            if (ContextHelper.IsElectronNET())
+            {
+                return;
+            }
+
             //Try to bind user port first
             var listener = new TcpListener(IPAddress.Loopback, port);
             try
