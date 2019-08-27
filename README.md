@@ -762,7 +762,15 @@ As you can see, your code can now safely be written outside the UseEndpoints sco
 
 ### BlazorMobile 3.0.7-preview8.19405.7 to 3.0.8-preview8.19405.7
 
-There is nothing to do, except if you created a template from the buggy **BlazorMobile 3.0.7-preview8.19405.7** version, as some things have been simplified since.
+Update your installed BlazorMobile.Templates to this version by calling:
+
+```console
+dotnet new -i BlazorMobile.Templates::3.0.8-preview8.19405.7
+```
+
+Update all your BlazorMobile.* NuGet packages to 3.0.8-preview8.19405.7.
+
+Then there is nothing to do, except if you created a template from the buggy **BlazorMobile 3.0.7-preview8.19405.7** version, as some things have been simplified since.
 
 If you are in this case you must remove this line in **Startup.cs** of your Desktop project:
 
