@@ -1,6 +1,6 @@
 # BlazorMobile[<img src="logo_blazormobile_256x256.png?raw=true" align="right" width="200">]() 
 
-Create full C# driven hybrid-apps for iOS, Android, UWP & Desktop !
+Create full C# driven hybrid-apps for iOS, Android, UWP & Desktop with Blazor!
 
 **BlazorMobile** - is a set of Nuget packages & project templates for embedding a Blazor web application as a standalone mobile application, hosted in Xamarin.
 
