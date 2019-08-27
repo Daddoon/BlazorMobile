@@ -456,6 +456,7 @@ To get started about the Electron.NET Desktop project, it's highly recommended t
 ### Xamarin.Forms support on Electron.NET
 
 - **DisplayAlert** - Like App.Current.MainPage.DisplayAlert(title, msg, cancel);
+- **DependencyService** - Like a regular Xamarin.Forms application. This is different from the regular .NET Core Dependency Injector. For platform specific API in your app, you should interact through this service in your project, in order to interact the same way as on mobile devices.
 - **Device.RuntimePlatform** will return "ElectronNET".
 - **BlazorDevice.RuntimePlatform** will returns regular Xamarin.Forms values, with in addition **Windows**, **Linux**. Consts values available on **BlazorDevice** for RuntimePlatforms comparison have been updated to all theses values.
 
