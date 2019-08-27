@@ -1,23 +1,16 @@
 # BlazorMobile[<img src="logo_blazormobile_256x256.png?raw=true" align="right" width="200">]() 
 
-Create full C# driven hybrid-apps for iOS, Android & UWP !
+Create full C# driven hybrid-apps for iOS, Android, UWP & Desktop !
 
 **BlazorMobile** - is a set of Nuget packages & project templates for embedding a Blazor web application as a standalone mobile application, hosted in Xamarin.
 
-## WARNING: Do not install BlazorMobile 3.0.7
-
-The BlazorMobile 3.0.7-preview8.19405.7 should not work, as during the shipping of the ElectronNET support functionnalities, is inverted some boolean values to compare in wich case we should render interop javascript libraries.
-
-**You should stay on the 3.0.6 version or wait for the 3.0.8 version that will come very shortly.**
-
-Sorry for the inconvenience!
-
 ## Platform requirements
+ 
+ **Blazor:** 3.0.0-preview8.19405.7
  
 - **Android:** 4.4 or greater
 - **iOS:** 12.0 or greater
 - **UWP:** Build 16299 or greater
-- **Blazor:** 3.0.0-preview8.19405.7
 
 ### Experimental
 
@@ -50,6 +43,7 @@ Sorry for the inconvenience!
 - [BlazorMobile 3.0.4-preview7.19365.7 to 3.0.5-preview8.19405.7](#blazormobile-304-preview7193657-to-305-preview8194057)
 - [BlazorMobile 3.0.5-preview8.19405.7 to 3.0.6-preview8.19405.7](#blazormobile-305-preview8194057-to-306-preview8194057)
 - [BlazorMobile 3.0.6-preview8.19405.7 to 3.0.7-preview8.19405.7](#blazormobile-306-preview8194057-to-307-preview8194057)
+- [BlazorMobile 3.0.7-preview8.19405.7 to 3.0.8-preview8.19405.7](#blazormobile-307-preview8194057-to-308-preview8194057)
 
 ## Difference between BlazorMobile & Progressive Web Apps (PWA)
 
@@ -756,6 +750,82 @@ BlazorMobileService.Init((bool success) =>
 ```
 
 As you can see, your code can now safely be written outside the UseEndpoints scope.
+
+### BlazorMobile 3.0.7-preview8.19405.7 to 3.0.8-preview8.19405.7
+
+There is nothing to do, except if you created a template from the buggy **BlazorMobile 3.0.7-preview8.19405.7** version, as some things have been simplified since.
+
+If you are in this case you must remove this line in **Startup.cs** of your Desktop project:
+
+```csharp
+Task.Run(async () => await Electron.WindowManager.CreateWindowAsync());
+```
+
+**BlazorMobile.Init** should be called before **UseBlazorMobileWithElectronNET**, in **Startup.cs** of your Desktop project:
+
+```csharp
+    BlazorMobileService.Init((bool success) =>
+    {
+	Console.WriteLine($"Initialization success: {success}");
+	Console.WriteLine("Device is: " + BlazorDevice.RuntimePlatform);
+    });
+
+    app.UseBlazorMobileWithElectronNET<App>();
+```
+
+As the Xamarin.Forms initialization is now supported on ElectronNET environment, you must modify your **App.xaml.cs** in your shared Xamarin.Forms project, and remove theses lines:
+
+```csharp
+    //We do not need to configure any embedded HTTP server from here with Electron as we are already on ASP.NET Core
+    //We do not need to set any package to load, nor loading any browser as it's already managed by Electron
+    if (BlazorDevice.IsElectronNET())
+    {
+	return;
+    }
+```
+
+In your **XamarinBridge.cs** test service, you do not need to check if **BlazorDevice.IsElectronNET** is true for DisplayAlert, as it has been implemented to forward to Electron. You can replace:
+
+```csharp
+public Task<List<string>> DisplayAlert(string title, string msg, string cancel)
+{
+    if (BlazorDevice.IsElectronNET())
+    {
+	Console.WriteLine(msg);
+    }
+    else
+    {
+	App.Current.MainPage.DisplayAlert(title, msg, cancel);
+    }
+
+    List<string> result = new List<string>()
+    {
+	"Lorem",
+	"Ipsum",
+	"Dolorem",
+    };
+
+    return Task.FromResult(result);
+}
+```
+
+To something like this:
+
+```csharp
+public async Task<List<string>> DisplayAlert(string title, string msg, string cancel)
+{
+    await App.Current.MainPage.DisplayAlert(title, msg, cancel);
+
+    List<string> result = new List<string>()
+    {
+	"Lorem",
+	"Ipsum",
+	"Dolorem",
+    };
+
+    return result;
+}
+```
 
 ## Authors
 
