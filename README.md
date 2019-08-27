@@ -6,8 +6,7 @@ Create full C# driven hybrid-apps for iOS, Android, UWP & Desktop with Blazor!
 
 ## Platform requirements
  
- **Blazor:** 3.0.0-preview8.19405.7
- 
+- **Blazor:** 3.0.0-preview8.19405.7
 - **Android:** 4.4 or greater
 - **iOS:** 12.0 or greater
 - **UWP:** Build 16299 or greater
