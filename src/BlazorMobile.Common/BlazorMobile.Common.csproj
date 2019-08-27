@@ -22,10 +22,12 @@
   </PropertyGroup>
 
   <ItemGroup>
+    <None Remove="Interop\Javascript\blazormobile.electron.js" />
     <None Remove="Interop\Javascript\contextbridge.js" />
   </ItemGroup>
 
   <ItemGroup>
+    <EmbeddedResource Include="Interop\Javascript\blazormobile.electron.js" />
     <EmbeddedResource Include="Interop\Javascript\contextbridge.js" />
   </ItemGroup>
 

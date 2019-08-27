@@ -2,6 +2,7 @@
 using BlazorMobile.Common.Models;
 using System;
 using System.Runtime.CompilerServices;
+using System.Threading.Tasks;
 
 [assembly: InternalsVisibleTo("BlazorMobile.Web")]
 [assembly: InternalsVisibleTo("BlazorMobile.ElectronNET")]
@@ -52,7 +53,7 @@ namespace BlazorMobile.Common.Services
             return _isUsingElectron;
         }
 
-        private static Func<MethodProxy, MethodProxy> _nativeReceiveMethod = null;
+        private static Func<MethodProxy, Task<MethodProxy>> _nativeReceiveMethod = null;
 
         /// <summary>
         /// This shorthand is only called from ElectronNET implementation / runtime.
@@ -61,7 +62,7 @@ namespace BlazorMobile.Common.Services
         /// </summary>
         /// <param name="methodProxy"></param>
         /// <returns></returns>
-        public static MethodProxy CallNativeReceive(MethodProxy methodProxy)
+        public static Task<MethodProxy> CallNativeReceive(MethodProxy methodProxy)
         {
             if (_nativeReceiveMethod == null)
             {
@@ -71,7 +72,7 @@ namespace BlazorMobile.Common.Services
             return _nativeReceiveMethod(methodProxy);
         }
 
-        internal static void SetNativeReceive(Func<MethodProxy, MethodProxy> nativeReceive)
+        internal static void SetNativeReceive(Func<MethodProxy, Task<MethodProxy>> nativeReceive)
         {
             if (_nativeReceiveMethod != null)
             {

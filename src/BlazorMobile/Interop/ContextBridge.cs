@@ -10,6 +10,7 @@ using System.Linq;
 using System.Reflection;
 using System.Runtime.CompilerServices;
 using System.Text;
+using System.Threading;
 using System.Threading.Tasks;
 using Xamarin.Forms;
 
@@ -78,7 +79,23 @@ namespace BlazorMobile.Interop
             return BridgeSerializer.Deserialize<MethodProxy>(ref json);
         }
 
-        public static MethodProxy Receive(MethodProxy methodProxy)
+        private static void DispatchInvokation(MethodProxy methodProxy, MethodInfo baseMethod, object concreteService)
+        {
+            if (methodProxy.GenericTypes != null && methodProxy.GenericTypes.Length > 0)
+            {
+                Type[] genericTypes = methodProxy.GenericTypes.Select(p => p.ResolvedType()).ToArray();
+
+                methodProxy.ReturnValue = baseMethod.MakeGenericMethod(genericTypes).Invoke(concreteService, methodProxy.Parameters);
+                methodProxy.TaskSuccess = true;
+            }
+            else
+            {
+                methodProxy.ReturnValue = baseMethod.Invoke(concreteService, methodProxy.Parameters);
+                methodProxy.TaskSuccess = true;
+            }
+        }
+        
+        public static async Task<MethodProxy> Receive(MethodProxy methodProxy)
         {
             object defaultValue = default(object);
 
@@ -92,23 +109,15 @@ namespace BlazorMobile.Interop
                 //In case of failure, getting Default Return Type
                 defaultValue = GetDefault(baseMethod.ReturnType);
 
-                if (methodProxy.GenericTypes != null && methodProxy.GenericTypes.Length > 0)
-                {
-                    Type[] genericTypes = methodProxy.GenericTypes.Select(p => p.ResolvedType()).ToArray();
-
-                    methodProxy.ReturnValue = baseMethod.MakeGenericMethod(genericTypes).Invoke(concreteService, methodProxy.Parameters);
-                    methodProxy.TaskSuccess = true;
-                }
-                else
-                {
-                    methodProxy.ReturnValue = baseMethod.Invoke(concreteService, methodProxy.Parameters);
-                    methodProxy.TaskSuccess = true;
-                }
+                DispatchInvokation(methodProxy, baseMethod, concreteService);
 
                 if (methodProxy.AsyncTask)
                 {
-                    methodProxy.ReturnValue = GetResultFromTask(methodProxy.ReturnType.ResolvedType(), (Task)methodProxy.ReturnValue);
+                    await ((Task)methodProxy.ReturnValue);
                 }
+
+                methodProxy.ReturnValue = GetResultFromTask(methodProxy.ReturnType.ResolvedType(), (Task)methodProxy.ReturnValue);
+
             }
             catch (Exception ex)
             {

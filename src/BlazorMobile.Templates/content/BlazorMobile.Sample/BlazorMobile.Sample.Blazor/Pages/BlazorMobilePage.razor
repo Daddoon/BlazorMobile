@@ -1,0 +1,17 @@
+﻿@page  "/blazormobile"
+
+@using BlazorMobile.Common
+@using BlazorMobile.Sample.Common.Interfaces
+@inject IXamarinBridge XamarinBridge
+
+<h1>BlazorMobile</h1>
+
+<button class="btn btn-primary" @onclick="@ShowPlatform">Show Runtime platform in a native dialog</button>
+
+@code {
+
+    async void ShowPlatform()
+    {
+        await XamarinBridge.DisplayAlert("Platform identity", $"Current platform is {BlazorDevice.RuntimePlatform}", "Great!");
+    }
+}

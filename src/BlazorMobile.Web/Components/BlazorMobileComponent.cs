@@ -77,7 +77,7 @@ namespace BlazorMobile.Common.Components
             if (_isInitialized)
                 return;
 
-            if (!ContextHelper.IsBlazorMobile())
+            if (ContextHelper.IsBlazorMobile())
             {
                 builder.OpenElement(0, "script");
                 builder.AddContent(1, @"
@@ -97,10 +97,16 @@ namespace BlazorMobile.Common.Components
                 builder.AddContent(1, ContextBridgeHelper.GetInjectableJavascript(false).Replace("%_contextBridgeURI%", BlazorMobileService.GetContextBridgeURI()));
                 builder.CloseElement();
             }
+            else if (ContextHelper.IsElectronNET())
+            {
+                //Add electronNET helpers
+                builder.OpenElement(0, "script");
+                builder.AddContent(1, ContextBridgeHelper.GetElectronNETJavascript());
+                builder.CloseElement();
+            }
 
             _isInitialized = true;
         }
-
 
         private void SetCurrentRuntime(IJSRuntime runtime)
         {
