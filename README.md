@@ -444,14 +444,20 @@ If one of your APKs is marked as not being compliant, but is older and its not
 
 ## Electron.NET support with BlazorMobile
 
-Since **BlazorMobile 3.0.7-preview8.19405.7**, you can also deploy your application developped with Blazor & BlazorMobile as a desktop application with **Electron.NET**.
+Since **BlazorMobile 3.0.8-preview8.19405.7**, you can also deploy your application developped with Blazor & BlazorMobile as a desktop application with **Electron.NET**.
 The plugin has been updated in order to be aware of an Electron.NET executing context and behave correctly, with your same codebase and project structure.
 
-Be aware that even if a Xamarin.Forms library is present on the Electron.NET desktop application, there is no real support of the Xamarin.Forms API.
+Be aware that even if a Xamarin.Forms library is present on the Electron.NET desktop application, there is no deep support of the Xamarin.Forms API.
 
-If you need to call anything from Xamarin on your shared Xamarin.Forms project, be sure check if we are running through Electron or Xamarin, by calling **BlazorDevice.IsElectronNET()**.
+If you need to call anything from Xamarin on your shared Xamarin.Forms project that is not supported yet, you can check if we are running through Electron or Xamarin, by calling **BlazorDevice.IsElectronNET()**.
 
 To get started about the Electron.NET Desktop project, it's highly recommended to create it from **BlazoreMobile.Templates**. See [Getting started from sample](#getting-started-from-sample) section.
+
+### Xamarin.Forms support on Electron.NET
+
+- **DisplayAlert** - Like App.Current.MainPage.DisplayAlert(title, msg, cancel);
+- From Xamarin API, **Device.RuntimePlatform** will return "ElectronNET" 
+- **BlazorDevice.RuntimePlatform** will returns regular Xamarin.Forms values, with in addition **Windows**, **Linux**. Consts values available on **BlazorDevice** for RuntimePlatforms comparison have been updated to all theses values. **NOTE:** BlazorDevice.RuntimePlatform never returns "ElectronNET" but ElectronNET presence can be checked by **BlazorDevice.IsElectronNET**.
 
 ## Troubleshoot
 
