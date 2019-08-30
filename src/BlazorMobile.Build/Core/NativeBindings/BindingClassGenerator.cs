@@ -13,7 +13,11 @@ namespace BlazorMobile.Build.Core.NativeBindings
 {
     public static class BindingClassGenerator
     {
+        private const string ProxyInterfaceAttributeUsing = "BlazorMobile.Common.Attributes";
+
         private const string AttributeToSearch = "ProxyInterface";
+
+        private const string AttributeToSearchFull = ProxyInterfaceAttributeUsing + "." + AttributeToSearch;
 
         private const string BlazorMobileProxyNamespace = "BlazorMobile.Proxy";
 
@@ -148,14 +152,12 @@ namespace BlazorMobile.Build.Core.NativeBindings
             return output;
         }
 
-        private static void GenerateProxyClass(StringBuilder sb, IEnumerable<MemberDeclarationSyntax> members, string currentNamespaceName)
+        private static void GenerateProxyClass(StringBuilder sb, IEnumerable<MemberDeclarationSyntax> members, string currentNamespaceName, bool hasProxyInterfaceAttributeUsing)
         {
             //Search for interfaces
             foreach (var interfaceMember in members)
             {
-                if (!(interfaceMember is InterfaceDeclarationSyntax
-                    && ((InterfaceDeclarationSyntax)interfaceMember).Modifiers.Any(p => p.Kind() == SyntaxKind.PublicKeyword)
-                    && ((InterfaceDeclarationSyntax)interfaceMember).AttributeLists.Any(p => p.Attributes.ToString() == AttributeToSearch)))
+                if (!IsProxyInterface(interfaceMember, hasProxyInterfaceAttributeUsing))
                     continue;
 
                 InterfaceDeclarationSyntax currentInterface = (InterfaceDeclarationSyntax)interfaceMember;
@@ -249,6 +251,47 @@ namespace BlazorMobile.Build.Core.NativeBindings
             }
         }
 
+        private static bool IsProxyInterface(MemberDeclarationSyntax member, bool hasProxyInterfaceAttributeUsing)
+        {
+            return member is InterfaceDeclarationSyntax
+
+               && ((InterfaceDeclarationSyntax)member).Modifiers.Any(p => p.Kind() == SyntaxKind.PublicKeyword)
+               && ((InterfaceDeclarationSyntax)member).AttributeLists
+               .Any(p => p.Attributes.ToString().Equals(AttributeToSearch, StringComparison.OrdinalIgnoreCase) && hasProxyInterfaceAttributeUsing
+               || p.Attributes.ToString().Equals(AttributeToSearchFull, StringComparison.OrdinalIgnoreCase));
+        }
+
+        public static bool HasProxyInterfaces(string sourceFile)
+        {
+            SyntaxTree tree = CSharpSyntaxTree.ParseText(OpenMyInterfaceFile(sourceFile));
+            var root = (CompilationUnitSyntax)tree.GetRoot();
+            List<string> allUsings = root.Usings.Select(p => p.Name.ToString()).ToList();
+
+            bool hasProxyInterfaceAttributeUsing = allUsings.Contains(ProxyInterfaceAttributeUsing);
+
+            foreach (var member in root.Members)
+            {
+                //Interface with namespace
+                if (member is NamespaceDeclarationSyntax
+                    && ((NamespaceDeclarationSyntax)member).Name.Kind() == SyntaxKind.QualifiedName)
+                {
+                    NamespaceDeclarationSyntax currentNamespace = (NamespaceDeclarationSyntax)member;
+
+                    foreach (var interfaceMember in currentNamespace.Members)
+                    {
+                        if (IsProxyInterface(interfaceMember, hasProxyInterfaceAttributeUsing))
+                            return true;
+                    }
+                }
+                else if (IsProxyInterface(member, hasProxyInterfaceAttributeUsing))
+                {
+                    return true;
+                }
+            }
+
+            return false;
+        }
+
         public static string GenerateBindingClass(string sourceFile, string outputDir)
         {
             string filename = Path.GetFileName(sourceFile);
@@ -270,6 +313,8 @@ namespace BlazorMobile.Build.Core.NativeBindings
             allUsings.ForEach(p => sb.AppendLine($"using {p};"));
             sb.AppendLine(string.Empty);
 
+            bool hasProxyInterfaceAttributeUsing = allUsings.Contains(ProxyInterfaceAttributeUsing);
+
             foreach (var member in root.Members)
             {
                 //Interface with namespace
@@ -283,19 +328,17 @@ namespace BlazorMobile.Build.Core.NativeBindings
                     sb.AppendLine($"namespace {currentNamespaceName}.ProxyGenerated");
                     sb.AppendLine("{");
 
-                    GenerateProxyClass(sb, currentNamespace.Members, currentNamespaceName);
+                    GenerateProxyClass(sb, currentNamespace.Members, currentNamespaceName, hasProxyInterfaceAttributeUsing);
 
                     sb.AppendLine("}");
                 }
-                else if (member is InterfaceDeclarationSyntax
-    && ((InterfaceDeclarationSyntax)member).Modifiers.Any(p => p.Kind() == SyntaxKind.PublicKeyword)
-    && ((InterfaceDeclarationSyntax)member).AttributeLists.Any(p => p.Attributes.ToString() == AttributeToSearch))
+                else if (IsProxyInterface(member, hasProxyInterfaceAttributeUsing))
                 {
                     //Specific case for Interface without specific namespaces
                     sb.AppendLine($"namespace {BlazorMobileProxyNamespace}.ProxyGenerated");
                     sb.AppendLine("{");
 
-                    GenerateProxyClass(sb, new List<MemberDeclarationSyntax>() { member }, string.Empty);
+                    GenerateProxyClass(sb, new List<MemberDeclarationSyntax>() { member }, string.Empty, hasProxyInterfaceAttributeUsing);
 
                     sb.AppendLine("}");
                 }

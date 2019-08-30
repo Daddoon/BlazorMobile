@@ -10,7 +10,12 @@ namespace BlazorMobile.Build.Core
 {
     public static class NativeBindingsHelper
     {
-        public static IEnumerable<string> GetAllCSharpFiles(string workingDir)
+        private static List<string> FilterEligibleFiles(List<string> projectFiles)
+        {
+            return projectFiles.Where(p => BindingClassGenerator.HasProxyInterfaces(p)).ToList();
+        }
+
+        private static IEnumerable<string> GetAllCSharpFiles(string workingDir)
         {
             List<string> rootFiles = new List<string>();
 
@@ -25,7 +30,7 @@ namespace BlazorMobile.Build.Core
                 rootFiles.AddRange(Directory.GetFiles(d, "*.cs", SearchOption.TopDirectoryOnly));
             }
 
-            return rootFiles;
+            return FilterEligibleFiles(rootFiles);
         }
 
         private static List<string> GetReferencedProjects(string projectFile)
