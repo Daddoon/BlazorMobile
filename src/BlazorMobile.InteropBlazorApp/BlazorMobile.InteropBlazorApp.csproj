@@ -26,4 +26,8 @@
     <ProjectReference Include="..\BlazorMobile.Web\BlazorMobile.Web.csproj" />
   </ItemGroup>
 
+  <ItemGroup>
+    <Folder Include="Services\" />
+  </ItemGroup>
+
 </Project>
