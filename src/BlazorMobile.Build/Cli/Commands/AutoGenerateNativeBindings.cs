@@ -13,13 +13,13 @@ namespace BlazorMobile.Build.Server.Commands
                 "The full path to you .csproj file",
                 CommandOptionType.SingleValue);
 
-            var configuation = command.Option("--configuration",
-                "The project configuration to build",
+            var intermediateOutputPath = command.Option("--intermediate-output-path",
+                "The project intermediate output path",
                 CommandOptionType.SingleValue);
 
             command.OnExecute(() =>
             {
-                if (!projectFile.HasValue() || !configuation.HasValue())
+                if (!projectFile.HasValue() || !intermediateOutputPath.HasValue())
                 {
                     command.ShowHelp(command.Name);
                     return 1;
@@ -27,7 +27,7 @@ namespace BlazorMobile.Build.Server.Commands
 
                 try
                 {
-                    NativeBindingsHelper.GenerateNativeBindings(projectFile.Value(), configuation.Value());
+                    NativeBindingsHelper.GenerateNativeBindings(projectFile.Value(), intermediateOutputPath.Value());
                     return 0;
                 }
                 catch (Exception ex)

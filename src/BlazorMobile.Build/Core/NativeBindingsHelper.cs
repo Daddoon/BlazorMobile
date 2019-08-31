@@ -56,50 +56,46 @@ namespace BlazorMobile.Build.Core
             return referencedProjects.Select(p => Path.GetDirectoryName(projectFile) + Path.DirectorySeparatorChar + p).ToList();
         }
 
-        private static string GetProjectTargetFramework(string projectFile)
+        private const string BlazorMobileProxyClassFolderName = "BlazorMobileProxyClass";
+
+        public static string GetIntermediateOutputPath(string projectFile, string baseIntermediateOutputPath)
         {
-            try
+            string trimedPath = baseIntermediateOutputPath.TrimStart('\\');
+
+            if (Path.IsPathRooted(trimedPath))
             {
-                XDocument projDefinition = XDocument.Load(projectFile);
-                string targetFramework = projDefinition
-                    .Element("Project")
-                    .Elements("PropertyGroup")
-                    .Elements("TargetFramework")
-                    .Select(p => p.Value)
-                    .FirstOrDefault();
-
-                if (string.IsNullOrEmpty(targetFramework))
-                {
-                    throw new InvalidOperationException("Unable to resolve the current TargetFramework");
-                }
-
-                return targetFramework;
+                //Absolute path case
+                return baseIntermediateOutputPath + BlazorMobileProxyClassFolderName;
             }
-            catch (Exception)
+            else
             {
-                throw new InvalidOperationException("An error occured. The input project file is maybe not in .NET Core SDK format");
+                //Relative path case (the default one)
+                return Path.GetDirectoryName(projectFile) + Path.DirectorySeparatorChar + baseIntermediateOutputPath + BlazorMobileProxyClassFolderName;
             }
         }
 
-        private static string GetIntermediateOutputFolder(string projectFile, string currentConfiguration)
+        private static void CleanIntermediateOutputPath(string intermediateOutputPath)
         {
-            return "obj" + Path.DirectorySeparatorChar + currentConfiguration + Path.DirectorySeparatorChar + GetProjectTargetFramework(projectFile);
+            if (Directory.Exists(intermediateOutputPath))
+            {
+                Directory.Delete(intermediateOutputPath, true);
+            }
         }
 
-        public static void GenerateNativeBindings(string projectFile, string currentConfiguration)
+        public static void GenerateNativeBindings(string projectFile, string intermediateOutputPath)
         {
             if (string.IsNullOrEmpty(projectFile) || !File.Exists(projectFile))
             {
                 throw new InvalidOperationException("The specified project is invalid or does not exist");
             }
 
-            string intermediateOutputFolder = GetIntermediateOutputFolder(projectFile, currentConfiguration);
+            var finalOutputDir = GetIntermediateOutputPath(projectFile, intermediateOutputPath);
 
-            var finalOutputDir = Path.GetDirectoryName(projectFile) + Path.DirectorySeparatorChar + intermediateOutputFolder + Path.DirectorySeparatorChar + "BlazorMobileProxyClass";
+            //TODO: Filter not expired generation
+            CleanIntermediateOutputPath(finalOutputDir);
+
             var referencedProjects = GetReferencedProjects(projectFile);
-
-            //Add root Project
-            referencedProjects.Insert(0, projectFile);
+            referencedProjects.Insert(0, projectFile); //Add root project at first index
 
             foreach (var currentProject in referencedProjects)
             {
@@ -107,13 +103,10 @@ namespace BlazorMobile.Build.Core
 
                 string workingDirectory = Path.GetDirectoryName(currentProject);
 
-                //TODO: Filter not expired generation
-
                 foreach (var file in GetAllCSharpFiles(workingDirectory))
                 {
                     string relativeOutputPath = Path.GetDirectoryName(file.Replace(workingDirectory, string.Empty).TrimStart(Path.DirectorySeparatorChar));
 
-                    //TEST FOLDER
                     BindingClassGenerator.GenerateBindingClass(file, finalOutputDir + Path.DirectorySeparatorChar + projectName + Path.DirectorySeparatorChar + relativeOutputPath);
                 }
             }
