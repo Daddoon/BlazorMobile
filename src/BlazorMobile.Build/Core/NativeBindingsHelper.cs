@@ -33,27 +33,45 @@ namespace BlazorMobile.Build.Core
             return FilterEligibleFiles(rootFiles);
         }
 
-        private static List<string> GetReferencedProjects(string projectFile)
+        private static void _GetReferencedProjects(string projectFile, List<string> projectList)
         {
-            List<string> referencedProjects = new List<string>();
-
             try
             {
+                projectFile = Path.GetFullPath(projectFile);
+
+                if (projectList.Contains(projectFile))
+                    return;
+
+                projectList.Add(projectFile);
+
                 XDocument projDefinition = XDocument.Load(projectFile);
-                referencedProjects = projDefinition
+                var referencedProjects = projDefinition
                     .Element("Project")
                     .Elements("ItemGroup")
                     .Elements("ProjectReference")
                     .Attributes("Include")
-                    .Select(p => p.Value)
+                    .Select(p => Path.GetFullPath(Path.GetDirectoryName(projectFile) + Path.DirectorySeparatorChar + p.Value)) //Force absolute
                     .ToList();
+
+                foreach (string project in referencedProjects)
+                {
+                    //Recursive search. As each sub-project will not be added twice if absolute path is seen twice it will end automatically
+                    _GetReferencedProjects(project, projectList);
+                }
             }
             catch (Exception)
             {
                 //Ignore if the Project format is incorrect, we must target .NET Core SDK
             }
+        }
 
-            return referencedProjects.Select(p => Path.GetDirectoryName(projectFile) + Path.DirectorySeparatorChar + p).ToList();
+        private static List<string> GetReferencedProjects(string projectFile)
+        {
+            List<string> referencedProjects = new List<string>();
+
+            _GetReferencedProjects(projectFile, referencedProjects);
+
+            return referencedProjects;
         }
 
         private const string BlazorMobileProxyClassFolderName = "BlazorMobileProxyClass";
@@ -98,10 +116,7 @@ namespace BlazorMobile.Build.Core
             //As we may not have a lot of extra file to generate to native this is not a priority yet.
             CleanIntermediateOutputPath(finalOutputDir);
 
-            var referencedProjects = GetReferencedProjects(projectFile);
-            referencedProjects.Insert(0, projectFile); //Add root project at first index
-
-            foreach (var currentProject in referencedProjects)
+            foreach (var currentProject in GetReferencedProjects(projectFile))
             {
                 string projectName = Path.GetFileNameWithoutExtension(currentProject);
 
