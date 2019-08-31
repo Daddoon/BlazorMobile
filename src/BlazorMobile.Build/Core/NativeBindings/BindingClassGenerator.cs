@@ -31,7 +31,7 @@ namespace BlazorMobile.Build.Core.NativeBindings
 
         private const string GetCurrentMethod = "global::System.Reflection.MethodBase.GetCurrentMethod()";
 
-        private const string EditorBrowsableStateNever = "[EditorBrowsable(EditorBrowsableState.Never)]";
+        private const string EditorBrowsableStateNever = "[System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]";
 
         private const string ObsoleteMessage = "[System.Obsolete(BlazorMobile.Proxy.Resource.ObsoleteMessage, true)]";
 
@@ -57,28 +57,39 @@ namespace BlazorMobile.Build.Core.NativeBindings
         /// <param name="method"></param>
         /// <param name="resultType"></param>
         /// <returns></returns>
-        private static bool IsAsyncMethod(MethodDeclarationSyntax method, out string[] resultType)
+        private static bool IsAsyncMethod(TypeSyntax method, out string[] resultType) 
         {
             bool isAsync = false;
             resultType = null;
 
-            if (method.ReturnType is IdentifierNameSyntax)
+            if (method is QualifiedNameSyntax)
             {
+                return IsAsyncMethod(((QualifiedNameSyntax)method).Right, out resultType);
+            }
+
+            if (method is IdentifierNameSyntax)
+            {
+                string typeIdentifier = ((IdentifierNameSyntax)method).Identifier.ToString();
+
                 //If returning Task
-                if (((IdentifierNameSyntax)method.ReturnType).Identifier.ToString().Equals("Task", StringComparison.InvariantCultureIgnoreCase))
+                if (typeIdentifier.Equals("Task", StringComparison.OrdinalIgnoreCase))
                 {
                     isAsync = true;
                 }
             }
-            else if (method.ReturnType is GenericNameSyntax)
+            else if (method is GenericNameSyntax)
             {
                 //If returning Task<>
-                if (((GenericNameSyntax)method.ReturnType).Kind() == SyntaxKind.GenericName
-                    && ((GenericNameSyntax)method.ReturnType).Identifier.ToString().Equals("Task", StringComparison.InvariantCultureIgnoreCase))
+                if (method.Kind() == SyntaxKind.GenericName)
                 {
-                    isAsync = true;
+                    string typeIdentifier = ((GenericNameSyntax)method).Identifier.ToString();
 
-                    resultType = ((GenericNameSyntax)method.ReturnType).TypeArgumentList.Arguments.Select(p => p.ToString()).ToArray();
+                    //If returning Task
+                    if (typeIdentifier.Equals("Task", StringComparison.OrdinalIgnoreCase))
+                    {
+                        isAsync = true;
+                        resultType = ((GenericNameSyntax)method).TypeArgumentList.Arguments.Select(p => p.ToString()).ToArray();
+                    }
                 }
             }
 
@@ -185,7 +196,7 @@ namespace BlazorMobile.Build.Core.NativeBindings
                     sb.AppendLine($"\t\tpublic {methodSignature.TrimEnd(';')}");
                     sb.AppendLine("\t\t{");
 
-                    bool methodIsAsync = IsAsyncMethod(methodDeclaration, out string[] baseType);
+                    bool methodIsAsync = IsAsyncMethod(methodDeclaration.ReturnType, out string[] baseType);
 
                     bool methodHasGenericParameters = HasGenericParameter(methodDeclaration, out string[] genericParameters);
 
