@@ -91,7 +91,11 @@ namespace BlazorMobile.Build.Core
 
             var finalOutputDir = GetIntermediateOutputPath(projectFile, intermediateOutputPath);
 
-            //TODO: Filter not expired generation
+            //TODO: Filter not expired generated file
+            //NOTE: This is actually a shortcut. We delete everything and generate file.
+            //This way we are sure that if a file has been deleted on project side, there is no "ghost file".
+            //We must check 2 files tree and add/remove/update correctly
+            //As we may not have a lot of extra file to generate to native this is not a priority yet.
             CleanIntermediateOutputPath(finalOutputDir);
 
             var referencedProjects = GetReferencedProjects(projectFile);
