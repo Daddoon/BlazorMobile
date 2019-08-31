@@ -13,9 +13,13 @@ namespace BlazorMobile.Build.Server.Commands
                 "The full path to you .csproj file",
                 CommandOptionType.SingleValue);
 
+            var configuation = command.Option("--configuration",
+                "The project configuration to build",
+                CommandOptionType.SingleValue);
+
             command.OnExecute(() =>
             {
-                if (!projectFile.HasValue())
+                if (!projectFile.HasValue() || !configuation.HasValue())
                 {
                     command.ShowHelp(command.Name);
                     return 1;
@@ -23,7 +27,7 @@ namespace BlazorMobile.Build.Server.Commands
 
                 try
                 {
-                    NativeBindingsHelper.GenerateNativeBindings(projectFile.Value());
+                    NativeBindingsHelper.GenerateNativeBindings(projectFile.Value(), configuation.Value());
                     return 0;
                 }
                 catch (Exception ex)

@@ -56,14 +56,46 @@ namespace BlazorMobile.Build.Core
             return referencedProjects.Select(p => Path.GetDirectoryName(projectFile) + Path.DirectorySeparatorChar + p).ToList();
         }
 
-        public static void GenerateNativeBindings(string projectFile)
+        private static string GetProjectTargetFramework(string projectFile)
+        {
+            try
+            {
+                XDocument projDefinition = XDocument.Load(projectFile);
+                string targetFramework = projDefinition
+                    .Element("Project")
+                    .Elements("PropertyGroup")
+                    .Elements("TargetFramework")
+                    .Select(p => p.Value)
+                    .FirstOrDefault();
+
+                if (string.IsNullOrEmpty(targetFramework))
+                {
+                    throw new InvalidOperationException("Unable to resolve the current TargetFramework");
+                }
+
+                return targetFramework;
+            }
+            catch (Exception)
+            {
+                throw new InvalidOperationException("An error occured. The input project file is maybe not in .NET Core SDK format");
+            }
+        }
+
+        private static string GetIntermediateOutputFolder(string projectFile, string currentConfiguration)
+        {
+            return "obj" + Path.DirectorySeparatorChar + currentConfiguration + Path.DirectorySeparatorChar + GetProjectTargetFramework(projectFile);
+        }
+
+        public static void GenerateNativeBindings(string projectFile, string currentConfiguration)
         {
             if (string.IsNullOrEmpty(projectFile) || !File.Exists(projectFile))
             {
                 throw new InvalidOperationException("The specified project is invalid or does not exist");
             }
 
-            var finalOutputDir = Path.GetDirectoryName(projectFile) + Path.DirectorySeparatorChar + "BlazorMobileProxyClass";
+            string intermediateOutputFolder = GetIntermediateOutputFolder(projectFile, currentConfiguration);
+
+            var finalOutputDir = Path.GetDirectoryName(projectFile) + Path.DirectorySeparatorChar + intermediateOutputFolder + Path.DirectorySeparatorChar + "BlazorMobileProxyClass";
             var referencedProjects = GetReferencedProjects(projectFile);
 
             //Add root Project
