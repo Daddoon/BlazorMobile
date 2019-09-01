@@ -25,7 +25,7 @@ Create full C# driven hybrid-apps for iOS, Android, UWP & Desktop with Blazor!
 - [Getting started from sample](#getting-started-from-sample)
 - [Linking your Blazor app to your Xamarin project](#linking-your-blazor-app-to-your-xamarin-project)
 - [Detecting Runtime Platform](#detecting-runtime-platform)
-- [Communication between Blazor & Xamarin.Forms](#communication-between-blazor--xamarinforms)
+- [Communication between Blazor & Native](#communication-between-blazor--native)
 - [Device remote debugging & Debugging from NET Core 3.0](#device-remote-debugging--debugging-from-net-core-30)
 - [Android Build size optimization](#android-build-size-optimization)
 - [Electron.NET support with BlazorMobile](#electronnet-support-with-blazormobile)
@@ -191,14 +191,9 @@ var result = await XamarinBridge.DisplayAlert("Platform identity", $"Current pla
 
 If using this example the sample project, clicking on the **Alert Me** button on the **Counter page** should show you the **native device alert**, with the given parameters, and showing you the **current detected device runtime platform**, like iOS or Android.
 
-## Communication between Blazor & Xamarin.Forms
+## Communication between Blazor & Native
 
-In order to communicate from Blazor to Xamarin you need to do some few steps, as JIT is disabled on AOT environment like Blazor.
-Here is a simple example to Display a Xamarin.Forms alert from Blazor.
-
-**In your shared project for Blazor & Xamarin**, create an interface in an Interfaces folder, and add the ProxyInterface attribute on it. Assuming a **IXamarinBridge** interface class, present on the **BlazorMobile.Sample.Common project**.
-
-Your file could look like this:
+**In the project shared between Blazor & Xamarin**, formerly **YourAppName.Common** create an interface, and add the **[ProxyInterface]** attribute on top of it. Assuming using the sample **IXamarinBridge** interface, present by default on YourAppName.Common project, your interface may look like this:
 
 ```csharp
 using BlazorMobile.Common.Attributes;
@@ -216,9 +211,14 @@ namespace BlazorMobile.Sample.Common.Interfaces
 
 ```
 
-**In your Xamarin shared application project**, implement the Device implementation, also referenced as a DependencyService (notice the attribute here). Assuming adding it like in **BlazorMobile.Sample project**.
+**In your Xamarin shared application project**, formerly **YourAppName** project:
+
+- Create your implementation class
+- Inherit your previously created interface on this class
+- Implement your native code behavior
+- Decorate your class file with **[assembly: Dependency(typeof(YourClass))]** at namespace level **OR** alternatively use **DependencyService.Register** manually.
 	
-Your implementation may look like this. Here a kind of useless example:
+Your implementation may look like this. Here a kind of simple example:
 
 ```csharp
 using BlazorMobile.Sample.Common.Interfaces;
@@ -232,9 +232,9 @@ namespace BlazorMobile.Sample.Services
 {
     public class XamarinBridge : IXamarinBridge
     {
-        public Task<List<string>> DisplayAlert(string title, string msg, string cancel)
+        public async Task<List<string>> DisplayAlert(string title, string msg, string cancel)
         {
-            App.Current.MainPage.DisplayAlert(title, msg, cancel);
+            await App.Current.MainPage.DisplayAlert(title, msg, cancel);
 
             List<string> result = new List<string>()
             {
@@ -243,44 +243,56 @@ namespace BlazorMobile.Sample.Services
                 "Dolorem",
             };
 
-            return Task.FromResult(result);
+            return result;
         }
     }
 }
 ```
 
-**In your Blazor project**, implement the proxy service class implementation.
+**In your Blazor project**, you only have two things to do:
 
-_**Note:** We must help the call the proxy by ourself, as the Blazor WASM implementation does not support any kind of dynamic dispatcher, as **System.Reflection.Emit is not available in this context**. Just keep using the same logic as in the example below._
+- Call **services.AddBlazorMobileNativeServices<Startup>();** from **ConfigureServices** in **Startup.cs**
+- Inject your interface in your pages and call the methods whenever you want!
 
-For our example it look like this in our **BlazorMobile.Sample.Blazor** project:
+Starting from the template, as a convinience, adding BlazorMobile natives services from **ServicesHelper.ConfigureCommonServices**.
 
 ```csharp
-using BlazorMobile.Common.Services;
-using BlazorMobile.Sample.Common.Interfaces;
-using System.Collections.Generic;
-using System.Reflection;
-using System.Threading.Tasks;
+using Microsoft.Extensions.DependencyInjection;
 
-namespace BlazorMobile.Sample.Blazor.Services
+namespace BlazorMobile.Sample.Blazor.Helpers
 {
-    public class XamarinBridgeProxy : IXamarinBridge
+    public static class ServicesHelper
     {
-        public Task<List<string>> DisplayAlert(string title, string msg, string cancel)
+        public static void ConfigureCommonServices(IServiceCollection services)
         {
-            return MethodDispatcher.CallMethodAsync<List<string>>(MethodBase.GetCurrentMethod(), title, msg, cancel);
+            //Add services shared between multiples project here
+            services.AddBlazorMobileNativeServices<Startup>();
         }
     }
 }
 ```
 
-The **MethodDispatcher** class, that will prepare every callback for you, calling the right interface and parameters types on the Xamarin side, if you wrote everything right.
+Then if you want to use any of your Blazor to native interface, it's as simple as this:
 
-Because of the lack of JIT, you have to give yourself some parameters. Take a look at the different implementations of MethodDispatcher methods, in order to accord everything to your context, like if your using Task (Async calls) or not, if you expect a return value, generic types...
+```csharp
+@page  "/blazormobile"
 
-There is actually some syntactic sugar method calls in order to just mimic what you are expecting, by just recognizing the same kind of signature, if using generic parameters etc. You may take a look at the [MethodDispatcher file](https://github.com/Daddoon/BlazorMobile/blob/master/src/BlazorMobile.Web/Services/MethodDispatcher.cs) if you want to see the available methods overload.
+@using BlazorMobile.Common
+@using BlazorMobile.Sample.Common.Interfaces
+@inject IXamarinBridge XamarinBridge
 
-If you want that the caller and receiver method are actually the same method signature on the 2 ends (Blazor & Xamarin), you can safely use MethodBase.GetCurrentMethod() everytime for the MethodInfo parameter, like in our example.
+<h1>BlazorMobile</h1>
+
+<button class="btn btn-primary" @onclick="@ShowPlatform">Show Runtime platform in a native dialog</button>
+
+@code {
+
+    async void ShowPlatform()
+    {
+        await XamarinBridge.DisplayAlert("Platform identity", $"Current platform is {BlazorDevice.RuntimePlatform}", "Great!");
+    }
+}
+```
 
 ## Device remote debugging & Debugging from NET Core 3.0
 
