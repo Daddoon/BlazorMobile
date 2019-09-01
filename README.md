@@ -1,15 +1,15 @@
 # BlazorMobile[<img src="logo_blazormobile_256x256.png?raw=true" align="right" width="200">]() 
 
-Create full C# driven hybrid-apps for iOS, Android & UWP !
+Create full C# driven hybrid-apps for iOS, Android, UWP & Desktop with Blazor!
 
 **BlazorMobile** - is a set of Nuget packages & project templates for embedding a Blazor web application as a standalone mobile application, hosted in Xamarin.
 
 ## Platform requirements
  
+- **Blazor:** 3.0.0-preview8.19405.7
 - **Android:** 4.4 or greater
 - **iOS:** 12.0 or greater
 - **UWP:** Build 16299 or greater
-- **Blazor:** 3.0.0-preview8.19405.7
 
 ### Experimental
 
@@ -25,7 +25,7 @@ Create full C# driven hybrid-apps for iOS, Android & UWP !
 - [Getting started from sample](#getting-started-from-sample)
 - [Linking your Blazor app to your Xamarin project](#linking-your-blazor-app-to-your-xamarin-project)
 - [Detecting Runtime Platform](#detecting-runtime-platform)
-- [Communication between Blazor & Xamarin.Forms](#communication-between-blazor--xamarinforms)
+- [Communication between Blazor & Native](#communication-between-blazor--native)
 - [Device remote debugging & Debugging from NET Core 3.0](#device-remote-debugging--debugging-from-net-core-30)
 - [Android Build size optimization](#android-build-size-optimization)
 - [Electron.NET support with BlazorMobile](#electronnet-support-with-blazormobile)
@@ -42,6 +42,8 @@ Create full C# driven hybrid-apps for iOS, Android & UWP !
 - [BlazorMobile 3.0.4-preview7.19365.7 to 3.0.5-preview8.19405.7](#blazormobile-304-preview7193657-to-305-preview8194057)
 - [BlazorMobile 3.0.5-preview8.19405.7 to 3.0.6-preview8.19405.7](#blazormobile-305-preview8194057-to-306-preview8194057)
 - [BlazorMobile 3.0.6-preview8.19405.7 to 3.0.7-preview8.19405.7](#blazormobile-306-preview8194057-to-307-preview8194057)
+- [BlazorMobile 3.0.7-preview8.19405.7 to 3.0.8-preview8.19405.7](#blazormobile-307-preview8194057-to-308-preview8194057)
+- [BlazorMobile 3.0.8-preview8.19405.7 to 3.0.9-preview8.19405.7](#blazormobile-308-preview8194057-to-309-preview8194057)
 
 ## Difference between BlazorMobile & Progressive Web Apps (PWA)
 
@@ -64,7 +66,7 @@ The main differences / advantages of BlazorMobile are:
 First install the template model with the following command from a command prompt:
 
 ```console
-dotnet new -i BlazorMobile.Templates::3.0.7-preview8.19405.7
+dotnet new -i BlazorMobile.Templates::3.0.9-preview8.19405.7
 ```
 
 Then go the folder where you want your project to be created, and from a command prompt type the following command:
@@ -110,7 +112,7 @@ As seen on the **BlazorMobile.Sample** project, assuming a file linked as in a f
 ```csharp
 namespace BlazorMobile.Sample
 {
-	public partial class App : Application
+	public partial class App : BlazorApplication
 	{
         public const string BlazorAppPackageName = "BlazorMobile.Sample.Blazor.zip";
 
@@ -190,14 +192,9 @@ var result = await XamarinBridge.DisplayAlert("Platform identity", $"Current pla
 
 If using this example the sample project, clicking on the **Alert Me** button on the **Counter page** should show you the **native device alert**, with the given parameters, and showing you the **current detected device runtime platform**, like iOS or Android.
 
-## Communication between Blazor & Xamarin.Forms
+## Communication between Blazor & Native
 
-In order to communicate from Blazor to Xamarin you need to do some few steps, as JIT is disabled on AOT environment like Blazor.
-Here is a simple example to Display a Xamarin.Forms alert from Blazor.
-
-**In your shared project for Blazor & Xamarin**, create an interface in an Interfaces folder, and add the ProxyInterface attribute on it. Assuming a **IXamarinBridge** interface class, present on the **BlazorMobile.Sample.Common project**.
-
-Your file could look like this:
+**In the project shared between Blazor & Xamarin**, formerly **YourAppName.Common** create an interface, and add the **[ProxyInterface]** attribute on top of it. Assuming using the sample **IXamarinBridge** interface, present by default on YourAppName.Common project, your interface may look like this:
 
 ```csharp
 using BlazorMobile.Common.Attributes;
@@ -215,9 +212,14 @@ namespace BlazorMobile.Sample.Common.Interfaces
 
 ```
 
-**In your Xamarin shared application project**, implement the Device implementation, also referenced as a DependencyService (notice the attribute here). Assuming adding it like in **BlazorMobile.Sample project**.
+**In your Xamarin shared application project**, formerly **YourAppName** project:
+
+- Create your implementation class
+- Inherit your previously created interface on this class
+- Implement your native code behavior
+- Decorate your class file with **[assembly: Dependency(typeof(YourClass))]** at namespace level **OR** alternatively use **DependencyService.Register** manually.
 	
-Your implementation may look like this. Here a kind of useless example:
+Your implementation may look like this. Here a kind of simple example:
 
 ```csharp
 using BlazorMobile.Sample.Common.Interfaces;
@@ -231,9 +233,9 @@ namespace BlazorMobile.Sample.Services
 {
     public class XamarinBridge : IXamarinBridge
     {
-        public Task<List<string>> DisplayAlert(string title, string msg, string cancel)
+        public async Task<List<string>> DisplayAlert(string title, string msg, string cancel)
         {
-            App.Current.MainPage.DisplayAlert(title, msg, cancel);
+            await App.Current.MainPage.DisplayAlert(title, msg, cancel);
 
             List<string> result = new List<string>()
             {
@@ -242,44 +244,56 @@ namespace BlazorMobile.Sample.Services
                 "Dolorem",
             };
 
-            return Task.FromResult(result);
+            return result;
         }
     }
 }
 ```
 
-**In your Blazor project**, implement the proxy service class implementation.
+**In your Blazor project**, you only have two things to do:
 
-_**Note:** We must help the call the proxy by ourself, as the Blazor WASM implementation does not support any kind of dynamic dispatcher, as **System.Reflection.Emit is not available in this context**. Just keep using the same logic as in the example below._
+- Call **services.AddBlazorMobileNativeServices\<Startup\>();** from **ConfigureServices** in **Startup.cs**
+- Inject your interface in your pages and call the methods whenever you want!
 
-For our example it look like this in our **BlazorMobile.Sample.Blazor** project:
+Starting from the template, as a convinience, adding BlazorMobile natives services from **ServicesHelper.ConfigureCommonServices**.
 
 ```csharp
-using BlazorMobile.Common.Services;
-using BlazorMobile.Sample.Common.Interfaces;
-using System.Collections.Generic;
-using System.Reflection;
-using System.Threading.Tasks;
+using Microsoft.Extensions.DependencyInjection;
 
-namespace BlazorMobile.Sample.Blazor.Services
+namespace BlazorMobile.Sample.Blazor.Helpers
 {
-    public class XamarinBridgeProxy : IXamarinBridge
+    public static class ServicesHelper
     {
-        public Task<List<string>> DisplayAlert(string title, string msg, string cancel)
+        public static void ConfigureCommonServices(IServiceCollection services)
         {
-            return MethodDispatcher.CallMethodAsync<List<string>>(MethodBase.GetCurrentMethod(), title, msg, cancel);
+            //Add services shared between multiples project here
+            services.AddBlazorMobileNativeServices<Startup>();
         }
     }
 }
 ```
 
-The **MethodDispatcher** class, that will prepare every callback for you, calling the right interface and parameters types on the Xamarin side, if you wrote everything right.
+Then if you want to use any of your Blazor to native interface, it's as simple as this:
 
-Because of the lack of JIT, you have to give yourself some parameters. Take a look at the different implementations of MethodDispatcher methods, in order to accord everything to your context, like if your using Task (Async calls) or not, if you expect a return value, generic types...
+```csharp
+@page  "/blazormobile"
 
-There is actually some syntactic sugar method calls in order to just mimic what you are expecting, by just recognizing the same kind of signature, if using generic parameters etc. You may take a look at the [MethodDispatcher file](https://github.com/Daddoon/BlazorMobile/blob/master/src/BlazorMobile.Web/Services/MethodDispatcher.cs) if you want to see the available methods overload.
+@using BlazorMobile.Common
+@using BlazorMobile.Sample.Common.Interfaces
+@inject IXamarinBridge XamarinBridge
 
-If you want that the caller and receiver method are actually the same method signature on the 2 ends (Blazor & Xamarin), you can safely use MethodBase.GetCurrentMethod() everytime for the MethodInfo parameter, like in our example.
+<h1>BlazorMobile</h1>
+
+<button class="btn btn-primary" @onclick="@ShowPlatform">Show Runtime platform in a native dialog</button>
+
+@code {
+
+    async void ShowPlatform()
+    {
+        await XamarinBridge.DisplayAlert("Platform identity", $"Current platform is {BlazorDevice.RuntimePlatform}", "Great!");
+    }
+}
+```
 
 ## Device remote debugging & Debugging from NET Core 3.0
 
@@ -442,14 +456,23 @@ If one of your APKs is marked as not being compliant, but is older and its not
 
 ## Electron.NET support with BlazorMobile
 
-Since **BlazorMobile 3.0.7-preview8.19405.7**, you can also deploy your application developped with Blazor & BlazorMobile as a desktop application with **Electron.NET**.
+Since **BlazorMobile 3.0.8-preview8.19405.7**, you can also deploy your application developped with Blazor & BlazorMobile as a desktop application with **Electron.NET**.
 The plugin has been updated in order to be aware of an Electron.NET executing context and behave correctly, with your same codebase and project structure.
 
-Be aware that even if a Xamarin.Forms library is present on the Electron.NET desktop application, there is no real support of the Xamarin.Forms API.
+Be aware that even if a Xamarin.Forms library is present on the Electron.NET desktop application, there is no deep support of the Xamarin.Forms API.
 
-If you need to call anything from Xamarin on your shared Xamarin.Forms project, be sure check if we are running through Electron or Xamarin, by calling **BlazorDevice.IsElectronNET()**.
+If you need to call anything from Xamarin on your shared Xamarin.Forms project that is not supported yet, you can check if we are running through Electron or Xamarin, by calling **BlazorDevice.IsElectronNET()**.
 
 To get started about the Electron.NET Desktop project, it's highly recommended to create it from **BlazoreMobile.Templates**. See [Getting started from sample](#getting-started-from-sample) section.
+
+### Xamarin.Forms support on Electron.NET
+
+- **DisplayAlert** - Like App.Current.MainPage.DisplayAlert(title, msg, cancel);
+- **DependencyService** - Like a regular Xamarin.Forms application. This is different from the regular .NET Core Dependency Injector. For platform specific API in your app, you should interact through this service in your project, in order to interact the same way as on mobile devices.
+- **Device.RuntimePlatform** will return "ElectronNET".
+- **BlazorDevice.RuntimePlatform** will returns regular Xamarin.Forms values, with in addition **Windows**, **Linux**. Consts values available on **BlazorDevice** for RuntimePlatforms comparison have been updated to all theses values.
+
+**NOTE:** BlazorDevice.RuntimePlatform never returns "ElectronNET" but ElectronNET presence can be checked by **BlazorDevice.IsElectronNET**.
 
 ## Troubleshoot
 
@@ -748,6 +771,127 @@ BlazorMobileService.Init((bool success) =>
 ```
 
 As you can see, your code can now safely be written outside the UseEndpoints scope.
+
+### BlazorMobile 3.0.7-preview8.19405.7 to 3.0.8-preview8.19405.7
+
+Update your installed BlazorMobile.Templates to this version by calling:
+
+```console
+dotnet new -i BlazorMobile.Templates::3.0.8-preview8.19405.7
+```
+
+Update all your BlazorMobile.* NuGet packages to 3.0.8-preview8.19405.7.
+
+Then there is nothing to do, except if you created a template from the buggy **BlazorMobile 3.0.7-preview8.19405.7** version, as some things have been simplified since.
+
+If you are in this case you must remove this line in **Startup.cs** of your Desktop project:
+
+```csharp
+Task.Run(async () => await Electron.WindowManager.CreateWindowAsync());
+```
+
+**BlazorMobile.Init** should be called before **UseBlazorMobileWithElectronNET**, in **Startup.cs** of your Desktop project:
+
+```csharp
+    BlazorMobileService.Init((bool success) =>
+    {
+	Console.WriteLine($"Initialization success: {success}");
+	Console.WriteLine("Device is: " + BlazorDevice.RuntimePlatform);
+    });
+
+    app.UseBlazorMobileWithElectronNET<App>();
+```
+
+As the Xamarin.Forms initialization is now supported on ElectronNET environment, you must modify your **App.xaml.cs** in your shared Xamarin.Forms project, and remove theses lines:
+
+```csharp
+    //We do not need to configure any embedded HTTP server from here with Electron as we are already on ASP.NET Core
+    //We do not need to set any package to load, nor loading any browser as it's already managed by Electron
+    if (BlazorDevice.IsElectronNET())
+    {
+	return;
+    }
+```
+
+In your **XamarinBridge.cs** test service, you do not need to check if **BlazorDevice.IsElectronNET** is true for DisplayAlert, as it has been implemented to forward to Electron. You can replace:
+
+```csharp
+public Task<List<string>> DisplayAlert(string title, string msg, string cancel)
+{
+    if (BlazorDevice.IsElectronNET())
+    {
+	Console.WriteLine(msg);
+    }
+    else
+    {
+	App.Current.MainPage.DisplayAlert(title, msg, cancel);
+    }
+
+    List<string> result = new List<string>()
+    {
+	"Lorem",
+	"Ipsum",
+	"Dolorem",
+    };
+
+    return Task.FromResult(result);
+}
+```
+
+To something like this:
+
+```csharp
+public async Task<List<string>> DisplayAlert(string title, string msg, string cancel)
+{
+    await App.Current.MainPage.DisplayAlert(title, msg, cancel);
+
+    List<string> result = new List<string>()
+    {
+	"Lorem",
+	"Ipsum",
+	"Dolorem",
+    };
+
+    return result;
+}
+```
+
+### BlazorMobile 3.0.8-preview8.19405.7 to 3.0.9-preview8.19405.7
+
+- Update your installed BlazorMobile.Templates to this version by calling:
+
+```console
+dotnet new -i BlazorMobile.Templates::3.0.9-preview8.19405.7
+```
+
+- Update all your BlazorMobile.* NuGet packages to 3.0.9-preview8.19405.7.
+
+- **Breaking changes:** All synchronous methods signatures from **MethodDispatcher.CallMethod** have been removed. You must only use **Task or Task<>** types signature, async or not, on your interop calls.
+
+- Since **BlazorMobile 3.0.9-preview8.19405.7**, communication between Blazor to Native is automatic on the Blazor side.
+You don't have to guess anymore the method signature needed for calling to native, nor creating yourself a proxy class with your interface.
+
+- To upgrade with this new automated interoping behavior, you may now delete all your interface proxy **class implementation** in your Blazor project.
+
+- In your **Startup.cs** file, in **ConfigureServices** or **ServicesHelper.ConfigureCommonServices** if you use something lik in the template model, call **services.AddBlazorMobileNativeServices\<Startup\>();**
+
+```csharp
+using Microsoft.Extensions.DependencyInjection;
+
+namespace BlazorMobile.Sample.Blazor.Helpers
+{
+    public static class ServicesHelper
+    {
+        public static void ConfigureCommonServices(IServiceCollection services)
+        {
+            //Add services shared between multiples project here
+            services.AddBlazorMobileNativeServices<Startup>();
+        }
+    }
+}
+```
+
+- You may check the [Communication between Blazor & Native](#communication-between-blazor--native) section that has been updated in regard of this update.
 
 ## Authors
 

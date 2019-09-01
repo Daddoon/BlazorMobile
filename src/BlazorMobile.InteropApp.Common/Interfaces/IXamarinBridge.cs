@@ -7,7 +7,7 @@ using System.Threading.Tasks;
 
 namespace BlazorMobile.InteropApp.Common.Interfaces
 {
-    [ProxyInterface]
+    [BlazorMobile.Common.Attributes.ProxyInterface]
     public interface IXamarinBridge
     {
         Task<List<string>> DisplayAlert(string title, string msg, string cancel);

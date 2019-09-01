@@ -1,5 +1,4 @@
 ﻿using BlazorMobile.InteropApp.Common.Interfaces;
-using BlazorMobile.InteropBlazorApp.Services;
 using Microsoft.Extensions.DependencyInjection;
 using System;
 using System.Collections.Generic;
@@ -11,7 +10,6 @@ namespace BlazorMobile.InteropBlazorApp.Helpers
     {
         public static void ConfigureCommonServices(IServiceCollection services)
         {
-            services.AddSingleton<IXamarinBridge, XamarinBridgeProxy>();
         }
     }
 }
