@@ -1,6 +1,4 @@
-﻿using BlazorMobile.Sample.Blazor.Services;
-using BlazorMobile.Sample.Common.Interfaces;
-using Microsoft.Extensions.DependencyInjection;
+﻿using Microsoft.Extensions.DependencyInjection;
 
 namespace BlazorMobile.Sample.Blazor.Helpers
 {
@@ -8,7 +6,8 @@ namespace BlazorMobile.Sample.Blazor.Helpers
     {
         public static void ConfigureCommonServices(IServiceCollection services)
         {
-            services.AddSingleton<IXamarinBridge, XamarinBridgeProxy>();
+            //Add services shared between multiples project here
+            services.AddBlazorMobileNativeServices<Startup>();
         }
     }
 }

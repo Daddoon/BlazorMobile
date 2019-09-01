@@ -119,63 +119,6 @@ namespace BlazorMobile.Common.Services
             }
         }
 
-        #region VOID CALL
-
-        public static void CallVoidMethod(MethodBase method)
-        {
-            InternalCallMethod<IgnoredType>(method, null, null, false);
-        }
-
-        public static void CallVoidMethod(MethodBase method, params object[] args)
-        {
-            InternalCallMethod<IgnoredType>(method, null, args, false);
-        }
-
-        #region SYNTACTIC SUGAR HELPER
-
-        //Just a Generic argument signature for easier signature call
-
-        public static void CallVoidMethod<TGenericArg>(MethodBase method, params object[] args)
-        {
-            InternalCallMethod<IgnoredType>(
-                method,
-                new Type[] { typeof(TGenericArg) }
-                , args, false);
-        }
-
-        public static void CallVoidMethod<TGenericArg1, TGenericArg2>(MethodBase method, params object[] args)
-        {
-            InternalCallMethod<IgnoredType>(
-                method,
-                new Type[] { typeof(TGenericArg1), typeof(TGenericArg2) }
-                , args, false);
-        }
-
-        public static void CallVoidMethod<TGenericArg1, TGenericArg2, TGenericArg3>(MethodBase method, params object[] args)
-        {
-            InternalCallMethod<IgnoredType>(
-                method,
-                new Type[] { typeof(TGenericArg1), typeof(TGenericArg2), typeof(TGenericArg3) }
-                , args, false);
-        }
-
-        public static void CallVoidMethod<TGenericArg1, TGenericArg2, TGenericArg3, TGenericArg4>(MethodBase method, params object[] args)
-        {
-            InternalCallMethod<IgnoredType>(
-                method,
-                new Type[] { typeof(TGenericArg1), typeof(TGenericArg2), typeof(TGenericArg4) }
-                , args, false);
-        }
-
-        #endregion
-
-        public static void CallVoidMethod(MethodBase method, Type[] genericParameters, params object[] args)
-        {
-            InternalCallMethod<IgnoredType>(method, genericParameters, args, false);
-        }
-
-        #endregion
-
         #region VOID CALL ASYNC
 
         public static Task CallVoidMethodAsync(MethodBase method)
@@ -216,7 +159,7 @@ namespace BlazorMobile.Common.Services
         {
             return InternalCallMethod<IgnoredType>(
                 method,
-                new Type[] { typeof(TGenericArg1), typeof(TGenericArg2), typeof(TGenericArg4) }
+                new Type[] { typeof(TGenericArg1), typeof(TGenericArg2), typeof(TGenericArg3), typeof(TGenericArg4) }
                 , args, true);
         }
 
@@ -226,56 +169,6 @@ namespace BlazorMobile.Common.Services
         }
 
         #endregion
-
-
-        #region WITH RETURN VALUE
-
-        public static TReturnType CallMethod<TReturnType>(MethodBase method)
-        {
-            return InternalCallMethod<TReturnType>(method, null, null, false).GetAwaiter().GetResult();
-        }
-
-        public static TReturnType CallMethod<TReturnType>(MethodBase method, params object[] args)
-        {
-            return InternalCallMethod<TReturnType>(method, null, args, false).GetAwaiter().GetResult();
-        }
-
-        public static TReturnType CallMethod<TReturnType, TGenericArg>(MethodBase method, params object[] args)
-        {
-            return InternalCallMethod<TReturnType>(
-                method,
-                new Type[] { typeof(TGenericArg) }
-                , args, false).GetAwaiter().GetResult();
-        }
-
-        public static TReturnType CallMethod<TReturnType, TGenericArg1, TGenericArg2>(MethodBase method, params object[] args)
-        {
-            return InternalCallMethod<TReturnType>(
-                method,
-                new Type[] { typeof(TGenericArg1), typeof(TGenericArg2) }
-                , args, false).GetAwaiter().GetResult();
-        }
-
-        public static TReturnType CallMethod<TReturnType, TGenericArg1, TGenericArg2, TGenericArg3>(MethodBase method, params object[] args)
-        {
-            return InternalCallMethod<TReturnType>(
-                method,
-                new Type[] { typeof(TGenericArg1), typeof(TGenericArg2), typeof(TGenericArg3) }
-                , args, false).GetAwaiter().GetResult();
-        }
-
-        public static TReturnType CallMethod<TReturnType, TGenericArg1, TGenericArg2, TGenericArg3, TGenericArg4>(MethodBase method, params object[] args)
-        {
-            return InternalCallMethod<TReturnType>(
-                method,
-                new Type[] { typeof(TGenericArg1), typeof(TGenericArg2), typeof(TGenericArg4) }
-                , args, false).GetAwaiter().GetResult();
-        }
-
-        public static TReturnType CallMethod<TReturnType>(MethodBase method, Type[] genericParameters, params object[] args)
-        {
-            return InternalCallMethod<TReturnType>(method, genericParameters, args, false).GetAwaiter().GetResult();
-        }
 
         #region WITH RETURN VALUE ASYNC
 
@@ -431,7 +324,5 @@ namespace BlazorMobile.Common.Services
 
             return null;
         }
-
-        #endregion
     }
 }
