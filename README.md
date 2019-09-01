@@ -66,7 +66,7 @@ The main differences / advantages of BlazorMobile are:
 First install the template model with the following command from a command prompt:
 
 ```console
-dotnet new -i BlazorMobile.Templates::3.0.8-preview8.19405.7
+dotnet new -i BlazorMobile.Templates::3.0.9-preview8.19405.7
 ```
 
 Then go the folder where you want your project to be created, and from a command prompt type the following command:
