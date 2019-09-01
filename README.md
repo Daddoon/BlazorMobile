@@ -43,6 +43,7 @@ Create full C# driven hybrid-apps for iOS, Android, UWP & Desktop with Blazor!
 - [BlazorMobile 3.0.5-preview8.19405.7 to 3.0.6-preview8.19405.7](#blazormobile-305-preview8194057-to-306-preview8194057)
 - [BlazorMobile 3.0.6-preview8.19405.7 to 3.0.7-preview8.19405.7](#blazormobile-306-preview8194057-to-307-preview8194057)
 - [BlazorMobile 3.0.7-preview8.19405.7 to 3.0.8-preview8.19405.7](#blazormobile-307-preview8194057-to-308-preview8194057)
+- [BlazorMobile 3.0.8-preview8.19405.7 to 3.0.9-preview8.19405.7](#blazormobile-308-preview8194057-to-309-preview8194057)
 
 ## Difference between BlazorMobile & Progressive Web Apps (PWA)
 
@@ -251,7 +252,7 @@ namespace BlazorMobile.Sample.Services
 
 **In your Blazor project**, you only have two things to do:
 
-- Call **services.AddBlazorMobileNativeServices<Startup>();** from **ConfigureServices** in **Startup.cs**
+- Call **services.AddBlazorMobileNativeServices\<Startup\>();** from **ConfigureServices** in **Startup.cs**
 - Inject your interface in your pages and call the methods whenever you want!
 
 Starting from the template, as a convinience, adding BlazorMobile natives services from **ServicesHelper.ConfigureCommonServices**.
@@ -854,6 +855,43 @@ public async Task<List<string>> DisplayAlert(string title, string msg, string ca
     return result;
 }
 ```
+
+### BlazorMobile 3.0.8-preview8.19405.7 to 3.0.9-preview8.19405.7
+
+- Update your installed BlazorMobile.Templates to this version by calling:
+
+```console
+dotnet new -i BlazorMobile.Templates::3.0.9-preview8.19405.7
+```
+
+- Update all your BlazorMobile.* NuGet packages to 3.0.9-preview8.19405.7.
+
+- **Breaking changes:** All synchronous methods signatures from **MethodDispatcher.CallMethod** have been removed. You must only use **Task or Task<>** types signature, async or not, on your interop calls.
+
+- Since **BlazorMobile 3.0.9-preview8.19405.7**, communication between Blazor to Native is automatic on the Blazor side.
+You don't have to guess anymore the method signature needed for calling to native, nor creating yourself a proxy class with your interface.
+
+- To upgrade with this new automated interoping behavior, you may now delete all your interface proxy **class implementation** in your Blazor project.
+
+- In your **Startup.cs** file, in **ConfigureServices** or **ServicesHelper.ConfigureCommonServices** if you use something lik in the template model, call **services.AddBlazorMobileNativeServices\<Startup\>();**
+
+```csharp
+using Microsoft.Extensions.DependencyInjection;
+
+namespace BlazorMobile.Sample.Blazor.Helpers
+{
+    public static class ServicesHelper
+    {
+        public static void ConfigureCommonServices(IServiceCollection services)
+        {
+            //Add services shared between multiples project here
+            services.AddBlazorMobileNativeServices<Startup>();
+        }
+    }
+}
+```
+
+- You may check the [Communication between Blazor & Native](#communication-between-blazor--native) section that has been updated in regard of this update.
 
 ## Authors
 
