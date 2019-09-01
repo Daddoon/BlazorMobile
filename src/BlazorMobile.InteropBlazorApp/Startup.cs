@@ -1,8 +1,6 @@
 using BlazorMobile.Common;
 using BlazorMobile.Common.Services;
-using BlazorMobile.InteropApp.Common.Interfaces;
 using BlazorMobile.InteropBlazorApp.Helpers;
-using BlazorMobile.InteropBlazorApp.Services;
 using Microsoft.AspNetCore.Components.Builder;
 using Microsoft.Extensions.DependencyInjection;
 using System;
@@ -13,6 +11,8 @@ namespace BlazorMobile.InteropBlazorApp
     {
         public void ConfigureServices(IServiceCollection services)
         {
+            services.AddBlazorMobileNativeServices<InteropBlazorApp.Startup>();
+
             ServicesHelper.ConfigureCommonServices(services);
         }
 

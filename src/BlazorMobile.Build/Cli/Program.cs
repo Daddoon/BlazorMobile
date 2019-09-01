@@ -19,6 +19,8 @@ namespace BlazorMobile.Build
 
             app.Command("client-to-server-blazor-index", ClientToServerBlazorIndexCommand.Command);
 
+            app.Command("auto-generate-native-bindings", AutoGenerateNativeBindings.Command);
+
             if (args.Length > 0)
             {
                 return app.Execute(args);

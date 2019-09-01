@@ -11,7 +11,6 @@ using System.Net.Http;
 using Microsoft.AspNetCore.Components;
 using Microsoft.AspNetCore.ResponseCompression;
 using BlazorMobile.InteropApp.Common.Interfaces;
-using BlazorMobile.InteropBlazorApp.Services;
 using BlazorMobile.Common.Services;
 using BlazorMobile.Common;
 using BlazorMobile.InteropBlazorApp.Helpers;
@@ -54,6 +53,7 @@ namespace BlazorMobile.InteropBlazorApp.Server
                 });
             }
 
+            services.AddBlazorMobileNativeServices<InteropBlazorApp.Startup>();
             ServicesHelper.ConfigureCommonServices(services);
         }
 
