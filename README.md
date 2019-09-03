@@ -161,44 +161,7 @@ BlazorDevice.RuntimePlatform
 
 In order to retrieve the current device runtime platform.
 
-Note that the **BlazorMobilService.Init()** has an **onFinish** optional callback delegate. Every call to **BlazorDevice.RuntimePlatform** before the onFinish delegate call will return **BlazorDevice.Unkown** instead of the detected platform.
-
-### Test your interop with Xamarin in Blazor
-
-Don't forget to add your Blazor implementation in the dependency services of your Blazor app.
-For more detail about how to configure a new service/communication between Blazor and Xamarin, read the [Communication between Blazor & Xamarin.Forms](#communication-between-blazor--xamarinforms) section.
-
-In your **Startup.cs** file of your **Blazor project**:
-
-```csharp
-    public class Startup
-    {
-        public void ConfigureServices(IServiceCollection services)
-        {
-            services.AddSingleton<IXamarinBridge, XamarinBridgeProxy>();
-        }
-
-        public void Configure(IComponentsApplicationBuilder app)
-        {
-            app.AddComponent<MobileApp>("app");
-        }
-    }
-```
-
-In our template **Blazor** project, we moved shared services initialization in **ServicesHelper.ConfigureCommonServices** static method, in order to not having to reconfigure each service on server-side and client Blazor projects.
-
-Then in one of your desired **razor** page (or plain **C# ComponentBase**), juste add...
-```csharp
-@inject IXamarinBridge XamarinBridge
-```
-
-...on the top of your razor file, then call your method in your desired callback, like:
-
-```csharp
-var result = await XamarinBridge.DisplayAlert("Platform identity", $"Current platform is {Device.RuntimePlatform}", "Great!");
-```
-
-If using this example the sample project, clicking on the **Alert Me** button on the **Counter page** should show you the **native device alert**, with the given parameters, and showing you the **current detected device runtime platform**, like iOS or Android.
+Note that the **BlazorMobilService.Init()** has an **onFinish** callback delegate. Every call to **BlazorDevice.RuntimePlatform** before the onFinish delegate call will return **BlazorDevice.Unkown** instead of the detected platform.
 
 ## Communication between Blazor & Native
 
