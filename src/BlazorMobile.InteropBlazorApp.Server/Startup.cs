@@ -79,7 +79,7 @@ namespace BlazorMobile.InteropBlazorApp.Server
             app.UseEndpoints(endpoints =>
             {
                 endpoints.MapBlazorHub();
-                endpoints.MapFallbackToClientSideBlazor<InteropBlazorApp.Startup>("server_index.html");
+                endpoints.MapFallbackToPage("/server_index");
             });
 
             BlazorMobileService.EnableClientToDeviceRemoteDebugging("127.0.0.1", 8888);

@@ -4,6 +4,10 @@
     <TargetFramework>netcoreapp3.0</TargetFramework>
     <LangVersion>7.3</LangVersion>
   </PropertyGroup>
+
+  <ItemGroup>
+    <Content Include="..\BlazorMobile.InteropBlazorApp\server_index.cshtml" Link="Pages\server_index.cshtml" />
+  </ItemGroup>
   
    <ItemGroup>
     <PackageReference Include="Microsoft.AspNetCore.Blazor.Server" Version="3.0.0-preview9.19424.4" />
@@ -13,6 +17,10 @@
    <ItemGroup>
      <ProjectReference Include="..\BlazorMobile.InteropBlazorApp\BlazorMobile.InteropBlazorApp.csproj" />
      <ProjectReference Include="..\BlazorMobile.Web\BlazorMobile.Web.csproj" />
+   </ItemGroup>
+  
+   <ItemGroup>
+     <Folder Include="Pages\" />
    </ItemGroup>
 
 </Project>

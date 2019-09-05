@@ -77,9 +77,8 @@ namespace BlazorMobile.Sample.Desktop
 
             app.UseEndpoints(endpoints =>
             {
-                endpoints.MapBlazorHub("app");
-                endpoints.MapDefaultControllerRoute();
-                endpoints.MapFallbackToClientSideBlazor<BlazorMobile.Sample.Blazor.Startup>("server_index.html");
+                endpoints.MapBlazorHub();
+                endpoints.MapFallbackToPage("/server_index");
             });
 
             BlazorMobileService.Init((bool success) =>

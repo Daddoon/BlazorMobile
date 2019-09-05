@@ -24,4 +24,10 @@
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Content>
   </ItemGroup>
+  <ItemGroup>
+    <Folder Include="Pages\" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="..\BlazorMobile.InteropBlazorApp\server_index.cshtml" Link="Pages\server_index.cshtml" />
+  </ItemGroup>
 </Project>

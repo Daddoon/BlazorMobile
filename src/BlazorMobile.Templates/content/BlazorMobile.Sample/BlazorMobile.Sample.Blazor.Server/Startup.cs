@@ -74,12 +74,11 @@ namespace BlazorMobile.Sample.Blazor.Server
 
             app.UseEndpoints(endpoints =>
             {
-                endpoints.MapBlazorHub("app");
-                endpoints.MapDefaultControllerRoute();
-                endpoints.MapFallbackToClientSideBlazor<BlazorMobile.Sample.Blazor.Startup>("server_index.html");
+                endpoints.MapBlazorHub();
+                endpoints.MapFallbackToPage("/server_index");
             });
 
-            BlazorMobileService.EnableClientToDeviceRemoteDebugging("192.168.1.118", 8888);
+            BlazorMobileService.EnableClientToDeviceRemoteDebugging("127.0.0.1", 8888);
             BlazorMobileService.Init((bool success) =>
             {
                 Console.WriteLine($"Initialization success: {success}");
