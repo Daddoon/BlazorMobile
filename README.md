@@ -91,23 +91,31 @@ Open you newly created solution, and you are good to go!
 
 ## Linking your Blazor app to your Xamarin project
 
-**NOTE:** If you are beginning from a freshly installed BlazorMobile template, everything is already set by default. Keeping the following informations just for knowledge. 
+### Getting started from a fresh install
 
-In order to ship your Blazor application within your Xamarin apps, you need to pack it and make it available to Xamarin.
+Beginning from a freshly installed BlazorMobile template, **everything is already set by default.**
 
-Your Blazor app will be automatically packaged thanks to the **BlazorMobile.Build** NuGet package, that must be installed on your Blazor web application project. The package location will be written in the build output after the Blazor build mecanism.
+The following informations only explains how your Xamarin.Forms project load your Blazor WebAssembly application.
 
-Here are the steps in order to link it in Xamarin:
+### How it works
 
-- Add your package **as a link** in your Xamarin.Forms shared project, from the Blazor web app bin directory.
+In order to ship your Blazor application within your Xamarin apps, you need to pack it and make it available to it.
 
-- Set the property of your package file as an **Embedded Resource** from Visual Studio.
+Your Blazor app will be automatically packaged thanks to the **BlazorMobile.Build** NuGet package, that must be already installed on your Blazor web application project. The package location will be written in the build output after the Blazor build mecanism.
 
-- **Optional**: Add a project dependency on your Xamarin.Forms shared project, and check your Blazor web application as a dependency. **This way we will be assured that even if there is no direct reference between the shared project and the blazor web application assembly, the blazor project and our zip are always updated before building our mobile application project**.
+The filename should be **YourBlazorProjectName.zip**.
+
+The steps to easily link it in Xamarin:
+
+- Add your package **as a link** in your Xamarin.Forms shared project, formerly **YourAppName**, from the Blazor web app bin directory.
+
+- Set the property of your package file as an **Embedded Resource** from Visual Studio property window.
+
+- **Recommended**: Add a dependency on your Xamarin.Forms shared project, and tick your Blazor web application as a build dependency. **This way you will be assured that even if there is no direct reference between the Xamarin.Forms shared project and the blazor web application assembly, the blazor project and the zip are always updated before building your mobile application project**.
 
 - Set the path to your package in your Xamarin.Forms shared project. In the **App.xaml.cs** file, set the path in your **RegisterAppStreamResolver** delegate.
 
-As seen on the **BlazorMobile.Sample** project, assuming a file linked as in a folder called **Package**, we would have a code like this:
+As seen on the **BlazorMobile.Sample** project, assuming a file linked in a virtual folder called **Package**, we would have a code like this:
 
 ```csharp
 namespace BlazorMobile.Sample
@@ -153,44 +161,7 @@ BlazorDevice.RuntimePlatform
 
 In order to retrieve the current device runtime platform.
 
-Note that the **BlazorMobilService.Init()** has an **onFinish** optional callback delegate. Every call to **BlazorDevice.RuntimePlatform** before the onFinish delegate call will return **BlazorDevice.Unkown** instead of the detected platform.
-
-### Test your interop with Xamarin in Blazor
-
-Don't forget to add your Blazor implementation in the dependency services of your Blazor app.
-For more detail about how to configure a new service/communication between Blazor and Xamarin, read the [Communication between Blazor & Xamarin.Forms](#communication-between-blazor--xamarinforms) section.
-
-In your **Startup.cs** file of your **Blazor project**:
-
-```csharp
-    public class Startup
-    {
-        public void ConfigureServices(IServiceCollection services)
-        {
-            services.AddSingleton<IXamarinBridge, XamarinBridgeProxy>();
-        }
-
-        public void Configure(IComponentsApplicationBuilder app)
-        {
-            app.AddComponent<MobileApp>("app");
-        }
-    }
-```
-
-In our template **Blazor** project, we moved shared services initialization in **ServicesHelper.ConfigureCommonServices** static method, in order to not having to reconfigure each service on server-side and client Blazor projects.
-
-Then in one of your desired **razor** page (or plain **C# ComponentBase**), juste add...
-```csharp
-@inject IXamarinBridge XamarinBridge
-```
-
-...on the top of your razor file, then call your method in your desired callback, like:
-
-```csharp
-var result = await XamarinBridge.DisplayAlert("Platform identity", $"Current platform is {Device.RuntimePlatform}", "Great!");
-```
-
-If using this example the sample project, clicking on the **Alert Me** button on the **Counter page** should show you the **native device alert**, with the given parameters, and showing you the **current detected device runtime platform**, like iOS or Android.
+Note that the **BlazorMobilService.Init()** has an **onFinish** callback delegate. Every call to **BlazorDevice.RuntimePlatform** before the onFinish delegate call will return **BlazorDevice.Unkown** instead of the detected platform.
 
 ## Communication between Blazor & Native
 
