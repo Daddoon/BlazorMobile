@@ -29,7 +29,7 @@ namespace BlazorMobile.ElectronNET.Messaging
         }
 
         [JSInvokable]
-        public static Task NotifyAlertSignalResult(DotNetObjectRef<ElectronBridge> bridge, DotNetObjectRef<AlertArguments> arguments, bool isOk)
+        public static Task NotifyAlertSignalResult(DotNetObjectReference<ElectronBridge> bridge, DotNetObjectReference<AlertArguments> arguments, bool isOk)
         {
             try
             {

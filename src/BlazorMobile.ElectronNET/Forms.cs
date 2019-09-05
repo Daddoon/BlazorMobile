@@ -213,8 +213,8 @@ namespace Xamarin.Forms
             {
                 //Electron documentation about dialog: https://github.com/electron/electron/blob/v5.0.10/docs/api/dialog.md
 
-                var applicationRef = DotNetObjectRef.Create(new ElectronBridge(this));
-                var alertRef = DotNetObjectRef.Create(arguments);
+                var applicationRef = DotNetObjectReference.Create(new ElectronBridge(this));
+                var alertRef = DotNetObjectReference.Create(arguments);
 
                 BlazorMobileComponent.GetJSRuntime().InvokeAsync<bool>("BlazorMobileElectron.AlertDialog", applicationRef, alertRef, arguments.Title, arguments.Message, arguments.Accept, arguments.Cancel);
             }
