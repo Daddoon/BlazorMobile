@@ -75,6 +75,7 @@ namespace BlazorMobile.Sample.Blazor.Server
             app.UseEndpoints(endpoints =>
             {
                 endpoints.MapBlazorHub();
+                endpoints.MapDefaultControllerRoute();
                 endpoints.MapFallbackToPage("/server_index");
             });
 
