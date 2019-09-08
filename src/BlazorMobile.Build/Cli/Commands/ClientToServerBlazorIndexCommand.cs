@@ -9,12 +9,16 @@ namespace BlazorMobile.Build.Server.Commands
         public static void Command(CommandLineApplication command)
         {
             var referencesFile = command.Option("--input",
-                "The path to the wwwroot folder of your project",
+                "The path to your project root folder of your project",
+                CommandOptionType.SingleValue);
+
+            var projectFile = command.Option("--project-file",
+                "The path to your csproj file",
                 CommandOptionType.SingleValue);
 
             command.OnExecute(() =>
             {
-                if (!referencesFile.HasValue())
+                if (!referencesFile.HasValue() || !projectFile.HasValue())
                 {
                     command.ShowHelp(command.Name);
                     return 1;
@@ -22,7 +26,7 @@ namespace BlazorMobile.Build.Server.Commands
 
                 try
                 {
-                    BlazorProjectIndexHelper.FindAndReplace(referencesFile.Value());
+                    BlazorProjectIndexHelper.FindAndReplace(referencesFile.Value(), projectFile.Value());
                     return 0;
                 }
                 catch (Exception ex)

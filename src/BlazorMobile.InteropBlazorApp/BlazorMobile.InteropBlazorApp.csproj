@@ -9,15 +9,24 @@
   </PropertyGroup>
 
   <ItemGroup>
+    <Content Remove="server_index.cshtml" />
+  </ItemGroup>
+
+  <ItemGroup>
     <BlazorLinkerDescriptor Include="linker.xml" />
   </ItemGroup>
 
   <ItemGroup>
-    <PackageReference Include="BlazorMobile.Build" Version="3.0.9-preview8.19405.7" />
-    <PackageReference Include="Microsoft.AspNetCore.Blazor" Version="3.0.0-preview8.19405.7" />
-    <PackageReference Include="Microsoft.AspNetCore.Blazor.Build" Version="3.0.0-preview8.19405.7" PrivateAssets="all" />
-	<PackageReference Include="Microsoft.AspNetCore.Blazor.DevServer" Version="3.0.0-preview8.19405.7" />
-	<PackageReference Include="Microsoft.AspNetCore.Blazor.HttpClient" Version="3.0.0-preview8.19405.7" />
+    <None Include="server_index.cshtml" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <PackageReference Include="BlazorMobile.Build" Version="3.0.10-preview9.19424.4" />
+    <PackageReference Include="Microsoft.AspNetCore.Blazor" Version="3.0.0-preview9.19424.4" />
+    <PackageReference Include="Microsoft.AspNetCore.Blazor.Build" Version="3.0.0-preview9.19424.4" PrivateAssets="all" />
+	  <PackageReference Include="Microsoft.AspNetCore.Blazor.DevServer" Version="3.0.0-preview9.19424.4" />
+	  <PackageReference Include="Microsoft.AspNetCore.Blazor.HttpClient" Version="3.0.0-preview9.19424.4" />
+    <PackageReference Include="Microsoft.AspNetCore.Components.Authorization" Version="3.0.0-preview9.19424.4" />
   </ItemGroup>
 
   <ItemGroup>

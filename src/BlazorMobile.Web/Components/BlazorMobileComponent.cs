@@ -2,6 +2,7 @@
 using BlazorMobile.Common.Services;
 using BlazorMobile.Interop;
 using Microsoft.AspNetCore.Components;
+using Microsoft.AspNetCore.Components.Rendering;
 using Microsoft.AspNetCore.Components.RenderTree;
 using Microsoft.JSInterop;
 using Mono.WebAssembly.Interop;
@@ -140,9 +141,9 @@ namespace BlazorMobile.Common.Components
         }
 
         private bool _FirstInit = true;
-        protected override async Task OnAfterRenderAsync()
+        protected override async Task OnAfterRenderAsync(bool firstRender)
         {
-            await base.OnAfterRenderAsync();
+            await base.OnAfterRenderAsync(firstRender);
 
             if (_FirstInit)
             {

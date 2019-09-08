@@ -45,10 +45,10 @@ namespace BlazorMobile.Sample.Desktop
                 services.AddScoped<HttpClient>(s =>
                 {
                     // Creating the URI helper needs to wait until the JS Runtime is initialized, so defer it.
-                    var uriHelper = s.GetRequiredService<IUriHelper>();
+                    var uriHelper = s.GetRequiredService<NavigationManager>();
                     return new HttpClient
                     {
-                        BaseAddress = new Uri(uriHelper.GetBaseUri())
+                        BaseAddress = new Uri(uriHelper.BaseUri)
                     };
                 });
             }
@@ -77,9 +77,9 @@ namespace BlazorMobile.Sample.Desktop
 
             app.UseEndpoints(endpoints =>
             {
-                var componentBuilder = endpoints.MapBlazorHub<MobileApp>("app");
+                endpoints.MapBlazorHub();
                 endpoints.MapDefaultControllerRoute();
-                endpoints.MapFallbackToClientSideBlazor<BlazorMobile.Sample.Blazor.Startup>("server_index.html");
+                endpoints.MapFallbackToPage("/server_index");
             });
 
             BlazorMobileService.Init((bool success) =>
