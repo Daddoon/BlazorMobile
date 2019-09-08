@@ -25,11 +25,12 @@
   <PropertyGroup>
     <BlazorMobileBuildServerDir Condition="'$(BlazorMobileBuildServerDir)' == ''">$(MSBuildThisFileDirectory)netcoreapp3.0/</BlazorMobileBuildServerDir>
     <BlazorMobileBuildServerdFileExe>dotnet &quot;$(BlazorMobileBuildServerDir)BlazorMobile.Build.dll&quot;</BlazorMobileBuildServerdFileExe>
-    <BlazorMobileBuildServerInput>&quot;$(MSBuildProjectDirectory)/wwwroot&quot;</BlazorMobileBuildServerInput>
+    <BlazorMobileBuildServerInput>&quot;$(MSBuildProjectDirectory)&quot;</BlazorMobileBuildServerInput>
+    <BlazorMobileBuildServerProjectInput>&quot;$(MSBuildProjectFullPath)&quot;</BlazorMobileBuildServerProjectInput>
   </PropertyGroup>
 
   <Target Name="GenerateBlazorMobileBuildServer" BeforeTargets="BeforeBuild">
-    <Exec Command="$(BlazorMobileBuildServerdFileExe) client-to-server-blazor-index --input $(BlazorMobileBuildServerInput)" />
+    <Exec Command="$(BlazorMobileBuildServerdFileExe) client-to-server-blazor-index --input $(BlazorMobileBuildServerInput) --project-file $(BlazorMobileBuildServerProjectInput)" />
   </Target>
 
   

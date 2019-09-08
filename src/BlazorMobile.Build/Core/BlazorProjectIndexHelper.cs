@@ -6,27 +6,30 @@ using System.IO;
 using System.IO.Compression;
 using System.Linq;
 using System.Text;
+using System.Text.RegularExpressions;
 
 namespace BlazorMobile.Build.Server.Core
 {
     internal static class BlazorProjectIndexHelper
     {
-        public static void FindAndReplace(string inputDir)
+        public static void FindAndReplace(string inputDir, string projectFile)
         {
-            if (!Directory.Exists(inputDir))
+            string wwwFolder = inputDir + "/wwwroot";
+
+            if (!Directory.Exists(wwwFolder))
             {
                 throw new InvalidOperationException("The input directory does not exist");
             }
 
-            string indexFile = GetBlazorWebAssemblyIndexFilePath(inputDir);
+            string indexFile = GetBlazorWebAssemblyIndexFilePath(wwwFolder);
 
-            string outputFile = TransformAndCopy(indexFile, inputDir);
+            string outputFile = TransformAndCopy(indexFile, inputDir, projectFile);
 
             Console.WriteLine($"BlazorMobile.Build -> {FileToReplace} to {NewFile} done in {Path.GetDirectoryName(outputFile)}");
         }
 
         private const string FileToReplace = "index.html";
-        private const string NewFile = "server_" + FileToReplace;
+        private const string NewFile = "server_index.cshtml";
         private const string SearchedOccurence = "blazor.webassembly.js";
         private const string NewOccurence = "blazor.server.js";
 
@@ -61,15 +64,36 @@ namespace BlazorMobile.Build.Server.Core
             return indexFile;
         }
 
-        public static string TransformAndCopy(string sourceFile, string outputDir)
+        private static string AddCSHTMLCode(string content, string projectFile)
         {
-            string outputFile = outputDir + Path.DirectorySeparatorChar + FileToReplace;
+            string crtNamespace = Path.GetFileNameWithoutExtension(projectFile);
+
+            content = content.Replace(SearchedOccurence, NewOccurence);
+
+            content =
+                "@page \"/\"" + Environment.NewLine
+                + $"@namespace {crtNamespace}" + Environment.NewLine
+                + "@addTagHelper *, Microsoft.AspNetCore.Mvc.TagHelpers" + Environment.NewLine + Environment.NewLine
+                + content;
+
+            content = Regex.Replace(content, @"(?:<app>)(.*?)(?:</app>)", @"<app>@(await Html.RenderComponentAsync<MobileApp>(RenderMode.ServerPrerendered))</app>");
+
+            content += $"{Environment.NewLine}<!-- AUTO-GENERATED FILE - DO NOT EDIT! -->";
+
+            return content;
+        }
+
+        public static string TransformAndCopy(string sourceFile, string outputDir, string projectFile)
+        {
+            string outputFile = outputDir + Path.DirectorySeparatorChar + NewFile;
 
             try
             {
                 var encoding = TextFileEncodingDetector.DetectTextFileEncoding(sourceFile);
-                string content = File.ReadAllText(sourceFile, encoding);
-                File.WriteAllText(outputDir + Path.DirectorySeparatorChar + NewFile, $"<!-- AUTO-GENERATED FILE - DO NOT EDIT! -->{Environment.NewLine}" + content.Replace(SearchedOccurence, NewOccurence), encoding);
+                File.WriteAllText(
+                    outputFile, 
+                    AddCSHTMLCode(File.ReadAllText(sourceFile, encoding), projectFile)
+                    , encoding);
             }
             catch (Exception ex)
             {
