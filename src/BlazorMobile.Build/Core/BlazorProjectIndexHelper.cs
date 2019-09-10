@@ -76,7 +76,7 @@ namespace BlazorMobile.Build.Server.Core
                 + "@addTagHelper *, Microsoft.AspNetCore.Mvc.TagHelpers" + Environment.NewLine + Environment.NewLine
                 + content;
 
-            content = Regex.Replace(content, @"(?:<app>)(.*?)(?:</app>)", @"<app>@(await Html.RenderComponentAsync<MobileApp>(RenderMode.ServerPrerendered))</app>");
+            content = Regex.Replace(content, @"(?:<app>)(.*?)(?:</app>)", @"<app>@(await Html.RenderComponentAsync<MobileApp>(RenderMode.ServerPrerendered))</app>", RegexOptions.Singleline);
 
             content += $"{Environment.NewLine}<!-- AUTO-GENERATED FILE - DO NOT EDIT! -->";
 
