@@ -35,6 +35,7 @@ Create full C# driven hybrid-apps for iOS, Android, UWP & Desktop with Blazor!
 - [Cannot connect to a remote webserver on UWP](#cannot-connect-to-a-remote-webserver-on-uwp)
 - [Unable to connect to UWP remotely even with NetworkIsolation disabled](#unable-to-connect-to-uwp-remotely-even-with-networkisolation-disabled)
 - [System.ArgumentOutOfRangeException when calling Blazor to native](#systemargumentoutofrangeexception-when-calling-blazor-to-native)
+- [Cyclic restore issue at project template creation](#cyclic-restore-issue-at-project-template-creation)
 
 ## Migration
 
@@ -71,10 +72,10 @@ First install the template model with the following command from a command promp
 dotnet new -i BlazorMobile.Templates::3.0.10-preview9.19424.4
 ```
 
-Then go the folder where you want your project to be created, and from a command prompt type the following command:
+Then go the folder where you want your project to be created, and from a command prompt type the following command, and of course replace **MyProjectName** to your desired project name:
 
 ```console
-dotnet new blazormobile
+dotnet new blazormobile -n MyProjectName
 ```
 
 If you plan to also use the Desktop project using Electron.NET, you must first execute this command in order to install the Electron tool on your system:
@@ -488,6 +489,12 @@ This bug is a [regression from .NET Core 3.0-preview8](https://github.com/dotnet
 We have to wait for preview9 shipping, or working on an older version of Blazor & BlazorMobile running on preview7, or compiling by yourself current Microsoft nightly builds.
 
 In my opinion, the best option is to wait.
+
+### Cyclic restore issue at project template creation
+
+This may happen if you called your project **BlazorMobile** at template creation, as it seem to confuse the NuGet restore command with the Nuget packages with the same suffix name, like **BlazorMobile** and **BlazorMobile.Common**.
+
+Just avoid theses reserved names when creating your project.
 
 ## Migration
 
