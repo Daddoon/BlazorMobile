@@ -32,6 +32,7 @@ namespace BlazorMobile.Droid.Renderer
             _session.Open(_runtime);
             _session.ProgressDelegate = new ProgressDelegate(this);
             _session.ContentDelegate = new ContentDelegate(this);
+            _session.NavigationDelegate = new NavigationDelegate(this);
 
             if (WebApplicationFactory._debugFeatures)
             {
