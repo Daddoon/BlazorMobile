@@ -12,8 +12,7 @@ namespace BlazorMobile.Components
     public static class BlazorWebViewFactory
     {
         /// <summary>
-        /// As we can have some variation on the WebView renderer depending the platform,
-        /// this automatically return the good type depending the current running platform
+        /// Return an compatible WebView renderer for the current running platform
         /// </summary>
         /// <returns></returns>
         public static IBlazorWebView Create()
