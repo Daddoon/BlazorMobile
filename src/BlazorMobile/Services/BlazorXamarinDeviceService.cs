@@ -21,8 +21,15 @@ namespace BlazorMobile.Services
 
     public class BlazorXamarinDeviceService : IBlazorXamarinDeviceService
     {
-        public Task<string> GetRuntimePlatform()
+        private static bool _init = false;
+
+        internal static void InitRuntimePlatform()
         {
+            if (_init)
+            {
+                return;
+            }
+
             string device = BlazorMobile.Common.BlazorDevice.Unknown;
 
             if (ContextHelper.IsBlazorMobile())
@@ -45,10 +52,14 @@ namespace BlazorMobile.Services
                 }
             }
 
-            //Sync Blazor and native side
             BlazorMobile.Common.BlazorDevice.RuntimePlatform = device;
 
-            return Task.FromResult(device);
+            _init = true;
+        }
+
+        public Task<string> GetRuntimePlatform()
+        {
+            return Task.FromResult(BlazorMobile.Common.BlazorDevice.RuntimePlatform);
         }
 
         public Task WriteLine(string message)

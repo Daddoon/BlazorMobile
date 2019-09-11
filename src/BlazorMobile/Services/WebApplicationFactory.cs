@@ -388,7 +388,8 @@ namespace BlazorMobile.Services
                 //Register IBlazorXamarinDeviceService for getting base metadata for Blazor
                 DependencyService.Register<IBlazorXamarinDeviceService, BlazorXamarinDeviceService>();
 
-                //Do something in the future if required
+                BlazorXamarinDeviceService.InitRuntimePlatform();
+
                 _firstCall = false;
             }
         }
