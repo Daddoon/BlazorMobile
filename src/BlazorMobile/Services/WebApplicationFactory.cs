@@ -293,7 +293,12 @@ namespace BlazorMobile.Services
             return _localIP;
         }
 
-        internal static string GetBaseURL()
+        /// <summary>
+        /// Return the current internal app base URI without the trailing slash. This value may change during lifetime if the registered listening port
+        /// is not available after an app resume. NOTE: This method will not return the ElectronNET base URL yet. See: https://github.com/Daddoon/BlazorMobile/issues/109
+        /// </summary>
+        /// <returns></returns>
+        public static string GetBaseURL()
         {
             return $"http://{GetLocalWebServerIP()}:{GetHttpPort()}";
         }

@@ -1,4 +1,5 @@
 ﻿using BlazorMobile.Components;
+using BlazorMobile.InteropApp.Handler;
 using BlazorMobile.Services;
 using System;
 using System.Collections.Generic;
@@ -22,6 +23,9 @@ namespace BlazorMobile.InteropApp
             View webviewView = webview.GetView();
             webviewView.VerticalOptions = LayoutOptions.FillAndExpand;
             webviewView.HorizontalOptions = LayoutOptions.FillAndExpand;
+
+            //Register navigation handler with our custom URI logic
+            webview.Navigating += OnBlazorWebViewNavigationHandler.OnBlazorWebViewNavigating;
 
             webview.LaunchBlazorApp();
 
