@@ -254,7 +254,18 @@ namespace BlazorMobile.iOS.Renderer
                 _lastEvent = navEvent;
                 var request = navigationAction.Request;
                 var lastUrl = request.Url.ToString();
-                var args = new WebNavigatingEventArgs(navEvent, new UrlWebViewSource { Url = lastUrl }, lastUrl);
+
+                WebViewSource source;
+                if (_renderer.Element != null && _renderer.Element.Source != null)
+                {
+                    source = _renderer.Element.Source;
+                }
+                else
+                {
+                    source = new UrlWebViewSource() { Url = lastUrl };
+                }
+
+                var args = new WebNavigatingEventArgs(navEvent, source, lastUrl);
 
                 _blazorWebViewForms.SendNavigating(args);
                 _renderer.UpdateCanGoBackForward();
