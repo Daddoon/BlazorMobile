@@ -36,6 +36,7 @@ Create full C# driven hybrid-apps for iOS, Android, UWP & Desktop with Blazor!
 - [Unable to connect to UWP remotely even with NetworkIsolation disabled](#unable-to-connect-to-uwp-remotely-even-with-networkisolation-disabled)
 - [System.ArgumentOutOfRangeException when calling Blazor to native](#systemargumentoutofrangeexception-when-calling-blazor-to-native)
 - [Cyclic restore issue at project template creation](#cyclic-restore-issue-at-project-template-creation)
+- [iOS/Safari 13: Unhandled Promise Rejection: TypeError: 'arguments', 'callee', and 'caller' cannot be accessed in this context]()
 
 ## Migration
 
@@ -495,6 +496,19 @@ In my opinion, the best option is to wait.
 This may happen if you called your project **BlazorMobile** at template creation, as it seem to confuse the NuGet restore command with the Nuget packages with the same suffix name, like **BlazorMobile** and **BlazorMobile.Common**.
 
 Just avoid theses reserved names when creating your project.
+
+### iOS/Safari 13: Unhandled Promise Rejection: TypeError: 'arguments', 'callee', and 'caller' cannot be accessed in this context
+
+This error is actually a regression in iOS 13 / Safari 13 Preview. As iOS 13 is not yet released we cannot know if the bug will still be present at release time.
+
+The actual workaround is to add this line...
+
+```javascript
+<script>var Module;</script>
+```
+...before the **blazor.webassembly.js** script tag.
+
+Credits to @kmiller68 in [this issue](https://github.com/mono/mono/issues/15588#issuecomment-529056521)
 
 ## Migration
 
