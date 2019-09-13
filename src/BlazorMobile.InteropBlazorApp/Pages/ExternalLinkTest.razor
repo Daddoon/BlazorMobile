@@ -5,7 +5,22 @@
 
 <a href="https://www.google.fr">My test</a>
 <a href="https://www.google.fr" target="_blank">My test (New window)</a>
+<a @onclick="() => LoadIframeContent()">Load Iframe</a>
+
+@if (LoadIframe)
+{
+    <div>
+        <iframe style="width: 100%; height: 50vh;" src="https://www.google.fr"></iframe>
+    </div>
+}
 
 @code {
 
+    private bool LoadIframe = false;
+
+    protected void LoadIframeContent()
+    {
+        LoadIframe = true;
+        StateHasChanged();
+    }
 }
