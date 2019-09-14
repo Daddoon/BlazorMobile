@@ -12,7 +12,7 @@
 //      ourselves.
 const filter = {
     urls: [
-        "https://staging.2bee.io/*"
+        "<all_urls>"
     ],
     types: ["sub_frame"]
 };
