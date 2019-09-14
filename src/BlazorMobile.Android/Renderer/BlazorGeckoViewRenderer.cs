@@ -1,5 +1,6 @@
 ﻿
 using BlazorMobile.Components;
+using BlazorMobile.Droid.Handler;
 using BlazorMobile.Droid.Helper;
 using BlazorMobile.Droid.Renderer;
 using BlazorMobile.Droid.Services;
@@ -28,11 +29,19 @@ namespace BlazorMobile.Droid.Renderer
                 .Build();
 
             GeckoSession _session = new GeckoSession(settings);
+
             GeckoRuntime _runtime = GeckoRuntime.Create(Context);
+
+            //Register BlazorMobile iframe listener WebExtension, as GeckoView LoadRequest does not bubble up when navigating through an iFrame.
+            //This asset must be added in the developer project manually or injected at build if not present through a MSBuild task
+            //This is needed because Android does not support sharing asset from class library projects, so we can't reference it directly from BlazorMobile.Android
+            //NOTE: Delegate for WebExtension handling seem missing from current Xamarin.GeckoView generated bindings, but the handling will be workarounded through the local BlazorMobile server
+            _runtime.RegisterWebExtension(new WebExtension("resource://android/assets/BlazorMobile/web_extensions/iframe_listener/", "BlazorMobileIframeListener"));
+
             _session.Open(_runtime);
-            _session.ProgressDelegate = new ProgressDelegate(this);
-            _session.ContentDelegate = new ContentDelegate(this);
-            _session.NavigationDelegate = new NavigationDelegate(this);
+            _session.ProgressDelegate = new BlazorProgressDelegate(this);
+            _session.ContentDelegate = new BlazorContentDelegate(this);
+            _session.NavigationDelegate = new BlazorNavigationDelegate(this);
 
             if (WebApplicationFactory._debugFeatures)
             {

@@ -48,6 +48,9 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Components\BlazorGeckoView.cs" />
+    <Compile Include="Handler\BlazorContentDelegate.cs" />
+    <Compile Include="Handler\BlazorProgressDelegate.cs" />
+    <Compile Include="Handler\BlazorNavigationDelegate.cs" />
     <Compile Include="Helper\KeyboardUtil.cs" />
     <Compile Include="Interop\WebViewService.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
@@ -62,7 +65,6 @@
       <Version>3.5.0.169047</Version>
     </PackageReference>
   </ItemGroup>
-  <ItemGroup />
   <ItemGroup>
     <ProjectReference Include="..\BlazorMobile.Common\BlazorMobile.Common.csproj">
       <Project>{c212a056-8def-45d2-bb87-92e63886efa2}</Project>

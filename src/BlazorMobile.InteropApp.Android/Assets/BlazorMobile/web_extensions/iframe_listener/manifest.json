@@ -1,0 +1,22 @@
+﻿{
+  "manifest_version": 2,
+  "name": "BlazorMobileIframeListener",
+  "version": "1.0",
+
+  "permissions": [
+    "webRequest",
+    "webRequestBlocking",
+    "<all_urls>"
+  ],
+
+  "description": "Listen navigation on Iframe executing on page and bubble event to BlazorMobile Navigating handler",
+
+  "icons": {
+    "48": "icons/blazormobile-48.png"
+  },
+
+  "background": {
+    "scripts": [ "background.js" ]
+  }
+
+}
