@@ -49,6 +49,9 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <PackageReference Include="BlazorMobile.Build.Android">
+      <Version>3.0.11-preview9.19424.4</Version>
+    </PackageReference>
     <PackageReference Include="Microsoft.AspNetCore.Blazor">
       <Version>3.0.0-preview9.19424.4</Version>
     </PackageReference>
@@ -65,7 +68,6 @@
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
-    <AndroidAsset Include="Assets\BlazorMobile\web_extensions\iframe_listener\manifest.json" />
     <None Include="Resources\AboutResources.txt" />
     <None Include="Assets\AboutAssets.txt" />
     <None Include="Properties\AndroidManifest.xml" />
@@ -108,12 +110,6 @@
       <Project>{c4e7f7b7-6078-4407-9e78-7cdd174a9f1d}</Project>
       <Name>BlazorMobile</Name>
     </ProjectReference>
-  </ItemGroup>
-  <ItemGroup>
-    <AndroidAsset Include="Assets\BlazorMobile\web_extensions\iframe_listener\background.js" />
-  </ItemGroup>
-  <ItemGroup>
-    <AndroidAsset Include="Assets\BlazorMobile\web_extensions\iframe_listener\icons\blazormobile-48.png" />
   </ItemGroup>
   <Import Project="$(MSBuildExtensionsPath)\Xamarin\Android\Xamarin.Android.CSharp.targets" />
 </Project>

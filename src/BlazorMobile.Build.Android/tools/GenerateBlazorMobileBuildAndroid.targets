@@ -1,0 +1,33 @@
+﻿<!-- GenerateBlazorMobileBuildAndroid.targets -->
+<Project>
+
+  <!-- Require rebuild if the targets change -->
+  <PropertyGroup>
+    <MSBuildAllProjects>$(MSBuildAllProjects);$(MSBuildThisFileFullPath)</MSBuildAllProjects>
+  </PropertyGroup>
+
+  <!-- BlazorMobile Iframe Listener WebExtension for GeckoView injected as Asset -->
+  
+  <PropertyGroup>
+    <BlazorMobileBuildAndroidDir Condition="'$(BlazorMobileBuildAndroidDir)' == ''">$(MSBuildThisFileDirectory)netcoreapp3.0/</BlazorMobileBuildAndroidDir>
+    <BlazorMobileBuildAndroidFileExe>dotnet &quot;$(BlazorMobileBuildAndroidDir)BlazorMobile.Build.Android.dll&quot;</BlazorMobileBuildAndroidFileExe>
+    <BlazorMobileBuildAndroidInput>&quot;$(MSBuildProjectFullPath)&quot;</BlazorMobileBuildAndroidInput>
+    <!-- The current line below is expected. We do not search about the real obj intermediateOutputPath -->
+    <!-- if it's different but just having an ignored directory for version control BUT not prefixed by some Android Debug or SDK version at build -->
+    <!-- for injecting somme Android Assets with a consistent path -->
+    <BlazorMobileBuildAndroidIntermediateOutputPath>$(MSBuildProjectDirectory)/obj/</BlazorMobileBuildAndroidIntermediateOutputPath>
+  </PropertyGroup>
+
+  <Target Name="_InjectBlazorMobileIFrameListenerWebExtension" BeforeTargets="CoreCompile">
+    <Exec Command="$(BlazorMobileBuildAndroidFileExe) inject-iframe-listener-webextension --input $(BlazorMobileBuildAndroidInput) --package-dir $(BlazorMobileBuildAndroidDir) --intermediate-output-path $(BlazorMobileBuildAndroidIntermediateOutputPath)" />
+  </Target>
+
+  <Target Name="InjectBlazorMobileIFrameListenerWebExtension" DependsOnTargets="_InjectBlazorMobileIFrameListenerWebExtension" BeforeTargets="CoreCompile">
+    <ItemGroup>
+      <AndroidAsset Include="obj\BlazorMobile\web_extensions\iframe_listener\background.js" />
+      <AndroidAsset Include="obj\BlazorMobile\web_extensions\iframe_listener\icons\blazormobile-48.png" />
+      <AndroidAsset Include="obj\BlazorMobile\web_extensions\iframe_listener\manifest.json" />
+    </ItemGroup>
+  </Target>
+  
+</Project>

@@ -36,7 +36,7 @@ namespace BlazorMobile.Droid.Renderer
             //This asset must be added in the developer project manually or injected at build if not present through a MSBuild task
             //This is needed because Android does not support sharing asset from class library projects, so we can't reference it directly from BlazorMobile.Android
             //NOTE: Delegate for WebExtension handling seem missing from current Xamarin.GeckoView generated bindings, but the handling will be workarounded through the local BlazorMobile server
-            _runtime.RegisterWebExtension(new WebExtension("resource://android/assets/BlazorMobile/web_extensions/iframe_listener/", "BlazorMobileIframeListener"));
+            _runtime.RegisterWebExtension(new WebExtension("resource://android/assets/obj/BlazorMobile/web_extensions/iframe_listener/", "BlazorMobileIframeListener"));
 
             _session.Open(_runtime);
             _session.ProgressDelegate = new BlazorProgressDelegate(this);
