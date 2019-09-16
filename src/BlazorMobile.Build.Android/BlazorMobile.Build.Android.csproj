@@ -31,13 +31,13 @@
 
   <ItemGroup>
     <None Update="BlazorMobile\web_extensions\iframe_listener\background.js">
-      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </None>
     <None Update="BlazorMobile\web_extensions\iframe_listener\icons\blazormobile-48.png">
-      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </None>
     <None Update="BlazorMobile\web_extensions\iframe_listener\manifest.json">
-      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </None>
   </ItemGroup>
 

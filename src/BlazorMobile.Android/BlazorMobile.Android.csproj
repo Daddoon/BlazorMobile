@@ -52,6 +52,7 @@
     <Compile Include="Handler\BlazorProgressDelegate.cs" />
     <Compile Include="Handler\BlazorNavigationDelegate.cs" />
     <Compile Include="Helper\KeyboardUtil.cs" />
+    <Compile Include="Helper\WebExtensionHelper.cs" />
     <Compile Include="Interop\WebViewService.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Renderer\BlazorGeckoViewRenderer.cs" />

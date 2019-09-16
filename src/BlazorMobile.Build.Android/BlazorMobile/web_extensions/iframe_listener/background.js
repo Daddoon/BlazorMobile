@@ -34,11 +34,11 @@ browser.webRequest.onBeforeRequest.addListener(
 
         let xhr = new XMLHttpRequest();
 
-        let validationURI = new URL(page.documentUrl).origin + "/_validateRequest/?uri=" + encodeURIComponent(page.url) + "&referrer=" + encodeURIComponent(page.originUrl);
+        let validationURI = new URL(page.documentUrl).origin + "/_validateRequest/?uri=" + encodeURIComponent(page.url) + "&referrer=" + encodeURIComponent(page.originUrl) + "&runtime=" + encodeURIComponent();
         xhr.open('GET', validationURI, false);
 
         xhr.setRequestHeader('Content-Type', 'text/plain');
-        xhr.setRequestHeader('BlazorMobile-Validator', 'GeckoView');
+        xhr.setRequestHeader('BlazorMobile-Validator', browser.runtime.id);
 
         var cancelValue = false;
 

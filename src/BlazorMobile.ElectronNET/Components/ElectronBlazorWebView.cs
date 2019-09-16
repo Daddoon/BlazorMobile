@@ -1,4 +1,5 @@
 ﻿using BlazorMobile.Components;
+using BlazorMobile.Helper;
 using ElectronNET.API;
 using System;
 using System.Collections.Generic;
@@ -9,8 +10,25 @@ using Xamarin.Forms.Internals;
 
 namespace BlazorMobile.ElectronNET.Components
 {
-    public class ElectronBlazorWebView : View, IBlazorWebView
+    public class ElectronBlazorWebView : View, IBlazorWebView, IWebViewIdentity
     {
+        private int _identity = -1;
+
+        int IWebViewIdentity.GetWebViewIdentity()
+        {
+            return _identity;
+        }
+
+        ~ElectronBlazorWebView()
+        {
+            WebViewHelper.UnregisterWebView(this);
+        }
+
+        public ElectronBlazorWebView()
+        {
+            _identity = WebViewHelper.GenerateWebViewIdentity();
+        }
+
         private const string noop = ": no-op on ElectronNET";
 
         public WebViewSource Source { get => throw new NotImplementedException(); set => throw new NotImplementedException(); }

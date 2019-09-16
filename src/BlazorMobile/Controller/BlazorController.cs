@@ -1,4 +1,5 @@
 ﻿using BlazorMobile.Components;
+using BlazorMobile.Helper;
 using BlazorMobile.Interop;
 using BlazorMobile.Services;
 using System;
@@ -19,26 +20,29 @@ namespace BlazorMobile.Controller
         {
         }
 
-        public async Task<bool> ValidateRequest()
+        public async Task<bool> ValidateRequest(string webextensionId)
         {
             string cancel = "false";
 
-            var webview = BlazorWebViewFactory.GetLastBlazorWebViewInstance();
-            if (webview != null)
+            if (int.TryParse(webextensionId, out int runtimeId))
             {
-                string uri = this.Request.QueryString.Get("uri");
-                string referrer = this.Request.QueryString.Get("referrer");
-
-                var args = new WebNavigatingEventArgs(
-                    WebNavigationEvent.NewPage,
-                    new UrlWebViewSource() { Url = referrer },
-                    uri);
-
-                webview.SendNavigating(args);
-
-                if (args.Cancel)
+                var webview = WebViewHelper.GetWebViewByRuntimeIdentity(runtimeId);
+                if (webview != null)
                 {
-                    cancel = "true";
+                    string uri = this.Request.QueryString.Get("uri");
+                    string referrer = this.Request.QueryString.Get("referrer");
+
+                    var args = new WebNavigatingEventArgs(
+                        WebNavigationEvent.NewPage,
+                        new UrlWebViewSource() { Url = referrer },
+                        uri);
+
+                    webview.SendNavigating(args);
+
+                    if (args.Cancel)
+                    {
+                        cancel = "true";
+                    }
                 }
             }
 
@@ -57,14 +61,17 @@ namespace BlazorMobile.Controller
         {
             try
             {
-                //BlazorMobile Request validator context used with GeckoView and Iframe validation
-                if (!string.IsNullOrEmpty(this.Request.Headers.Get("BlazorMobile-Validator")))
+                //This is a request validation mecanism for the missing behavior of Navigating event when
+                //navigating through an iframe. We must ensure that this behavior is concistent on each
+                //platforms.
+                string webextensionId = this.Request.Headers.Get("BlazorMobile-Validator");
+                if (!string.IsNullOrEmpty(webextensionId))
                 {
-                    return await ValidateRequest();
+                    return await ValidateRequest(webextensionId);
                 }
                 else
                 {
-                    //Standard behavior
+                    //Standard behavior, serving Blazor app files and content
                     IWebResponse response = new EmbedIOWebResponse(this.Request, this.Response);
                     await WebApplicationFactory.ManageRequest(response);
                     return true;

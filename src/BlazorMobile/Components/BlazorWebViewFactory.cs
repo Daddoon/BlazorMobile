@@ -11,26 +11,6 @@ namespace BlazorMobile.Components
 {
     public static class BlazorWebViewFactory
     {
-        //This is not a good thing about WebView disposing
-        //This is temporary, see below
-        private static IBlazorWebView _lastWebView = null;
-
-        /// <summary>
-        /// HACK: This method is just a temporary hack for GeckoView.
-        /// GeckoView does not bubble up Iframe loading events compared to other browser
-        /// As we are using a WebExtension instead to workaround this missing behavior, we
-        /// need to forward the iframe Navigating Event to the BlazorWebView instance on Android.
-        /// 
-        /// As we don't yet manage to inject some WebView identity at Blazor app start to forward
-        /// to a specific WebView object, we will just assume that the last BlazorWebView created
-        /// object is the Webview we are looking for.
-        /// </summary>
-        /// <returns></returns>
-        internal static IBlazorWebView GetLastBlazorWebViewInstance()
-        {
-            return _lastWebView;
-        }
-
         /// <summary>
         /// Return an compatible WebView renderer for the current running platform
         /// </summary>
@@ -40,15 +20,15 @@ namespace BlazorMobile.Components
             //ElectronNET case is managed separately as it is not on the Xamarin.Forms stack.
             if (ContextHelper.IsElectronNET())
             {
-                return _lastWebView = CreateElectronBlazorWebViewInstance();
+                return CreateElectronBlazorWebViewInstance();
             }
 
             switch (Device.RuntimePlatform)
             {
                 case Device.Android:
-                    return _lastWebView = CreateBlazorGeckoViewInstance();
+                    return CreateBlazorGeckoViewInstance();
                 default:
-                    return _lastWebView = new BlazorWebView();
+                    return new BlazorWebView();
             }
         }
 

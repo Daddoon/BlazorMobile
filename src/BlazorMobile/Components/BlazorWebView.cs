@@ -1,4 +1,5 @@
 ﻿using BlazorMobile.Common.Helpers;
+using BlazorMobile.Helper;
 using BlazorMobile.Interop;
 using BlazorMobile.Services;
 using System;
@@ -12,12 +13,26 @@ using Xamarin.Forms;
 [assembly: InternalsVisibleTo("BlazorMobile.UWP")]
 namespace BlazorMobile.Components
 {
-    public class BlazorWebView : WebView, IBlazorWebView
+    public class BlazorWebView : WebView, IBlazorWebView, IWebViewIdentity
     {
+        private int _identity = -1;
+
+        int IWebViewIdentity.GetWebViewIdentity()
+        {
+            return _identity;
+        }
+
+        ~BlazorWebView()
+        {
+            WebViewHelper.UnregisterWebView(this);
+        }
+
         public BlazorWebView()
         {
             Navigated += BlazorWebView_Navigated;
             WebApplicationFactory.BlazorAppNeedReload += ReloadBlazorAppEvent;
+
+            _identity = WebViewHelper.GenerateWebViewIdentity();
         }
 
         private void ReloadBlazorAppEvent(object sender, EventArgs e)
