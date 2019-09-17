@@ -85,6 +85,15 @@ namespace BlazorMobile.Services
                 throw new NullReferenceException("The Blazor app resolver was not set! Please call WebApplicationFactory.RegisterAppStreamResolver method before launching your app");
             }
 
+            //Specific use cases here !
+
+            if (path.EndsWith(PlatformSpecific.BlazorWebAssemblyFileName) && PlatformSpecific.UseAlternateBlazorWASMScript())
+            {
+                return PlatformSpecific.GetAlternateBlazorWASMScript();
+            }
+
+            //End specific cases
+
             MemoryStream data = null;
 
             lock (_zipLock)
@@ -334,6 +343,49 @@ namespace BlazorMobile.Services
             indexContent = indexContent.Replace("</body>", $"<script type=\"application/javascript\">window.blazorContextBridgeURI = '{GetContextBridgeURI()}';\r\n</script>\r\n</body>");
 
             return new MemoryStream(Encoding.UTF8.GetBytes(indexContent));
+        }
+
+        internal static class PlatformSpecific
+        {
+            private static bool _delayedStartPatch = false;
+
+            internal static void EnableDelayedStartPatch(bool value)
+            {
+                _delayedStartPatch = value;
+            }
+
+            /// <summary>
+            /// Used for iOS 13 fix until it's fixed by Apple
+            /// </summary>
+            /// <returns></returns>
+            internal static bool UseAlternateBlazorWASMScript()
+            {
+                return _delayedStartPatch;
+            }
+
+            private const string JsFilesPath = "Interop.Javascript.";
+
+            //If future change, only one place to modify
+            internal const string BlazorWebAssemblyFileName = _alternateBlazorWasmScriptName;
+
+            private const string _alternateBlazorWasmScriptName = "blazor.webassembly.js";
+
+            internal static MemoryStream GetAlternateBlazorWASMScript()
+            {
+                var assembly = typeof(WebApplicationFactory).Assembly;
+
+                //Assembly name and Assembly namespace differ in this project
+                string JsNamespace = $"BlazorMobile.{JsFilesPath}";
+
+                MemoryStream outputStream = new MemoryStream();
+                using (var contentStream = assembly.GetManifestResourceStream($"{JsNamespace}{_alternateBlazorWasmScriptName}"))
+                {
+                    contentStream.Seek(0, SeekOrigin.Begin);
+                    contentStream.CopyTo(outputStream);
+                    outputStream.Seek(0, SeekOrigin.Begin);
+                    return outputStream;
+                }
+            }
         }
 
         internal static async Task ManageRequest(IWebResponse response)

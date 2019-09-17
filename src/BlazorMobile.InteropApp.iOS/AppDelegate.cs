@@ -24,6 +24,12 @@ namespace BlazorMobile.InteropApp.iOS
         {
             global::Xamarin.Forms.Forms.Init();
             BlazorWebViewService.Init();
+
+            if (int.TryParse(UIDevice.CurrentDevice.SystemVersion.Split('.')[0], out int majorVersion) && majorVersion >= 13)
+            {
+                BlazorWebViewService.EnableDelayedStartPatch();
+            }
+
             LoadApplication(new App());
 
             return base.FinishedLaunching(app, options);

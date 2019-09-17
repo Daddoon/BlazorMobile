@@ -15,6 +15,7 @@
 <body>
     <app>@(await Html.RenderComponentAsync<MobileApp>(RenderMode.ServerPrerendered))</app>
     <script type="text/javascript" src="js/blazor.polyfill.min.js"></script>
+    <script>var Module;</script>
     <script type="text/javascript" src="_framework/blazor.server.js"></script>
 </body> 
 </html>

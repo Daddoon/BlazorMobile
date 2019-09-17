@@ -13,7 +13,7 @@ namespace BlazorMobile.Interop
     {
         internal const string _contextBridgeRelativeURI = "/contextBridge";
 
-        private static string JsFilesPath = "Interop.Javascript.";
+        private const string JsFilesPath = "Interop.Javascript.";
 
         private static string GetFileContent(string filename)
         {
