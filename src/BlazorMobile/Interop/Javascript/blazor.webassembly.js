@@ -1720,7 +1720,7 @@
 								} catch (e) {
 									a(e)
 								}
-							}, 1000, l, r ,e);
+							}, 2000, l, r ,e);
 						}
 					}
 					function u(e) {
