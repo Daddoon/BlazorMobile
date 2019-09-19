@@ -513,7 +513,9 @@ Credits to [@kmiller68](https://github.com/kmiller68) in [this issue](https://gi
 
 ### ITMS-90809: Deprecated API Usage - Apple will stop accepting submissions of apps that use UIWebView APIs
 
-Content
+When submiting an iOS app on the AppStore you may have this message: **ITMS-90809: Deprecated API Usage - Apple will stop accepting submissions of apps that use UIWebView APIs . See https://developer.apple.com/documentation/uikit/uiwebview for more information.**
+
+Please follow [this issue](https://github.com/xamarin/Xamarin.Forms/issues/7323) on Xamarin.Forms GitHub page.
 
 ## Migration
 
