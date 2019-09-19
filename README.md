@@ -37,6 +37,7 @@ Create full C# driven hybrid-apps for iOS, Android, UWP & Desktop with Blazor!
 - [System.ArgumentOutOfRangeException when calling Blazor to native](#systemargumentoutofrangeexception-when-calling-blazor-to-native)
 - [Cyclic restore issue at project template creation](#cyclic-restore-issue-at-project-template-creation)
 - [iOS/Safari 13: Unhandled Promise Rejection: TypeError: 'arguments', 'callee', and 'caller' cannot be accessed in this context](#iossafari-13-unhandled-promise-rejection-typeerror-arguments-callee-and-caller-cannot-be-accessed-in-this-context)
+- [ITMS-90809: Deprecated API Usage - Apple will stop accepting submissions of apps that use UIWebView APIs](#fdfd)
 
 ## Migration
 
@@ -509,6 +510,10 @@ The actual workaround is to add this line...
 ...before the **blazor.webassembly.js** script tag.
 
 Credits to [@kmiller68](https://github.com/kmiller68) in [this issue](https://github.com/mono/mono/issues/15588#issuecomment-529056521)
+
+### ITMS-90809: Deprecated API Usage - Apple will stop accepting submissions of apps that use UIWebView APIs
+
+Content
 
 ## Migration
 
