@@ -81,7 +81,10 @@ namespace BlazorMobile.Common.Interop
 
         public TypeProxy InterfaceType { get; set; }
 
-        //public string InterfaceTypeJson { get; set; }
+        /// <summary>
+        /// Only used with UWP that does not support GetInterfaceMap calls with .NET Native toolchain
+        /// </summary>
+        public string MethodName { get; set; }
 
         public int MethodIndex { get; set; }
 

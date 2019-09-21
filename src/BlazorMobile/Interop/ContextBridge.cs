@@ -104,7 +104,7 @@ namespace BlazorMobile.Interop
                 Type iface = methodProxy.InterfaceType.ResolvedType();
                 object concreteService = DependencyServiceExtension.Get(iface);
 
-                MethodInfo baseMethod = MethodProxyHelper.GetClassMethodInfo(concreteService.GetType(), iface, methodProxy.MethodIndex);
+                MethodInfo baseMethod = MethodProxyHelper.GetClassMethodInfo(concreteService.GetType(), iface, methodProxy);
 
                 //In case of failure, getting Default Return Type
                 defaultValue = GetDefault(baseMethod.ReturnType);
