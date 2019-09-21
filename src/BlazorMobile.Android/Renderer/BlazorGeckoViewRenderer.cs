@@ -18,6 +18,11 @@ namespace BlazorMobile.Droid.Renderer
 {
     public class BlazorGeckoViewRenderer : GeckoViewRenderer
     {
+        internal void BlazorForwardSendNavigating(WebNavigatingEventArgs args)
+        {
+            Element.SendNavigating(args);
+        }
+
         public override Tuple<GeckoSession, GeckoRuntime> CreateNewSession()
         {
             var settings = new GeckoSessionSettings.Builder()
@@ -29,11 +34,12 @@ namespace BlazorMobile.Droid.Renderer
                 .Build();
 
             GeckoSession _session = new GeckoSession(settings);
-
-            GeckoRuntime _runtime = GeckoRuntime.Create(Context);
+            GeckoRuntime _runtime = GeckoRuntime.GetDefault(Context);
 
             //Register BlazorMobile iframe listener WebExtension, as GeckoView LoadRequest does not bubble up when navigating through an iFrame.
             //NOTE: Delegate for WebExtension handling seem missing from current Xamarin.GeckoView generated bindings, but the handling will be workarounded through the local BlazorMobile server
+
+            //WARNING: With our implementation, registering a WebExtension is per WebView if the same runtime object is used, not per session
             WebExtensionHelper.RegisterWebExtension(Element as BlazorGeckoView, _runtime, "resource://android/assets/obj/BlazorMobile/web_extensions/iframe_listener/");
 
             _session.Open(_runtime);
