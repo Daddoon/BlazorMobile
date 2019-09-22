@@ -170,6 +170,8 @@ namespace BlazorMobile.Services
 
             if (newPort != previousPort)
             {
+                ConsoleHelper.WriteError("Unable to start web server on same previous port. Notifying BlazorWebView for reload...");
+
                 //If port changed between affectation, that mean that an other process took the port.
                 //We need to reload any Blazor webview instance
                 NotifyBlazorAppReload();

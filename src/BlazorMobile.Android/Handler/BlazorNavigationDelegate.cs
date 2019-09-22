@@ -39,40 +39,9 @@ namespace BlazorMobile.Droid.Handler
             return base.OnLoadRequest(session, request);
         }
 
-        private List<GeckoSession> _notGCSessionList = new List<GeckoSession>();
-
         public override GeckoResult OnNewSession(GeckoSession session, string uri)
         {
-            //Can assume result precisely here compared to Xamarin.Forms API
-            var navEvent = WebNavigationEvent.NewPage;
-
-            WebViewSource source;
-            if (_renderer.Element != null && _renderer.Element.Source != null)
-            {
-                source = _renderer.Element.Source;
-            }
-            else
-            {
-                source = new UrlWebViewSource() { Url = uri };
-            }
-
-            var args = new WebNavigatingEventArgs(navEvent, source, uri);
-            _renderer.Element.SendNavigating(args);
-            
-            if (args.Cancel)
-            {
-                return new GeckoResult(GeckoResult.FromValue(null));
-            }
-            else
-            {
-                //From documentation: A GeckoResult which holds the returned GeckoSession. May be null, in which case the request for a new window by web content will fail. e.g., window.open() will return null. The implementation of onNewSession is responsible for maintaining a reference to the returned object, to prevent it from being garbage collected.
-                //See here: https://mozilla.github.io/geckoview/javadoc/mozilla-central/org/mozilla/geckoview/GeckoSession.NavigationDelegate.html#onNewSession-org.mozilla.geckoview.GeckoSession-java.lang.String-
-
-                GeckoSession newSession = new GeckoSession();
-                _notGCSessionList.Add(newSession);
-
-                return new GeckoResult(GeckoResult.FromValue(newSession));
-            }
+            return base.OnNewSession(session, uri);
         }
     }
 }

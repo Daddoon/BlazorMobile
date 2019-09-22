@@ -3,6 +3,7 @@ using BlazorMobile.Common.Interop;
 using BlazorMobile.Common.Models;
 using BlazorMobile.Common.Serialization;
 using BlazorMobile.Components;
+using BlazorMobile.Extensions;
 using BlazorMobile.Services;
 using System;
 using System.Collections.Generic;
@@ -106,8 +107,10 @@ namespace BlazorMobile.Interop
 
                 if (concreteService == null)
                 {
-                    //iface should ne be null
-                    throw new InvalidOperationException($"ERROR: The service implementation class of your interface '{iface.Name}' was not found on native side. If you are targeting UWP with .NET native toolchain, you must register your services through 'DependencyService.Register' at startup as the toolchain may strip your class from assembly at build time");
+                    //iface should not be null
+                    string error = $"The service implementation class of your interface '{iface.Name}' was not found on native side. If you are targeting UWP with .NET native toolchain, you must register your services through 'DependencyService.Register' at startup as the toolchain may strip your class from assembly at build time";
+                    ConsoleHelper.WriteError(error);
+                    throw new InvalidOperationException(error);
                 }
 
                 MethodInfo baseMethod = MethodProxyHelper.GetClassMethodInfo(concreteService.GetType(), iface, methodProxy);

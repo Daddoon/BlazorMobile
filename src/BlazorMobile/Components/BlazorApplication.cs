@@ -61,8 +61,17 @@ namespace BlazorMobile.Components
                 return;
             }
 
-            WebApplicationFactory.ResetBlazorViewIfHttpPortChanged();
-            WebApplicationFactory.StartWebServer();
+            Device.BeginInvokeOnMainThread(async () =>
+            {
+                //Giving additionnal time on Android, as there is a bug in Release mode that does not free port properly
+                if (Device.RuntimePlatform == Device.Android)
+                {
+                    await Task.Delay(5000);
+                }
+
+                WebApplicationFactory.ResetBlazorViewIfHttpPortChanged();
+                WebApplicationFactory.StartWebServer();
+            });
         }
     }
 }

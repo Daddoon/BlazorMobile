@@ -23,8 +23,24 @@ namespace BlazorMobile.Droid.Renderer
             Element.SendNavigating(args);
         }
 
-        public override Tuple<GeckoSession, GeckoRuntime> CreateNewSession()
+        private bool _firstCall = true;
+
+        public override Tuple<GeckoSession, GeckoRuntime> CreateNewSession(bool needSessionOpening, string uri)
         {
+            if (!_firstCall)
+            {
+                GeckoSession newSession = new GeckoSession();
+                GeckoRuntime newRuntime = GeckoRuntime.GetDefault(Context);
+                
+                //With our scenario this should not happen, but enforcing rule just for sanity check
+                if (needSessionOpening)
+                {
+                    newSession.Open(newRuntime);
+                }
+
+                return new Tuple<GeckoSession, GeckoRuntime>(newSession, newRuntime);
+            }
+
             var settings = new GeckoSessionSettings.Builder()
                 .UsePrivateMode(true) //Use private mode in order to never cache anything at each app session
                 .UseTrackingProtection(true)
@@ -42,7 +58,11 @@ namespace BlazorMobile.Droid.Renderer
             //WARNING: With our implementation, registering a WebExtension is per WebView if the same runtime object is used, not per session
             WebExtensionHelper.RegisterWebExtension(Element as BlazorGeckoView, _runtime, "resource://android/assets/obj/BlazorMobile/web_extensions/iframe_listener/");
 
-            _session.Open(_runtime);
+            if (needSessionOpening)
+            {
+                _session.Open(_runtime);
+            }
+
             _session.ProgressDelegate = new BlazorProgressDelegate(this);
             _session.ContentDelegate = new BlazorContentDelegate(this);
             _session.NavigationDelegate = new BlazorNavigationDelegate(this);
@@ -53,6 +73,8 @@ namespace BlazorMobile.Droid.Renderer
                 _runtime.Settings.SetConsoleOutputEnabled(true);
             }
 
+            _firstCall = false;
+
             return Tuple.Create(_session, _runtime);
         }
 
@@ -60,6 +82,11 @@ namespace BlazorMobile.Droid.Renderer
 
         protected override void OnElementChanged(ElementChangedEventArgs<GeckoViewForms> e)
         {
+            if (Control == null)
+            {
+                _firstCall = true;
+            }
+
             base.OnElementChanged(e);
 
             if (keyboardHelper == null)
