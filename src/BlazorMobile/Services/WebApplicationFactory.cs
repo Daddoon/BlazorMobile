@@ -487,6 +487,7 @@ namespace BlazorMobile.Services
             if (IsStarted())
             {
                 //Already started
+                ConsoleHelper.WriteError("BlazorMobile: Cannot start Webserver because it has already started");
                 return;
             }
 
@@ -528,10 +529,13 @@ namespace BlazorMobile.Services
         
                 try
                 {
+                    _isStarted = true;
                     await server.RunAsync(serverCts.Token);
                 }
                 catch (InvalidOperationException e)
                 {
+                    _isStarted = false;
+
                     ConsoleHelper.WriteException(e);
 
                     //This call may be redundant with the previous case, but we must ensure that the StartWebServer invokation is done after clearing resources
@@ -542,6 +546,9 @@ namespace BlazorMobile.Services
                 }
                 catch (OperationCanceledException e)
                 {
+                    _isStarted = false;
+
+                    ConsoleHelper.WriteLine("BlazorMobile: Stopping server...");
                     ClearWebserverResources();
                 }
             });
@@ -586,9 +593,9 @@ namespace BlazorMobile.Services
             }
             catch (Exception ex)
             {
+                ConsoleHelper.WriteException(ex);
+                _isStarted = false;
             }
-
-            _isStarted = false;
         }
     }
 }

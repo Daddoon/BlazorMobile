@@ -51,7 +51,16 @@ namespace BlazorMobile.Components
                 return;
             }
 
-            WebApplicationFactory.StopWebServer();
+            switch (Device.RuntimePlatform)
+            {
+                case Device.Android:
+                    //There is a bug on Android in release mode that seem to prevent to stop or release port OnSleep
+                    //Avoiding to Stop the server OnSleep as the event seem to not be fully propagated
+                    break;
+                default:
+                    WebApplicationFactory.StopWebServer();
+                    break;
+            }
         }
 
         protected override void OnResume()
