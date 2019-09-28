@@ -274,7 +274,7 @@ namespace Xamarin.Forms
         }
 
         /// <summary>
-        /// If your code already started your BlazorWebView.LaunchBlazorApp method, you should retrive here the Electron main BrowserWindow used to create it.
+        /// If your code already started your BlazorWebView.LaunchBlazorApp method, you should retrieve here the Electron main BrowserWindow used to create it.
         /// Otherwise, return a null value
         /// </summary>
         /// <returns></returns>
