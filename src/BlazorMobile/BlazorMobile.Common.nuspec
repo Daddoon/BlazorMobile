@@ -16,7 +16,7 @@
         <tags>aspnet templates blazor spa web webassembly xamarin android ios uwp</tags>
         <dependencies>
             <group targetFramework="netstandard2.0">
-                <dependency id="Newtonsoft.Json" version="11.0.2" />
+                <dependency id="Newtonsoft.Json" version="12.0.2" />
                 <dependency id="NETStandard.Library" version="2.0.3" />
             </group>
         </dependencies>
