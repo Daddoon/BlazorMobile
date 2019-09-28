@@ -236,8 +236,6 @@ namespace Xamarin.Forms
 
             void ActionSheetSignalNameHandler(Page sender, ActionSheetArguments arguments)
             {
-                //Some inspiration can be taken from here: https://github.com/xamarin/Xamarin.Forms/blob/fda800ca4c9d9a24b531721d7a18114169e2d8ec/Xamarin.Forms.Platform.Tizen/Platform.cs
-
                 //Managing buttons logic behavior with Xamarin.Forms
                 List<string> buttons = new List<string>();
 
