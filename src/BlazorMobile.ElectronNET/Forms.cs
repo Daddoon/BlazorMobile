@@ -9,6 +9,9 @@ using BlazorMobile.Services;
 using BlazorMobile.Components;
 using ElectronNET.API;
 using System.Collections.Generic;
+using BlazorMobile.Interop;
+using BlazorMobile.ElectronNET.Services;
+using BlazorMobile.ElectronNET.Components;
 
 
 //This is inspired from Ooui.Forms
@@ -29,6 +32,8 @@ namespace Xamarin.Forms
             Device.SetIdiom(TargetIdiom.Desktop);
             Device.PlatformServices = new BlazorMobilePlatformServices();
             Device.Info = new BlazorMobileDeviceInfo();
+
+            DependencyService.Register<IWebApplicationPlatform, ElectronWebApplicationPlatform>();
 
             WebApplicationFactory.Init();
         }
@@ -269,10 +274,23 @@ namespace Xamarin.Forms
         }
 
         /// <summary>
+        /// If your code already started your BlazorWebView.LaunchBlazorApp method, you should retrive here the Electron main BrowserWindow used to create it.
+        /// Otherwise, return a null value
+        /// </summary>
+        /// <returns></returns>
+        public static BrowserWindow GetBrowserWindow()
+        {
+            var blazorWebView = BlazorWebViewFactory.GetMainElectronBlazorWebViewInstance();
+            var electronBlazorWebView = blazorWebView as ElectronBlazorWebView;
+
+            return electronBlazorWebView?.GetBrowserWindow();
+        }
+
+        /// <summary>
         /// Register the Xamarin.Forms Application class
         /// </summary>
         /// <param name="application"></param>
-        internal static void LoadApplication(BlazorApplication application)
+        public static void LoadApplication(BlazorApplication application)
         {
             Application.Current = application;
         }

@@ -2,6 +2,7 @@
 using BlazorMobile.Components;
 using BlazorMobile.ElectronNET.Components;
 using BlazorMobile.Interop;
+using ElectronNET.API;
 using System;
 using System.Runtime.Serialization;
 using Xamarin.Forms;
@@ -13,7 +14,8 @@ namespace Microsoft.AspNetCore.Builder
         /// <summary>
         /// Call of this method will notify to BlazorMobile that the runtime is actually running under ElectronNET (server-side) and will also start your ElectronNET application.
         /// NOTE: Usage of blazor.server.js in your starting page is mandatory.
-        /// If using BlazorMobile.Build on your Blazor base project, you should register 'server_index.html' at this app start.
+        /// If using BlazorMobile.Build on your Blazor base project, you should add a link reference to 'server_index.cshtml' in your server project from the base project, and register this file at app start.
+        /// See BlazorMobile documentation for more info.
         /// </summary>
         public static IApplicationBuilder UseBlazorMobileWithElectronNET<TFormsApplication>(this IApplicationBuilder app) where TFormsApplication : BlazorApplication
         {
@@ -31,8 +33,6 @@ namespace Microsoft.AspNetCore.Builder
             app.UseStaticFiles();
 
             Forms.Init();
-
-            Forms.LoadApplication((TFormsApplication)Activator.CreateInstance(typeof(TFormsApplication)));
 
             return app;
         }

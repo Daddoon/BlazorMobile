@@ -1,5 +1,6 @@
 ﻿using BlazorMobile.Components;
 using BlazorMobile.Helper;
+using BlazorMobile.Interop;
 using ElectronNET.API;
 using System;
 using System.Collections.Generic;
@@ -71,6 +72,13 @@ namespace BlazorMobile.ElectronNET.Components
 
         private bool _initialized = false;
 
+        private BrowserWindow _browserWindow = null;
+
+        public BrowserWindow GetBrowserWindow()
+        {
+            return _browserWindow;
+        }
+
         public void LaunchBlazorApp()
         {
             if (_initialized)
@@ -78,9 +86,15 @@ namespace BlazorMobile.ElectronNET.Components
                 return;
             }
 
-            _initialized = true;
+            var createWindowTask = Task.Run(async () => _browserWindow = await Electron.WindowManager.CreateWindowAsync());
+            Task.WaitAll(createWindowTask);
 
-            Task.Run(async () => await Electron.WindowManager.CreateWindowAsync());
+            var webPlatform = DependencyService.Get<IWebApplicationPlatform>();
+
+            //We are just forcing the BaseURL caching before continuing
+            webPlatform.GetBaseURL();
+
+            _initialized = true;
         }
 
         public void Reload()

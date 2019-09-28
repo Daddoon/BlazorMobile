@@ -278,7 +278,7 @@ namespace BlazorMobile.Services
         }
 
         private static string _localIP = null;
-        private static string GetLocalWebServerIP()
+        internal static string GetLocalWebServerIP()
         {
             if (_localIP == null)
             {
@@ -304,14 +304,15 @@ namespace BlazorMobile.Services
             return _localIP;
         }
 
+
         /// <summary>
         /// Return the current internal app base URI without the trailing slash. This value may change during lifetime if the registered listening port
-        /// is not available after an app resume. NOTE: This method will not return the ElectronNET base URL yet. See: https://github.com/Daddoon/BlazorMobile/issues/109
         /// </summary>
         /// <returns></returns>
         public static string GetBaseURL()
         {
-            return $"http://{GetLocalWebServerIP()}:{GetHttpPort()}";
+            var webPlatform = DependencyService.Get<IWebApplicationPlatform>();
+            return webPlatform.GetBaseURL();
         }
 
         internal static string GetQueryPath(string path)
@@ -441,6 +442,12 @@ namespace BlazorMobile.Services
             {
                 //Register IBlazorXamarinDeviceService for getting base metadata for Blazor
                 DependencyService.Register<IBlazorXamarinDeviceService, BlazorXamarinDeviceService>();
+
+                //We should always register this service at load, except for Electron that should register it in his custom Xamarin.Forms driver
+                if (ContextHelper.IsBlazorMobile())
+                {
+                    DependencyService.Register<IWebApplicationPlatform, BlazorMobileWebApplicationPlatform>();
+                }
 
                 BlazorXamarinDeviceService.InitRuntimePlatform();
 

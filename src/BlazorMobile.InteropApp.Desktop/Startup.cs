@@ -83,6 +83,11 @@ namespace BlazorMobile.InteropApp.Desktop
                 endpoints.MapFallbackToPage("/server_index");
             });
 
+            bool toto = false;
+            while (toto == false)
+            {
+            }
+
             BlazorMobileService.Init((bool success) =>
             {
                 Console.WriteLine($"Initialization success: {success}");
@@ -90,6 +95,13 @@ namespace BlazorMobile.InteropApp.Desktop
             });
 
             app.UseBlazorMobileWithElectronNET<App>();
+
+            //Launch the Blazor app
+            Forms.LoadApplication(new App());
+
+            // If your code already started your BlazorWebView.LaunchBlazorApp method, you should retrive here the Electron main BrowserWindow used to create it.
+            // Otherwise, return a null value
+            var myBrowserWindow = Forms.GetBrowserWindow();
         }
     }
 }
