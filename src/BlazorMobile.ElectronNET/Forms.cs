@@ -7,10 +7,8 @@ using System.Threading.Tasks;
 using System.Net.Http;
 using BlazorMobile.Services;
 using BlazorMobile.Components;
-using System.Runtime.Serialization;
-using BlazorMobile.Common.Components;
-using Microsoft.JSInterop;
-using BlazorMobile.ElectronNET.Messaging;
+using ElectronNET.API;
+using System.Collections.Generic;
 
 
 //This is inspired from Ooui.Forms
@@ -204,24 +202,70 @@ namespace Xamarin.Forms
                 //Noop
             }
 
-            public void OnAlertSignalResult(AlertArguments arguments, bool isOk)
-            {
-                arguments.SetResult(isOk);
-            }
-
             void AlertSignalNameHandler(Page sender, AlertArguments arguments)
             {
-                //Electron documentation about dialog: https://github.com/electron/electron/blob/v5.0.10/docs/api/dialog.md
+                //Managing buttons logic behavior with Xamarin.Forms
+                List<string> buttons = new List<string>();
+                if (!string.IsNullOrEmpty(arguments.Accept))
+                {
+                    buttons.Add(arguments.Accept);
+                }
+                buttons.Add(arguments.Cancel);
 
-                var applicationRef = DotNetObjectReference.Create(new ElectronBridge(this));
-                var alertRef = DotNetObjectReference.Create(arguments);
+                Device.BeginInvokeOnMainThread(async () => {
+                    var messageBoxResult = await Electron.Dialog.ShowMessageBoxAsync(new ElectronNET.API.Entities.MessageBoxOptions(arguments.Message)
+                    {
+                        Title = arguments.Title,
+                        Buttons = buttons.ToArray(),
+                        Type = ElectronNET.API.Entities.MessageBoxType.none,
+                        NoLink = true
+                    });
 
-                BlazorMobileComponent.GetJSRuntime().InvokeAsync<bool>("BlazorMobileElectron.AlertDialog", applicationRef, alertRef, arguments.Title, arguments.Message, arguments.Accept, arguments.Cancel);
+                    bool isOk = true;
+
+                    //If buttons count equal 1, we only have a cancel button
+                    //If we have more than 1 button but the Response index is the last button item, then it's a cancel button value
+                    if (buttons.Count == 1 || buttons.Count > 1 && messageBoxResult.Response == buttons.Count - 1)
+                    {
+                        isOk = false;
+                    }
+
+                    arguments.SetResult(isOk);
+                });
             }
 
             void ActionSheetSignalNameHandler(Page sender, ActionSheetArguments arguments)
             {
                 //Some inspiration can be taken from here: https://github.com/xamarin/Xamarin.Forms/blob/fda800ca4c9d9a24b531721d7a18114169e2d8ec/Xamarin.Forms.Platform.Tizen/Platform.cs
+
+                //Managing buttons logic behavior with Xamarin.Forms
+                List<string> buttons = new List<string>();
+
+                if (string.IsNullOrEmpty(arguments.Destruction))
+                {
+                    //In mobile plateform, the Destruction button, if set, must be the top one
+                    //We cannot colorize it
+                    buttons.Add(arguments.Destruction);
+                }
+
+                //Adding selection
+                buttons.AddRange(arguments.Buttons);
+
+                //In ActionSheet, Cancel is always the last one
+                buttons.Add(arguments.Cancel);
+
+                string[] buttonsArray = buttons.ToArray();
+
+                Device.BeginInvokeOnMainThread(async () => {
+                    var messageBoxResult = await Electron.Dialog.ShowMessageBoxAsync(new ElectronNET.API.Entities.MessageBoxOptions(arguments.Title)
+                    {
+                        Buttons = buttonsArray,
+                        Type = ElectronNET.API.Entities.MessageBoxType.question,
+                        NoLink = false
+                    });
+
+                    arguments.SetResult(buttonsArray[messageBoxResult.Response]);
+                });
             }
 
         }
