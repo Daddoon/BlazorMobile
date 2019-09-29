@@ -8,8 +8,11 @@
 
   <ItemGroup>
     <Compile Remove="Mobile\**" />
+    <Compile Remove="Package\**" />
     <EmbeddedResource Remove="Mobile\**" />
+    <EmbeddedResource Remove="Package\**" />
     <None Remove="Mobile\**" />
+    <None Remove="Package\**" />
   </ItemGroup>
 
   <ItemGroup>
@@ -19,13 +22,5 @@
   <ItemGroup>
     <ProjectReference Include="..\BlazorMobile.InteropApp.Common\BlazorMobile.InteropApp.Common.csproj" />
     <ProjectReference Include="..\BlazorMobile\BlazorMobile.csproj" />
-  </ItemGroup>
-
-  <ItemGroup>
-    <Folder Include="Package\" />
-  </ItemGroup>
-
-  <ItemGroup>
-    <EmbeddedResource Include="..\BlazorMobile.InteropBlazorApp\bin\BlazorMobile.InteropBlazorApp.zip" Link="Package\BlazorMobile.InteropBlazorApp.zip" />
   </ItemGroup>
 </Project>

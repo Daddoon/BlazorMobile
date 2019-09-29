@@ -81,11 +81,6 @@ namespace BlazorMobile.InteropApp.Desktop
                 endpoints.MapFallbackToPage("/server_index");
             });
 
-            bool toto = false;
-            while (toto == false)
-            {
-            }
-
             BlazorMobileService.Init((bool success) =>
             {
                 Console.WriteLine($"Initialization success: {success}");
@@ -100,9 +95,6 @@ namespace BlazorMobile.InteropApp.Desktop
             // If your code already started your BlazorWebView.LaunchBlazorApp method, you should retrieve here the Electron main BrowserWindow used to create it.
             // Otherwise, return a null Task value
             var myBrowserWindow = Forms.GetBrowserWindow();
-            
-            //var myStore = IsolatedStorageFile.GetStore(IsolatedStorageScope.User, null, null);
-            //myStore.CreateDirectory("testFolder");
         }
     }
 }

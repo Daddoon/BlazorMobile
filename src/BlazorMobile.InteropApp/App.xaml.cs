@@ -21,21 +21,6 @@ namespace BlazorMobile.InteropApp
 
             WebApplicationFactory.SetHttpPort(8888);
 
-            //Regiser Blazor app resolver
-            //CUSTOMIZE HERE YOUR OWN CODE LOGIC IF NEEDED !!
-            WebApplicationFactory.RegisterAppStreamResolver(() =>
-            {
-                //Get current class Assembly object
-                var assembly = typeof(App).Assembly;
-
-                //Name of our current Blazor package in this project, stored as a Embedded Resource
-                string BlazorPackageFolder = "BlazorMobile.InteropBlazorApp.zip";
-
-                string appPackage = $"{assembly.GetName().Name}.Package.{BlazorPackageFolder}";
-
-                return assembly.GetManifestResourceStream(appPackage);
-            });
-
             MainPage = new MainPage();
         }
 

@@ -1,4 +1,6 @@
-﻿using BlazorMobile.InteropApp.Services;
+﻿using BlazorMobile.InteropApp.AppPackage;
+using BlazorMobile.InteropApp.Services;
+using BlazorMobile.Services;
 using BlazorMobile.UWP.Services;
 using System;
 using System.Collections.Generic;
@@ -58,6 +60,9 @@ namespace BlazorMobile.InteropApp.UWP
                 Xamarin.Forms.DependencyService.Register<XamarinBridge>();
 
                 BlazorWebViewService.Init();
+
+                //Register our Blazor app package
+                WebApplicationFactory.RegisterAppStreamResolver(AppPackageHelper.ResolveAppPackageStream);
 
                 if (e.PreviousExecutionState == ApplicationExecutionState.Terminated)
                 {
