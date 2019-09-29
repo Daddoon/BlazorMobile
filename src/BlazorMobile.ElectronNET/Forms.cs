@@ -267,15 +267,18 @@ namespace Xamarin.Forms
 
         /// <summary>
         /// If your code already started your BlazorWebView.LaunchBlazorApp method, you should retrieve here the Electron main BrowserWindow used to create it.
-        /// Otherwise, return a null value
+        /// Otherwise, return a null Task value
         /// </summary>
         /// <returns></returns>
-        public static BrowserWindow GetBrowserWindow()
+        public static Task<BrowserWindow> GetBrowserWindow()
         {
             var blazorWebView = BlazorWebViewFactory.GetMainElectronBlazorWebViewInstance();
             var electronBlazorWebView = blazorWebView as ElectronBlazorWebView;
 
-            return electronBlazorWebView?.GetBrowserWindow();
+            if (electronBlazorWebView == null)
+                return Task.FromResult((BrowserWindow)null);
+
+            return electronBlazorWebView.GetBrowserWindow();
         }
 
         /// <summary>

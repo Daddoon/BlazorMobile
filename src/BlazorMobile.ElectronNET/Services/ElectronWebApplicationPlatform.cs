@@ -12,15 +12,17 @@ namespace BlazorMobile.ElectronNET.Services
     {
         private string _cachedURI = null;
 
+        internal void SetCachedBaseURL(string baseURL)
+        {
+            _cachedURI = baseURL;
+        }
+
         public string GetBaseURL()
         {
             if (string.IsNullOrEmpty(_cachedURI))
             {
-                var mainWindow = (ElectronBlazorWebView)BlazorWebViewFactory.GetMainElectronBlazorWebViewInstance();
-                var fetchURITask = Task.Run(async() => _cachedURI = await mainWindow.GetBrowserWindow().WebContents.GetUrl());
-                Task.WaitAll(fetchURITask);
+                throw new InvalidOperationException("Unable to determine the application BaseURL. On ElectronNET, check that WebApplicationFactory.GetBaseURL method is called after a call to your IBlazorWebView.LaunchBlazorApp method");
             }
-
             return _cachedURI;
         }
     }
