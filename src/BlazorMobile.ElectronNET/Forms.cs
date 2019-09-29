@@ -49,28 +49,6 @@ namespace Xamarin.Forms
 
         internal class BlazorMobilePlatformServices : IPlatformServices, IDisposable
         {
-            public static class UIContext
-            {
-                private static TaskScheduler m_Current;
-
-                public static TaskScheduler Current
-                {
-                    get { return m_Current; }
-                    private set { m_Current = value; }
-                }
-
-                public static void Initialize()
-                {
-                    if (Current != null)
-                        return;
-
-                    if (SynchronizationContext.Current == null)
-                        SynchronizationContext.SetSynchronizationContext(new SynchronizationContext());
-
-                    Current = TaskScheduler.FromCurrentSynchronizationContext();
-                }
-            }
-
             ~BlazorMobilePlatformServices()
             {
                 Dispose(false);
@@ -78,9 +56,6 @@ namespace Xamarin.Forms
 
             public BlazorMobilePlatformServices()
             {
-                //Assuming that the use don't create a new thread since app initialization
-                UIContext.Initialize();
-
                 MessagingCenter.Subscribe<Page, bool>(this, Page.BusySetSignalName, BusySetSignalNameHandler);
                 MessagingCenter.Subscribe<Page, AlertArguments>(this, Page.AlertSignalName, AlertSignalNameHandler);
                 MessagingCenter.Subscribe<Page, ActionSheetArguments>(this, Page.ActionSheetSignalName, ActionSheetSignalNameHandler);
@@ -92,10 +67,9 @@ namespace Xamarin.Forms
 
             public void BeginInvokeOnMainThread(Action action)
             {
-                //Actually, should we BeginInvokeOnMainThread on a new thread for ElectronNET
-                //or should we enforce the main thread execution dispatch ?
-
-                Task.Factory.StartNew(action, CancellationToken.None, TaskCreationOptions.None, UIContext.Current);
+                //It seem there is no notion of UI Thread nor non-background thread after testing
+                //We can safely assume to queue a task with Task.Run
+                Task.Run(action);
             }
 
             public Assembly[] GetAssemblies()
