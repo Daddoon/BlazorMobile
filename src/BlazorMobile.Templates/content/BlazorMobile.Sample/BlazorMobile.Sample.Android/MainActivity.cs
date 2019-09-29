@@ -1,14 +1,9 @@
-﻿using System;
-
-using Android.App;
+﻿using Android.App;
 using Android.Content.PM;
-using Android.Runtime;
-using Android.Views;
-using Android.Widget;
 using Android.OS;
-using BlazorMobile.Sample;
 using BlazorMobile.Droid.Services;
-using Android.Support.V7.App;
+using BlazorMobile.Services;
+using BlazorMobile.Sample.AppPackage;
 
 namespace BlazorMobile.Sample.Droid
 {
@@ -24,6 +19,10 @@ namespace BlazorMobile.Sample.Droid
 
             global::Xamarin.Forms.Forms.Init(this, savedInstanceState);
             BlazorWebViewService.Init(this);
+
+            //Register our Blazor app package
+            WebApplicationFactory.RegisterAppStreamResolver(AppPackageHelper.ResolveAppPackageStream);
+
             LoadApplication(new App());
         }
     }

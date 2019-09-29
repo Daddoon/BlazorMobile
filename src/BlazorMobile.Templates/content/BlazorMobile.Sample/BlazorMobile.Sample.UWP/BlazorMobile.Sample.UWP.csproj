@@ -163,6 +163,10 @@
     <Folder Include="Services\" />
   </ItemGroup>
   <ItemGroup>
+    <ProjectReference Include="..\BlazorMobile.Sample.AppPackage\BlazorMobile.Sample.AppPackage.csproj">
+      <Project>{632d1b2f-56e1-4f61-9e05-af9c8477e98b}</Project>
+      <Name>BlazorMobile.Sample.AppPackage</Name>
+    </ProjectReference>
     <ProjectReference Include="..\BlazorMobile.Sample\BlazorMobile.Sample.csproj">
       <Project>{a1bb8df7-82d6-4e98-99f1-de8ee4f8279a}</Project>
       <Name>BlazorMobile.Sample</Name>

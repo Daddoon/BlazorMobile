@@ -1,7 +1,6 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using BlazorMobile.iOS.Services;
+﻿using BlazorMobile.iOS.Services;
+using BlazorMobile.Sample.AppPackage;
+using BlazorMobile.Services;
 using Foundation;
 using UIKit;
 
@@ -24,6 +23,10 @@ namespace BlazorMobile.Sample.iOS
         {
             global::Xamarin.Forms.Forms.Init();
             BlazorWebViewService.Init();
+
+            //Register our Blazor app package
+            WebApplicationFactory.RegisterAppStreamResolver(AppPackageHelper.ResolveAppPackageStream);
+
             LoadApplication(new App());
 
             return base.FinishedLaunching(app, options);
