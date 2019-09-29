@@ -13,8 +13,6 @@ using BlazorMobile.Interop;
 using BlazorMobile.ElectronNET.Services;
 using BlazorMobile.ElectronNET.Components;
 
-
-//This is inspired from Ooui.Forms
 namespace Xamarin.Forms
 {
     public static class Forms
@@ -51,6 +49,28 @@ namespace Xamarin.Forms
 
         internal class BlazorMobilePlatformServices : IPlatformServices, IDisposable
         {
+            public static class UIContext
+            {
+                private static TaskScheduler m_Current;
+
+                public static TaskScheduler Current
+                {
+                    get { return m_Current; }
+                    private set { m_Current = value; }
+                }
+
+                public static void Initialize()
+                {
+                    if (Current != null)
+                        return;
+
+                    if (SynchronizationContext.Current == null)
+                        SynchronizationContext.SetSynchronizationContext(new SynchronizationContext());
+
+                    Current = TaskScheduler.FromCurrentSynchronizationContext();
+                }
+            }
+
             ~BlazorMobilePlatformServices()
             {
                 Dispose(false);
@@ -58,6 +78,9 @@ namespace Xamarin.Forms
 
             public BlazorMobilePlatformServices()
             {
+                //Assuming that the use don't create a new thread since app initialization
+                UIContext.Initialize();
+
                 MessagingCenter.Subscribe<Page, bool>(this, Page.BusySetSignalName, BusySetSignalNameHandler);
                 MessagingCenter.Subscribe<Page, AlertArguments>(this, Page.AlertSignalName, AlertSignalNameHandler);
                 MessagingCenter.Subscribe<Page, ActionSheetArguments>(this, Page.ActionSheetSignalName, ActionSheetSignalNameHandler);
@@ -69,7 +92,10 @@ namespace Xamarin.Forms
 
             public void BeginInvokeOnMainThread(Action action)
             {
-                Task.Run(action);
+                //Actually, should we BeginInvokeOnMainThread on a new thread for ElectronNET
+                //or should we enforce the main thread execution dispatch ?
+
+                Task.Factory.StartNew(action, CancellationToken.None, TaskCreationOptions.None, UIContext.Current);
             }
 
             public Assembly[] GetAssemblies()
@@ -103,16 +129,7 @@ namespace Xamarin.Forms
 
             public async Task<Stream> GetStreamAsync(Uri uri, CancellationToken cancellationToken)
             {
-                //NOTE:  Wanted to use the same facility that ImageLoaderSourceHandler uses,
-                //       but couldn't find an optional way to ignore certificate errors with self-signed 
-                //       certificates with that approach.  Calling:
-                //          ServicePointManager.ServerCertificateValidationCallback += (o, cert, chain, errors) => true;
-                //       in web application seemed to get ignored.
-
-                //var imageSource = new UriImageSource() { Uri = uri };
-                //return imageSource.GetStreamAsync(cancellationToken);
-
-                using (var client = HttpClientHandler == null ? new HttpClient() : new HttpClient(HttpClientHandler))
+                using (var client = new HttpClient())
                 {
                     HttpResponseMessage streamResponse = await client.GetAsync(uri.AbsoluteUri).ConfigureAwait(false);
 
@@ -128,12 +145,12 @@ namespace Xamarin.Forms
 
             public IIsolatedStorageFile GetUserStoreForApplication()
             {
-                throw new NotImplementedException();
+                return new ElectronIsolatedStorage();
             }
 
             public void OpenUriAction(Uri uri)
             {
-                throw new NotImplementedException();
+                Electron.Shell.OpenExternalAsync(uri.AbsoluteUri);
             }
 
             public void StartTimer(TimeSpan interval, Func<bool> callback)
@@ -175,6 +192,7 @@ namespace Xamarin.Forms
 
             public void QuitApplication()
             {
+                Log.Warning(nameof(BlazorMobilePlatformServices), "Platform doesn't implement QuitApp");
             }
 
             public SizeRequest GetNativeSize(VisualElement view, double widthConstraint, double heightConstraint)
