@@ -11,6 +11,8 @@ namespace BlazorMobile.Components
     {
         private int _identity = -1;
 
+        bool IWebViewIdentity.BlazorAppLaunched { get; set; }
+
         int IWebViewIdentity.GetWebViewIdentity()
         {
             return _identity;
@@ -19,28 +21,34 @@ namespace BlazorMobile.Components
         ~BlazorGeckoView()
         {
             WebViewHelper.UnregisterWebView(this);
+            WebApplicationFactory.BlazorAppNeedReload -= ReloadBlazorAppEvent;
+            WebApplicationFactory.EnsureBlazorAppLaunchedOrReload -= EnsureBlazorAppLaunchedOrReload;
         }
 
         public BlazorGeckoView()
         {
-            Navigated += BlazorWebView_Navigated;
             WebApplicationFactory.BlazorAppNeedReload += ReloadBlazorAppEvent;
+            WebApplicationFactory.EnsureBlazorAppLaunchedOrReload += EnsureBlazorAppLaunchedOrReload;
 
             _identity = WebViewHelper.GenerateWebViewIdentity();
         }
 
         private void ReloadBlazorAppEvent(object sender, EventArgs e)
         {
-            LaunchBlazorApp();
+            WebViewHelper.InternalLaunchBlazorApp(this, true);
+        }
+
+        private void EnsureBlazorAppLaunchedOrReload(object sender, EventArgs e)
+        {
+            if (!((IWebViewIdentity)this).BlazorAppLaunched)
+            {
+                ReloadBlazorAppEvent(sender, e);
+            }
         }
 
         public void LaunchBlazorApp()
         {
-            BlazorWebView.InternalLaunchBlazorApp(this);
-        }
-
-        private void BlazorWebView_Navigated(object sender, WebNavigatedEventArgs e)
-        {
+            WebViewHelper.LaunchBlazorApp(this);
         }
 
         public View GetView()

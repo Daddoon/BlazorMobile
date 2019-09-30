@@ -1,6 +1,8 @@
 ﻿using BlazorMobile.Common.Helpers;
 using BlazorMobile.Common.Interfaces;
 using BlazorMobile.Common.Services;
+using BlazorMobile.Components;
+using BlazorMobile.Helper;
 using System.Runtime.InteropServices;
 using System.Threading.Tasks;
 using Xamarin.Forms;
@@ -57,8 +59,24 @@ namespace BlazorMobile.Services
             _init = true;
         }
 
+        /// <summary>
+        /// This method is specific as it is also used as the Blazor app initialization validator.
+        /// This method is always called once after a Blazor app boot
+        /// </summary>
+        /// <returns></returns>
         public Task<string> GetRuntimePlatform()
         {
+            //HACK: This is more a hack than the cleanest implementation we would expect.
+            //We cannot determine what is the current executing WebView calling this method,
+            //as it's a service called remotely than a WebView callback. We are assuming here that
+            //all eligible WebViews with IWebViewIdentity interface are the Blazor app to check.
+            //The right fix would be to be able to pass the WebView identity to the Blazor app, and then
+            //forward it here when the BlazorMobileComponent want to initialize
+            foreach (IWebViewIdentity identity in WebViewHelper.GetAllWebViewIdentities())
+            {
+                identity.BlazorAppLaunched = true;
+            }
+
             return Task.FromResult(BlazorMobile.Common.BlazorDevice.RuntimePlatform);
         }
 

@@ -70,8 +70,16 @@ namespace BlazorMobile.Components
                 return;
             }
 
-            WebApplicationFactory.ResetBlazorViewIfHttpPortChanged();
+            bool needReload = WebApplicationFactory.ResetBlazorViewIfHttpPortChanged();
+
             WebApplicationFactory.StartWebServer();
+
+            if (!needReload)
+            {
+                //As the previous event can fire a reload too, we just check that a reload is not already pending,
+                //preventing to call the WebView reload twice
+                WebApplicationFactory.NotifyEnsureBlazorAppLaunchedOrReload();
+            }
         }
     }
 }

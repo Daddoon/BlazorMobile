@@ -20,6 +20,15 @@ namespace BlazorMobile.ElectronNET.Components
 
         private int _identity = -1;
 
+        /// <summary>
+        /// On ElectronNET, BlazorAppLaunched is always true as BlazorMobile is not responsible of the app rendering
+        /// </summary>
+        bool IWebViewIdentity.BlazorAppLaunched
+        {
+            get => true;
+            set { }
+        }
+
         int IWebViewIdentity.GetWebViewIdentity()
         {
             return _identity;

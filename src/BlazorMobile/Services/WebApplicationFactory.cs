@@ -153,12 +153,14 @@ namespace BlazorMobile.Services
             return MimeTypes.GetMimeType(path);
         }
 
-        internal static void ResetBlazorViewIfHttpPortChanged()
+        internal static bool ResetBlazorViewIfHttpPortChanged()
         {
+            bool needBlazorViewReload = false;
+
             if (IsStarted())
             {
                 //Nothing to do
-                return;
+                return needBlazorViewReload;
             }
 
             int previousPort = GetHttpPort();
@@ -170,15 +172,25 @@ namespace BlazorMobile.Services
 
             if (newPort != previousPort)
             {
+                needBlazorViewReload = true;
+
                 ConsoleHelper.WriteError("Unable to start web server on same previous port. Notifying BlazorWebView for reload...");
 
                 //If port changed between affectation, that mean that an other process took the port.
                 //We need to reload any Blazor webview instance
                 NotifyBlazorAppReload();
             }
+
+            return needBlazorViewReload;
         }
 
         internal static event EventHandler BlazorAppNeedReload;
+
+        /// <summary>
+        /// IBlazorWebView registered to this event must check the BlazorAppLaunched boolean.
+        /// If the value is false, the WebView must reload
+        /// </summary>
+        internal static event EventHandler EnsureBlazorAppLaunchedOrReload;
 
         private static void NotifyBlazorAppReload()
         {
@@ -189,6 +201,19 @@ namespace BlazorMobile.Services
                 Device.BeginInvokeOnMainThread(() =>
                 {
                     BlazorAppNeedReload?.Invoke(null, null);
+                });
+            });
+        }
+
+        internal static void NotifyEnsureBlazorAppLaunchedOrReload()
+        {
+            Task.Run(async () =>
+            {
+                //Giving some time to new webserver with new port to load before raising event
+                await Task.Delay(100);
+                Device.BeginInvokeOnMainThread(() =>
+                {
+                    EnsureBlazorAppLaunchedOrReload?.Invoke(null, null);
                 });
             });
         }

@@ -3,6 +3,10 @@ using System;
 using System.Collections.Generic;
 using System.Runtime.CompilerServices;
 using System.Linq;
+using Xamarin.Forms;
+using BlazorMobile.Interop;
+using System.Threading.Tasks;
+using BlazorMobile.Services;
 
 [assembly: InternalsVisibleTo("BlazorMobile.Android")]
 [assembly: InternalsVisibleTo("BlazorMobile.iOS")]
@@ -46,6 +50,15 @@ namespace BlazorMobile.Helper
                 //Silently ignore
                 //But enforce IWebViewIdentity throwing
             }
+        }
+
+        /// <summary>
+        /// Return all the registered WebViews with IWebViewIdentity interface
+        /// </summary>
+        /// <returns></returns>
+        internal static IEnumerable<IWebViewIdentity> GetAllWebViewIdentities()
+        {
+            return _webviewList.Select(p => p.Item1).ToList();
         }
 
         /// <summary>
@@ -133,5 +146,58 @@ namespace BlazorMobile.Helper
         {
             return _counter++;
         }
+
+        #region Blazor app launcher
+
+        internal static void InternalLaunchBlazorApp(IBlazorWebView webview, bool isReload)
+        {
+            webview.Source = new UrlWebViewSource()
+            {
+                Url = WebApplicationFactory.GetBaseURL()
+            };
+
+            if (isReload)
+            {
+                var webIdentity = webview as IWebViewIdentity;
+                if (webIdentity != null)
+                {
+                    webIdentity.BlazorAppLaunched = false;
+                }
+
+                webview.Reload();
+            }
+        }
+
+        private static void LaunchBlazorAppUri(IBlazorWebView webView, int delayedMilliseconds)
+        {
+            Task.Run(async () => {
+                await Task.Delay(delayedMilliseconds);
+                Device.BeginInvokeOnMainThread(() => LaunchBlazorAppUri(webView));
+            });
+        }
+
+        private static void LaunchBlazorAppUri(IBlazorWebView webView)
+        {
+            InternalLaunchBlazorApp(webView, false);
+        }
+
+        internal static void LaunchBlazorApp(IBlazorWebView webView)
+        {
+            var webViewService = DependencyService.Get<IWebViewService>();
+            webViewService.ClearCookies();
+
+            switch (Device.RuntimePlatform)
+            {
+                case Device.UWP:
+                    //Giving some time on UWP, as it seem to fail to launch the new uri if called too soon
+                    LaunchBlazorAppUri(webView, 1000);
+                    break;
+                default:
+                    LaunchBlazorAppUri(webView);
+                    break;
+            }
+        }
+
+        #endregion Blazor app launcher
     }
 }
