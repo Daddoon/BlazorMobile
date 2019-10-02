@@ -34,6 +34,15 @@ namespace BlazorMobile.Helper
             }
         }
 
+        /// <summary>
+        /// Return all the registered WebViews with IWebViewIdentity interface
+        /// </summary>
+        /// <returns></returns>
+        internal static IEnumerable<IWebViewIdentity> GetAllWebViewIdentities()
+        {
+            return _webviewList.Select(p => p.Item1).ToList();
+        }
+
         internal static void RegisterWebView(IBlazorWebView webview)
         {
             IWebViewIdentity identity = WebViewRequirementCheck(webview);
@@ -53,16 +62,7 @@ namespace BlazorMobile.Helper
         }
 
         /// <summary>
-        /// Return all the registered WebViews with IWebViewIdentity interface
-        /// </summary>
-        /// <returns></returns>
-        internal static IEnumerable<IWebViewIdentity> GetAllWebViewIdentities()
-        {
-            return _webviewList.Select(p => p.Item1).ToList();
-        }
-
-        /// <summary>
-        /// Register the Webview with the specified runime identity.
+        /// Register the Webview with the specified runtime identity.
         /// If the webview is already registered, it will just
         /// add an additional identity to the current webview identity list
         /// </summary>

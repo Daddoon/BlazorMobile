@@ -42,7 +42,10 @@ namespace BlazorMobile.ElectronNET.Components
         public ElectronBlazorWebView()
         {
             _identity = WebViewHelper.GenerateWebViewIdentity();
+
             webAppPlaftorm = DependencyService.Get<IWebApplicationPlatform>();
+
+            WebViewHelper.RegisterWebView(this);
         }
 
         private const string noop = ": no-op on ElectronNET";

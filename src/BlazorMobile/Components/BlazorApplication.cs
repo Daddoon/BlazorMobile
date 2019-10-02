@@ -46,21 +46,9 @@ namespace BlazorMobile.Components
 
         protected override void OnSleep()
         {
-            if (ContextHelper.IsElectronNET())
-            {
-                return;
-            }
-
-            switch (Device.RuntimePlatform)
-            {
-                case Device.Android:
-                    //There is a bug on Android in release mode that seem to prevent to stop or release port OnSleep
-                    //Avoiding to Stop the server OnSleep as the event seem to not be fully propagated
-                    break;
-                default:
-                    WebApplicationFactory.StopWebServer();
-                    break;
-            }
+            //NOTE: As there is some issue on each platform when trying to stop server gracefully at OnSleep event
+            //We don't manage anything here. Instead if the current server throw, it will restart, and if we detect
+            //that server is not started, we will try to restart it at OnResume event instead
         }
 
         protected override void OnResume()

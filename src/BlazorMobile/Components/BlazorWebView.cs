@@ -37,6 +37,8 @@ namespace BlazorMobile.Components
             WebApplicationFactory.EnsureBlazorAppLaunchedOrReload += EnsureBlazorAppLaunchedOrReload;
 
             _identity = WebViewHelper.GenerateWebViewIdentity();
+
+            WebViewHelper.RegisterWebView(this);
         }
 
         private void ReloadBlazorAppEvent(object sender, EventArgs e)
