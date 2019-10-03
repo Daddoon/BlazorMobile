@@ -3,20 +3,22 @@
 @using BlazorMobile.InteropApp.Common.Interfaces
 @using BlazorMobile.Common.Services
 @inject IXamarinBridge XamarinBridge
-@inherits IDisposable
+@implements IDisposable
 
 <h1>Counter</h1>
 
 <p>Current count: @currentCount</p>
 
-<button class="btn btn-primary" @onclick="@IncrementCount">Click me</button>
-<button class="btn btn-primary" @onclick="@AlertMe">Alert me</button>
-<button class="btn btn-primary" @onclick="@FaultyTaskCall">Fault Task call</button>
-<button class="btn btn-primary" @onclick="@PostMessageTest">Remote PostMessage Test</button>
-<button class="btn btn-primary" @onclick="@CallJSInvokableMethodTest">Remote CallJSInvokableMethod Test</button>
+<button class="btn btn-primary" @onclick="IncrementCount">Click me</button>
+<button class="btn btn-primary" @onclick="AlertMe">Alert me</button>
+<button class="btn btn-primary" @onclick="FaultyTaskCall">Fault Task call</button>
+<button class="btn btn-primary" @onclick="PostMessageTest">Remote PostMessage Test</button>
+<button class="btn btn-primary" @onclick="CallJSInvokableMethodTest">Remote CallJSInvokableMethod Test</button>
 
 @code {
     int currentCount = 0;
+
+    private static IXamarinBridge XamarinBridgeGlobal = null;
 
     void IncrementCount()
     {
@@ -65,11 +67,21 @@
         }
     }
 
+    [JSInvokable]
+    public static void InvokableMethodTest(object[] payload)
+    {
+        string testValue = (string)payload[0];
+
+        XamarinBridgeGlobal.DisplayAlert("JSInvoke received!", testValue, "OK");
+    }
+
     async void CallJSInvokableMethodTest()
     {
+        XamarinBridgeGlobal = XamarinBridge;
+
         try
         {
-            await XamarinBridge.CallFaultyTask();
+            await XamarinBridge.TriggerJSInvokableTest();
         }
         catch (Exception ex)
         {

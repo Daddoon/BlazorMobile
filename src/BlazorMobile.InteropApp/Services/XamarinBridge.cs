@@ -36,5 +36,11 @@ namespace BlazorMobile.InteropApp.Services
             MainPage.webview.PostMessage("PostMessageTest", "My posted string");
             return Task.CompletedTask;
         }
+
+        public Task TriggerJSInvokableTest()
+        {
+            MainPage.webview.CallJSInvokableMethod("BlazorMobile.InteropBlazorApp", "InvokableMethodTest", "My invoked string");
+            return Task.CompletedTask;
+        }
     }
 }

@@ -120,8 +120,3 @@ window.contextBridgeSend = function (data) {
     return true;
 };
 
-
-window.contextBridgeSendClient = function (assembly, method, params) {
-    DotNet.invokeMethodAsync(assembly, method, params);
-    return true;
-};
