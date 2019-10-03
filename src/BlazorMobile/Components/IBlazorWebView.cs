@@ -21,7 +21,21 @@ namespace BlazorMobile.Components
 
         Task<string> EvaluateJavaScriptAsync(string script);
 
-        Task<string> PostMessage(string assembly,string method, params object[] args);
+        /// <summary>
+        /// Post a message to the Blazor app. Any objects that listen to a specific message name by calling BlazorMobileService.MessageSubscribe will trigger their associated handlers.
+        /// </summary>
+        /// <param name="messageName"></param>
+        /// <param name="args"></param>
+        void PostMessage(string messageName, params object[] args);
+
+        /// <summary>
+        /// Call a static JSInvokable method from native side
+        /// </summary>
+        /// <param name="assembly">The assembly of the JSInvokable method to call</param>
+        /// <param name="method">The JSInvokable method name</param>
+        /// <param name="args">Parameters to forward to Blazor app. Check that your parameters are serializable/deserializable from both native and Blazor sides.</param>
+        /// <returns></returns>
+        void CallJSInvokableMethod(string assembly,string method, params object[] args);
 
         void GoBack();
 

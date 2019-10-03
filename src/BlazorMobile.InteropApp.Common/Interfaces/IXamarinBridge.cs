@@ -10,6 +10,8 @@ namespace BlazorMobile.InteropApp.Common.Interfaces
     [BlazorMobile.Common.Attributes.ProxyInterface]
     public interface IXamarinBridge
     {
+        Task TriggerPostMessageTest();
+
         Task<List<string>> DisplayAlert(string title, string msg, string cancel);
 
         Task CallFaultyTask();

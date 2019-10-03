@@ -1,6 +1,8 @@
 ﻿using BlazorMobile.Common;
 using BlazorMobile.Common.Interop;
+using BlazorMobile.Common.Serialization;
 using BlazorMobile.Controller;
+using BlazorMobile.Helper;
 using BlazorMobile.Services;
 using Newtonsoft.Json;
 using System;
@@ -38,18 +40,14 @@ namespace BlazorMobile.Components
             return this;
         }
 
-        public Task<string> PostMessage(string assembly, string method, params object[] args)
+        public void CallJSInvokableMethod(string assembly, string method, params object[] args)
         {
-            BlazorContextBridge.Current.SendMessageToClient(
-                JsonConvert.SerializeObject(new ClientMethodProxy
-                {
-                    InteropAssembly = assembly,
-                    InteropMethod = method,
-                    InteropParameters = args
-                }));
+            WebViewHelper.CallJSInvokableMethod(assembly, method, args);
+        }
 
-            return Task.FromResult(String.Empty);
-
+        public void PostMessage(string messageName, params object[] args)
+        {
+            WebViewHelper.PostMessage(messageName, args);
         }
     }
 }

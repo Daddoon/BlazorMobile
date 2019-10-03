@@ -80,7 +80,12 @@ namespace BlazorMobile.ElectronNET.Components
             Console.WriteLine($"{nameof(SendNavigating)}{noop}");
         }
 
-        public Task<string> PostMessage(string assembly,string method, params object[] args)
+        public void CallJSInvokableMethod(string assembly,string method, params object[] args)
+        {
+            throw new NotImplementedException();
+        }
+
+        public void PostMessage(string messageName, params object[] args)
         {
             throw new NotImplementedException();
         }

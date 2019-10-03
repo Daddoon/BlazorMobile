@@ -11,12 +11,14 @@ namespace BlazorMobile.InteropApp
 {
 	public partial class MainPage : ContentPage
 	{
+        public static IBlazorWebView webview = null;
+
 		public MainPage()
 		{
             InitializeComponent();
 
             //Blazor WebView agnostic contoller logic
-            IBlazorWebView webview = BlazorWebViewFactory.Create();
+            webview = BlazorWebViewFactory.Create();
 
             //WebView rendering customization on page
             View webviewView = webview.GetView();

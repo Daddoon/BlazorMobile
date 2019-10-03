@@ -104,7 +104,7 @@ window.contextBridge = {
         });
     },
     receive: function (csharpProxy) {
-        if (csharpProxy.indexOf("ClientMethodProxyIdentifier") > -1) {
+        if (csharpProxy.indexOf("MessageProxyToken") > -1) {
             DotNet.invokeMethodAsync(window.contextBridge.metadata.GetBlazorMobileWebAssemblyName(),
                 window.contextBridge.metadata.GetBlazorMobileReceiveFromXamarinMethodName(), csharpProxy, true);
         }

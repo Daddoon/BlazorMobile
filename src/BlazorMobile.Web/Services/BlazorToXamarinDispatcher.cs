@@ -46,8 +46,21 @@ namespace BlazorMobile.Common.Services
 
             try
             {
-                ClientMethodProxy resultProxy = BridgeSerializer.Deserialize<ClientMethodProxy>(ref methodProxyJson);
-                BlazorMobileComponent.GetJSRuntime().InvokeAsync<bool>("contextBridgeSendClient", resultProxy.InteropAssembly, resultProxy.InteropMethod, resultProxy.InteropParameters);
+                MessageProxy resultProxy = BridgeSerializer.Deserialize<MessageProxy>(ref methodProxyJson);
+
+                //Using JSInvokable API
+                if (resultProxy.IsJSInvokable)
+                {
+                    //A little hacky, but actually as this is a second rountrip to javascript,
+                    //but ensure that the method called is JSInvokable, by the Blazor API.
+                    BlazorMobileComponent.GetJSRuntime().InvokeAsync<bool>("contextBridgeSendClient", resultProxy.InteropAssembly, resultProxy.InteropMethod, resultProxy.InteropParameters);
+                }
+                else
+                {
+                    //Using delegate Messaging API
+                    BlazorMobileService.SendMessageToSubscribers(resultProxy.InteropMethod, resultProxy.InteropParameters);
+                }
+
                 return true;
 
             }

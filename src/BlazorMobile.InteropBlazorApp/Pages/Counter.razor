@@ -1,7 +1,9 @@
 ﻿@page "/counter"
 @using BlazorMobile.Common
 @using BlazorMobile.InteropApp.Common.Interfaces
+@using BlazorMobile.Common.Services
 @inject IXamarinBridge XamarinBridge
+@inherits IDisposable
 
 <h1>Counter</h1>
 
@@ -10,6 +12,8 @@
 <button class="btn btn-primary" @onclick="@IncrementCount">Click me</button>
 <button class="btn btn-primary" @onclick="@AlertMe">Alert me</button>
 <button class="btn btn-primary" @onclick="@FaultyTaskCall">Fault Task call</button>
+<button class="btn btn-primary" @onclick="@PostMessageTest">Remote PostMessage Test</button>
+<button class="btn btn-primary" @onclick="@CallJSInvokableMethodTest">Remote CallJSInvokableMethod Test</button>
 
 @code {
     int currentCount = 0;
@@ -37,5 +41,45 @@
             await XamarinBridge.DisplayAlert("Call faulty task", $"{ex.Message}", "OK");
             Console.WriteLine($"{ex.Message}");
         }
+    }
+
+    public async void OnMessageReceived(object[] payload)
+    {
+        string testValue = (string)payload[0];
+
+        await XamarinBridge.DisplayAlert("Message received!", testValue, "OK");
+    }
+
+    async void PostMessageTest()
+    {
+        try
+        {
+            BlazorMobileService.MessageSubscribe("PostMessageTest", OnMessageReceived);
+
+            await XamarinBridge.TriggerPostMessageTest();
+        }
+        catch (Exception ex)
+        {
+            await XamarinBridge.DisplayAlert("PostMessageTest", $"{ex.Message}", "OK");
+            Console.WriteLine($"{ex.Message}");
+        }
+    }
+
+    async void CallJSInvokableMethodTest()
+    {
+        try
+        {
+            await XamarinBridge.CallFaultyTask();
+        }
+        catch (Exception ex)
+        {
+            await XamarinBridge.DisplayAlert("CallJSInvokableMethodTest", $"{ex.Message}", "OK");
+            Console.WriteLine($"{ex.Message}");
+        }
+    }
+
+    public void Dispose()
+    {
+        BlazorMobileService.MessageUnsubscribe("PostMessageTest", OnMessageReceived);
     }
 }
