@@ -1,6 +1,10 @@
 ﻿using BlazorMobile.Common;
+using BlazorMobile.Common.Interop;
+using BlazorMobile.Controller;
 using BlazorMobile.Services;
+using Newtonsoft.Json;
 using System;
+using System.Threading.Tasks;
 using Xam.Droid.GeckoView.Forms;
 using Xamarin.Forms;
 
@@ -32,6 +36,20 @@ namespace BlazorMobile.Components
         public View GetView()
         {
             return this;
+        }
+
+        public Task<string> PostMessage(string assembly, string method, params object[] args)
+        {
+            BlazorContextBridge.Current.SendMessageToClient(
+                JsonConvert.SerializeObject(new ClientMethodProxy
+                {
+                    InteropAssembly = assembly,
+                    InteropMethod = method,
+                    InteropParameters = args
+                }));
+
+            return Task.FromResult(String.Empty);
+
         }
     }
 }
