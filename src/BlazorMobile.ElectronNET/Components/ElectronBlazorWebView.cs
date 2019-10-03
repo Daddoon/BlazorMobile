@@ -79,5 +79,10 @@ namespace BlazorMobile.ElectronNET.Components
         {
             Console.WriteLine($"{nameof(SendNavigating)}{noop}");
         }
+
+        public Task<string> PostMessage(string assembly,string method, params object[] args)
+        {
+            throw new NotImplementedException();
+        }
     }
 }

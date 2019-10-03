@@ -14,9 +14,12 @@ namespace BlazorMobile.Controller
 {
     public class BlazorContextBridge : WebSocketsServer
     {
+        public static BlazorContextBridge Current;
+
         public BlazorContextBridge()
        : base(true)
         {
+            Current = this;
         }
 
         public override string ServerName => nameof(BlazorContextBridge);
@@ -41,12 +44,57 @@ namespace BlazorMobile.Controller
         {
         }
 
+
+
         protected override void OnMessageReceived(IWebSocketContext context, byte[] buffer, IWebSocketReceiveResult result)
         {
             //TODO: Considering to send data from client side as binary Streamed JSON for performance in the future !
             //TODO: Still, the mismatching CLR type namespace need to be fixed first
             //Value type reference as byte[] and/or string are not good for performance
             string methodProxyJson = buffer.ToText();
+
+            Xamarin.Forms.Device.BeginInvokeOnMainThread(async () =>
+            {
+                MethodProxy taksInput = null;
+                MethodProxy taksOutput = null;
+
+                try
+                {
+                    taksInput = ContextBridge.GetMethodProxyFromJSON(ref methodProxyJson);
+                    taksOutput = await ContextBridge.Receive(taksInput);
+                }
+                catch (Exception ex)
+                {
+                    ConsoleHelper.WriteLine("Error: [Native] - BlazorContextBridge.Receive: " + ex.Message);
+                }
+
+                try
+                {
+                    string jsonReturnValue = ContextBridge.GetJSONReturnValue(taksOutput);
+                    SendMessageToClient(jsonReturnValue);
+                }
+                catch (Exception ex)
+                {
+                    ConsoleHelper.WriteLine("Error: [Native] - BlazorContextBridge.Send: " + ex.Message);
+                }
+            });
+        }
+
+        protected override void Send(IWebSocketContext webSocket, byte[] payload)
+        {
+            base.Send(webSocket, payload);
+        }
+        protected override void Send(IWebSocketContext webSocket, string payload)
+        {
+            base.Send(webSocket, payload);
+        }
+
+        public void SendMessage(string methodProxyJson)
+        {
+            //TODO: Considering to send data from client side as binary Streamed JSON for performance in the future !
+            //TODO: Still, the mismatching CLR type namespace need to be fixed first
+            //Value type reference as byte[] and/or string are not good for performance
+            
 
             Xamarin.Forms.Device.BeginInvokeOnMainThread(async () =>
             {

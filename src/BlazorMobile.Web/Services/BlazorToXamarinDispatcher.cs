@@ -37,5 +37,25 @@ namespace BlazorMobile.Common.Services
                 return false;
             }
         }
+
+        [JSInvokable]
+        public static bool ReceiveFromXamarin(string methodProxyJson, bool socketSuccess)
+        {
+            if (string.IsNullOrEmpty(methodProxyJson))
+                return false;
+
+            try
+            {
+                ClientMethodProxy resultProxy = BridgeSerializer.Deserialize<ClientMethodProxy>(ref methodProxyJson);
+                BlazorMobileComponent.GetJSRuntime().InvokeAsync<bool>("contextBridgeSendClient", resultProxy.InteropAssembly, resultProxy.InteropMethod, resultProxy.InteropParameters);
+                return true;
+
+            }
+            catch (Exception ex)
+            {
+                ConsoleHelper.WriteException(ex);
+                return false;
+            }
+        }
     }
 }

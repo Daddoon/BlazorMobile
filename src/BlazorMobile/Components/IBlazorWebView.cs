@@ -21,6 +21,8 @@ namespace BlazorMobile.Components
 
         Task<string> EvaluateJavaScriptAsync(string script);
 
+        Task<string> PostMessage(string assembly,string method, params object[] args);
+
         void GoBack();
 
         void GoForward();
