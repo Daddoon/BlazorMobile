@@ -6,6 +6,10 @@
   </PropertyGroup>
 
   <ItemGroup>
+    <Content Remove="server_index_test.cshtml" />
+  </ItemGroup>
+
+  <ItemGroup>
     <Content Include="..\BlazorMobile.InteropBlazorApp\server_index.cshtml" Link="Pages\server_index.cshtml" />
   </ItemGroup>
   
@@ -17,10 +21,6 @@
    <ItemGroup>
      <ProjectReference Include="..\BlazorMobile.InteropBlazorApp\BlazorMobile.InteropBlazorApp.csproj" />
      <ProjectReference Include="..\BlazorMobile.Web\BlazorMobile.Web.csproj" />
-   </ItemGroup>
-  
-   <ItemGroup>
-     <Folder Include="Pages\" />
    </ItemGroup>
 
 </Project>

@@ -19,7 +19,7 @@ namespace BlazorMobile.InteropApp
             WebApplicationFactory.EnableDebugFeatures();
 #endif
 
-            WebApplicationFactory.SetHttpPort(8888);
+            WebApplicationFactory.SetHttpPort(8891);
 
             MainPage = new MainPage();
         }

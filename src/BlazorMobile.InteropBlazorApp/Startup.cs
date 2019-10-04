@@ -21,7 +21,7 @@ namespace BlazorMobile.InteropBlazorApp
             #region DEBUG
 
             //Only if you want to test WebAssembly with remote debugging from a dev machine
-            BlazorMobileService.EnableClientToDeviceRemoteDebugging("127.0.0.1", 8888);
+            BlazorMobileService.EnableClientToDeviceRemoteDebugging("127.0.0.1", 8891);
 
             #endregion
 

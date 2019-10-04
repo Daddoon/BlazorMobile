@@ -7,6 +7,9 @@ using Xamarin.Forms;
 using BlazorMobile.Interop;
 using System.Threading.Tasks;
 using BlazorMobile.Services;
+using BlazorMobile.Common.Interop;
+using BlazorMobile.Controller;
+using BlazorMobile.Common.Serialization;
 
 [assembly: InternalsVisibleTo("BlazorMobile.Android")]
 [assembly: InternalsVisibleTo("BlazorMobile.iOS")]

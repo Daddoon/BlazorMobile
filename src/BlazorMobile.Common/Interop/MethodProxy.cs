@@ -40,14 +40,6 @@ namespace BlazorMobile.Common.Interop
             SerializedData = BridgeSerializer.Serialize(type);
         }
 
-        public static TypeProxy CreateFromJson(string json)
-        {
-            return new TypeProxy()
-            {
-                SerializedData = json
-            };
-        }
-
         public string SerializedData { get; set; }
 
         /// <summary>
