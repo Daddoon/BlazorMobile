@@ -137,6 +137,19 @@ namespace BlazorMobile.Common.Services
             RemoveDelegateEntry(messageName, handler);
         }
 
+        /// <summary>
+        /// Allow to post a message to any delegate action registered through MessageSubscribe.
+        /// This method behavior is similar to the IBlazorWebView.PostMessage method on the native side,
+        /// except that you send message from within your Blazor app instead sending it from native side.
+        /// </summary>
+        /// <typeparam name="TArgs">The paramter expected type</typeparam>
+        /// <param name="messageName">The message name to target</param>
+        /// <param name="value">The value to send in the message</param>
+        public static void PostMessage<TArgs>(string messageName, TArgs value)
+        {
+            SendMessageToSubscribers(messageName, typeof(TArgs), new object[] { value });
+        }
+
         internal static void SendMessageToSubscribers(string messageName, Type ArgsType, object[] payload)
         {
             AddDelegateEntryTypeIfNotExist(messageName, ArgsType);

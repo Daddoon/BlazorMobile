@@ -12,8 +12,11 @@
 <button class="btn btn-primary" @onclick="IncrementCount">Click me</button>
 <button class="btn btn-primary" @onclick="AlertMe">Alert me</button>
 <button class="btn btn-primary" @onclick="FaultyTaskCall">Fault Task call</button>
+<br />
 <button class="btn btn-primary" @onclick="PostMessageTest">Remote PostMessage Test With String</button>
 <button class="btn btn-primary" @onclick="PostMessageTestBool">Remote PostMessage Test With Bool</button>
+<button class="btn btn-primary" @onclick="PostMessageTestLocal">Local PostMessage Test With String</button>
+<br />
 <button class="btn btn-primary" @onclick="CallJSInvokableMethodTest">Remote CallJSInvokableMethod Test</button>
 
 @code {
@@ -78,6 +81,20 @@
             BlazorMobileService.MessageSubscribe<bool>("PostMessageTest", OnMessageReceivedBoolean);
 
             await XamarinBridge.TriggerPostMessageTestBool();
+        }
+        catch (Exception ex)
+        {
+            await XamarinBridge.DisplayAlert("PostMessageTest", $"{ex.Message}", "OK");
+            Console.WriteLine($"{ex.Message}");
+        }
+    }
+
+    async void PostMessageTestLocal()
+    {
+        try
+        {
+            BlazorMobileService.MessageSubscribe<string>("PostMessageTest", OnMessageReceived);
+            BlazorMobileService.PostMessage("PostMessageTest", "Local PostMessage test");
         }
         catch (Exception ex)
         {
