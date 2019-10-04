@@ -22,9 +22,9 @@ namespace BlazorMobile.Helper
     //some internals for PostMessage API. A conflict will occur when merging with the next release
     internal static class WebViewHelper
     {
-        public static void PostMessage(string messageName, object[] args)
+        public static void PostMessage(string messageName, Type TArgsType, object[] args)
         {
-            MessageForwarder(new MessageProxy(messageName, args));
+            MessageForwarder(new MessageProxy(messageName, TArgsType, args));
         }
 
         public static void CallJSInvokableMethod(string assembly, string method, params object[] args)

@@ -17,7 +17,7 @@ namespace BlazorMobile.Common.Interop
         /// </summary>
         /// <param name="messageName"></param>
         /// <param name="args"></param>
-        public MessageProxy(string messageName, object[] args)
+        public MessageProxy(string messageName, Type TArgsType, object[] args)
         {
             //Not needed as boolean is false by default
             //But just for reading clarity
@@ -25,6 +25,7 @@ namespace BlazorMobile.Common.Interop
 
             InteropMethod = messageName;
             InteropParameters = args;
+            InteropArgsType = new TypeProxy(TArgsType);
         }
 
         /// <summary>
@@ -46,6 +47,8 @@ namespace BlazorMobile.Common.Interop
 
         public string InteropAssembly { get; set; }
         public string InteropMethod { get; set; }
+
+        public TypeProxy InteropArgsType { get; set; }
 
         /// <summary>
         /// Only used as a flag to differenciate it to MethodProxy without deserializing in javascript context

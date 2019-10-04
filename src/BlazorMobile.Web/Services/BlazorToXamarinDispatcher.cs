@@ -97,12 +97,19 @@ namespace BlazorMobile.Common.Services
                 if (resultProxy.IsJSInvokable)
                 {
                     var invokableMethod = GetJSInvokableMethod(resultProxy);
-                    invokableMethod?.Invoke(null, new object[] { resultProxy.InteropParameters });
+                    invokableMethod?.Invoke(null, resultProxy.InteropParameters.Length <= 0 ? null : resultProxy.InteropParameters);
                 }
                 else
                 {
+                    if (resultProxy.InteropParameters == null)
+                        resultProxy.InteropParameters = new object[0];
+
+                    //This is more about atomicity as we don't want to do extensive test
+                    //We just only want to prevent to pass an empty / null value arguments that would maybe not be identifiable on its type after serialization / deserialization
+                    Type ArgsType = resultProxy.InteropArgsType.ResolvedType();
+
                     //Using delegate Messaging API
-                    BlazorMobileService.SendMessageToSubscribers(resultProxy.InteropMethod, resultProxy.InteropParameters);
+                    BlazorMobileService.SendMessageToSubscribers(resultProxy.InteropMethod, ArgsType, resultProxy.InteropParameters);
                 }
 
                 return true;

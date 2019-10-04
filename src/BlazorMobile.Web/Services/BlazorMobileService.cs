@@ -60,14 +60,9 @@ namespace BlazorMobile.Common.Services
 
         #region Messaging Center
 
-        private static Dictionary<string, List<Action<object[]>>> _delegateHandler = new Dictionary<string, List<Action<object[]>>>();
+        private static Dictionary<string, Dictionary<Type, List<Delegate>>> _delegateHandler = new Dictionary<string, Dictionary<Type, List<Delegate>>>();
 
-        /// <summary>
-        /// Subscribe to a specific message name sent from native side with PostMessage, and forward the event to the specified delegate if received
-        /// </summary>
-        /// <param name="messageName">The message name to subscribe to</param>
-        /// <param name="handler">The delegate action that must be executed at message reception</param>
-        public static void MessageSubscribe(string messageName, Action<object[]> handler)
+        private static void AddDelegateEntryTypeIfNotExist(string messageName, Type TArgsType)
         {
             if (string.IsNullOrEmpty(messageName))
             {
@@ -76,15 +71,56 @@ namespace BlazorMobile.Common.Services
 
             if (!_delegateHandler.ContainsKey(messageName))
             {
-                _delegateHandler.Add(messageName, new List<Action<object[]>>());
+                _delegateHandler.Add(messageName, new Dictionary<Type, List<Delegate>>());
             }
+
+            if (!_delegateHandler[messageName].ContainsKey(TArgsType))
+            {
+                _delegateHandler[messageName].Add(TArgsType, new List<Delegate>());
+            }
+        }
+
+        private static void AddDelegateEntry<TArgs>(string messageName, Action<TArgs> handler)
+        {
+            Type argsType = typeof(TArgs);
+            AddDelegateEntryTypeIfNotExist(messageName, argsType);
 
             //Should be ok, see https://docs.microsoft.com/en-us/dotnet/api/system.delegate.op_equality?view=netstandard-2.0 for more info
             //as Action inherit from Delegate, this must be true too: https://docs.microsoft.com/en-us/dotnet/api/system.action?view=netstandard-2.0
-            if (!_delegateHandler[messageName].Contains(handler))
+            if (!_delegateHandler[messageName][argsType].Contains(handler))
             {
-                _delegateHandler[messageName].Add(handler);
+                _delegateHandler[messageName][argsType].Add(handler);
             }
+        }
+
+        private static void RemoveDelegateEntry<TArgs>(string messageName, Action<TArgs> handler)
+        {
+            Type argsType = typeof(TArgs);
+            AddDelegateEntryTypeIfNotExist(messageName, argsType);
+
+            //Should be ok, see https://docs.microsoft.com/en-us/dotnet/api/system.delegate.op_equality?view=netstandard-2.0 for more info
+            //as Action inherit from Delegate, this must be true too: https://docs.microsoft.com/en-us/dotnet/api/system.action?view=netstandard-2.0
+            if (_delegateHandler[messageName][argsType].Contains(handler))
+            {
+                _delegateHandler[messageName][argsType].Remove(handler);
+            }
+        }
+
+        private static List<Delegate> GetEligibleDelegates(string messageName, Type TArgsType)
+        {
+            AddDelegateEntryTypeIfNotExist(messageName, TArgsType);
+
+            return _delegateHandler[messageName][TArgsType];
+        }
+
+        /// <summary>
+        /// Subscribe to a specific message name sent from native side with PostMessage, and forward the event to the specified delegate if received
+        /// </summary>
+        /// <param name="messageName">The message name to subscribe to</param>
+        /// <param name="handler">The delegate action that must be executed at message reception</param>
+        public static void MessageSubscribe<TArgs>(string messageName, Action<TArgs> handler)
+        {
+            AddDelegateEntry(messageName, handler);
         }
 
         /// <summary>
@@ -92,44 +128,21 @@ namespace BlazorMobile.Common.Services
         /// </summary>
         /// <param name="messageName">The message name to unsubscribe to</param>
         /// <param name="handler">The delegate action that must be unsubscribed</param>
-        public static void MessageUnsubscribe(string messageName, Action<object[]> handler)
+        public static void MessageUnsubscribe<TArgs>(string messageName, Action<TArgs> handler)
         {
-            if (string.IsNullOrEmpty(messageName))
-            {
-                throw new NullReferenceException($"{nameof(messageName)} cannot be null");
-            }
-
-            if (!_delegateHandler.ContainsKey(messageName))
-            {
-                _delegateHandler.Add(messageName, new List<Action<object[]>>());
-            }
-
-            //Should be ok, see https://docs.microsoft.com/en-us/dotnet/api/system.delegate.op_equality?view=netstandard-2.0 for more info
-            //as Action inherit from Delegate, this must be true too: https://docs.microsoft.com/en-us/dotnet/api/system.action?view=netstandard-2.0
-            if (_delegateHandler[messageName].Contains(handler))
-            {
-                _delegateHandler[messageName].Remove(handler);
-            }
+            RemoveDelegateEntry(messageName, handler);
         }
 
-        internal static void SendMessageToSubscribers(string messageName, object[] payload)
+        internal static void SendMessageToSubscribers(string messageName, Type ArgsType, object[] payload)
         {
-            if (string.IsNullOrEmpty(messageName))
-            {
-                throw new NullReferenceException($"{nameof(messageName)} cannot be null");
-            }
+            AddDelegateEntryTypeIfNotExist(messageName, ArgsType);
 
-            if (!_delegateHandler.ContainsKey(messageName))
-            {
-                _delegateHandler.Add(messageName, new List<Action<object[]>>());
-            }
-
-            foreach (Action<object[]> action in _delegateHandler[messageName])
+            foreach (Delegate action in GetEligibleDelegates(messageName, ArgsType))
             {
                 //We are in a try catch as we want to continue to propagate if the user event crash for any reason (invalid code or disposed object...
                 try
                 {
-                    action(payload);
+                    action.DynamicInvoke(payload);
                 }
                 catch (Exception ex)
                 {

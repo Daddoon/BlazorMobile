@@ -14,6 +14,8 @@ namespace BlazorMobile.InteropApp.Common.Interfaces
 
         Task TriggerPostMessageTest();
 
+        Task TriggerPostMessageTestBool();
+
         Task<List<string>> DisplayAlert(string title, string msg, string cancel);
 
         Task CallFaultyTask();

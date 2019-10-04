@@ -81,9 +81,9 @@ namespace BlazorMobile.Components
             WebViewHelper.CallJSInvokableMethod(assembly, method, args);
         }
 
-        public void PostMessage(string messageName, params object[] args)
+        public void PostMessage<TArgs>(string messageName, TArgs args)
         {
-            WebViewHelper.PostMessage(messageName, args);
+            WebViewHelper.PostMessage(messageName, typeof(TArgs), new object[] { args });
         }
     }
 }

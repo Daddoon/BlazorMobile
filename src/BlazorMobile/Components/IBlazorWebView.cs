@@ -26,7 +26,7 @@ namespace BlazorMobile.Components
         /// </summary>
         /// <param name="messageName"></param>
         /// <param name="args"></param>
-        void PostMessage(string messageName, params object[] args);
+        void PostMessage<TArgs>(string messageName, TArgs args);
 
         /// <summary>
         /// Call a static JSInvokable method from native side

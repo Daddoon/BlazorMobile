@@ -85,7 +85,7 @@ namespace BlazorMobile.ElectronNET.Components
             throw new NotImplementedException();
         }
 
-        public void PostMessage(string messageName, params object[] args)
+        public void PostMessage<TArgs>(string messageName, TArgs args)
         {
             throw new NotImplementedException();
         }
