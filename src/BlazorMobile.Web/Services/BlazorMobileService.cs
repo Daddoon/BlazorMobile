@@ -1,7 +1,11 @@
 ﻿using BlazorMobile.Common.Helpers;
+using BlazorMobile.Common.Interop;
 using BlazorMobile.Interop;
+using Microsoft.JSInterop;
 using System;
 using System.Collections.Generic;
+using System.Linq;
+using System.Reflection;
 using System.Runtime.CompilerServices;
 
 [assembly: InternalsVisibleTo("BlazorMobile.ElectronNET")]
@@ -152,5 +156,63 @@ namespace BlazorMobile.Common.Services
         }
 
         #endregion Messaging Center
+
+        #region CallJSInvokableMethod
+
+        private static Dictionary<string, MethodInfo> _assemblyCache = new Dictionary<string, MethodInfo>();
+
+        private static MethodInfo GetJSInvokableMethod(string assemblyName, string methodName)
+        {
+            MethodInfo method = null;
+
+            try
+            {
+                string key = assemblyName + methodName;
+
+                if (_assemblyCache.ContainsKey(key))
+                {
+                    method = _assemblyCache[key];
+                }
+                else
+                {
+                    var methods = AppDomain.CurrentDomain.GetAssemblies()
+                        .Where(assembly => assembly.GetName().Name == assemblyName)
+                        .Select(x => x.GetTypes())
+                        .SelectMany(x => x)
+                        .Where(c => c.GetMethod(methodName, BindingFlags.Public | BindingFlags.Static) != null)
+                        .Select(c => c.GetMethod(methodName, BindingFlags.Public | BindingFlags.Static));
+
+                    method = methods.FirstOrDefault(p => p.GetCustomAttribute<JSInvokableAttribute>() != null);
+
+                    if (method == null)
+                    {
+                        ConsoleHelper.WriteError("CallJSInvokableMethod: Target method was not found");
+                        return null;
+                    }
+
+                    _assemblyCache.Add(key, method);
+                }
+            }
+            catch (Exception ex)
+            {
+                ConsoleHelper.WriteException(ex);
+            }
+
+            return method;
+        }
+
+        internal static void SendMessageToJSInvokableMethod(MessageProxy proxy)
+        {
+            SendMessageToJSInvokableMethod(proxy.InteropAssembly, proxy.InteropMethod, proxy.InteropParameters);
+        }
+
+        internal static void SendMessageToJSInvokableMethod(string assembly, string method, object[] args)
+        {
+            var invokableMethod = GetJSInvokableMethod(assembly, method);
+
+            invokableMethod?.Invoke(null, args.Length <= 0 ? null : args);
+        }
+
+        #endregion CallJSInvokableMethod
     }
 }

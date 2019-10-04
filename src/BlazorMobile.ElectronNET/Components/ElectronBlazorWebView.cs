@@ -1,4 +1,5 @@
-﻿using BlazorMobile.Components;
+﻿using BlazorMobile.Common.Services;
+using BlazorMobile.Components;
 using BlazorMobile.ElectronNET.Services;
 using BlazorMobile.Helper;
 using BlazorMobile.Interop;
@@ -217,12 +218,12 @@ namespace BlazorMobile.ElectronNET.Components
 
         public void CallJSInvokableMethod(string assembly,string method, params object[] args)
         {
-            throw new NotImplementedException();
+            BlazorMobileService.SendMessageToJSInvokableMethod(assembly, method, args);
         }
 
         public void PostMessage<TArgs>(string messageName, TArgs args)
         {
-            throw new NotImplementedException();
+            BlazorMobileService.SendMessageToSubscribers(messageName, typeof(TArgs), new object[] { args });
         }
     }
 }
