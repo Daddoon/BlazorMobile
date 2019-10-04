@@ -57,7 +57,6 @@ namespace BlazorMobile.Sample.UWP
                 rootFrame.NavigationFailed += OnNavigationFailed;
 
                 Xamarin.Forms.Forms.Init(e);
-                Xamarin.Forms.DependencyService.Register<XamarinBridge>();
 
                 BlazorWebViewService.Init();
 

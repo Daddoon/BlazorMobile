@@ -159,9 +159,7 @@
     <PackageReference Include="Xamarin.Forms" Version="3.5.0.169047" />
     <PackageReference Include="Microsoft.NETCore.UniversalWindowsPlatform" Version="6.2.9" />
   </ItemGroup>
-  <ItemGroup>
-    <Folder Include="Services\" />
-  </ItemGroup>
+  <ItemGroup />
   <ItemGroup>
     <ProjectReference Include="..\BlazorMobile.Sample.AppPackage\BlazorMobile.Sample.AppPackage.csproj">
       <Project>{632d1b2f-56e1-4f61-9e05-af9c8477e98b}</Project>

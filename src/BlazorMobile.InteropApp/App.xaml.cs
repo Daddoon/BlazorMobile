@@ -1,5 +1,6 @@
 ﻿using BlazorMobile.Common;
 using BlazorMobile.Components;
+using BlazorMobile.InteropApp.Helpers;
 using BlazorMobile.Services;
 using System;
 using System.Diagnostics;
@@ -14,6 +15,8 @@ namespace BlazorMobile.InteropApp
         public App()
         {
             InitializeComponent();
+
+            ServiceRegistrationHelper.RegisterServices();
 
 #if DEBUG
             WebApplicationFactory.EnableDebugFeatures();

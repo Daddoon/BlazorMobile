@@ -1,5 +1,6 @@
 ﻿using BlazorMobile.Common;
 using BlazorMobile.Components;
+using BlazorMobile.Sample.Helpers;
 using BlazorMobile.Services;
 
 namespace BlazorMobile.Sample
@@ -9,6 +10,8 @@ namespace BlazorMobile.Sample
         public App()
         {
             InitializeComponent();
+
+            ServiceRegistrationHelper.RegisterServices();
 
 #if DEBUG
             WebApplicationFactory.EnableDebugFeatures();
