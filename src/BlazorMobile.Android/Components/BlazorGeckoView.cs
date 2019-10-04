@@ -1,7 +1,9 @@
 ﻿using BlazorMobile.Common;
 using BlazorMobile.Helper;
 using BlazorMobile.Services;
+using Newtonsoft.Json;
 using System;
+using System.Threading.Tasks;
 using Xam.Droid.GeckoView.Forms;
 using Xamarin.Forms;
 
@@ -56,6 +58,16 @@ namespace BlazorMobile.Components
         public View GetView()
         {
             return this;
+        }
+
+        public void CallJSInvokableMethod(string assembly, string method, params object[] args)
+        {
+            WebViewHelper.CallJSInvokableMethod(assembly, method, args);
+        }
+
+        public void PostMessage<TArgs>(string messageName, TArgs args)
+        {
+            WebViewHelper.PostMessage(messageName, typeof(TArgs), new object[] { args });
         }
     }
 }

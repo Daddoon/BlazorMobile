@@ -136,6 +136,7 @@ namespace BlazorMobile.Helper
             }
         }
 
+
         private static int _counter = 0;
 
         /// <summary>
@@ -199,5 +200,25 @@ namespace BlazorMobile.Helper
         }
 
         #endregion Blazor app launcher
+
+        #region Message API
+
+        public static void PostMessage(string messageName, Type TArgsType, object[] args)
+        {
+            MessageForwarder(new MessageProxy(messageName, TArgsType, args));
+        }
+
+        public static void CallJSInvokableMethod(string assembly, string method, params object[] args)
+        {
+            MessageForwarder(new MessageProxy(assembly, method, args));
+        }
+
+        private static void MessageForwarder(MessageProxy messageProxy)
+        {
+            BlazorContextBridge.Current.SendMessageToClient(
+              BridgeSerializer.Serialize(messageProxy));
+        }
+
+        #endregion Message API
     }
 }

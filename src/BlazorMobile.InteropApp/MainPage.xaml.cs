@@ -12,9 +12,9 @@ namespace BlazorMobile.InteropApp
 {
 	public partial class MainPage : ContentPage
 	{
-        IBlazorWebView webview;
+        public static IBlazorWebView webview = null;
 
-        public MainPage()
+		public MainPage()
 		{
             InitializeComponent();
 

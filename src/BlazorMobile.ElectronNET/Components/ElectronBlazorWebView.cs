@@ -214,5 +214,15 @@ namespace BlazorMobile.ElectronNET.Components
         {
             Navigating?.Invoke(this, args);
         }
+
+        public void CallJSInvokableMethod(string assembly,string method, params object[] args)
+        {
+            throw new NotImplementedException();
+        }
+
+        public void PostMessage<TArgs>(string messageName, TArgs args)
+        {
+            throw new NotImplementedException();
+        }
     }
 }

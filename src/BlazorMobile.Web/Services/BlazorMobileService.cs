@@ -1,5 +1,7 @@
-﻿using BlazorMobile.Interop;
+﻿using BlazorMobile.Common.Helpers;
+using BlazorMobile.Interop;
 using System;
+using System.Collections.Generic;
 using System.Runtime.CompilerServices;
 
 [assembly: InternalsVisibleTo("BlazorMobile.ElectronNET")]
@@ -55,5 +57,100 @@ namespace BlazorMobile.Common.Services
                 _isInit = true;
             }
         }
+
+        #region Messaging Center
+
+        private static Dictionary<string, Dictionary<Type, List<Delegate>>> _delegateHandler = new Dictionary<string, Dictionary<Type, List<Delegate>>>();
+
+        private static void AddDelegateEntryTypeIfNotExist(string messageName, Type TArgsType)
+        {
+            if (string.IsNullOrEmpty(messageName))
+            {
+                throw new NullReferenceException($"{nameof(messageName)} cannot be null");
+            }
+
+            if (!_delegateHandler.ContainsKey(messageName))
+            {
+                _delegateHandler.Add(messageName, new Dictionary<Type, List<Delegate>>());
+            }
+
+            if (!_delegateHandler[messageName].ContainsKey(TArgsType))
+            {
+                _delegateHandler[messageName].Add(TArgsType, new List<Delegate>());
+            }
+        }
+
+        private static void AddDelegateEntry<TArgs>(string messageName, Action<TArgs> handler)
+        {
+            Type argsType = typeof(TArgs);
+            AddDelegateEntryTypeIfNotExist(messageName, argsType);
+
+            //Should be ok, see https://docs.microsoft.com/en-us/dotnet/api/system.delegate.op_equality?view=netstandard-2.0 for more info
+            //as Action inherit from Delegate, this must be true too: https://docs.microsoft.com/en-us/dotnet/api/system.action?view=netstandard-2.0
+            if (!_delegateHandler[messageName][argsType].Contains(handler))
+            {
+                _delegateHandler[messageName][argsType].Add(handler);
+            }
+        }
+
+        private static void RemoveDelegateEntry<TArgs>(string messageName, Action<TArgs> handler)
+        {
+            Type argsType = typeof(TArgs);
+            AddDelegateEntryTypeIfNotExist(messageName, argsType);
+
+            //Should be ok, see https://docs.microsoft.com/en-us/dotnet/api/system.delegate.op_equality?view=netstandard-2.0 for more info
+            //as Action inherit from Delegate, this must be true too: https://docs.microsoft.com/en-us/dotnet/api/system.action?view=netstandard-2.0
+            if (_delegateHandler[messageName][argsType].Contains(handler))
+            {
+                _delegateHandler[messageName][argsType].Remove(handler);
+            }
+        }
+
+        private static List<Delegate> GetEligibleDelegates(string messageName, Type TArgsType)
+        {
+            AddDelegateEntryTypeIfNotExist(messageName, TArgsType);
+
+            return _delegateHandler[messageName][TArgsType];
+        }
+
+        /// <summary>
+        /// Subscribe to a specific message name sent from native side with PostMessage, and forward the event to the specified delegate if received
+        /// </summary>
+        /// <param name="messageName">The message name to subscribe to</param>
+        /// <param name="handler">The delegate action that must be executed at message reception</param>
+        public static void MessageSubscribe<TArgs>(string messageName, Action<TArgs> handler)
+        {
+            AddDelegateEntry(messageName, handler);
+        }
+
+        /// <summary>
+        /// Unsubscribe to a specific message name sent from native side with PostMessage
+        /// </summary>
+        /// <param name="messageName">The message name to unsubscribe to</param>
+        /// <param name="handler">The delegate action that must be unsubscribed</param>
+        public static void MessageUnsubscribe<TArgs>(string messageName, Action<TArgs> handler)
+        {
+            RemoveDelegateEntry(messageName, handler);
+        }
+
+        internal static void SendMessageToSubscribers(string messageName, Type ArgsType, object[] payload)
+        {
+            AddDelegateEntryTypeIfNotExist(messageName, ArgsType);
+
+            foreach (Delegate action in GetEligibleDelegates(messageName, ArgsType))
+            {
+                //We are in a try catch as we want to continue to propagate if the user event crash for any reason (invalid code or disposed object...
+                try
+                {
+                    action.DynamicInvoke(payload);
+                }
+                catch (Exception ex)
+                {
+                    ConsoleHelper.WriteException(ex);
+                }
+            }
+        }
+
+        #endregion Messaging Center
     }
 }

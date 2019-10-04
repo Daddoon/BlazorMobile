@@ -75,6 +75,9 @@ window.contextBridge = {
         },
         GetBlazorMobileReceiveMethodName: function () {
             return 'Receive';
+        },
+         GetBlazorMobileReceiveFromXamarinMethodName: function () {
+             return 'ReceiveFromXamarin';
         }
     },
     send: function (csharpProxy) {
@@ -101,8 +104,14 @@ window.contextBridge = {
         });
     },
     receive: function (csharpProxy) {
-        DotNet.invokeMethodAsync(window.contextBridge.metadata.GetBlazorMobileWebAssemblyName(),
-            window.contextBridge.metadata.GetBlazorMobileReceiveMethodName(), csharpProxy, true);
+        if (csharpProxy.indexOf("MessageProxyToken") > -1) {
+            DotNet.invokeMethodAsync(window.contextBridge.metadata.GetBlazorMobileWebAssemblyName(),
+                window.contextBridge.metadata.GetBlazorMobileReceiveFromXamarinMethodName(), csharpProxy, true);
+        }
+        else {
+            DotNet.invokeMethodAsync(window.contextBridge.metadata.GetBlazorMobileWebAssemblyName(),
+                window.contextBridge.metadata.GetBlazorMobileReceiveMethodName(), csharpProxy, true);
+        }
     }
 };
 
@@ -110,3 +119,4 @@ window.contextBridgeSend = function (data) {
     window.contextBridge.send(data);
     return true;
 };
+

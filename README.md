@@ -35,6 +35,9 @@ Create full C# driven hybrid-apps for iOS, Android, UWP & Desktop with Blazor!
 - [Cannot connect to a remote webserver on UWP](#cannot-connect-to-a-remote-webserver-on-uwp)
 - [Unable to connect to UWP remotely even with NetworkIsolation disabled](#unable-to-connect-to-uwp-remotely-even-with-networkisolation-disabled)
 - [System.ArgumentOutOfRangeException when calling Blazor to native](#systemargumentoutofrangeexception-when-calling-blazor-to-native)
+- [Cyclic restore issue at project template creation](#cyclic-restore-issue-at-project-template-creation)
+- [iOS/Safari 13: Unhandled Promise Rejection: TypeError: 'arguments', 'callee', and 'caller' cannot be accessed in this context](#iossafari-13-unhandled-promise-rejection-typeerror-arguments-callee-and-caller-cannot-be-accessed-in-this-context)
+- [ITMS-90809: Deprecated API Usage - Apple will stop accepting submissions of apps that use UIWebView APIs](#itms-90809-deprecated-api-usage---apple-will-stop-accepting-submissions-of-apps-that-use-uiwebview-apis)
 
 ## Migration
 
@@ -71,10 +74,10 @@ First install the template model with the following command from a command promp
 dotnet new -i BlazorMobile.Templates::3.0.10-preview9.19424.4
 ```
 
-Then go the folder where you want your project to be created, and from a command prompt type the following command:
+Then go the folder where you want your project to be created, and from a command prompt type the following command, and of course replace **MyProjectName** to your desired project name:
 
 ```console
-dotnet new blazormobile
+dotnet new blazormobile -n MyProjectName
 ```
 
 If you plan to also use the Desktop project using Electron.NET, you must first execute this command in order to install the Electron tool on your system:
@@ -488,6 +491,31 @@ This bug is a [regression from .NET Core 3.0-preview8](https://github.com/dotnet
 We have to wait for preview9 shipping, or working on an older version of Blazor & BlazorMobile running on preview7, or compiling by yourself current Microsoft nightly builds.
 
 In my opinion, the best option is to wait.
+
+### Cyclic restore issue at project template creation
+
+This may happen if you called your project **BlazorMobile** at template creation, as it seem to confuse the NuGet restore command with the Nuget packages with the same suffix name, like **BlazorMobile** and **BlazorMobile.Common**.
+
+Just avoid theses reserved names when creating your project.
+
+### iOS/Safari 13: Unhandled Promise Rejection: TypeError: 'arguments', 'callee', and 'caller' cannot be accessed in this context
+
+This error is actually a regression in iOS 13 / Safari 13 Preview. As iOS 13 is not yet released we cannot know if the bug will still be present at release time.
+
+The actual workaround is to add this line...
+
+```javascript
+<script>var Module;</script>
+```
+...before the **blazor.webassembly.js** script tag.
+
+Credits to [@kmiller68](https://github.com/kmiller68) in [this issue](https://github.com/mono/mono/issues/15588#issuecomment-529056521)
+
+### ITMS-90809: Deprecated API Usage - Apple will stop accepting submissions of apps that use UIWebView APIs
+
+When submiting an iOS app on the AppStore you may have this message: **ITMS-90809: Deprecated API Usage - Apple will stop accepting submissions of apps that use UIWebView APIs . See https://developer.apple.com/documentation/uikit/uiwebview for more information.**
+
+Please follow [this issue](https://github.com/xamarin/Xamarin.Forms/issues/7323) on Xamarin.Forms GitHub page.
 
 ## Migration
 

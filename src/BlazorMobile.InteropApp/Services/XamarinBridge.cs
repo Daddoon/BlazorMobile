@@ -30,5 +30,23 @@ namespace BlazorMobile.InteropApp.Services
         {
             throw new InvalidOperationException("This is an expected exception");
         }
+
+        public Task TriggerPostMessageTest()
+        {
+            MainPage.webview.PostMessage("PostMessageTest", "My posted string");
+            return Task.CompletedTask;
+        }
+
+        public Task TriggerPostMessageTestBool()
+        {
+            MainPage.webview.PostMessage("PostMessageTest", true);
+            return Task.CompletedTask;
+        }
+
+        public Task TriggerJSInvokableTest()
+        {
+            MainPage.webview.CallJSInvokableMethod("BlazorMobile.InteropBlazorApp", "InvokableMethodTest", "My invoked string");
+            return Task.CompletedTask;
+        }
     }
 }
