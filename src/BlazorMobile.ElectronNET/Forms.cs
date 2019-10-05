@@ -12,6 +12,7 @@ using System.Collections.Generic;
 using BlazorMobile.Interop;
 using BlazorMobile.ElectronNET.Services;
 using BlazorMobile.ElectronNET.Components;
+using ElectronNET.API.Entities;
 
 namespace Xamarin.Forms
 {
@@ -263,6 +264,22 @@ namespace Xamarin.Forms
                 });
             }
 
+        }
+
+        private static BrowserWindowOptions _defaultOptions = new BrowserWindowOptions();
+
+        /// <summary>
+        /// Configure the BrowserWindow that will be used for the Blazor application
+        /// </summary>
+        /// <param name="options">The default options used when instanciating the Blazor app BrowserWindow</param>
+        public static void ConfigureBrowserWindow(BrowserWindowOptions options)
+        {
+            _defaultOptions = options;
+        }
+
+        internal static BrowserWindowOptions GetDefaultBrowserWindowOptions()
+        {
+            return _defaultOptions;
         }
 
         /// <summary>

@@ -15,6 +15,7 @@ using System.Threading.Tasks;
 using ElectronNET.API;
 using BlazorMobile.Sample.Blazor;
 using Xamarin.Forms;
+using ElectronNET.API.Entities;
 
 namespace BlazorMobile.Sample.Desktop
 {
@@ -91,6 +92,11 @@ namespace BlazorMobile.Sample.Desktop
             });
 
             app.UseBlazorMobileWithElectronNET<App>();
+
+            Forms.ConfigureBrowserWindow(new BrowserWindowOptions()
+            {
+                //Configure the BrowserWindow that will be used for the Blazor application
+            });
 
             //Launch the Blazor app
             Forms.LoadApplication(new App());

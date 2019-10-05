@@ -159,7 +159,7 @@ namespace BlazorMobile.ElectronNET.Components
             //This must be registered before window creation
             ((IWebViewIdentity)(this)).OnBlazorAppLaunched += ElectronBlazorWebView_OnBlazorAppLaunched;
 
-            _browserWindow = await Electron.WindowManager.CreateWindowAsync();
+            _browserWindow = await Electron.WindowManager.CreateWindowAsync(Forms.GetDefaultBrowserWindowOptions());
 
             return _browserWindow;
         }

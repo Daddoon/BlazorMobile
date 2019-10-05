@@ -14,6 +14,7 @@ using BlazorMobile.InteropBlazorApp.Helpers;
 using Xamarin.Forms;
 using System.Threading;
 using System.IO.IsolatedStorage;
+using ElectronNET.API.Entities;
 
 namespace BlazorMobile.InteropApp.Desktop
 {
@@ -89,6 +90,11 @@ namespace BlazorMobile.InteropApp.Desktop
             });
 
             app.UseBlazorMobileWithElectronNET<App>();
+
+            Forms.ConfigureBrowserWindow(new BrowserWindowOptions()
+            {
+                //Configure the BrowserWindow that will be used for the Blazor application
+            });
 
             //Launch the Blazor app
             Forms.LoadApplication(new App());
