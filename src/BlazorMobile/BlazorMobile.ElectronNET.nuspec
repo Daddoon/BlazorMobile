@@ -15,7 +15,7 @@
     <copyright>Copyright 2019</copyright>
     <tags>aspnet templates blazor spa web webassembly xamarin desktop blazormobile electron electronnet</tags>
     <dependencies>
-      <group targetFramework="netcoreapp2.2">
+      <group targetFramework="netcoreapp3.0">
         <dependency id="ElectronNET.API" version="5.22.14" />
         <dependency id="Microsoft.AspNetCore.Http.Abstractions" version="2.2.0" />
         <dependency id="Microsoft.AspNetCore.StaticFiles" version="2.2.0" />
@@ -27,8 +27,8 @@
     </dependencies>
   </metadata>
   <files>
-    <file src="lib\netcoreapp2.2\BlazorMobile.ElectronNET.dll" target="lib\netcoreapp2.2\BlazorMobile.ElectronNET.dll" />
-    <file src="lib\netcoreapp2.2\BlazorMobile.ElectronNET.pdb" target="lib\netcoreapp2.2\BlazorMobile.ElectronNET.pdb" />
-    <file src="lib\netcoreapp2.2\BlazorMobile.ElectronNET.xml" target="lib\netcoreapp2.2\BlazorMobile.ElectronNET.xml" />
+    <file src="lib\netcoreapp3.0\BlazorMobile.ElectronNET.dll" target="lib\netcoreapp3.0\BlazorMobile.ElectronNET.dll" />
+    <file src="lib\netcoreapp3.0\BlazorMobile.ElectronNET.pdb" target="lib\netcoreapp3.0\BlazorMobile.ElectronNET.pdb" />
+    <file src="lib\netcoreapp3.0\BlazorMobile.ElectronNET.xml" target="lib\netcoreapp3.0\BlazorMobile.ElectronNET.xml" />
   </files>
 </package>

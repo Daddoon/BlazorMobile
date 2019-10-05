@@ -14,6 +14,7 @@ using BlazorMobile.Sample.Blazor.Helpers;
 using System.Threading.Tasks;
 using ElectronNET.API;
 using BlazorMobile.Sample.Blazor;
+using Xamarin.Forms;
 
 namespace BlazorMobile.Sample.Desktop
 {
@@ -79,6 +80,7 @@ namespace BlazorMobile.Sample.Desktop
             {
                 endpoints.MapBlazorHub();
                 endpoints.MapDefaultControllerRoute();
+                endpoints.MapBlazorMobileRequestValidator();
                 endpoints.MapFallbackToPage("/server_index");
             });
 
@@ -89,6 +91,13 @@ namespace BlazorMobile.Sample.Desktop
             });
 
             app.UseBlazorMobileWithElectronNET<App>();
+
+            //Launch the Blazor app
+            Forms.LoadApplication(new App());
+
+            // If your code already started your BlazorWebView.LaunchBlazorApp method, you should retrieve here the Electron main BrowserWindow used to create it.
+            // Otherwise, return a null Task value
+            var myBrowserWindow = Forms.GetBrowserWindow();
         }
     }
 }

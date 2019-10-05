@@ -16,7 +16,7 @@ namespace BlazorMobile.Sample.Handler
 
             if (e.Url.Equals(applicationBaseURL, StringComparison.OrdinalIgnoreCase))
             {
-                //This is our application base URI. We should do nothing and continue navigatin to the app
+                //This is our application base URI. We should do nothing and continue navigating to the app
                 e.Cancel = false;
             }
             else if (e.Url.StartsWith(WebApplicationFactory.GetBaseURL(), StringComparison.OrdinalIgnoreCase))
