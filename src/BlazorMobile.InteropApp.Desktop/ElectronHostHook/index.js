@@ -58,7 +58,7 @@ class HookService extends connector_1.Connector {
             blazorMobileRequestValidatorURI = serviceURI;
             try {
                 require("electron").webContents.getAllWebContents()[0].session.webRequest.onBeforeRequest((details, cb) => {
-                    if (details.url !== details.referrer && (details.resourceType == "mainFrame" || details.resourceType == "subFrame")) {
+                    if (details.resourceType == "mainFrame" || details.resourceType == "subFrame") {
                         blazorMobileRequestValidatorMethod(details.url, details.referrer, function (cancel) {
                             if (cancel) {
                                 //WARNING: This is a big hack and surely not an expected behavior
