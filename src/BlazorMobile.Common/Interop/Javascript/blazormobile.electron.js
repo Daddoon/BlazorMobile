@@ -1,5 +1,12 @@
-﻿//Deprecated as using IPC from ElectronNET
-//Not removed as we may implement extra methods here in the future
+﻿
 window.BlazorMobileElectron = {
+
+    GetCurrentURL: function () {
+        return require('electron').remote.getCurrentWebContents().getURL();
+    },
+
+    GetUserDataPath: function () {
+        return require('electron').remote.app.getPath("userData");
+    }
 
 };

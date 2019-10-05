@@ -21,6 +21,13 @@ namespace BlazorMobile.Services
             RuntimeInformation.IsOSPlatform(OSPlatform.Linux);
     }
 
+    internal static class ElectronMetadata
+    {
+        public static string BaseURL { get; set; }
+
+        public static string UserDataPath { get; set; }
+    }
+
     public class BlazorXamarinDeviceService : IBlazorXamarinDeviceService
     {
         private static bool _init = false;
@@ -59,6 +66,19 @@ namespace BlazorMobile.Services
             _init = true;
         }
 
+        public Task<bool> IsElectronActive()
+        {
+            return Task.FromResult(PlatformHelper.IsElectronActive());
+        }
+
+        public Task StartupMetadataForElectron(string baseURL, string userDataFolder)
+        {
+            ElectronMetadata.BaseURL = baseURL;
+            ElectronMetadata.UserDataPath = userDataFolder;
+
+            return Task.CompletedTask;
+        }
+
         /// <summary>
         /// This method is specific as it is also used as the Blazor app initialization validator.
         /// This method is always called once after a Blazor app boot
@@ -75,6 +95,7 @@ namespace BlazorMobile.Services
             foreach (IWebViewIdentity identity in WebViewHelper.GetAllWebViewIdentities())
             {
                 identity.BlazorAppLaunched = true;
+                identity.SendOnBlazorAppLaunched();
             }
 
             return Task.FromResult(BlazorMobile.Common.BlazorDevice.RuntimePlatform);

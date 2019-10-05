@@ -1,8 +1,10 @@
 ﻿using BlazorMobile.Common.Services;
 using BlazorMobile.Components;
 using BlazorMobile.ElectronNET.Components;
+using BlazorMobile.Helper;
 using BlazorMobile.Interop;
 using ElectronNET.API;
+using Microsoft.AspNetCore.Routing;
 using System;
 using System.Runtime.Serialization;
 using Xamarin.Forms;
@@ -26,6 +28,8 @@ namespace Microsoft.AspNetCore.Builder
 
             ContextHelper.SetElectronNETUsage(true);
 
+            PlatformHelper.SetIsElectronActive(() => HybridSupport.IsElectronActive);
+
             //Bridging Native receive method in memory on ElectronNET implementation
             ContextHelper.SetNativeReceive(ContextBridge.Receive);
             BlazorWebViewFactory.SetInternalElectronBlazorWebView(typeof(ElectronBlazorWebView));
@@ -35,6 +39,17 @@ namespace Microsoft.AspNetCore.Builder
             Forms.Init();
 
             return app;
+        }
+
+        /// <summary>
+        /// Map the BlazorMobile Request validator controller to your app.
+        /// This is needed in order to fire IBlazorWebView.Navigating events with Xamarin.Forms
+        /// </summary>
+        /// <param name="endpoints">The Microsoft.AspNetCore.Routing.IEndpointRouteBuilder.</param>
+        /// <returns></returns>
+        public static ControllerActionEndpointConventionBuilder MapBlazorMobileRequestValidator(this IEndpointRouteBuilder endpoints)
+        {
+            return endpoints.MapControllerRoute("blazorMobileRequest", "{controller=BlazorMobileRequest}/{action=Index}/{id?}");
         }
     }
 }

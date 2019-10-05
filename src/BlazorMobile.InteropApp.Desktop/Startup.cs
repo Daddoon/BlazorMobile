@@ -78,6 +78,7 @@ namespace BlazorMobile.InteropApp.Desktop
             app.UseEndpoints(endpoints =>
             {
                 endpoints.MapBlazorHub();
+                endpoints.MapBlazorMobileRequestValidator();
                 endpoints.MapFallbackToPage("/server_index");
             });
 

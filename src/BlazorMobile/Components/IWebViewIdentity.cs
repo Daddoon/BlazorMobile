@@ -6,6 +6,10 @@ namespace BlazorMobile.Components
 {
     internal interface IWebViewIdentity
     {
+        event EventHandler OnBlazorAppLaunched;
+
+        void SendOnBlazorAppLaunched();
+
         /// <summary>
         /// If true, the Blazor app booted, otherwise false.
         /// This boolean is mainly used to detect if the Blazor app finished it's loading after an OnSleep/OnResume event.

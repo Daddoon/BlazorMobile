@@ -28,13 +28,42 @@ namespace BlazorMobile.Common.Components
         {
             try
             {
+                //ElectronNET implementation does not rely on any JS Interop, nor Xamarin/Mono context
                 if ((ContextHelper.IsBlazorMobile() && await Runtime.InvokeAsync<bool>("BlazorXamarinRuntimeCheck"))
                     || (ContextHelper.IsElectronNET()))
                 {
-                    //ElectronNET implementation does not rely on any JS Interop, nor Xamarin/Mono context
+                    //This must be called before GetRuntimePlatform, as GetRuntimePlatform is considered as a BlazorAppLaunched event
+                    //We are here workarounding a race condition when using ElectronNET. Using Electron here.
+                    if (ContextHelper.IsElectronNET())
+                    {
+                        string currentURL = await Runtime.InvokeAsync<string>("BlazorMobileElectron.GetCurrentURL");
+                        string UserDataPath = await Runtime.InvokeAsync<string>("BlazorMobileElectron.GetUserDataPath");
 
-                    string resultRuntimePlatform = await xamService.GetRuntimePlatform();
-                    BlazorDevice.RuntimePlatform = resultRuntimePlatform;
+                        //Before calling StartupMetadataForElectron and call the initialization event from GetRuntimePlatform
+                        //we want to ensure that the 'HybridSupport.IsElectronActive' value is ready remotly, to ensure
+                        //to finish to install ElectronNET Hooks
+
+                        bool isElectronActive = false;
+                        int waitingCounter = 0;
+
+                        while (waitingCounter < 10)
+                        {
+                            //We will do 10 attempts. If unable to honor the result, we will continue and ignore this
+                            if (isElectronActive = await xamService.IsElectronActive())
+                            {
+                                break;
+                            }
+
+                            waitingCounter++;
+                            await Task.Delay(200);
+                        }
+
+                        ConsoleHelper.WriteLine($"HybridSupport.IsElectronActive returned: {isElectronActive.ToString()}");
+
+                        await xamService.StartupMetadataForElectron(currentURL, UserDataPath);
+                    }
+
+                    BlazorDevice.RuntimePlatform = await xamService.GetRuntimePlatform();
                 }
                 else
                 {

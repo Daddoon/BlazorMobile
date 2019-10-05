@@ -13,6 +13,25 @@ namespace BlazorMobile.Components
     {
         private int _identity = -1;
 
+        private EventHandler _onBlazorAppLaunched;
+        event EventHandler IWebViewIdentity.OnBlazorAppLaunched
+        {
+            add
+            {
+                _onBlazorAppLaunched += value;
+            }
+
+            remove
+            {
+                _onBlazorAppLaunched -= value;
+            }
+        }
+
+        void IWebViewIdentity.SendOnBlazorAppLaunched()
+        {
+            _onBlazorAppLaunched?.Invoke(this, EventArgs.Empty);
+        }
+
         bool IWebViewIdentity.BlazorAppLaunched { get; set; }
 
         int IWebViewIdentity.GetWebViewIdentity()

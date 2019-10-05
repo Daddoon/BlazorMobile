@@ -1,8 +1,10 @@
 ﻿using BlazorMobile.Common.Services;
 using BlazorMobile.Components;
+using BlazorMobile.ElectronNET.Helpers;
 using BlazorMobile.ElectronNET.Services;
 using BlazorMobile.Helper;
 using BlazorMobile.Interop;
+using BlazorMobile.Services;
 using ElectronNET.API;
 using System;
 using System.Collections.Generic;
@@ -21,14 +23,26 @@ namespace BlazorMobile.ElectronNET.Components
 
         private int _identity = -1;
 
-        /// <summary>
-        /// On ElectronNET, BlazorAppLaunched is always true as BlazorMobile is not responsible of the app rendering
-        /// </summary>
-        bool IWebViewIdentity.BlazorAppLaunched
+        private EventHandler _onBlazorAppLaunched;
+        event EventHandler IWebViewIdentity.OnBlazorAppLaunched
         {
-            get => true;
-            set { }
+            add
+            {
+                _onBlazorAppLaunched += value;
+            }
+
+            remove
+            {
+                _onBlazorAppLaunched -= value;
+            }
         }
+
+        void IWebViewIdentity.SendOnBlazorAppLaunched()
+        {
+            _onBlazorAppLaunched?.Invoke(this, EventArgs.Empty);
+        }
+
+        bool IWebViewIdentity.BlazorAppLaunched { get; set; }
 
         int IWebViewIdentity.GetWebViewIdentity()
         {
@@ -142,23 +156,34 @@ namespace BlazorMobile.ElectronNET.Components
 
         private async Task<BrowserWindow> CreateMainBrowserWindow()
         {
+            //This must be registered before window creation
+            ((IWebViewIdentity)(this)).OnBlazorAppLaunched += ElectronBlazorWebView_OnBlazorAppLaunched;
+
             _browserWindow = await Electron.WindowManager.CreateWindowAsync();
-
-            //TODO: OnDidFinishLoad seem to not working at the moment
-            //Will retest in the future. We will fetch the BaseURI from WebContent.GetURL
-            //_browserWindow.WebContents.OnDidFinishLoad += WebContents_OnDidFinishLoad;
-
-            //HACK: As OnDidFinishLoad is not working we give some time to the browser to load
-            await Task.Delay(500);
-
-            string currentURI = await _browserWindow.WebContents.GetUrl();
-            ((ElectronWebApplicationPlatform)webAppPlaftorm).SetCachedBaseURL(currentURI.TrimEnd('/'));
 
             return _browserWindow;
         }
 
+        private static bool _appDataCached = false;
+
+        private void ElectronBlazorWebView_OnBlazorAppLaunched(object sender, EventArgs e)
+        {
+            if (!_appDataCached)
+            {
+                //Due to some race condition at ElectronNET startup, we set the value from Electron by an internal call
+                //used before the OnBlazorAppLaunched event
+                ((ElectronWebApplicationPlatform)webAppPlaftorm).SetCachedBaseURL(ElectronMetadata.BaseURL?.TrimEnd('/'));
+
+                WebExtensionHelper.InstallOnNavigatingBehavior();
+
+                _appDataCached = true;
+            }
+        }
+
         private string _previousURI = "about:blank";
 
+        //This method is never called as there is a bug in current ElectronNET not firing the event
+        //Just keeped here in case of fixing in the future
         private void WebContents_OnDidFinishLoad()
         {
             Task.Run(async () =>

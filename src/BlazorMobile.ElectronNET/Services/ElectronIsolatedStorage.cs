@@ -1,4 +1,5 @@
-﻿using ElectronNET.API;
+﻿using BlazorMobile.Services;
+using ElectronNET.API;
 using System;
 using System.IO;
 using System.Threading.Tasks;
@@ -10,13 +11,12 @@ namespace BlazorMobile.ElectronNET.Services
     {
         private static string _cachedUserDataDir = null;
 
-        private static string GetUserDataDirectory()
+        internal static string GetUserDataDirectory()
         {
             //We only need to compute this once
             if (_cachedUserDataDir == null)
             {
-                var _getuserDataDirTask = Task.Run(async () => _cachedUserDataDir = await Electron.App.GetPathAsync(global::ElectronNET.API.Entities.PathName.userData));
-                Task.WaitAll(_getuserDataDirTask);
+                _cachedUserDataDir = ElectronMetadata.UserDataPath;
             }
 
             return _cachedUserDataDir;
