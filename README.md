@@ -4,20 +4,30 @@ Create full C# driven hybrid-apps for iOS, Android, UWP & Desktop with Blazor!
 
 **BlazorMobile** - is a set of Nuget packages & project templates for embedding a Blazor web application as a standalone mobile application, hosted in Xamarin.
 
+## Framework requirement
+
+- **Blazor:** 3.0.0-preview9.19465.2
+
 ## Platform requirements
  
-- **Blazor:** 3.0.0-preview9.19424.4
 - **Android:** 4.4 or greater
 - **iOS:** 12.0 or greater
 - **UWP:** Build 16299 or greater
-
-### Experimental
-
 - **Windows:** Electron.NET
 - **Linux:** Electron.NET
 - **macOS:** Electron.NET
 
-**NOTE:** See [Electron.NET support with BlazorMobile](#electronnet-support-with-blazormobile) section for more info.
+### Addtional notes
+
+#### Universal Windows Platform
+- UWP has been tested on **Windows 10 only**.
+- Recent versions of **Windows 10** seem to make BlazorMobile work on **Xbox One** when testing in **Edge** with emulation mode set as Xbox One.
+Previous versions of Windows 10 was returning a message stating that "WebAssembly is not supported on this platform".
+This may mean that the latest OS version of Xbox One may support WebAssembly and so BlazorMobile, but this is not something that have been tested.
+
+#### ElectronNET support
+- **.NET Core 3.0** is required on your ElectronNET application.
+- See [Electron.NET support with BlazorMobile](#electronnet-support-with-blazormobile) section for more info.
 
 ## Summary
 
@@ -71,7 +81,7 @@ The main differences / advantages of BlazorMobile are:
 First install the template model with the following command from a command prompt:
 
 ```console
-dotnet new -i BlazorMobile.Templates::3.0.10-preview9.19424.4
+dotnet new -i BlazorMobile.Templates::3.0.0-preview9.19465.2
 ```
 
 Then go the folder where you want your project to be created, and from a command prompt type the following command, and of course replace **MyProjectName** to your desired project name:
@@ -170,6 +180,8 @@ Note that the **BlazorMobilService.Init()** has an **onFinish** callback delegat
 
 ## Communication between Blazor & Native
 
+### Using the ProxyInterface API
+
 **In the project shared between Blazor & Xamarin**, formerly **YourAppName.Common** create an interface, and add the **[ProxyInterface]** attribute on top of it. Assuming using the sample **IXamarinBridge** interface, present by default on YourAppName.Common project, your interface may look like this:
 
 ```csharp
@@ -193,7 +205,12 @@ namespace BlazorMobile.Sample.Common.Interfaces
 - Create your implementation class
 - Inherit your previously created interface on this class
 - Implement your native code behavior
-- Decorate your class file with **[assembly: Dependency(typeof(YourClass))]** at namespace level **OR** alternatively use **DependencyService.Register** manually.
+- Call **DependencyService.Register** and register your interface and class implementation during your application startup.
+
+**NOTE: If you plan to ship on UWP, the last statement is important.** Because if using the Xamarin attribute method instead,
+UWP native toolchain will strip your services registration when compiling in Release mode with .NET Native.
+
+It's so highly recommended to keep the **DependencyService.Register** route.
 	
 Your implementation may look like this. Here a kind of simple example:
 
@@ -204,7 +221,6 @@ using System.Collections.Generic;
 using System.Threading.Tasks;
 using Xamarin.Forms;
 
-[assembly: Dependency(typeof(XamarinBridge))]
 namespace BlazorMobile.Sample.Services
 {
     public class XamarinBridge : IXamarinBridge
@@ -270,6 +286,10 @@ Then if you want to use any of your Blazor to native interface, it's as simple a
     }
 }
 ```
+
+### Using the Message API
+
+TODO
 
 ## Device remote debugging & Debugging from NET Core 3.0
 
@@ -468,6 +488,10 @@ To get started about the Electron.NET Desktop project, it's highly recommended t
 **NOTE:** BlazorDevice.RuntimePlatform never returns "ElectronNET" but ElectronNET presence can be checked by **BlazorDevice.IsElectronNET**.
 
 ## Troubleshoot
+
+### My Xamarin services are not found when interoping in UWP
+
+As stated in the [Communication between Blazor & Native](#communication-between-blazor--native) section in **Using the ProxtInterface API**, check that your services are registered through the **DependencyService.Register** method call.
 
 ### Cannot connect to a remote webserver on UWP
 
