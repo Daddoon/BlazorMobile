@@ -469,6 +469,99 @@ public class MyClass()
 }
 ```
 
+## Validating the Blazor application navigation
+
+Rules have been enforced and/or implemented on each supported platforms, in order to allow:
+
+- Control of the document navigation in the **main frame** of your Blazor application
+- Control of the document navigation in **subframes** of your Blazor application
+
+This mean that if you register to the **Navigating** event handler of your **IBlazorWebView** object, you should be able to
+allow or cancel any document navigation made by:
+
+- Your application page (main frame) navigating
+- Your application page (main frame) trying to open a new window
+- An iframe of your application page (subframe) navigating
+- An iframe of you application page (subframe) trying to open a new window
+
+As your Blazor application is mainly a single webview, you may want to prevent any unexpected action that would make your
+page navigate, and/or control more precisely some iframe behaviors shown in your Blazor application.
+
+With this Navigating enforcement, you should be able to easily block any unwanted navigation, and instead opening the requested
+url in an external browser, as an example.
+
+Here is a sample code you find with the default template of BlazorMobile.
+
+In your **MainPage.xaml.cs** file:
+
+```csharp
+//Blazor WebView agnostic contoller logic
+webview = BlazorWebViewFactory.Create();
+
+//Manage your native application behavior when an external resource is requested in your Blazor web application
+//Customize your app behavior in BlazorMobile.Sample.Handler.OnBlazorWebViewNavigationHandler.cs file or create your own!
+webview.Navigating += OnBlazorWebViewNavigationHandler.OnBlazorWebViewNavigating;
+```
+
+This register the navigating event to the **OnBlazorWebViewNavigating** event handler, included in the sample.
+
+Here is the control code in the sample:
+
+```csharp
+using BlazorMobile.Common;
+using BlazorMobile.Services;
+using System;
+using System.Collections.Generic;
+using System.Net;
+using System.Text;
+using Xamarin.Forms;
+
+namespace BlazorMobile.Sample.Handler
+{
+    public static class OnBlazorWebViewNavigationHandler
+    {
+        public static void OnBlazorWebViewNavigating(object sender, WebNavigatingEventArgs e)
+        {
+            var applicationBaseURL = WebApplicationFactory.GetBaseURL() + "/";
+
+            if (e.Url.Equals(applicationBaseURL, StringComparison.OrdinalIgnoreCase))
+            {
+                //This is our application base URI. We should do nothing and continue navigating to the app
+                e.Cancel = false;
+            }
+            else if (e.Url.StartsWith(WebApplicationFactory.GetBaseURL(), StringComparison.OrdinalIgnoreCase))
+            {
+                //Here, our application is loading an URI
+                //You may add a custom logic, like opening a new view, changing the URI parameters then opening a view...
+
+                e.Cancel = true;
+
+                switch (BlazorDevice.RuntimePlatform)
+                {
+                    default:
+                        Device.OpenUri(new Uri(WebUtility.UrlDecode(e.Url)));
+                        break;
+                }
+            }
+            else
+            {
+                //If here this is not our application loading an URI
+                //You may add a custom logic, like opening a new view, changing the URI parameters then opening a view...
+
+                e.Cancel = true;
+
+                switch (BlazorDevice.RuntimePlatform)
+                {
+                    default:
+                        Device.OpenUri(new Uri(WebUtility.UrlDecode(e.Url)));
+                        break;
+                }
+            }
+        }
+    }
+}
+```
+
 ## Device remote debugging & Debugging from NET Core 3.0
 
 Even if there is now some debug functionalities in the Blazor WASM version in Chrome, it is pretty limited compared to the pure server-side debugging with NET Core 3.0.
@@ -659,7 +752,10 @@ To get started about the Electron.NET Desktop project, it's highly recommended t
 ### Xamarin.Forms support on Electron.NET
 
 - **DisplayAlert** - Like App.Current.MainPage.DisplayAlert(title, msg, cancel);
-- **DependencyService** - Like a regular Xamarin.Forms application. This is different from the regular .NET Core Dependency Injector. For platform specific API in your app, you should interact through this service in your project, in order to interact the same way as on mobile devices.
+- **DisplayActionSheet** - Like App.Current.MainPage.DisplayActionSheet(string title, string cancel, string destruction, params string[] buttons);
+- **Device.OpenUri**
+- **Navigating** events - On **IBlazorWebView** only
+- **DependencyService** service class
 - **Device.RuntimePlatform** will return "ElectronNET".
 - **BlazorDevice.RuntimePlatform** will returns regular Xamarin.Forms values, with in addition **Windows**, **Linux**. Consts values available on **BlazorDevice** for RuntimePlatforms comparison have been updated to all theses values.
 
