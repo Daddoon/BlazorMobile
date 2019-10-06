@@ -1,4 +1,5 @@
 ﻿using BlazorMobile.Common.Helpers;
+using BlazorMobile.Helper;
 using BlazorMobile.Interop;
 using BlazorMobile.Services;
 using System;
@@ -12,64 +13,84 @@ using Xamarin.Forms;
 [assembly: InternalsVisibleTo("BlazorMobile.UWP")]
 namespace BlazorMobile.Components
 {
-    public class BlazorWebView : WebView, IBlazorWebView
+    public class BlazorWebView : WebView, IBlazorWebView, IWebViewIdentity
     {
+        private int _identity = -1;
+
+        private EventHandler _onBlazorAppLaunched;
+        event EventHandler IWebViewIdentity.OnBlazorAppLaunched
+        {
+            add
+            {
+                _onBlazorAppLaunched += value;
+            }
+
+            remove
+            {
+                _onBlazorAppLaunched -= value;
+            }
+        }
+
+        void IWebViewIdentity.SendOnBlazorAppLaunched()
+        {
+            _onBlazorAppLaunched?.Invoke(this, EventArgs.Empty);
+        }
+
+        bool IWebViewIdentity.BlazorAppLaunched { get; set; }
+
+        int IWebViewIdentity.GetWebViewIdentity()
+        {
+            return _identity;
+        }
+
+        ~BlazorWebView()
+        {
+            WebViewHelper.UnregisterWebView(this);
+            WebApplicationFactory.BlazorAppNeedReload -= ReloadBlazorAppEvent;
+            WebApplicationFactory.EnsureBlazorAppLaunchedOrReload -= EnsureBlazorAppLaunchedOrReload;
+        }
+
         public BlazorWebView()
         {
-            Navigated += BlazorWebView_Navigated;
             WebApplicationFactory.BlazorAppNeedReload += ReloadBlazorAppEvent;
+            WebApplicationFactory.EnsureBlazorAppLaunchedOrReload += EnsureBlazorAppLaunchedOrReload;
+
+            _identity = WebViewHelper.GenerateWebViewIdentity();
+
+            WebViewHelper.RegisterWebView(this);
         }
 
         private void ReloadBlazorAppEvent(object sender, EventArgs e)
         {
-            LaunchBlazorApp();
+            WebViewHelper.InternalLaunchBlazorApp(this, true);
         }
 
-        internal static void InternalLaunchBlazorApp(IBlazorWebView webview)
+        private void EnsureBlazorAppLaunchedOrReload(object sender, EventArgs e)
         {
-            webview.Source = new UrlWebViewSource()
+            if (!((IWebViewIdentity)this).BlazorAppLaunched)
             {
-                Url = WebApplicationFactory.GetBaseURL()
-            };
-        }
-
-        private void LaunchBlazorAppUri()
-        {
-            InternalLaunchBlazorApp(this);
-        }
-
-        private void LaunchBlazorAppUri(int delayedMilliseconds)
-        {
-            Task.Run(async () => {
-                await Task.Delay(delayedMilliseconds);
-                Device.BeginInvokeOnMainThread(LaunchBlazorAppUri);
-            });
+                ReloadBlazorAppEvent(sender, e);
+            }
         }
 
         public void LaunchBlazorApp()
         {
-            var webViewService = DependencyService.Get<IWebViewService>();
-            webViewService.ClearCookies();
-
-            switch (Device.RuntimePlatform)
-            {
-                case Device.UWP:
-                    //Giving some time on UWP, as it seem to fail to launch the new uri if called too soon
-                    LaunchBlazorAppUri(1000);
-                    break;
-                default:
-                    LaunchBlazorAppUri();
-                    break;
-            }
-        }
-
-        private void BlazorWebView_Navigated(object sender, WebNavigatedEventArgs e)
-        {
+            WebViewHelper.LaunchBlazorApp(this);
         }
 
         public View GetView()
         {
             return this;
+        }
+
+        public void CallJSInvokableMethod(string assembly,string method, params object[] args)
+        {
+            WebViewHelper.CallJSInvokableMethod(assembly, method, args);
+        }
+
+        public void PostMessage<TArgs>(string messageName, TArgs args)
+        {
+            WebViewHelper.PostMessage(messageName, typeof(TArgs), new object[] { args });
         }
     }
 }

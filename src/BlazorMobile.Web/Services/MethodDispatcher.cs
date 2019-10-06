@@ -266,6 +266,10 @@ namespace BlazorMobile.Common.Services
             if (index == -1)
                 return Task.FromResult(default(TReturnType));
 
+            //Only used with UWP that does not support GetInterfaceMap calls with .NET Native toolchain
+            //Other implementation will call the method according to the method index
+            methodProxy.MethodName = method.Name;
+
             methodProxy.MethodIndex = index;
             methodProxy.GenericTypes = genericParameters.Select(p => new TypeProxy(p)).ToArray();
 

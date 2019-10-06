@@ -6,7 +6,6 @@ using System.Collections.Generic;
 using System.Threading.Tasks;
 using Xamarin.Forms;
 
-[assembly: Dependency(typeof(XamarinBridge))]
 namespace BlazorMobile.Sample.Services
 {
     public class XamarinBridge : IXamarinBridge

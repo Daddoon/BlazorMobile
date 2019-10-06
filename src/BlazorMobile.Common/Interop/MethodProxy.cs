@@ -16,9 +16,18 @@ namespace BlazorMobile.Common.Interop
     {
         public string Message { get; set; }
 
+        public bool HasInnerException => InnerException != null;
+
+        public Exception InnerException { get; set; }
+
         public ExceptionDescriptor()
         {
             Message = string.Empty;
+        }
+
+        public ExceptionDescriptor(string message)
+        {
+            Message = message;
         }
 
         public ExceptionDescriptor(Exception ex) : this()
@@ -38,14 +47,6 @@ namespace BlazorMobile.Common.Interop
         public TypeProxy(Type type)
         {
             SerializedData = BridgeSerializer.Serialize(type);
-        }
-
-        public static TypeProxy CreateFromJson(string json)
-        {
-            return new TypeProxy()
-            {
-                SerializedData = json
-            };
         }
 
         public string SerializedData { get; set; }
@@ -81,7 +82,10 @@ namespace BlazorMobile.Common.Interop
 
         public TypeProxy InterfaceType { get; set; }
 
-        //public string InterfaceTypeJson { get; set; }
+        /// <summary>
+        /// Only used with UWP that does not support GetInterfaceMap calls with .NET Native toolchain
+        /// </summary>
+        public string MethodName { get; set; }
 
         public int MethodIndex { get; set; }
 

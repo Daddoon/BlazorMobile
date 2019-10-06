@@ -19,11 +19,78 @@ namespace BlazorMobile.UWP.Renderer
             //Nothing to do, just force the compiler to not strip our component
         }
 
-        protected override void OnElementPropertyChanged(object sender, PropertyChangedEventArgs e)
+        protected override void OnElementChanged(ElementChangedEventArgs<WebView> e)
         {
-            base.OnElementPropertyChanged(sender, e);
+            bool firstCall = false;
+            if (Control == null)
+            {
+                //If null this is the first call
+                firstCall = true;
+            }
 
-            //Override here in the future if we need some new behaviors
+            base.OnElementChanged(e);
+
+            if (firstCall)
+            {
+                Control.NewWindowRequested += Control_NewWindowRequested;
+                Control.FrameNavigationStarting += Control_FrameNavigationStarting;
+            }
+        }
+
+        protected override void Dispose(bool disposing)
+        {
+            if (disposing)
+            {
+                try
+                {
+                    Control.NewWindowRequested -= Control_NewWindowRequested;
+                }
+                catch (Exception)
+                {
+                }
+            }
+
+            base.Dispose(disposing);
+        }
+
+        private WebNavigatingEventArgs ManageRequestHandling(string uri, string referrerUri)
+        {
+            var navEvent = WebNavigationEvent.NewPage;
+            WebViewSource source = new UrlWebViewSource() { Url = referrerUri };
+
+            var eventArgs = new WebNavigatingEventArgs(navEvent, source, uri);
+
+            ((IBlazorWebView)Element).SendNavigating(eventArgs);
+
+            return eventArgs;
+        }
+
+        private void Control_FrameNavigationStarting(Windows.UI.Xaml.Controls.WebView sender, Windows.UI.Xaml.Controls.WebViewNavigationStartingEventArgs args)
+        {
+            string referrer = args.Uri.AbsoluteUri;
+
+            if (Element != null && Element.Source != null && Element.Source is UrlWebViewSource)
+            {
+                referrer = ((UrlWebViewSource)Element.Source).Url;
+            }
+
+            var eventArgs = ManageRequestHandling(args.Uri.AbsoluteUri, referrer);
+
+            args.Cancel = eventArgs.Cancel;
+        }
+
+        private void Control_NewWindowRequested(Windows.UI.Xaml.Controls.WebView sender, Windows.UI.Xaml.Controls.WebViewNewWindowRequestedEventArgs args)
+        {
+            var eventArgs = ManageRequestHandling(args.Uri.AbsoluteUri, args.Referrer.AbsoluteUri);
+
+            if (eventArgs.Cancel)
+            {
+                args.Handled = true;
+            }
+            else
+            {
+                args.Handled = false;
+            }
         }
     }
 }

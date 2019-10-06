@@ -1,6 +1,8 @@
 ﻿using BlazorMobile.Common.Helpers;
 using BlazorMobile.Common.Interfaces;
 using BlazorMobile.Common.Services;
+using BlazorMobile.Components;
+using BlazorMobile.Helper;
 using System.Runtime.InteropServices;
 using System.Threading.Tasks;
 using Xamarin.Forms;
@@ -19,10 +21,24 @@ namespace BlazorMobile.Services
             RuntimeInformation.IsOSPlatform(OSPlatform.Linux);
     }
 
+    internal static class ElectronMetadata
+    {
+        public static string BaseURL { get; set; }
+
+        public static string UserDataPath { get; set; }
+    }
+
     public class BlazorXamarinDeviceService : IBlazorXamarinDeviceService
     {
-        public Task<string> GetRuntimePlatform()
+        private static bool _init = false;
+
+        internal static void InitRuntimePlatform()
         {
+            if (_init)
+            {
+                return;
+            }
+
             string device = BlazorMobile.Common.BlazorDevice.Unknown;
 
             if (ContextHelper.IsBlazorMobile())
@@ -45,10 +61,44 @@ namespace BlazorMobile.Services
                 }
             }
 
-            //Sync Blazor and native side
             BlazorMobile.Common.BlazorDevice.RuntimePlatform = device;
 
-            return Task.FromResult(device);
+            _init = true;
+        }
+
+        public Task<bool> IsElectronActive()
+        {
+            return Task.FromResult(PlatformHelper.IsElectronActive());
+        }
+
+        public Task StartupMetadataForElectron(string baseURL, string userDataFolder)
+        {
+            ElectronMetadata.BaseURL = baseURL;
+            ElectronMetadata.UserDataPath = userDataFolder;
+
+            return Task.CompletedTask;
+        }
+
+        /// <summary>
+        /// This method is specific as it is also used as the Blazor app initialization validator.
+        /// This method is always called once after a Blazor app boot
+        /// </summary>
+        /// <returns></returns>
+        public Task<string> GetRuntimePlatform()
+        {
+            //HACK: This is more a hack than the cleanest implementation we would expect.
+            //We cannot determine what is the current executing WebView calling this method,
+            //as it's a service called remotely than a WebView callback. We are assuming here that
+            //all eligible WebViews with IWebViewIdentity interface are the Blazor app to check.
+            //The right fix would be to be able to pass the WebView identity to the Blazor app, and then
+            //forward it here when the BlazorMobileComponent want to initialize
+            foreach (IWebViewIdentity identity in WebViewHelper.GetAllWebViewIdentities())
+            {
+                identity.BlazorAppLaunched = true;
+                identity.SendOnBlazorAppLaunched();
+            }
+
+            return Task.FromResult(BlazorMobile.Common.BlazorDevice.RuntimePlatform);
         }
 
         public Task WriteLine(string message)

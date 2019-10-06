@@ -3,6 +3,7 @@ using BlazorMobile.Common.Interop;
 using BlazorMobile.Common.Models;
 using BlazorMobile.Common.Serialization;
 using BlazorMobile.Components;
+using BlazorMobile.Extensions;
 using BlazorMobile.Services;
 using System;
 using System.Collections.Generic;
@@ -94,7 +95,7 @@ namespace BlazorMobile.Interop
                 methodProxy.TaskSuccess = true;
             }
         }
-        
+
         public static async Task<MethodProxy> Receive(MethodProxy methodProxy)
         {
             object defaultValue = default(object);
@@ -104,7 +105,15 @@ namespace BlazorMobile.Interop
                 Type iface = methodProxy.InterfaceType.ResolvedType();
                 object concreteService = DependencyServiceExtension.Get(iface);
 
-                MethodInfo baseMethod = MethodProxyHelper.GetClassMethodInfo(concreteService.GetType(), iface, methodProxy.MethodIndex);
+                if (concreteService == null)
+                {
+                    //iface should not be null
+                    string error = $"The service implementation class of your interface '{iface.Name}' was not found on native side. If you are targeting UWP with .NET native toolchain, you must register your services through 'DependencyService.Register' at startup as the toolchain may strip your class from assembly at build time";
+                    ConsoleHelper.WriteError(error);
+                    throw new InvalidOperationException(error);
+                }
+
+                MethodInfo baseMethod = MethodProxyHelper.GetClassMethodInfo(concreteService.GetType(), iface, methodProxy);
 
                 //In case of failure, getting Default Return Type
                 defaultValue = GetDefault(baseMethod.ReturnType);

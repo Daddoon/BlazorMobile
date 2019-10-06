@@ -19,14 +19,65 @@ namespace BlazorMobile.Common.Serialization
             return JsonConvert.SerializeObject(value, BridgeSerializerSettings.GetSerializerSettings());
         }
 
+        /// <summary>
+        /// This is a last chance of deserialization.
+        /// In some scenario, it seem that Deserializer don't even call the CrossPlatformTypeBinder class
+        /// and prevent some data to be deserialized. This helper is intended to force assembly rename before deserialization
+        /// </summary>
+        /// <typeparam name="T"></typeparam>
+        /// <param name="data"></param>
+        /// <returns></returns>
+        private static T FallbackDeserialize<T>(string data)
+        {
+            if (CrossPlatformTypeBinder.isNetCore)
+            {
+                data = data?.Replace("mscorlib", "System.Private.CoreLib");
+            }
+            else
+            {
+                data = data.Replace("System.Private.CoreLib", "mscorlib");
+            }
+
+            return JsonConvert.DeserializeObject<T>(data, BridgeSerializerSettings.GetSerializerSettings());
+        }
+
         public static T Deserialize<T>(ref string data)
         {
-            return JsonConvert.DeserializeObject<T>(data, BridgeSerializerSettings.GetSerializerSettings());
+            try
+            {
+                return JsonConvert.DeserializeObject<T>(data, BridgeSerializerSettings.GetSerializerSettings());
+            }
+            catch (Exception)
+            {
+                try
+                {
+                    return FallbackDeserialize<T>(data);
+                }
+                catch (Exception)
+                {
+                    //Should bubble up
+                    throw;
+                }
+            }
         }
 
         public static T Deserialize<T>(TypeProxy data)
         {
-            return JsonConvert.DeserializeObject<T>(data.SerializedData, BridgeSerializerSettings.GetSerializerSettings());
+            try
+            {
+                return JsonConvert.DeserializeObject<T>(data.SerializedData, BridgeSerializerSettings.GetSerializerSettings());
+            }
+            catch (Exception)
+            {
+                try
+                {
+                    return FallbackDeserialize<T>(data.SerializedData);
+                }
+                catch (Exception ex)
+                {
+                    throw;
+                }
+            }
         }
     }
 

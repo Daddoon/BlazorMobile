@@ -59,14 +59,20 @@
   </ItemGroup>
   <ItemGroup>
     <PackageReference Include="BlazorMobile">
-      <Version>3.0.10-preview9.19424.4</Version>
+      <Version>3.0.11-preview9.19465.2</Version>
+    </PackageReference>
+    <PackageReference Include="BlazorMobile.Build.Android">
+      <Version>3.0.11-preview9.19465.2</Version>
+    </PackageReference>
+    <PackageReference Include="Xamarin.Android.Support.CustomTabs">
+      <Version>28.0.0.3</Version>
     </PackageReference>
     <PackageReference Include="Xamarin.Forms" Version="3.5.0.169047" />
-    <PackageReference Include="Xamarin.Android.Support.Design" Version="28.0.0.1" />
-    <PackageReference Include="Xamarin.Android.Support.v7.AppCompat" Version="28.0.0.1" />
-    <PackageReference Include="Xamarin.Android.Support.v4" Version="28.0.0.1" />
-    <PackageReference Include="Xamarin.Android.Support.v7.CardView" Version="28.0.0.1" />
-    <PackageReference Include="Xamarin.Android.Support.v7.MediaRouter" Version="28.0.0.1" />
+    <PackageReference Include="Xamarin.Android.Support.Design" Version="28.0.0.3" />
+    <PackageReference Include="Xamarin.Android.Support.v7.AppCompat" Version="28.0.0.3" />
+    <PackageReference Include="Xamarin.Android.Support.v4" Version="28.0.0.3" />
+    <PackageReference Include="Xamarin.Android.Support.v7.CardView" Version="28.0.0.3" />
+    <PackageReference Include="Xamarin.Android.Support.v7.MediaRouter" Version="28.0.0.3" />
   </ItemGroup>
   <ItemGroup>
     <Compile Include="MainActivity.cs" />
@@ -104,6 +110,10 @@
     <Folder Include="Resources\drawable\" />
   </ItemGroup>
   <ItemGroup>
+    <ProjectReference Include="..\BlazorMobile.Sample.AppPackage\BlazorMobile.Sample.AppPackage.csproj">
+      <Project>{632d1b2f-56e1-4f61-9e05-af9c8477e98b}</Project>
+      <Name>BlazorMobile.Sample.AppPackage</Name>
+    </ProjectReference>
     <ProjectReference Include="..\BlazorMobile.Sample\BlazorMobile.Sample.csproj">
       <Project>{a1bb8df7-82d6-4e98-99f1-de8ee4f8279a}</Project>
       <Name>BlazorMobile.Sample</Name>

@@ -7,13 +7,13 @@ using System.Threading.Tasks;
 using System.Net.Http;
 using BlazorMobile.Services;
 using BlazorMobile.Components;
-using System.Runtime.Serialization;
-using BlazorMobile.Common.Components;
-using Microsoft.JSInterop;
-using BlazorMobile.ElectronNET.Messaging;
+using ElectronNET.API;
+using System.Collections.Generic;
+using BlazorMobile.Interop;
+using BlazorMobile.ElectronNET.Services;
+using BlazorMobile.ElectronNET.Components;
+using ElectronNET.API.Entities;
 
-
-//This is inspired from Ooui.Forms
 namespace Xamarin.Forms
 {
     public static class Forms
@@ -31,6 +31,8 @@ namespace Xamarin.Forms
             Device.SetIdiom(TargetIdiom.Desktop);
             Device.PlatformServices = new BlazorMobilePlatformServices();
             Device.Info = new BlazorMobileDeviceInfo();
+
+            DependencyService.Register<IWebApplicationPlatform, ElectronWebApplicationPlatform>();
 
             WebApplicationFactory.Init();
         }
@@ -66,6 +68,8 @@ namespace Xamarin.Forms
 
             public void BeginInvokeOnMainThread(Action action)
             {
+                //It seem there is no notion of UI Thread nor non-background thread after testing
+                //We can safely assume to queue a task with Task.Run
                 Task.Run(action);
             }
 
@@ -100,16 +104,7 @@ namespace Xamarin.Forms
 
             public async Task<Stream> GetStreamAsync(Uri uri, CancellationToken cancellationToken)
             {
-                //NOTE:  Wanted to use the same facility that ImageLoaderSourceHandler uses,
-                //       but couldn't find an optional way to ignore certificate errors with self-signed 
-                //       certificates with that approach.  Calling:
-                //          ServicePointManager.ServerCertificateValidationCallback += (o, cert, chain, errors) => true;
-                //       in web application seemed to get ignored.
-
-                //var imageSource = new UriImageSource() { Uri = uri };
-                //return imageSource.GetStreamAsync(cancellationToken);
-
-                using (var client = HttpClientHandler == null ? new HttpClient() : new HttpClient(HttpClientHandler))
+                using (var client = new HttpClient())
                 {
                     HttpResponseMessage streamResponse = await client.GetAsync(uri.AbsoluteUri).ConfigureAwait(false);
 
@@ -125,12 +120,12 @@ namespace Xamarin.Forms
 
             public IIsolatedStorageFile GetUserStoreForApplication()
             {
-                throw new NotImplementedException();
+                return new ElectronIsolatedStorage();
             }
 
             public void OpenUriAction(Uri uri)
             {
-                throw new NotImplementedException();
+                Electron.Shell.OpenExternalAsync(uri.AbsoluteUri);
             }
 
             public void StartTimer(TimeSpan interval, Func<bool> callback)
@@ -172,6 +167,7 @@ namespace Xamarin.Forms
 
             public void QuitApplication()
             {
+                Log.Warning(nameof(BlazorMobilePlatformServices), "Platform doesn't implement QuitApp");
             }
 
             public SizeRequest GetNativeSize(VisualElement view, double widthConstraint, double heightConstraint)
@@ -204,33 +200,109 @@ namespace Xamarin.Forms
                 //Noop
             }
 
-            public void OnAlertSignalResult(AlertArguments arguments, bool isOk)
-            {
-                arguments.SetResult(isOk);
-            }
-
             void AlertSignalNameHandler(Page sender, AlertArguments arguments)
             {
-                //Electron documentation about dialog: https://github.com/electron/electron/blob/v5.0.10/docs/api/dialog.md
+                //Managing buttons logic behavior with Xamarin.Forms
+                List<string> buttons = new List<string>();
+                if (!string.IsNullOrEmpty(arguments.Accept))
+                {
+                    buttons.Add(arguments.Accept);
+                }
+                buttons.Add(arguments.Cancel);
 
-                var applicationRef = DotNetObjectReference.Create(new ElectronBridge(this));
-                var alertRef = DotNetObjectReference.Create(arguments);
+                Device.BeginInvokeOnMainThread(async () => {
+                    var messageBoxResult = await Electron.Dialog.ShowMessageBoxAsync(new ElectronNET.API.Entities.MessageBoxOptions(arguments.Message)
+                    {
+                        Title = arguments.Title,
+                        Buttons = buttons.ToArray(),
+                        Type = ElectronNET.API.Entities.MessageBoxType.none,
+                        NoLink = true
+                    });
 
-                BlazorMobileComponent.GetJSRuntime().InvokeAsync<bool>("BlazorMobileElectron.AlertDialog", applicationRef, alertRef, arguments.Title, arguments.Message, arguments.Accept, arguments.Cancel);
+                    bool isOk = true;
+
+                    //If buttons count equal 1, we only have a cancel button
+                    //If we have more than 1 button but the Response index is the last button item, then it's a cancel button value
+                    if (buttons.Count == 1 || buttons.Count > 1 && messageBoxResult.Response == buttons.Count - 1)
+                    {
+                        isOk = false;
+                    }
+
+                    arguments.SetResult(isOk);
+                });
             }
 
             void ActionSheetSignalNameHandler(Page sender, ActionSheetArguments arguments)
             {
-                //Some inspiration can be taken from here: https://github.com/xamarin/Xamarin.Forms/blob/fda800ca4c9d9a24b531721d7a18114169e2d8ec/Xamarin.Forms.Platform.Tizen/Platform.cs
+                //Managing buttons logic behavior with Xamarin.Forms
+                List<string> buttons = new List<string>();
+
+                if (string.IsNullOrEmpty(arguments.Destruction))
+                {
+                    //In mobile plateform, the Destruction button, if set, must be the top one
+                    //We cannot colorize it
+                    buttons.Add(arguments.Destruction);
+                }
+
+                //Adding selection
+                buttons.AddRange(arguments.Buttons);
+
+                //In ActionSheet, Cancel is always the last one
+                buttons.Add(arguments.Cancel);
+
+                string[] buttonsArray = buttons.ToArray();
+
+                Device.BeginInvokeOnMainThread(async () => {
+                    var messageBoxResult = await Electron.Dialog.ShowMessageBoxAsync(new ElectronNET.API.Entities.MessageBoxOptions(arguments.Title)
+                    {
+                        Buttons = buttonsArray,
+                        Type = ElectronNET.API.Entities.MessageBoxType.question,
+                        NoLink = false
+                    });
+
+                    arguments.SetResult(buttonsArray[messageBoxResult.Response]);
+                });
             }
 
+        }
+
+        private static BrowserWindowOptions _defaultOptions = new BrowserWindowOptions();
+
+        /// <summary>
+        /// Configure the BrowserWindow that will be used for the Blazor application
+        /// </summary>
+        /// <param name="options">The default options used when instanciating the Blazor app BrowserWindow</param>
+        public static void ConfigureBrowserWindow(BrowserWindowOptions options)
+        {
+            _defaultOptions = options;
+        }
+
+        internal static BrowserWindowOptions GetDefaultBrowserWindowOptions()
+        {
+            return _defaultOptions;
+        }
+
+        /// <summary>
+        /// If your code already started your BlazorWebView.LaunchBlazorApp method, you should retrieve here the Electron main BrowserWindow used to create it.
+        /// Otherwise, return a null Task value
+        /// </summary>
+        /// <returns></returns>
+        public static Task<BrowserWindow> GetBrowserWindow()
+        {
+            var blazorWebView = BlazorWebViewFactory.GetMainElectronBlazorWebViewInstance();
+            var electronBlazorWebView = blazorWebView as ElectronBlazorWebView;
+
+            if (electronBlazorWebView == null)
+                return Task.FromResult((BrowserWindow)null);
+
+            return electronBlazorWebView.GetBrowserWindow();
         }
 
         /// <summary>
         /// Register the Xamarin.Forms Application class
         /// </summary>
         /// <param name="application"></param>
-        internal static void LoadApplication(BlazorApplication application)
+        public static void LoadApplication(BlazorApplication application)
         {
             Application.Current = application;
         }

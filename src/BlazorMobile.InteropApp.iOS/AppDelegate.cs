@@ -1,7 +1,9 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
+using BlazorMobile.InteropApp.AppPackage;
 using BlazorMobile.iOS.Services;
+using BlazorMobile.Services;
 using Foundation;
 using UIKit;
 
@@ -24,6 +26,15 @@ namespace BlazorMobile.InteropApp.iOS
         {
             global::Xamarin.Forms.Forms.Init();
             BlazorWebViewService.Init();
+
+            //Register our Blazor app package
+            WebApplicationFactory.RegisterAppStreamResolver(AppPackageHelper.ResolveAppPackageStream);
+
+            if (int.TryParse(UIDevice.CurrentDevice.SystemVersion.Split('.')[0], out int majorVersion) && majorVersion >= 13)
+            {
+                BlazorWebViewService.EnableDelayedStartPatch();
+            }
+
             LoadApplication(new App());
 
             return base.FinishedLaunching(app, options);

@@ -17,7 +17,7 @@
         <dependencies>
             <group targetFramework="netstandard2.0">
                 <dependency id="NETStandard.Library" version="2.0.3" />
-                <dependency id="Microsoft.AspNetCore.Blazor" version="3.0.0-preview9.19424.4" />
+                <dependency id="Microsoft.AspNetCore.Blazor" version="3.0.0-preview9.19465.2" />
             </group>
         </dependencies>
     </metadata>

@@ -1,0 +1,76 @@
+trigger:
+- master
+
+# I found this was the image that worked best - Visual Studio 2019 running on server 2019
+pool:
+  vmImage: 'windows-2019'
+
+# Specific project is called out here for a reason
+variables:
+  solution: '**/*.sln'
+  blazorProject: '**/*Blazor.csproj'
+  buildPlatform: 'Any CPU'
+  buildConfiguration: 'Release'
+  outputDirectory: '$(build.binariesDirectory)/$(buildConfiguration)'
+
+steps:
+
+# I made sure to get NuGet version 4.3.0
+- task: NuGetToolInstaller@0
+  displayName: "Installing the NuGet tools"
+  inputs:
+    versionSpec: '4.3.0'
+    checkLatest: true
+
+# Restored the solution
+- task: NuGetCommand@2
+  displayName: "Running the NuGet Restore Solution task"
+  inputs:
+    restoreSolution: '$(solution)'
+    includeReferencedProjects: true
+    noCache: true
+
+# Installed .NET Core 3 
+- task: UseDotNet@2
+  displayName: "Installing .Net Core 3 Preview SDK"
+  inputs:
+    version: 3.0.x
+    includePreviewVersions: true
+
+# Building just the Blazor app so the zip file ends up in the bin directory for Android
+- task: DotNetCoreCLI@2
+  inputs:
+    command: 'build'
+    projects: '$(blazorProject)'
+
+# I found the missing .Net Standard Library would cause issues, so loading it here 
+- task: UseDotNet@2
+  displayName: "Installing .Net Core 2"
+  inputs:
+    version: 2.x
+
+# Creating the Android App
+- task: XamarinAndroid@1
+  displayName: "Building the Android App"
+  inputs:
+    msbuildVersionOption: 'latest'
+    projectFile: '**/*droid*.csproj'
+    msbuildArchitectureOption: x64
+    msbuildArguments: '/p:AndroidNdkDirectory=$(ANDROID_NDK_HOME)'
+    jdkVersionOption: 1.8
+    outputDirectory: '$(outputDirectory)'
+    configuration: '$(buildConfiguration)'
+
+# Not actually signing the app yet
+- task: AndroidSigning@3
+  displayName: "Signing Android App - false"
+  inputs:
+    apksign: false
+    zipalign: false
+    apkFiles: '$(outputDirectory)/*.apk'
+
+# Packing it up for an artifact drop
+- task: PublishBuildArtifacts@1
+  displayName: "Publishing the App"
+  inputs:
+    pathtoPublish: '$(outputDirectory)'

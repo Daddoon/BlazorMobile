@@ -7,7 +7,6 @@ using System.Text;
 using System.Threading.Tasks;
 using Xamarin.Forms;
 
-[assembly: Dependency(typeof(XamarinBridge))]
 namespace BlazorMobile.InteropApp.Services
 {
     public class XamarinBridge : IXamarinBridge
@@ -29,6 +28,24 @@ namespace BlazorMobile.InteropApp.Services
         public Task CallFaultyTask()
         {
             throw new InvalidOperationException("This is an expected exception");
+        }
+
+        public Task TriggerPostMessageTest()
+        {
+            MainPage.webview.PostMessage("PostMessageTest", "My posted string");
+            return Task.CompletedTask;
+        }
+
+        public Task TriggerPostMessageTestBool()
+        {
+            MainPage.webview.PostMessage("PostMessageTest", true);
+            return Task.CompletedTask;
+        }
+
+        public Task TriggerJSInvokableTest()
+        {
+            MainPage.webview.CallJSInvokableMethod("BlazorMobile.InteropBlazorApp", "InvokableMethodTest", "My invoked string");
+            return Task.CompletedTask;
         }
     }
 }

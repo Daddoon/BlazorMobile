@@ -232,6 +232,7 @@ namespace BlazorMobile.Common.Interop
 
         /// <summary>
         /// Get the corresponding class MethodInfo from an interface MethodInfo index
+        /// WARNING: InterfeceMethod index behavior is not supported on UWP with .NET native toolchain enabled
         /// </summary>
         /// <typeparam name="T"></typeparam>
         /// <param name="method"></param>
@@ -244,6 +245,90 @@ namespace BlazorMobile.Common.Interop
             var map = targetType.GetInterfaceMap(interfaceType);
 
             return map.TargetMethods[interfaceMethodIndex];
+        }
+
+        private const string MethodNotFoundException = "Requested method was not found on native side. Check that your interfaces and class are updated on each project";
+
+        private static MethodInfo SearchMethodInfo(Type targetType, MethodProxy methodProxy)
+        {
+            if (targetType == null || targetType.IsInterface)
+                return null;
+
+            var methods = targetType.GetRuntimeMethods().Where(p => p.Name == methodProxy.MethodName).ToList();
+            if (methods.Count <= 0)
+            {
+                throw new InvalidOperationException(MethodNotFoundException);
+            }
+            else if (methods.Count == 1)
+            {
+                //The perfect usage, no ambiguity, there is only one possible result
+                return methods[0];
+            }
+            else
+            {
+                //We must do some research according to the MethodProxy configuration
+                //NOTE: Theses check will surely if comparing with Generic values.
+                //No time to manage this yet, as end-user can rename methods and parameters if needed
+
+                if (methodProxy.GenericTypes.Count() > 0)
+                {
+                    //This mean that our signature must have some generic parameters
+                    methods = methods.Where(p => p.IsGenericMethod && p.GetGenericArguments().Count() == methodProxy.GenericTypes.Count()).ToList();
+                }
+                else
+                {
+                    methods = methods.Where(p => !p.IsGenericMethod).ToList();
+                }
+
+
+                //Retrying to parse
+                if (methods.Count <= 0)
+                {
+                    throw new InvalidOperationException(MethodNotFoundException);
+                }
+                else if (methods.Count == 1)
+                {
+                    //An ideal usage we find one result
+                    return methods[0];
+                }
+
+                //Trying to distinguish additional things, like number of parameters.
+                //May fail with optional parameters in input ?
+                methods = methods.Where(p => p.GetParameters().Count() == methodProxy.Parameters.Count()).ToList();
+
+                if (methods.Count == 1)
+                {
+                    //An ideal usage we find one result
+                    return methods[0];
+                    
+                }
+                else
+                {
+                    throw new InvalidOperationException(MethodNotFoundException);
+                }
+
+                //TODO: Check per parameter type, ideally not generic one, and do something like a weight table
+            }
+        }
+
+        /// <summary>
+        /// Get the corresponding class MethodInfo from a MethodProxy
+        /// </summary>
+        /// <param name="targetType"></param>
+        /// <param name="interfaceType"></param>
+        /// <param name="methodProxy"></param>
+        /// <returns></returns>
+        public static MethodInfo GetClassMethodInfo(Type targetType, Type interfaceType, MethodProxy methodProxy)
+        {
+            //Even if we don't have access to Xamarin.Forms assembly here, BlazorDevice is initialized internally at BlazorMobile boot on native side
+            //As this method call should probably be called on the native end first after Blazor app booted too, the values will already be set.
+            switch (BlazorDevice.RuntimePlatform)
+            {
+                case BlazorDevice.UWP:
+                    return SearchMethodInfo(targetType, methodProxy);
+                default:
+                    return GetClassMethodInfo(targetType, interfaceType, methodProxy.MethodIndex);
+            }
         }
 
         #endregion

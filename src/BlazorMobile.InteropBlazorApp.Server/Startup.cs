@@ -82,7 +82,7 @@ namespace BlazorMobile.InteropBlazorApp.Server
                 endpoints.MapFallbackToPage("/server_index");
             });
 
-            BlazorMobileService.EnableClientToDeviceRemoteDebugging("127.0.0.1", 8888);
+            BlazorMobileService.EnableClientToDeviceRemoteDebugging("127.0.0.1", 8891);
             BlazorMobileService.Init((bool success) =>
             {
                 Console.WriteLine($"Initialization success: {success}");

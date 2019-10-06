@@ -1,5 +1,6 @@
 ﻿using BlazorMobile.Common;
 using BlazorMobile.Components;
+using BlazorMobile.InteropApp.Helpers;
 using BlazorMobile.Services;
 using System;
 using System.Diagnostics;
@@ -15,28 +16,33 @@ namespace BlazorMobile.InteropApp
         {
             InitializeComponent();
 
+            ServiceRegistrationHelper.RegisterServices();
+
 #if DEBUG
             WebApplicationFactory.EnableDebugFeatures();
 #endif
 
-            WebApplicationFactory.SetHttpPort(8888);
-
-            //Regiser Blazor app resolver
-            //CUSTOMIZE HERE YOUR OWN CODE LOGIC IF NEEDED !!
-            WebApplicationFactory.RegisterAppStreamResolver(() =>
-            {
-                //Get current class Assembly object
-                var assembly = typeof(App).Assembly;
-
-                //Name of our current Blazor package in this project, stored as a Embedded Resource
-                string BlazorPackageFolder = "BlazorMobile.InteropBlazorApp.zip";
-
-                string appPackage = $"{assembly.GetName().Name}.Package.{BlazorPackageFolder}";
-
-                return assembly.GetManifestResourceStream(appPackage);
-            });
+            WebApplicationFactory.SetHttpPort(8891);
 
             MainPage = new MainPage();
+        }
+
+        protected override void OnStart()
+        {
+            Console.WriteLine("OnStart called");
+            base.OnStart();
+        }
+
+        protected override void OnSleep()
+        {
+            Console.WriteLine("OnSleep called");
+            base.OnSleep();
+        }
+
+        protected override void OnResume()
+        {
+            Console.WriteLine("OnResume called");
+            base.OnResume();
         }
     }
 }

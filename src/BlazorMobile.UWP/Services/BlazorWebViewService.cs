@@ -15,8 +15,6 @@ namespace BlazorMobile.UWP.Services
         {
             DependencyService.Register<IWebViewService, WebViewService>();
 
-            ConsoleHelper.UseDebugWriteLine(true);
-
             BlazorWebViewRenderer.Init();
         }
 

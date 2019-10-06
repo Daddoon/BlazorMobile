@@ -24,8 +24,19 @@
   </PropertyGroup>
 
   <ItemGroup>
+    <None Remove="Interop\Javascript\blazor.webassembly.js" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <EmbeddedResource Include="Interop\Javascript\blazor.webassembly.js" />
+  </ItemGroup>
+
+  <ItemGroup>
     <PackageReference Include="EmbedIO" Version="2.2.9" />
-    <PackageReference Include="MimeTypes" Version="1.0.6" />
+    <PackageReference Include="MimeTypes" Version="1.1.0">
+      <PrivateAssets>all</PrivateAssets>
+      <IncludeAssets>runtime; build; native; contentfiles; analyzers; buildtransitive</IncludeAssets>
+    </PackageReference>
     <PackageReference Include="System.IO.Compression.ZipFile" Version="4.3.0" />
     <PackageReference Include="Xamarin.Forms" Version="3.5.0.169047" />
   </ItemGroup>

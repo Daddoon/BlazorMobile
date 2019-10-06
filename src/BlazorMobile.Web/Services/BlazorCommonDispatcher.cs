@@ -29,23 +29,32 @@ namespace BlazorMobile.Web.Services
                 }
                 else
                 {
-                    Exception exception = null;
+                    InteropException exception = null;
 
                     //If success value (from javascript) is false, like unable to connect to websocket
                     //or if the native task failed with an exception, cancel the current task, that will throw
                     if (!socketSuccess)
                     {
-                        exception = new InvalidOperationException($"BlazorMobile was unable to connect to native through websocket server to execute task {resultProxy.TaskIdentity}");
+                        exception = new InteropException($"BlazorMobile was unable to connect to native through websocket server to execute task {resultProxy.TaskIdentity}");
                     }
                     else if (resultProxy.ExceptionDescriptor != null)
                     {
                         //We have some message to send in this case
-                        exception = new Exception(resultProxy.ExceptionDescriptor.Message);
+                        if (!resultProxy.ExceptionDescriptor.HasInnerException)
+                        {
+                            exception = new InteropException(resultProxy.ExceptionDescriptor.Message);
+                        }
+                        else
+                        {
+                            exception = new InteropException(
+                                resultProxy.ExceptionDescriptor.Message,
+                                resultProxy.ExceptionDescriptor.InnerException);
+                        }
                     }
                     else
                     {
                         //Sending uncustomized message
-                        exception = new InvalidOperationException($"Task {resultProxy.TaskIdentity} has thrown an exception on native side. See log for more info.");
+                        exception = new InteropException($"Task {resultProxy.TaskIdentity} has thrown an exception on native side. See log for more info.");
                     }
 
                     MethodDispatcher.SetTaskAsFaulted(resultProxy.TaskIdentity, exception);

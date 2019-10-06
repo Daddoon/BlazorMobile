@@ -46,12 +46,9 @@ namespace BlazorMobile.Components
 
         protected override void OnSleep()
         {
-            if (ContextHelper.IsElectronNET())
-            {
-                return;
-            }
-
-            WebApplicationFactory.StopWebServer();
+            //NOTE: As there is some issue on each platform when trying to stop server gracefully at OnSleep event
+            //We don't manage anything here. Instead if the current server throw, it will restart, and if we detect
+            //that server is not started, we will try to restart it at OnResume event instead
         }
 
         protected override void OnResume()
@@ -61,8 +58,16 @@ namespace BlazorMobile.Components
                 return;
             }
 
-            WebApplicationFactory.ResetBlazorViewIfHttpPortChanged();
+            bool needReload = WebApplicationFactory.ResetBlazorViewIfHttpPortChanged();
+
             WebApplicationFactory.StartWebServer();
+
+            if (!needReload)
+            {
+                //As the previous event can fire a reload too, we just check that a reload is not already pending,
+                //preventing to call the WebView reload twice
+                WebApplicationFactory.NotifyEnsureBlazorAppLaunchedOrReload();
+            }
         }
     }
 }
