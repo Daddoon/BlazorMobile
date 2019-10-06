@@ -17,7 +17,7 @@ Create full C# driven hybrid-apps for iOS, Android, UWP & Desktop with Blazor!
 - **Linux:** Electron.NET
 - **macOS:** Electron.NET
 
-### Addtional notes
+### Additional platform notes
 
 #### Universal Windows Platform
 - UWP has been tested on **Windows 10 only**.
@@ -114,7 +114,17 @@ The following informations only explains how your Xamarin.Forms project load you
 
 ### How it works
 
-In order to ship your Blazor application within your Xamarin apps, you need to pack it and make it available to it.
+**<ins>This are informational bits about the project structure:</ins>**
+
+- If you plan to use the **BlazorMobile platforms only** (iOS, Android, UWP):
+  - You can follow the structure in this guide, embedding your Blazor app in the Xamarin.Forms shared project
+- If you plan to use the **ElectronNET platform** in addition of BlazorMobile platforms:
+  - Embed your Blazor app package in an assembly outside the Xamarin.Forms shared project, and call the package
+  registration, with **WebApplicationFactory.RegisterAppStreamResolver**, in each device root project.
+  - This is not mandatory but **highly recommended**, as this configuration prevent to ship your BlazorMobile application twice
+  on ElectronNET, otherwise it would contain the packaged app, not used with ElectronNET implementation, and the regular app project.
+
+**In order to ship your Blazor application within your Xamarin apps, you need to pack it and make it available to it.**
 
 Your Blazor app will be automatically packaged thanks to the **BlazorMobile.Build** NuGet package, that must be already installed on your Blazor web application project. The package location will be written in the build output after the Blazor build mecanism.
 
@@ -180,7 +190,16 @@ Note that the **BlazorMobilService.Init()** has an **onFinish** callback delegat
 
 ## Communication between Blazor & Native
 
-### Using the ProxyInterface API
+### <ins>Using the ProxyInterface API</ins>
+**ProxyInterface API usages and limitations:**
+
+- Blazor to Xamarin communication
+- Unidirectional workflow: The Blazor application is always the call initiator
+- Ideal for Business logic with predictable results
+- API calls from Blazor to native are awaitable from a Task object
+- Usage of interface contracts
+
+#### How-to use
 
 **In the project shared between Blazor & Xamarin**, formerly **YourAppName.Common** create an interface, and add the **[ProxyInterface]** attribute on top of it. Assuming using the sample **IXamarinBridge** interface, present by default on YourAppName.Common project, your interface may look like this:
 
@@ -287,9 +306,168 @@ Then if you want to use any of your Blazor to native interface, it's as simple a
 }
 ```
 
-### Using the Message API
+### <ins>Using the Message API</ins>
+**Message API usages and limitations:**
 
-TODO
+- Xamarin to Blazor communication only with **CallJSInvokableMethod** method
+- Xamarin to Blazor & Blazor to Blazor with **PostMessage** method
+- Message broadcasting only
+- Unidirectional workflow: The message sender cannot wait for any return value
+- Ideal for Business logic with unpredictable results: The native side can post messages to the Blazor application, according to some external events
+- API calls are not awaitable
+- **PostMessage** only: Messages are limited to one parameter
+- **PostMessage** only: Allow to forward messages to static & instanciated method delegates
+- **CallJSInvokableMethod** only: Messages can have any parameters, but should match the expected method signature
+- **CallJSInvokableMethod** only: Allow to forward message to static JSInvokable methods only
+
+#### How-to use
+
+<ins>**CallJSInvokableMethod** - Allow to call a Blazor static JSInvokable method</ins>
+
+From the **IBlazorWebView** object retrieved when launching your BlazorMobile application, you should be able to call **CallJSInvokableMethod**.
+This is self explanatory about it's usage, as it look like signature you can find on the InvokeAsyncMethod in Javascript in a regular Blazor application.
+
+```csharp
+/// <summary>
+/// Call a static JSInvokable method from native side
+/// </summary>
+/// <param name="assembly">The assembly of the JSInvokable method to call</param>
+/// <param name="method">The JSInvokable method name</param>
+/// <param name="args">Parameters to forward to Blazor app. Check that your parameters are serializable/deserializable from both native and Blazor sides.</param>
+/// <returns></returns>
+void CallJSInvokableMethod(string assembly,string method, params object[] args);
+```
+
+An usage could look like this:
+
+```csharp
+webview = BlazorWebViewFactory.Create();
+
+//Assuming that we know that the Blazor application already started
+webview.CallJSInvokableMethod("MyBlazorAppAssemblyName", "MyJSInvokableMethodName", "param1", "param2", "param3");
+```
+
+Your JSInvokable method on Blazor side will then be called.
+
+<ins>**PostMessage** - Allow to post a message to a static or instanciated delegate method</ins>
+
+This API is in two parts, one in the native side, the other one on the Blazor side.
+
+Messages sent will be received:
+
+- Only by the Blazor side
+- And forwarded to delegates methods registered with a **matching message name** to listen and **matching expected parameter type**
+
+##### Native side
+From the **IBlazorWebView** object retrieved when launching your BlazorMobile application, you should be able to call **PostMessage**.
+
+```csharp
+/// <summary>
+/// Post a message to the Blazor app. Any objects that listen to a specific message name by calling BlazorMobileService.MessageSubscribe will trigger their associated handlers.
+/// </summary>
+/// <param name="messageName"></param>
+/// <param name="args"></param>
+void PostMessage<TArgs>(string messageName, TArgs args);
+```
+
+An usage could look like this:
+
+```csharp
+webview = BlazorWebViewFactory.Create();
+
+//Assuming that we know that the Blazor application already started
+webview.PostMessage<string>("myNotification", "my notification value");
+```
+
+Your message will be sent to the Blazor app.
+
+##### Blazor side
+
+In order to receive message notifications on Blazor side, you should subscribe to the message to listen, with the expected argument type.
+Here are the three static methods usable from the **BlazorMobileService** static class in the Blazor app, for Message API:
+
+```csharp
+/// <summary>
+/// Subscribe to a specific message name sent from native side with PostMessage, and forward the event to the specified delegate if received
+/// </summary>
+/// <param name="messageName">The message name to subscribe to</param>
+/// <param name="handler">The delegate action that must be executed at message reception</param>
+static void MessageSubscribe<TArgs>(string messageName, Action<TArgs> handler);
+
+/// <summary>
+/// Unsubscribe to a specific message name sent from native side with PostMessage
+/// </summary>
+/// <param name="messageName">The message name to unsubscribe to</param>
+/// <param name="handler">The delegate action that must be unsubscribed</param>
+static void MessageUnsubscribe<TArgs>(string messageName, Action<TArgs> handler);
+
+/// <summary>
+/// Allow to post a message to any delegate action registered through MessageSubscribe.
+/// This method behavior is similar to the IBlazorWebView.PostMessage method on the native side,
+/// except that you send message from within your Blazor app instead sending it from native side.
+/// </summary>
+/// <typeparam name="TArgs">The paramter expected type</typeparam>
+/// <param name="messageName">The message name to target</param>
+/// <param name="value">The value to send in the message</param>
+static void PostMessage<TArgs>(string messageName, TArgs value);
+```
+
+In order to receive the message sent from the native side in our previous example we could do this in a Blazor page:
+
+```csharp
+public void OnMessageReceived(string payload)
+{
+   //Stuff here will be called when receiving the message
+}
+
+BlazorMobileService.MessageSubscribe<string>("myNotification", OnMessageReceived);
+```
+
+**NOTE:** If you are subscribing an instance method member like in this example, to the MessageSubscribe method,
+**it's highly recommended** to cleanly unregister it when you know that your object instance will be disposed.
+
+In this example, from a **Razor** page you could do something like this:
+
+```csharp
+@page "/myPage"
+@implements IDisposable
+
+//Some code
+
+@code {
+    //Some code
+
+    public void Dispose()
+    {
+        BlazorMobileService.MessageUnsubscribe<string>("myNotification", OnMessageReceived);
+    }
+}
+```
+
+If there is no **IDisposable** mecanism on the C# component you are working on, you may also just unregister at **Destructor** level.
+See the following example:
+
+```csharp
+public class MyClass()
+{
+    public void OnMessageReceived(string payload)
+    {
+       //Stuff here will be called when receiving the message
+    }
+
+    //Constructor
+    MyClass()
+    {
+        BlazorMobileService.MessageSubscribe<string>("myNotification", OnMessageReceived);
+    }
+
+    //Destructor
+    ~MyClass()
+    {
+        BlazorMobileService.MessageUnsubscribe<string>("myNotification", OnMessageReceived);
+    }
+}
+```
 
 ## Device remote debugging & Debugging from NET Core 3.0
 
@@ -540,6 +718,14 @@ Credits to [@kmiller68](https://github.com/kmiller68) in [this issue](https://gi
 When submiting an iOS app on the AppStore you may have this message: **ITMS-90809: Deprecated API Usage - Apple will stop accepting submissions of apps that use UIWebView APIs . See https://developer.apple.com/documentation/uikit/uiwebview for more information.**
 
 Please follow [this issue](https://github.com/xamarin/Xamarin.Forms/issues/7323) on Xamarin.Forms GitHub page.
+
+## Community
+
+- **Azure DevOps Pipeline** by [@shawndeggans](https://github.com/shawndeggans) - [Download azure-pipelines.txt]("./Community/azure-pipelines.txt")
+```
+This script is meant to work within the DevOps Pipeline for the user project APK generation.
+Presently, it only builds it to an archive, but I think I will eventually have it picked up and delivered to Genymotion On Demand.
+```
 
 ## Migration
 
