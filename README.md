@@ -61,7 +61,7 @@ This may mean that the latest OS version of Xbox One may support WebAssembly and
 - [BlazorMobile 3.0.7-preview8.19405.7 to 3.0.8-preview8.19405.7](#blazormobile-307-preview8194057-to-308-preview8194057)
 - [BlazorMobile 3.0.8-preview8.19405.7 to 3.0.9-preview8.19405.7](#blazormobile-308-preview8194057-to-309-preview8194057)
 - [BlazorMobile 3.0.9-preview8.19405.7 to 3.0.10-preview9.19424.4](#blazormobile-309-preview8194057-to-3010-preview9194244)
-- [BlazorMobile 3.0.10-preview9.19424.4 to 3.0.11-preview9.19465.2](#blazormobile-309-preview9194244-to-3011-preview9194652)
+- [BlazorMobile 3.0.10-preview9.19424.4 to 3.0.11-preview9.19465.2](#blazormobile-3010-preview9194244-to-3011-preview9194652)
 
 ## Difference between BlazorMobile & Progressive Web Apps (PWA)
 
