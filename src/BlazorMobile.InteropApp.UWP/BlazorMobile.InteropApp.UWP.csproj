@@ -61,6 +61,7 @@
     <UseVSHostingProcess>false</UseVSHostingProcess>
     <ErrorReport>prompt</ErrorReport>
     <Prefer32Bit>true</Prefer32Bit>
+    <UseDotNetNativeToolchain>true</UseDotNetNativeToolchain>
   </PropertyGroup>
   <PropertyGroup Condition="'$(Configuration)|$(Platform)' == 'Release|x64'">
     <OutputPath>bin\x64\Release\</OutputPath>
@@ -158,6 +159,10 @@
     <PackageReference Include="Microsoft.NETCore.UniversalWindowsPlatform" Version="6.2.9" />
   </ItemGroup>
   <ItemGroup>
+    <ProjectReference Include="..\BlazorMobile.InteropApp.AppPackage\BlazorMobile.InteropApp.AppPackage.csproj">
+      <Project>{5f149aa9-0151-4ccb-9f30-e18ddafb4b92}</Project>
+      <Name>BlazorMobile.InteropApp.AppPackage</Name>
+    </ProjectReference>
     <ProjectReference Include="..\BlazorMobile.InteropApp.Common\BlazorMobile.InteropApp.Common.csproj">
       <Project>{D2385CE8-C7E3-40D6-B2DB-8C4A4255A5AC}</Project>
       <Name>BlazorMobile.InteropApp.Common</Name>

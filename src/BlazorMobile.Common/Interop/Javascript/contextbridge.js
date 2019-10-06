@@ -110,3 +110,4 @@ window.contextBridgeSend = function (data) {
     window.contextBridge.send(data);
     return true;
 };
+

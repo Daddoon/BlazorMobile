@@ -15,6 +15,16 @@ namespace BlazorMobile.Common.Services
             return MethodDispatcher.CallMethodAsync<string>(MethodBase.GetCurrentMethod());
         }
 
+        public Task<bool> IsElectronActive()
+        {
+            return MethodDispatcher.CallMethodAsync<bool>(MethodBase.GetCurrentMethod());
+        }
+
+        public Task StartupMetadataForElectron(string baseURL, string userDataFolder)
+        {
+            return MethodDispatcher.CallVoidMethodAsync(MethodBase.GetCurrentMethod(), baseURL, userDataFolder);
+        }
+
         public Task WriteLine(string message)
         {
             //Dispatch message on browser

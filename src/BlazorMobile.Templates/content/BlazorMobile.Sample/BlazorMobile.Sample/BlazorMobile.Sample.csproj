@@ -7,20 +7,18 @@
   </PropertyGroup>
 
   <ItemGroup>
-    <PackageReference Include="BlazorMobile" Version="3.0.10-preview9.19424.4" />
+    <Compile Remove="Package\**" />
+    <EmbeddedResource Remove="Package\**" />
+    <None Remove="Package\**" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <PackageReference Include="BlazorMobile" Version="3.0.11-preview9.19465.2" />
     <PackageReference Include="Xamarin.Forms" Version="3.5.0.169047" />
   </ItemGroup>
 
   <ItemGroup>
     <ProjectReference Include="..\BlazorMobile.Sample.Blazor.Common\BlazorMobile.Sample.Common.csproj" />
-  </ItemGroup>
-
-  <ItemGroup>
-    <Folder Include="Package\" />
-  </ItemGroup>
-
-  <ItemGroup>
-    <EmbeddedResource Include="..\BlazorMobile.Sample.Blazor\bin\BlazorMobile.Sample.Blazor.zip" Link="Package\BlazorMobile.Sample.Blazor.zip" />
   </ItemGroup>
   
 </Project>

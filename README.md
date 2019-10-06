@@ -4,20 +4,30 @@ Create full C# driven hybrid-apps for iOS, Android, UWP & Desktop with Blazor!
 
 **BlazorMobile** - is a set of Nuget packages & project templates for embedding a Blazor web application as a standalone mobile application, hosted in Xamarin.
 
+## Framework requirement
+
+- **Blazor:** 3.0.0-preview9.19465.2
+
 ## Platform requirements
  
-- **Blazor:** 3.0.0-preview9.19424.4
 - **Android:** 4.4 or greater
 - **iOS:** 12.0 or greater
 - **UWP:** Build 16299 or greater
-
-### Experimental
-
 - **Windows:** Electron.NET
 - **Linux:** Electron.NET
 - **macOS:** Electron.NET
 
-**NOTE:** See [Electron.NET support with BlazorMobile](#electronnet-support-with-blazormobile) section for more info.
+### Additional platform notes
+
+#### Universal Windows Platform
+- UWP has been tested on **Windows 10 only**.
+- Recent versions of **Windows 10** seem to make BlazorMobile work on **Xbox One** when testing in **Edge** with emulation mode set as Xbox One.
+Previous versions of Windows 10 was returning a message stating that "WebAssembly is not supported on this platform".
+This may mean that the latest OS version of Xbox One may support WebAssembly and so BlazorMobile, but this is not something that have been tested.
+
+#### ElectronNET support
+- **.NET Core 3.0** is required on your ElectronNET application.
+- See [Electron.NET support with BlazorMobile](#electronnet-support-with-blazormobile) section for more info.
 
 ## Summary
 
@@ -26,12 +36,14 @@ Create full C# driven hybrid-apps for iOS, Android, UWP & Desktop with Blazor!
 - [Linking your Blazor app to your Xamarin project](#linking-your-blazor-app-to-your-xamarin-project)
 - [Detecting Runtime Platform](#detecting-runtime-platform)
 - [Communication between Blazor & Native](#communication-between-blazor--native)
+- [Validating the Blazor application navigation](#validating-the-blazor-application-navigation)
 - [Device remote debugging & Debugging from NET Core 3.0](#device-remote-debugging--debugging-from-net-core-30)
 - [Android Build size optimization](#android-build-size-optimization)
 - [Electron.NET support with BlazorMobile](#electronnet-support-with-blazormobile)
 
 ## Troubleshoot
 
+- [My Xamarin services are not found when interoping in UWP](#my-xamarin-services-are-not-found-when-interoping-in-uwp)
 - [Cannot connect to a remote webserver on UWP](#cannot-connect-to-a-remote-webserver-on-uwp)
 - [Unable to connect to UWP remotely even with NetworkIsolation disabled](#unable-to-connect-to-uwp-remotely-even-with-networkisolation-disabled)
 - [System.ArgumentOutOfRangeException when calling Blazor to native](#systemargumentoutofrangeexception-when-calling-blazor-to-native)
@@ -49,6 +61,7 @@ Create full C# driven hybrid-apps for iOS, Android, UWP & Desktop with Blazor!
 - [BlazorMobile 3.0.7-preview8.19405.7 to 3.0.8-preview8.19405.7](#blazormobile-307-preview8194057-to-308-preview8194057)
 - [BlazorMobile 3.0.8-preview8.19405.7 to 3.0.9-preview8.19405.7](#blazormobile-308-preview8194057-to-309-preview8194057)
 - [BlazorMobile 3.0.9-preview8.19405.7 to 3.0.10-preview9.19424.4](#blazormobile-309-preview8194057-to-3010-preview9194244)
+- [BlazorMobile 3.0.10-preview9.19424.4 to 3.0.11-preview9.19465.2](#blazormobile-309-preview9194244-to-3011-preview9194652)
 
 ## Difference between BlazorMobile & Progressive Web Apps (PWA)
 
@@ -71,7 +84,7 @@ The main differences / advantages of BlazorMobile are:
 First install the template model with the following command from a command prompt:
 
 ```console
-dotnet new -i BlazorMobile.Templates::3.0.10-preview9.19424.4
+dotnet new -i BlazorMobile.Templates::3.0.11-preview9.19465.2
 ```
 
 Then go the folder where you want your project to be created, and from a command prompt type the following command, and of course replace **MyProjectName** to your desired project name:
@@ -104,7 +117,17 @@ The following informations only explains how your Xamarin.Forms project load you
 
 ### How it works
 
-In order to ship your Blazor application within your Xamarin apps, you need to pack it and make it available to it.
+**<ins>This are informational bits about the project structure:</ins>**
+
+- If you plan to use the **BlazorMobile platforms only** (iOS, Android, UWP):
+  - You can follow the structure in this guide, embedding your Blazor app in the Xamarin.Forms shared project
+- If you plan to use the **ElectronNET platform** in addition of BlazorMobile platforms:
+  - Embed your Blazor app package in an assembly outside the Xamarin.Forms shared project, and call the package
+  registration, with **WebApplicationFactory.RegisterAppStreamResolver**, in each device root project.
+  - This is not mandatory but **highly recommended**, as this configuration prevent to ship your BlazorMobile application twice
+  on ElectronNET, otherwise it would contain the packaged app, not used with ElectronNET implementation, and the regular app project.
+
+**In order to ship your Blazor application within your Xamarin apps, you need to pack it and make it available to it.**
 
 Your Blazor app will be automatically packaged thanks to the **BlazorMobile.Build** NuGet package, that must be already installed on your Blazor web application project. The package location will be written in the build output after the Blazor build mecanism.
 
@@ -170,6 +193,17 @@ Note that the **BlazorMobilService.Init()** has an **onFinish** callback delegat
 
 ## Communication between Blazor & Native
 
+### <ins>Using the ProxyInterface API</ins>
+**ProxyInterface API usages and limitations:**
+
+- Blazor to Xamarin communication
+- Unidirectional workflow: The Blazor application is always the call initiator
+- Ideal for Business logic with predictable results
+- API calls from Blazor to native are awaitable from a Task object
+- Usage of interface contracts
+
+#### How-to use
+
 **In the project shared between Blazor & Xamarin**, formerly **YourAppName.Common** create an interface, and add the **[ProxyInterface]** attribute on top of it. Assuming using the sample **IXamarinBridge** interface, present by default on YourAppName.Common project, your interface may look like this:
 
 ```csharp
@@ -193,7 +227,12 @@ namespace BlazorMobile.Sample.Common.Interfaces
 - Create your implementation class
 - Inherit your previously created interface on this class
 - Implement your native code behavior
-- Decorate your class file with **[assembly: Dependency(typeof(YourClass))]** at namespace level **OR** alternatively use **DependencyService.Register** manually.
+- Call **DependencyService.Register** and register your interface and class implementation during your application startup.
+
+**NOTE: If you plan to ship on UWP, the last statement is important.** Because if using the Xamarin attribute method instead,
+UWP native toolchain will strip your services registration when compiling in Release mode with .NET Native.
+
+It's so highly recommended to keep the **DependencyService.Register** route.
 	
 Your implementation may look like this. Here a kind of simple example:
 
@@ -204,7 +243,6 @@ using System.Collections.Generic;
 using System.Threading.Tasks;
 using Xamarin.Forms;
 
-[assembly: Dependency(typeof(XamarinBridge))]
 namespace BlazorMobile.Sample.Services
 {
     public class XamarinBridge : IXamarinBridge
@@ -267,6 +305,262 @@ Then if you want to use any of your Blazor to native interface, it's as simple a
     async void ShowPlatform()
     {
         await XamarinBridge.DisplayAlert("Platform identity", $"Current platform is {BlazorDevice.RuntimePlatform}", "Great!");
+    }
+}
+```
+
+### <ins>Using the Message API</ins>
+**Message API usages and limitations:**
+
+- Xamarin to Blazor communication only with **CallJSInvokableMethod** method
+- Xamarin to Blazor & Blazor to Blazor with **PostMessage** method
+- Message broadcasting only
+- Unidirectional workflow: The message sender cannot wait for any return value
+- Ideal for Business logic with unpredictable results: The native side can post messages to the Blazor application, according to some external events
+- API calls are not awaitable
+- **PostMessage** only: Messages are limited to one parameter
+- **PostMessage** only: Allow to forward messages to static & instanciated method delegates
+- **CallJSInvokableMethod** only: Messages can have any parameters, but should match the expected method signature
+- **CallJSInvokableMethod** only: Allow to forward message to static JSInvokable methods only
+
+#### How-to use
+
+<ins>**CallJSInvokableMethod** - Allow to call a Blazor static JSInvokable method</ins>
+
+From the **IBlazorWebView** object retrieved when launching your BlazorMobile application, you should be able to call **CallJSInvokableMethod**.
+This is self explanatory about it's usage, as it look like signature you can find on the InvokeAsyncMethod in Javascript in a regular Blazor application.
+
+```csharp
+/// <summary>
+/// Call a static JSInvokable method from native side
+/// </summary>
+/// <param name="assembly">The assembly of the JSInvokable method to call</param>
+/// <param name="method">The JSInvokable method name</param>
+/// <param name="args">Parameters to forward to Blazor app. Check that your parameters are serializable/deserializable from both native and Blazor sides.</param>
+/// <returns></returns>
+void CallJSInvokableMethod(string assembly,string method, params object[] args);
+```
+
+An usage could look like this:
+
+```csharp
+webview = BlazorWebViewFactory.Create();
+
+//Assuming that we know that the Blazor application already started
+webview.CallJSInvokableMethod("MyBlazorAppAssemblyName", "MyJSInvokableMethodName", "param1", "param2", "param3");
+```
+
+Your JSInvokable method on Blazor side will then be called.
+
+<ins>**PostMessage** - Allow to post a message to a static or instanciated delegate method</ins>
+
+This API is in two parts, one in the native side, the other one on the Blazor side.
+
+Messages sent will be received:
+
+- Only by the Blazor side
+- And forwarded to delegates methods registered with a **matching message name** to listen and **matching expected parameter type**
+
+##### Native side
+From the **IBlazorWebView** object retrieved when launching your BlazorMobile application, you should be able to call **PostMessage**.
+
+```csharp
+/// <summary>
+/// Post a message to the Blazor app. Any objects that listen to a specific message name by calling BlazorMobileService.MessageSubscribe will trigger their associated handlers.
+/// </summary>
+/// <param name="messageName"></param>
+/// <param name="args"></param>
+void PostMessage<TArgs>(string messageName, TArgs args);
+```
+
+An usage could look like this:
+
+```csharp
+webview = BlazorWebViewFactory.Create();
+
+//Assuming that we know that the Blazor application already started
+webview.PostMessage<string>("myNotification", "my notification value");
+```
+
+Your message will be sent to the Blazor app.
+
+##### Blazor side
+
+In order to receive message notifications on Blazor side, you should subscribe to the message to listen, with the expected argument type.
+Here are the three static methods usable from the **BlazorMobileService** static class in the Blazor app, for Message API:
+
+```csharp
+/// <summary>
+/// Subscribe to a specific message name sent from native side with PostMessage, and forward the event to the specified delegate if received
+/// </summary>
+/// <param name="messageName">The message name to subscribe to</param>
+/// <param name="handler">The delegate action that must be executed at message reception</param>
+static void MessageSubscribe<TArgs>(string messageName, Action<TArgs> handler);
+
+/// <summary>
+/// Unsubscribe to a specific message name sent from native side with PostMessage
+/// </summary>
+/// <param name="messageName">The message name to unsubscribe to</param>
+/// <param name="handler">The delegate action that must be unsubscribed</param>
+static void MessageUnsubscribe<TArgs>(string messageName, Action<TArgs> handler);
+
+/// <summary>
+/// Allow to post a message to any delegate action registered through MessageSubscribe.
+/// This method behavior is similar to the IBlazorWebView.PostMessage method on the native side,
+/// except that you send message from within your Blazor app instead sending it from native side.
+/// </summary>
+/// <typeparam name="TArgs">The paramter expected type</typeparam>
+/// <param name="messageName">The message name to target</param>
+/// <param name="value">The value to send in the message</param>
+static void PostMessage<TArgs>(string messageName, TArgs value);
+```
+
+In order to receive the message sent from the native side in our previous example we could do this in a Blazor page:
+
+```csharp
+public void OnMessageReceived(string payload)
+{
+   //Stuff here will be called when receiving the message
+}
+
+BlazorMobileService.MessageSubscribe<string>("myNotification", OnMessageReceived);
+```
+
+**NOTE:** If you are subscribing an instance method member like in this example, to the MessageSubscribe method,
+**it's highly recommended** to cleanly unregister it when you know that your object instance will be disposed.
+
+In this example, from a **Razor** page you could do something like this:
+
+```csharp
+@page "/myPage"
+@implements IDisposable
+
+//Some code
+
+@code {
+    //Some code
+
+    public void Dispose()
+    {
+        BlazorMobileService.MessageUnsubscribe<string>("myNotification", OnMessageReceived);
+    }
+}
+```
+
+If there is no **IDisposable** mecanism on the C# component you are working on, you may also just unregister at **Destructor** level.
+See the following example:
+
+```csharp
+public class MyClass()
+{
+    public void OnMessageReceived(string payload)
+    {
+       //Stuff here will be called when receiving the message
+    }
+
+    //Constructor
+    MyClass()
+    {
+        BlazorMobileService.MessageSubscribe<string>("myNotification", OnMessageReceived);
+    }
+
+    //Destructor
+    ~MyClass()
+    {
+        BlazorMobileService.MessageUnsubscribe<string>("myNotification", OnMessageReceived);
+    }
+}
+```
+
+## Validating the Blazor application navigation
+
+Rules have been enforced and/or implemented on each supported platforms, in order to allow:
+
+- Control of the document navigation in the **main frame** of your Blazor application
+- Control of the document navigation in **subframes** of your Blazor application
+
+This mean that if you register to the **Navigating** event handler of your **IBlazorWebView** object, you should be able to
+allow or cancel any document navigation made by:
+
+- Your application page (main frame) navigating
+- Your application page (main frame) trying to open a new window
+- An iframe of your application page (subframe) navigating
+- An iframe of you application page (subframe) trying to open a new window
+
+As your Blazor application is mainly a single webview, you may want to prevent any unexpected action that would make your
+page navigate, and/or control more precisely some iframe behaviors shown in your Blazor application.
+
+With this Navigating enforcement, you should be able to easily block any unwanted navigation, and instead opening the requested
+url in an external browser, as an example.
+
+Here is a sample code you find with the default template of BlazorMobile.
+
+In your **MainPage.xaml.cs** file:
+
+```csharp
+//Blazor WebView agnostic contoller logic
+webview = BlazorWebViewFactory.Create();
+
+//Manage your native application behavior when an external resource is requested in your Blazor web application
+//Customize your app behavior in BlazorMobile.Sample.Handler.OnBlazorWebViewNavigationHandler.cs file or create your own!
+webview.Navigating += OnBlazorWebViewNavigationHandler.OnBlazorWebViewNavigating;
+```
+
+This register the navigating event to the **OnBlazorWebViewNavigating** event handler, included in the sample.
+
+Here is the control code in the sample:
+
+```csharp
+using BlazorMobile.Common;
+using BlazorMobile.Services;
+using System;
+using System.Collections.Generic;
+using System.Net;
+using System.Text;
+using Xamarin.Forms;
+
+namespace BlazorMobile.Sample.Handler
+{
+    public static class OnBlazorWebViewNavigationHandler
+    {
+        public static void OnBlazorWebViewNavigating(object sender, WebNavigatingEventArgs e)
+        {
+            var applicationBaseURL = WebApplicationFactory.GetBaseURL() + "/";
+
+            if (e.Url.Equals(applicationBaseURL, StringComparison.OrdinalIgnoreCase))
+            {
+                //This is our application base URI. We should do nothing and continue navigating to the app
+                e.Cancel = false;
+            }
+            else if (e.Url.StartsWith(WebApplicationFactory.GetBaseURL(), StringComparison.OrdinalIgnoreCase))
+            {
+                //Here, our application is loading an URI
+                //You may add a custom logic, like opening a new view, changing the URI parameters then opening a view...
+
+                e.Cancel = true;
+
+                switch (BlazorDevice.RuntimePlatform)
+                {
+                    default:
+                        Device.OpenUri(new Uri(WebUtility.UrlDecode(e.Url)));
+                        break;
+                }
+            }
+            else
+            {
+                //If here this is not our application loading an URI
+                //You may add a custom logic, like opening a new view, changing the URI parameters then opening a view...
+
+                e.Cancel = true;
+
+                switch (BlazorDevice.RuntimePlatform)
+                {
+                    default:
+                        Device.OpenUri(new Uri(WebUtility.UrlDecode(e.Url)));
+                        break;
+                }
+            }
+        }
     }
 }
 ```
@@ -461,13 +755,20 @@ To get started about the Electron.NET Desktop project, it's highly recommended t
 ### Xamarin.Forms support on Electron.NET
 
 - **DisplayAlert** - Like App.Current.MainPage.DisplayAlert(title, msg, cancel);
-- **DependencyService** - Like a regular Xamarin.Forms application. This is different from the regular .NET Core Dependency Injector. For platform specific API in your app, you should interact through this service in your project, in order to interact the same way as on mobile devices.
+- **DisplayActionSheet** - Like App.Current.MainPage.DisplayActionSheet(string title, string cancel, string destruction, params string[] buttons);
+- **Device.OpenUri**
+- **Navigating** events - On **IBlazorWebView** only
+- **DependencyService** service class
 - **Device.RuntimePlatform** will return "ElectronNET".
 - **BlazorDevice.RuntimePlatform** will returns regular Xamarin.Forms values, with in addition **Windows**, **Linux**. Consts values available on **BlazorDevice** for RuntimePlatforms comparison have been updated to all theses values.
 
 **NOTE:** BlazorDevice.RuntimePlatform never returns "ElectronNET" but ElectronNET presence can be checked by **BlazorDevice.IsElectronNET**.
 
 ## Troubleshoot
+
+### My Xamarin services are not found when interoping in UWP
+
+As stated in the [Communication between Blazor & Native](#communication-between-blazor--native) section in **Using the ProxtInterface API**, check that your services are registered through the **DependencyService.Register** method call.
 
 ### Cannot connect to a remote webserver on UWP
 
@@ -500,9 +801,8 @@ Just avoid theses reserved names when creating your project.
 
 ### iOS/Safari 13: Unhandled Promise Rejection: TypeError: 'arguments', 'callee', and 'caller' cannot be accessed in this context
 
-This error is actually a regression in iOS 13 / Safari 13 Preview. As iOS 13 is not yet released we cannot know if the bug will still be present at release time.
-
-The actual workaround is to add this line...
+This error is actually a regression in iOS 13, preventing Blazor to boot correctly. Microsoft already fixed the bug preventing to boot, but it's not yet officialy released.
+In the meantime, if you want to workaround this bug temporiraly, add this line...
 
 ```javascript
 <script>var Module;</script>
@@ -511,11 +811,42 @@ The actual workaround is to add this line...
 
 Credits to [@kmiller68](https://github.com/kmiller68) in [this issue](https://github.com/mono/mono/issues/15588#issuecomment-529056521)
 
+And also you have to opt-in to a **patched** blazor.webassembly.js runtime at iOS app startup.
+If so, in your **AppDelegate.cs** file, before the **LoadApplication**, call **EnableDelayedStartPatch** like in this example:
+
+```csharp
+public override bool FinishedLaunching(UIApplication app, NSDictionary options)
+{
+    global::Xamarin.Forms.Forms.Init();
+    BlazorWebViewService.Init();
+
+    //Register our Blazor app package
+    WebApplicationFactory.RegisterAppStreamResolver(AppPackageHelper.ResolveAppPackageStream);
+
+    if (int.TryParse(UIDevice.CurrentDevice.SystemVersion.Split('.')[0], out int majorVersion) && majorVersion >= 13)
+    {
+        BlazorWebViewService.EnableDelayedStartPatch();
+    }
+
+    LoadApplication(new App());
+
+    return base.FinishedLaunching(app, options);
+}
+```
+
 ### ITMS-90809: Deprecated API Usage - Apple will stop accepting submissions of apps that use UIWebView APIs
 
 When submiting an iOS app on the AppStore you may have this message: **ITMS-90809: Deprecated API Usage - Apple will stop accepting submissions of apps that use UIWebView APIs . See https://developer.apple.com/documentation/uikit/uiwebview for more information.**
 
 Please follow [this issue](https://github.com/xamarin/Xamarin.Forms/issues/7323) on Xamarin.Forms GitHub page.
+
+## Community
+
+- **Azure DevOps Pipeline** by [@shawndeggans](https://github.com/shawndeggans) - [Download azure-pipelines.txt]("./Community/azure-pipelines.txt")
+```
+This script is meant to work within the DevOps Pipeline for the user project APK generation.
+Presently, it only builds it to an archive, but I think I will eventually have it picked up and delivered to Genymotion On Demand.
+```
 
 ## Migration
 
@@ -974,6 +1305,289 @@ endpoints.MapFallbackToPage("/server_index");
 ```
 
 Here the [detailed reasons of this change](https://github.com/aspnet/AspNetCore/issues/13742)
+
+### BlazorMobile 3.0.10-preview9.19424.4 to 3.0.11-preview9.19465.2
+
+- Update your installed BlazorMobile.Templates to this version by calling:
+
+```console
+dotnet new -i BlazorMobile.Templates::3.0.11-preview9.19465.2
+```
+
+- Update Blazor version to 3.0.0-preview9.19465.2.
+
+- Update all your BlazorMobile.* NuGet packages to 3.0.11-preview9.19465.2.
+
+- Add the **BlazorMobile.Build.Android** NuGet package to your Android project.
+
+- In your shared project, you may add the new Navigating controller. See the default template.
+
+If following the samples your **MainPage.xaml.cs** could now look like this:
+
+```csharp
+using BlazorMobile.Components;
+using BlazorMobile.Sample.Handler;
+using BlazorMobile.Services;
+using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Text;
+using System.Threading.Tasks;
+using Xamarin.Forms;
+
+namespace BlazorMobile.Sample
+{
+    public partial class MainPage : ContentPage
+    {
+        IBlazorWebView webview;
+
+        public MainPage()
+        {
+            InitializeComponent();
+
+            //Blazor WebView agnostic contoller logic
+            webview = BlazorWebViewFactory.Create();
+
+            //WebView rendering customization on page
+            View webviewView = webview.GetView();
+            webviewView.VerticalOptions = LayoutOptions.FillAndExpand;
+            webviewView.HorizontalOptions = LayoutOptions.FillAndExpand;
+
+            //Manage your native application behavior when an external resource is requested in your Blazor web application
+            //Customize your app behavior in BlazorMobile.Sample.Handler.OnBlazorWebViewNavigationHandler.cs file or create your own!
+            webview.Navigating += OnBlazorWebViewNavigationHandler.OnBlazorWebViewNavigating;
+
+            webview.LaunchBlazorApp();
+
+            content.Children.Add(webviewView);
+        }
+
+        ~MainPage()
+        {
+            if (webview != null)
+            {
+                webview.Navigating -= OnBlazorWebViewNavigationHandler.OnBlazorWebViewNavigating;
+            }
+        }
+    }
+}
+```
+
+And here the default Navigating controller you can implement and/or modify, **OnBlazorWebViewNavigationHandler**:
+
+```csharp
+using BlazorMobile.Common;
+using BlazorMobile.Services;
+using System;
+using System.Collections.Generic;
+using System.Net;
+using System.Text;
+using Xamarin.Forms;
+
+namespace BlazorMobile.Sample.Handler
+{
+    public static class OnBlazorWebViewNavigationHandler
+    {
+        public static void OnBlazorWebViewNavigating(object sender, WebNavigatingEventArgs e)
+        {
+            var applicationBaseURL = WebApplicationFactory.GetBaseURL() + "/";
+
+            if (e.Url.Equals(applicationBaseURL, StringComparison.OrdinalIgnoreCase))
+            {
+                //This is our application base URI. We should do nothing and continue navigating to the app
+                e.Cancel = false;
+            }
+            else if (e.Url.StartsWith(WebApplicationFactory.GetBaseURL(), StringComparison.OrdinalIgnoreCase))
+            {
+                //Here, our application is loading an URI
+                //You may add a custom logic, like opening a new view, changing the URI parameters then opening a view...
+
+                e.Cancel = true;
+
+                switch (BlazorDevice.RuntimePlatform)
+                {
+                    default:
+                        Device.OpenUri(new Uri(WebUtility.UrlDecode(e.Url)));
+                        break;
+                }
+            }
+            else
+            {
+                //If here this is not our application loading an URI
+                //You may add a custom logic, like opening a new view, changing the URI parameters then opening a view...
+
+                e.Cancel = true;
+
+                switch (BlazorDevice.RuntimePlatform)
+                {
+                    default:
+                        Device.OpenUri(new Uri(WebUtility.UrlDecode(e.Url)));
+                        break;
+                }
+            }
+        }
+    }
+}
+```
+
+- If you have an **ElectronNET project** for creating a Desktop app with BlazorMobile:
+    - In **Startup.cs** from your **MyAppProject.Desktop** project, **app.UseEndpoints** should now look like this:
+    ```csharp
+            app.UseEndpoints(endpoints =>
+            {
+                endpoints.MapBlazorHub();
+                endpoints.MapDefaultControllerRoute();
+                endpoints.MapBlazorMobileRequestValidator();
+                endpoints.MapFallbackToPage("/server_index");
+            });
+    ```
+    - Still in **Startup.cs**, this...:
+    ```csharp
+        app.UseBlazorMobileWithElectronNET<App>();
+    ```
+
+    - ...Should now look like this:
+
+    ```csharp
+        app.UseBlazorMobileWithElectronNET<App>();
+
+        Forms.ConfigureBrowserWindow(new BrowserWindowOptions()
+        {
+            //Configure the BrowserWindow that will be used for the Blazor application
+        });
+
+        //Launch the Blazor app
+        Forms.LoadApplication(new App());
+
+        // If your code already started your BlazorWebView.LaunchBlazorApp method, you should retrieve here the Electron main BrowserWindow used to create it.
+        // Otherwise, return a null Task value
+        var myBrowserWindow = Forms.GetBrowserWindow();
+    ```
+    - You shold also add some ElectronHostHook code in your project. From a command prompt, go to the root of your **MyAppProject.Desktop** project folder
+    and call:
+
+    ```
+    electronize add HostHook
+    ```
+    - Then install the **Microsoft.TypeScript.MSBuild** NuGet package in your **Desktop** project
+    - After the package installation, open your Desktop project **ElectronHostHook folder** and replace the content of **index.ts** with:
+    ```typescript
+    // @ts-ignore
+    import * as Electron from "electron";
+    import { Connector } from "./connector";
+
+    var blazorMobileRequestValidatorURI: string;
+
+    function blazorMobileRequestValidatorMethod(url: string, referrer: string, mustCancel: Function) : any {
+
+        try {
+            let validationURI = blazorMobileRequestValidatorURI + "?uri=" + encodeURIComponent(url) + "&referrer=" + encodeURIComponent(referrer);
+
+            const request = require('electron').net.request({
+                method: 'GET',
+                url: validationURI
+            });
+
+            request.on('response', (response) => {
+
+                if (response.statusCode == "401") {
+                    mustCancel(true);
+                }
+                else {
+                    mustCancel(false);
+                }
+            });
+
+            request.end();
+
+        } catch (e) {
+            mustCancel(false);
+        }
+    }
+
+    export class HookService extends Connector {
+        constructor(socket: SocketIO.Socket, public app: Electron.App) {
+            super(socket, app);
+        }
+
+        onHostReady(): void {
+            // execute your own JavaScript Host logic here
+
+            //The current line are required to forward navigating events to the Xamarin.Forms driver,
+            //from the main frame and from a subframe
+            this.on("add-blazormobile-navigating-behavior", async (serviceURI, done) => {
+
+                //We are a little lazy here, and we are assuming that:
+                //- This is called at startup
+                //- The first frame to be found is the Blazor app main window
+                //We may optimize this in the future
+
+                blazorMobileRequestValidatorURI = serviceURI;
+                try {
+
+                    require("electron").webContents.getAllWebContents()[0].session.webRequest.onBeforeRequest((details, cb) =>
+                    {
+                        if (details.resourceType == "mainFrame" || details.resourceType == "subFrame") {
+
+                            blazorMobileRequestValidatorMethod(details.url, details.referrer, function (cancel) {
+                                if (cancel) {
+                                    //WARNING: This is a big hack and surely not an expected behavior
+                                    //If we return cancel: false, everything is fine
+                                    //But if we return cancel: true, the request is canceled,
+                                    //but the page navigate to this cancellation
+
+                                    //Instead we are not calling the callback, preventing to do anything
+                                    //It may be problematic with a lot of navigation, as we don't know the
+                                    //impact internally in Electron
+                                    return;
+                                }
+                                else {
+                                    cb({ cancel: false });
+                                }
+                            });
+                        }
+                        else {
+                            cb({ cancel: false });
+                        }
+                    });
+
+                    require("electron").webContents.getAllWebContents()[0].on("new-window", (event, url, frameName, disposition, options, additionalFeatures, referrer) => {
+
+                        //We will prevent any new-window
+                        //Instead calling our filter for navigation and then opening/showing if allowed by the app
+                        event.preventDefault();
+
+                        //Using this current strategy, the event handler may be called twice for verification
+                        //on from this window, the other one from the new window if it was allowed, because
+                        //it's actually navigating. But it should not be problematic.
+
+                        blazorMobileRequestValidatorMethod(url, referrer.url, function (cancel) {
+                            if (!cancel) {
+                                //The URL is not cancelled, we should load the window normally
+                                const win = new Electron.BrowserWindow({
+                                    webContents: options.webContents, // use existing webContents if provided
+                                    show: false
+                                });
+
+                                win.once('ready-to-show', () => win.show())
+                                if (!options.webContents) {
+                                    win.loadURL(url) // existing webContents will be navigated automatically
+                                }
+                                event.newGuest = win;
+                            }
+                        });
+                    });
+                } catch (e) {
+                    done(e.message);
+                }
+
+                done("ok");
+            });
+        }
+    }
+    ```
+- It is also highly advised to migrate from Xamarin.Forms DependencyService attribute registration to an explicit service registration call.
+See [My Xamarin services are not found when interoping in UWP](#my-xamarin-services-are-not-found-when-interoping-in-uwp) for more explanation.
 
 ## Authors
 

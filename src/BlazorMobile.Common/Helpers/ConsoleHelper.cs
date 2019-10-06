@@ -12,29 +12,18 @@ namespace BlazorMobile.Common.Helpers
 {
     internal static class ConsoleHelper
     {
-        private static bool _useDebugWriteLine = false;
-
-        /// <summary>
-        /// If true, use Debug.WriteLine instead of Console.WriteLine
-        /// </summary>
-        /// <param name="enabled"></param>
-        /// <returns></returns>
-        public static void UseDebugWriteLine(bool enabled)
-        {
-            _useDebugWriteLine = enabled;
-        }
-
         public static void WriteLine(string message)
         {
             message = $"INFO: {message}";
 
-            if (_useDebugWriteLine)
+            switch (BlazorDevice.RuntimePlatform)
             {
-                Debug.WriteLine(message);
-            }
-            else
-            {
-                Console.WriteLine(message);
+                case BlazorDevice.UWP:
+                    Debug.WriteLine(message);
+                    break;
+                default:
+                    Console.WriteLine(message);
+                    break;
             }
         }
 
@@ -42,13 +31,14 @@ namespace BlazorMobile.Common.Helpers
         {
             message = $"ERROR: {message}";
 
-            if (_useDebugWriteLine)
+            switch (BlazorDevice.RuntimePlatform)
             {
-                Debug.WriteLine(message);
-            }
-            else
-            {
-                Console.WriteLine(message);
+                case BlazorDevice.UWP:
+                    Debug.WriteLine(message);
+                    break;
+                default:
+                    Console.WriteLine(message);
+                    break;
             }
         }
 
@@ -59,7 +49,7 @@ namespace BlazorMobile.Common.Helpers
                 return;
             }
 
-            WriteLine($"ERROR: {ex.Message}");
+            WriteError(ex.Message);
         }
     }
 }

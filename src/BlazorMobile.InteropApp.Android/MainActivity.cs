@@ -9,6 +9,8 @@ using Android.OS;
 using BlazorMobile.InteropApp;
 using BlazorMobile.Droid.Services;
 using Android.Support.V7.App;
+using BlazorMobile.Services;
+using BlazorMobile.InteropApp.AppPackage;
 
 namespace BlazorMobile.InteropApp.Droid
 {
@@ -24,6 +26,10 @@ namespace BlazorMobile.InteropApp.Droid
 
             global::Xamarin.Forms.Forms.Init(this, savedInstanceState);
             BlazorWebViewService.Init(this);
+
+            //Register our Blazor app package
+            WebApplicationFactory.RegisterAppStreamResolver(AppPackageHelper.ResolveAppPackageStream);
+
             LoadApplication(new App());
         }
     }

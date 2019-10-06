@@ -18,7 +18,7 @@
           <group targetFramework="netstandard2.0">
             <dependency id="System.IO.Compression.ZipFile" version="4.3.0" />
             <dependency id="EmbedIO" version="2.2.9" />
-            <dependency id="MimeTypes" version="1.0.6" />
+            <dependency id="MimeTypes" version="1.1.0" />
             <dependency id="Xamarin.Forms" version="3.5.0" />
             <dependency id="NETStandard.Library" version="2.0.3" />
             <dependency id="BlazorMobile.Common" version="$version$" />
@@ -27,37 +27,37 @@
           <group targetFramework="MonoAndroid8.0">
             <dependency id="System.IO.Compression.ZipFile" version="4.3.0" />
             <dependency id="EmbedIO" version="2.2.9" />
-            <dependency id="MimeTypes" version="1.0.6" />
+            <dependency id="MimeTypes" version="1.1.0" />
             <dependency id="Xamarin.Forms" version="3.5.0" />
             <dependency id="NETStandard.Library" version="2.0.3" />
             <dependency id="BlazorMobile.Common" version="$version$" />
-            <dependency id="Xamarin.Android.GeckoView.Forms" version="0.1.2" />
+            <dependency id="Xamarin.Android.GeckoView.Forms" version="0.1.5" />
           </group>
 
           <group targetFramework="MonoAndroid8.1">
             <dependency id="System.IO.Compression.ZipFile" version="4.3.0" />
             <dependency id="EmbedIO" version="2.2.9" />
-            <dependency id="MimeTypes" version="1.0.6" />
+            <dependency id="MimeTypes" version="1.1.0" />
             <dependency id="Xamarin.Forms" version="3.5.0" />
             <dependency id="NETStandard.Library" version="2.0.3" />
             <dependency id="BlazorMobile.Common" version="$version$" />
-            <dependency id="Xamarin.Android.GeckoView.Forms" version="0.1.2" />
+            <dependency id="Xamarin.Android.GeckoView.Forms" version="0.1.5" />
           </group>
 
           <group targetFramework="MonoAndroid9.0">
             <dependency id="System.IO.Compression.ZipFile" version="4.3.0" />
             <dependency id="EmbedIO" version="2.2.9" />
-            <dependency id="MimeTypes" version="1.0.6" />
+            <dependency id="MimeTypes" version="1.1.0" />
             <dependency id="Xamarin.Forms" version="3.5.0" />
             <dependency id="NETStandard.Library" version="2.0.3" />
             <dependency id="BlazorMobile.Common" version="$version$" />
-            <dependency id="Xamarin.Android.GeckoView.Forms" version="0.1.2" />
+            <dependency id="Xamarin.Android.GeckoView.Forms" version="0.1.5" />
           </group>
 
           <group targetFramework="xamarinios10">
             <dependency id="System.IO.Compression.ZipFile" version="4.3.0" />
             <dependency id="EmbedIO" version="2.2.9" />
-            <dependency id="MimeTypes" version="1.0.6" />
+            <dependency id="MimeTypes" version="1.1.0" />
             <dependency id="Xamarin.Forms" version="3.5.0" />
             <dependency id="NETStandard.Library" version="2.0.3" />
             <dependency id="BlazorMobile.Common" version="$version$" />
@@ -67,7 +67,7 @@
             <dependency id="Microsoft.NETCore.UniversalWindowsPlatform" version="6.2.8" />
             <dependency id="System.IO.Compression.ZipFile" version="4.3.0" />
             <dependency id="EmbedIO" version="2.2.9" />
-            <dependency id="MimeTypes" version="1.0.6" />
+            <dependency id="MimeTypes" version="1.1.0" />
             <dependency id="Xamarin.Forms" version="3.5.0" />
             <dependency id="NETStandard.Library" version="2.0.3" />
             <dependency id="BlazorMobile.Common" version="$version$" />

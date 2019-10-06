@@ -18,7 +18,8 @@
 	"1584F31B-4854-4163-B378-2DE8BE06C76E",
 	"D663A270-6915-4E3F-B2DE-278DDF3251E0",
 	"07017C58-6F4E-455A-B172-06A5E41932B0",
-	"9F078D5C-A7F1-46BD-844C-9A5DD6260B7E"
+	"9F078D5C-A7F1-46BD-844C-9A5DD6260B7E",
+	"ACE22BC9-5E97-48A9-B554-B2E496FBEE2E"
   ],
   "identity": "BlazorMobile.CSharp",
   "name": "BlazorMobile App",
@@ -50,6 +51,9 @@
     },
 	{
 	  "path": "BlazorMobile.Sample.Desktop/BlazorMobile.Sample.Desktop.csproj"
+	},
+	{
+	  "path": "BlazorMobile.Sample.AppPackage/BlazorMobile.Sample.AppPackage.csproj"
 	}
   ],
   "shortName": "blazormobile",
@@ -100,7 +104,8 @@
 			"BlazorMobile.Sample.Blazor.csproj",
 			"BlazorMobile.Sample.Common.csproj",
 			"BlazorMobile.Sample.Blazor.Server.csproj",
-			"BlazorMobile.Sample.Desktop.csproj"
+			"BlazorMobile.Sample.Desktop.csproj",
+			"BlazorMobile.Sample.AppPackage.csproj"
 		]
       },
       "actionId": "210D431B-A78B-4D2F-B762-4ED3E3EA9025",

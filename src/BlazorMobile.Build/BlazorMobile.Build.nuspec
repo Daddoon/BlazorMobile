@@ -15,7 +15,7 @@
     <copyright>Copyright 2019</copyright>
     <tags>Blazor BlazorMobile Xamarin iOS Android Hybrid</tags>
     <dependencies>
-      <dependency id="Microsoft.AspNetCore.Blazor.Build" version="3.0.0-preview9.19424.4" include="all" />
+      <dependency id="Microsoft.AspNetCore.Blazor.Build" version="3.0.0-preview9.19465.2" include="all" />
     </dependencies>
   </metadata>
   <files>

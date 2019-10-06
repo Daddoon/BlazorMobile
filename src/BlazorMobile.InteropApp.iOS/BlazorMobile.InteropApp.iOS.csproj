@@ -152,6 +152,10 @@
   </ItemGroup>
   <Import Project="$(MSBuildExtensionsPath)\Xamarin\iOS\Xamarin.iOS.CSharp.targets" />
   <ItemGroup>
+    <ProjectReference Include="..\BlazorMobile.InteropApp.AppPackage\BlazorMobile.InteropApp.AppPackage.csproj">
+      <Project>{5f149aa9-0151-4ccb-9f30-e18ddafb4b92}</Project>
+      <Name>BlazorMobile.InteropApp.AppPackage</Name>
+    </ProjectReference>
     <ProjectReference Include="..\BlazorMobile.InteropApp\BlazorMobile.InteropApp.csproj">
       <Project>{28601C22-99D5-4992-ABA3-00345FC730A9}</Project>
       <Name>BlazorMobile.InteropApp</Name>

@@ -1,0 +1,4 @@
+﻿<!-- BlazorMobile.Build.Android.targets -->
+<Project>
+  <Import Project="$(MSBuildThisFileDirectory)/../../tools/GenerateBlazorMobileBuildAndroid.targets" />
+</Project>

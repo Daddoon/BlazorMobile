@@ -23,7 +23,16 @@ namespace BlazorMobile.iOS.Renderer
             //Nothing to do, just force the compiler to not strip our component
         }
 
+        internal WebNavigationEvent _lastBackForwardEvent;
+
+        internal bool _ignoreSourceChanges;
+
         private WKWebView webView;
+
+        internal WKWebView GetNativeWebView()
+        {
+            return webView;
+        }
 
         WKUserContentController userController;
         protected override void OnElementChanged(ElementChangedEventArgs<BlazorWebView> e)
@@ -61,6 +70,7 @@ namespace BlazorMobile.iOS.Renderer
                 oldElementController.GoBackRequested -= OnGoBackRequested;
                 oldElementController.GoForwardRequested -= OnGoForwardRequested;
                 oldElementController.ReloadRequested -= OnReloadRequested;
+                ((WebNavigationDelegate)webView.NavigationDelegate).SetBlazorWebViewForms(null);
             }
             if (e.NewElement != null)
             {
@@ -70,9 +80,24 @@ namespace BlazorMobile.iOS.Renderer
                 newElementController.GoBackRequested += OnGoBackRequested;
                 newElementController.GoForwardRequested += OnGoForwardRequested;
                 newElementController.ReloadRequested += OnReloadRequested;
+                currentViewForms = e.NewElement;
+                ((WebNavigationDelegate)webView.NavigationDelegate).SetBlazorWebViewForms(e.NewElement);
             }
 
             Load();
+        }
+
+        private BlazorWebView currentViewForms = null;
+
+        internal void UpdateCanGoBackForward()
+        {
+            if (currentViewForms == null)
+            {
+                return;
+            }
+
+            ((IWebViewController)currentViewForms).CanGoBack = Control.CanGoBack;
+            ((IWebViewController)currentViewForms).CanGoForward = Control.CanGoForward;
         }
 
         public override void LayoutSubviews()
@@ -88,28 +113,44 @@ namespace BlazorMobile.iOS.Renderer
             Control.Reload();
         }
 
-        protected virtual void OnGoForwardRequested(object sender, EventArgs e)
+        void OnGoBackRequested(object sender, EventArgs eventArgs)
         {
-            Control.GoForward();
+            if (Control.CanGoBack)
+            {
+                _lastBackForwardEvent = WebNavigationEvent.Back;
+                Control.GoBack();
+            }
+
+            UpdateCanGoBackForward();
         }
 
-        protected virtual void OnGoBackRequested(object sender, EventArgs e)
+        void OnGoForwardRequested(object sender, EventArgs eventArgs)
         {
-            Control.GoBack();
+            if (Control.CanGoForward)
+            {
+                _lastBackForwardEvent = WebNavigationEvent.Forward;
+                Control.GoForward();
+            }
+
+            UpdateCanGoBackForward();
         }
 
-        protected virtual Task<string> OnEvaluateJavaScriptRequested(string script)
+        async Task<string> OnEvaluateJavaScriptRequested(string script)
         {
-            throw new NotImplementedException($"{nameof(OnEvaluateJavaScriptRequested)}: Javascript evaluation is not yet reimplemented on the WKWebView Blazor renderer");
+            var result = await Control.EvaluateJavaScriptAsync(script);
+            return result?.ToString();
         }
 
-        protected virtual void OnEvalRequested(object sender, EvalRequested e)
+        void OnEvalRequested(object sender, EvalRequested eventArg)
         {
-            throw new NotImplementedException($"{nameof(OnEvalRequested)}: Javascript evaluation is not yet reimplemented on the WKWebView Blazor renderer");
+            Control.EvaluateJavaScriptAsync(eventArg.Script);
         }
 
         protected virtual void Load()
         {
+            if (_ignoreSourceChanges)
+                return;
+
             WebViewSource source = Element.Source;
             UrlWebViewSource uri = source as UrlWebViewSource;
 
@@ -125,6 +166,8 @@ namespace BlazorMobile.iOS.Renderer
                     Control.LoadHtmlString(html.Html, new NSUrl("/"));
                 }
             }
+
+            UpdateCanGoBackForward();
         }
 
         protected override void OnElementPropertyChanged(object sender, PropertyChangedEventArgs e)
@@ -160,54 +203,115 @@ namespace BlazorMobile.iOS.Renderer
 
         private BlazorWebViewRenderer _renderer = null;
 
+        WebNavigationEvent _lastEvent;
+
         public WebNavigationDelegate(BlazorWebViewRenderer renderer)
         {
             _renderer = renderer;
         }
 
+        private BlazorWebView _blazorWebViewForms = null;
+
+        public void SetBlazorWebViewForms(BlazorWebView blazorWebViewForms)
+        {
+            _blazorWebViewForms = blazorWebViewForms;
+        }
+
         [Export("webView:decidePolicyForNavigationAction:decisionHandler:")]
         public override void DecidePolicy(WKWebView webView, WKNavigationAction navigationAction, Action<WKNavigationActionPolicy> decisionHandler)
         {
-
-            var navType = navigationAction.NavigationType;
-            var targetFrame = navigationAction.TargetFrame;
-
-            var url = navigationAction.Request.Url;
-            if (url.ToString().StartsWith("http") 
-                && (targetFrame != null && targetFrame.MainFrame == true))
+            //Should not happen
+            if (_blazorWebViewForms == null)
             {
-                decisionHandler(WKNavigationActionPolicy.Allow);
+                decisionHandler(WKNavigationActionPolicy.Cancel);
             }
-            else if ((url.ToString().StartsWith("http") && targetFrame == null)
-                || url.ToString().StartsWith("mailto:")
-                || url.ToString().StartsWith("tel:")) //Whatever your test happens to be
+            else
             {
-                //Nothing to do actually, but we may expose theses kind of event to developer ?
+                var navEvent = WebNavigationEvent.NewPage;
+                var navigationType = navigationAction.NavigationType;
+                switch (navigationType)
+                {
+                    case WKNavigationType.LinkActivated:
+                        navEvent = WebNavigationEvent.NewPage;
+                        break;
+                    case WKNavigationType.FormSubmitted:
+                        navEvent = WebNavigationEvent.NewPage;
+                        break;
+                    case WKNavigationType.BackForward:
+                        navEvent = _renderer._lastBackForwardEvent;
+                        break;
+                    case WKNavigationType.Reload:
+                        navEvent = WebNavigationEvent.Refresh;
+                        break;
+                    case WKNavigationType.FormResubmitted:
+                        navEvent = WebNavigationEvent.NewPage;
+                        break;
+                    case WKNavigationType.Other:
+                        navEvent = WebNavigationEvent.NewPage;
+                        break;
+                }
 
+                _lastEvent = navEvent;
+                var request = navigationAction.Request;
+                var lastUrl = request.Url.ToString();
+
+                WebViewSource source;
+                if (_renderer.Element != null && _renderer.Element.Source != null)
+                {
+                    source = _renderer.Element.Source;
+                }
+                else
+                {
+                    source = new UrlWebViewSource() { Url = lastUrl };
+                }
+
+                var args = new WebNavigatingEventArgs(navEvent, source, lastUrl);
+
+                _blazorWebViewForms.SendNavigating(args);
+                _renderer.UpdateCanGoBackForward();
+                decisionHandler(args.Cancel ? WKNavigationActionPolicy.Cancel : WKNavigationActionPolicy.Allow);
             }
-            else if (url.ToString().StartsWith("about"))
-            {
-                decisionHandler(WKNavigationActionPolicy.Allow);
-            }
+        }
+
+        string GetCurrentUrl()
+        {
+            return _renderer?.GetNativeWebView()?.Url?.AbsoluteUrl?.ToString();
         }
 
         [Export("webView:didFinishNavigation:")]
         public override void DidFinishNavigation(WKWebView webView, WKNavigation navigation)
         {
+            if (webView.IsLoading)
+                return;
+
+            var url = GetCurrentUrl();
+            if (url == $"file://{NSBundle.MainBundle.BundlePath}/")
+                return;
+
+            _renderer._ignoreSourceChanges = true;
+            _blazorWebViewForms.SetValueFromRenderer(WebView.SourceProperty, new UrlWebViewSource { Url = url });
+            _renderer._ignoreSourceChanges = false;
+
+            var args = new WebNavigatedEventArgs(_lastEvent, _blazorWebViewForms.Source, url, WebNavigationResult.Success);
+            _blazorWebViewForms?.SendNavigated(args);
+
+            _renderer.UpdateCanGoBackForward();
         }
 
         [Export("webView:didFailNavigation:withError:")]
         public override void DidFailNavigation(WKWebView webView, WKNavigation navigation, NSError error)
         {
-            // If navigation fails, this gets called
-            ConsoleHelper.WriteLine("DidFailNavigation:" + error.ToString());
+            var url = GetCurrentUrl();
+            _blazorWebViewForms?.SendNavigated(
+                new WebNavigatedEventArgs(_lastEvent, new UrlWebViewSource { Url = url }, url, WebNavigationResult.Failure)
+            );
+
+            _renderer.UpdateCanGoBackForward();
         }
 
         [Export("webView:didFailProvisionalNavigation:withError:")]
         public override void DidFailProvisionalNavigation(WKWebView webView, WKNavigation navigation, NSError error)
         {
-            // If navigation fails, this gets called
-            ConsoleHelper.WriteLine("DidFailProvisionalNavigation" + error.ToString());
         }
     }
 }

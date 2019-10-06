@@ -6,7 +6,7 @@ namespace BlazorMobile.Common.Json.Binder
 {
     internal class CrossPlatformTypeBinder : DefaultSerializationBinder
     {
-        static readonly bool isNetCore = Type.GetType("System.String, System.Private.CoreLib") != null;
+        internal static readonly bool isNetCore = Type.GetType("System.String, System.Private.CoreLib") != null;
         readonly ConcurrentDictionary<string, Type> mappedTypes = new ConcurrentDictionary<string, Type>();
 
         public override Type BindToType(string assemblyName, string typeName)

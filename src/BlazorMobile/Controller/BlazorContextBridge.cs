@@ -12,11 +12,14 @@ using Unosquare.Swan;
 
 namespace BlazorMobile.Controller
 {
-    public class BlazorContextBridge : WebSocketsServer
+    internal class BlazorContextBridge : WebSocketsServer
     {
+        public static BlazorContextBridge Current { get; internal set; }
+
         public BlazorContextBridge()
        : base(true)
         {
+            Current = this;
         }
 
         public override string ServerName => nameof(BlazorContextBridge);
@@ -40,6 +43,8 @@ namespace BlazorMobile.Controller
         protected override void OnFrameReceived(IWebSocketContext context, byte[] buffer, IWebSocketReceiveResult result)
         {
         }
+
+
 
         protected override void OnMessageReceived(IWebSocketContext context, byte[] buffer, IWebSocketReceiveResult result)
         {
@@ -73,6 +78,15 @@ namespace BlazorMobile.Controller
                     ConsoleHelper.WriteLine("Error: [Native] - BlazorContextBridge.Send: " + ex.Message);
                 }
             });
+        }
+
+        protected override void Send(IWebSocketContext webSocket, byte[] payload)
+        {
+            base.Send(webSocket, payload);
+        }
+        protected override void Send(IWebSocketContext webSocket, string payload)
+        {
+            base.Send(webSocket, payload);
         }
     }
 }

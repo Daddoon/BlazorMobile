@@ -85,6 +85,15 @@ namespace BlazorMobile.Services
                 throw new NullReferenceException("The Blazor app resolver was not set! Please call WebApplicationFactory.RegisterAppStreamResolver method before launching your app");
             }
 
+            //Specific use cases here !
+
+            if (path.EndsWith(PlatformSpecific.BlazorWebAssemblyFileName) && PlatformSpecific.UseAlternateBlazorWASMScript())
+            {
+                return PlatformSpecific.GetAlternateBlazorWASMScript();
+            }
+
+            //End specific cases
+
             MemoryStream data = null;
 
             lock (_zipLock)
@@ -144,12 +153,14 @@ namespace BlazorMobile.Services
             return MimeTypes.GetMimeType(path);
         }
 
-        internal static void ResetBlazorViewIfHttpPortChanged()
+        internal static bool ResetBlazorViewIfHttpPortChanged()
         {
+            bool needBlazorViewReload = false;
+
             if (IsStarted())
             {
                 //Nothing to do
-                return;
+                return needBlazorViewReload;
             }
 
             int previousPort = GetHttpPort();
@@ -161,13 +172,25 @@ namespace BlazorMobile.Services
 
             if (newPort != previousPort)
             {
+                needBlazorViewReload = true;
+
+                ConsoleHelper.WriteError("Unable to start web server on same previous port. Notifying BlazorWebView for reload...");
+
                 //If port changed between affectation, that mean that an other process took the port.
                 //We need to reload any Blazor webview instance
                 NotifyBlazorAppReload();
             }
+
+            return needBlazorViewReload;
         }
 
         internal static event EventHandler BlazorAppNeedReload;
+
+        /// <summary>
+        /// IBlazorWebView registered to this event must check the BlazorAppLaunched boolean.
+        /// If the value is false, the WebView must reload
+        /// </summary>
+        internal static event EventHandler EnsureBlazorAppLaunchedOrReload;
 
         private static void NotifyBlazorAppReload()
         {
@@ -178,6 +201,19 @@ namespace BlazorMobile.Services
                 Device.BeginInvokeOnMainThread(() =>
                 {
                     BlazorAppNeedReload?.Invoke(null, null);
+                });
+            });
+        }
+
+        internal static void NotifyEnsureBlazorAppLaunchedOrReload()
+        {
+            Task.Run(async () =>
+            {
+                //Giving some time to new webserver with new port to load before raising event
+                await Task.Delay(100);
+                Device.BeginInvokeOnMainThread(() =>
+                {
+                    EnsureBlazorAppLaunchedOrReload?.Invoke(null, null);
                 });
             });
         }
@@ -267,7 +303,7 @@ namespace BlazorMobile.Services
         }
 
         private static string _localIP = null;
-        private static string GetLocalWebServerIP()
+        internal static string GetLocalWebServerIP()
         {
             if (_localIP == null)
             {
@@ -293,9 +329,15 @@ namespace BlazorMobile.Services
             return _localIP;
         }
 
-        internal static string GetBaseURL()
+
+        /// <summary>
+        /// Return the current internal app base URI without the trailing slash. This value may change during lifetime if the registered listening port
+        /// </summary>
+        /// <returns></returns>
+        public static string GetBaseURL()
         {
-            return $"http://{GetLocalWebServerIP()}:{GetHttpPort()}";
+            var webPlatform = DependencyService.Get<IWebApplicationPlatform>();
+            return webPlatform.GetBaseURL();
         }
 
         internal static string GetQueryPath(string path)
@@ -329,6 +371,49 @@ namespace BlazorMobile.Services
             indexContent = indexContent.Replace("</body>", $"<script type=\"application/javascript\">window.blazorContextBridgeURI = '{GetContextBridgeURI()}';\r\n</script>\r\n</body>");
 
             return new MemoryStream(Encoding.UTF8.GetBytes(indexContent));
+        }
+
+        internal static class PlatformSpecific
+        {
+            private static bool _delayedStartPatch = false;
+
+            internal static void EnableDelayedStartPatch(bool value)
+            {
+                _delayedStartPatch = value;
+            }
+
+            /// <summary>
+            /// Used for iOS 13 fix until it's fixed by Apple
+            /// </summary>
+            /// <returns></returns>
+            internal static bool UseAlternateBlazorWASMScript()
+            {
+                return _delayedStartPatch;
+            }
+
+            private const string JsFilesPath = "Interop.Javascript.";
+
+            //If future change, only one place to modify
+            internal const string BlazorWebAssemblyFileName = _alternateBlazorWasmScriptName;
+
+            private const string _alternateBlazorWasmScriptName = "blazor.webassembly.js";
+
+            internal static MemoryStream GetAlternateBlazorWASMScript()
+            {
+                var assembly = typeof(WebApplicationFactory).Assembly;
+
+                //Assembly name and Assembly namespace differ in this project
+                string JsNamespace = $"BlazorMobile.{JsFilesPath}";
+
+                MemoryStream outputStream = new MemoryStream();
+                using (var contentStream = assembly.GetManifestResourceStream($"{JsNamespace}{_alternateBlazorWasmScriptName}"))
+                {
+                    contentStream.Seek(0, SeekOrigin.Begin);
+                    contentStream.CopyTo(outputStream);
+                    outputStream.Seek(0, SeekOrigin.Begin);
+                    return outputStream;
+                }
+            }
         }
 
         internal static async Task ManageRequest(IWebResponse response)
@@ -383,7 +468,14 @@ namespace BlazorMobile.Services
                 //Register IBlazorXamarinDeviceService for getting base metadata for Blazor
                 DependencyService.Register<IBlazorXamarinDeviceService, BlazorXamarinDeviceService>();
 
-                //Do something in the future if required
+                //We should always register this service at load, except for Electron that should register it in his custom Xamarin.Forms driver
+                if (ContextHelper.IsBlazorMobile())
+                {
+                    DependencyService.Register<IWebApplicationPlatform, BlazorMobileWebApplicationPlatform>();
+                }
+
+                BlazorXamarinDeviceService.InitRuntimePlatform();
+
                 _firstCall = false;
             }
         }
@@ -427,6 +519,7 @@ namespace BlazorMobile.Services
             if (IsStarted())
             {
                 //Already started
+                ConsoleHelper.WriteError("BlazorMobile: Cannot start Webserver because it has already started");
                 return;
             }
 
@@ -468,10 +561,13 @@ namespace BlazorMobile.Services
         
                 try
                 {
+                    _isStarted = true;
                     await server.RunAsync(serverCts.Token);
                 }
                 catch (InvalidOperationException e)
                 {
+                    _isStarted = false;
+
                     ConsoleHelper.WriteException(e);
 
                     //This call may be redundant with the previous case, but we must ensure that the StartWebServer invokation is done after clearing resources
@@ -482,6 +578,9 @@ namespace BlazorMobile.Services
                 }
                 catch (OperationCanceledException e)
                 {
+                    _isStarted = false;
+
+                    ConsoleHelper.WriteLine("BlazorMobile: Stopping server...");
                     ClearWebserverResources();
                 }
             });
@@ -526,9 +625,9 @@ namespace BlazorMobile.Services
             }
             catch (Exception ex)
             {
+                ConsoleHelper.WriteException(ex);
+                _isStarted = false;
             }
-
-            _isStarted = false;
         }
     }
 }
