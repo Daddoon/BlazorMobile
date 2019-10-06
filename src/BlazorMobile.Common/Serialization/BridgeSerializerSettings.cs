@@ -53,8 +53,9 @@ namespace BlazorMobile.Common.Serialization
                 {
                     return FallbackDeserialize<T>(data);
                 }
-                catch (Exception ex)
+                catch (Exception)
                 {
+                    //Should bubble up
                     throw;
                 }
             }

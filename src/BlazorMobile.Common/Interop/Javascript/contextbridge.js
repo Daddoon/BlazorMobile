@@ -75,9 +75,6 @@ window.contextBridge = {
         },
         GetBlazorMobileReceiveMethodName: function () {
             return 'Receive';
-        },
-         GetBlazorMobileReceiveFromXamarinMethodName: function () {
-             return 'ReceiveFromXamarin';
         }
     },
     send: function (csharpProxy) {
@@ -104,14 +101,8 @@ window.contextBridge = {
         });
     },
     receive: function (csharpProxy) {
-        if (csharpProxy.indexOf("MessageProxyToken") > -1) {
-            DotNet.invokeMethodAsync(window.contextBridge.metadata.GetBlazorMobileWebAssemblyName(),
-                window.contextBridge.metadata.GetBlazorMobileReceiveFromXamarinMethodName(), csharpProxy, true);
-        }
-        else {
-            DotNet.invokeMethodAsync(window.contextBridge.metadata.GetBlazorMobileWebAssemblyName(),
-                window.contextBridge.metadata.GetBlazorMobileReceiveMethodName(), csharpProxy, true);
-        }
+        DotNet.invokeMethodAsync(window.contextBridge.metadata.GetBlazorMobileWebAssemblyName(),
+            window.contextBridge.metadata.GetBlazorMobileReceiveMethodName(), csharpProxy, true);
     }
 };
 

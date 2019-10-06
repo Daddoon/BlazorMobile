@@ -16,9 +16,18 @@ namespace BlazorMobile.Common.Interop
     {
         public string Message { get; set; }
 
+        public bool HasInnerException => InnerException != null;
+
+        public Exception InnerException { get; set; }
+
         public ExceptionDescriptor()
         {
             Message = string.Empty;
+        }
+
+        public ExceptionDescriptor(string message)
+        {
+            Message = message;
         }
 
         public ExceptionDescriptor(Exception ex) : this()
