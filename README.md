@@ -20,10 +20,8 @@ Create full C# driven hybrid-apps for iOS, Android, UWP & Desktop with Blazor!
 ### Additional platform notes
 
 #### Universal Windows Platform
-- UWP has been tested on **Windows 10 only**.
-- Recent versions of **Windows 10** seem to make BlazorMobile work on **Xbox One** when testing in **Edge** with emulation mode set as Xbox One.
-Previous versions of Windows 10 was returning a message stating that "WebAssembly is not supported on this platform".
-This may mean that the latest OS version of Xbox One may support WebAssembly and so BlazorMobile, but this is not something that have been tested.
+- UWP has been tested working on **Windows 10**! - minimum version: **10.16299**
+- UWP has been tested working on **Xbox One**! - minimum version: **10.18362**
 
 #### ElectronNET support
 - **.NET Core 3.0** is required on your ElectronNET application.
