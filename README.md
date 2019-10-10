@@ -21,8 +21,8 @@ Create full C# driven hybrid-apps for iOS, Android, UWP & Desktop with Blazor!
 ### Additional platform notes
 
 #### Universal Windows Platform
-- UWP has been tested working on **Windows 10**! - minimum version: **10.16299**
-- UWP has been tested working on **Xbox One**! - minimum version: **10.18362**
+- BlazorMobile has been tested working on **Windows 10**! - minimum version: **10.16299**
+- BlazorMobile has been tested working on **Xbox One**! - minimum version: **10.18362**
 
 #### ElectronNET support
 - **.NET Core 3.0** is required on your ElectronNET application.
