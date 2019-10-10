@@ -7,6 +7,7 @@ Create full C# driven hybrid-apps for iOS, Android, UWP & Desktop with Blazor!
 ## Framework requirement
 
 - **Blazor:** 3.0.0-preview9.19465.2
+- **.NET Core 3.0:** For build tools and ElectronNET
 
 ## Platform requirements
  
