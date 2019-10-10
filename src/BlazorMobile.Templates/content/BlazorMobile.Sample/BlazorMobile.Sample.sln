@@ -23,6 +23,9 @@ EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "BlazorMobile.Sample.Desktop", "BlazorMobile.Sample.Desktop\BlazorMobile.Sample.Desktop.csproj", "{9F078D5C-A7F1-46BD-844C-9A5DD6260B7E}"
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "BlazorMobile.Sample.AppPackage", "BlazorMobile.Sample.AppPackage\BlazorMobile.Sample.AppPackage.csproj", "{ACE22BC9-5E97-48A9-B554-B2E496FBEE2E}"
+	ProjectSection(ProjectDependencies) = postProject
+		{4C4999FD-A0E2-4466-8753-D436C6953402} = {4C4999FD-A0E2-4466-8753-D436C6953402}
+	EndProjectSection
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
