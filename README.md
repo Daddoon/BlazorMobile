@@ -61,6 +61,7 @@ Create full C# driven hybrid-apps for iOS, Android, UWP & Desktop with Blazor!
 - [BlazorMobile 3.0.8-preview8.19405.7 to 3.0.9-preview8.19405.7](#blazormobile-308-preview8194057-to-309-preview8194057)
 - [BlazorMobile 3.0.9-preview8.19405.7 to 3.0.10-preview9.19424.4](#blazormobile-309-preview8194057-to-3010-preview9194244)
 - [BlazorMobile 3.0.10-preview9.19424.4 to 3.0.11-preview9.19465.2](#blazormobile-3010-preview9194244-to-3011-preview9194652)
+- [BlazorMobile 3.0.11-preview9.19465.2 to 3.0.12-preview9.19465.2](#blazormobile-3011-preview9194652-to-3012-preview9194652)
 
 ## Difference between BlazorMobile & Progressive Web Apps (PWA)
 
@@ -83,7 +84,7 @@ The main differences / advantages of BlazorMobile are:
 First install the template model with the following command from a command prompt:
 
 ```console
-dotnet new -i BlazorMobile.Templates::3.0.11-preview9.19465.2
+dotnet new -i BlazorMobile.Templates::3.0.12-preview9.19465.2
 ```
 
 Then go the folder where you want your project to be created, and from a command prompt type the following command, and of course replace **MyProjectName** to your desired project name:
@@ -1587,6 +1588,56 @@ namespace BlazorMobile.Sample.Handler
     ```
 - It is also highly advised to migrate from Xamarin.Forms DependencyService attribute registration to an explicit service registration call.
 See [My Xamarin services are not found when interoping in UWP](#my-xamarin-services-are-not-found-when-interoping-in-uwp) for more explanation.
+
+### BlazorMobile 3.0.11-preview9.19465.2 to 3.0.12-preview9.19465.2
+
+This is a minor update, that fix issues on some environments at build time.
+
+- Update your installed BlazorMobile.Templates to this version by calling:
+
+```console
+dotnet new -i BlazorMobile.Templates::3.0.12-preview9.19465.2
+```
+
+- Update all your BlazorMobile.* NuGet packages to 3.0.12-preview9.19465.2.
+
+- If you already created a solution with BlazorMobile version **3.0.11-preview9.19465**, there is a missing, not mandatory but recommended, build dependency to add on your project. Right click on **YourProject.AppPackage** project -> **Build dependencies** -> **Project dependencies** -> Check **YourProject.Blazor** project. This will enforce your **AppPackage** project to be in sync with the Blazor project at build time.
+
+- Edit your **YourProject.Android** csproj file and replace theses lines:
+
+```xml
+<PackageReference Include="Xamarin.Forms" Version="3.5.0.169047" />
+<PackageReference Include="Xamarin.Android.Support.Design" Version="28.0.0.3" />
+<PackageReference Include="Xamarin.Android.Support.v7.AppCompat" Version="28.0.0.3" />
+<PackageReference Include="Xamarin.Android.Support.v4" Version="28.0.0.3" />
+<PackageReference Include="Xamarin.Android.Support.v7.CardView" Version="28.0.0.3" />
+<PackageReference Include="Xamarin.Android.Support.v7.MediaRouter" Version="28.0.0.3" />
+```
+
+By the new format:
+
+```xml
+<PackageReference Include="Xamarin.Forms">
+  <Version>3.5.0.169047</Version>
+</PackageReference>
+<PackageReference Include="Xamarin.Android.Support.Design">
+  <Version>28.0.0.3</Version>
+</PackageReference>
+<PackageReference Include="Xamarin.Android.Support.v7.AppCompat">
+  <Version>28.0.0.3</Version>
+</PackageReference>
+<PackageReference Include="Xamarin.Android.Support.v4">
+  <Version>28.0.0.3</Version>
+</PackageReference>
+<PackageReference Include="Xamarin.Android.Support.v7.CardView">
+  <Version>28.0.0.3</Version>
+</PackageReference>
+<PackageReference Include="Xamarin.Android.Support.v7.MediaRouter">
+  <Version>28.0.0.3</Version>
+</PackageReference>
+```
+
+That's all !
 
 ## Authors
 
