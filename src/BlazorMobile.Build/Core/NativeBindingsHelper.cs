@@ -1,4 +1,5 @@
-﻿using BlazorMobile.Build.Core.NativeBindings;
+﻿using BlazorMobile.Build.Cli.Helper;
+using BlazorMobile.Build.Core.NativeBindings;
 using System;
 using System.Collections.Generic;
 using System.IO;
@@ -83,12 +84,12 @@ namespace BlazorMobile.Build.Core
             if (Path.IsPathRooted(trimedPath))
             {
                 //Absolute path case
-                return baseIntermediateOutputPath + BlazorMobileProxyClassFolderName;
+                return Path.Combine(baseIntermediateOutputPath, BlazorMobileProxyClassFolderName);
             }
             else
             {
                 //Relative path case (the default one)
-                return Path.GetDirectoryName(projectFile) + Path.DirectorySeparatorChar + baseIntermediateOutputPath + BlazorMobileProxyClassFolderName;
+                return Path.Combine(Path.GetDirectoryName(projectFile), baseIntermediateOutputPath, BlazorMobileProxyClassFolderName);
             }
         }
 
@@ -102,6 +103,8 @@ namespace BlazorMobile.Build.Core
 
         public static void GenerateNativeBindings(string projectFile, string intermediateOutputPath)
         {
+            intermediateOutputPath = PathHelper.MSBuildQuoteFixer(intermediateOutputPath);
+
             if (string.IsNullOrEmpty(projectFile) || !File.Exists(projectFile))
             {
                 throw new InvalidOperationException("The specified project is invalid or does not exist");
