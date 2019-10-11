@@ -10,10 +10,10 @@
   
   <PropertyGroup>
     <BlazorMobileBuildDir Condition="'$(BlazorMobileBuildDir)' == ''">$(MSBuildThisFileDirectory)netcoreapp3.0/</BlazorMobileBuildDir>
-    <BlazorMobileBuildFileExe>dotnet &quot;$(BlazorMobileBuildDir)BlazorMobile.Build.dll&quot;</BlazorMobileBuildFileExe>
-    <BlazorMobileBuildOutput>&quot;$(MSBuildProjectDirectory)/bin&quot;</BlazorMobileBuildOutput>
-    <BlazorMobileBuildDistDir>&quot;$(OutDir)/dist&quot;</BlazorMobileBuildDistDir>
-    <BlazorMobileBuildInput>&quot;$(MSBuildProjectFullPath)&quot;</BlazorMobileBuildInput>
+    <BlazorMobileBuildFileExe>dotnet &quot;$([MSBuild]::Escape($(BlazorMobileBuildDir)BlazorMobile.Build.dll))&quot;</BlazorMobileBuildFileExe>
+    <BlazorMobileBuildOutput>&quot;$([MSBuild]::Escape($(MSBuildProjectDirectory)/bin))&quot;</BlazorMobileBuildOutput>
+    <BlazorMobileBuildDistDir>&quot;$([MSBuild]::Escape($(OutDir)/dist))&quot;</BlazorMobileBuildDistDir>
+    <BlazorMobileBuildInput>&quot;$([MSBuild]::Escape($(MSBuildProjectFullPath)))&quot;</BlazorMobileBuildInput>
   </PropertyGroup>
 
   <Target Name="GenerateBlazorMobileBuild" AfterTargets="_BlazorBuildReport">
@@ -24,9 +24,9 @@
   
   <PropertyGroup>
     <BlazorMobileBuildServerDir Condition="'$(BlazorMobileBuildServerDir)' == ''">$(MSBuildThisFileDirectory)netcoreapp3.0/</BlazorMobileBuildServerDir>
-    <BlazorMobileBuildServerdFileExe>dotnet &quot;$(BlazorMobileBuildServerDir)BlazorMobile.Build.dll&quot;</BlazorMobileBuildServerdFileExe>
-    <BlazorMobileBuildServerInput>&quot;$(MSBuildProjectDirectory)&quot;</BlazorMobileBuildServerInput>
-    <BlazorMobileBuildServerProjectInput>&quot;$(MSBuildProjectFullPath)&quot;</BlazorMobileBuildServerProjectInput>
+    <BlazorMobileBuildServerdFileExe>dotnet &quot;$([MSBuild]::Escape($(BlazorMobileBuildServerDir)BlazorMobile.Build.dll))&quot;</BlazorMobileBuildServerdFileExe>
+    <BlazorMobileBuildServerInput>&quot;$([MSBuild]::Escape($(MSBuildProjectDirectory)))&quot;</BlazorMobileBuildServerInput>
+    <BlazorMobileBuildServerProjectInput>&quot;$([MSBuild]::Escape($(MSBuildProjectFullPath)))&quot;</BlazorMobileBuildServerProjectInput>
   </PropertyGroup>
 
   <Target Name="GenerateBlazorMobileBuildServer" BeforeTargets="BeforeBuild">
@@ -38,13 +38,13 @@
   
   <PropertyGroup>
     <BlazorMobileBuildNativeProxyDir Condition="'$(BlazorMobileBuildNativeProxyDir)' == ''">$(MSBuildThisFileDirectory)netcoreapp3.0/</BlazorMobileBuildNativeProxyDir>
-    <BlazorMobileBuildNativeProxyFileExe>dotnet &quot;$(BlazorMobileBuildNativeProxyDir)BlazorMobile.Build.dll&quot;</BlazorMobileBuildNativeProxyFileExe>
-    <BlazorMobileBuildNativeProxyInput>&quot;$(MSBuildProjectFullPath)&quot;</BlazorMobileBuildNativeProxyInput>
-    <BlazorMobileBuildNativeProxyIntermediateOutputPath>$(IntermediateOutputPath)</BlazorMobileBuildNativeProxyIntermediateOutputPath>
+    <BlazorMobileBuildNativeProxyFileExe>dotnet &quot;$([MSBuild]::Escape($(BlazorMobileBuildNativeProxyDir)BlazorMobile.Build.dll))&quot;</BlazorMobileBuildNativeProxyFileExe>
+    <BlazorMobileBuildNativeProxyInput>&quot;$([MSBuild]::Escape($(MSBuildProjectFullPath)))&quot;</BlazorMobileBuildNativeProxyInput>
+    <BlazorMobileBuildNativeProxyIntermediateOutputPath>$([MSBuild]::Escape($(IntermediateOutputPath)))</BlazorMobileBuildNativeProxyIntermediateOutputPath>
   </PropertyGroup>
 
   <Target Name="_AddGeneratedNativeProxyClass" BeforeTargets="CoreCompile">
-    <Exec Command="$(BlazorMobileBuildNativeProxyFileExe) auto-generate-native-bindings --input $(BlazorMobileBuildNativeProxyInput) --intermediate-output-path $(BlazorMobileBuildNativeProxyIntermediateOutputPath)" />
+    <Exec Command="$(BlazorMobileBuildNativeProxyFileExe) auto-generate-native-bindings --input $(BlazorMobileBuildNativeProxyInput) --intermediate-output-path &quot;$(BlazorMobileBuildNativeProxyIntermediateOutputPath)&quot;" />
   </Target>
 
   <Target Name="AddGeneratedNativeProxyClass" DependsOnTargets="_AddGeneratedNativeProxyClass" BeforeTargets="CoreCompile">

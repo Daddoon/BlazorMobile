@@ -1,4 +1,5 @@
-﻿using System;
+﻿using BlazorMobile.Build.Cli.Helper;
+using System;
 using System.Collections.Generic;
 using System.Diagnostics;
 using System.IO;
@@ -22,6 +23,9 @@ namespace BlazorMobile.Build.Core
             }
 
             artifactName = Path.GetFileNameWithoutExtension(inputFile);
+
+            outputPath = PathHelper.MSBuildQuoteFixer(outputPath);
+            distDir = PathHelper.MSBuildQuoteFixer(distDir);
 
             //Warning invalid outputPath
             if (string.IsNullOrEmpty(outputPath))
