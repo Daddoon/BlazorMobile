@@ -55,7 +55,7 @@
   </ItemGroup>
   <ItemGroup>
     <PackageReference Include="BlazorMobile.Build.Android">
-      <Version>3.0.11-preview9.19465.2</Version>
+      <Version>3.0.12-preview9.19465.2</Version>
     </PackageReference>
     <PackageReference Include="Microsoft.AspNetCore.Blazor">
       <Version>3.0.0-preview9.19465.2</Version>

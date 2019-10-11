@@ -1,4 +1,5 @@
-﻿using BlazorMobile.Build.Core.Helper;
+﻿using BlazorMobile.Build.Cli.Helper;
+using BlazorMobile.Build.Core.Helper;
 using System;
 using System.Collections.Generic;
 using System.Diagnostics;
@@ -14,6 +15,8 @@ namespace BlazorMobile.Build.Server.Core
     {
         public static void FindAndReplace(string inputDir, string projectFile)
         {
+            inputDir = PathHelper.MSBuildQuoteFixer(inputDir);
+
             string wwwFolder = inputDir + "/wwwroot";
 
             if (!Directory.Exists(wwwFolder))
