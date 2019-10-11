@@ -770,6 +770,10 @@ To get started about the Electron.NET Desktop project, it's highly recommended t
 
 As stated in the [Communication between Blazor & Native](#communication-between-blazor--native) section in **Using the ProxtInterface API**, check that your services are registered through the **DependencyService.Register** method call.
 
+```
+If you plan to ship on UWP [...] if using the Xamarin attribute method instead, UWP native toolchain will strip your services registration when compiling in Release mode with .NET Native.
+```
+
 ### Cannot connect to a remote webserver on UWP
 
 There is some behaviors that are specifics to UWP:
