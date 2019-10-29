@@ -54,6 +54,7 @@ Create full C# driven hybrid-apps for iOS, Android, UWP & Desktop with Blazor!
 - [Cyclic restore issue at project template creation](#cyclic-restore-issue-at-project-template-creation)
 - [iOS/Safari 13: Unhandled Promise Rejection: TypeError: 'arguments', 'callee', and 'caller' cannot be accessed in this context](#iossafari-13-unhandled-promise-rejection-typeerror-arguments-callee-and-caller-cannot-be-accessed-in-this-context)
 - [ITMS-90809: Deprecated API Usage - Apple will stop accepting submissions of apps that use UIWebView APIs](#itms-90809-deprecated-api-usage---apple-will-stop-accepting-submissions-of-apps-that-use-uiwebview-apis)
+- [Android crash at boot on API 28](#android-crash-at-boot-on-api-28)
 
 ## Migration
 
@@ -848,6 +849,11 @@ public override bool FinishedLaunching(UIApplication app, NSDictionary options)
 When submiting an iOS app on the AppStore you may have this message: **ITMS-90809: Deprecated API Usage - Apple will stop accepting submissions of apps that use UIWebView APIs . See https://developer.apple.com/documentation/uikit/uiwebview for more information.**
 
 Please follow [this issue](https://github.com/xamarin/Xamarin.Forms/issues/7323) on Xamarin.Forms GitHub page.
+
+### Android crash at boot on API 28
+
+This may be related if you are building your app as an **Android App Bundles** in release mode, API 28.
+As stated at the top of the documentation, consider releasing your app as an **APK**. See also the [Android Build size optimization](#android-build-size-optimization) section.
 
 ## Community
 
