@@ -852,7 +852,8 @@ Please follow [this issue](https://github.com/xamarin/Xamarin.Forms/issues/7323)
 
 ### Android crash at boot on API 28
 
-This may be related if you are building your app as an **Android App Bundles** in release mode, API 28.
+This may be related if you are building your app as an **Android App Bundles** in release mode, API 28. Credits to [@shawndeggans](https://github.com/shawndeggans) - [See #137 for more info](https://github.com/Daddoon/BlazorMobile/issues/137).
+
 As stated at the top of the documentation, consider releasing your app as an **APK**. See also the [Android Build size optimization](#android-build-size-optimization) section.
 
 ## Community
