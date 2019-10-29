@@ -20,6 +20,11 @@ Create full C# driven hybrid-apps for iOS, Android, UWP & Desktop with Blazor!
 
 ### Additional platform notes
 
+#### Android support
+
+- No support of **Android App Bundles** (AAB) on **API 28 in release mode** - Credits to @shawndeggans - [See #137 for more info](https://github.com/Daddoon/BlazorMobile/issues/137)
+- Considering the previous statement, consider releasing your app as an **APK**. See also the [Android Build size optimization](#android-build-size-optimization) section.
+
 #### Universal Windows Platform
 - BlazorMobile has been tested working on **Windows 10**! - minimum version: **10.16299**
 - BlazorMobile has been tested working on **Xbox One**! - minimum version: **10.18362**
