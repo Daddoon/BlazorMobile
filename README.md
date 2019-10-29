@@ -22,7 +22,7 @@ Create full C# driven hybrid-apps for iOS, Android, UWP & Desktop with Blazor!
 
 #### Android support
 
-- No support of **Android App Bundles** (AAB) on **API 28 in release mode** - Credits to @shawndeggans - [See #137 for more info](https://github.com/Daddoon/BlazorMobile/issues/137)
+- No support of **Android App Bundles** (AAB) on **API 28 in release mode** - Credits to [@shawndeggans](https://github.com/shawndeggans) - [See #137 for more info](https://github.com/Daddoon/BlazorMobile/issues/137)
 - Considering the previous statement, consider releasing your app as an **APK**. See also the [Android Build size optimization](#android-build-size-optimization) section.
 
 #### Universal Windows Platform
