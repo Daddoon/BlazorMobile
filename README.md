@@ -6,8 +6,9 @@ Create full C# driven hybrid-apps for iOS, Android, UWP & Desktop with Blazor!
 
 ## Framework requirement
 
-- **Blazor:** 3.0.0-preview9.19465.2
-- **.NET Core 3.0:** For build tools and ElectronNET
+- **Blazor:** 3.1.0-preview1.19508.20
+- **.NET Core 3.0:** For build tools
+- **.NET Core 3.1:** ElectronNET
 
 ## Platform requirements
  
@@ -30,7 +31,7 @@ Create full C# driven hybrid-apps for iOS, Android, UWP & Desktop with Blazor!
 - BlazorMobile has been tested working on **Xbox One**! - minimum version: **10.18362**
 
 #### ElectronNET support
-- **.NET Core 3.0** is required on your ElectronNET application.
+- **.NET Core 3.1** is required on your ElectronNET application.
 - See [Electron.NET support with BlazorMobile](#electronnet-support-with-blazormobile) section for more info.
 
 ## Summary
@@ -68,6 +69,7 @@ Create full C# driven hybrid-apps for iOS, Android, UWP & Desktop with Blazor!
 - [BlazorMobile 3.0.9-preview8.19405.7 to 3.0.10-preview9.19424.4](#blazormobile-309-preview8194057-to-3010-preview9194244)
 - [BlazorMobile 3.0.10-preview9.19424.4 to 3.0.11-preview9.19465.2](#blazormobile-3010-preview9194244-to-3011-preview9194652)
 - [BlazorMobile 3.0.11-preview9.19465.2 to 3.0.12-preview9.19465.2](#blazormobile-3011-preview9194652-to-3012-preview9194652)
+- [BlazorMobile 3.0.12-preview9.19465.2 to 3.1.0-preview1.19508.20](#blazormobile-3012-preview9194652-to-310-preview11950820)
 
 ## Difference between BlazorMobile & Progressive Web Apps (PWA)
 
@@ -90,7 +92,7 @@ The main differences / advantages of BlazorMobile are:
 First install the template model with the following command from a command prompt:
 
 ```console
-dotnet new -i BlazorMobile.Templates::3.0.12-preview9.19465.2
+dotnet new -i BlazorMobile.Templates::3.1.0-preview1.19508.20
 ```
 
 Then go the folder where you want your project to be created, and from a command prompt type the following command, and of course replace **MyProjectName** to your desired project name:
@@ -1654,6 +1656,35 @@ By the new format:
 ```
 
 That's all !
+
+### BlazorMobile 3.0.12-preview9.19465.2 to 3.1.0-preview1.19508.20
+
+- Update your installed BlazorMobile.Templates to this version by calling:
+
+```console
+dotnet new -i BlazorMobile.Templates::3.1.0-preview1.19508.20
+```
+
+- [Install .NET Core 3.1](https://dotnet.microsoft.com/download/dotnet-core/3.1) if not already done
+
+- Update all your .NET Core projects (Desktop and Server projects) from .NET Core 3.0 to **.NET Core 3.1**
+
+- Update all your Microsoft.AspNetCore.* NuGet packages to **3.1.0-preview1.19508.20** version
+
+- Update all your BlazorMobile.* NuGet packages to **3.1.0-preview1.19508.20**.
+
+- If you are using ElectronNET.API NuGet package directly on your own Desktop project, update from ElectronNET.API 5.22.14 to **ElectronNET.API 5.30.1**
+
+- Update your ElectronNET.CLI by calling theses commands in a command prompt:
+
+```console
+dotnet tool uninstall ElectronNET.CLI -g
+dotnet tool install ElectronNET.CLI -g
+```
+
+Calling in this order will uninstall the previous version, and then install the latest one.
+
+- For sanity check, delete all **obj** and **bin** folders of your solution manually, and rebuild your solution then.
 
 ## Authors
 
