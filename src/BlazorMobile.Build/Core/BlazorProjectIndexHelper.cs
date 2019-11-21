@@ -81,6 +81,8 @@ namespace BlazorMobile.Build.Server.Core
 
             content = Regex.Replace(content, @"(?:<app>)(.*?)(?:</app>)", @"<app>@(await Html.RenderComponentAsync<MobileApp>(RenderMode.ServerPrerendered))</app>", RegexOptions.Singleline);
 
+            content = Regex.Replace(content, "<base href=(\"|')/(\"|')(\\s)*/>", "<base href=\"~/\" />");
+
             content += $"{Environment.NewLine}<!-- AUTO-GENERATED FILE - DO NOT EDIT! -->";
 
             return content;

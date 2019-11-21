@@ -70,6 +70,7 @@ Create full C# driven hybrid-apps for iOS, Android, UWP & Desktop with Blazor!
 - [BlazorMobile 3.0.10-preview9.19424.4 to 3.0.11-preview9.19465.2](#blazormobile-3010-preview9194244-to-3011-preview9194652)
 - [BlazorMobile 3.0.11-preview9.19465.2 to 3.0.12-preview9.19465.2](#blazormobile-3011-preview9194652-to-3012-preview9194652)
 - [BlazorMobile 3.0.12-preview9.19465.2 to 3.1.0-preview1.19508.20](#blazormobile-3012-preview9194652-to-310-preview11950820)
+- [BlazorMobile 3.1.0-preview1.19508.20 to 3.1.0-preview3.19555.2](#blazormobile-310-preview11950820-to-310-preview3195552)
 
 ## Difference between BlazorMobile & Progressive Web Apps (PWA)
 
@@ -1701,6 +1702,25 @@ dotnet tool install ElectronNET.CLI -g
 ```
 
 Calling in this order will uninstall the previous version, and then install the latest one.
+
+- For sanity check, delete all **obj** and **bin** folders of your solution manually, and rebuild your solution then.
+
+### BlazorMobile 3.1.0-preview1.19508.20 to 3.1.0-preview3.19555.2
+
+- Update your installed BlazorMobile.Templates to this version by calling:
+
+```console
+dotnet new -i BlazorMobile.Templates::3.1.0-preview3.19555.2
+```
+
+- Update all your Microsoft.AspNetCore.* NuGet packages to **3.1.0-preview3.19555.2** version
+
+- Update all your BlazorMobile.* NuGet packages to **3.1.0-preview3.19555.2**.
+
+- In your **index.html** file, remove the reference to **blazor.polyfill.min.js** as it should not be used anymore as it can cause some weird behavior on new versions of Blazor WASM.
+If you need to include it in the future for a pure Blazor web app with support for IE11 in server-side mode, ensure that your are loading it only when the browser is IE11. See updated doc of [Blazor.Polyfill](https://github.com/Daddoon/Blazor.Polyfill) if needed.
+
+- You can also delete the **blazor.polyfill.js** file present in the **wwwroot/js** folder of your Blazor app.
 
 - For sanity check, delete all **obj** and **bin** folders of your solution manually, and rebuild your solution then.
 
