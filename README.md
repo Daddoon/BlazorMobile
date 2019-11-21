@@ -51,7 +51,6 @@ Create full C# driven hybrid-apps for iOS, Android, UWP & Desktop with Blazor!
 - [My Xamarin services are not found when interoping in UWP](#my-xamarin-services-are-not-found-when-interoping-in-uwp)
 - [Cannot connect to a remote webserver on UWP](#cannot-connect-to-a-remote-webserver-on-uwp)
 - [Unable to connect to UWP remotely even with NetworkIsolation disabled](#unable-to-connect-to-uwp-remotely-even-with-networkisolation-disabled)
-- [System.ArgumentOutOfRangeException when calling Blazor to native](#systemargumentoutofrangeexception-when-calling-blazor-to-native)
 - [Cyclic restore issue at project template creation](#cyclic-restore-issue-at-project-template-creation)
 - [iOS/Safari 13: Unhandled Promise Rejection: TypeError: 'arguments', 'callee', and 'caller' cannot be accessed in this context](#iossafari-13-unhandled-promise-rejection-typeerror-arguments-callee-and-caller-cannot-be-accessed-in-this-context)
 - [ITMS-90809: Deprecated API Usage - Apple will stop accepting submissions of apps that use UIWebView APIs](#itms-90809-deprecated-api-usage---apple-will-stop-accepting-submissions-of-apps-that-use-uiwebview-apis)
@@ -797,14 +796,6 @@ This behavior may happen if the certificate used in your **Package.appxmanifest*
 Please read this Microsoft documentation, [Create a certificate for package signing](https://docs.microsoft.com/en-us/windows/msix/package/create-certificate-package-signing), and don't forget to set your newly created certificate as your UWP certificate afterwards,
 from your **Package.appxmanifest** property window.
 
-### System.ArgumentOutOfRangeException when calling Blazor to native
-
-This bug is a [regression from .NET Core 3.0-preview8](https://github.com/dotnet/corefx/issues/40409#issuecomment-522514553) that is already fixed for preview9.
-
-We have to wait for preview9 shipping, or working on an older version of Blazor & BlazorMobile running on preview7, or compiling by yourself current Microsoft nightly builds.
-
-In my opinion, the best option is to wait.
-
 ### Cyclic restore issue at project template creation
 
 This may happen if you called your project **BlazorMobile** at template creation, as it seem to confuse the NuGet restore command with the Nuget packages with the same suffix name, like **BlazorMobile** and **BlazorMobile.Common**.
@@ -851,6 +842,32 @@ public override bool FinishedLaunching(UIApplication app, NSDictionary options)
 When submiting an iOS app on the AppStore you may have this message: **ITMS-90809: Deprecated API Usage - Apple will stop accepting submissions of apps that use UIWebView APIs . See https://developer.apple.com/documentation/uikit/uiwebview for more information.**
 
 Please follow [this issue](https://github.com/xamarin/Xamarin.Forms/issues/7323) on Xamarin.Forms GitHub page.
+
+### Apple Rejection - Your app uses or references the following non-public APIs: LinkPresentation.framework, QuickLookThumbnailing.framework
+
+You may receive this message from Apple:
+
+```
+Guideline 2.5.1 - Performance - Software Requirements
+
+Your app uses or references the following non-public APIs:
+
+- LinkPresentation.framework
+- QuickLookThumbnailing.framework
+
+The use of non-public APIs is not permitted on the App Store because it can lead to a poor user experience should these APIs change.
+
+Continuing to use or conceal non-public APIs in future submissions of this app may result in the termination of your Apple Developer account, as well as removal of all associated apps from the App Store.
+```
+
+In this case:
+
+- Set the linker setting to **Link Framework SDKs Only** on your iOS project
+- And just for double-check this behavior as some Visual Studio version doesn't respect this option, add this into the **Additional mtouch arguments** input on your iOS project:
+
+```shell
+--linksdkonly --linkskip=LinkPresentation --linkskip=QuickLookThumbnailing
+```
 
 ### Android crash at boot on API 28
 
