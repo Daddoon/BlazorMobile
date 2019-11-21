@@ -54,6 +54,7 @@ Create full C# driven hybrid-apps for iOS, Android, UWP & Desktop with Blazor!
 - [Cyclic restore issue at project template creation](#cyclic-restore-issue-at-project-template-creation)
 - [iOS/Safari 13: Unhandled Promise Rejection: TypeError: 'arguments', 'callee', and 'caller' cannot be accessed in this context](#iossafari-13-unhandled-promise-rejection-typeerror-arguments-callee-and-caller-cannot-be-accessed-in-this-context)
 - [ITMS-90809: Deprecated API Usage - Apple will stop accepting submissions of apps that use UIWebView APIs](#itms-90809-deprecated-api-usage---apple-will-stop-accepting-submissions-of-apps-that-use-uiwebview-apis)
+- [Apple Rejection - Your app uses or references the following non-public APIs: LinkPresentation.framework, QuickLookThumbnailing.framework](#apple-rejection---your-app-uses-or-references-the-following-non-public-apis-linkpresentationframework-quicklookthumbnailingframework)
 - [Android crash at boot on API 28](#android-crash-at-boot-on-api-28)
 
 ## Migration
