@@ -21,6 +21,11 @@ Create full C# driven hybrid-apps for iOS, Android, UWP & Desktop with Blazor!
 
 ### Additional platform notes
 
+#### Android support
+
+- No support of **Android App Bundles** (AAB) on **API 28 in release mode** - Credits to [@shawndeggans](https://github.com/shawndeggans) - [See #137 for more info](https://github.com/Daddoon/BlazorMobile/issues/137)
+- Considering the previous statement, consider releasing your app as an **APK**. See also the [Android Build size optimization](#android-build-size-optimization) section.
+
 #### Universal Windows Platform
 - BlazorMobile has been tested working on **Windows 10**! - minimum version: **10.16299**
 - BlazorMobile has been tested working on **Xbox One**! - minimum version: **10.18362**
@@ -50,6 +55,7 @@ Create full C# driven hybrid-apps for iOS, Android, UWP & Desktop with Blazor!
 - [Cyclic restore issue at project template creation](#cyclic-restore-issue-at-project-template-creation)
 - [iOS/Safari 13: Unhandled Promise Rejection: TypeError: 'arguments', 'callee', and 'caller' cannot be accessed in this context](#iossafari-13-unhandled-promise-rejection-typeerror-arguments-callee-and-caller-cannot-be-accessed-in-this-context)
 - [ITMS-90809: Deprecated API Usage - Apple will stop accepting submissions of apps that use UIWebView APIs](#itms-90809-deprecated-api-usage---apple-will-stop-accepting-submissions-of-apps-that-use-uiwebview-apis)
+- [Android crash at boot on API 28](#android-crash-at-boot-on-api-28)
 
 ## Migration
 
@@ -64,6 +70,7 @@ Create full C# driven hybrid-apps for iOS, Android, UWP & Desktop with Blazor!
 - [BlazorMobile 3.0.10-preview9.19424.4 to 3.0.11-preview9.19465.2](#blazormobile-3010-preview9194244-to-3011-preview9194652)
 - [BlazorMobile 3.0.11-preview9.19465.2 to 3.0.12-preview9.19465.2](#blazormobile-3011-preview9194652-to-3012-preview9194652)
 - [BlazorMobile 3.0.12-preview9.19465.2 to 3.1.0-preview1.19508.20](#blazormobile-3012-preview9194652-to-310-preview11950820)
+- [BlazorMobile 3.1.0-preview1.19508.20 to 3.1.0-preview3.19555.2](#blazormobile-310-preview11950820-to-310-preview3195552)
 
 ## Difference between BlazorMobile & Progressive Web Apps (PWA)
 
@@ -845,6 +852,12 @@ public override bool FinishedLaunching(UIApplication app, NSDictionary options)
 When submiting an iOS app on the AppStore you may have this message: **ITMS-90809: Deprecated API Usage - Apple will stop accepting submissions of apps that use UIWebView APIs . See https://developer.apple.com/documentation/uikit/uiwebview for more information.**
 
 Please follow [this issue](https://github.com/xamarin/Xamarin.Forms/issues/7323) on Xamarin.Forms GitHub page.
+
+### Android crash at boot on API 28
+
+This may be related if you are building your app as an **Android App Bundles** in release mode, API 28. Credits to [@shawndeggans](https://github.com/shawndeggans) - [See #137 for more info](https://github.com/Daddoon/BlazorMobile/issues/137).
+
+As stated at the top of the documentation, consider releasing your app as an **APK**. See also the [Android Build size optimization](#android-build-size-optimization) section.
 
 ## Community
 
@@ -1671,6 +1684,25 @@ dotnet tool install ElectronNET.CLI -g
 ```
 
 Calling in this order will uninstall the previous version, and then install the latest one.
+
+- For sanity check, delete all **obj** and **bin** folders of your solution manually, and rebuild your solution then.
+
+### BlazorMobile 3.1.0-preview1.19508.20 to 3.1.0-preview3.19555.2
+
+- Update your installed BlazorMobile.Templates to this version by calling:
+
+```console
+dotnet new -i BlazorMobile.Templates::3.1.0-preview3.19555.2
+```
+
+- Update all your Microsoft.AspNetCore.* NuGet packages to **3.1.0-preview3.19555.2** version
+
+- Update all your BlazorMobile.* NuGet packages to **3.1.0-preview3.19555.2**.
+
+- In your **index.html** file, remove the reference to **blazor.polyfill.min.js** as it should not be used anymore as it can cause some weird behavior on new versions of Blazor WASM.
+If you need to include it in the future for a pure Blazor web app with support for IE11 in server-side mode, ensure that your are loading it only when the browser is IE11. See updated doc of [Blazor.Polyfill](https://github.com/Daddoon/Blazor.Polyfill) if needed.
+
+- You can also delete the **blazor.polyfill.js** file present in the **wwwroot/js** folder of your Blazor app.
 
 - For sanity check, delete all **obj** and **bin** folders of your solution manually, and rebuild your solution then.
 
