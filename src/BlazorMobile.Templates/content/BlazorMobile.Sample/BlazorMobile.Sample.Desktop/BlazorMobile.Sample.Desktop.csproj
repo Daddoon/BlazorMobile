@@ -10,10 +10,10 @@
     <None Remove="wwwroot\**" />
   </ItemGroup>
   <ItemGroup>
-    <PackageReference Include="BlazorMobile.ElectronNET" Version="3.1.0-preview3.19555.2" />
-    <PackageReference Include="Microsoft.AspNetCore.Blazor.Server" Version="3.1.0-preview3.19555.2" />
-    <PackageReference Include="Microsoft.AspNetCore.Mvc.NewtonsoftJson" Version="3.1.0-preview3.19555.2" />
-    <PackageReference Include="Microsoft.TypeScript.MSBuild" Version="3.6.3">
+    <PackageReference Include="BlazorMobile.ElectronNET" Version="3.2.0-preview1.20073.1" />
+    <PackageReference Include="Microsoft.AspNetCore.Blazor.Server" Version="3.2.0-preview1.20073.1" />
+    <PackageReference Include="Microsoft.AspNetCore.Mvc.NewtonsoftJson" Version="3.1.1" />
+    <PackageReference Include="Microsoft.TypeScript.MSBuild" Version="3.7.4">
       <PrivateAssets>all</PrivateAssets>
       <IncludeAssets>runtime; build; native; contentfiles; analyzers; buildtransitive</IncludeAssets>
     </PackageReference>
