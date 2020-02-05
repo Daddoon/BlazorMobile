@@ -27,11 +27,6 @@ namespace BlazorMobile.Sample.iOS
             //Register our Blazor app package
             WebApplicationFactory.RegisterAppStreamResolver(AppPackageHelper.ResolveAppPackageStream);
 
-            if (int.TryParse(UIDevice.CurrentDevice.SystemVersion.Split('.')[0], out int majorVersion) && majorVersion >= 13)
-            {
-                BlazorWebViewService.EnableDelayedStartPatch();
-            }
-
             LoadApplication(new App());
 
             return base.FinishedLaunching(app, options);

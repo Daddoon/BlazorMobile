@@ -34,16 +34,19 @@ namespace BlazorMobile.iOS.Services
             WebApplicationFactory.Init();
         }
 
-        /// <summary>
-        /// This option is required if your are deploying your app on iOS 13.
-        /// Current iOS 13 release have some issue with memory on Safari that prevent Blazor to be loaded.
-        /// Enabling this option will force your app to load an alternate blazor.webassembly.js file that
-        /// give additionnal time at boot time during some heavy load, to prevent an
-        /// 'Unhandled Promise Rejection: RangeError: Maximum call stack size exceeded' on Safari.
-        /// </summary>
-        public static void EnableDelayedStartPatch()
-        {
-            WebApplicationFactory.PlatformSpecific.EnableDelayedStartPatch(true);
-        }
+        //TODO: Code below will fully be removed in future versions
+        //Keeping this option commented if we have a new regression in the future, and if this fix still works
+
+        ///// <summary>
+        ///// This option is required if your are deploying your app on iOS 13.
+        ///// Current iOS 13 release have some issue with memory on Safari that prevent Blazor to be loaded.
+        ///// Enabling this option will force your app to load an alternate blazor.webassembly.js file that
+        ///// give additionnal time at boot time during some heavy load, to prevent an
+        ///// 'Unhandled Promise Rejection: RangeError: Maximum call stack size exceeded' on Safari.
+        ///// </summary>
+        //public static void EnableDelayedStartPatch()
+        //{
+        //    WebApplicationFactory.PlatformSpecific.EnableDelayedStartPatch(true);
+        //}
     }
 }
