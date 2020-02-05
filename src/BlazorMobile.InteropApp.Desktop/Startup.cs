@@ -72,7 +72,7 @@ namespace BlazorMobile.InteropApp.Desktop
                 app.UseExceptionHandler("/Home/Error");
             }
 
-            app.UseClientSideBlazorFiles<InteropBlazorApp.Startup>();
+            app.UseClientSideBlazorFiles<InteropBlazorApp.Program>();
 
             app.UseRouting();
 

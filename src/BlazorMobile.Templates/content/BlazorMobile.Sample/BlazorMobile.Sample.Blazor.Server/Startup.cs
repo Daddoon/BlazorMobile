@@ -68,7 +68,7 @@ namespace BlazorMobile.Sample.Blazor.Server
                 app.UseExceptionHandler("/Home/Error");
             }
 
-            app.UseClientSideBlazorFiles<BlazorMobile.Sample.Blazor.Startup>();
+            app.UseClientSideBlazorFiles<BlazorMobile.Sample.Blazor.Program>();
 
             app.UseRouting();
 

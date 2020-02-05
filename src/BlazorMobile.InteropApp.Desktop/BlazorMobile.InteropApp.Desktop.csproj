@@ -39,4 +39,5 @@
       <CopyToPublishDirectory>Never</CopyToPublishDirectory>
     </Content>
   </ItemGroup>
+  <ProjectExtensions><VisualStudio><UserProperties XamarinHotReloadXFormsNugetUpgradeInfoBarBlazorMobileInteropAppDesktopHideInfoBar="True" /></VisualStudio></ProjectExtensions>
 </Project>

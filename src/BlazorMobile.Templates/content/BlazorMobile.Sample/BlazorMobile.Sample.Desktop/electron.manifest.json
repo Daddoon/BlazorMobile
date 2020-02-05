@@ -7,7 +7,7 @@
   "build": {
     "appId": "com.BlazorMobile.Sample.Desktop.app",
     "productName": "BlazorMobile.Sample.Desktop",
-    "copyright": "Copyright © 2019",
+    "copyright": "Copyright © 2020",
     "buildVersion": "1.0.0",
     "compression": "maximum",
     "directories": {
