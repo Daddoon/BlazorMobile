@@ -1,10 +1,12 @@
-﻿using BlazorMobile.Common.Helpers;
+﻿using BlazorMobile.Common;
+using BlazorMobile.Common.Helpers;
 using BlazorMobile.Common.Interfaces;
 using BlazorMobile.Common.Services;
 using BlazorMobile.Consts;
 using BlazorMobile.Controller;
 using BlazorMobile.Interop;
 using System;
+using System.Collections.Generic;
 using System.IO;
 using System.IO.Compression;
 using System.Net;
@@ -61,6 +63,107 @@ namespace BlazorMobile.Services
             //As iOS and UWP doesn't need a specific initialize at the moment but we may need
             //to call a generic init, the generic init is call in RegisterAppStream
             Init();
+        }
+
+        /// <summary>
+        /// Reload the current application.
+        /// 
+        /// This option may be useful if you want to side-load another package
+        /// of your own instead of the one shipped in your app by default.
+        /// 
+        /// If this is your requirement, you must update the delegate method used by <see cref="RegisterAppStreamResolver(Func{Stream})"/>
+        /// pointing to your new package, before calling this method.
+        /// 
+        /// NOTE: This implementation will reload all <see cref="BlazorMobile.Components.IBlazorWebView"/> instances if you use more than one instance.
+        /// </summary>
+        public static void ReloadApplication()
+        {
+            NotifyBlazorAppReload();
+        }
+
+
+        private static IApplicationStoreService _applicationStoreService;
+
+        /// <summary>
+        /// Add the given Stream as a package in a data store on the device, with the given name
+        /// </summary>
+        /// <param name="name"></param>
+        /// <param name="content"></param>
+        public static bool AddPackage(string name, Stream content)
+        {
+            if (content == null)
+            {
+                throw new NullReferenceException($"{nameof(content)} cannot be null");
+            }
+
+            //TODO: Remove when ElectronNET is supported with a WASM behavior too
+            if (BlazorDevice.IsElectronNET())
+            {
+                throw new NotImplementedException("This feature is not yet implemented on ElectronNET");
+            }
+
+            //Force position to Begin of the Stream
+            content.Seek(0, SeekOrigin.Begin);
+
+            return _applicationStoreService.AddPackage(name, content);
+        }
+
+        /// <summary>
+        /// Remove the package with the given name from the data store of the device
+        /// </summary>
+        /// <param name="name"></param>
+        /// <returns></returns>
+        public static bool RemovePackage(string name)
+        {
+            //TODO: Remove when ElectronNET is supported with a WASM behavior too
+            if (BlazorDevice.IsElectronNET())
+            {
+                throw new NotImplementedException("This feature is not yet implemented on ElectronNET");
+            }
+
+            return _applicationStoreService.RemovePackage(name);
+        }
+
+        /// <summary>
+        /// List available packages in the data store of the device
+        /// </summary>
+        /// <returns></returns>
+        public static IEnumerable<string> ListPackages()
+        {
+            //TODO: Remove when ElectronNET is supported with a WASM behavior too
+            if (BlazorDevice.IsElectronNET())
+            {
+                throw new NotImplementedException("This feature is not yet implemented on ElectronNET");
+            }
+
+            return _applicationStoreService.ListPackages();
+        }
+
+        /// <summary>
+        /// Load an app package with the given name, stored on the device.
+        /// This is a shorthand on calling yourself <see cref="RegisterAppStreamResolver"/> and <see cref="ReloadApplication"/>
+        /// as the loading is managed by all the entries you get through <see cref="AddPackage(string, Stream)"/>, <see cref="RemovePackage(string)"/>, <see cref="ListPackages"/>.
+        /// </summary>
+        /// <param name="name">The package to load</param>
+        /// <returns></returns>
+        public static bool LoadPackage(string name)
+        {
+            //TODO: Remove when ElectronNET is supported with a WASM behavior too
+            if (BlazorDevice.IsElectronNET())
+            {
+                throw new NotImplementedException("This feature is not yet implemented on ElectronNET");
+            }
+
+            var resolver = _applicationStoreService.GetPackageStreamResolver(name);
+            if (resolver == null)
+            {
+                return false;
+            }
+
+            RegisterAppStreamResolver(resolver);
+            ReloadApplication();
+
+            return true;
         }
 
         private static ZipArchive _zipArchive = null;
@@ -475,6 +578,10 @@ namespace BlazorMobile.Services
                 }
 
                 BlazorXamarinDeviceService.InitRuntimePlatform();
+
+                //Caching this service, as used on this static class
+                //As the result is per platform, the service is initialized on platform specific code path before this method
+                _applicationStoreService = DependencyService.Get<IApplicationStoreService>();
 
                 _firstCall = false;
             }

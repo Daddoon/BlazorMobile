@@ -1,6 +1,7 @@
 ﻿using BlazorMobile.Common.Services;
 using BlazorMobile.Components;
 using BlazorMobile.ElectronNET.Components;
+using BlazorMobile.ElectronNET.Services;
 using BlazorMobile.Helper;
 using BlazorMobile.Interop;
 using ElectronNET.API;
@@ -37,6 +38,8 @@ namespace Microsoft.AspNetCore.Builder
             app.UseStaticFiles();
 
             Forms.Init();
+
+            DependencyService.Register<IApplicationStoreService, ApplicationStoreService>();
 
             return app;
         }
