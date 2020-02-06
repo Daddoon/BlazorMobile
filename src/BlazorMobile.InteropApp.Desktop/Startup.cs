@@ -32,6 +32,7 @@ namespace BlazorMobile.InteropApp.Desktop
         public void ConfigureServices(IServiceCollection services)
         {
             services.AddMvc().AddNewtonsoftJson();
+            services.AddRazorPages();
             services.AddServerSideBlazor();
             services.AddResponseCompression(opts =>
             {
@@ -74,6 +75,7 @@ namespace BlazorMobile.InteropApp.Desktop
 
             app.UseClientSideBlazorFiles<InteropBlazorApp.Program>();
 
+            app.UseStaticFiles();
             app.UseRouting();
 
             app.UseEndpoints(endpoints =>
