@@ -31,28 +31,7 @@ namespace BlazorMobile.Interop
             }
         }
 
-        private const string MainResourceFile = "contextbridge.js";
         private const string ElectronNETResourceFile = "blazormobile.electron.js";
-
-
-        public static string GetInjectableJavascript(bool isAnonymousAutoEvalMethod = true)
-        {
-            StringBuilder sb = new StringBuilder();
-
-            sb.Append(GetFileContent(MainResourceFile));
-            sb.AppendLine();
-
-            sb.AppendLine();
-            var content = sb.ToString();
-
-
-            if (!isAnonymousAutoEvalMethod)
-                return content;
-
-            content = $"(function() {{ {content} }})();";
-
-            return content;
-        }
 
         public static string GetElectronNETJavascript()
         {

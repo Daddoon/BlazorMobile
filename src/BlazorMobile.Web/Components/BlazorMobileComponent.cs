@@ -18,8 +18,6 @@ namespace BlazorMobile.Common.Components
         [Inject]
         IJSRuntime Runtime { get; set; }
 
-        private static IJSRuntime JSRuntime { get; set; }
-
         private readonly BlazorXamarinDeviceService xamService = new BlazorXamarinDeviceService();
 
         private bool BlazorMobileSuccess = false;
@@ -28,48 +26,38 @@ namespace BlazorMobile.Common.Components
         {
             try
             {
-                //ElectronNET implementation does not rely on any JS Interop, nor Xamarin/Mono context
-                if ((ContextHelper.IsBlazorMobile() && await Runtime.InvokeAsync<bool>("BlazorXamarinRuntimeCheck"))
-                    || (ContextHelper.IsElectronNET()))
+                //This must be called before GetRuntimePlatform, as GetRuntimePlatform is considered as a BlazorAppLaunched event
+                //We are here workarounding a race condition when using ElectronNET. Using Electron here.
+                if (ContextHelper.IsElectronNET())
                 {
-                    //This must be called before GetRuntimePlatform, as GetRuntimePlatform is considered as a BlazorAppLaunched event
-                    //We are here workarounding a race condition when using ElectronNET. Using Electron here.
-                    if (ContextHelper.IsElectronNET())
+                    string currentURL = await Runtime.InvokeAsync<string>("BlazorMobileElectron.GetCurrentURL");
+                    string UserDataPath = await Runtime.InvokeAsync<string>("BlazorMobileElectron.GetUserDataPath");
+
+                    //Before calling StartupMetadataForElectron and call the initialization event from GetRuntimePlatform
+                    //we want to ensure that the 'HybridSupport.IsElectronActive' value is ready remotly, to ensure
+                    //to finish to install ElectronNET Hooks
+
+                    bool isElectronActive = false;
+                    int waitingCounter = 0;
+
+                    while (waitingCounter < 10)
                     {
-                        string currentURL = await Runtime.InvokeAsync<string>("BlazorMobileElectron.GetCurrentURL");
-                        string UserDataPath = await Runtime.InvokeAsync<string>("BlazorMobileElectron.GetUserDataPath");
-
-                        //Before calling StartupMetadataForElectron and call the initialization event from GetRuntimePlatform
-                        //we want to ensure that the 'HybridSupport.IsElectronActive' value is ready remotly, to ensure
-                        //to finish to install ElectronNET Hooks
-
-                        bool isElectronActive = false;
-                        int waitingCounter = 0;
-
-                        while (waitingCounter < 10)
+                        //We will do 10 attempts. If unable to honor the result, we will continue and ignore this
+                        if (isElectronActive = await xamService.IsElectronActive())
                         {
-                            //We will do 10 attempts. If unable to honor the result, we will continue and ignore this
-                            if (isElectronActive = await xamService.IsElectronActive())
-                            {
-                                break;
-                            }
-
-                            waitingCounter++;
-                            await Task.Delay(200);
+                            break;
                         }
 
-                        ConsoleHelper.WriteLine($"HybridSupport.IsElectronActive returned: {isElectronActive.ToString()}");
-
-                        await xamService.StartupMetadataForElectron(currentURL, UserDataPath);
+                        waitingCounter++;
+                        await Task.Delay(200);
                     }
 
-                    BlazorDevice.RuntimePlatform = await xamService.GetRuntimePlatform();
+                    ConsoleHelper.WriteLine($"HybridSupport.IsElectronActive returned: {isElectronActive.ToString()}");
+
+                    await xamService.StartupMetadataForElectron(currentURL, UserDataPath);
                 }
-                else
-                {
-                    //If service return false we return the Browser default value
-                    BlazorDevice.RuntimePlatform = BlazorDevice.Browser;
-                }
+
+                BlazorDevice.RuntimePlatform = await xamService.GetRuntimePlatform();
 
                 BlazorMobileSuccess = true;
             }
@@ -80,15 +68,6 @@ namespace BlazorMobile.Common.Components
                 BlazorDevice.RuntimePlatform = BlazorDevice.Browser;
                 BlazorMobileSuccess = false;
             }
-        }
-
-        /// <summary>
-        /// Return the current IJSRuntime initialized with the BlazorMobile plugin
-        /// </summary>
-        /// <returns></returns>
-        public static IJSRuntime GetJSRuntime()
-        {
-            return JSRuntime;
         }
 
         private bool _isInitialized = false;
@@ -107,27 +86,7 @@ namespace BlazorMobile.Common.Components
             if (_isInitialized)
                 return;
 
-            if (ContextHelper.IsBlazorMobile())
-            {
-                builder.OpenElement(0, "script");
-                builder.AddContent(1, @"
-                window.BlazorXamarinRuntimeCheck = function () {
-	                if (window.contextBridge == null || window.contextBridge == undefined)
-	                {
-		                return false;
-	                }
-
-	                return true;
-                };
-");
-                builder.CloseElement();
-
-                //Add server side remote to client remote debugging
-                builder.OpenElement(0, "script");
-                builder.AddContent(1, ContextBridgeHelper.GetInjectableJavascript(false).Replace("%_contextBridgeURI%", BlazorMobileService.GetContextBridgeURI()));
-                builder.CloseElement();
-            }
-            else if (ContextHelper.IsElectronNET())
+            if (ContextHelper.IsElectronNET())
             {
                 //Add electronNET helpers
                 builder.OpenElement(0, "script");
@@ -138,7 +97,7 @@ namespace BlazorMobile.Common.Components
             _isInitialized = true;
         }
 
-        private void SetCurrentRuntime(IJSRuntime runtime)
+        private void DetectCurrentRuntime(IJSRuntime runtime)
         {
             string blazorVersion;
 
@@ -178,9 +137,7 @@ namespace BlazorMobile.Common.Components
             {
                 _FirstInit = false;
 
-                JSRuntime = Runtime;
-
-                SetCurrentRuntime(JSRuntime);
+                DetectCurrentRuntime(Runtime);
 
                 await InitXamService();
 

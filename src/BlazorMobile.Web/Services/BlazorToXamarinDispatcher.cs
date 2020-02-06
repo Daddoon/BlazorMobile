@@ -2,6 +2,7 @@
 using BlazorMobile.Common.Helpers;
 using BlazorMobile.Common.Interop;
 using BlazorMobile.Common.Serialization;
+using BlazorMobile.Web.Helpers.WebSocketWrapper;
 using BlazorMobile.Web.Services;
 using Microsoft.JSInterop;
 using Newtonsoft.Json.Linq;
@@ -9,26 +10,85 @@ using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Net.Sockets;
+using System.Net.WebSockets;
 using System.Reflection;
+using System.Threading;
 using System.Threading.Tasks;
 
 namespace BlazorMobile.Common.Services
 {
     public static class BlazorToXamarinDispatcher
     {
+        #region WebSocket I/O
+
+        private static WebSocketWrapper _client = null;
+
+        private static void OnConnectedHandler(WebSocketWrapper connection)
+        {
+
+        }
+
+        private static void OnDisconnectHandler(WebSocketWrapper connection)
+        {
+            _client = null;
+        }
+
+        private static void OnMessageHandler(string message, WebSocketWrapper connection)
+        {
+            Receive(message, true);
+        }
+
+        private static WebSocketWrapper GetConnection()
+        {
+            try
+            {
+                if (_client == null)
+                {
+                    //Instanciating a new client
+                    _client = WebSocketWrapper.Create(BlazorMobileService.GetContextBridgeURI(), 500);
+
+                    _client.OnConnect(OnConnectedHandler);
+                    _client.OnDisconnect(OnDisconnectHandler);
+                    _client.OnMessage(OnMessageHandler);
+
+                    _client.Connect();
+                }
+
+                return _client;
+            }
+            catch (Exception ex)
+            {
+                _client = null;
+
+                ConsoleHelper.WriteException(ex);
+                throw;
+            }
+        }
+
+        #endregion WebSocket I/O
+
         internal static Task Send(MethodProxy methodProxy)
         {
             string csharpProxy = BridgeSerializer.Serialize(methodProxy);
-            BlazorMobileComponent.GetJSRuntime().InvokeAsync<bool>("contextBridgeSend", csharpProxy);
+
+            try
+            {
+                var client = GetConnection();
+                client.SendMessage(csharpProxy);
+            }
+            catch (Exception ex)
+            {
+                ConsoleHelper.WriteException(ex);
+
+                Task.Run(() =>
+                {
+                    Receive(csharpProxy, false);
+                });
+            }
+
             return Task.CompletedTask;
         }
 
-        //NOTE: Javascript should be able to call this method even with obsolete
-        //This is what we want. We only want to prevent a direct use from a .NET assembly
-        //at build time. Btw, this does not prevent anyone to trick the system with a
-        //C# -> Javascript -> C# call. Actually, this is only for readability
-        [JSInvokable]
-        [Obsolete("Internal use only", true)]
         public static bool Receive(string methodProxyJson, bool socketSuccess)
         {
             //Unlikely to happen. It would mean that we don't even know who was the caller
