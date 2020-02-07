@@ -7,7 +7,7 @@ namespace BlazorMobile.Sample.Blazor.Helpers
         public static void ConfigureCommonServices(IServiceCollection services)
         {
             //Add services shared between multiples project here
-            services.AddBlazorMobileNativeServices<Startup>();
+            services.AddBlazorMobileNativeServices<Program>();
         }
     }
 }

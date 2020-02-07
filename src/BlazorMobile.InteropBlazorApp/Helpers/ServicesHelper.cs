@@ -10,7 +10,7 @@ namespace BlazorMobile.InteropBlazorApp.Helpers
     {
         public static void ConfigureCommonServices(IServiceCollection services)
         {
-            services.AddBlazorMobileNativeServices<Startup>();
+            services.AddBlazorMobileNativeServices<Program>();
         }
     }
 }
