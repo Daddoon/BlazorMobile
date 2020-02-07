@@ -11,11 +11,11 @@
     <iconUrl>https://raw.githubusercontent.com/Daddoon/BlazorMobile/master/logo_blazormobile_256x256.png</iconUrl>
     <requireLicenseAcceptance>true</requireLicenseAcceptance>
     <description>Build mechanism for BlazorMobile applications. This must be referenced in your Blazor web application project</description>
-    <releaseNotes>First release</releaseNotes>
-    <copyright>Copyright 2019</copyright>
+    <releaseNotes>Updated build target to match the expecting Afterbuild event on Blazor 3.2.0-preview1.20073.1</releaseNotes>
+    <copyright>Copyright 2020</copyright>
     <tags>Blazor BlazorMobile Xamarin iOS Android Hybrid</tags>
     <dependencies>
-      <dependency id="Microsoft.AspNetCore.Blazor.Build" version="3.1.0-preview3.19555.2" include="all" />
+      <dependency id="Microsoft.AspNetCore.Blazor.Build" version="3.2.0-preview1.20073.1" include="all" />
     </dependencies>
   </metadata>
   <files>

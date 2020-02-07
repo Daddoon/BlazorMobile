@@ -12,19 +12,18 @@
         <requireLicenseAcceptance>true</requireLicenseAcceptance>
         <description>This NuGet package intended for the Blazor application side of the BlazorMobile package.</description>
         <releaseNotes>See release notes on BlazorMobile project page</releaseNotes>
-        <copyright>Copyright 2019</copyright>
+        <copyright>Copyright 2020</copyright>
         <tags>aspnet templates blazor spa web webassembly xamarin android ios uwp</tags>
         <dependencies>
-            <group targetFramework="netstandard2.0">
-                <dependency id="NETStandard.Library" version="2.0.3" />
+            <group targetFramework="netstandard2.1">
                 <dependency id="Microsoft.AspNetCore.Blazor" version="3.2.0-preview1.20073.1" />
             </group>
         </dependencies>
     </metadata>
     <files>
         <!-- Cross-platform reference assemblies -->
-        <file src="lib\netstandard2.0\BlazorMobile.Web.dll" target="lib\netstandard2.0\BlazorMobile.Web.dll" />
-        <file src="lib\netstandard2.0\BlazorMobile.Web.pdb" target="lib\netstandard2.0\BlazorMobile.Web.pdb" />
-        <file src="lib\BlazorMobile.Web.xml" target="lib\netstandard2.0\BlazorMobile.Web.xml" />
+        <file src="lib\netstandard2.1\BlazorMobile.Web.dll" target="lib\netstandard2.1\BlazorMobile.Web.dll" />
+        <file src="lib\netstandard2.1\BlazorMobile.Web.pdb" target="lib\netstandard2.1\BlazorMobile.Web.pdb" />
+        <file src="lib\BlazorMobile.Web.xml" target="lib\netstandard2.1\BlazorMobile.Web.xml" />
     </files>
 </package>
