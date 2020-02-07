@@ -33,6 +33,7 @@ namespace BlazorMobile.Sample.Desktop
         public void ConfigureServices(IServiceCollection services)
         {
             services.AddMvc().AddNewtonsoftJson();
+            services.AddRazorPages();
             services.AddServerSideBlazor();
             services.AddResponseCompression(opts =>
             {
@@ -73,8 +74,9 @@ namespace BlazorMobile.Sample.Desktop
                 app.UseExceptionHandler("/Home/Error");
             }
 
-            app.UseClientSideBlazorFiles<BlazorMobile.Sample.Blazor.Startup>();
+            app.UseClientSideBlazorFiles<BlazorMobile.Sample.Blazor.Program>();
 
+            app.UseStaticFiles();
             app.UseRouting();
 
             app.UseEndpoints(endpoints =>

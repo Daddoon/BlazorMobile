@@ -31,6 +31,7 @@ namespace BlazorMobile.InteropBlazorApp.Server
         public void ConfigureServices(IServiceCollection services)
         {
             services.AddMvc().AddNewtonsoftJson();
+            services.AddRazorPages();
             services.AddServerSideBlazor();
             services.AddResponseCompression(opts =>
             {
@@ -53,7 +54,7 @@ namespace BlazorMobile.InteropBlazorApp.Server
                 });
             }
 
-            services.AddBlazorMobileNativeServices<InteropBlazorApp.Startup>();
+            services.AddBlazorMobileNativeServices<InteropBlazorApp.Program>();
             ServicesHelper.ConfigureCommonServices(services);
         }
 
@@ -72,8 +73,9 @@ namespace BlazorMobile.InteropBlazorApp.Server
                 app.UseExceptionHandler("/Home/Error");
             }
 
-            app.UseClientSideBlazorFiles<InteropBlazorApp.Startup>();
+            app.UseClientSideBlazorFiles<InteropBlazorApp.Program>();
 
+            app.UseStaticFiles();
             app.UseRouting();
 
             app.UseEndpoints(endpoints =>

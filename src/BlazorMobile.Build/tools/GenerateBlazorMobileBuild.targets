@@ -16,7 +16,7 @@
     <BlazorMobileBuildInput>&quot;$([MSBuild]::Escape($(MSBuildProjectFullPath)))&quot;</BlazorMobileBuildInput>
   </PropertyGroup>
 
-  <Target Name="GenerateBlazorMobileBuild" AfterTargets="_BlazorBuildReport">
+  <Target Name="GenerateBlazorMobileBuild" AfterTargets="_BlazorCopyFilesToOutputDirectory">
     <Exec Command="$(BlazorMobileBuildFileExe) pack-blazor-app --input $(BlazorMobileBuildInput) --distDir $(BlazorMobileBuildDistDir) --outputPath $(BlazorMobileBuildOutput)" />
   </Target>
 
