@@ -1818,9 +1818,6 @@ to:
 services.AddBlazorMobileNativeServices<Program>();
 ```
 
-- On iOS, the **BlazorWebViewService.EnableDelayedStartPatch()** option has been removed, as the issue has been fixed by Microsoft.
-
-
 ## Authors
 
 - **Guillaume ZAHRA** - [Daddoon](https://github.com/Daddoon) - Software Developer - from Joinville-le-Pont, France. Entrepreneur & founder of 2Bee SASU, working since 10 years with .NET and C#.
