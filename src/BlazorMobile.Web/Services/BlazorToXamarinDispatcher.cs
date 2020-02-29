@@ -38,20 +38,25 @@ namespace BlazorMobile.Common.Services
             Receive(message, true);
         }
 
-        private static WebSocketWrapper GetConnection()
+        private static async Task<WebSocketWrapper> GetConnection()
         {
             try
             {
                 if (_client == null)
                 {
                     //Instanciating a new client
-                    _client = WebSocketWrapper.Create(BlazorMobileService.GetContextBridgeURI(), 500);
+                    _client = WebSocketWrapper.Create(BlazorMobileService.GetContextBridgeURI());
 
                     _client.OnConnect(OnConnectedHandler);
                     _client.OnDisconnect(OnDisconnectHandler);
                     _client.OnMessage(OnMessageHandler);
 
-                    _client.Connect();
+                    await _client.Connect();
+                }
+                else if (_client.State == WebSocketState.Connecting)
+                {
+                    //Give additional time to connect if connecting from first call
+                    await Task.Delay(200);
                 }
 
                 return _client;
@@ -67,14 +72,14 @@ namespace BlazorMobile.Common.Services
 
         #endregion WebSocket I/O
 
-        internal static Task Send(MethodProxy methodProxy)
+        internal static async Task Send(MethodProxy methodProxy)
         {
             string csharpProxy = BridgeSerializer.Serialize(methodProxy);
 
             try
             {
-                var client = GetConnection();
-                client.SendMessage(csharpProxy);
+                var client = await GetConnection();
+                await client.SendMessage(csharpProxy);
             }
             catch (Exception ex)
             {
@@ -86,7 +91,7 @@ namespace BlazorMobile.Common.Services
                 });
             }
 
-            return Task.CompletedTask;
+            return;
         }
 
         public static bool Receive(string methodProxyJson, bool socketSuccess)

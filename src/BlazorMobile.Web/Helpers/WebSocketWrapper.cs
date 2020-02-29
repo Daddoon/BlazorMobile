@@ -20,12 +20,12 @@ namespace BlazorMobile.Web.Helpers.WebSocketWrapper
         private Action<string, WebSocketWrapper> _onMessage;
         private Action<WebSocketWrapper> _onDisconnected;
 
-        protected WebSocketWrapper(string uri, int timeout)
+        protected WebSocketWrapper(string uri)
         {
             _ws = new ClientWebSocket();
             _ws.Options.KeepAliveInterval = TimeSpan.FromSeconds(20);
             _uri = new Uri(uri);
-            _cancellationTokenSource = new CancellationTokenSource(timeout);
+            _cancellationTokenSource = new CancellationTokenSource();
             _cancellationToken = _cancellationTokenSource.Token;
         }
 
@@ -35,18 +35,18 @@ namespace BlazorMobile.Web.Helpers.WebSocketWrapper
         /// <param name="uri">The URI of the WebSocket server.</param>
         /// /// <param name="timeout">The connection timeout in milliseconds</param>
         /// <returns></returns>
-        public static WebSocketWrapper Create(string uri, int timeout)
+        public static WebSocketWrapper Create(string uri)
         {
-            return new WebSocketWrapper(uri, timeout);
+            return new WebSocketWrapper(uri);
         }
 
         /// <summary>
         /// Connects to the WebSocket server.
         /// </summary>
         /// <returns></returns>
-        public WebSocketWrapper Connect()
+        public async Task<WebSocketWrapper> Connect()
         {
-            ConnectAsync();
+            await ConnectAsync();
             return this;
         }
 
@@ -87,12 +87,12 @@ namespace BlazorMobile.Web.Helpers.WebSocketWrapper
         /// Send a message to the WebSocket server.
         /// </summary>
         /// <param name="message">The message to send</param>
-        public void SendMessage(string message)
+        public async Task SendMessage(string message)
         {
-            SendMessageAsync(message);
+            await SendMessageAsync(message);
         }
 
-        private async void SendMessageAsync(string message)
+        private async Task SendMessageAsync(string message)
         {
             if (_ws.State != WebSocketState.Open)
             {
@@ -117,12 +117,14 @@ namespace BlazorMobile.Web.Helpers.WebSocketWrapper
             }
         }
 
-        private async void ConnectAsync()
+        private async Task ConnectAsync()
         {
             await _ws.ConnectAsync(_uri, _cancellationToken);
             CallOnConnected();
             StartListen();
         }
+
+        public WebSocketState State => _ws.State;
 
         private async void StartListen()
         {
