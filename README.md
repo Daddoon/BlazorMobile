@@ -6,7 +6,8 @@ Create full C# driven hybrid-apps for iOS, Android, UWP & Desktop with Blazor!
 
 ## Framework requirement
 
-- **Blazor:** 3.1.0-preview1.19508.20
+
+- **Blazor:** 3.2.0-preview1.20073.1
 - **.NET Core 3.0:** For build tools
 - **.NET Core 3.1:** ElectronNET
 
@@ -51,10 +52,10 @@ Create full C# driven hybrid-apps for iOS, Android, UWP & Desktop with Blazor!
 - [My Xamarin services are not found when interoping in UWP](#my-xamarin-services-are-not-found-when-interoping-in-uwp)
 - [Cannot connect to a remote webserver on UWP](#cannot-connect-to-a-remote-webserver-on-uwp)
 - [Unable to connect to UWP remotely even with NetworkIsolation disabled](#unable-to-connect-to-uwp-remotely-even-with-networkisolation-disabled)
-- [System.ArgumentOutOfRangeException when calling Blazor to native](#systemargumentoutofrangeexception-when-calling-blazor-to-native)
 - [Cyclic restore issue at project template creation](#cyclic-restore-issue-at-project-template-creation)
 - [iOS/Safari 13: Unhandled Promise Rejection: TypeError: 'arguments', 'callee', and 'caller' cannot be accessed in this context](#iossafari-13-unhandled-promise-rejection-typeerror-arguments-callee-and-caller-cannot-be-accessed-in-this-context)
 - [ITMS-90809: Deprecated API Usage - Apple will stop accepting submissions of apps that use UIWebView APIs](#itms-90809-deprecated-api-usage---apple-will-stop-accepting-submissions-of-apps-that-use-uiwebview-apis)
+- [Apple Rejection - Your app uses or references the following non-public APIs: LinkPresentation.framework, QuickLookThumbnailing.framework](#apple-rejection---your-app-uses-or-references-the-following-non-public-apis-linkpresentationframework-quicklookthumbnailingframework)
 - [Android crash at boot on API 28](#android-crash-at-boot-on-api-28)
 
 ## Migration
@@ -71,6 +72,7 @@ Create full C# driven hybrid-apps for iOS, Android, UWP & Desktop with Blazor!
 - [BlazorMobile 3.0.11-preview9.19465.2 to 3.0.12-preview9.19465.2](#blazormobile-3011-preview9194652-to-3012-preview9194652)
 - [BlazorMobile 3.0.12-preview9.19465.2 to 3.1.0-preview1.19508.20](#blazormobile-3012-preview9194652-to-310-preview11950820)
 - [BlazorMobile 3.1.0-preview1.19508.20 to 3.1.0-preview3.19555.2](#blazormobile-310-preview11950820-to-310-preview3195552)
+- [BlazorMobile 3.1.0-preview3.19555.2 to 3.2.0-preview1.20073.1](#blazormobile-310-preview3195552-to-320-preview1200731)
 
 ## Difference between BlazorMobile & Progressive Web Apps (PWA)
 
@@ -93,7 +95,7 @@ The main differences / advantages of BlazorMobile are:
 First install the template model with the following command from a command prompt:
 
 ```console
-dotnet new -i BlazorMobile.Templates::3.1.0-preview1.19508.20
+dotnet new -i BlazorMobile.Templates::3.2.0-preview1.20073.1
 ```
 
 Then go the folder where you want your project to be created, and from a command prompt type the following command, and of course replace **MyProjectName** to your desired project name:
@@ -798,14 +800,6 @@ This behavior may happen if the certificate used in your **Package.appxmanifest*
 Please read this Microsoft documentation, [Create a certificate for package signing](https://docs.microsoft.com/en-us/windows/msix/package/create-certificate-package-signing), and don't forget to set your newly created certificate as your UWP certificate afterwards,
 from your **Package.appxmanifest** property window.
 
-### System.ArgumentOutOfRangeException when calling Blazor to native
-
-This bug is a [regression from .NET Core 3.0-preview8](https://github.com/dotnet/corefx/issues/40409#issuecomment-522514553) that is already fixed for preview9.
-
-We have to wait for preview9 shipping, or working on an older version of Blazor & BlazorMobile running on preview7, or compiling by yourself current Microsoft nightly builds.
-
-In my opinion, the best option is to wait.
-
 ### Cyclic restore issue at project template creation
 
 This may happen if you called your project **BlazorMobile** at template creation, as it seem to confuse the NuGet restore command with the Nuget packages with the same suffix name, like **BlazorMobile** and **BlazorMobile.Common**.
@@ -851,7 +845,47 @@ public override bool FinishedLaunching(UIApplication app, NSDictionary options)
 
 When submiting an iOS app on the AppStore you may have this message: **ITMS-90809: Deprecated API Usage - Apple will stop accepting submissions of apps that use UIWebView APIs . See https://developer.apple.com/documentation/uikit/uiwebview for more information.**
 
-Please follow [this issue](https://github.com/xamarin/Xamarin.Forms/issues/7323) on Xamarin.Forms GitHub page.
+Please follow [this issue](https://github.com/xamarin/Xamarin.Forms/issues/7323) on Xamarin.Forms GitHub page, or [this documentation](https://docs.microsoft.com/en-us/xamarin/xamarin-forms/user-interface/webview?tabs=windows#uiwebview-deprecation-and-app-store-rejection-itms-90809)
+
+As stated, at the date of writing:
+
+> UIWebView Deprecation and App Store Rejection (ITMS-90809)
+>
+>Starting in April 2020, Apple will reject apps that still use the deprecated UIWebView API. While Xamarin.Forms has switched to WKWebView as the default, there is still a reference to the older SDK in the Xamarin.Forms binaries. Current iOS linker behavior does not remove this, and as a result the deprecated UIWebView API will still appear to be referenced from your app when you submit to the App Store.
+>
+>A preview version of the linker is available to fix this issue. To enable the preview, you will need to supply an additional argument --optimize=experimental-xforms-product-type to the linker.
+>
+>The prerequisites for this to work are:
+>
+>    Xamarin.Forms 4.5 or higher – Pre-release versions of Xamarin.Forms 4.5 can be used.
+>    Xamarin.iOS 13.10.0.17 or higher – Check your Xamarin.iOS version in Visual Studio. This version of Xamarin.iOS is included with Visual Studio for Mac 8.4.1 and Visual Studio 16.4.3.
+>    Remove references to UIWebView – Your code should not have any references to UIWebView or any classes that make use of UIWebView.
+
+### Apple Rejection - Your app uses or references the following non-public APIs: LinkPresentation.framework, QuickLookThumbnailing.framework
+
+You may receive this message from Apple:
+
+```
+Guideline 2.5.1 - Performance - Software Requirements
+
+Your app uses or references the following non-public APIs:
+
+- LinkPresentation.framework
+- QuickLookThumbnailing.framework
+
+The use of non-public APIs is not permitted on the App Store because it can lead to a poor user experience should these APIs change.
+
+Continuing to use or conceal non-public APIs in future submissions of this app may result in the termination of your Apple Developer account, as well as removal of all associated apps from the App Store.
+```
+
+In this case:
+
+- Set the linker setting to **Link Framework SDKs Only** on your iOS project
+- And just for double-check this behavior as some Visual Studio version doesn't respect this option, add this into the **Additional mtouch arguments** input on your iOS project:
+
+```shell
+--linksdkonly --linkskip=LinkPresentation --linkskip=QuickLookThumbnailing
+```
 
 ### Android crash at boot on API 28
 
@@ -1705,6 +1739,103 @@ If you need to include it in the future for a pure Blazor web app with support f
 - You can also delete the **blazor.polyfill.js** file present in the **wwwroot/js** folder of your Blazor app.
 
 - For sanity check, delete all **obj** and **bin** folders of your solution manually, and rebuild your solution then.
+
+### BlazorMobile 3.1.0-preview3.19555.2 to 3.2.0-preview1.20073.1
+
+- Update your installed BlazorMobile.Templates to this version by calling:
+
+```console
+dotnet new -i BlazorMobile.Templates::3.2.0-preview1.20073.1
+```
+
+- Update your Blazor projects to **3.2.0-preview1.20073.1**. See [this documentation](https://devblogs.microsoft.com/aspnet/blazor-webassembly-3-2-0-preview-1-release-now-available/) for upgrading steps.
+
+- Update all your BlazorMobile.* NuGet packages to **3.2.0-preview1.20073.1**.
+
+- Update ElectronNET global tooling by uninstall and reinstalling it.
+
+```console
+dotnet tool uninstall ElectronNET.CLI -g
+dotnet tool install ElectronNET.CLI -g
+```
+
+- If you followed the Blazor project migration for Blazor WebAssembly, this kind of project must not have any **Startup.cs** anymore.
+So your code logic should have gone in your **Program.cs** file. The template **Program.cs** file of the Blazor project now look like this,
+adapt the code with your custom logic:
+
+```csharp
+using BlazorMobile.Common;
+using BlazorMobile.Common.Services;
+using BlazorMobile.Sample.Blazor.Helpers;
+using Microsoft.AspNetCore.Blazor.Hosting;
+using System;
+using System.Threading.Tasks;
+
+namespace BlazorMobile.Sample.Blazor
+{
+    public class Program
+    {
+        public static async Task Main(string[] args)
+        {
+            var builder = WebAssemblyHostBuilder.CreateDefault(args);
+
+            #region Services registration
+
+            ServicesHelper.ConfigureCommonServices(builder.Services);
+
+            #endregion
+
+            #region DEBUG
+
+            //Only if you want to test WebAssembly with remote debugging from a dev machine
+            BlazorMobileService.EnableClientToDeviceRemoteDebugging("127.0.0.1", 8888);
+
+            #endregion
+
+            BlazorMobileService.Init((bool success) =>
+            {
+                Console.WriteLine($"Initialization success: {success}");
+                Console.WriteLine("Device is: " + BlazorDevice.RuntimePlatform);
+            });
+
+            builder.RootComponents.Add<MobileApp>("app");
+
+            await builder.Build().RunAsync();
+        }
+    }
+}
+```
+
+- BlazorMobile **Server** (for debugging) and **Desktop** (ElectronNET) projects must have theses additionnal lines in **Startup.cs**...
+
+```csharp
+services.AddRazorPages();
+```
+
+...in **ConfigureServices** method.
+
+Also this:
+
+```csharp
+app.UseClientSideBlazorFiles<BlazorMobile.Sample.Blazor.Program>();
+app.UseStaticFiles();
+```
+
+...in **Configure** method.
+
+Note that **UseClientSideBlazorFiles** was already present, but now target **Program** instead of **Startup** class.
+
+- Change any references of:
+
+```csharp
+services.AddBlazorMobileNativeServices<Startup>();
+```
+
+to:
+
+```csharp
+services.AddBlazorMobileNativeServices<Program>();
+```
 
 ## Authors
 

@@ -12,7 +12,7 @@
     <requireLicenseAcceptance>true</requireLicenseAcceptance>
     <description>Build mechanism for BlazorMobile toolset on Android target.</description>
     <releaseNotes>See release notes on BlazorMobile project page</releaseNotes>
-    <copyright>Copyright 2019</copyright>
+    <copyright>Copyright 2020</copyright>
     <tags>Blazor BlazorMobile Xamarin iOS Android Hybrid</tags>
   </metadata>
   <files>
