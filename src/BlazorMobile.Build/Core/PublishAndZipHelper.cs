@@ -20,6 +20,13 @@ namespace BlazorMobile.Build.Core
         {
             string staticWebAssetsManifest = Path.Combine(Path.GetFullPath(Path.Combine(distDir, "..")), artifactName + ".StaticWebAssets.xml");
 
+            if (!File.Exists(staticWebAssetsManifest))
+            {
+                //If the *.StaticWebAssets.xml file does not exist, it may means that there is actually no Razor Class Library referenced
+                //in the current project. We have nothing to do then.
+                return;
+            }
+
             Regex groupPathAndBasePath = new Regex("<ContentRoot BasePath=\"(?<BasePath>.+)\" Path=\"(?<Path>.+)\" />");
 
             string staticWebAssetManifestContent = File.ReadAllText(staticWebAssetsManifest);
