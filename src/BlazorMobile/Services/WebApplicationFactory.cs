@@ -12,6 +12,7 @@ using System.IO.Compression;
 using System.Net;
 using System.Net.Sockets;
 using System.Net.WebSockets;
+using System.Reflection;
 using System.Runtime.CompilerServices;
 using System.Text;
 using System.Threading;
@@ -44,6 +45,22 @@ namespace BlazorMobile.Services
 
         private static Func<Stream> _appResolver = null;
 
+        private static void InvalidateCachedZipPackage()
+        {
+            if (_zipArchive != null)
+            {
+                try
+                {
+                    _zipArchive.Dispose();
+                }
+                catch (Exception)
+                {
+                }
+            }
+
+            _zipArchive = null;
+        }
+
         /// <summary>
         /// Register how you get the Stream to your Blazor zipped application
         /// <para>For a performant unique entry point, getting a Stream from an</para>
@@ -53,6 +70,9 @@ namespace BlazorMobile.Services
         /// </summary>
         public static void RegisterAppStreamResolver(Func<Stream> resolver)
         {
+            //If we are registering a new stream, we must invalidate previous ZipFile entry for package
+            InvalidateCachedZipPackage();
+
             _appResolver = resolver;
 
             //Calling Init if not yet done. This will be a no-op if already called
@@ -97,9 +117,9 @@ namespace BlazorMobile.Services
             }
 
             //TODO: Remove when ElectronNET is supported with a WASM behavior too
-            if (BlazorDevice.IsElectronNET())
+            if (BlazorDevice.IsElectronNET() && !BlazorDevice.IsUsingWASM())
             {
-                throw new NotImplementedException("This feature is not yet implemented on ElectronNET");
+                throw new NotImplementedException("This feature is not implemented on ElectronNET with 'useWasm' option set to false");
             }
 
             //Force position to Begin of the Stream
@@ -116,9 +136,9 @@ namespace BlazorMobile.Services
         public static bool RemovePackage(string name)
         {
             //TODO: Remove when ElectronNET is supported with a WASM behavior too
-            if (BlazorDevice.IsElectronNET())
+            if (BlazorDevice.IsElectronNET() && !BlazorDevice.IsUsingWASM())
             {
-                throw new NotImplementedException("This feature is not yet implemented on ElectronNET");
+                throw new NotImplementedException("This feature is not implemented on ElectronNET with 'useWasm' option set to false");
             }
 
             return _applicationStoreService.RemovePackage(name);
@@ -131,9 +151,9 @@ namespace BlazorMobile.Services
         public static IEnumerable<string> ListPackages()
         {
             //TODO: Remove when ElectronNET is supported with a WASM behavior too
-            if (BlazorDevice.IsElectronNET())
+            if (BlazorDevice.IsElectronNET() && !BlazorDevice.IsUsingWASM())
             {
-                throw new NotImplementedException("This feature is not yet implemented on ElectronNET");
+                throw new NotImplementedException("This feature is not implemented on ElectronNET with 'useWasm' option set to false");
             }
 
             return _applicationStoreService.ListPackages();
@@ -149,9 +169,9 @@ namespace BlazorMobile.Services
         public static bool LoadPackage(string name)
         {
             //TODO: Remove when ElectronNET is supported with a WASM behavior too
-            if (BlazorDevice.IsElectronNET())
+            if (BlazorDevice.IsElectronNET() && !BlazorDevice.IsUsingWASM())
             {
-                throw new NotImplementedException("This feature is not yet implemented on ElectronNET");
+                throw new NotImplementedException("This feature is not implemented on ElectronNET with 'useWasm' option set to false");
             }
 
             var resolver = _applicationStoreService.GetPackageStreamResolver(name);
@@ -159,6 +179,59 @@ namespace BlazorMobile.Services
             {
                 return false;
             }
+
+            RegisterAppStreamResolver(resolver);
+            ReloadApplication();
+
+            return true;
+        }
+
+        /// <summary>
+        /// Load an app package with the given package assembly path if you have stored it the assembly as a static resource.
+        /// This is the default mode used at start when shipping your base application from BlazorMobile template, but you can
+        /// extend this in order to load different packages at your native app startup.
+        /// </summary>
+        /// <param name="packageAssembly">The assembly where your Blazor package is stored.
+        /// TIPS: If you know a type stored in this assembly, you may resolve the assembly object with 'typeof(YourType).Assembly'</param>
+        /// <param name="packagePath">The relative path where the Blazor package is stored in the assembly</param>
+        /// <returns></returns>
+        public static bool LoadPackageFromAssembly(Assembly packageAssembly, string packagePath)
+        {
+            if (packageAssembly == null)
+            {
+                throw new NullReferenceException($"{nameof(packageAssembly)} cannot be null");
+            }
+
+            if (string.IsNullOrEmpty(packagePath))
+            {
+                throw new NullReferenceException($"{nameof(packagePath)} cannot be null or empty");
+            }
+
+            Func<Stream> resolver = () => packageAssembly.GetManifestResourceStream($"{packageAssembly.GetName().Name}.{packagePath}");
+
+            if (resolver == null)
+                return false;
+
+            Stream streamChecking = null;
+
+            try
+            {
+                streamChecking = resolver.Invoke();
+                if (streamChecking == null)
+                    return false;
+            }
+            catch (Exception ex)
+            {
+                ConsoleHelper.WriteException(ex);
+                if (streamChecking != null)
+                {
+                    streamChecking.Dispose();
+                }
+
+                return false;
+            }
+
+            streamChecking.Dispose();
 
             RegisterAppStreamResolver(resolver);
             ReloadApplication();

@@ -77,7 +77,7 @@ namespace BlazorMobile.InteropApp
 
             content.Children.Add(webviewView);
 
-            Task.Run(PackageTest);
+            //Task.Run(PackageTest);
         }
 
         ~MainPage()

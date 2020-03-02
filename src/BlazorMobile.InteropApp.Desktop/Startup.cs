@@ -91,7 +91,7 @@ namespace BlazorMobile.InteropApp.Desktop
                 Console.WriteLine("Device is: " + BlazorDevice.RuntimePlatform);
             });
 
-            app.UseBlazorMobileWithElectronNET<App>();
+            app.UseBlazorMobileWithElectronNET<App>(true);
 
             Forms.ConfigureBrowserWindow(new BrowserWindowOptions()
             {

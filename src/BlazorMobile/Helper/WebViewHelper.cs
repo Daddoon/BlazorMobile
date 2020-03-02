@@ -168,7 +168,8 @@ namespace BlazorMobile.Helper
                     webIdentity.BlazorAppLaunched = false;
                 }
 
-                webview.Reload();
+                //May cause some strange behavior if we force Reload, as it can try to reload the current WebView URI instead of the one we just affected here
+                //webview.Reload();
             }
         }
 

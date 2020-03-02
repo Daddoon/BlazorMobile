@@ -19,15 +19,16 @@ namespace Microsoft.AspNetCore.Builder
         /// NOTE: Usage of blazor.server.js in your starting page is mandatory.
         /// If using BlazorMobile.Build on your Blazor base project, you should add a link reference to 'server_index.cshtml' in your server project from the base project, and register this file at app start.
         /// See BlazorMobile documentation for more info.
+        /// <param name="useWASM">If 'useWASM' is set to true, the Electron app will fallback to a full WASM engine. This can be great if you need to use some BlazorMobile API that require to run in WASM mode, like side-loading other Blazor packages. However this option will disable full .NET Core / C# debug support during development time, as it will fallback to the WebAssembly debug current implementation</param>
         /// </summary>
-        public static IApplicationBuilder UseBlazorMobileWithElectronNET<TFormsApplication>(this IApplicationBuilder app) where TFormsApplication : BlazorApplication
+        public static IApplicationBuilder UseBlazorMobileWithElectronNET<TFormsApplication>(this IApplicationBuilder app, bool useWASM) where TFormsApplication : BlazorApplication
         {
             if (!BlazorMobileService.IsInitCalled())
             {
                 throw new InvalidOperationException($"BlazorMobileService.Init() method should be called before calling {nameof(UseBlazorMobileWithElectronNET)}");
             }
 
-            ContextHelper.SetElectronNETUsage(true);
+            ContextHelper.SetElectronNETUsage(true, useWASM);
 
             PlatformHelper.SetIsElectronActive(() => HybridSupport.IsElectronActive);
 

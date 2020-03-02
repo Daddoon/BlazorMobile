@@ -1,6 +1,7 @@
 ﻿using BlazorMobile.Common;
 using BlazorMobile.InteropApp.Common.Interfaces;
 using BlazorMobile.InteropApp.Services;
+using BlazorMobile.Services;
 using System;
 using System.Collections.Generic;
 using System.Text;
@@ -45,6 +46,15 @@ namespace BlazorMobile.InteropApp.Services
         public Task TriggerJSInvokableTest()
         {
             MainPage.webview.CallJSInvokableMethod("BlazorMobile.InteropBlazorApp", "InvokableMethodTest", "My invoked string");
+            return Task.CompletedTask;
+        }
+
+        public Task SwitchToAnotherAppPackage()
+        {
+            var assemblyService = DependencyService.Get<IAssemblyService>();
+
+            WebApplicationFactory.LoadPackageFromAssembly(assemblyService.GetAppPackageAssembly(), "Package.BlazorMobile.InteropBlazorApp.AnotherApp.zip");
+
             return Task.CompletedTask;
         }
     }

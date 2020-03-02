@@ -18,6 +18,8 @@
 <button class="btn btn-primary" @onclick="PostMessageTestLocal">Local PostMessage Test With String</button>
 <br />
 <button class="btn btn-primary" @onclick="CallJSInvokableMethodTest">Remote CallJSInvokableMethod Test</button>
+<br /><br />
+<button class="btn btn-primary" @onclick="SwitchToAnotherAppPackage">Switch current app package to 'AnotherApp' package</button>
 
 @code {
     int currentCount = 0;
@@ -128,5 +130,20 @@
     {
         BlazorMobileService.MessageUnsubscribe<string>("PostMessageTest", OnMessageReceived);
         BlazorMobileService.MessageUnsubscribe<bool>("PostMessageTest", OnMessageReceivedBoolean);
+    }
+
+    async void SwitchToAnotherAppPackage()
+    {
+        XamarinBridgeGlobal = XamarinBridge;
+
+        try
+        {
+            await XamarinBridge.SwitchToAnotherAppPackage();
+        }
+        catch (Exception ex)
+        {
+            await XamarinBridge.DisplayAlert("SwitchToAnotherAppPackage", $"{ex.Message}", "OK");
+            Console.WriteLine($"{ex.Message}");
+        }
     }
 }

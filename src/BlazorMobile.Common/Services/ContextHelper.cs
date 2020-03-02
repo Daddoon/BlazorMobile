@@ -32,15 +32,23 @@ namespace BlazorMobile.Common.Services
 
         private static bool _isUsingElectron = false;
 
+        private static bool _isUsingWASM = true;
+
         /// <summary>
         /// Flag BlazorMobile common assembly as using ElectronNET
         /// This is mainly a bridge of internals in order to notify BlazorMobile main assembly that it should behave
         /// like on ElectronNET too.
         /// </summary>
         /// <param name="electronUsage"></param>
-        public static void SetElectronNETUsage(bool electronUsage)
+        public static void SetElectronNETUsage(bool electronUsage, bool useWasm)
         {
             _isUsingElectron = electronUsage;
+            _isUsingWASM = useWasm;
+        }
+
+        public static bool IsUsingWASM()
+        {
+            return _isUsingWASM;
         }
 
         public static bool IsBlazorMobile()
