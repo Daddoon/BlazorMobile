@@ -20,16 +20,22 @@ namespace BlazorMobile.Build.Core
         {
             List<string> rootFiles = new List<string>();
 
-            rootFiles.AddRange(Directory.GetFiles(workingDir, "*.cs", SearchOption.TopDirectoryOnly));
+            //In order to avoid some locking issue while fetching existing directories through obj or bin
+            //with the Directory.GetDirectories API, we fetch some directories data separately
 
-            var directories = Directory.GetDirectories(workingDir, "*", SearchOption.AllDirectories)
-                .Where(p => !p.Contains("obj", StringComparison.OrdinalIgnoreCase)
-                && !p.Contains("bin", StringComparison.OrdinalIgnoreCase));
+            //If we were respecting some project integrity, we would try to only exclude the real
+            //intermediate output path and real output folder. Instead we just ignore all directories
+            //content  where the folder is called "obj" or "bin".
 
-            foreach (var d in directories)
-            {
-                rootFiles.AddRange(Directory.GetFiles(d, "*.cs", SearchOption.TopDirectoryOnly));
-            }
+            //TODO: Scan csproj files instead and resolve from project files the correct variable values
+
+            rootFiles.AddRange(DirectoryHelper.GetFiles(workingDir,
+                "*.cs",
+                new List<string>()
+                {
+                    "obj",
+                    "bin"
+                }));
 
             return FilterEligibleFiles(rootFiles);
         }
