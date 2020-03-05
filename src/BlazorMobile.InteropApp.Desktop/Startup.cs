@@ -15,14 +15,22 @@ using Xamarin.Forms;
 using System.Threading;
 using System.IO.IsolatedStorage;
 using ElectronNET.API.Entities;
+using BlazorMobile.Services;
+using BlazorMobile.InteropApp.AppPackage;
+using BlazorMobile.InteropApp.Services;
+using BlazorMobile.InteropApp.Desktop.Services;
+using BlazorMobile.ElectronNET.Services;
 
 namespace BlazorMobile.InteropApp.Desktop
 {
     public class Startup
     {
+        private bool useWASM = false;
+
         public Startup(IConfiguration configuration)
         {
             Configuration = configuration;
+            useWASM = (bool)Configuration.GetValue<bool>("UseWasmEngine");
         }
 
         public IConfiguration Configuration { get; }
@@ -61,37 +69,53 @@ namespace BlazorMobile.InteropApp.Desktop
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
         public void Configure(IApplicationBuilder app, IWebHostEnvironment env)
         {
-            app.UseResponseCompression();
-
-            if (env.IsDevelopment())
+            if (!useWASM)
             {
-                app.UseDeveloperExceptionPage();
-                app.UseBlazorDebugging();
+                app.UseResponseCompression();
+
+                if (env.IsDevelopment())
+                {
+                    app.UseDeveloperExceptionPage();
+                    app.UseBlazorDebugging();
+                }
+                else
+                {
+                    app.UseExceptionHandler("/Home/Error");
+                }
+
+                app.UseClientSideBlazorFiles<InteropBlazorApp.Program>();
+
+                app.UseStaticFiles();
+                app.UseRouting();
+
+                app.UseEndpoints(endpoints =>
+                {
+                    endpoints.MapBlazorHub();
+                    endpoints.MapBlazorMobileRequestValidator();
+                    endpoints.MapFallbackToPage("/server_index");
+                });
+
+                //Initialize Blazor app from .NET Core
+                BlazorMobileService.Init((bool success) =>
+                {
+                    Console.WriteLine($"Initialization success: {success}");
+                    Console.WriteLine("Device is: " + BlazorDevice.RuntimePlatform);
+                });
+
             }
-            else
+
+            app.UseBlazorMobileWithElectronNET<App>(useWASM);
+
+            //Theses line must be registered after 'UseBlazorMobileWithElectronNET' as it internally call Xamarin.Forms.Init()
+            if (useWASM)
             {
-                app.UseExceptionHandler("/Home/Error");
+                Xamarin.Forms.DependencyService.Register<IAssemblyService, AssemblyService>();
+
+                BlazorWebViewService.Init();
+
+                //Register our Blazor app package
+                WebApplicationFactory.RegisterAppStreamResolver(AppPackageHelper.ResolveAppPackageStream);
             }
-
-            app.UseClientSideBlazorFiles<InteropBlazorApp.Program>();
-
-            app.UseStaticFiles();
-            app.UseRouting();
-
-            app.UseEndpoints(endpoints =>
-            {
-                endpoints.MapBlazorHub();
-                endpoints.MapBlazorMobileRequestValidator();
-                endpoints.MapFallbackToPage("/server_index");
-            });
-
-            BlazorMobileService.Init((bool success) =>
-            {
-                Console.WriteLine($"Initialization success: {success}");
-                Console.WriteLine("Device is: " + BlazorDevice.RuntimePlatform);
-            });
-
-            app.UseBlazorMobileWithElectronNET<App>(true);
 
             Forms.ConfigureBrowserWindow(new BrowserWindowOptions()
             {

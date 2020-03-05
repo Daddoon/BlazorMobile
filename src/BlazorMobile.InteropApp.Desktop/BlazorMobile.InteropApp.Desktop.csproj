@@ -20,6 +20,7 @@
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\BlazorMobile.ElectronNET\BlazorMobile.ElectronNET.csproj" />
+    <ProjectReference Include="..\BlazorMobile.InteropApp.AppPackage\BlazorMobile.InteropApp.AppPackage.csproj" />
     <ProjectReference Include="..\BlazorMobile.InteropApp\BlazorMobile.InteropApp.csproj" />
     <ProjectReference Include="..\BlazorMobile.InteropBlazorApp\BlazorMobile.InteropBlazorApp.csproj" />
   </ItemGroup>

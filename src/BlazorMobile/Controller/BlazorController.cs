@@ -1,4 +1,5 @@
-﻿using BlazorMobile.Components;
+﻿using BlazorMobile.Common.Metadata;
+using BlazorMobile.Components;
 using BlazorMobile.Helper;
 using BlazorMobile.Interop;
 using BlazorMobile.Services;
@@ -20,7 +21,7 @@ namespace BlazorMobile.Controller
         {
         }
 
-        public async Task<bool> ValidateRequest(string webextensionId)
+        private async Task<bool> ValidateRequestAndroid(string webextensionId)
         {
             string cancel = "false";
 
@@ -56,6 +57,51 @@ namespace BlazorMobile.Controller
             return true;
         }
 
+        private async Task<bool> ValidateRequestElectronWASM()
+        {
+            string uri = this.Request.QueryString.Get("uri");
+            string referrer = this.Request.QueryString.Get("referrer");
+
+            IWebResponse response = new EmbedIOWebResponse(this.Request, this.Response);
+            response.SetEncoding("UTF-8");
+            response.AddResponseHeader("Cache-Control", "no-cache");
+            response.SetReasonPhrase("OK");
+            response.SetMimeType("text/plain");
+
+            if (!string.IsNullOrEmpty(uri) && !string.IsNullOrEmpty(referrer))
+            {
+                var args = new WebNavigatingEventArgs(
+                WebNavigationEvent.NewPage,
+                new UrlWebViewSource() { Url = referrer },
+                uri);
+
+                //This is not entirely true as we would only compare the current BlazorWebview
+                //but it must be only one executed btw
+                foreach (var webIdentity in WebViewHelper.GetAllWebViewIdentities())
+                {
+                    var webview = webIdentity as IBlazorWebView;
+                    webview.SendNavigating(args);
+
+                    if (args.Cancel)
+                    {
+                        break;
+                    }
+                }
+
+                if (args.Cancel)
+                    response.SetStatutCode(401);
+                else
+                    response.SetStatutCode(200);
+            }
+            else
+            {
+                response.SetStatutCode(200);
+            }
+
+            await response.SetDataAsync(new MemoryStream(Encoding.UTF8.GetBytes("OK")));
+            return true;
+        }
+
         [WebApiHandler(HttpVerbs.Get, @"^(?!\/contextBridge.*$).*")]
         public async Task<bool> BlazorAppRessources()
         {
@@ -67,7 +113,11 @@ namespace BlazorMobile.Controller
                 string webextensionId = this.Request.Headers.Get("BlazorMobile-Validator");
                 if (!string.IsNullOrEmpty(webextensionId))
                 {
-                    return await ValidateRequest(webextensionId);
+                    return await ValidateRequestAndroid(webextensionId);
+                }
+                else if (this.Request.Url.AbsolutePath.Equals(MetadataConsts.ElectronBlazorMobileRequestValidationPath, StringComparison.OrdinalIgnoreCase))
+                {
+                    return await ValidateRequestElectronWASM();
                 }
                 else
                 {

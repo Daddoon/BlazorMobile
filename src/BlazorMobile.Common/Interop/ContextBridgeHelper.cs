@@ -32,10 +32,10 @@ namespace BlazorMobile.Interop
         }
 
         private const string MainResourceFile = "contextbridge.js";
-        private const string ElectronNETResourceFile = "blazormobile.electron.js";
+        private const string BlazorXamarinResourceFile = "blazormobile.xamarin.js";
 
 
-        public static string GetInjectableJavascript(bool isAnonymousAutoEvalMethod = true)
+        public static string GetContextBridgeJavascript()
         {
             StringBuilder sb = new StringBuilder();
 
@@ -43,20 +43,12 @@ namespace BlazorMobile.Interop
             sb.AppendLine();
 
             sb.AppendLine();
-            var content = sb.ToString();
-
-
-            if (!isAnonymousAutoEvalMethod)
-                return content;
-
-            content = $"(function() {{ {content} }})();";
-
-            return content;
+            return sb.ToString();
         }
 
-        public static string GetElectronNETJavascript()
+        public static string GetBlazorXamarinJavascript()
         {
-            return GetFileContent(ElectronNETResourceFile);
+            return GetFileContent(BlazorXamarinResourceFile);
         }
     }
 }

@@ -23,7 +23,7 @@ namespace Microsoft.AspNetCore.Builder
         /// </summary>
         public static IApplicationBuilder UseBlazorMobileWithElectronNET<TFormsApplication>(this IApplicationBuilder app, bool useWASM) where TFormsApplication : BlazorApplication
         {
-            if (!BlazorMobileService.IsInitCalled())
+            if (!useWASM && !BlazorMobileService.IsInitCalled())
             {
                 throw new InvalidOperationException($"BlazorMobileService.Init() method should be called before calling {nameof(UseBlazorMobileWithElectronNET)}");
             }
@@ -32,8 +32,12 @@ namespace Microsoft.AspNetCore.Builder
 
             PlatformHelper.SetIsElectronActive(() => HybridSupport.IsElectronActive);
 
-            //Bridging Native receive method in memory on ElectronNET implementation
-            ContextHelper.SetNativeReceive(ContextBridge.Receive);
+            if (!useWASM)
+            {
+                //Bridging Native receive method in memory on ElectronNET implementation
+                ContextHelper.SetNativeReceive(ContextBridge.Receive);
+            }
+
             BlazorWebViewFactory.SetInternalElectronBlazorWebView(typeof(ElectronBlazorWebView));
 
             app.UseStaticFiles();

@@ -17,7 +17,7 @@ namespace BlazorMobile.Common.Services
         /// <returns></returns>
         public static ExecutingContext GetExecutingContext()
         {
-            if (IsBlazorMobile())
+            if (IsBlazorMobile() || (IsElectronNET() && IsUsingWASM()))
             {
                 return ExecutingContext.Blazor;
             }
@@ -40,7 +40,8 @@ namespace BlazorMobile.Common.Services
         /// like on ElectronNET too.
         /// </summary>
         /// <param name="electronUsage"></param>
-        public static void SetElectronNETUsage(bool electronUsage, bool useWasm)
+        /// <param name="useWasm"></param>
+        internal static void SetElectronNETUsage(bool electronUsage, bool useWasm)
         {
             _isUsingElectron = electronUsage;
             _isUsingWASM = useWasm;

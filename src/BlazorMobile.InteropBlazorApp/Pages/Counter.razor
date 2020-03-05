@@ -2,6 +2,7 @@
 @using BlazorMobile.Common
 @using BlazorMobile.InteropApp.Common.Interfaces
 @using BlazorMobile.Common.Services
+@using BlazorMobile.InteropBlazorApp.Helpers 
 @inject IXamarinBridge XamarinBridge
 @implements IDisposable
 
@@ -23,8 +24,6 @@
 
 @code {
     int currentCount = 0;
-
-    private static IXamarinBridge XamarinBridgeGlobal = null;
 
     void IncrementCount()
     {
@@ -108,12 +107,12 @@
     [JSInvokable]
     public static void InvokableMethodTest(string myMessage)
     {
-        XamarinBridgeGlobal.DisplayAlert("JSInvoke received!", myMessage, "OK");
+        ServicesHelper.GetXamarinBridge().DisplayAlert("JSInvoke received!", myMessage, "OK");
     }
 
     async void CallJSInvokableMethodTest()
     {
-        XamarinBridgeGlobal = XamarinBridge;
+        ServicesHelper.SetXamarinBridge(XamarinBridge);
 
         try
         {
@@ -134,7 +133,7 @@
 
     async void SwitchToAnotherAppPackage()
     {
-        XamarinBridgeGlobal = XamarinBridge;
+        ServicesHelper.SetXamarinBridge(XamarinBridge);
 
         try
         {
