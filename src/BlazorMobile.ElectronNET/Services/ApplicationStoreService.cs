@@ -14,6 +14,11 @@ namespace BlazorMobile.ElectronNET.Services
             throw new NotImplementedException();
         }
 
+        public Task<bool> AddPackageAsync(string name, Stream content)
+        {
+            throw new NotImplementedException();
+        }
+
         public Func<Stream> GetPackageStreamResolver(string name)
         {
             throw new NotImplementedException();

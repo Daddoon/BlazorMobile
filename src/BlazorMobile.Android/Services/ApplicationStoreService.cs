@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using System.IO;
 using System.Linq;
 using System.Text;
-
+using System.Threading.Tasks;
 using Android.App;
 using Android.Content;
 using Android.OS;
@@ -17,6 +17,11 @@ namespace BlazorMobile.Droid.Services
     public class ApplicationStoreService : IApplicationStoreService
     {
         public bool AddPackage(string name, Stream content)
+        {
+            throw new NotImplementedException();
+        }
+
+        public Task<bool> AddPackageAsync(string name, Stream content)
         {
             throw new NotImplementedException();
         }

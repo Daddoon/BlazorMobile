@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.IO;
 using System.Text;
+using System.Threading.Tasks;
 
 namespace BlazorMobile.Interop
 {
@@ -13,6 +14,13 @@ namespace BlazorMobile.Interop
         /// <param name="name"></param>
         /// <param name="content"></param>
         bool AddPackage(string name, Stream content);
+
+        /// <summary>
+        /// Add the given Stream as a package in a data store on the device, with the given name
+        /// </summary>
+        /// <param name="name"></param>
+        /// <param name="content"></param>
+        Task<bool> AddPackageAsync(string name, Stream content);
 
         /// <summary>
         /// Remove the package with the given name from the data store of the device
