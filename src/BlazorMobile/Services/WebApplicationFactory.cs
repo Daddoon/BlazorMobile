@@ -77,9 +77,6 @@ namespace BlazorMobile.Services
             NotifyBlazorAppReload();
         }
 
-
-        private static IApplicationStoreService _applicationStoreService;
-
         /// <summary>
         /// Add the given Stream as a package in a data store on the device, with the given name
         /// </summary>
@@ -101,7 +98,7 @@ namespace BlazorMobile.Services
             //Force position to Begin of the Stream
             content.Seek(0, SeekOrigin.Begin);
 
-            return _applicationStoreService.AddPackage(name, content);
+            return GetApplicationStoreService().AddPackage(name, content);
         }
 
         /// <summary>
@@ -117,7 +114,7 @@ namespace BlazorMobile.Services
                 throw new NotImplementedException("This feature is not implemented on ElectronNET with 'useWasm' option set to false");
             }
 
-            return _applicationStoreService.RemovePackage(name);
+            return GetApplicationStoreService().RemovePackage(name);
         }
 
         /// <summary>
@@ -132,7 +129,7 @@ namespace BlazorMobile.Services
                 throw new NotImplementedException("This feature is not implemented on ElectronNET with 'useWasm' option set to false");
             }
 
-            return _applicationStoreService.ListPackages();
+            return GetApplicationStoreService().ListPackages();
         }
 
         /// <summary>
@@ -191,7 +188,7 @@ namespace BlazorMobile.Services
                 throw new NotImplementedException("This feature is not implemented on ElectronNET when the 'useWasm' option is set to false on UseBlazorMobileWithElectronNET method");
             }
 
-            var resolver = _applicationStoreService.GetPackageStreamResolver(name);
+            var resolver = GetApplicationStoreService().GetPackageStreamResolver(name);
             if (resolver == null)
             {
                 ConsoleHelper.WriteError($"{nameof(WebApplicationFactory)}.{nameof(LoadPackage)}: package '{name}' not found");
@@ -690,6 +687,18 @@ namespace BlazorMobile.Services
             RegisterAppStreamResolver(appStreamResolver);
         }
 
+        private static IApplicationStoreService _applicationStoreService;
+
+        internal static IApplicationStoreService GetApplicationStoreService()
+        {
+            if (_applicationStoreService == null)
+            {
+                _applicationStoreService = DependencyService.Get<IApplicationStoreService>();
+            }
+
+            return _applicationStoreService;
+        }
+
         internal static void Init()
         {
             if (_firstCall)
@@ -704,10 +713,6 @@ namespace BlazorMobile.Services
                 }
 
                 BlazorXamarinDeviceService.InitRuntimePlatform();
-
-                //Caching this service, as used on this static class
-                //As the result is per platform, the service is initialized on platform specific code path before this method
-                _applicationStoreService = DependencyService.Get<IApplicationStoreService>();
 
                 _firstCall = false;
             }
