@@ -1,44 +1,43 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.IO;
-using System.Linq;
-using System.Text;
 using System.Threading.Tasks;
-using Android.App;
-using Android.Content;
-using Android.OS;
-using Android.Runtime;
-using Android.Views;
-using Android.Widget;
+using BlazorMobile.Helper;
 using BlazorMobile.Interop;
 
 namespace BlazorMobile.Droid.Services
 {
     public class ApplicationStoreService : IApplicationStoreService
     {
+        public ApplicationStoreService()
+        {
+            string internalStorage = Environment.GetFolderPath(Environment.SpecialFolder.Personal);
+            ApplicationStoreHelper.SetPackageFolder(Path.Combine(internalStorage, Consts.Constants.PackageStoreDirectoryName));
+        }
+
         public bool AddPackage(string name, Stream content)
         {
-            throw new NotImplementedException();
+            return ApplicationStoreHelper.AddPackage(name, content);
         }
 
         public Task<bool> AddPackageAsync(string name, Stream content)
         {
-            throw new NotImplementedException();
+            return ApplicationStoreHelper.AddPackageAsync(name, content);
         }
 
         public Func<Stream> GetPackageStreamResolver(string name)
         {
-            throw new NotImplementedException();
+            return ApplicationStoreHelper.GetPackageStreamResolver(name);
         }
 
         public IEnumerable<string> ListPackages()
         {
-            throw new NotImplementedException();
+            return ApplicationStoreHelper.ListPackages();
         }
 
         public bool RemovePackage(string name)
         {
-            throw new NotImplementedException();
+            return ApplicationStoreHelper.RemovePackage(name);
         }
     }
 }
