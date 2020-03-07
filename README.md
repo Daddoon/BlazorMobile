@@ -44,7 +44,7 @@ Create full C# driven hybrid-apps for iOS, Android, UWP & Desktop with Blazor!
 - [Communication between Blazor & Native](#communication-between-blazor--native)
 - [Validating the Blazor application navigation](#validating-the-blazor-application-navigation)
 - [Device remote debugging & Debugging from NET Core 3.0](#device-remote-debugging--debugging-from-net-core-30)
-- [Loading several or external BlazorMobile apps](#loadingseveralorexternalblazormobileapps)
+- [Loading several or external BlazorMobile apps](#loading-several-or-external-blazormobile-apps)
 - [Android Build size optimization](#android-build-size-optimization)
 - [Electron.NET support with BlazorMobile](#electronnet-support-with-blazormobile)
 
