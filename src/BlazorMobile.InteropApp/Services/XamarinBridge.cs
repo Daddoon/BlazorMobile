@@ -69,6 +69,11 @@ namespace BlazorMobile.InteropApp.Services
 
             string packageStoreName = "alternate_package.zip";
 
+            if (WebApplicationFactory.ListPackages().Contains(packageStoreName))
+            {
+                WebApplicationFactory.RemovePackage(packageStoreName);
+            }
+
             bool addPackageSuccess = WebApplicationFactory.AddPackage(packageStoreName, fakeHttpPackage);
 
             //For debug inspection
@@ -78,7 +83,7 @@ namespace BlazorMobile.InteropApp.Services
 
             Task.Run(async () =>
             {
-                await Task.Delay(5000);
+                await Task.Delay(10000);
                 Device.BeginInvokeOnMainThread(() =>
                 {
                     //Reload regular package

@@ -1,40 +1,47 @@
-﻿using System;
+﻿using BlazorMobile.Common.Helpers;
+using BlazorMobile.Helper;
+using BlazorMobile.Interop;
+using BlazorMobile.Services;
+using System;
 using System.Collections.Generic;
 using System.IO;
 using System.Linq;
-using System.Text;
 using System.Threading.Tasks;
-using BlazorMobile.Interop;
-using Foundation;
-using UIKit;
+using Xamarin.Forms;
 
 namespace BlazorMobile.iOS.Services
 {
     public class ApplicationStoreService : IApplicationStoreService
     {
+        public ApplicationStoreService()
+        {
+            string libraryCache = Environment.GetFolderPath(Environment.SpecialFolder.InternetCache);
+            ApplicationStoreHelper.SetPackageFolder(Path.Combine(libraryCache, Consts.Constants.PackageStoreDirectoryName));
+        }
+
         public bool AddPackage(string name, Stream content)
         {
-            throw new NotImplementedException();
+            return ApplicationStoreHelper.AddPackage(name, content);
         }
 
         public Task<bool> AddPackageAsync(string name, Stream content)
         {
-            throw new NotImplementedException();
+            return ApplicationStoreHelper.AddPackageAsync(name, content);
         }
 
         public Func<Stream> GetPackageStreamResolver(string name)
         {
-            throw new NotImplementedException();
+            return ApplicationStoreHelper.GetPackageStreamResolver(name);
         }
 
         public IEnumerable<string> ListPackages()
         {
-            throw new NotImplementedException();
+            return ApplicationStoreHelper.ListPackages();
         }
 
         public bool RemovePackage(string name)
         {
-            throw new NotImplementedException();
+            return ApplicationStoreHelper.RemovePackage(name);
         }
     }
 }
