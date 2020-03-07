@@ -1,5 +1,6 @@
 ﻿using BlazorMobile.Common.Components;
 using BlazorMobile.Common.Helpers;
+using BlazorMobile.Common.Metadata;
 using BlazorMobile.Common.Services;
 using BlazorMobile.ElectronNET.Services;
 using BlazorMobile.Services;
@@ -17,7 +18,7 @@ namespace BlazorMobile.ElectronNET.Helpers
     {
         public static string GetServiceURI()
         {
-            return WebApplicationFactory.GetBaseURL() + "/BlazorMobileRequest/Index";
+            return WebApplicationFactory.GetBaseURL() + MetadataConsts.ElectronBlazorMobileRequestValidationPath;
         }
 
         public static void InstallOnNavigatingBehavior()

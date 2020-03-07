@@ -1,6 +1,8 @@
-﻿using BlazorMobile.Components;
+﻿using BlazorMobile.Common.Services;
+using BlazorMobile.Components;
 using BlazorMobile.ElectronNET.Components;
 using BlazorMobile.Interop;
+using BlazorMobile.Services;
 using System;
 using System.Collections.Generic;
 using System.Text;
@@ -19,6 +21,11 @@ namespace BlazorMobile.ElectronNET.Services
 
         public string GetBaseURL()
         {
+            if (ContextHelper.IsUsingWASM())
+            {
+                return BlazorMobileWebApplicationPlatform.GetBaseURLInternal();
+            }
+
             if (string.IsNullOrEmpty(_cachedURI))
             {
                 throw new InvalidOperationException("Unable to determine the application BaseURL. On ElectronNET, check that WebApplicationFactory.GetBaseURL method is called after a call to your IBlazorWebView.LaunchBlazorApp method");

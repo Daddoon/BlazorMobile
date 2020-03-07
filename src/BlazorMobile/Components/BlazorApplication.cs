@@ -2,6 +2,7 @@
 using BlazorMobile.Common.Services;
 using BlazorMobile.Interop;
 using BlazorMobile.Services;
+using System.Reflection;
 using System.Threading.Tasks;
 using Xamarin.Forms;
 
@@ -9,14 +10,9 @@ namespace BlazorMobile.Components
 {
     public abstract class BlazorApplication : Application
     {
-        public BlazorApplication(bool isElectron)
-        {
-
-        }
-
         public BlazorApplication()
         {
-            if (ContextHelper.IsElectronNET())
+            if (ContextHelper.IsElectronNET() && !ContextHelper.IsUsingWASM())
             {
                 return;
             }
@@ -32,11 +28,21 @@ namespace BlazorMobile.Components
             {
                 ConsoleHelper.WriteException(ex);
             }
+
+            if (ContextHelper.IsElectronNET() && ContextHelper.IsUsingWASM())
+            {
+                //We must call OnStart by ourselves here are this is not a real Xamarin.Forms driver
+                //Maybe this can be delegated somewhere else.
+                var realType = this.GetType();
+                var _onStartMethod = realType.GetMethod(nameof(OnStart), BindingFlags.Instance | BindingFlags.NonPublic | BindingFlags.Public);
+
+                _onStartMethod.Invoke(this, null);
+            }
         }
 
         protected override void OnStart()
         {
-            if (ContextHelper.IsElectronNET())
+            if (ContextHelper.IsElectronNET() && !ContextHelper.IsUsingWASM())
             {
                 return;
             }
@@ -53,7 +59,7 @@ namespace BlazorMobile.Components
 
         protected override void OnResume()
         {
-            if (ContextHelper.IsElectronNET())
+            if (ContextHelper.IsElectronNET() && !ContextHelper.IsUsingWASM())
             {
                 return;
             }

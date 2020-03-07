@@ -1,5 +1,6 @@
 ﻿using BlazorMobile.InteropApp.AppPackage;
 using BlazorMobile.InteropApp.Services;
+using BlazorMobile.InteropApp.UWP.Services;
 using BlazorMobile.Services;
 using BlazorMobile.UWP.Services;
 using System;
@@ -59,6 +60,8 @@ namespace BlazorMobile.InteropApp.UWP
                 Xamarin.Forms.Forms.Init(e);
 
                 BlazorWebViewService.Init();
+
+                Xamarin.Forms.DependencyService.Register<IAssemblyService, AssemblyService>();
 
                 //Register our Blazor app package
                 WebApplicationFactory.RegisterAppStreamResolver(AppPackageHelper.ResolveAppPackageStream);

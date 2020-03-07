@@ -77,7 +77,21 @@ OF SUCH DAMAGE.
         {
             using (FileStream textfileStream = File.OpenRead(InputFilename))
             {
-                return DetectTextFileEncoding(textfileStream, _defaultHeuristicSampleSize);
+                var result = DetectTextFileEncoding(textfileStream, _defaultHeuristicSampleSize);
+
+                if (result == null)
+                {
+                    //Trying to detect differently
+                    textfileStream.Seek(0, SeekOrigin.Begin);
+                    using (StreamReader reader = new StreamReader(textfileStream))
+                    {
+                        return reader.CurrentEncoding;
+                    }
+                }
+                else
+                {
+                    return result;
+                }
             }
         }
 

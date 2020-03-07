@@ -27,11 +27,11 @@ namespace BlazorMobile.InteropApp
             MainPage = new MainPage();
         }
 
-        protected override void OnStart()
-        {
-            Console.WriteLine("OnStart called");
-            base.OnStart();
-        }
+        //protected override void OnStart()
+        //{
+        //    Console.WriteLine("OnStart called");
+        //    base.OnStart();
+        //}
 
         protected override void OnSleep()
         {

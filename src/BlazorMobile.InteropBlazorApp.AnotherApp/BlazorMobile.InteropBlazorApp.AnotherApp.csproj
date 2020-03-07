@@ -1,0 +1,24 @@
+<Project Sdk="Microsoft.NET.Sdk.Web">
+
+  <PropertyGroup>
+    <TargetFramework>netstandard2.1</TargetFramework>
+    <RazorLangVersion>3.0</RazorLangVersion>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <Content Remove="server_index.cshtml" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <None Include="server_index.cshtml" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <PackageReference Include="BlazorMobile.Build" Version="3.2.2-preview1.20073.1" />
+    <PackageReference Include="Microsoft.AspNetCore.Blazor" Version="3.2.0-preview1.20073.1" />
+    <PackageReference Include="Microsoft.AspNetCore.Blazor.Build" Version="3.2.0-preview1.20073.1" PrivateAssets="all" />
+    <PackageReference Include="Microsoft.AspNetCore.Blazor.DevServer" Version="3.2.0-preview1.20073.1" PrivateAssets="all" />
+    <PackageReference Include="Microsoft.AspNetCore.Blazor.HttpClient" Version="3.2.0-preview1.20073.1" />
+  </ItemGroup>
+
+</Project>

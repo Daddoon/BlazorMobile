@@ -19,5 +19,7 @@ namespace BlazorMobile.InteropApp.Common.Interfaces
         Task<List<string>> DisplayAlert(string title, string msg, string cancel);
 
         Task CallFaultyTask();
+
+        Task SwitchToAnotherAppPackage();
     }
 }

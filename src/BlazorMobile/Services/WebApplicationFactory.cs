@@ -1,15 +1,18 @@
-﻿using BlazorMobile.Common.Helpers;
+﻿using BlazorMobile.Common;
+using BlazorMobile.Common.Helpers;
 using BlazorMobile.Common.Interfaces;
 using BlazorMobile.Common.Services;
 using BlazorMobile.Consts;
 using BlazorMobile.Controller;
 using BlazorMobile.Interop;
 using System;
+using System.Collections.Generic;
 using System.IO;
 using System.IO.Compression;
 using System.Net;
 using System.Net.Sockets;
 using System.Net.WebSockets;
+using System.Reflection;
 using System.Runtime.CompilerServices;
 using System.Text;
 using System.Threading;
@@ -42,6 +45,93 @@ namespace BlazorMobile.Services
 
         private static Func<Stream> _appResolver = null;
 
+        private static void InvalidateCachedZipPackage()
+        {
+            if (_zipArchive != null)
+            {
+                try
+                {
+                    _zipArchive.Dispose();
+                }
+                catch (Exception)
+                {
+                }
+            }
+
+            _zipArchive = null;
+        }
+
+         /// <summary>
+        /// Reload the current application.
+        /// 
+        /// This option may be useful if you want to side-load another package
+        /// of your own instead of the one shipped in your app by default.
+        /// 
+        /// If this is your requirement, you must update the delegate method used by <see cref="RegisterAppStreamResolver(Func{Stream})"/>
+        /// pointing to your new package, before calling this method.
+        /// 
+        /// NOTE: This implementation will reload all <see cref="BlazorMobile.Components.IBlazorWebView"/> instances if you use more than one instance.
+        /// </summary>
+        public static void ReloadApplication()
+        {
+            NotifyBlazorAppReload();
+        }
+
+        /// <summary>
+        /// Add the given Stream as a package in a data store on the device, with the given name
+        /// </summary>
+        /// <param name="name"></param>
+        /// <param name="content"></param>
+        public static bool AddPackage(string name, Stream content)
+        {
+            if (content == null)
+            {
+                throw new NullReferenceException($"{nameof(content)} cannot be null");
+            }
+
+            //TODO: Remove when ElectronNET is supported with a WASM behavior too
+            if (BlazorDevice.IsElectronNET() && !BlazorDevice.IsUsingWASM())
+            {
+                throw new NotImplementedException("This feature is not implemented on ElectronNET with 'useWasm' option set to false");
+            }
+
+            //Force position to Begin of the Stream
+            content.Seek(0, SeekOrigin.Begin);
+
+            return GetApplicationStoreService().AddPackage(name, content);
+        }
+
+        /// <summary>
+        /// Remove the package with the given name from the data store of the device
+        /// </summary>
+        /// <param name="name"></param>
+        /// <returns></returns>
+        public static bool RemovePackage(string name)
+        {
+            //TODO: Remove when ElectronNET is supported with a WASM behavior too
+            if (BlazorDevice.IsElectronNET() && !BlazorDevice.IsUsingWASM())
+            {
+                throw new NotImplementedException("This feature is not implemented on ElectronNET with 'useWasm' option set to false");
+            }
+
+            return GetApplicationStoreService().RemovePackage(name);
+        }
+
+        /// <summary>
+        /// List available packages in the data store of the device
+        /// </summary>
+        /// <returns></returns>
+        public static IEnumerable<string> ListPackages()
+        {
+            //TODO: Remove when ElectronNET is supported with a WASM behavior too
+            if (BlazorDevice.IsElectronNET() && !BlazorDevice.IsUsingWASM())
+            {
+                throw new NotImplementedException("This feature is not implemented on ElectronNET with 'useWasm' option set to false");
+            }
+
+            return GetApplicationStoreService().ListPackages();
+        }
+
         /// <summary>
         /// Register how you get the Stream to your Blazor zipped application
         /// <para>For a performant unique entry point, getting a Stream from an</para>
@@ -51,6 +141,9 @@ namespace BlazorMobile.Services
         /// </summary>
         public static void RegisterAppStreamResolver(Func<Stream> resolver)
         {
+            //If we are registering a new stream, we must invalidate previous ZipFile entry for package
+            InvalidateCachedZipPackage();
+
             _appResolver = resolver;
 
             //Calling Init if not yet done. This will be a no-op if already called
@@ -61,6 +154,139 @@ namespace BlazorMobile.Services
             //As iOS and UWP doesn't need a specific initialize at the moment but we may need
             //to call a generic init, the generic init is call in RegisterAppStream
             Init();
+        }
+
+        private static string _currentLoadedApplicationStorePackage = null;
+
+        /// <summary>
+        /// Return the current loaded application store package name.
+        /// Return null if the package is not loaded from the store
+        /// </summary>
+        /// <returns></returns>
+        internal static string GetCurrentLoadedApplicationStorePackageName()
+        {
+            return _currentLoadedApplicationStorePackage;
+        }
+
+        /// <summary>
+        /// Load an app package with the given name, stored on the device.
+        /// This is a shorthand on calling yourself <see cref="RegisterAppStreamResolver"/> and <see cref="ReloadApplication"/>
+        /// as the loading is managed by all the entries you get through <see cref="AddPackage(string, Stream)"/>, <see cref="RemovePackage(string)"/>, <see cref="ListPackages"/>.
+        /// </summary>
+        /// <param name="name">The package to load</param>
+        /// <returns></returns>
+        public static bool LoadPackage(string name)
+        {
+            if (string.IsNullOrEmpty(name))
+            {
+                throw new NullReferenceException($"{nameof(name)} cannot be null");
+            }
+
+            //TODO: Remove when ElectronNET is supported with a WASM behavior too
+            if (BlazorDevice.IsElectronNET() && !BlazorDevice.IsUsingWASM())
+            {
+                throw new NotImplementedException("This feature is not implemented on ElectronNET when the 'useWasm' option is set to false on UseBlazorMobileWithElectronNET method");
+            }
+
+            var resolver = GetApplicationStoreService().GetPackageStreamResolver(name);
+            if (resolver == null)
+            {
+                ConsoleHelper.WriteError($"{nameof(WebApplicationFactory)}.{nameof(LoadPackage)}: package '{name}' not found");
+                return false;
+            }
+
+            _currentLoadedApplicationStorePackage = name;
+
+            RegisterAppStreamResolver(resolver);
+            ReloadApplication();
+
+            return true;
+        }
+
+        private static Stream _appStream = null;
+
+        /// <summary>
+        /// Load an app package from the given Stream object. You are responsible for your Stream management.
+        /// This mean that things may behave incorrectly if you close or dispose the stream. The given stream will
+        /// be automatically disposed if you load or register another package instead.
+        /// </summary>
+        /// <param name="appStream">The package to load as a Stream</param>
+        /// <returns></returns>
+        public static bool LoadPackageFromStream(Stream appStream)
+        {
+            if (appStream == null)
+            {
+                throw new NullReferenceException($"{nameof(appStream)} cannot be null");
+            }
+
+            _appStream = appStream;
+
+            Func<Stream> resolver = () => _appStream;
+
+            if (resolver == null)
+                return false;
+
+            _currentLoadedApplicationStorePackage = null;
+
+            RegisterAppStreamResolver(resolver);
+            ReloadApplication();
+
+            return true;
+        }
+
+        /// <summary>
+        /// Load an app package with the given package assembly path if you have stored it the assembly as a static resource.
+        /// This is the default mode used at start when shipping your base application from BlazorMobile template, but you can
+        /// extend this in order to load different packages at your native app startup.
+        /// </summary>
+        /// <param name="packageAssembly">The assembly where your Blazor package is stored.
+        /// TIPS: If you know a type stored in this assembly, you may resolve the assembly object with 'typeof(YourType).Assembly'</param>
+        /// <param name="packagePath">The relative path where the Blazor package is stored in the assembly</param>
+        /// <returns></returns>
+        public static bool LoadPackageFromAssembly(Assembly packageAssembly, string packagePath)
+        {
+            if (packageAssembly == null)
+            {
+                throw new NullReferenceException($"{nameof(packageAssembly)} cannot be null");
+            }
+
+            if (string.IsNullOrEmpty(packagePath))
+            {
+                throw new NullReferenceException($"{nameof(packagePath)} cannot be null or empty");
+            }
+
+            Func<Stream> resolver = () => packageAssembly.GetManifestResourceStream($"{packageAssembly.GetName().Name}.{packagePath}");
+
+            if (resolver == null)
+                return false;
+
+            Stream streamChecking = null;
+
+            try
+            {
+                streamChecking = resolver.Invoke();
+                if (streamChecking == null)
+                    return false;
+            }
+            catch (Exception ex)
+            {
+                ConsoleHelper.WriteException(ex);
+                if (streamChecking != null)
+                {
+                    streamChecking.Dispose();
+                }
+
+                return false;
+            }
+
+            streamChecking.Dispose();
+
+            _currentLoadedApplicationStorePackage = null;
+
+            RegisterAppStreamResolver(resolver);
+            ReloadApplication();
+
+            return true;
         }
 
         private static ZipArchive _zipArchive = null;
@@ -82,7 +308,7 @@ namespace BlazorMobile.Services
         {
             if (_appResolver == null)
             {
-                throw new NullReferenceException("The Blazor app resolver was not set! Please call WebApplicationFactory.RegisterAppStreamResolver method before launching your app");
+                throw new NullReferenceException($"The Blazor package was not set! Please call {nameof(WebApplicationFactory)}.{nameof(WebApplicationFactory.RegisterAppStreamResolver)} method before launching your app");
             }
 
             //Specific use cases here !
@@ -459,6 +685,18 @@ namespace BlazorMobile.Services
         {
             Init();
             RegisterAppStreamResolver(appStreamResolver);
+        }
+
+        private static IApplicationStoreService _applicationStoreService;
+
+        internal static IApplicationStoreService GetApplicationStoreService()
+        {
+            if (_applicationStoreService == null)
+            {
+                _applicationStoreService = DependencyService.Get<IApplicationStoreService>();
+            }
+
+            return _applicationStoreService;
         }
 
         internal static void Init()

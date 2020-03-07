@@ -88,6 +88,7 @@ namespace BlazorMobile.Droid.Services
             //AndroidBug5497WorkaroundForXamarinAndroid.assistActivity(activity);
 
             DependencyService.Register<IWebViewService, WebViewService>();
+            DependencyService.Register<IApplicationStoreService, ApplicationStoreService>();
 
             //Instanciate GeckoView type in BlazorMobile assemnly for Android
             BlazorWebViewFactory.SetInternalBlazorGeckoViewType(typeof(BlazorGeckoView));
