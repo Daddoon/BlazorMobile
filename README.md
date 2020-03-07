@@ -97,7 +97,7 @@ The main differences / advantages of BlazorMobile are:
 First install the template model with the following command from a command prompt:
 
 ```console
-dotnet new -i BlazorMobile.Templates::3.2.0-preview1.20073.1
+dotnet new -i BlazorMobile.Templates::3.2.2-preview1.20073.1
 ```
 
 Then go the folder where you want your project to be created, and from a command prompt type the following command, and of course replace **MyProjectName** to your desired project name:
@@ -109,7 +109,7 @@ dotnet new blazormobile -n MyProjectName
 If you plan to also use the Desktop project using Electron.NET, you must first execute this command in order to install the Electron tool on your system:
 
 ```console
-dotnet tool install ElectronNET.CLI -g
+dotnet tool install ElectronNET.CLI --version 5.30.1 -g
 ```
 
 Then from your Desktop project directory, execute the following command:
