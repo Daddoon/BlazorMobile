@@ -2,6 +2,7 @@
 @using BlazorMobile.Common
 @using BlazorMobile.InteropApp.Common.Interfaces
 @using BlazorMobile.Common.Services
+@using BlazorMobile.InteropBlazorApp.Helpers 
 @inject IXamarinBridge XamarinBridge
 @implements IDisposable
 
@@ -18,11 +19,11 @@
 <button class="btn btn-primary" @onclick="PostMessageTestLocal">Local PostMessage Test With String</button>
 <br />
 <button class="btn btn-primary" @onclick="CallJSInvokableMethodTest">Remote CallJSInvokableMethod Test</button>
+<br /><br />
+<button class="btn btn-primary" @onclick="SwitchToAnotherAppPackage">Switch current app package to 'AnotherApp' package</button>
 
 @code {
     int currentCount = 0;
-
-    private static IXamarinBridge XamarinBridgeGlobal = null;
 
     void IncrementCount()
     {
@@ -106,12 +107,12 @@
     [JSInvokable]
     public static void InvokableMethodTest(string myMessage)
     {
-        XamarinBridgeGlobal.DisplayAlert("JSInvoke received!", myMessage, "OK");
+        ServicesHelper.GetXamarinBridge().DisplayAlert("JSInvoke received!", myMessage, "OK");
     }
 
     async void CallJSInvokableMethodTest()
     {
-        XamarinBridgeGlobal = XamarinBridge;
+        ServicesHelper.SetXamarinBridge(XamarinBridge);
 
         try
         {
@@ -128,5 +129,20 @@
     {
         BlazorMobileService.MessageUnsubscribe<string>("PostMessageTest", OnMessageReceived);
         BlazorMobileService.MessageUnsubscribe<bool>("PostMessageTest", OnMessageReceivedBoolean);
+    }
+
+    async void SwitchToAnotherAppPackage()
+    {
+        ServicesHelper.SetXamarinBridge(XamarinBridge);
+
+        try
+        {
+            await XamarinBridge.SwitchToAnotherAppPackage();
+        }
+        catch (Exception ex)
+        {
+            await XamarinBridge.DisplayAlert("SwitchToAnotherAppPackage", $"{ex.Message}", "OK");
+            Console.WriteLine($"{ex.Message}");
+        }
     }
 }

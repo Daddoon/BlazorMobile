@@ -52,10 +52,13 @@ namespace BlazorMobile.ElectronNET.Components
         ~ElectronBlazorWebView()
         {
             WebViewHelper.UnregisterWebView(this);
+            WebApplicationFactory.BlazorAppNeedReload -= ReloadBlazorAppEvent;
         }
 
         public ElectronBlazorWebView()
         {
+            WebApplicationFactory.BlazorAppNeedReload += ReloadBlazorAppEvent;
+
             _identity = WebViewHelper.GenerateWebViewIdentity();
 
             webAppPlaftorm = DependencyService.Get<IWebApplicationPlatform>();
@@ -65,9 +68,33 @@ namespace BlazorMobile.ElectronNET.Components
 
         private const string noop = ": no-op on ElectronNET";
 
-        public WebViewSource Source { get => throw new NotImplementedException(); set => throw new NotImplementedException(); }
-        public bool CanGoBack { get => throw new NotImplementedException(); set => throw new NotImplementedException(); }
-        public bool CanGoForward { get => throw new NotImplementedException(); set => throw new NotImplementedException(); }
+        private WebViewSource _Source = null;
+
+        public WebViewSource Source
+        {
+            get
+            {
+                return _Source;
+            }
+            set
+            {
+                _Source = value;
+                //We must force a URL change in ElectronNET now
+                if (_browserWindow != null)
+                {
+                    if (Source is UrlWebViewSource)
+                    {
+                        _browserWindow.LoadURL(((UrlWebViewSource)_Source).Url);
+                    }
+                    else
+                    {
+                        throw new NotSupportedException($"Only {nameof(UrlWebViewSource)} type is supported on ElectronNET for {nameof(IBlazorWebView)}");
+                    }
+                }
+            }
+        }
+        public bool CanGoBack { get; set; }
+        public bool CanGoForward { get; set; }
 
         public event EventHandler<WebNavigatedEventArgs> Navigated;
         public event EventHandler<WebNavigatingEventArgs> Navigating;
@@ -159,7 +186,15 @@ namespace BlazorMobile.ElectronNET.Components
             //This must be registered before window creation
             ((IWebViewIdentity)(this)).OnBlazorAppLaunched += ElectronBlazorWebView_OnBlazorAppLaunched;
 
-            _browserWindow = await Electron.WindowManager.CreateWindowAsync(Forms.GetDefaultBrowserWindowOptions());
+            if (ContextHelper.IsUsingWASM())
+            {
+                //If using WASM, we must inherit from the BlazorMobile URI behavior
+                _browserWindow = await Electron.WindowManager.CreateWindowAsync(Forms.GetDefaultBrowserWindowOptions(), WebApplicationFactory.GetBaseURL());
+            }
+            else
+            {
+                _browserWindow = await Electron.WindowManager.CreateWindowAsync(Forms.GetDefaultBrowserWindowOptions());
+            }
 
             return _browserWindow;
         }
@@ -207,6 +242,11 @@ namespace BlazorMobile.ElectronNET.Components
             });
         }
 
+        private void ReloadBlazorAppEvent(object sender, EventArgs e)
+        {
+            WebViewHelper.InternalLaunchBlazorApp(this, true);
+        }
+
         public void LaunchBlazorApp()
         {
             if (_initialized)
@@ -243,12 +283,26 @@ namespace BlazorMobile.ElectronNET.Components
 
         public void CallJSInvokableMethod(string assembly,string method, params object[] args)
         {
-            BlazorMobileService.SendMessageToJSInvokableMethod(assembly, method, args);
+            if (ContextHelper.IsUsingWASM())
+            {
+                WebViewHelper.CallJSInvokableMethod(assembly, method, args);
+            }
+            else
+            {
+                BlazorMobileService.SendMessageToJSInvokableMethod(assembly, method, args);
+            }
         }
 
         public void PostMessage<TArgs>(string messageName, TArgs args)
         {
-            BlazorMobileService.SendMessageToSubscribers(messageName, typeof(TArgs), new object[] { args });
+            if (ContextHelper.IsUsingWASM())
+            {
+                WebViewHelper.PostMessage(messageName, typeof(TArgs), new object[] { args });
+            }
+            else
+            {
+                BlazorMobileService.SendMessageToSubscribers(messageName, typeof(TArgs), new object[] { args });
+            }
         }
     }
 }

@@ -20,6 +20,13 @@ namespace Xamarin.Forms
     {
         public static bool IsInitialized { get; private set; }
 
+        private static BlazorMobilePlatformServices _blazorMobilePlatformServices = null;
+
+        internal static BlazorMobilePlatformServices GetBlazorMobilePlatformServices()
+        {
+            return _blazorMobilePlatformServices;
+        }
+
         public static void Init()
         {
             if (IsInitialized)
@@ -29,7 +36,8 @@ namespace Xamarin.Forms
             Log.Listeners.Add(new DelegateLogListener((c, m) => System.Diagnostics.Debug.WriteLine(m, c)));
 
             Device.SetIdiom(TargetIdiom.Desktop);
-            Device.PlatformServices = new BlazorMobilePlatformServices();
+            _blazorMobilePlatformServices = new BlazorMobilePlatformServices();
+            Device.PlatformServices = _blazorMobilePlatformServices;
             Device.Info = new BlazorMobileDeviceInfo();
 
             DependencyService.Register<IWebApplicationPlatform, ElectronWebApplicationPlatform>();
@@ -118,9 +126,16 @@ namespace Xamarin.Forms
                 }
             }
 
+            private IIsolatedStorageFile _cachedStorageService = null;
+
             public IIsolatedStorageFile GetUserStoreForApplication()
             {
-                return new ElectronIsolatedStorage();
+                if (_cachedStorageService == null)
+                {
+                    _cachedStorageService = new ElectronIsolatedStorage();
+                }
+
+                return _cachedStorageService;
             }
 
             public void OpenUriAction(Uri uri)

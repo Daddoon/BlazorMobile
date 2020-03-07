@@ -49,5 +49,15 @@ namespace BlazorMobile.Common
 
             return ContextHelper.IsElectronNET();
         }
+
+        /// <summary>
+        /// Return true if the current application is Using WASM engine
+        /// NOTE: This is always true on mobile platform, but not on Electron depending your configuration
+        /// </summary>
+        /// <returns></returns>
+        public static bool IsUsingWASM()
+        {
+            return ContextHelper.IsUsingWASM();
+        }
     }
 }

@@ -1,5 +1,6 @@
 ﻿using BlazorMobile.Build.Cli.Helper;
 using BlazorMobile.Build.Core.Helper;
+using Microsoft.CodeAnalysis;
 using System;
 using System.Collections.Generic;
 using System.Diagnostics;
@@ -88,6 +89,22 @@ namespace BlazorMobile.Build.Server.Core
             return content;
         }
 
+        /// <summary>
+        /// Exclude generated CSHTML File from compilation
+        /// This is needed as the generated CSHTML file is present in a WASM Blazor project, and cannot be compiled in this project
+        /// The file must be referenced as a link in a Blazor server-side project (as in the default templates)
+        /// </summary>
+        private static void ExcludeGeneratedCSHTMLFileFromCompilation(string generatedFileName, string projectFile)
+        {
+            Regex fileAsNonePresent = new Regex("<None (.*)Include=\"server_index.cshtml\"(.*)/>");
+            string csProjFileContent = File.ReadAllText(projectFile);
+
+            if (!fileAsNonePresent.IsMatch(csProjFileContent))
+            {
+                Console.WriteLine($"BlazorMobile.Build -> ERROR: {generatedFileName} \"Build actions\" property is not set to 'None' in your Blazor WebAssembly project and may cause build failure. The \"Build actions\" property must be set to 'Content' only from an item link reference from a Blazor server-side project, if any.");
+            }
+        }
+
         public static string TransformAndCopy(string sourceFile, string outputDir, string projectFile)
         {
             string outputFile = outputDir + Path.DirectorySeparatorChar + NewFile;
@@ -99,6 +116,8 @@ namespace BlazorMobile.Build.Server.Core
                     outputFile, 
                     AddCSHTMLCode(File.ReadAllText(sourceFile, encoding), projectFile)
                     , encoding);
+
+                ExcludeGeneratedCSHTMLFileFromCompilation(NewFile, projectFile);
             }
             catch (Exception ex)
             {

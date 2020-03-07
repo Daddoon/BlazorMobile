@@ -11,6 +11,9 @@ using BlazorMobile.Droid.Services;
 using Android.Support.V7.App;
 using BlazorMobile.Services;
 using BlazorMobile.InteropApp.AppPackage;
+using BlazorMobile.InteropApp.Services;
+using Xamarin.Forms;
+using BlazorMobile.InteropApp.Droid.Services;
 
 namespace BlazorMobile.InteropApp.Droid
 {
@@ -26,6 +29,8 @@ namespace BlazorMobile.InteropApp.Droid
 
             global::Xamarin.Forms.Forms.Init(this, savedInstanceState);
             BlazorWebViewService.Init(this);
+
+            DependencyService.Register<IAssemblyService, AssemblyService>();
 
             //Register our Blazor app package
             WebApplicationFactory.RegisterAppStreamResolver(AppPackageHelper.ResolveAppPackageStream);

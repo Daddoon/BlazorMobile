@@ -14,6 +14,7 @@ namespace BlazorMobile.UWP.Services
         private static void InitComponent()
         {
             DependencyService.Register<IWebViewService, WebViewService>();
+            DependencyService.Register<IApplicationStoreService, ApplicationStoreService>();
 
             BlazorWebViewRenderer.Init();
         }

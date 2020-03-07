@@ -12,5 +12,20 @@ namespace BlazorMobile.InteropBlazorApp.Helpers
         {
             services.AddBlazorMobileNativeServices<Program>();
         }
+
+        private static IXamarinBridge _xamarinBridge = null;
+
+        public static void SetXamarinBridge(IXamarinBridge service)
+        {
+            if (_xamarinBridge == null && service != null)
+            {
+                _xamarinBridge = service;
+            }
+        }
+
+        public static IXamarinBridge GetXamarinBridge()
+        {
+            return _xamarinBridge;
+        }
     }
 }

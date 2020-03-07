@@ -12,4 +12,8 @@
     <EmbeddedResource Include="..\BlazorMobile.InteropBlazorApp\bin\BlazorMobile.InteropBlazorApp.zip" Link="Package\BlazorMobile.InteropBlazorApp.zip" />
   </ItemGroup>
 
+  <ItemGroup>
+    <EmbeddedResource Include="..\BlazorMobile.InteropBlazorApp.AnotherApp\bin\BlazorMobile.InteropBlazorApp.AnotherApp.zip" Link="Package\BlazorMobile.InteropBlazorApp.AnotherApp.zip" />
+  </ItemGroup>
+
 </Project>

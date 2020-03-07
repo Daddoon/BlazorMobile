@@ -11,11 +11,21 @@ namespace BlazorMobile.ElectronNET.Services
     {
         private static string _cachedUserDataDir = null;
 
-        internal static string GetUserDataDirectory()
+        internal string GetUserDataDirectory()
         {
             //We only need to compute this once
+            //This may be not be full compliant as this can be dynamic at some points on ElectronNET API
+            //if the user want to
             if (_cachedUserDataDir == null)
             {
+                //The value may be not cached here but already computed from a BlazorMobile app at boot
+                //If already cached in ElectronMetadata, we don't have to request anything, otherwise,
+                //fallbacking to ask for directory
+                if (string.IsNullOrEmpty(ElectronMetadata.UserDataPath))
+                {
+                    ElectronMetadata.UserDataPath = Electron.App.GetPathAsync(global::ElectronNET.API.Entities.PathName.userData).ConfigureAwait(false).GetAwaiter().GetResult();
+                }
+
                 _cachedUserDataDir = ElectronMetadata.UserDataPath;
             }
 

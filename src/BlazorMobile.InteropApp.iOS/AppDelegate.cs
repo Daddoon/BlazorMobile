@@ -2,10 +2,13 @@
 using System.Collections.Generic;
 using System.Linq;
 using BlazorMobile.InteropApp.AppPackage;
+using BlazorMobile.InteropApp.iOS.Services;
+using BlazorMobile.InteropApp.Services;
 using BlazorMobile.iOS.Services;
 using BlazorMobile.Services;
 using Foundation;
 using UIKit;
+using Xamarin.Forms;
 
 namespace BlazorMobile.InteropApp.iOS
 {
@@ -26,6 +29,8 @@ namespace BlazorMobile.InteropApp.iOS
         {
             global::Xamarin.Forms.Forms.Init();
             BlazorWebViewService.Init();
+
+            DependencyService.Register<IAssemblyService, AssemblyService>();
 
             //Register our Blazor app package
             WebApplicationFactory.RegisterAppStreamResolver(AppPackageHelper.ResolveAppPackageStream);

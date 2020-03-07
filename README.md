@@ -44,6 +44,7 @@ Create full C# driven hybrid-apps for iOS, Android, UWP & Desktop with Blazor!
 - [Communication between Blazor & Native](#communication-between-blazor--native)
 - [Validating the Blazor application navigation](#validating-the-blazor-application-navigation)
 - [Device remote debugging & Debugging from NET Core 3.0](#device-remote-debugging--debugging-from-net-core-30)
+- [Loading several or external BlazorMobile apps](#loadingseveralorexternalblazormobileapps)
 - [Android Build size optimization](#android-build-size-optimization)
 - [Electron.NET support with BlazorMobile](#electronnet-support-with-blazormobile)
 
@@ -73,6 +74,7 @@ Create full C# driven hybrid-apps for iOS, Android, UWP & Desktop with Blazor!
 - [BlazorMobile 3.0.12-preview9.19465.2 to 3.1.0-preview1.19508.20](#blazormobile-3012-preview9194652-to-310-preview11950820)
 - [BlazorMobile 3.1.0-preview1.19508.20 to 3.1.0-preview3.19555.2](#blazormobile-310-preview11950820-to-310-preview3195552)
 - [BlazorMobile 3.1.0-preview3.19555.2 to 3.2.0-preview1.20073.1](#blazormobile-310-preview3195552-to-320-preview1200731)
+- [BlazorMobile 3.2.0-preview1.20073.1 to 3.2.2-preview1.20073.1](#blazormobile-320-preview1200731-to-322-preview1200731)
 
 ## Difference between BlazorMobile & Progressive Web Apps (PWA)
 
@@ -724,6 +726,64 @@ If you are starting from a fresh template, everything is right by default.
 The server project should listen on http://localhost:5080/ by default.
 
 When the server console will show up during your debugging session, you need to open a tab in your favorite browser and browse http://localhost:5080/ url, in order to connect and debug your Blazor .NET Core application.
+
+## Loading several or external BlazorMobile apps
+
+You can load several apps during your application lifetime, shipped at build time or loaded through external source or saved on your filesystem.
+You can either manage by yourself how the packages are loaded and saved, or use some integrated helpers to store the packages if you want to, on your device, for all platforms.
+
+The API is pretty straightforward, here is the availables methods through the **WebApplicationFactory** static class available from native side:
+
+```csharp
+/// <summary>
+/// Add the given Stream as a package in a data store on the device, with the given name
+/// </summary>
+/// <param name="name"></param>
+/// <param name="content"></param>
+WebApplicationFactory.AddPackage(string name, Stream content);
+
+/// <summary>
+/// Remove the package with the given name from the data store of the device
+/// </summary>
+/// <param name="name"></param>
+/// <returns></returns>
+WebApplicationFactory.RemovePackage(string name);
+
+/// <summary>
+/// List available packages in the data store of the device
+/// </summary>
+/// <returns></returns>
+WebApplicationFactory.ListPackages();
+
+/// <summary>
+/// Load an app package with the given name, stored on the device.
+/// This is a shorthand on calling yourself <see cref="RegisterAppStreamResolver"/> and <see cref="ReloadApplication"/>
+/// as the loading is managed by all the entries you get through <see cref="AddPackage(string, Stream)"/>, <see cref="RemovePackage(string)"/>, <see cref="ListPackages"/>.
+/// </summary>
+/// <param name="name">The package to load</param>
+/// <returns></returns>
+WebApplicationFactory.LoadPackage(string name);
+
+/// <summary>
+/// Load an app package from the given Stream object. You are responsible for your Stream management.
+/// This mean that things may behave incorrectly if you close or dispose the stream. The given stream will
+/// be automatically disposed if you load or register another package instead.
+/// </summary>
+/// <param name="appStream">The package to load as a Stream</param>
+/// <returns></returns>
+WebApplicationFactory.LoadPackageFromStream(Stream appStream);
+
+/// <summary>
+/// Load an app package with the given package assembly path if you have stored it the assembly as a static resource.
+/// This is the default mode used at start when shipping your base application from BlazorMobile template, but you can
+/// extend this in order to load different packages at your native app startup.
+/// </summary>
+/// <param name="packageAssembly">The assembly where your Blazor package is stored.
+/// TIPS: If you know a type stored in this assembly, you may resolve the assembly object with 'typeof(YourType).Assembly'</param>
+/// <param name="packagePath">The relative path where the Blazor package is stored in the assembly</param>
+/// <returns></returns>
+WebApplicationFactory.LoadPackageFromAssembly(Assembly packageAssembly, string packagePath);
+```
 
 ## Android Build size optimization
 
@@ -1836,6 +1896,232 @@ to:
 ```csharp
 services.AddBlazorMobileNativeServices<Program>();
 ```
+
+### BlazorMobile 3.2.0-preview1.20073.1 to 3.2.2-preview1.20073.1
+
+#### Release note:
+
+- Fix possible **artifacts** folder missing at build time when compiling BlazorMobile Nugets from source code
+- Downgraded ElectronNET API to 5.30.1 due to some issues on 7.30.2
+- Added WebAssembly engine support on **Desktop** (ElectronNET) project. This is also required if using any **LoadPackage** API of BlazorMobile
+- Fix/Add Razor Class Library (RCL) support missing
+- Fix possible "Access Denied" error at build time with **BlazorMobile.Build** package.
+- Allow loading different BlazorMobile packages during application lifetime, but only one at once.
+- Add a package store API in order to store and load external packages, like downloaded from a Stream.
+
+#### Migration guide:
+
+- Update your installed BlazorMobile.Templates to this version by calling:
+
+```console
+dotnet new -i BlazorMobile.Templates::3.2.2-preview1.20073.1
+```
+
+- Update all your BlazorMobile.* NuGet packages to **3.2.2-preview1.20073.1**.
+
+- **Downgrade** your ElectronNET global tooling to **5.30.1** as there is some issue while using the latest version actually.
+
+```console
+dotnet tool uninstall ElectronNET.CLI -g
+dotnet tool install ElectronNET.CLI --version 5.30.1 -g
+```
+
+- If you have any reference to the ElectronNET.API NuGet package in your project, try to downgrade it to **5.30.1** too
+
+- If you want to switch the current loaded app, or side-load an app package like for updating your app remotely on ElectronNET,
+you will have to run it on the WebAssembly engine instead of Server-Side / .NET Core. The new default template for **Desktop** is referencing both mode for
+conveniences, but it's advised that you only keep one mode only when you will going on production, otherwise your app will always be twice is
+size.
+
+- In order to be in sync with the new **Desktop** template, here are the things to changes on your ***.Desktop** project:
+    - In **appsettings.json**, under **AllowedHosts**, add:
+        ```json
+        "UseWasmEngine": true
+        ```
+   - In your project references, add a reference to the **AppPackage** project.
+   - In your **Startup.cs** file change this:
+     
+    ```csharp
+    public Startup(IConfiguration configuration)
+    {
+        Configuration = configuration;
+    }
+    ```
+    to
+
+    ```csharp
+    private bool useWASM = false;
+
+    public Startup(IConfiguration configuration)
+    {
+        Configuration = configuration;
+        useWASM = (bool)Configuration.GetValue<bool>("UseWasmEngine");
+    }
+    ```
+
+    Wrap all your ASP.NET Core specific code in a **if (!useWASM)** condition in **Configure** method, ending just before **app.UseBlazorMobileWithElectronNET** method.
+    It could look like:
+
+    ```csharp
+    // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
+    public void Configure(IApplicationBuilder app, IWebHostEnvironment env)
+    {
+        if (!useWASM)
+        {
+            /* Your ASP.NET / Blazor Server-Side init code */
+        }
+
+        app.UseBlazorMobileWithElectronNET<App>(useWASM);
+    }
+    ```
+
+    After **UseBlazorMobileWithElectronNET**, add this code:
+
+    ```csharp
+    //Theses line must be registered after 'UseBlazorMobileWithElectronNET' as it internally call Xamarin.Forms.Init()
+    if (useWASM)
+    {
+        BlazorWebViewService.Init();
+
+        //Register our Blazor app package
+        WebApplicationFactory.RegisterAppStreamResolver(AppPackageHelper.ResolveAppPackageStream);
+    }
+    ```
+
+    Next part is unchanged! In doubt, here is the full current default **Startup.cs** for **Desktop** from template code:
+
+    ```csharp
+    using System;
+    using System.Linq;
+    using Microsoft.AspNetCore.Builder;
+    using Microsoft.AspNetCore.Hosting;
+    using Microsoft.Extensions.Configuration;
+    using Microsoft.Extensions.DependencyInjection;
+    using Microsoft.Extensions.Hosting;
+    using System.Net.Http;
+    using Microsoft.AspNetCore.Components;
+    using Microsoft.AspNetCore.ResponseCompression;
+    using BlazorMobile.Common.Services;
+    using BlazorMobile.Common;
+    using BlazorMobile.Sample.Blazor.Helpers;
+    using System.Threading.Tasks;
+    using ElectronNET.API;
+    using BlazorMobile.Sample.Blazor;
+    using Xamarin.Forms;
+    using ElectronNET.API.Entities;
+    using BlazorMobile.ElectronNET.Services;
+    using BlazorMobile.Services;
+    using BlazorMobile.Sample.AppPackage;
+
+    namespace BlazorMobile.Sample.Desktop
+    {
+        public class Startup
+        {
+            private bool useWASM = false;
+
+            public Startup(IConfiguration configuration)
+            {
+                Configuration = configuration;
+                useWASM = (bool)Configuration.GetValue<bool>("UseWasmEngine");
+            }
+
+            public IConfiguration Configuration { get; }
+
+            // This method gets called by the runtime. Use this method to add services to the container.
+            // For more information on how to configure your application, visit https://go.microsoft.com/fwlink/?LinkID=398940
+            public void ConfigureServices(IServiceCollection services)
+            {
+                services.AddMvc().AddNewtonsoftJson();
+                services.AddRazorPages();
+                services.AddServerSideBlazor();
+                services.AddResponseCompression(opts =>
+                {
+                    opts.MimeTypes = ResponseCompressionDefaults.MimeTypes.Concat(
+                        new[] { "application/octet-stream" });
+                });
+
+                // Server Side Blazor doesn't register HttpClient by default
+                if (!services.Any(x => x.ServiceType == typeof(HttpClient)))
+                {
+                    // Setup HttpClient for server side in a client side compatible fashion
+                    services.AddScoped<HttpClient>(s =>
+                    {
+                        // Creating the URI helper needs to wait until the JS Runtime is initialized, so defer it.
+                        var uriHelper = s.GetRequiredService<NavigationManager>();
+                        return new HttpClient
+                        {
+                            BaseAddress = new Uri(uriHelper.BaseUri)
+                        };
+                    });
+                }
+
+                ServicesHelper.ConfigureCommonServices(services);
+            }
+
+            // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
+            public void Configure(IApplicationBuilder app, IWebHostEnvironment env)
+            {
+                if (!useWASM)
+                {
+                    app.UseResponseCompression();
+
+                    if (env.IsDevelopment())
+                    {
+                        app.UseDeveloperExceptionPage();
+                        app.UseBlazorDebugging();
+                    }
+                    else
+                    {
+                        app.UseExceptionHandler("/Home/Error");
+                    }
+
+                    app.UseClientSideBlazorFiles<BlazorMobile.Sample.Blazor.Program>();
+
+                    app.UseStaticFiles();
+                    app.UseRouting();
+
+                    app.UseEndpoints(endpoints =>
+                    {
+                        endpoints.MapBlazorHub();
+                        endpoints.MapDefaultControllerRoute();
+                        endpoints.MapBlazorMobileRequestValidator();
+                        endpoints.MapFallbackToPage("/server_index");
+                    });
+
+                    //Initialize Blazor app from .NET Core / Server-side
+                    BlazorMobileService.Init((bool success) =>
+                    {
+                        Console.WriteLine($"Initialization success: {success}");
+                        Console.WriteLine("Device is: " + BlazorDevice.RuntimePlatform);
+                    });
+                }
+
+                app.UseBlazorMobileWithElectronNET<App>(useWASM);
+
+                //Theses line must be registered after 'UseBlazorMobileWithElectronNET' as it internally call Xamarin.Forms.Init()
+                if (useWASM)
+                {
+                    BlazorWebViewService.Init();
+
+                    //Register our Blazor app package
+                    WebApplicationFactory.RegisterAppStreamResolver(AppPackageHelper.ResolveAppPackageStream);
+                }
+
+                Forms.ConfigureBrowserWindow(new BrowserWindowOptions()
+                {
+                    //Configure the BrowserWindow that will be used for the Blazor application
+                });
+
+                //Launch the Blazor app
+                Forms.LoadApplication(new App());
+
+                // If your code already started your BlazorWebView.LaunchBlazorApp method, you should retrieve here the Electron main BrowserWindow used to create it.
+                // Otherwise, return a null Task value
+                var myBrowserWindow = Forms.GetBrowserWindow();
+            }
+        }
+    }
+    ```
 
 ## Authors
 
