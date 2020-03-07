@@ -11,12 +11,12 @@
     <iconUrl>https://raw.githubusercontent.com/Daddoon/BlazorMobile/master/logo_blazormobile_256x256.png</iconUrl>
     <requireLicenseAcceptance>true</requireLicenseAcceptance>
     <description>This package allow BlazorMobile to be compatible with an ElectronNET server-side Blazor application, so you can use the same project structure and interoping calls either on Mobile (BlazorMobile) and Desktop (ElectronNET)</description>
-    <releaseNotes>Updated ElectronNET.API to 7.30.2</releaseNotes>
+    <releaseNotes>Downgraded ElectronNET.API from 7.30.2 to 5.30.1 as there are some bugs and blocking behavior</releaseNotes>
     <copyright>Copyright 2020</copyright>
     <tags>aspnet templates blazor spa web webassembly xamarin desktop blazormobile electron electronnet</tags>
     <dependencies>
       <group targetFramework="netcoreapp3.1">
-        <dependency id="ElectronNET.API" version="7.30.2" />
+        <dependency id="ElectronNET.API" version="5.30.1" />
         <dependency id="Microsoft.AspNetCore.Http.Abstractions" version="2.2.0" />
         <dependency id="Microsoft.AspNetCore.StaticFiles" version="2.2.0" />
         <dependency id="Xamarin.Forms" version="3.5.0.169047" />

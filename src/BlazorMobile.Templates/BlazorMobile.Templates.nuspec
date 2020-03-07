@@ -11,7 +11,7 @@
 	<iconUrl>https://raw.githubusercontent.com/Daddoon/BlazorMobile/master/logo_blazormobile_256x256.png</iconUrl>
 	<requireLicenseAcceptance>false</requireLicenseAcceptance>
 	<description>A project template for creating an iOS, Android &amp; UWP app from a Blazor app that runs on WebAssembly &amp; a Windows, Linux, macOS app from a Blazor app that run on Electron and .NET Core. This template can be used for web apps with rich dynamic user interfaces (UIs).</description>
-	<releaseNotes>Updated templates to match Blazor 3.2.0-preview1.20073.1 requirement</releaseNotes>
+	<releaseNotes>Added some changes on the ElectronNET template in order to run it on WebAssembly engine if requested</releaseNotes>
 	<copyright>Copyright 2020</copyright>
 	<tags>aspnet templates blazor spa web webassembly xamarin android ios uwp electron windows linux macos</tags>
     <packageTypes>
