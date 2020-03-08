@@ -44,7 +44,7 @@ Create full C# driven hybrid-apps for iOS, Android, UWP & Desktop with Blazor!
 - [Communication between Blazor & Native](#communication-between-blazor--native)
 - [Validating the Blazor application navigation](#validating-the-blazor-application-navigation)
 - [Device remote debugging & Debugging from NET Core 3.0](#device-remote-debugging--debugging-from-net-core-30)
-- [Loading several or external BlazorMobile apps](#loadingseveralorexternalblazormobileapps)
+- [Loading several or external BlazorMobile apps](#loading-several-or-external-blazormobile-apps)
 - [Android Build size optimization](#android-build-size-optimization)
 - [Electron.NET support with BlazorMobile](#electronnet-support-with-blazormobile)
 
@@ -97,7 +97,7 @@ The main differences / advantages of BlazorMobile are:
 First install the template model with the following command from a command prompt:
 
 ```console
-dotnet new -i BlazorMobile.Templates::3.2.0-preview1.20073.1
+dotnet new -i BlazorMobile.Templates::3.2.2-preview1.20073.1
 ```
 
 Then go the folder where you want your project to be created, and from a command prompt type the following command, and of course replace **MyProjectName** to your desired project name:
@@ -109,7 +109,7 @@ dotnet new blazormobile -n MyProjectName
 If you plan to also use the Desktop project using Electron.NET, you must first execute this command in order to install the Electron tool on your system:
 
 ```console
-dotnet tool install ElectronNET.CLI -g
+dotnet tool install ElectronNET.CLI --version 5.30.1 -g
 ```
 
 Then from your Desktop project directory, execute the following command:
