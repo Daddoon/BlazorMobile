@@ -659,11 +659,11 @@ namespace BlazorMobile.Sample.Blazor
             #region DEBUG
 
             //Only if you want to test WebAssembly with remote debugging from a dev machine
-            BlazorService.EnableClientToDeviceRemoteDebugging("192.168.1.118", 8888);
+            BlazorMobileService.EnableClientToDeviceRemoteDebugging("192.168.1.118", 8888);
 
             #endregion
 
-            BlazorService.Init(app, (bool success) =>
+            BlazorMobileService.Init(app, (bool success) =>
             {
                 Console.WriteLine($"Initialization success: {success}");
                 Console.WriteLine("Device is: " + Device.RuntimePlatform);
@@ -675,7 +675,7 @@ namespace BlazorMobile.Sample.Blazor
 }
 ```
 
-**NOTE:** You must call **BlazorService.EnableClientToDeviceRemoteDebugging** before the **BlazorService.Init** call !
+**NOTE:** You must call **BlazorMobileService.EnableClientToDeviceRemoteDebugging** before the **BlazorMobileService.Init** call !
 
 Replace of course the first parameter by your own **device IP address**, and use the **same port** as configured in your Xamarin project.
 
@@ -1012,11 +1012,11 @@ public void Configure(IComponentsApplicationBuilder app)
     #if DEBUG
 
     //Only if you want to test WebAssembly with remote debugging from a dev machine
-    BlazorService.EnableClientToDeviceRemoteDebugging("192.168.1.118", 8888);
+    BlazorMobileService.EnableClientToDeviceRemoteDebugging("192.168.1.118", 8888);
 
     #endif
 
-    BlazorService.Init(app, (bool success) =>
+    BlazorMobileService.Init(app, (bool success) =>
     {
         Console.WriteLine($"Initialization success: {success}");
         Console.WriteLine("Device is: " + Device.RuntimePlatform);
