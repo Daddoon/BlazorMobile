@@ -636,7 +636,7 @@ Also note the initialization and usage of the **8888** port. You may and want to
 
 #### Blazor side
 
-On the Blazor project, both on **WASM** and **Server** projects if you want to test on both, you must call **BlazorService.EnableClientToDeviceRemoteDebugging** in your **Statup.cs**, **Configure** method. see:
+On the Blazor project, both on **WASM** and **Server** projects if you want to test on both, you must call **BlazorMobileService.EnableClientToDeviceRemoteDebugging** in your **Statup.cs**, **Configure** method. see:
 ```csharp
 using BlazorMobile.Common;
 using BlazorMobile.Common.Services;
