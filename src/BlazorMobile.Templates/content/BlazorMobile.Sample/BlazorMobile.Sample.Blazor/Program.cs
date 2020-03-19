@@ -1,7 +1,7 @@
 ﻿using BlazorMobile.Common;
 using BlazorMobile.Common.Services;
 using BlazorMobile.Sample.Blazor.Helpers;
-using Microsoft.AspNetCore.Blazor.Hosting;
+using Microsoft.AspNetCore.Components.WebAssembly.Hosting;
 using System;
 using System.Threading.Tasks;
 
@@ -12,6 +12,8 @@ namespace BlazorMobile.Sample.Blazor
         public static async Task Main(string[] args)
         {
             var builder = WebAssemblyHostBuilder.CreateDefault(args);
+
+            builder.Services.AddBaseAddressHttpClient();
 
             #region Services registration
 

@@ -9,7 +9,7 @@ artifacts/
 msbuild.binlog
 .vscode/
 packages/
-/src/BlazorMobile.Build/tools/netcoreapp3.0
-/src/BlazorMobile.Build.Android/tools/netcoreapp3.0
+/src/BlazorMobile.Build/tools/netcoreapp3.1
+/src/BlazorMobile.Build.Android/tools/netcoreapp3.1
 AppPackages/
 BundleArtifacts/
