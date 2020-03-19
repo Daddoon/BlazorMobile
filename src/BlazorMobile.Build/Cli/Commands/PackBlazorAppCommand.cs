@@ -6,7 +6,7 @@ using Microsoft.Extensions.CommandLineUtils;
 using System;
 using System.IO;
 
-namespace Microsoft.AspNetCore.Blazor.Build.DevServer.Commands
+namespace Microsoft.AspNetCore.Components.WebAssembly.Build.DevServer.Commands
 {
     internal class PackBlazorAppCommand
     {

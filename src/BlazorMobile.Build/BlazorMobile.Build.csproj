@@ -1,7 +1,7 @@
 ﻿<Project Sdk="Microsoft.NET.Sdk">
 
   <PropertyGroup>
-    <TargetFramework>netcoreapp3.0</TargetFramework>
+    <TargetFramework>netcoreapp3.1</TargetFramework>
     <AssemblyName>BlazorMobile.Build</AssemblyName>
     <Description>Build mechanism for BlazorMobile applications.</Description>
     <OutputType>Exe</OutputType>
@@ -32,13 +32,13 @@
 
   <ItemGroup>
     <None Include="tools\GenerateBlazorMobileBuild.targets" />
-    <None Include="tools\netcoreapp3.0\BlazorMobile.Build.deps.json" />
-    <None Include="tools\netcoreapp3.0\BlazorMobile.Build.dll" />
-    <None Include="tools\netcoreapp3.0\BlazorMobile.Build.exe" />
-    <None Include="tools\netcoreapp3.0\BlazorMobile.Build.pdb" />
-    <None Include="tools\netcoreapp3.0\BlazorMobile.Build.runtimeconfig.dev.json" />
-    <None Include="tools\netcoreapp3.0\BlazorMobile.Build.runtimeconfig.json" />
-    <None Include="tools\netcoreapp3.0\Microsoft.Extensions.CommandLineUtils.dll" />
+    <None Include="tools\netcoreapp3.1\BlazorMobile.Build.deps.json" />
+    <None Include="tools\netcoreapp3.1\BlazorMobile.Build.dll" />
+    <None Include="tools\netcoreapp3.1\BlazorMobile.Build.exe" />
+    <None Include="tools\netcoreapp3.1\BlazorMobile.Build.pdb" />
+    <None Include="tools\netcoreapp3.1\BlazorMobile.Build.runtimeconfig.dev.json" />
+    <None Include="tools\netcoreapp3.1\BlazorMobile.Build.runtimeconfig.json" />
+    <None Include="tools\netcoreapp3.1\Microsoft.Extensions.CommandLineUtils.dll" />
   </ItemGroup>
 
   <!-- Pack settings -->

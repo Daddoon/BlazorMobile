@@ -9,7 +9,7 @@
   <!-- BlazorMobile Iframe Listener WebExtension for GeckoView injected as Asset -->
   
   <PropertyGroup>
-    <BlazorMobileBuildAndroidDir Condition="'$(BlazorMobileBuildAndroidDir)' == ''">$(MSBuildThisFileDirectory)netcoreapp3.0/</BlazorMobileBuildAndroidDir>
+    <BlazorMobileBuildAndroidDir Condition="'$(BlazorMobileBuildAndroidDir)' == ''">$(MSBuildThisFileDirectory)netcoreapp3.1/</BlazorMobileBuildAndroidDir>
     <BlazorMobileBuildAndroidFileExe>dotnet &quot;$([MSBuild]::Escape($(BlazorMobileBuildAndroidDir)BlazorMobile.Build.Android.dll))&quot;</BlazorMobileBuildAndroidFileExe>
     <BlazorMobileBuildAndroidInput>&quot;$([MSBuild]::Escape($(MSBuildProjectFullPath)))&quot;</BlazorMobileBuildAndroidInput>
     <!-- The current line below is expected. We do not search about the real obj intermediateOutputPath -->
