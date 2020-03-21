@@ -66,11 +66,11 @@ public void Configure(IComponentsApplicationBuilder app)
     #if DEBUG
 
     //Only if you want to test WebAssembly with remote debugging from a dev machine
-    BlazorService.EnableClientToDeviceRemoteDebugging("192.168.1.118", 8888);
+    BlazorMobileService.EnableClientToDeviceRemoteDebugging("192.168.1.118", 8888);
 
     #endif
 
-    BlazorService.Init(app, (bool success) =>
+    BlazorMobileService.Init(app, (bool success) =>
     {
         Console.WriteLine($"Initialization success: {success}");
         Console.WriteLine("Device is: " + Device.RuntimePlatform);
