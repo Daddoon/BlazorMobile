@@ -2,6 +2,7 @@
 using BlazorMobile.Common.Services;
 using BlazorMobile.Sample.Blazor.Helpers;
 using Microsoft.AspNetCore.Components.WebAssembly.Hosting;
+using Microsoft.Extensions.DependencyInjection;
 using System;
 using System.Threading.Tasks;
 
