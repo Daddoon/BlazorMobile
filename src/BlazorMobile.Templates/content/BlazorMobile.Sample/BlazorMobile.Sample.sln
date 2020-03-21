@@ -3,7 +3,7 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio Version 16
 VisualStudioVersion = 16.0.28711.60
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "BlazorMobile.Sample.Common", "BlazorMobile.Sample.Blazor.Common\BlazorMobile.Sample.Common.csproj", "{A13CD863-4CAB-4EAC-BC21-4EBE60A1CEA8}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "BlazorMobile.Sample.Common", "BlazorMobile.Sample.Common\BlazorMobile.Sample.Common.csproj", "{A13CD863-4CAB-4EAC-BC21-4EBE60A1CEA8}"
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "BlazorMobile.Sample.Blazor", "BlazorMobile.Sample.Blazor\BlazorMobile.Sample.Blazor.csproj", "{4C4999FD-A0E2-4466-8753-D436C6953402}"
 EndProject

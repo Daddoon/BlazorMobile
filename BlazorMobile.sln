@@ -61,7 +61,7 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Interop", "Interop", "{AEDF
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "BlazorMobile.Sample.Blazor", "src\BlazorMobile.Templates\content\BlazorMobile.Sample\BlazorMobile.Sample.Blazor\BlazorMobile.Sample.Blazor.csproj", "{630B142A-7305-497D-866B-6B58156E9E88}"
 EndProject
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "BlazorMobile.Sample.Common", "src\BlazorMobile.Templates\content\BlazorMobile.Sample\BlazorMobile.Sample.Blazor.Common\BlazorMobile.Sample.Common.csproj", "{585FF8EB-A26B-4744-A394-551D1E62F1FF}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "BlazorMobile.Sample.Common", "src\BlazorMobile.Templates\content\BlazorMobile.Sample\BlazorMobile.Sample.Common\BlazorMobile.Sample.Common.csproj", "{585FF8EB-A26B-4744-A394-551D1E62F1FF}"
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "BlazorMobile.Sample", "src\BlazorMobile.Templates\content\BlazorMobile.Sample\BlazorMobile.Sample\BlazorMobile.Sample.csproj", "{A1BB8DF7-82D6-4E98-99F1-DE8EE4F8279A}"
 	ProjectSection(ProjectDependencies) = postProject
