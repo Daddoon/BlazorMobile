@@ -1,6 +1,6 @@
 
 using BlazorMobile.Build.Server.Commands;
-using Microsoft.AspNetCore.Blazor.Build.DevServer.Commands;
+using Microsoft.AspNetCore.Components.WebAssembly.Build.DevServer.Commands;
 using Microsoft.Extensions.CommandLineUtils;
 
 namespace BlazorMobile.Build

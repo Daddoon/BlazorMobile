@@ -24,14 +24,6 @@
   </PropertyGroup>
 
   <ItemGroup>
-    <None Remove="Interop\Javascript\blazor.webassembly.js" />
-  </ItemGroup>
-
-  <ItemGroup>
-    <EmbeddedResource Include="Interop\Javascript\blazor.webassembly.js" />
-  </ItemGroup>
-
-  <ItemGroup>
     <PackageReference Include="EmbedIO" Version="2.2.9" />
     <PackageReference Include="MimeTypes" Version="1.1.0">
       <PrivateAssets>all</PrivateAssets>
@@ -44,4 +36,6 @@
   <ItemGroup>
     <ProjectReference Include="..\BlazorMobile.Common\BlazorMobile.Common.csproj" />
   </ItemGroup>
+
+  <ProjectExtensions><VisualStudio><UserProperties XamarinHotReloadXFormsNugetUpgradeInfoBarBlazorMobileHideInfoBar="True" /></VisualStudio></ProjectExtensions>
 </Project>

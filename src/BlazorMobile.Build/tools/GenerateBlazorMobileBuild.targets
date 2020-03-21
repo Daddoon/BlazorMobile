@@ -7,23 +7,25 @@
   </PropertyGroup>
 
   <!-- BLAZOR APP PACKAGER -->
-  
+
   <PropertyGroup>
-    <BlazorMobileBuildDir Condition="'$(BlazorMobileBuildDir)' == ''">$(MSBuildThisFileDirectory)netcoreapp3.0/</BlazorMobileBuildDir>
+    <BlazorMobileBuildDir Condition="'$(BlazorMobileBuildDir)' == ''">$(MSBuildThisFileDirectory)netcoreapp3.1/</BlazorMobileBuildDir>
     <BlazorMobileBuildFileExe>dotnet &quot;$([MSBuild]::Escape($(BlazorMobileBuildDir)BlazorMobile.Build.dll))&quot;</BlazorMobileBuildFileExe>
     <BlazorMobileBuildOutput>&quot;$([MSBuild]::Escape($(MSBuildProjectDirectory)/bin))&quot;</BlazorMobileBuildOutput>
-    <BlazorMobileBuildDistDir>&quot;$([MSBuild]::Escape($(OutDir)/dist))&quot;</BlazorMobileBuildDistDir>
     <BlazorMobileBuildInput>&quot;$([MSBuild]::Escape($(MSBuildProjectFullPath)))&quot;</BlazorMobileBuildInput>
+    <BlazorMobilePublishOutput>&quot;$([MSBuild]::Escape($(MSBuildProjectDirectory)/$(OutDir)blazormobile_publish))&quot;</BlazorMobilePublishOutput>
+    <BlazorMobileBuildDistDir>&quot;$([MSBuild]::Escape($(MSBuildProjectDirectory)/$(OutDir)blazormobile_publish/wwwroot))&quot;</BlazorMobileBuildDistDir>
   </PropertyGroup>
 
-  <Target Name="GenerateBlazorMobileBuild" AfterTargets="_BlazorCopyFilesToOutputDirectory">
+  <Target Name="GenerateBlazorMobileBuild" AfterTargets="AfterBuild">
+    <Exec Command="dotnet publish -c $(Configuration) --no-build -o $(BlazorMobilePublishOutput)" />
     <Exec Command="$(BlazorMobileBuildFileExe) pack-blazor-app --input $(BlazorMobileBuildInput) --distDir $(BlazorMobileBuildDistDir) --outputPath $(BlazorMobileBuildOutput)" />
   </Target>
 
   <!-- SERVER_INDEX.HTML GENERATOR -->
-  
+
   <PropertyGroup>
-    <BlazorMobileBuildServerDir Condition="'$(BlazorMobileBuildServerDir)' == ''">$(MSBuildThisFileDirectory)netcoreapp3.0/</BlazorMobileBuildServerDir>
+    <BlazorMobileBuildServerDir Condition="'$(BlazorMobileBuildServerDir)' == ''">$(MSBuildThisFileDirectory)netcoreapp3.1/</BlazorMobileBuildServerDir>
     <BlazorMobileBuildServerdFileExe>dotnet &quot;$([MSBuild]::Escape($(BlazorMobileBuildServerDir)BlazorMobile.Build.dll))&quot;</BlazorMobileBuildServerdFileExe>
     <BlazorMobileBuildServerInput>&quot;$([MSBuild]::Escape($(MSBuildProjectDirectory)))&quot;</BlazorMobileBuildServerInput>
     <BlazorMobileBuildServerProjectInput>&quot;$([MSBuild]::Escape($(MSBuildProjectFullPath)))&quot;</BlazorMobileBuildServerProjectInput>
@@ -33,11 +35,10 @@
     <Exec Command="$(BlazorMobileBuildServerdFileExe) client-to-server-blazor-index --input $(BlazorMobileBuildServerInput) --project-file $(BlazorMobileBuildServerProjectInput)" />
   </Target>
 
-  
   <!-- PROXY CLASS GENERATOR -->
-  
+
   <PropertyGroup>
-    <BlazorMobileBuildNativeProxyDir Condition="'$(BlazorMobileBuildNativeProxyDir)' == ''">$(MSBuildThisFileDirectory)netcoreapp3.0/</BlazorMobileBuildNativeProxyDir>
+    <BlazorMobileBuildNativeProxyDir Condition="'$(BlazorMobileBuildNativeProxyDir)' == ''">$(MSBuildThisFileDirectory)netcoreapp3.1/</BlazorMobileBuildNativeProxyDir>
     <BlazorMobileBuildNativeProxyFileExe>dotnet &quot;$([MSBuild]::Escape($(BlazorMobileBuildNativeProxyDir)BlazorMobile.Build.dll))&quot;</BlazorMobileBuildNativeProxyFileExe>
     <BlazorMobileBuildNativeProxyInput>&quot;$([MSBuild]::Escape($(MSBuildProjectFullPath)))&quot;</BlazorMobileBuildNativeProxyInput>
     <BlazorMobileBuildNativeProxyIntermediateOutputPath>$([MSBuild]::Escape($(IntermediateOutputPath)))</BlazorMobileBuildNativeProxyIntermediateOutputPath>
@@ -53,5 +54,5 @@
       <FileWrites Include="$(IntermediateOutputPath)BlazorMobileProxyClass\**\*.cs" />
     </ItemGroup>
   </Target>
-  
+
 </Project>
