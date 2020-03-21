@@ -13,12 +13,12 @@
   </ItemGroup>
 
   <ItemGroup>
-    <PackageReference Include="BlazorMobile" Version="3.2.2-preview1.20073.1" />
+    <PackageReference Include="BlazorMobile" Version="3.2.3-preview2.20160.5" />
     <PackageReference Include="Xamarin.Forms" Version="3.5.0.169047" />
   </ItemGroup>
 
   <ItemGroup>
-    <ProjectReference Include="..\BlazorMobile.Sample.Blazor.Common\BlazorMobile.Sample.Common.csproj" />
+    <ProjectReference Include="..\BlazorMobile.Sample.Common\BlazorMobile.Sample.Common.csproj" />
   </ItemGroup>
   
 </Project>

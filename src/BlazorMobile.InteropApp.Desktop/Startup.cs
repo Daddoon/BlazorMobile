@@ -76,14 +76,13 @@ namespace BlazorMobile.InteropApp.Desktop
                 if (env.IsDevelopment())
                 {
                     app.UseDeveloperExceptionPage();
-                    app.UseBlazorDebugging();
                 }
                 else
                 {
                     app.UseExceptionHandler("/Home/Error");
                 }
 
-                app.UseClientSideBlazorFiles<InteropBlazorApp.Program>();
+                app.UseBlazorFrameworkFiles();
 
                 app.UseStaticFiles();
                 app.UseRouting();

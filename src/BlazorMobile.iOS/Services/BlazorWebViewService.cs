@@ -42,9 +42,10 @@ namespace BlazorMobile.iOS.Services
         /// give additionnal time at boot time during some heavy load, to prevent an
         /// 'Unhandled Promise Rejection: RangeError: Maximum call stack size exceeded' on Safari.
         /// </summary>
+        [Obsolete("Doesn't do anything since this issue has been fixed on Microsoft side. This call is a no-op")]
         public static void EnableDelayedStartPatch()
         {
-            WebApplicationFactory.PlatformSpecific.EnableDelayedStartPatch(true);
+            //WebApplicationFactory.PlatformSpecific.EnableDelayedStartPatch(true);
         }
     }
 }

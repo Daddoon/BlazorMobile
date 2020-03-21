@@ -5,7 +5,7 @@ using Microsoft.AspNetCore.Components;
 using Microsoft.AspNetCore.Components.Rendering;
 using Microsoft.AspNetCore.Components.RenderTree;
 using Microsoft.JSInterop;
-using Mono.WebAssembly.Interop;
+using Microsoft.JSInterop.WebAssembly;
 using System;
 using System.Collections.Generic;
 using System.Text;
@@ -129,7 +129,7 @@ namespace BlazorMobile.Common.Components
 
         private bool IsWASMJSRuntime(IJSRuntime runtime)
         {
-            if (runtime is MonoWebAssemblyJSRuntime mono)
+            if (runtime is WebAssemblyJSRuntime)
             {
                 return true;
             }
