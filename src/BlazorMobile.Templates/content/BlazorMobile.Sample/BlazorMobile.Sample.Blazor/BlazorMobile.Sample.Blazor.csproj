@@ -31,7 +31,7 @@
   </ItemGroup>
 
   <ItemGroup>
-    <ProjectReference Include="..\BlazorMobile.Sample.Blazor.Common\BlazorMobile.Sample.Common.csproj" />
+    <ProjectReference Include="..\BlazorMobile.Sample.Common\BlazorMobile.Sample.Common.csproj" />
   </ItemGroup>
 
 </Project>
