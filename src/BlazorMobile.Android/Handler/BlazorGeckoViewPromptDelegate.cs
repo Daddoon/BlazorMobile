@@ -80,75 +80,87 @@ namespace BlazorMobile.Droid.Handler
         {
             var currentActivity = BlazorWebViewService.GetCurrentActivity();
 
+            //TODO: Localize text inputs
+
             string[] items = { "Take Photo", "Choose from Library", "Cancel" };
             string _imageUri;
 
-            using (var dialogBuilder = new Android.App.AlertDialog.Builder(_renderer.Context))
+            Action showActionsDialog = null;
+
+            showActionsDialog = () =>
             {
-                BlazorFileDialogDismissListener onDismissEvent = new BlazorFileDialogDismissListener();
-                bool shouldDismiss = true;
-                onDismissEvent.SetDismissHandler(() =>
-                {
-                    if (shouldDismiss)
-                    {
-                        callback.Dismiss();
-                    }
-                });
 
-                dialogBuilder.SetOnDismissListener(onDismissEvent);
-                dialogBuilder.SetTitle("Add Photo");
-                dialogBuilder.SetItems(items, (d, args) =>
+                using (var dialogBuilder = new Android.App.AlertDialog.Builder(_renderer.Context))
                 {
-                    //We set this value to false as we are in a callback
-                    //Every action of the callback will have to manage the dismiss of the file input with this value to false
-                    //This is made in order to Dismiss on the fine input callback if the user use a back event on his device instead
-                    shouldDismiss = false;
-
-                    //Take photo
-                    if (args.Which == 0)
+                    BlazorFileDialogDismissListener onDismissEvent = new BlazorFileDialogDismissListener();
+                    bool shouldDismiss = true;
+                    onDismissEvent.SetDismissHandler(() =>
                     {
-                        RequestPermissionHelper.CheckForPermission(new[] {
+                        if (shouldDismiss)
+                        {
+                            callback.Dismiss();
+                        }
+                    });
+
+                    dialogBuilder.SetOnDismissListener(onDismissEvent);
+                    dialogBuilder.SetTitle("Add Photo");
+                    dialogBuilder.SetItems(items, (d, args) =>
+                    {
+                        //We set this value to false as we are in a callback
+                        //Every action of the callback will have to manage the dismiss of the file input with this value to false
+                        //This is made in order to Dismiss on the fine input callback if the user use a back event on his device instead
+                        shouldDismiss = false;
+
+                        //Take photo
+                        if (args.Which == 0)
+                        {
+                            RequestPermissionHelper.CheckForPermission(new[] {
                             Android.Manifest.Permission.WriteExternalStorage,
                             Android.Manifest.Permission.Camera
-                            }, () =>
+                                }, () =>
+                            {
+                                bool isMounted = Android.OS.Environment.ExternalStorageState == Android.OS.Environment.MediaMounted;
+
+                                var uri = currentActivity.ContentResolver.Insert(isMounted ? MediaStore.Images.Media.ExternalContentUri
+                                : MediaStore.Images.Media.InternalContentUri, new ContentValues());
+                                _imageUri = uri.ToString();
+                                var i = new Intent(MediaStore.ActionImageCapture);
+                                i.PutExtra(MediaStore.ExtraOutput, uri);
+                                currentActivity.StartActivityForResult(i, REQUEST_CAMERA_TEST);
+
+                                //TODO
+                                //TO REMOVE AFTER DEV
+                                callback.Dismiss();
+
+                            }, () => showActionsDialog()); //If denied, we must show the previous window again
+
+                        }
+                        //Choose from gallery
+                        else if (args.Which == 1)
                         {
-                            bool isMounted = Android.OS.Environment.ExternalStorageState == Android.OS.Environment.MediaMounted;
+                            RequestPermissionHelper.CheckForPermission(Android.Manifest.Permission.ReadExternalStorage, () =>
+                            {
+                                var intent = new Intent(Intent.ActionPick, MediaStore.Images.Media.ExternalContentUri);
+                                intent.SetType("image/*");
+                                currentActivity.StartActivityForResult(Intent.CreateChooser(intent, "Select Picture"), SELECT_FILE);
 
-                            var uri = currentActivity.ContentResolver.Insert(isMounted ? MediaStore.Images.Media.ExternalContentUri
-                            : MediaStore.Images.Media.InternalContentUri, new ContentValues());
-                            _imageUri = uri.ToString();
-                            var i = new Intent(MediaStore.ActionImageCapture);
-                            i.PutExtra(MediaStore.ExtraOutput, uri);
-                            currentActivity.StartActivityForResult(i, REQUEST_CAMERA_TEST);
+                                //TODO
+                                //TO REMOVE AFTER DEV
+                                callback.Dismiss();
 
-                            //TO REMOVE AFTER DEV
-                            callback.Dismiss();
-
-                        }, () => callback.Dismiss());
-
-                    }
-                    //Choose from gallery
-                    else if (args.Which == 1)
-                    {
-                        RequestPermissionHelper.CheckForPermission(Android.Manifest.Permission.ReadExternalStorage, () =>
+                            }, () => showActionsDialog()); //If denied, we must show the previous window again
+                        }
+                        else
                         {
-                            var intent = new Intent(Intent.ActionPick, MediaStore.Images.Media.ExternalContentUri);
-                            intent.SetType("image/*");
-                            currentActivity.StartActivityForResult(Intent.CreateChooser(intent, "Select Picture"), SELECT_FILE);
-
-                            //TO REMOVE AFTER DEV
                             callback.Dismiss();
+                        }
+                    });
 
-                        }, () => callback.Dismiss());
-                    }
-                    else
-                    {
-                        callback.Dismiss();
-                    }
-                });
+                    dialogBuilder.Show();
+                }
+            };
 
-                dialogBuilder.Show();
-            }
+            showActionsDialog();
 
             //File myFile = new File(this.getFilesDir(), "temp.cube");
 
