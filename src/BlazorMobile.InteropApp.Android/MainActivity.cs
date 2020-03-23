@@ -40,21 +40,6 @@ namespace BlazorMobile.InteropApp.Droid
 
             LoadApplication(new App());
 
-            //Trying to ask external storage permission after start
-
-            #region Ask External Storage permission
-
-            if (Build.VERSION.SdkInt >= BuildVersionCodes.M)
-            {
-                if (ActivityCompat.CheckSelfPermission(this.ApplicationContext, Manifest.Permission.ReadExternalStorage) != Permission.Granted
-                    && ActivityCompat.ShouldShowRequestPermissionRationale(this, Manifest.Permission.WriteExternalStorage))
-                {
-                    var requiredPermissions = new String[] { Manifest.Permission.ReadExternalStorage };
-                    ActivityCompat.RequestPermissions(this, requiredPermissions, 1);
-                }
-            }
-
-            #endregion
         }
     }
 }
