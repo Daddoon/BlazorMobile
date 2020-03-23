@@ -14,6 +14,9 @@ using BlazorMobile.InteropApp.AppPackage;
 using BlazorMobile.InteropApp.Services;
 using Xamarin.Forms;
 using BlazorMobile.InteropApp.Droid.Services;
+using Android.Support.V4.App;
+using Android;
+using Android.Support.Design.Widget;
 
 namespace BlazorMobile.InteropApp.Droid
 {
@@ -36,6 +39,22 @@ namespace BlazorMobile.InteropApp.Droid
             WebApplicationFactory.RegisterAppStreamResolver(AppPackageHelper.ResolveAppPackageStream);
 
             LoadApplication(new App());
+
+            //Trying to ask external storage permission after start
+
+            #region Ask External Storage permission
+
+            if (Build.VERSION.SdkInt >= BuildVersionCodes.M)
+            {
+                if (ActivityCompat.CheckSelfPermission(this.ApplicationContext, Manifest.Permission.ReadExternalStorage) != Permission.Granted
+                    && ActivityCompat.ShouldShowRequestPermissionRationale(this, Manifest.Permission.WriteExternalStorage))
+                {
+                    var requiredPermissions = new String[] { Manifest.Permission.ReadExternalStorage };
+                    ActivityCompat.RequestPermissions(this, requiredPermissions, 1);
+                }
+            }
+
+            #endregion
         }
     }
 }

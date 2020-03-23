@@ -49,6 +49,7 @@
   <ItemGroup>
     <Compile Include="Components\BlazorGeckoView.cs" />
     <Compile Include="Handler\BlazorContentDelegate.cs" />
+    <Compile Include="Handler\BlazorGeckoViewPromptDelegate.cs" />
     <Compile Include="Handler\BlazorProgressDelegate.cs" />
     <Compile Include="Handler\BlazorNavigationDelegate.cs" />
     <Compile Include="Helper\KeyboardUtil.cs" />
