@@ -298,7 +298,7 @@ namespace BlazorMobile.Droid.Handler
             {
                 ModifiableChoice modItem = new ModifiableChoice(item);
 
-                GeckoSession.romptDelegateClassChoice[] children = item.Items.ToArray();
+                GeckoSession.romptDelegateClassChoice[] children = item.Items?.ToArray();
 
                 if (indent != null && children == null)
                 {
@@ -359,7 +359,7 @@ namespace BlazorMobile.Droid.Handler
                     ModifiableChoice item = adapter.GetItem(e.Position);
                     if (type == GeckoSession.romptDelegateClassChoice.ChoiceTypeMenu)
                     {
-                        GeckoSession.romptDelegateClassChoice[] children = item.Choice.Items.ToArray();
+                        GeckoSession.romptDelegateClassChoice[] children = item.Choice.Items?.ToArray();
                         if (children != null)
                         {
                             // Show sub-menu.
