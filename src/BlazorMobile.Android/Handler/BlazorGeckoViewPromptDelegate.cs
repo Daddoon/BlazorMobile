@@ -6,7 +6,9 @@ using System.Text;
 
 using Android.App;
 using Android.Content;
+using Android.Content.PM;
 using Android.Content.Res;
+using Android.Graphics;
 using Android.OS;
 using Android.Provider;
 using Android.Runtime;
@@ -38,6 +40,15 @@ namespace BlazorMobile.Droid.Handler
         {
             _onDismiss?.Invoke();
         }
+    }
+
+    /// <summary>
+    /// https://mozilla.github.io/geckoview/javadoc/mozilla-central/constant-values.html#org.mozilla.geckoview.GeckoSession.PromptDelegate.FilePrompt.Type.MULTIPLE
+    /// </summary>
+    public static class FilePromptType
+    {
+        public const int SINGLE = 1;
+        public const int MULTIPLE = 2;
     }
 
     public class ModifiableChoice
@@ -198,12 +209,10 @@ namespace BlazorMobile.Droid.Handler
         private static readonly Int32 SELECT_FILE = 9;
 
         private GeckoViewRenderer _renderer;
-        private bool _exceptionShouldThrow = false;
 
-        public BlazorGeckoViewPromptDelegate(GeckoViewRenderer renderer, bool exceptionShouldThrow = false)
+        public BlazorGeckoViewPromptDelegate(GeckoViewRenderer renderer)
         {
             _renderer = renderer;
-            _exceptionShouldThrow = exceptionShouldThrow;
         }
 
         private class PromptCompleteDismissListener : Java.Lang.Object, IDialogInterfaceOnDismissListener
@@ -236,6 +245,7 @@ namespace BlazorMobile.Droid.Handler
                 //}
 
                 prompt.Dismiss();
+                dialog.Dispose();
             }));
             return dialog;
         }
@@ -416,90 +426,310 @@ namespace BlazorMobile.Droid.Handler
         {
         }
 
+        internal class IntentMetadata
+        {
+            public readonly Intent Intent;
+
+            public readonly string[] RequiredPermissions;
+
+            internal IntentMetadata(Intent intent, string[] requiredPermissions)
+            {
+                Intent = intent;
+                RequiredPermissions = requiredPermissions;
+            }
+        }
+
+        private void GetContentCompatibleIntents(int type, out List<IntentMetadata> intentList, out List<ResolveInfo> info)
+        {
+            Intent camIntent = new Intent("android.media.action.IMAGE_CAPTURE");
+            Intent getActionIntents = new Intent(Intent.ActionGetContent);
+            getActionIntents.SetType("*/*");
+            getActionIntents.AddCategory(Intent.CategoryOpenable);
+
+            //We must manage multiple file selection too
+            if (type == FilePromptType.MULTIPLE)
+            {
+                getActionIntents.PutExtra(Intent.ExtraAllowMultiple, true);
+            }
+
+            // look for available intents
+            info = new List<ResolveInfo>();
+            intentList = new List<IntentMetadata>();
+            PackageManager packageManager = BlazorWebViewService.GetCurrentActivity().PackageManager;
+            List<ResolveInfo> listCam = packageManager.QueryIntentActivities(camIntent, 0).ToList();
+
+            //Required permissions for camera intents
+            string[] permissionsForCamera = new string[] {
+                Android.Manifest.Permission.WriteExternalStorage,
+                Android.Manifest.Permission.Camera
+            };
+
+            //Required permissions for read content intents
+            string[] permissionsForGetContent = new string[] {
+                Android.Manifest.Permission.ReadExternalStorage
+            };
+
+            foreach (ResolveInfo res in listCam)
+            {
+                Intent finalIntent = new Intent(camIntent);
+                finalIntent.SetComponent(new ComponentName(res.ActivityInfo.PackageName, res.ActivityInfo.Name));
+                intentList.Add(new IntentMetadata(finalIntent, permissionsForCamera));
+                info.Add(res);
+            }
+
+            List<ResolveInfo> listGall = packageManager.QueryIntentActivities(getActionIntents, 0).ToList();
+            foreach (ResolveInfo res in listGall)
+            {
+                Intent finalIntent = new Intent(getActionIntents);
+                finalIntent.SetComponent(new ComponentName(res.ActivityInfo.PackageName, res.ActivityInfo.Name));
+                intentList.Add(new IntentMetadata(finalIntent, permissionsForGetContent));
+                info.Add(res);
+            }
+        }
+
+        public class ResolveInfoAdapter<T> : ArrayAdapter<T> where T : ResolveInfo
+        {
+            private IList<T> ActivitiesInfo = new List<T>();
+
+            private void SetInfos(IList<T> objects)
+            {
+                ActivitiesInfo = objects;
+            }
+
+            public ResolveInfoAdapter(Context context, int textViewResourceId, IList<T> objects) : base(context, textViewResourceId, objects)
+            {
+                SetInfos(objects);
+            }
+
+            public ResolveInfoAdapter(Context context, int textViewResourceId, T[] objects) : base(context, textViewResourceId, objects)
+            {
+                SetInfos(objects);
+            }
+
+            public ResolveInfoAdapter(Context context, int resource, int textViewResourceId, IList<T> objects) : base(context, resource, textViewResourceId, objects)
+            {
+                SetInfos(objects);
+            }
+
+            public ResolveInfoAdapter(Context context, int resource, int textViewResourceId, T[] objects) : base(context, resource, textViewResourceId, objects)
+            {
+                SetInfos(objects);
+            }
+
+            public override Android.Views.View GetView(int position, Android.Views.View convertView, ViewGroup parent)
+            {
+                Android.Views.View view = base.GetView(position, convertView, parent);
+                ResolveInfo res = ActivitiesInfo.ElementAt(position);
+                ImageView image = (ImageView)view.FindViewById(
+                    BlazorWebViewService.GetResourceId("intent_listview_icon", AndroidResourceType.Identifier)
+                );
+                image.SetImageDrawable(res.LoadIcon(BlazorWebViewService.GetCurrentActivity().PackageManager));
+                TextView textview = (TextView)view.FindViewById(
+                    BlazorWebViewService.GetResourceId("intent_listview_title", AndroidResourceType.Identifier)
+                    );
+                textview.Text = res.LoadLabel(BlazorWebViewService.GetCurrentActivity().PackageManager);
+                return view;
+            }
+        }
+
+        private ResolveInfoAdapter<ResolveInfo> BuilderAdapter(Context context, List<ResolveInfo> activitiesInfo)
+        {
+            return new ResolveInfoAdapter<ResolveInfo>(context, Resource.Layout.intent_listview_row,
+                //Resource.Id.intent_listview_title,
+                BlazorWebViewService.GetResourceId("intent_listview_title", AndroidResourceType.Identifier),
+                activitiesInfo);
+        }
+
+        private Android.Net.Uri GetFileForBrowser(Android.Net.Uri dataFromActivityResult)
+        {
+            try
+            {
+                string TempfileName = Guid.NewGuid().ToString("N") + ".file";
+
+                string outputFolder = System.IO.Path.Combine(System.Environment.GetFolderPath(System.Environment.SpecialFolder.Personal), "blazormobile_temp");
+                if (!System.IO.Directory.Exists(outputFolder))
+                {
+                    System.IO.Directory.CreateDirectory(outputFolder);
+                }
+
+                var backingFile = System.IO.Path.Combine(outputFolder, TempfileName);
+                using (var output = System.IO.File.Create(backingFile))
+                {
+                    using (System.IO.Stream inputStream = BlazorWebViewService.GetCurrentActivity().ContentResolver.OpenInputStream(dataFromActivityResult))
+                    {
+                        inputStream.CopyTo(output);
+                    }
+                }
+
+                return Android.Net.Uri.Parse("file://" + backingFile);
+            }
+            catch (System.Exception e)
+            {
+                ConsoleHelper.WriteException(e);
+                throw;
+            }
+        }
+
         public virtual void OnFilePrompt(GeckoSession session, string title, int type, string[] mimeTypes, GeckoSession.PromptDelegateClassFileCallback callback)
         {
             var currentActivity = BlazorWebViewService.GetCurrentActivity();
 
-            //TODO: Localize text inputs
-
-            string[] items = { "Take Photo", "Choose from Library", "Cancel" };
-            string _imageUri;
-
             Action showActionsDialog = null;
 
+            AlertDialog _futureDialog = null; //Workaround dismiss method not available on AlertDialog.Builder before Show();
             showActionsDialog = () =>
             {
+                bool shouldDismiss = true;
+                var dialogBuilder = new Android.App.AlertDialog.Builder(_renderer.Context);
+                BlazorFileDialogDismissListener onDismissEvent = new BlazorFileDialogDismissListener();
 
-                using (var dialogBuilder = new Android.App.AlertDialog.Builder(_renderer.Context))
+                onDismissEvent.SetDismissHandler(() =>
                 {
-                    BlazorFileDialogDismissListener onDismissEvent = new BlazorFileDialogDismissListener();
-                    bool shouldDismiss = true;
-                    onDismissEvent.SetDismissHandler(() =>
+                    if (shouldDismiss)
                     {
-                        if (shouldDismiss)
-                        {
-                            callback.Dismiss();
-                        }
-                    });
+                        callback.Dismiss();
+                    }
 
-                    dialogBuilder.SetOnDismissListener(onDismissEvent);
-                    dialogBuilder.SetTitle("Add Photo");
-                    dialogBuilder.SetItems(items, (d, args) =>
+                    dialogBuilder.Dispose();
+                });
+
+                dialogBuilder.SetOnDismissListener(onDismissEvent);
+
+                dialogBuilder.SetTitle("Select an action");
+                GetContentCompatibleIntents(type, out List<IntentMetadata> intentList, out List<ResolveInfo> activitiesInfo);
+                dialogBuilder.SetAdapter(BuilderAdapter(currentActivity, activitiesInfo),
+                    (sender, e) =>
                     {
-                        //We set this value to false as we are in a callback
-                        //Every action of the callback will have to manage the dismiss of the file input with this value to false
-                        //This is made in order to Dismiss on the fine input callback if the user use a back event on his device instead
+                        //On Intent click
+
                         shouldDismiss = false;
+                        IntentMetadata selectedIntent = intentList.ElementAt(e.Which);
 
-                        //Take photo
-                        if (args.Which == 0)
+                        //Check for Android permissions for intents
+                        RequestPermissionHelper.CheckForPermission(selectedIntent.RequiredPermissions, () =>
                         {
-                            RequestPermissionHelper.CheckForPermission(new[] {
-                            Android.Manifest.Permission.WriteExternalStorage,
-                            Android.Manifest.Permission.Camera
-                                }, () =>
+                            //On Intent permission availables
+
+                            //We must manage multiple file selection too
+                            
+                            //TODO: Even by adding this intent
+                            //this seem to not working yet. Not sure if possible through launching external intents
+                            if (type == FilePromptType.MULTIPLE)
                             {
-                                bool isMounted = Android.OS.Environment.ExternalStorageState == Android.OS.Environment.MediaMounted;
+                                selectedIntent.Intent.PutExtra(Intent.ExtraAllowMultiple, true);
+                            }
 
-                                var uri = currentActivity.ContentResolver.Insert(isMounted ? MediaStore.Images.Media.ExternalContentUri
-                                : MediaStore.Images.Media.InternalContentUri, new ContentValues());
-                                _imageUri = uri.ToString();
-                                var i = new Intent(MediaStore.ActionImageCapture);
-                                i.PutExtra(MediaStore.ExtraOutput, uri);
-                                currentActivity.StartActivityForResult(i, REQUEST_CAMERA_TEST);
-
-                                //See https://stackoverflow.com/questions/21097312/android-xamarin-camera-intent-is-returning-with-null-data-in-callback
-
-                                //TODO
-                                //TO REMOVE AFTER DEV
-                                callback.Dismiss();
-
-                            }, () => showActionsDialog()); //If denied, we must show the previous window again
-
-                        }
-                        //Choose from gallery
-                        else if (args.Which == 1)
-                        {
-                            RequestPermissionHelper.CheckForPermission(Android.Manifest.Permission.ReadExternalStorage, () =>
+                            currentActivity.StartActivityForResult(selectedIntent.Intent, 1, (int requestCode, Result resultCode, Intent data) =>
                             {
-                                var intent = new Intent(Intent.ActionPick, MediaStore.Images.Media.ExternalContentUri);
-                                intent.SetType("image/*");
-                                currentActivity.StartActivityForResult(Intent.CreateChooser(intent, "Select Picture"), SELECT_FILE);
+                                if (resultCode != Result.Ok)
+                                {
+                                    //Do nothing as the user is still now on the Intent dialog box chooser
+                                    
+                                    //As on Permission not granted, see comment below =>
+                                    //We should reset this value to true if denied, as the user may don't click on Cancel but use a back button instead
+                                    //As the back button will call the Dialog dismiss internally, we should emulate the cancel behavior (see SetNeutralButton code)
+                                    shouldDismiss = true;
+                                }
+                                else
+                                {
+                                    try
+                                    {
+                                        callback.Confirm(currentActivity, GetFileForBrowser(data.Data));
+                                    }
+                                    catch (System.Exception e)
+                                    {
+                                        ConsoleHelper.WriteException(e);
+                                        callback.Dismiss();
+                                    }
 
-                                //TODO
-                                //TO REMOVE AFTER DEV
-                                callback.Dismiss();
+                                    _futureDialog.Dismiss();
+                                }
+                            });
 
-                            }, () => showActionsDialog()); //If denied, we must show the previous window again
-                        }
-                        else
+                        }, () =>
                         {
-                            callback.Dismiss();
-                        }
+                            //On Intent permission unavailable
+
+                            //We should reset this value to true if denied, as the user may don't click on Cancel but use a back button instead
+                            //As the back button will call the Dialog dismiss internally, we should emulate the cancel behavior (see SetNeutralButton code)
+                            shouldDismiss = true;
+                        });
                     });
 
-                    dialogBuilder.Show();
-                }
+                
+                dialogBuilder.SetNeutralButton(currentActivity.Resources.GetString(Android.Resource.String.Cancel),
+                    (sender, e) =>
+                    {
+                        shouldDismiss = true;
+                        _futureDialog.Dismiss();
+                    });
+                shouldDismiss = true;
+                _futureDialog = dialogBuilder.Show();
+
+                //dialogBuilder.SetTitle("Select an action"); //TODO: To translate
+                //dialogBuilder.SetItems(items, (d, args) =>
+                //{
+                //    //We set this value to false as we are in a callback
+                //    //Every action of the callback will have to manage the dismiss of the file input with this value to false
+                //    //This is made in order to Dismiss on the fine input callback if the user use a back event on his device instead
+                //    shouldDismiss = false;
+
+                //    //Take photo
+                //    if (args.Which == 0)
+                //    {
+                //        RequestPermissionHelper.CheckForPermission(new[] {
+                //            Android.Manifest.Permission.WriteExternalStorage,
+                //            Android.Manifest.Permission.Camera
+                //            }, () =>
+                //        {
+                //            bool isMounted = Android.OS.Environment.ExternalStorageState == Android.OS.Environment.MediaMounted;
+
+                //            var uri = currentActivity.ContentResolver.Insert(isMounted ? MediaStore.Images.Media.ExternalContentUri
+                //            : MediaStore.Images.Media.InternalContentUri, new ContentValues());
+                //            _imageUri = uri.ToString();
+                //            var i = new Intent(MediaStore.ActionImageCapture);
+                //            i.PutExtra(MediaStore.ExtraOutput, uri);
+                //            currentActivity.StartActivityForResult(i, REQUEST_CAMERA_TEST);
+
+                //            //See https://stackoverflow.com/questions/21097312/android-xamarin-camera-intent-is-returning-with-null-data-in-callback
+
+                //            //TODO
+                //            //TO REMOVE AFTER DEV
+                //            callback.Dismiss();
+
+                //        }, () => showActionsDialog()); //If denied, we must show the previous window again
+
+                //    }
+                //    //Choose from gallery
+                //    else if (args.Which == 1)
+                //    {
+                //        RequestPermissionHelper.CheckForPermission(Android.Manifest.Permission.ReadExternalStorage, () =>
+                //        {
+                //            var intent = new Intent(Intent.ActionGetContent);
+                //            intent.SetType("*/*");
+                //            //Only get openable files
+                //            intent.AddCategory(Intent.CategoryOpenable);
+
+                //            //We must manage multiple file selection too
+                //            if (type == FilePromptType.MULTIPLE)
+                //            {
+                //                intent.PutExtra(Intent.ExtraAllowMultiple, true);
+                //            }
+
+                //            currentActivity.StartActivityForResult(Intent.CreateChooser(intent, "Choose file"), SELECT_FILE);
+
+                //            //TO REMOVE AFTER DEV
+                //            callback.Dismiss();
+
+                //        }, () => showActionsDialog()); //If denied, we must show the previous window again
+                //    }
+                //    else
+                //    {
+                //        callback.Dismiss();
+                //    }
+                //});
+
+                dialogBuilder.Show();
             };
 
             showActionsDialog();
