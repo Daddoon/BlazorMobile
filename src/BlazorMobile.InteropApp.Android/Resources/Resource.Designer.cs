@@ -25,6 +25,2915 @@ namespace BlazorMobile.InteropApp.Droid
 		
 		public static void UpdateIdValues()
 		{
+			global::BlazorMobile.Droid.Resource.Animation.abc_fade_in = global::BlazorMobile.InteropApp.Droid.Resource.Animation.abc_fade_in;
+			global::BlazorMobile.Droid.Resource.Animation.abc_fade_out = global::BlazorMobile.InteropApp.Droid.Resource.Animation.abc_fade_out;
+			global::BlazorMobile.Droid.Resource.Animation.abc_grow_fade_in_from_bottom = global::BlazorMobile.InteropApp.Droid.Resource.Animation.abc_grow_fade_in_from_bottom;
+			global::BlazorMobile.Droid.Resource.Animation.abc_popup_enter = global::BlazorMobile.InteropApp.Droid.Resource.Animation.abc_popup_enter;
+			global::BlazorMobile.Droid.Resource.Animation.abc_popup_exit = global::BlazorMobile.InteropApp.Droid.Resource.Animation.abc_popup_exit;
+			global::BlazorMobile.Droid.Resource.Animation.abc_shrink_fade_out_from_bottom = global::BlazorMobile.InteropApp.Droid.Resource.Animation.abc_shrink_fade_out_from_bottom;
+			global::BlazorMobile.Droid.Resource.Animation.abc_slide_in_bottom = global::BlazorMobile.InteropApp.Droid.Resource.Animation.abc_slide_in_bottom;
+			global::BlazorMobile.Droid.Resource.Animation.abc_slide_in_top = global::BlazorMobile.InteropApp.Droid.Resource.Animation.abc_slide_in_top;
+			global::BlazorMobile.Droid.Resource.Animation.abc_slide_out_bottom = global::BlazorMobile.InteropApp.Droid.Resource.Animation.abc_slide_out_bottom;
+			global::BlazorMobile.Droid.Resource.Animation.abc_slide_out_top = global::BlazorMobile.InteropApp.Droid.Resource.Animation.abc_slide_out_top;
+			global::BlazorMobile.Droid.Resource.Animation.abc_tooltip_enter = global::BlazorMobile.InteropApp.Droid.Resource.Animation.abc_tooltip_enter;
+			global::BlazorMobile.Droid.Resource.Animation.abc_tooltip_exit = global::BlazorMobile.InteropApp.Droid.Resource.Animation.abc_tooltip_exit;
+			global::BlazorMobile.Droid.Resource.Animation.design_bottom_sheet_slide_in = global::BlazorMobile.InteropApp.Droid.Resource.Animation.design_bottom_sheet_slide_in;
+			global::BlazorMobile.Droid.Resource.Animation.design_bottom_sheet_slide_out = global::BlazorMobile.InteropApp.Droid.Resource.Animation.design_bottom_sheet_slide_out;
+			global::BlazorMobile.Droid.Resource.Animation.design_snackbar_in = global::BlazorMobile.InteropApp.Droid.Resource.Animation.design_snackbar_in;
+			global::BlazorMobile.Droid.Resource.Animation.design_snackbar_out = global::BlazorMobile.InteropApp.Droid.Resource.Animation.design_snackbar_out;
+			global::BlazorMobile.Droid.Resource.Animation.EnterFromLeft = global::BlazorMobile.InteropApp.Droid.Resource.Animation.EnterFromLeft;
+			global::BlazorMobile.Droid.Resource.Animation.EnterFromRight = global::BlazorMobile.InteropApp.Droid.Resource.Animation.EnterFromRight;
+			global::BlazorMobile.Droid.Resource.Animation.ExitToLeft = global::BlazorMobile.InteropApp.Droid.Resource.Animation.ExitToLeft;
+			global::BlazorMobile.Droid.Resource.Animation.ExitToRight = global::BlazorMobile.InteropApp.Droid.Resource.Animation.ExitToRight;
+			global::BlazorMobile.Droid.Resource.Animator.design_appbar_state_list_animator = global::BlazorMobile.InteropApp.Droid.Resource.Animator.design_appbar_state_list_animator;
+			global::BlazorMobile.Droid.Resource.Animator.design_fab_hide_motion_spec = global::BlazorMobile.InteropApp.Droid.Resource.Animator.design_fab_hide_motion_spec;
+			global::BlazorMobile.Droid.Resource.Animator.design_fab_show_motion_spec = global::BlazorMobile.InteropApp.Droid.Resource.Animator.design_fab_show_motion_spec;
+			global::BlazorMobile.Droid.Resource.Animator.mtrl_btn_state_list_anim = global::BlazorMobile.InteropApp.Droid.Resource.Animator.mtrl_btn_state_list_anim;
+			global::BlazorMobile.Droid.Resource.Animator.mtrl_btn_unelevated_state_list_anim = global::BlazorMobile.InteropApp.Droid.Resource.Animator.mtrl_btn_unelevated_state_list_anim;
+			global::BlazorMobile.Droid.Resource.Animator.mtrl_chip_state_list_anim = global::BlazorMobile.InteropApp.Droid.Resource.Animator.mtrl_chip_state_list_anim;
+			global::BlazorMobile.Droid.Resource.Animator.mtrl_fab_hide_motion_spec = global::BlazorMobile.InteropApp.Droid.Resource.Animator.mtrl_fab_hide_motion_spec;
+			global::BlazorMobile.Droid.Resource.Animator.mtrl_fab_show_motion_spec = global::BlazorMobile.InteropApp.Droid.Resource.Animator.mtrl_fab_show_motion_spec;
+			global::BlazorMobile.Droid.Resource.Animator.mtrl_fab_transformation_sheet_collapse_spec = global::BlazorMobile.InteropApp.Droid.Resource.Animator.mtrl_fab_transformation_sheet_collapse_spec;
+			global::BlazorMobile.Droid.Resource.Animator.mtrl_fab_transformation_sheet_expand_spec = global::BlazorMobile.InteropApp.Droid.Resource.Animator.mtrl_fab_transformation_sheet_expand_spec;
+			global::BlazorMobile.Droid.Resource.Attribute.actionBarDivider = global::BlazorMobile.InteropApp.Droid.Resource.Attribute.actionBarDivider;
+			global::BlazorMobile.Droid.Resource.Attribute.actionBarItemBackground = global::BlazorMobile.InteropApp.Droid.Resource.Attribute.actionBarItemBackground;
+			global::BlazorMobile.Droid.Resource.Attribute.actionBarPopupTheme = global::BlazorMobile.InteropApp.Droid.Resource.Attribute.actionBarPopupTheme;
+			global::BlazorMobile.Droid.Resource.Attribute.actionBarSize = global::BlazorMobile.InteropApp.Droid.Resource.Attribute.actionBarSize;
+			global::BlazorMobile.Droid.Resource.Attribute.actionBarSplitStyle = global::BlazorMobile.InteropApp.Droid.Resource.Attribute.actionBarSplitStyle;
+			global::BlazorMobile.Droid.Resource.Attribute.actionBarStyle = global::BlazorMobile.InteropApp.Droid.Resource.Attribute.actionBarStyle;
+			global::BlazorMobile.Droid.Resource.Attribute.actionBarTabBarStyle = global::BlazorMobile.InteropApp.Droid.Resource.Attribute.actionBarTabBarStyle;
+			global::BlazorMobile.Droid.Resource.Attribute.actionBarTabStyle = global::BlazorMobile.InteropApp.Droid.Resource.Attribute.actionBarTabStyle;
+			global::BlazorMobile.Droid.Resource.Attribute.actionBarTabTextStyle = global::BlazorMobile.InteropApp.Droid.Resource.Attribute.actionBarTabTextStyle;
+			global::BlazorMobile.Droid.Resource.Attribute.actionBarTheme = global::BlazorMobile.InteropApp.Droid.Resource.Attribute.actionBarTheme;
+			global::BlazorMobile.Droid.Resource.Attribute.actionBarWidgetTheme = global::BlazorMobile.InteropApp.Droid.Resource.Attribute.actionBarWidgetTheme;
+			global::BlazorMobile.Droid.Resource.Attribute.actionButtonStyle = global::BlazorMobile.InteropApp.Droid.Resource.Attribute.actionButtonStyle;
+			global::BlazorMobile.Droid.Resource.Attribute.actionDropDownStyle = global::BlazorMobile.InteropApp.Droid.Resource.Attribute.actionDropDownStyle;
+			global::BlazorMobile.Droid.Resource.Attribute.actionLayout = global::BlazorMobile.InteropApp.Droid.Resource.Attribute.actionLayout;
+			global::BlazorMobile.Droid.Resource.Attribute.actionMenuTextAppearance = global::BlazorMobile.InteropApp.Droid.Resource.Attribute.actionMenuTextAppearance;
+			global::BlazorMobile.Droid.Resource.Attribute.actionMenuTextColor = global::BlazorMobile.InteropApp.Droid.Resource.Attribute.actionMenuTextColor;
+			global::BlazorMobile.Droid.Resource.Attribute.actionModeBackground = global::BlazorMobile.InteropApp.Droid.Resource.Attribute.actionModeBackground;
+			global::BlazorMobile.Droid.Resource.Attribute.actionModeCloseButtonStyle = global::BlazorMobile.InteropApp.Droid.Resource.Attribute.actionModeCloseButtonStyle;
+			global::BlazorMobile.Droid.Resource.Attribute.actionModeCloseDrawable = global::BlazorMobile.InteropApp.Droid.Resource.Attribute.actionModeCloseDrawable;
+			global::BlazorMobile.Droid.Resource.Attribute.actionModeCopyDrawable = global::BlazorMobile.InteropApp.Droid.Resource.Attribute.actionModeCopyDrawable;
+			global::BlazorMobile.Droid.Resource.Attribute.actionModeCutDrawable = global::BlazorMobile.InteropApp.Droid.Resource.Attribute.actionModeCutDrawable;
+			global::BlazorMobile.Droid.Resource.Attribute.actionModeFindDrawable = global::BlazorMobile.InteropApp.Droid.Resource.Attribute.actionModeFindDrawable;
+			global::BlazorMobile.Droid.Resource.Attribute.actionModePasteDrawable = global::BlazorMobile.InteropApp.Droid.Resource.Attribute.actionModePasteDrawable;
+			global::BlazorMobile.Droid.Resource.Attribute.actionModePopupWindowStyle = global::BlazorMobile.InteropApp.Droid.Resource.Attribute.actionModePopupWindowStyle;
+			global::BlazorMobile.Droid.Resource.Attribute.actionModeSelectAllDrawable = global::BlazorMobile.InteropApp.Droid.Resource.Attribute.actionModeSelectAllDrawable;
+			global::BlazorMobile.Droid.Resource.Attribute.actionModeShareDrawable = global::BlazorMobile.InteropApp.Droid.Resource.Attribute.actionModeShareDrawable;
+			global::BlazorMobile.Droid.Resource.Attribute.actionModeSplitBackground = global::BlazorMobile.InteropApp.Droid.Resource.Attribute.actionModeSplitBackground;
+			global::BlazorMobile.Droid.Resource.Attribute.actionModeStyle = global::BlazorMobile.InteropApp.Droid.Resource.Attribute.actionModeStyle;
+			global::BlazorMobile.Droid.Resource.Attribute.actionModeWebSearchDrawable = global::BlazorMobile.InteropApp.Droid.Resource.Attribute.actionModeWebSearchDrawable;
+			global::BlazorMobile.Droid.Resource.Attribute.actionOverflowButtonStyle = global::BlazorMobile.InteropApp.Droid.Resource.Attribute.actionOverflowButtonStyle;
+			global::BlazorMobile.Droid.Resource.Attribute.actionOverflowMenuStyle = global::BlazorMobile.InteropApp.Droid.Resource.Attribute.actionOverflowMenuStyle;
+			global::BlazorMobile.Droid.Resource.Attribute.actionProviderClass = global::BlazorMobile.InteropApp.Droid.Resource.Attribute.actionProviderClass;
+			global::BlazorMobile.Droid.Resource.Attribute.actionViewClass = global::BlazorMobile.InteropApp.Droid.Resource.Attribute.actionViewClass;
+			global::BlazorMobile.Droid.Resource.Attribute.activityChooserViewStyle = global::BlazorMobile.InteropApp.Droid.Resource.Attribute.activityChooserViewStyle;
+			global::BlazorMobile.Droid.Resource.Attribute.alertDialogButtonGroupStyle = global::BlazorMobile.InteropApp.Droid.Resource.Attribute.alertDialogButtonGroupStyle;
+			global::BlazorMobile.Droid.Resource.Attribute.alertDialogCenterButtons = global::BlazorMobile.InteropApp.Droid.Resource.Attribute.alertDialogCenterButtons;
+			global::BlazorMobile.Droid.Resource.Attribute.alertDialogStyle = global::BlazorMobile.InteropApp.Droid.Resource.Attribute.alertDialogStyle;
+			global::BlazorMobile.Droid.Resource.Attribute.alertDialogTheme = global::BlazorMobile.InteropApp.Droid.Resource.Attribute.alertDialogTheme;
+			global::BlazorMobile.Droid.Resource.Attribute.allowStacking = global::BlazorMobile.InteropApp.Droid.Resource.Attribute.allowStacking;
+			global::BlazorMobile.Droid.Resource.Attribute.alpha = global::BlazorMobile.InteropApp.Droid.Resource.Attribute.alpha;
+			global::BlazorMobile.Droid.Resource.Attribute.alphabeticModifiers = global::BlazorMobile.InteropApp.Droid.Resource.Attribute.alphabeticModifiers;
+			global::BlazorMobile.Droid.Resource.Attribute.arrowHeadLength = global::BlazorMobile.InteropApp.Droid.Resource.Attribute.arrowHeadLength;
+			global::BlazorMobile.Droid.Resource.Attribute.arrowShaftLength = global::BlazorMobile.InteropApp.Droid.Resource.Attribute.arrowShaftLength;
+			global::BlazorMobile.Droid.Resource.Attribute.autoCompleteTextViewStyle = global::BlazorMobile.InteropApp.Droid.Resource.Attribute.autoCompleteTextViewStyle;
+			global::BlazorMobile.Droid.Resource.Attribute.autoSizeMaxTextSize = global::BlazorMobile.InteropApp.Droid.Resource.Attribute.autoSizeMaxTextSize;
+			global::BlazorMobile.Droid.Resource.Attribute.autoSizeMinTextSize = global::BlazorMobile.InteropApp.Droid.Resource.Attribute.autoSizeMinTextSize;
+			global::BlazorMobile.Droid.Resource.Attribute.autoSizePresetSizes = global::BlazorMobile.InteropApp.Droid.Resource.Attribute.autoSizePresetSizes;
+			global::BlazorMobile.Droid.Resource.Attribute.autoSizeStepGranularity = global::BlazorMobile.InteropApp.Droid.Resource.Attribute.autoSizeStepGranularity;
+			global::BlazorMobile.Droid.Resource.Attribute.autoSizeTextType = global::BlazorMobile.InteropApp.Droid.Resource.Attribute.autoSizeTextType;
+			global::BlazorMobile.Droid.Resource.Attribute.background = global::BlazorMobile.InteropApp.Droid.Resource.Attribute.background;
+			global::BlazorMobile.Droid.Resource.Attribute.backgroundSplit = global::BlazorMobile.InteropApp.Droid.Resource.Attribute.backgroundSplit;
+			global::BlazorMobile.Droid.Resource.Attribute.backgroundStacked = global::BlazorMobile.InteropApp.Droid.Resource.Attribute.backgroundStacked;
+			global::BlazorMobile.Droid.Resource.Attribute.backgroundTint = global::BlazorMobile.InteropApp.Droid.Resource.Attribute.backgroundTint;
+			global::BlazorMobile.Droid.Resource.Attribute.backgroundTintMode = global::BlazorMobile.InteropApp.Droid.Resource.Attribute.backgroundTintMode;
+			global::BlazorMobile.Droid.Resource.Attribute.barLength = global::BlazorMobile.InteropApp.Droid.Resource.Attribute.barLength;
+			global::BlazorMobile.Droid.Resource.Attribute.behavior_autoHide = global::BlazorMobile.InteropApp.Droid.Resource.Attribute.behavior_autoHide;
+			global::BlazorMobile.Droid.Resource.Attribute.behavior_fitToContents = global::BlazorMobile.InteropApp.Droid.Resource.Attribute.behavior_fitToContents;
+			global::BlazorMobile.Droid.Resource.Attribute.behavior_hideable = global::BlazorMobile.InteropApp.Droid.Resource.Attribute.behavior_hideable;
+			global::BlazorMobile.Droid.Resource.Attribute.behavior_overlapTop = global::BlazorMobile.InteropApp.Droid.Resource.Attribute.behavior_overlapTop;
+			global::BlazorMobile.Droid.Resource.Attribute.behavior_peekHeight = global::BlazorMobile.InteropApp.Droid.Resource.Attribute.behavior_peekHeight;
+			global::BlazorMobile.Droid.Resource.Attribute.behavior_skipCollapsed = global::BlazorMobile.InteropApp.Droid.Resource.Attribute.behavior_skipCollapsed;
+			global::BlazorMobile.Droid.Resource.Attribute.borderlessButtonStyle = global::BlazorMobile.InteropApp.Droid.Resource.Attribute.borderlessButtonStyle;
+			global::BlazorMobile.Droid.Resource.Attribute.borderWidth = global::BlazorMobile.InteropApp.Droid.Resource.Attribute.borderWidth;
+			global::BlazorMobile.Droid.Resource.Attribute.bottomAppBarStyle = global::BlazorMobile.InteropApp.Droid.Resource.Attribute.bottomAppBarStyle;
+			global::BlazorMobile.Droid.Resource.Attribute.bottomNavigationStyle = global::BlazorMobile.InteropApp.Droid.Resource.Attribute.bottomNavigationStyle;
+			global::BlazorMobile.Droid.Resource.Attribute.bottomSheetDialogTheme = global::BlazorMobile.InteropApp.Droid.Resource.Attribute.bottomSheetDialogTheme;
+			global::BlazorMobile.Droid.Resource.Attribute.bottomSheetStyle = global::BlazorMobile.InteropApp.Droid.Resource.Attribute.bottomSheetStyle;
+			global::BlazorMobile.Droid.Resource.Attribute.boxBackgroundColor = global::BlazorMobile.InteropApp.Droid.Resource.Attribute.boxBackgroundColor;
+			global::BlazorMobile.Droid.Resource.Attribute.boxBackgroundMode = global::BlazorMobile.InteropApp.Droid.Resource.Attribute.boxBackgroundMode;
+			global::BlazorMobile.Droid.Resource.Attribute.boxCollapsedPaddingTop = global::BlazorMobile.InteropApp.Droid.Resource.Attribute.boxCollapsedPaddingTop;
+			global::BlazorMobile.Droid.Resource.Attribute.boxCornerRadiusBottomEnd = global::BlazorMobile.InteropApp.Droid.Resource.Attribute.boxCornerRadiusBottomEnd;
+			global::BlazorMobile.Droid.Resource.Attribute.boxCornerRadiusBottomStart = global::BlazorMobile.InteropApp.Droid.Resource.Attribute.boxCornerRadiusBottomStart;
+			global::BlazorMobile.Droid.Resource.Attribute.boxCornerRadiusTopEnd = global::BlazorMobile.InteropApp.Droid.Resource.Attribute.boxCornerRadiusTopEnd;
+			global::BlazorMobile.Droid.Resource.Attribute.boxCornerRadiusTopStart = global::BlazorMobile.InteropApp.Droid.Resource.Attribute.boxCornerRadiusTopStart;
+			global::BlazorMobile.Droid.Resource.Attribute.boxStrokeColor = global::BlazorMobile.InteropApp.Droid.Resource.Attribute.boxStrokeColor;
+			global::BlazorMobile.Droid.Resource.Attribute.boxStrokeWidth = global::BlazorMobile.InteropApp.Droid.Resource.Attribute.boxStrokeWidth;
+			global::BlazorMobile.Droid.Resource.Attribute.buttonBarButtonStyle = global::BlazorMobile.InteropApp.Droid.Resource.Attribute.buttonBarButtonStyle;
+			global::BlazorMobile.Droid.Resource.Attribute.buttonBarNegativeButtonStyle = global::BlazorMobile.InteropApp.Droid.Resource.Attribute.buttonBarNegativeButtonStyle;
+			global::BlazorMobile.Droid.Resource.Attribute.buttonBarNeutralButtonStyle = global::BlazorMobile.InteropApp.Droid.Resource.Attribute.buttonBarNeutralButtonStyle;
+			global::BlazorMobile.Droid.Resource.Attribute.buttonBarPositiveButtonStyle = global::BlazorMobile.InteropApp.Droid.Resource.Attribute.buttonBarPositiveButtonStyle;
+			global::BlazorMobile.Droid.Resource.Attribute.buttonBarStyle = global::BlazorMobile.InteropApp.Droid.Resource.Attribute.buttonBarStyle;
+			global::BlazorMobile.Droid.Resource.Attribute.buttonGravity = global::BlazorMobile.InteropApp.Droid.Resource.Attribute.buttonGravity;
+			global::BlazorMobile.Droid.Resource.Attribute.buttonIconDimen = global::BlazorMobile.InteropApp.Droid.Resource.Attribute.buttonIconDimen;
+			global::BlazorMobile.Droid.Resource.Attribute.buttonPanelSideLayout = global::BlazorMobile.InteropApp.Droid.Resource.Attribute.buttonPanelSideLayout;
+			global::BlazorMobile.Droid.Resource.Attribute.buttonStyle = global::BlazorMobile.InteropApp.Droid.Resource.Attribute.buttonStyle;
+			global::BlazorMobile.Droid.Resource.Attribute.buttonStyleSmall = global::BlazorMobile.InteropApp.Droid.Resource.Attribute.buttonStyleSmall;
+			global::BlazorMobile.Droid.Resource.Attribute.buttonTint = global::BlazorMobile.InteropApp.Droid.Resource.Attribute.buttonTint;
+			global::BlazorMobile.Droid.Resource.Attribute.buttonTintMode = global::BlazorMobile.InteropApp.Droid.Resource.Attribute.buttonTintMode;
+			global::BlazorMobile.Droid.Resource.Attribute.cardBackgroundColor = global::BlazorMobile.InteropApp.Droid.Resource.Attribute.cardBackgroundColor;
+			global::BlazorMobile.Droid.Resource.Attribute.cardCornerRadius = global::BlazorMobile.InteropApp.Droid.Resource.Attribute.cardCornerRadius;
+			global::BlazorMobile.Droid.Resource.Attribute.cardElevation = global::BlazorMobile.InteropApp.Droid.Resource.Attribute.cardElevation;
+			global::BlazorMobile.Droid.Resource.Attribute.cardMaxElevation = global::BlazorMobile.InteropApp.Droid.Resource.Attribute.cardMaxElevation;
+			global::BlazorMobile.Droid.Resource.Attribute.cardPreventCornerOverlap = global::BlazorMobile.InteropApp.Droid.Resource.Attribute.cardPreventCornerOverlap;
+			global::BlazorMobile.Droid.Resource.Attribute.cardUseCompatPadding = global::BlazorMobile.InteropApp.Droid.Resource.Attribute.cardUseCompatPadding;
+			global::BlazorMobile.Droid.Resource.Attribute.cardViewStyle = global::BlazorMobile.InteropApp.Droid.Resource.Attribute.cardViewStyle;
+			global::BlazorMobile.Droid.Resource.Attribute.checkboxStyle = global::BlazorMobile.InteropApp.Droid.Resource.Attribute.checkboxStyle;
+			global::BlazorMobile.Droid.Resource.Attribute.checkedChip = global::BlazorMobile.InteropApp.Droid.Resource.Attribute.checkedChip;
+			global::BlazorMobile.Droid.Resource.Attribute.checkedIcon = global::BlazorMobile.InteropApp.Droid.Resource.Attribute.checkedIcon;
+			global::BlazorMobile.Droid.Resource.Attribute.checkedIconEnabled = global::BlazorMobile.InteropApp.Droid.Resource.Attribute.checkedIconEnabled;
+			global::BlazorMobile.Droid.Resource.Attribute.checkedIconVisible = global::BlazorMobile.InteropApp.Droid.Resource.Attribute.checkedIconVisible;
+			global::BlazorMobile.Droid.Resource.Attribute.checkedTextViewStyle = global::BlazorMobile.InteropApp.Droid.Resource.Attribute.checkedTextViewStyle;
+			global::BlazorMobile.Droid.Resource.Attribute.chipBackgroundColor = global::BlazorMobile.InteropApp.Droid.Resource.Attribute.chipBackgroundColor;
+			global::BlazorMobile.Droid.Resource.Attribute.chipCornerRadius = global::BlazorMobile.InteropApp.Droid.Resource.Attribute.chipCornerRadius;
+			global::BlazorMobile.Droid.Resource.Attribute.chipEndPadding = global::BlazorMobile.InteropApp.Droid.Resource.Attribute.chipEndPadding;
+			global::BlazorMobile.Droid.Resource.Attribute.chipGroupStyle = global::BlazorMobile.InteropApp.Droid.Resource.Attribute.chipGroupStyle;
+			global::BlazorMobile.Droid.Resource.Attribute.chipIcon = global::BlazorMobile.InteropApp.Droid.Resource.Attribute.chipIcon;
+			global::BlazorMobile.Droid.Resource.Attribute.chipIconEnabled = global::BlazorMobile.InteropApp.Droid.Resource.Attribute.chipIconEnabled;
+			global::BlazorMobile.Droid.Resource.Attribute.chipIconSize = global::BlazorMobile.InteropApp.Droid.Resource.Attribute.chipIconSize;
+			global::BlazorMobile.Droid.Resource.Attribute.chipIconTint = global::BlazorMobile.InteropApp.Droid.Resource.Attribute.chipIconTint;
+			global::BlazorMobile.Droid.Resource.Attribute.chipIconVisible = global::BlazorMobile.InteropApp.Droid.Resource.Attribute.chipIconVisible;
+			global::BlazorMobile.Droid.Resource.Attribute.chipMinHeight = global::BlazorMobile.InteropApp.Droid.Resource.Attribute.chipMinHeight;
+			global::BlazorMobile.Droid.Resource.Attribute.chipSpacing = global::BlazorMobile.InteropApp.Droid.Resource.Attribute.chipSpacing;
+			global::BlazorMobile.Droid.Resource.Attribute.chipSpacingHorizontal = global::BlazorMobile.InteropApp.Droid.Resource.Attribute.chipSpacingHorizontal;
+			global::BlazorMobile.Droid.Resource.Attribute.chipSpacingVertical = global::BlazorMobile.InteropApp.Droid.Resource.Attribute.chipSpacingVertical;
+			global::BlazorMobile.Droid.Resource.Attribute.chipStandaloneStyle = global::BlazorMobile.InteropApp.Droid.Resource.Attribute.chipStandaloneStyle;
+			global::BlazorMobile.Droid.Resource.Attribute.chipStartPadding = global::BlazorMobile.InteropApp.Droid.Resource.Attribute.chipStartPadding;
+			global::BlazorMobile.Droid.Resource.Attribute.chipStrokeColor = global::BlazorMobile.InteropApp.Droid.Resource.Attribute.chipStrokeColor;
+			global::BlazorMobile.Droid.Resource.Attribute.chipStrokeWidth = global::BlazorMobile.InteropApp.Droid.Resource.Attribute.chipStrokeWidth;
+			global::BlazorMobile.Droid.Resource.Attribute.chipStyle = global::BlazorMobile.InteropApp.Droid.Resource.Attribute.chipStyle;
+			global::BlazorMobile.Droid.Resource.Attribute.closeIcon = global::BlazorMobile.InteropApp.Droid.Resource.Attribute.closeIcon;
+			global::BlazorMobile.Droid.Resource.Attribute.closeIconEnabled = global::BlazorMobile.InteropApp.Droid.Resource.Attribute.closeIconEnabled;
+			global::BlazorMobile.Droid.Resource.Attribute.closeIconEndPadding = global::BlazorMobile.InteropApp.Droid.Resource.Attribute.closeIconEndPadding;
+			global::BlazorMobile.Droid.Resource.Attribute.closeIconSize = global::BlazorMobile.InteropApp.Droid.Resource.Attribute.closeIconSize;
+			global::BlazorMobile.Droid.Resource.Attribute.closeIconStartPadding = global::BlazorMobile.InteropApp.Droid.Resource.Attribute.closeIconStartPadding;
+			global::BlazorMobile.Droid.Resource.Attribute.closeIconTint = global::BlazorMobile.InteropApp.Droid.Resource.Attribute.closeIconTint;
+			global::BlazorMobile.Droid.Resource.Attribute.closeIconVisible = global::BlazorMobile.InteropApp.Droid.Resource.Attribute.closeIconVisible;
+			global::BlazorMobile.Droid.Resource.Attribute.closeItemLayout = global::BlazorMobile.InteropApp.Droid.Resource.Attribute.closeItemLayout;
+			global::BlazorMobile.Droid.Resource.Attribute.collapseContentDescription = global::BlazorMobile.InteropApp.Droid.Resource.Attribute.collapseContentDescription;
+			global::BlazorMobile.Droid.Resource.Attribute.collapsedTitleGravity = global::BlazorMobile.InteropApp.Droid.Resource.Attribute.collapsedTitleGravity;
+			global::BlazorMobile.Droid.Resource.Attribute.collapsedTitleTextAppearance = global::BlazorMobile.InteropApp.Droid.Resource.Attribute.collapsedTitleTextAppearance;
+			global::BlazorMobile.Droid.Resource.Attribute.collapseIcon = global::BlazorMobile.InteropApp.Droid.Resource.Attribute.collapseIcon;
+			global::BlazorMobile.Droid.Resource.Attribute.color = global::BlazorMobile.InteropApp.Droid.Resource.Attribute.color;
+			global::BlazorMobile.Droid.Resource.Attribute.colorAccent = global::BlazorMobile.InteropApp.Droid.Resource.Attribute.colorAccent;
+			global::BlazorMobile.Droid.Resource.Attribute.colorBackgroundFloating = global::BlazorMobile.InteropApp.Droid.Resource.Attribute.colorBackgroundFloating;
+			global::BlazorMobile.Droid.Resource.Attribute.colorButtonNormal = global::BlazorMobile.InteropApp.Droid.Resource.Attribute.colorButtonNormal;
+			global::BlazorMobile.Droid.Resource.Attribute.colorControlActivated = global::BlazorMobile.InteropApp.Droid.Resource.Attribute.colorControlActivated;
+			global::BlazorMobile.Droid.Resource.Attribute.colorControlHighlight = global::BlazorMobile.InteropApp.Droid.Resource.Attribute.colorControlHighlight;
+			global::BlazorMobile.Droid.Resource.Attribute.colorControlNormal = global::BlazorMobile.InteropApp.Droid.Resource.Attribute.colorControlNormal;
+			global::BlazorMobile.Droid.Resource.Attribute.colorError = global::BlazorMobile.InteropApp.Droid.Resource.Attribute.colorError;
+			global::BlazorMobile.Droid.Resource.Attribute.colorPrimary = global::BlazorMobile.InteropApp.Droid.Resource.Attribute.colorPrimary;
+			global::BlazorMobile.Droid.Resource.Attribute.colorPrimaryDark = global::BlazorMobile.InteropApp.Droid.Resource.Attribute.colorPrimaryDark;
+			global::BlazorMobile.Droid.Resource.Attribute.colorSecondary = global::BlazorMobile.InteropApp.Droid.Resource.Attribute.colorSecondary;
+			global::BlazorMobile.Droid.Resource.Attribute.colorSwitchThumbNormal = global::BlazorMobile.InteropApp.Droid.Resource.Attribute.colorSwitchThumbNormal;
+			global::BlazorMobile.Droid.Resource.Attribute.commitIcon = global::BlazorMobile.InteropApp.Droid.Resource.Attribute.commitIcon;
+			global::BlazorMobile.Droid.Resource.Attribute.contentDescription = global::BlazorMobile.InteropApp.Droid.Resource.Attribute.contentDescription;
+			global::BlazorMobile.Droid.Resource.Attribute.contentInsetEnd = global::BlazorMobile.InteropApp.Droid.Resource.Attribute.contentInsetEnd;
+			global::BlazorMobile.Droid.Resource.Attribute.contentInsetEndWithActions = global::BlazorMobile.InteropApp.Droid.Resource.Attribute.contentInsetEndWithActions;
+			global::BlazorMobile.Droid.Resource.Attribute.contentInsetLeft = global::BlazorMobile.InteropApp.Droid.Resource.Attribute.contentInsetLeft;
+			global::BlazorMobile.Droid.Resource.Attribute.contentInsetRight = global::BlazorMobile.InteropApp.Droid.Resource.Attribute.contentInsetRight;
+			global::BlazorMobile.Droid.Resource.Attribute.contentInsetStart = global::BlazorMobile.InteropApp.Droid.Resource.Attribute.contentInsetStart;
+			global::BlazorMobile.Droid.Resource.Attribute.contentInsetStartWithNavigation = global::BlazorMobile.InteropApp.Droid.Resource.Attribute.contentInsetStartWithNavigation;
+			global::BlazorMobile.Droid.Resource.Attribute.contentPadding = global::BlazorMobile.InteropApp.Droid.Resource.Attribute.contentPadding;
+			global::BlazorMobile.Droid.Resource.Attribute.contentPaddingBottom = global::BlazorMobile.InteropApp.Droid.Resource.Attribute.contentPaddingBottom;
+			global::BlazorMobile.Droid.Resource.Attribute.contentPaddingLeft = global::BlazorMobile.InteropApp.Droid.Resource.Attribute.contentPaddingLeft;
+			global::BlazorMobile.Droid.Resource.Attribute.contentPaddingRight = global::BlazorMobile.InteropApp.Droid.Resource.Attribute.contentPaddingRight;
+			global::BlazorMobile.Droid.Resource.Attribute.contentPaddingTop = global::BlazorMobile.InteropApp.Droid.Resource.Attribute.contentPaddingTop;
+			global::BlazorMobile.Droid.Resource.Attribute.contentScrim = global::BlazorMobile.InteropApp.Droid.Resource.Attribute.contentScrim;
+			global::BlazorMobile.Droid.Resource.Attribute.controlBackground = global::BlazorMobile.InteropApp.Droid.Resource.Attribute.controlBackground;
+			global::BlazorMobile.Droid.Resource.Attribute.coordinatorLayoutStyle = global::BlazorMobile.InteropApp.Droid.Resource.Attribute.coordinatorLayoutStyle;
+			global::BlazorMobile.Droid.Resource.Attribute.cornerRadius = global::BlazorMobile.InteropApp.Droid.Resource.Attribute.cornerRadius;
+			global::BlazorMobile.Droid.Resource.Attribute.counterEnabled = global::BlazorMobile.InteropApp.Droid.Resource.Attribute.counterEnabled;
+			global::BlazorMobile.Droid.Resource.Attribute.counterMaxLength = global::BlazorMobile.InteropApp.Droid.Resource.Attribute.counterMaxLength;
+			global::BlazorMobile.Droid.Resource.Attribute.counterOverflowTextAppearance = global::BlazorMobile.InteropApp.Droid.Resource.Attribute.counterOverflowTextAppearance;
+			global::BlazorMobile.Droid.Resource.Attribute.counterTextAppearance = global::BlazorMobile.InteropApp.Droid.Resource.Attribute.counterTextAppearance;
+			global::BlazorMobile.Droid.Resource.Attribute.customNavigationLayout = global::BlazorMobile.InteropApp.Droid.Resource.Attribute.customNavigationLayout;
+			global::BlazorMobile.Droid.Resource.Attribute.defaultQueryHint = global::BlazorMobile.InteropApp.Droid.Resource.Attribute.defaultQueryHint;
+			global::BlazorMobile.Droid.Resource.Attribute.dialogCornerRadius = global::BlazorMobile.InteropApp.Droid.Resource.Attribute.dialogCornerRadius;
+			global::BlazorMobile.Droid.Resource.Attribute.dialogPreferredPadding = global::BlazorMobile.InteropApp.Droid.Resource.Attribute.dialogPreferredPadding;
+			global::BlazorMobile.Droid.Resource.Attribute.dialogTheme = global::BlazorMobile.InteropApp.Droid.Resource.Attribute.dialogTheme;
+			global::BlazorMobile.Droid.Resource.Attribute.displayOptions = global::BlazorMobile.InteropApp.Droid.Resource.Attribute.displayOptions;
+			global::BlazorMobile.Droid.Resource.Attribute.divider = global::BlazorMobile.InteropApp.Droid.Resource.Attribute.divider;
+			global::BlazorMobile.Droid.Resource.Attribute.dividerHorizontal = global::BlazorMobile.InteropApp.Droid.Resource.Attribute.dividerHorizontal;
+			global::BlazorMobile.Droid.Resource.Attribute.dividerPadding = global::BlazorMobile.InteropApp.Droid.Resource.Attribute.dividerPadding;
+			global::BlazorMobile.Droid.Resource.Attribute.dividerVertical = global::BlazorMobile.InteropApp.Droid.Resource.Attribute.dividerVertical;
+			global::BlazorMobile.Droid.Resource.Attribute.drawableSize = global::BlazorMobile.InteropApp.Droid.Resource.Attribute.drawableSize;
+			global::BlazorMobile.Droid.Resource.Attribute.drawerArrowStyle = global::BlazorMobile.InteropApp.Droid.Resource.Attribute.drawerArrowStyle;
+			global::BlazorMobile.Droid.Resource.Attribute.dropdownListPreferredItemHeight = global::BlazorMobile.InteropApp.Droid.Resource.Attribute.dropdownListPreferredItemHeight;
+			global::BlazorMobile.Droid.Resource.Attribute.dropDownListViewStyle = global::BlazorMobile.InteropApp.Droid.Resource.Attribute.dropDownListViewStyle;
+			global::BlazorMobile.Droid.Resource.Attribute.editTextBackground = global::BlazorMobile.InteropApp.Droid.Resource.Attribute.editTextBackground;
+			global::BlazorMobile.Droid.Resource.Attribute.editTextColor = global::BlazorMobile.InteropApp.Droid.Resource.Attribute.editTextColor;
+			global::BlazorMobile.Droid.Resource.Attribute.editTextStyle = global::BlazorMobile.InteropApp.Droid.Resource.Attribute.editTextStyle;
+			global::BlazorMobile.Droid.Resource.Attribute.elevation = global::BlazorMobile.InteropApp.Droid.Resource.Attribute.elevation;
+			global::BlazorMobile.Droid.Resource.Attribute.enforceMaterialTheme = global::BlazorMobile.InteropApp.Droid.Resource.Attribute.enforceMaterialTheme;
+			global::BlazorMobile.Droid.Resource.Attribute.enforceTextAppearance = global::BlazorMobile.InteropApp.Droid.Resource.Attribute.enforceTextAppearance;
+			global::BlazorMobile.Droid.Resource.Attribute.errorEnabled = global::BlazorMobile.InteropApp.Droid.Resource.Attribute.errorEnabled;
+			global::BlazorMobile.Droid.Resource.Attribute.errorTextAppearance = global::BlazorMobile.InteropApp.Droid.Resource.Attribute.errorTextAppearance;
+			global::BlazorMobile.Droid.Resource.Attribute.expandActivityOverflowButtonDrawable = global::BlazorMobile.InteropApp.Droid.Resource.Attribute.expandActivityOverflowButtonDrawable;
+			global::BlazorMobile.Droid.Resource.Attribute.expanded = global::BlazorMobile.InteropApp.Droid.Resource.Attribute.expanded;
+			global::BlazorMobile.Droid.Resource.Attribute.expandedTitleGravity = global::BlazorMobile.InteropApp.Droid.Resource.Attribute.expandedTitleGravity;
+			global::BlazorMobile.Droid.Resource.Attribute.expandedTitleMargin = global::BlazorMobile.InteropApp.Droid.Resource.Attribute.expandedTitleMargin;
+			global::BlazorMobile.Droid.Resource.Attribute.expandedTitleMarginBottom = global::BlazorMobile.InteropApp.Droid.Resource.Attribute.expandedTitleMarginBottom;
+			global::BlazorMobile.Droid.Resource.Attribute.expandedTitleMarginEnd = global::BlazorMobile.InteropApp.Droid.Resource.Attribute.expandedTitleMarginEnd;
+			global::BlazorMobile.Droid.Resource.Attribute.expandedTitleMarginStart = global::BlazorMobile.InteropApp.Droid.Resource.Attribute.expandedTitleMarginStart;
+			global::BlazorMobile.Droid.Resource.Attribute.expandedTitleMarginTop = global::BlazorMobile.InteropApp.Droid.Resource.Attribute.expandedTitleMarginTop;
+			global::BlazorMobile.Droid.Resource.Attribute.expandedTitleTextAppearance = global::BlazorMobile.InteropApp.Droid.Resource.Attribute.expandedTitleTextAppearance;
+			global::BlazorMobile.Droid.Resource.Attribute.externalRouteEnabledDrawable = global::BlazorMobile.InteropApp.Droid.Resource.Attribute.externalRouteEnabledDrawable;
+			global::BlazorMobile.Droid.Resource.Attribute.fabAlignmentMode = global::BlazorMobile.InteropApp.Droid.Resource.Attribute.fabAlignmentMode;
+			global::BlazorMobile.Droid.Resource.Attribute.fabCradleMargin = global::BlazorMobile.InteropApp.Droid.Resource.Attribute.fabCradleMargin;
+			global::BlazorMobile.Droid.Resource.Attribute.fabCradleRoundedCornerRadius = global::BlazorMobile.InteropApp.Droid.Resource.Attribute.fabCradleRoundedCornerRadius;
+			global::BlazorMobile.Droid.Resource.Attribute.fabCradleVerticalOffset = global::BlazorMobile.InteropApp.Droid.Resource.Attribute.fabCradleVerticalOffset;
+			global::BlazorMobile.Droid.Resource.Attribute.fabCustomSize = global::BlazorMobile.InteropApp.Droid.Resource.Attribute.fabCustomSize;
+			global::BlazorMobile.Droid.Resource.Attribute.fabSize = global::BlazorMobile.InteropApp.Droid.Resource.Attribute.fabSize;
+			global::BlazorMobile.Droid.Resource.Attribute.fastScrollEnabled = global::BlazorMobile.InteropApp.Droid.Resource.Attribute.fastScrollEnabled;
+			global::BlazorMobile.Droid.Resource.Attribute.fastScrollHorizontalThumbDrawable = global::BlazorMobile.InteropApp.Droid.Resource.Attribute.fastScrollHorizontalThumbDrawable;
+			global::BlazorMobile.Droid.Resource.Attribute.fastScrollHorizontalTrackDrawable = global::BlazorMobile.InteropApp.Droid.Resource.Attribute.fastScrollHorizontalTrackDrawable;
+			global::BlazorMobile.Droid.Resource.Attribute.fastScrollVerticalThumbDrawable = global::BlazorMobile.InteropApp.Droid.Resource.Attribute.fastScrollVerticalThumbDrawable;
+			global::BlazorMobile.Droid.Resource.Attribute.fastScrollVerticalTrackDrawable = global::BlazorMobile.InteropApp.Droid.Resource.Attribute.fastScrollVerticalTrackDrawable;
+			global::BlazorMobile.Droid.Resource.Attribute.firstBaselineToTopHeight = global::BlazorMobile.InteropApp.Droid.Resource.Attribute.firstBaselineToTopHeight;
+			global::BlazorMobile.Droid.Resource.Attribute.floatingActionButtonStyle = global::BlazorMobile.InteropApp.Droid.Resource.Attribute.floatingActionButtonStyle;
+			global::BlazorMobile.Droid.Resource.Attribute.font = global::BlazorMobile.InteropApp.Droid.Resource.Attribute.font;
+			global::BlazorMobile.Droid.Resource.Attribute.fontFamily = global::BlazorMobile.InteropApp.Droid.Resource.Attribute.fontFamily;
+			global::BlazorMobile.Droid.Resource.Attribute.fontProviderAuthority = global::BlazorMobile.InteropApp.Droid.Resource.Attribute.fontProviderAuthority;
+			global::BlazorMobile.Droid.Resource.Attribute.fontProviderCerts = global::BlazorMobile.InteropApp.Droid.Resource.Attribute.fontProviderCerts;
+			global::BlazorMobile.Droid.Resource.Attribute.fontProviderFetchStrategy = global::BlazorMobile.InteropApp.Droid.Resource.Attribute.fontProviderFetchStrategy;
+			global::BlazorMobile.Droid.Resource.Attribute.fontProviderFetchTimeout = global::BlazorMobile.InteropApp.Droid.Resource.Attribute.fontProviderFetchTimeout;
+			global::BlazorMobile.Droid.Resource.Attribute.fontProviderPackage = global::BlazorMobile.InteropApp.Droid.Resource.Attribute.fontProviderPackage;
+			global::BlazorMobile.Droid.Resource.Attribute.fontProviderQuery = global::BlazorMobile.InteropApp.Droid.Resource.Attribute.fontProviderQuery;
+			global::BlazorMobile.Droid.Resource.Attribute.fontStyle = global::BlazorMobile.InteropApp.Droid.Resource.Attribute.fontStyle;
+			global::BlazorMobile.Droid.Resource.Attribute.fontVariationSettings = global::BlazorMobile.InteropApp.Droid.Resource.Attribute.fontVariationSettings;
+			global::BlazorMobile.Droid.Resource.Attribute.fontWeight = global::BlazorMobile.InteropApp.Droid.Resource.Attribute.fontWeight;
+			global::BlazorMobile.Droid.Resource.Attribute.foregroundInsidePadding = global::BlazorMobile.InteropApp.Droid.Resource.Attribute.foregroundInsidePadding;
+			global::BlazorMobile.Droid.Resource.Attribute.gapBetweenBars = global::BlazorMobile.InteropApp.Droid.Resource.Attribute.gapBetweenBars;
+			global::BlazorMobile.Droid.Resource.Attribute.goIcon = global::BlazorMobile.InteropApp.Droid.Resource.Attribute.goIcon;
+			global::BlazorMobile.Droid.Resource.Attribute.headerLayout = global::BlazorMobile.InteropApp.Droid.Resource.Attribute.headerLayout;
+			global::BlazorMobile.Droid.Resource.Attribute.height = global::BlazorMobile.InteropApp.Droid.Resource.Attribute.height;
+			global::BlazorMobile.Droid.Resource.Attribute.helperText = global::BlazorMobile.InteropApp.Droid.Resource.Attribute.helperText;
+			global::BlazorMobile.Droid.Resource.Attribute.helperTextEnabled = global::BlazorMobile.InteropApp.Droid.Resource.Attribute.helperTextEnabled;
+			global::BlazorMobile.Droid.Resource.Attribute.helperTextTextAppearance = global::BlazorMobile.InteropApp.Droid.Resource.Attribute.helperTextTextAppearance;
+			global::BlazorMobile.Droid.Resource.Attribute.hideMotionSpec = global::BlazorMobile.InteropApp.Droid.Resource.Attribute.hideMotionSpec;
+			global::BlazorMobile.Droid.Resource.Attribute.hideOnContentScroll = global::BlazorMobile.InteropApp.Droid.Resource.Attribute.hideOnContentScroll;
+			global::BlazorMobile.Droid.Resource.Attribute.hideOnScroll = global::BlazorMobile.InteropApp.Droid.Resource.Attribute.hideOnScroll;
+			global::BlazorMobile.Droid.Resource.Attribute.hintAnimationEnabled = global::BlazorMobile.InteropApp.Droid.Resource.Attribute.hintAnimationEnabled;
+			global::BlazorMobile.Droid.Resource.Attribute.hintEnabled = global::BlazorMobile.InteropApp.Droid.Resource.Attribute.hintEnabled;
+			global::BlazorMobile.Droid.Resource.Attribute.hintTextAppearance = global::BlazorMobile.InteropApp.Droid.Resource.Attribute.hintTextAppearance;
+			global::BlazorMobile.Droid.Resource.Attribute.homeAsUpIndicator = global::BlazorMobile.InteropApp.Droid.Resource.Attribute.homeAsUpIndicator;
+			global::BlazorMobile.Droid.Resource.Attribute.homeLayout = global::BlazorMobile.InteropApp.Droid.Resource.Attribute.homeLayout;
+			global::BlazorMobile.Droid.Resource.Attribute.hoveredFocusedTranslationZ = global::BlazorMobile.InteropApp.Droid.Resource.Attribute.hoveredFocusedTranslationZ;
+			global::BlazorMobile.Droid.Resource.Attribute.icon = global::BlazorMobile.InteropApp.Droid.Resource.Attribute.icon;
+			global::BlazorMobile.Droid.Resource.Attribute.iconEndPadding = global::BlazorMobile.InteropApp.Droid.Resource.Attribute.iconEndPadding;
+			global::BlazorMobile.Droid.Resource.Attribute.iconGravity = global::BlazorMobile.InteropApp.Droid.Resource.Attribute.iconGravity;
+			global::BlazorMobile.Droid.Resource.Attribute.iconifiedByDefault = global::BlazorMobile.InteropApp.Droid.Resource.Attribute.iconifiedByDefault;
+			global::BlazorMobile.Droid.Resource.Attribute.iconPadding = global::BlazorMobile.InteropApp.Droid.Resource.Attribute.iconPadding;
+			global::BlazorMobile.Droid.Resource.Attribute.iconSize = global::BlazorMobile.InteropApp.Droid.Resource.Attribute.iconSize;
+			global::BlazorMobile.Droid.Resource.Attribute.iconStartPadding = global::BlazorMobile.InteropApp.Droid.Resource.Attribute.iconStartPadding;
+			global::BlazorMobile.Droid.Resource.Attribute.iconTint = global::BlazorMobile.InteropApp.Droid.Resource.Attribute.iconTint;
+			global::BlazorMobile.Droid.Resource.Attribute.iconTintMode = global::BlazorMobile.InteropApp.Droid.Resource.Attribute.iconTintMode;
+			global::BlazorMobile.Droid.Resource.Attribute.imageButtonStyle = global::BlazorMobile.InteropApp.Droid.Resource.Attribute.imageButtonStyle;
+			global::BlazorMobile.Droid.Resource.Attribute.indeterminateProgressStyle = global::BlazorMobile.InteropApp.Droid.Resource.Attribute.indeterminateProgressStyle;
+			global::BlazorMobile.Droid.Resource.Attribute.initialActivityCount = global::BlazorMobile.InteropApp.Droid.Resource.Attribute.initialActivityCount;
+			global::BlazorMobile.Droid.Resource.Attribute.insetForeground = global::BlazorMobile.InteropApp.Droid.Resource.Attribute.insetForeground;
+			global::BlazorMobile.Droid.Resource.Attribute.isLightTheme = global::BlazorMobile.InteropApp.Droid.Resource.Attribute.isLightTheme;
+			global::BlazorMobile.Droid.Resource.Attribute.itemBackground = global::BlazorMobile.InteropApp.Droid.Resource.Attribute.itemBackground;
+			global::BlazorMobile.Droid.Resource.Attribute.itemHorizontalPadding = global::BlazorMobile.InteropApp.Droid.Resource.Attribute.itemHorizontalPadding;
+			global::BlazorMobile.Droid.Resource.Attribute.itemHorizontalTranslationEnabled = global::BlazorMobile.InteropApp.Droid.Resource.Attribute.itemHorizontalTranslationEnabled;
+			global::BlazorMobile.Droid.Resource.Attribute.itemIconPadding = global::BlazorMobile.InteropApp.Droid.Resource.Attribute.itemIconPadding;
+			global::BlazorMobile.Droid.Resource.Attribute.itemIconSize = global::BlazorMobile.InteropApp.Droid.Resource.Attribute.itemIconSize;
+			global::BlazorMobile.Droid.Resource.Attribute.itemIconTint = global::BlazorMobile.InteropApp.Droid.Resource.Attribute.itemIconTint;
+			global::BlazorMobile.Droid.Resource.Attribute.itemPadding = global::BlazorMobile.InteropApp.Droid.Resource.Attribute.itemPadding;
+			global::BlazorMobile.Droid.Resource.Attribute.itemSpacing = global::BlazorMobile.InteropApp.Droid.Resource.Attribute.itemSpacing;
+			global::BlazorMobile.Droid.Resource.Attribute.itemTextAppearance = global::BlazorMobile.InteropApp.Droid.Resource.Attribute.itemTextAppearance;
+			global::BlazorMobile.Droid.Resource.Attribute.itemTextAppearanceActive = global::BlazorMobile.InteropApp.Droid.Resource.Attribute.itemTextAppearanceActive;
+			global::BlazorMobile.Droid.Resource.Attribute.itemTextAppearanceInactive = global::BlazorMobile.InteropApp.Droid.Resource.Attribute.itemTextAppearanceInactive;
+			global::BlazorMobile.Droid.Resource.Attribute.itemTextColor = global::BlazorMobile.InteropApp.Droid.Resource.Attribute.itemTextColor;
+			global::BlazorMobile.Droid.Resource.Attribute.keylines = global::BlazorMobile.InteropApp.Droid.Resource.Attribute.keylines;
+			global::BlazorMobile.Droid.Resource.Attribute.labelVisibilityMode = global::BlazorMobile.InteropApp.Droid.Resource.Attribute.labelVisibilityMode;
+			global::BlazorMobile.Droid.Resource.Attribute.lastBaselineToBottomHeight = global::BlazorMobile.InteropApp.Droid.Resource.Attribute.lastBaselineToBottomHeight;
+			global::BlazorMobile.Droid.Resource.Attribute.layout = global::BlazorMobile.InteropApp.Droid.Resource.Attribute.layout;
+			global::BlazorMobile.Droid.Resource.Attribute.layoutManager = global::BlazorMobile.InteropApp.Droid.Resource.Attribute.layoutManager;
+			global::BlazorMobile.Droid.Resource.Attribute.layout_anchor = global::BlazorMobile.InteropApp.Droid.Resource.Attribute.layout_anchor;
+			global::BlazorMobile.Droid.Resource.Attribute.layout_anchorGravity = global::BlazorMobile.InteropApp.Droid.Resource.Attribute.layout_anchorGravity;
+			global::BlazorMobile.Droid.Resource.Attribute.layout_behavior = global::BlazorMobile.InteropApp.Droid.Resource.Attribute.layout_behavior;
+			global::BlazorMobile.Droid.Resource.Attribute.layout_collapseMode = global::BlazorMobile.InteropApp.Droid.Resource.Attribute.layout_collapseMode;
+			global::BlazorMobile.Droid.Resource.Attribute.layout_collapseParallaxMultiplier = global::BlazorMobile.InteropApp.Droid.Resource.Attribute.layout_collapseParallaxMultiplier;
+			global::BlazorMobile.Droid.Resource.Attribute.layout_dodgeInsetEdges = global::BlazorMobile.InteropApp.Droid.Resource.Attribute.layout_dodgeInsetEdges;
+			global::BlazorMobile.Droid.Resource.Attribute.layout_insetEdge = global::BlazorMobile.InteropApp.Droid.Resource.Attribute.layout_insetEdge;
+			global::BlazorMobile.Droid.Resource.Attribute.layout_keyline = global::BlazorMobile.InteropApp.Droid.Resource.Attribute.layout_keyline;
+			global::BlazorMobile.Droid.Resource.Attribute.layout_scrollFlags = global::BlazorMobile.InteropApp.Droid.Resource.Attribute.layout_scrollFlags;
+			global::BlazorMobile.Droid.Resource.Attribute.layout_scrollInterpolator = global::BlazorMobile.InteropApp.Droid.Resource.Attribute.layout_scrollInterpolator;
+			global::BlazorMobile.Droid.Resource.Attribute.liftOnScroll = global::BlazorMobile.InteropApp.Droid.Resource.Attribute.liftOnScroll;
+			global::BlazorMobile.Droid.Resource.Attribute.lineHeight = global::BlazorMobile.InteropApp.Droid.Resource.Attribute.lineHeight;
+			global::BlazorMobile.Droid.Resource.Attribute.lineSpacing = global::BlazorMobile.InteropApp.Droid.Resource.Attribute.lineSpacing;
+			global::BlazorMobile.Droid.Resource.Attribute.listChoiceBackgroundIndicator = global::BlazorMobile.InteropApp.Droid.Resource.Attribute.listChoiceBackgroundIndicator;
+			global::BlazorMobile.Droid.Resource.Attribute.listDividerAlertDialog = global::BlazorMobile.InteropApp.Droid.Resource.Attribute.listDividerAlertDialog;
+			global::BlazorMobile.Droid.Resource.Attribute.listItemLayout = global::BlazorMobile.InteropApp.Droid.Resource.Attribute.listItemLayout;
+			global::BlazorMobile.Droid.Resource.Attribute.listLayout = global::BlazorMobile.InteropApp.Droid.Resource.Attribute.listLayout;
+			global::BlazorMobile.Droid.Resource.Attribute.listMenuViewStyle = global::BlazorMobile.InteropApp.Droid.Resource.Attribute.listMenuViewStyle;
+			global::BlazorMobile.Droid.Resource.Attribute.listPopupWindowStyle = global::BlazorMobile.InteropApp.Droid.Resource.Attribute.listPopupWindowStyle;
+			global::BlazorMobile.Droid.Resource.Attribute.listPreferredItemHeight = global::BlazorMobile.InteropApp.Droid.Resource.Attribute.listPreferredItemHeight;
+			global::BlazorMobile.Droid.Resource.Attribute.listPreferredItemHeightLarge = global::BlazorMobile.InteropApp.Droid.Resource.Attribute.listPreferredItemHeightLarge;
+			global::BlazorMobile.Droid.Resource.Attribute.listPreferredItemHeightSmall = global::BlazorMobile.InteropApp.Droid.Resource.Attribute.listPreferredItemHeightSmall;
+			global::BlazorMobile.Droid.Resource.Attribute.listPreferredItemPaddingLeft = global::BlazorMobile.InteropApp.Droid.Resource.Attribute.listPreferredItemPaddingLeft;
+			global::BlazorMobile.Droid.Resource.Attribute.listPreferredItemPaddingRight = global::BlazorMobile.InteropApp.Droid.Resource.Attribute.listPreferredItemPaddingRight;
+			global::BlazorMobile.Droid.Resource.Attribute.logo = global::BlazorMobile.InteropApp.Droid.Resource.Attribute.logo;
+			global::BlazorMobile.Droid.Resource.Attribute.logoDescription = global::BlazorMobile.InteropApp.Droid.Resource.Attribute.logoDescription;
+			global::BlazorMobile.Droid.Resource.Attribute.materialButtonStyle = global::BlazorMobile.InteropApp.Droid.Resource.Attribute.materialButtonStyle;
+			global::BlazorMobile.Droid.Resource.Attribute.materialCardViewStyle = global::BlazorMobile.InteropApp.Droid.Resource.Attribute.materialCardViewStyle;
+			global::BlazorMobile.Droid.Resource.Attribute.maxActionInlineWidth = global::BlazorMobile.InteropApp.Droid.Resource.Attribute.maxActionInlineWidth;
+			global::BlazorMobile.Droid.Resource.Attribute.maxButtonHeight = global::BlazorMobile.InteropApp.Droid.Resource.Attribute.maxButtonHeight;
+			global::BlazorMobile.Droid.Resource.Attribute.maxImageSize = global::BlazorMobile.InteropApp.Droid.Resource.Attribute.maxImageSize;
+			global::BlazorMobile.Droid.Resource.Attribute.measureWithLargestChild = global::BlazorMobile.InteropApp.Droid.Resource.Attribute.measureWithLargestChild;
+			global::BlazorMobile.Droid.Resource.Attribute.mediaRouteAudioTrackDrawable = global::BlazorMobile.InteropApp.Droid.Resource.Attribute.mediaRouteAudioTrackDrawable;
+			global::BlazorMobile.Droid.Resource.Attribute.mediaRouteButtonStyle = global::BlazorMobile.InteropApp.Droid.Resource.Attribute.mediaRouteButtonStyle;
+			global::BlazorMobile.Droid.Resource.Attribute.mediaRouteButtonTint = global::BlazorMobile.InteropApp.Droid.Resource.Attribute.mediaRouteButtonTint;
+			global::BlazorMobile.Droid.Resource.Attribute.mediaRouteCloseDrawable = global::BlazorMobile.InteropApp.Droid.Resource.Attribute.mediaRouteCloseDrawable;
+			global::BlazorMobile.Droid.Resource.Attribute.mediaRouteControlPanelThemeOverlay = global::BlazorMobile.InteropApp.Droid.Resource.Attribute.mediaRouteControlPanelThemeOverlay;
+			global::BlazorMobile.Droid.Resource.Attribute.mediaRouteDefaultIconDrawable = global::BlazorMobile.InteropApp.Droid.Resource.Attribute.mediaRouteDefaultIconDrawable;
+			global::BlazorMobile.Droid.Resource.Attribute.mediaRoutePauseDrawable = global::BlazorMobile.InteropApp.Droid.Resource.Attribute.mediaRoutePauseDrawable;
+			global::BlazorMobile.Droid.Resource.Attribute.mediaRoutePlayDrawable = global::BlazorMobile.InteropApp.Droid.Resource.Attribute.mediaRoutePlayDrawable;
+			global::BlazorMobile.Droid.Resource.Attribute.mediaRouteSpeakerGroupIconDrawable = global::BlazorMobile.InteropApp.Droid.Resource.Attribute.mediaRouteSpeakerGroupIconDrawable;
+			global::BlazorMobile.Droid.Resource.Attribute.mediaRouteSpeakerIconDrawable = global::BlazorMobile.InteropApp.Droid.Resource.Attribute.mediaRouteSpeakerIconDrawable;
+			global::BlazorMobile.Droid.Resource.Attribute.mediaRouteStopDrawable = global::BlazorMobile.InteropApp.Droid.Resource.Attribute.mediaRouteStopDrawable;
+			global::BlazorMobile.Droid.Resource.Attribute.mediaRouteTheme = global::BlazorMobile.InteropApp.Droid.Resource.Attribute.mediaRouteTheme;
+			global::BlazorMobile.Droid.Resource.Attribute.mediaRouteTvIconDrawable = global::BlazorMobile.InteropApp.Droid.Resource.Attribute.mediaRouteTvIconDrawable;
+			global::BlazorMobile.Droid.Resource.Attribute.menu = global::BlazorMobile.InteropApp.Droid.Resource.Attribute.menu;
+			global::BlazorMobile.Droid.Resource.Attribute.multiChoiceItemLayout = global::BlazorMobile.InteropApp.Droid.Resource.Attribute.multiChoiceItemLayout;
+			global::BlazorMobile.Droid.Resource.Attribute.navigationContentDescription = global::BlazorMobile.InteropApp.Droid.Resource.Attribute.navigationContentDescription;
+			global::BlazorMobile.Droid.Resource.Attribute.navigationIcon = global::BlazorMobile.InteropApp.Droid.Resource.Attribute.navigationIcon;
+			global::BlazorMobile.Droid.Resource.Attribute.navigationMode = global::BlazorMobile.InteropApp.Droid.Resource.Attribute.navigationMode;
+			global::BlazorMobile.Droid.Resource.Attribute.navigationViewStyle = global::BlazorMobile.InteropApp.Droid.Resource.Attribute.navigationViewStyle;
+			global::BlazorMobile.Droid.Resource.Attribute.numericModifiers = global::BlazorMobile.InteropApp.Droid.Resource.Attribute.numericModifiers;
+			global::BlazorMobile.Droid.Resource.Attribute.overlapAnchor = global::BlazorMobile.InteropApp.Droid.Resource.Attribute.overlapAnchor;
+			global::BlazorMobile.Droid.Resource.Attribute.paddingBottomNoButtons = global::BlazorMobile.InteropApp.Droid.Resource.Attribute.paddingBottomNoButtons;
+			global::BlazorMobile.Droid.Resource.Attribute.paddingEnd = global::BlazorMobile.InteropApp.Droid.Resource.Attribute.paddingEnd;
+			global::BlazorMobile.Droid.Resource.Attribute.paddingStart = global::BlazorMobile.InteropApp.Droid.Resource.Attribute.paddingStart;
+			global::BlazorMobile.Droid.Resource.Attribute.paddingTopNoTitle = global::BlazorMobile.InteropApp.Droid.Resource.Attribute.paddingTopNoTitle;
+			global::BlazorMobile.Droid.Resource.Attribute.panelBackground = global::BlazorMobile.InteropApp.Droid.Resource.Attribute.panelBackground;
+			global::BlazorMobile.Droid.Resource.Attribute.panelMenuListTheme = global::BlazorMobile.InteropApp.Droid.Resource.Attribute.panelMenuListTheme;
+			global::BlazorMobile.Droid.Resource.Attribute.panelMenuListWidth = global::BlazorMobile.InteropApp.Droid.Resource.Attribute.panelMenuListWidth;
+			global::BlazorMobile.Droid.Resource.Attribute.passwordToggleContentDescription = global::BlazorMobile.InteropApp.Droid.Resource.Attribute.passwordToggleContentDescription;
+			global::BlazorMobile.Droid.Resource.Attribute.passwordToggleDrawable = global::BlazorMobile.InteropApp.Droid.Resource.Attribute.passwordToggleDrawable;
+			global::BlazorMobile.Droid.Resource.Attribute.passwordToggleEnabled = global::BlazorMobile.InteropApp.Droid.Resource.Attribute.passwordToggleEnabled;
+			global::BlazorMobile.Droid.Resource.Attribute.passwordToggleTint = global::BlazorMobile.InteropApp.Droid.Resource.Attribute.passwordToggleTint;
+			global::BlazorMobile.Droid.Resource.Attribute.passwordToggleTintMode = global::BlazorMobile.InteropApp.Droid.Resource.Attribute.passwordToggleTintMode;
+			global::BlazorMobile.Droid.Resource.Attribute.popupMenuStyle = global::BlazorMobile.InteropApp.Droid.Resource.Attribute.popupMenuStyle;
+			global::BlazorMobile.Droid.Resource.Attribute.popupTheme = global::BlazorMobile.InteropApp.Droid.Resource.Attribute.popupTheme;
+			global::BlazorMobile.Droid.Resource.Attribute.popupWindowStyle = global::BlazorMobile.InteropApp.Droid.Resource.Attribute.popupWindowStyle;
+			global::BlazorMobile.Droid.Resource.Attribute.preserveIconSpacing = global::BlazorMobile.InteropApp.Droid.Resource.Attribute.preserveIconSpacing;
+			global::BlazorMobile.Droid.Resource.Attribute.pressedTranslationZ = global::BlazorMobile.InteropApp.Droid.Resource.Attribute.pressedTranslationZ;
+			global::BlazorMobile.Droid.Resource.Attribute.progressBarPadding = global::BlazorMobile.InteropApp.Droid.Resource.Attribute.progressBarPadding;
+			global::BlazorMobile.Droid.Resource.Attribute.progressBarStyle = global::BlazorMobile.InteropApp.Droid.Resource.Attribute.progressBarStyle;
+			global::BlazorMobile.Droid.Resource.Attribute.queryBackground = global::BlazorMobile.InteropApp.Droid.Resource.Attribute.queryBackground;
+			global::BlazorMobile.Droid.Resource.Attribute.queryHint = global::BlazorMobile.InteropApp.Droid.Resource.Attribute.queryHint;
+			global::BlazorMobile.Droid.Resource.Attribute.radioButtonStyle = global::BlazorMobile.InteropApp.Droid.Resource.Attribute.radioButtonStyle;
+			global::BlazorMobile.Droid.Resource.Attribute.ratingBarStyle = global::BlazorMobile.InteropApp.Droid.Resource.Attribute.ratingBarStyle;
+			global::BlazorMobile.Droid.Resource.Attribute.ratingBarStyleIndicator = global::BlazorMobile.InteropApp.Droid.Resource.Attribute.ratingBarStyleIndicator;
+			global::BlazorMobile.Droid.Resource.Attribute.ratingBarStyleSmall = global::BlazorMobile.InteropApp.Droid.Resource.Attribute.ratingBarStyleSmall;
+			global::BlazorMobile.Droid.Resource.Attribute.reverseLayout = global::BlazorMobile.InteropApp.Droid.Resource.Attribute.reverseLayout;
+			global::BlazorMobile.Droid.Resource.Attribute.rippleColor = global::BlazorMobile.InteropApp.Droid.Resource.Attribute.rippleColor;
+			global::BlazorMobile.Droid.Resource.Attribute.scrimAnimationDuration = global::BlazorMobile.InteropApp.Droid.Resource.Attribute.scrimAnimationDuration;
+			global::BlazorMobile.Droid.Resource.Attribute.scrimBackground = global::BlazorMobile.InteropApp.Droid.Resource.Attribute.scrimBackground;
+			global::BlazorMobile.Droid.Resource.Attribute.scrimVisibleHeightTrigger = global::BlazorMobile.InteropApp.Droid.Resource.Attribute.scrimVisibleHeightTrigger;
+			global::BlazorMobile.Droid.Resource.Attribute.searchHintIcon = global::BlazorMobile.InteropApp.Droid.Resource.Attribute.searchHintIcon;
+			global::BlazorMobile.Droid.Resource.Attribute.searchIcon = global::BlazorMobile.InteropApp.Droid.Resource.Attribute.searchIcon;
+			global::BlazorMobile.Droid.Resource.Attribute.searchViewStyle = global::BlazorMobile.InteropApp.Droid.Resource.Attribute.searchViewStyle;
+			global::BlazorMobile.Droid.Resource.Attribute.seekBarStyle = global::BlazorMobile.InteropApp.Droid.Resource.Attribute.seekBarStyle;
+			global::BlazorMobile.Droid.Resource.Attribute.selectableItemBackground = global::BlazorMobile.InteropApp.Droid.Resource.Attribute.selectableItemBackground;
+			global::BlazorMobile.Droid.Resource.Attribute.selectableItemBackgroundBorderless = global::BlazorMobile.InteropApp.Droid.Resource.Attribute.selectableItemBackgroundBorderless;
+			global::BlazorMobile.Droid.Resource.Attribute.showAsAction = global::BlazorMobile.InteropApp.Droid.Resource.Attribute.showAsAction;
+			global::BlazorMobile.Droid.Resource.Attribute.showDividers = global::BlazorMobile.InteropApp.Droid.Resource.Attribute.showDividers;
+			global::BlazorMobile.Droid.Resource.Attribute.showMotionSpec = global::BlazorMobile.InteropApp.Droid.Resource.Attribute.showMotionSpec;
+			global::BlazorMobile.Droid.Resource.Attribute.showText = global::BlazorMobile.InteropApp.Droid.Resource.Attribute.showText;
+			global::BlazorMobile.Droid.Resource.Attribute.showTitle = global::BlazorMobile.InteropApp.Droid.Resource.Attribute.showTitle;
+			global::BlazorMobile.Droid.Resource.Attribute.singleChoiceItemLayout = global::BlazorMobile.InteropApp.Droid.Resource.Attribute.singleChoiceItemLayout;
+			global::BlazorMobile.Droid.Resource.Attribute.singleLine = global::BlazorMobile.InteropApp.Droid.Resource.Attribute.singleLine;
+			global::BlazorMobile.Droid.Resource.Attribute.singleSelection = global::BlazorMobile.InteropApp.Droid.Resource.Attribute.singleSelection;
+			global::BlazorMobile.Droid.Resource.Attribute.snackbarButtonStyle = global::BlazorMobile.InteropApp.Droid.Resource.Attribute.snackbarButtonStyle;
+			global::BlazorMobile.Droid.Resource.Attribute.snackbarStyle = global::BlazorMobile.InteropApp.Droid.Resource.Attribute.snackbarStyle;
+			global::BlazorMobile.Droid.Resource.Attribute.spanCount = global::BlazorMobile.InteropApp.Droid.Resource.Attribute.spanCount;
+			global::BlazorMobile.Droid.Resource.Attribute.spinBars = global::BlazorMobile.InteropApp.Droid.Resource.Attribute.spinBars;
+			global::BlazorMobile.Droid.Resource.Attribute.spinnerDropDownItemStyle = global::BlazorMobile.InteropApp.Droid.Resource.Attribute.spinnerDropDownItemStyle;
+			global::BlazorMobile.Droid.Resource.Attribute.spinnerStyle = global::BlazorMobile.InteropApp.Droid.Resource.Attribute.spinnerStyle;
+			global::BlazorMobile.Droid.Resource.Attribute.splitTrack = global::BlazorMobile.InteropApp.Droid.Resource.Attribute.splitTrack;
+			global::BlazorMobile.Droid.Resource.Attribute.srcCompat = global::BlazorMobile.InteropApp.Droid.Resource.Attribute.srcCompat;
+			global::BlazorMobile.Droid.Resource.Attribute.stackFromEnd = global::BlazorMobile.InteropApp.Droid.Resource.Attribute.stackFromEnd;
+			global::BlazorMobile.Droid.Resource.Attribute.state_above_anchor = global::BlazorMobile.InteropApp.Droid.Resource.Attribute.state_above_anchor;
+			global::BlazorMobile.Droid.Resource.Attribute.state_collapsed = global::BlazorMobile.InteropApp.Droid.Resource.Attribute.state_collapsed;
+			global::BlazorMobile.Droid.Resource.Attribute.state_collapsible = global::BlazorMobile.InteropApp.Droid.Resource.Attribute.state_collapsible;
+			global::BlazorMobile.Droid.Resource.Attribute.state_liftable = global::BlazorMobile.InteropApp.Droid.Resource.Attribute.state_liftable;
+			global::BlazorMobile.Droid.Resource.Attribute.state_lifted = global::BlazorMobile.InteropApp.Droid.Resource.Attribute.state_lifted;
+			global::BlazorMobile.Droid.Resource.Attribute.statusBarBackground = global::BlazorMobile.InteropApp.Droid.Resource.Attribute.statusBarBackground;
+			global::BlazorMobile.Droid.Resource.Attribute.statusBarScrim = global::BlazorMobile.InteropApp.Droid.Resource.Attribute.statusBarScrim;
+			global::BlazorMobile.Droid.Resource.Attribute.strokeColor = global::BlazorMobile.InteropApp.Droid.Resource.Attribute.strokeColor;
+			global::BlazorMobile.Droid.Resource.Attribute.strokeWidth = global::BlazorMobile.InteropApp.Droid.Resource.Attribute.strokeWidth;
+			global::BlazorMobile.Droid.Resource.Attribute.subMenuArrow = global::BlazorMobile.InteropApp.Droid.Resource.Attribute.subMenuArrow;
+			global::BlazorMobile.Droid.Resource.Attribute.submitBackground = global::BlazorMobile.InteropApp.Droid.Resource.Attribute.submitBackground;
+			global::BlazorMobile.Droid.Resource.Attribute.subtitle = global::BlazorMobile.InteropApp.Droid.Resource.Attribute.subtitle;
+			global::BlazorMobile.Droid.Resource.Attribute.subtitleTextAppearance = global::BlazorMobile.InteropApp.Droid.Resource.Attribute.subtitleTextAppearance;
+			global::BlazorMobile.Droid.Resource.Attribute.subtitleTextColor = global::BlazorMobile.InteropApp.Droid.Resource.Attribute.subtitleTextColor;
+			global::BlazorMobile.Droid.Resource.Attribute.subtitleTextStyle = global::BlazorMobile.InteropApp.Droid.Resource.Attribute.subtitleTextStyle;
+			global::BlazorMobile.Droid.Resource.Attribute.suggestionRowLayout = global::BlazorMobile.InteropApp.Droid.Resource.Attribute.suggestionRowLayout;
+			global::BlazorMobile.Droid.Resource.Attribute.switchMinWidth = global::BlazorMobile.InteropApp.Droid.Resource.Attribute.switchMinWidth;
+			global::BlazorMobile.Droid.Resource.Attribute.switchPadding = global::BlazorMobile.InteropApp.Droid.Resource.Attribute.switchPadding;
+			global::BlazorMobile.Droid.Resource.Attribute.switchStyle = global::BlazorMobile.InteropApp.Droid.Resource.Attribute.switchStyle;
+			global::BlazorMobile.Droid.Resource.Attribute.switchTextAppearance = global::BlazorMobile.InteropApp.Droid.Resource.Attribute.switchTextAppearance;
+			global::BlazorMobile.Droid.Resource.Attribute.tabBackground = global::BlazorMobile.InteropApp.Droid.Resource.Attribute.tabBackground;
+			global::BlazorMobile.Droid.Resource.Attribute.tabContentStart = global::BlazorMobile.InteropApp.Droid.Resource.Attribute.tabContentStart;
+			global::BlazorMobile.Droid.Resource.Attribute.tabGravity = global::BlazorMobile.InteropApp.Droid.Resource.Attribute.tabGravity;
+			global::BlazorMobile.Droid.Resource.Attribute.tabIconTint = global::BlazorMobile.InteropApp.Droid.Resource.Attribute.tabIconTint;
+			global::BlazorMobile.Droid.Resource.Attribute.tabIconTintMode = global::BlazorMobile.InteropApp.Droid.Resource.Attribute.tabIconTintMode;
+			global::BlazorMobile.Droid.Resource.Attribute.tabIndicator = global::BlazorMobile.InteropApp.Droid.Resource.Attribute.tabIndicator;
+			global::BlazorMobile.Droid.Resource.Attribute.tabIndicatorAnimationDuration = global::BlazorMobile.InteropApp.Droid.Resource.Attribute.tabIndicatorAnimationDuration;
+			global::BlazorMobile.Droid.Resource.Attribute.tabIndicatorColor = global::BlazorMobile.InteropApp.Droid.Resource.Attribute.tabIndicatorColor;
+			global::BlazorMobile.Droid.Resource.Attribute.tabIndicatorFullWidth = global::BlazorMobile.InteropApp.Droid.Resource.Attribute.tabIndicatorFullWidth;
+			global::BlazorMobile.Droid.Resource.Attribute.tabIndicatorGravity = global::BlazorMobile.InteropApp.Droid.Resource.Attribute.tabIndicatorGravity;
+			global::BlazorMobile.Droid.Resource.Attribute.tabIndicatorHeight = global::BlazorMobile.InteropApp.Droid.Resource.Attribute.tabIndicatorHeight;
+			global::BlazorMobile.Droid.Resource.Attribute.tabInlineLabel = global::BlazorMobile.InteropApp.Droid.Resource.Attribute.tabInlineLabel;
+			global::BlazorMobile.Droid.Resource.Attribute.tabMaxWidth = global::BlazorMobile.InteropApp.Droid.Resource.Attribute.tabMaxWidth;
+			global::BlazorMobile.Droid.Resource.Attribute.tabMinWidth = global::BlazorMobile.InteropApp.Droid.Resource.Attribute.tabMinWidth;
+			global::BlazorMobile.Droid.Resource.Attribute.tabMode = global::BlazorMobile.InteropApp.Droid.Resource.Attribute.tabMode;
+			global::BlazorMobile.Droid.Resource.Attribute.tabPadding = global::BlazorMobile.InteropApp.Droid.Resource.Attribute.tabPadding;
+			global::BlazorMobile.Droid.Resource.Attribute.tabPaddingBottom = global::BlazorMobile.InteropApp.Droid.Resource.Attribute.tabPaddingBottom;
+			global::BlazorMobile.Droid.Resource.Attribute.tabPaddingEnd = global::BlazorMobile.InteropApp.Droid.Resource.Attribute.tabPaddingEnd;
+			global::BlazorMobile.Droid.Resource.Attribute.tabPaddingStart = global::BlazorMobile.InteropApp.Droid.Resource.Attribute.tabPaddingStart;
+			global::BlazorMobile.Droid.Resource.Attribute.tabPaddingTop = global::BlazorMobile.InteropApp.Droid.Resource.Attribute.tabPaddingTop;
+			global::BlazorMobile.Droid.Resource.Attribute.tabRippleColor = global::BlazorMobile.InteropApp.Droid.Resource.Attribute.tabRippleColor;
+			global::BlazorMobile.Droid.Resource.Attribute.tabSelectedTextColor = global::BlazorMobile.InteropApp.Droid.Resource.Attribute.tabSelectedTextColor;
+			global::BlazorMobile.Droid.Resource.Attribute.tabStyle = global::BlazorMobile.InteropApp.Droid.Resource.Attribute.tabStyle;
+			global::BlazorMobile.Droid.Resource.Attribute.tabTextAppearance = global::BlazorMobile.InteropApp.Droid.Resource.Attribute.tabTextAppearance;
+			global::BlazorMobile.Droid.Resource.Attribute.tabTextColor = global::BlazorMobile.InteropApp.Droid.Resource.Attribute.tabTextColor;
+			global::BlazorMobile.Droid.Resource.Attribute.tabUnboundedRipple = global::BlazorMobile.InteropApp.Droid.Resource.Attribute.tabUnboundedRipple;
+			global::BlazorMobile.Droid.Resource.Attribute.textAllCaps = global::BlazorMobile.InteropApp.Droid.Resource.Attribute.textAllCaps;
+			global::BlazorMobile.Droid.Resource.Attribute.textAppearanceBody1 = global::BlazorMobile.InteropApp.Droid.Resource.Attribute.textAppearanceBody1;
+			global::BlazorMobile.Droid.Resource.Attribute.textAppearanceBody2 = global::BlazorMobile.InteropApp.Droid.Resource.Attribute.textAppearanceBody2;
+			global::BlazorMobile.Droid.Resource.Attribute.textAppearanceButton = global::BlazorMobile.InteropApp.Droid.Resource.Attribute.textAppearanceButton;
+			global::BlazorMobile.Droid.Resource.Attribute.textAppearanceCaption = global::BlazorMobile.InteropApp.Droid.Resource.Attribute.textAppearanceCaption;
+			global::BlazorMobile.Droid.Resource.Attribute.textAppearanceHeadline1 = global::BlazorMobile.InteropApp.Droid.Resource.Attribute.textAppearanceHeadline1;
+			global::BlazorMobile.Droid.Resource.Attribute.textAppearanceHeadline2 = global::BlazorMobile.InteropApp.Droid.Resource.Attribute.textAppearanceHeadline2;
+			global::BlazorMobile.Droid.Resource.Attribute.textAppearanceHeadline3 = global::BlazorMobile.InteropApp.Droid.Resource.Attribute.textAppearanceHeadline3;
+			global::BlazorMobile.Droid.Resource.Attribute.textAppearanceHeadline4 = global::BlazorMobile.InteropApp.Droid.Resource.Attribute.textAppearanceHeadline4;
+			global::BlazorMobile.Droid.Resource.Attribute.textAppearanceHeadline5 = global::BlazorMobile.InteropApp.Droid.Resource.Attribute.textAppearanceHeadline5;
+			global::BlazorMobile.Droid.Resource.Attribute.textAppearanceHeadline6 = global::BlazorMobile.InteropApp.Droid.Resource.Attribute.textAppearanceHeadline6;
+			global::BlazorMobile.Droid.Resource.Attribute.textAppearanceLargePopupMenu = global::BlazorMobile.InteropApp.Droid.Resource.Attribute.textAppearanceLargePopupMenu;
+			global::BlazorMobile.Droid.Resource.Attribute.textAppearanceListItem = global::BlazorMobile.InteropApp.Droid.Resource.Attribute.textAppearanceListItem;
+			global::BlazorMobile.Droid.Resource.Attribute.textAppearanceListItemSecondary = global::BlazorMobile.InteropApp.Droid.Resource.Attribute.textAppearanceListItemSecondary;
+			global::BlazorMobile.Droid.Resource.Attribute.textAppearanceListItemSmall = global::BlazorMobile.InteropApp.Droid.Resource.Attribute.textAppearanceListItemSmall;
+			global::BlazorMobile.Droid.Resource.Attribute.textAppearanceOverline = global::BlazorMobile.InteropApp.Droid.Resource.Attribute.textAppearanceOverline;
+			global::BlazorMobile.Droid.Resource.Attribute.textAppearancePopupMenuHeader = global::BlazorMobile.InteropApp.Droid.Resource.Attribute.textAppearancePopupMenuHeader;
+			global::BlazorMobile.Droid.Resource.Attribute.textAppearanceSearchResultSubtitle = global::BlazorMobile.InteropApp.Droid.Resource.Attribute.textAppearanceSearchResultSubtitle;
+			global::BlazorMobile.Droid.Resource.Attribute.textAppearanceSearchResultTitle = global::BlazorMobile.InteropApp.Droid.Resource.Attribute.textAppearanceSearchResultTitle;
+			global::BlazorMobile.Droid.Resource.Attribute.textAppearanceSmallPopupMenu = global::BlazorMobile.InteropApp.Droid.Resource.Attribute.textAppearanceSmallPopupMenu;
+			global::BlazorMobile.Droid.Resource.Attribute.textAppearanceSubtitle1 = global::BlazorMobile.InteropApp.Droid.Resource.Attribute.textAppearanceSubtitle1;
+			global::BlazorMobile.Droid.Resource.Attribute.textAppearanceSubtitle2 = global::BlazorMobile.InteropApp.Droid.Resource.Attribute.textAppearanceSubtitle2;
+			global::BlazorMobile.Droid.Resource.Attribute.textColorAlertDialogListItem = global::BlazorMobile.InteropApp.Droid.Resource.Attribute.textColorAlertDialogListItem;
+			global::BlazorMobile.Droid.Resource.Attribute.textColorSearchUrl = global::BlazorMobile.InteropApp.Droid.Resource.Attribute.textColorSearchUrl;
+			global::BlazorMobile.Droid.Resource.Attribute.textEndPadding = global::BlazorMobile.InteropApp.Droid.Resource.Attribute.textEndPadding;
+			global::BlazorMobile.Droid.Resource.Attribute.textInputStyle = global::BlazorMobile.InteropApp.Droid.Resource.Attribute.textInputStyle;
+			global::BlazorMobile.Droid.Resource.Attribute.textStartPadding = global::BlazorMobile.InteropApp.Droid.Resource.Attribute.textStartPadding;
+			global::BlazorMobile.Droid.Resource.Attribute.theme = global::BlazorMobile.InteropApp.Droid.Resource.Attribute.theme;
+			global::BlazorMobile.Droid.Resource.Attribute.thickness = global::BlazorMobile.InteropApp.Droid.Resource.Attribute.thickness;
+			global::BlazorMobile.Droid.Resource.Attribute.thumbTextPadding = global::BlazorMobile.InteropApp.Droid.Resource.Attribute.thumbTextPadding;
+			global::BlazorMobile.Droid.Resource.Attribute.thumbTint = global::BlazorMobile.InteropApp.Droid.Resource.Attribute.thumbTint;
+			global::BlazorMobile.Droid.Resource.Attribute.thumbTintMode = global::BlazorMobile.InteropApp.Droid.Resource.Attribute.thumbTintMode;
+			global::BlazorMobile.Droid.Resource.Attribute.tickMark = global::BlazorMobile.InteropApp.Droid.Resource.Attribute.tickMark;
+			global::BlazorMobile.Droid.Resource.Attribute.tickMarkTint = global::BlazorMobile.InteropApp.Droid.Resource.Attribute.tickMarkTint;
+			global::BlazorMobile.Droid.Resource.Attribute.tickMarkTintMode = global::BlazorMobile.InteropApp.Droid.Resource.Attribute.tickMarkTintMode;
+			global::BlazorMobile.Droid.Resource.Attribute.tint = global::BlazorMobile.InteropApp.Droid.Resource.Attribute.tint;
+			global::BlazorMobile.Droid.Resource.Attribute.tintMode = global::BlazorMobile.InteropApp.Droid.Resource.Attribute.tintMode;
+			global::BlazorMobile.Droid.Resource.Attribute.title = global::BlazorMobile.InteropApp.Droid.Resource.Attribute.title;
+			global::BlazorMobile.Droid.Resource.Attribute.titleEnabled = global::BlazorMobile.InteropApp.Droid.Resource.Attribute.titleEnabled;
+			global::BlazorMobile.Droid.Resource.Attribute.titleMargin = global::BlazorMobile.InteropApp.Droid.Resource.Attribute.titleMargin;
+			global::BlazorMobile.Droid.Resource.Attribute.titleMarginBottom = global::BlazorMobile.InteropApp.Droid.Resource.Attribute.titleMarginBottom;
+			global::BlazorMobile.Droid.Resource.Attribute.titleMarginEnd = global::BlazorMobile.InteropApp.Droid.Resource.Attribute.titleMarginEnd;
+			global::BlazorMobile.Droid.Resource.Attribute.titleMargins = global::BlazorMobile.InteropApp.Droid.Resource.Attribute.titleMargins;
+			global::BlazorMobile.Droid.Resource.Attribute.titleMarginStart = global::BlazorMobile.InteropApp.Droid.Resource.Attribute.titleMarginStart;
+			global::BlazorMobile.Droid.Resource.Attribute.titleMarginTop = global::BlazorMobile.InteropApp.Droid.Resource.Attribute.titleMarginTop;
+			global::BlazorMobile.Droid.Resource.Attribute.titleTextAppearance = global::BlazorMobile.InteropApp.Droid.Resource.Attribute.titleTextAppearance;
+			global::BlazorMobile.Droid.Resource.Attribute.titleTextColor = global::BlazorMobile.InteropApp.Droid.Resource.Attribute.titleTextColor;
+			global::BlazorMobile.Droid.Resource.Attribute.titleTextStyle = global::BlazorMobile.InteropApp.Droid.Resource.Attribute.titleTextStyle;
+			global::BlazorMobile.Droid.Resource.Attribute.toolbarId = global::BlazorMobile.InteropApp.Droid.Resource.Attribute.toolbarId;
+			global::BlazorMobile.Droid.Resource.Attribute.toolbarNavigationButtonStyle = global::BlazorMobile.InteropApp.Droid.Resource.Attribute.toolbarNavigationButtonStyle;
+			global::BlazorMobile.Droid.Resource.Attribute.toolbarStyle = global::BlazorMobile.InteropApp.Droid.Resource.Attribute.toolbarStyle;
+			global::BlazorMobile.Droid.Resource.Attribute.tooltipForegroundColor = global::BlazorMobile.InteropApp.Droid.Resource.Attribute.tooltipForegroundColor;
+			global::BlazorMobile.Droid.Resource.Attribute.tooltipFrameBackground = global::BlazorMobile.InteropApp.Droid.Resource.Attribute.tooltipFrameBackground;
+			global::BlazorMobile.Droid.Resource.Attribute.tooltipText = global::BlazorMobile.InteropApp.Droid.Resource.Attribute.tooltipText;
+			global::BlazorMobile.Droid.Resource.Attribute.track = global::BlazorMobile.InteropApp.Droid.Resource.Attribute.track;
+			global::BlazorMobile.Droid.Resource.Attribute.trackTint = global::BlazorMobile.InteropApp.Droid.Resource.Attribute.trackTint;
+			global::BlazorMobile.Droid.Resource.Attribute.trackTintMode = global::BlazorMobile.InteropApp.Droid.Resource.Attribute.trackTintMode;
+			global::BlazorMobile.Droid.Resource.Attribute.ttcIndex = global::BlazorMobile.InteropApp.Droid.Resource.Attribute.ttcIndex;
+			global::BlazorMobile.Droid.Resource.Attribute.useCompatPadding = global::BlazorMobile.InteropApp.Droid.Resource.Attribute.useCompatPadding;
+			global::BlazorMobile.Droid.Resource.Attribute.viewInflaterClass = global::BlazorMobile.InteropApp.Droid.Resource.Attribute.viewInflaterClass;
+			global::BlazorMobile.Droid.Resource.Attribute.voiceIcon = global::BlazorMobile.InteropApp.Droid.Resource.Attribute.voiceIcon;
+			global::BlazorMobile.Droid.Resource.Attribute.windowActionBar = global::BlazorMobile.InteropApp.Droid.Resource.Attribute.windowActionBar;
+			global::BlazorMobile.Droid.Resource.Attribute.windowActionBarOverlay = global::BlazorMobile.InteropApp.Droid.Resource.Attribute.windowActionBarOverlay;
+			global::BlazorMobile.Droid.Resource.Attribute.windowActionModeOverlay = global::BlazorMobile.InteropApp.Droid.Resource.Attribute.windowActionModeOverlay;
+			global::BlazorMobile.Droid.Resource.Attribute.windowFixedHeightMajor = global::BlazorMobile.InteropApp.Droid.Resource.Attribute.windowFixedHeightMajor;
+			global::BlazorMobile.Droid.Resource.Attribute.windowFixedHeightMinor = global::BlazorMobile.InteropApp.Droid.Resource.Attribute.windowFixedHeightMinor;
+			global::BlazorMobile.Droid.Resource.Attribute.windowFixedWidthMajor = global::BlazorMobile.InteropApp.Droid.Resource.Attribute.windowFixedWidthMajor;
+			global::BlazorMobile.Droid.Resource.Attribute.windowFixedWidthMinor = global::BlazorMobile.InteropApp.Droid.Resource.Attribute.windowFixedWidthMinor;
+			global::BlazorMobile.Droid.Resource.Attribute.windowMinWidthMajor = global::BlazorMobile.InteropApp.Droid.Resource.Attribute.windowMinWidthMajor;
+			global::BlazorMobile.Droid.Resource.Attribute.windowMinWidthMinor = global::BlazorMobile.InteropApp.Droid.Resource.Attribute.windowMinWidthMinor;
+			global::BlazorMobile.Droid.Resource.Attribute.windowNoTitle = global::BlazorMobile.InteropApp.Droid.Resource.Attribute.windowNoTitle;
+			global::BlazorMobile.Droid.Resource.Boolean.abc_action_bar_embed_tabs = global::BlazorMobile.InteropApp.Droid.Resource.Boolean.abc_action_bar_embed_tabs;
+			global::BlazorMobile.Droid.Resource.Boolean.abc_allow_stacked_button_bar = global::BlazorMobile.InteropApp.Droid.Resource.Boolean.abc_allow_stacked_button_bar;
+			global::BlazorMobile.Droid.Resource.Boolean.abc_config_actionMenuItemAllCaps = global::BlazorMobile.InteropApp.Droid.Resource.Boolean.abc_config_actionMenuItemAllCaps;
+			global::BlazorMobile.Droid.Resource.Boolean.mtrl_btn_textappearance_all_caps = global::BlazorMobile.InteropApp.Droid.Resource.Boolean.mtrl_btn_textappearance_all_caps;
+			global::BlazorMobile.Droid.Resource.Color.abc_background_cache_hint_selector_material_dark = global::BlazorMobile.InteropApp.Droid.Resource.Color.abc_background_cache_hint_selector_material_dark;
+			global::BlazorMobile.Droid.Resource.Color.abc_background_cache_hint_selector_material_light = global::BlazorMobile.InteropApp.Droid.Resource.Color.abc_background_cache_hint_selector_material_light;
+			global::BlazorMobile.Droid.Resource.Color.abc_btn_colored_borderless_text_material = global::BlazorMobile.InteropApp.Droid.Resource.Color.abc_btn_colored_borderless_text_material;
+			global::BlazorMobile.Droid.Resource.Color.abc_btn_colored_text_material = global::BlazorMobile.InteropApp.Droid.Resource.Color.abc_btn_colored_text_material;
+			global::BlazorMobile.Droid.Resource.Color.abc_color_highlight_material = global::BlazorMobile.InteropApp.Droid.Resource.Color.abc_color_highlight_material;
+			global::BlazorMobile.Droid.Resource.Color.abc_hint_foreground_material_dark = global::BlazorMobile.InteropApp.Droid.Resource.Color.abc_hint_foreground_material_dark;
+			global::BlazorMobile.Droid.Resource.Color.abc_hint_foreground_material_light = global::BlazorMobile.InteropApp.Droid.Resource.Color.abc_hint_foreground_material_light;
+			global::BlazorMobile.Droid.Resource.Color.abc_input_method_navigation_guard = global::BlazorMobile.InteropApp.Droid.Resource.Color.abc_input_method_navigation_guard;
+			global::BlazorMobile.Droid.Resource.Color.abc_primary_text_disable_only_material_dark = global::BlazorMobile.InteropApp.Droid.Resource.Color.abc_primary_text_disable_only_material_dark;
+			global::BlazorMobile.Droid.Resource.Color.abc_primary_text_disable_only_material_light = global::BlazorMobile.InteropApp.Droid.Resource.Color.abc_primary_text_disable_only_material_light;
+			global::BlazorMobile.Droid.Resource.Color.abc_primary_text_material_dark = global::BlazorMobile.InteropApp.Droid.Resource.Color.abc_primary_text_material_dark;
+			global::BlazorMobile.Droid.Resource.Color.abc_primary_text_material_light = global::BlazorMobile.InteropApp.Droid.Resource.Color.abc_primary_text_material_light;
+			global::BlazorMobile.Droid.Resource.Color.abc_search_url_text = global::BlazorMobile.InteropApp.Droid.Resource.Color.abc_search_url_text;
+			global::BlazorMobile.Droid.Resource.Color.abc_search_url_text_normal = global::BlazorMobile.InteropApp.Droid.Resource.Color.abc_search_url_text_normal;
+			global::BlazorMobile.Droid.Resource.Color.abc_search_url_text_pressed = global::BlazorMobile.InteropApp.Droid.Resource.Color.abc_search_url_text_pressed;
+			global::BlazorMobile.Droid.Resource.Color.abc_search_url_text_selected = global::BlazorMobile.InteropApp.Droid.Resource.Color.abc_search_url_text_selected;
+			global::BlazorMobile.Droid.Resource.Color.abc_secondary_text_material_dark = global::BlazorMobile.InteropApp.Droid.Resource.Color.abc_secondary_text_material_dark;
+			global::BlazorMobile.Droid.Resource.Color.abc_secondary_text_material_light = global::BlazorMobile.InteropApp.Droid.Resource.Color.abc_secondary_text_material_light;
+			global::BlazorMobile.Droid.Resource.Color.abc_tint_btn_checkable = global::BlazorMobile.InteropApp.Droid.Resource.Color.abc_tint_btn_checkable;
+			global::BlazorMobile.Droid.Resource.Color.abc_tint_default = global::BlazorMobile.InteropApp.Droid.Resource.Color.abc_tint_default;
+			global::BlazorMobile.Droid.Resource.Color.abc_tint_edittext = global::BlazorMobile.InteropApp.Droid.Resource.Color.abc_tint_edittext;
+			global::BlazorMobile.Droid.Resource.Color.abc_tint_seek_thumb = global::BlazorMobile.InteropApp.Droid.Resource.Color.abc_tint_seek_thumb;
+			global::BlazorMobile.Droid.Resource.Color.abc_tint_spinner = global::BlazorMobile.InteropApp.Droid.Resource.Color.abc_tint_spinner;
+			global::BlazorMobile.Droid.Resource.Color.abc_tint_switch_track = global::BlazorMobile.InteropApp.Droid.Resource.Color.abc_tint_switch_track;
+			global::BlazorMobile.Droid.Resource.Color.accent_material_dark = global::BlazorMobile.InteropApp.Droid.Resource.Color.accent_material_dark;
+			global::BlazorMobile.Droid.Resource.Color.accent_material_light = global::BlazorMobile.InteropApp.Droid.Resource.Color.accent_material_light;
+			global::BlazorMobile.Droid.Resource.Color.background_floating_material_dark = global::BlazorMobile.InteropApp.Droid.Resource.Color.background_floating_material_dark;
+			global::BlazorMobile.Droid.Resource.Color.background_floating_material_light = global::BlazorMobile.InteropApp.Droid.Resource.Color.background_floating_material_light;
+			global::BlazorMobile.Droid.Resource.Color.background_material_dark = global::BlazorMobile.InteropApp.Droid.Resource.Color.background_material_dark;
+			global::BlazorMobile.Droid.Resource.Color.background_material_light = global::BlazorMobile.InteropApp.Droid.Resource.Color.background_material_light;
+			global::BlazorMobile.Droid.Resource.Color.bright_foreground_disabled_material_dark = global::BlazorMobile.InteropApp.Droid.Resource.Color.bright_foreground_disabled_material_dark;
+			global::BlazorMobile.Droid.Resource.Color.bright_foreground_disabled_material_light = global::BlazorMobile.InteropApp.Droid.Resource.Color.bright_foreground_disabled_material_light;
+			global::BlazorMobile.Droid.Resource.Color.bright_foreground_inverse_material_dark = global::BlazorMobile.InteropApp.Droid.Resource.Color.bright_foreground_inverse_material_dark;
+			global::BlazorMobile.Droid.Resource.Color.bright_foreground_inverse_material_light = global::BlazorMobile.InteropApp.Droid.Resource.Color.bright_foreground_inverse_material_light;
+			global::BlazorMobile.Droid.Resource.Color.bright_foreground_material_dark = global::BlazorMobile.InteropApp.Droid.Resource.Color.bright_foreground_material_dark;
+			global::BlazorMobile.Droid.Resource.Color.bright_foreground_material_light = global::BlazorMobile.InteropApp.Droid.Resource.Color.bright_foreground_material_light;
+			global::BlazorMobile.Droid.Resource.Color.browser_actions_bg_grey = global::BlazorMobile.InteropApp.Droid.Resource.Color.browser_actions_bg_grey;
+			global::BlazorMobile.Droid.Resource.Color.browser_actions_divider_color = global::BlazorMobile.InteropApp.Droid.Resource.Color.browser_actions_divider_color;
+			global::BlazorMobile.Droid.Resource.Color.browser_actions_text_color = global::BlazorMobile.InteropApp.Droid.Resource.Color.browser_actions_text_color;
+			global::BlazorMobile.Droid.Resource.Color.browser_actions_title_color = global::BlazorMobile.InteropApp.Droid.Resource.Color.browser_actions_title_color;
+			global::BlazorMobile.Droid.Resource.Color.button_material_dark = global::BlazorMobile.InteropApp.Droid.Resource.Color.button_material_dark;
+			global::BlazorMobile.Droid.Resource.Color.button_material_light = global::BlazorMobile.InteropApp.Droid.Resource.Color.button_material_light;
+			global::BlazorMobile.Droid.Resource.Color.cardview_dark_background = global::BlazorMobile.InteropApp.Droid.Resource.Color.cardview_dark_background;
+			global::BlazorMobile.Droid.Resource.Color.cardview_light_background = global::BlazorMobile.InteropApp.Droid.Resource.Color.cardview_light_background;
+			global::BlazorMobile.Droid.Resource.Color.cardview_shadow_end_color = global::BlazorMobile.InteropApp.Droid.Resource.Color.cardview_shadow_end_color;
+			global::BlazorMobile.Droid.Resource.Color.cardview_shadow_start_color = global::BlazorMobile.InteropApp.Droid.Resource.Color.cardview_shadow_start_color;
+			global::BlazorMobile.Droid.Resource.Color.design_bottom_navigation_shadow_color = global::BlazorMobile.InteropApp.Droid.Resource.Color.design_bottom_navigation_shadow_color;
+			global::BlazorMobile.Droid.Resource.Color.design_default_color_primary = global::BlazorMobile.InteropApp.Droid.Resource.Color.design_default_color_primary;
+			global::BlazorMobile.Droid.Resource.Color.design_default_color_primary_dark = global::BlazorMobile.InteropApp.Droid.Resource.Color.design_default_color_primary_dark;
+			global::BlazorMobile.Droid.Resource.Color.design_error = global::BlazorMobile.InteropApp.Droid.Resource.Color.design_error;
+			global::BlazorMobile.Droid.Resource.Color.design_fab_shadow_end_color = global::BlazorMobile.InteropApp.Droid.Resource.Color.design_fab_shadow_end_color;
+			global::BlazorMobile.Droid.Resource.Color.design_fab_shadow_mid_color = global::BlazorMobile.InteropApp.Droid.Resource.Color.design_fab_shadow_mid_color;
+			global::BlazorMobile.Droid.Resource.Color.design_fab_shadow_start_color = global::BlazorMobile.InteropApp.Droid.Resource.Color.design_fab_shadow_start_color;
+			global::BlazorMobile.Droid.Resource.Color.design_fab_stroke_end_inner_color = global::BlazorMobile.InteropApp.Droid.Resource.Color.design_fab_stroke_end_inner_color;
+			global::BlazorMobile.Droid.Resource.Color.design_fab_stroke_end_outer_color = global::BlazorMobile.InteropApp.Droid.Resource.Color.design_fab_stroke_end_outer_color;
+			global::BlazorMobile.Droid.Resource.Color.design_fab_stroke_top_inner_color = global::BlazorMobile.InteropApp.Droid.Resource.Color.design_fab_stroke_top_inner_color;
+			global::BlazorMobile.Droid.Resource.Color.design_fab_stroke_top_outer_color = global::BlazorMobile.InteropApp.Droid.Resource.Color.design_fab_stroke_top_outer_color;
+			global::BlazorMobile.Droid.Resource.Color.design_snackbar_background_color = global::BlazorMobile.InteropApp.Droid.Resource.Color.design_snackbar_background_color;
+			global::BlazorMobile.Droid.Resource.Color.design_tint_password_toggle = global::BlazorMobile.InteropApp.Droid.Resource.Color.design_tint_password_toggle;
+			global::BlazorMobile.Droid.Resource.Color.dim_foreground_disabled_material_dark = global::BlazorMobile.InteropApp.Droid.Resource.Color.dim_foreground_disabled_material_dark;
+			global::BlazorMobile.Droid.Resource.Color.dim_foreground_disabled_material_light = global::BlazorMobile.InteropApp.Droid.Resource.Color.dim_foreground_disabled_material_light;
+			global::BlazorMobile.Droid.Resource.Color.dim_foreground_material_dark = global::BlazorMobile.InteropApp.Droid.Resource.Color.dim_foreground_material_dark;
+			global::BlazorMobile.Droid.Resource.Color.dim_foreground_material_light = global::BlazorMobile.InteropApp.Droid.Resource.Color.dim_foreground_material_light;
+			global::BlazorMobile.Droid.Resource.Color.error_color_material_dark = global::BlazorMobile.InteropApp.Droid.Resource.Color.error_color_material_dark;
+			global::BlazorMobile.Droid.Resource.Color.error_color_material_light = global::BlazorMobile.InteropApp.Droid.Resource.Color.error_color_material_light;
+			global::BlazorMobile.Droid.Resource.Color.foreground_material_dark = global::BlazorMobile.InteropApp.Droid.Resource.Color.foreground_material_dark;
+			global::BlazorMobile.Droid.Resource.Color.foreground_material_light = global::BlazorMobile.InteropApp.Droid.Resource.Color.foreground_material_light;
+			global::BlazorMobile.Droid.Resource.Color.highlighted_text_material_dark = global::BlazorMobile.InteropApp.Droid.Resource.Color.highlighted_text_material_dark;
+			global::BlazorMobile.Droid.Resource.Color.highlighted_text_material_light = global::BlazorMobile.InteropApp.Droid.Resource.Color.highlighted_text_material_light;
+			global::BlazorMobile.Droid.Resource.Color.material_blue_grey_800 = global::BlazorMobile.InteropApp.Droid.Resource.Color.material_blue_grey_800;
+			global::BlazorMobile.Droid.Resource.Color.material_blue_grey_900 = global::BlazorMobile.InteropApp.Droid.Resource.Color.material_blue_grey_900;
+			global::BlazorMobile.Droid.Resource.Color.material_blue_grey_950 = global::BlazorMobile.InteropApp.Droid.Resource.Color.material_blue_grey_950;
+			global::BlazorMobile.Droid.Resource.Color.material_deep_teal_200 = global::BlazorMobile.InteropApp.Droid.Resource.Color.material_deep_teal_200;
+			global::BlazorMobile.Droid.Resource.Color.material_deep_teal_500 = global::BlazorMobile.InteropApp.Droid.Resource.Color.material_deep_teal_500;
+			global::BlazorMobile.Droid.Resource.Color.material_grey_100 = global::BlazorMobile.InteropApp.Droid.Resource.Color.material_grey_100;
+			global::BlazorMobile.Droid.Resource.Color.material_grey_300 = global::BlazorMobile.InteropApp.Droid.Resource.Color.material_grey_300;
+			global::BlazorMobile.Droid.Resource.Color.material_grey_50 = global::BlazorMobile.InteropApp.Droid.Resource.Color.material_grey_50;
+			global::BlazorMobile.Droid.Resource.Color.material_grey_600 = global::BlazorMobile.InteropApp.Droid.Resource.Color.material_grey_600;
+			global::BlazorMobile.Droid.Resource.Color.material_grey_800 = global::BlazorMobile.InteropApp.Droid.Resource.Color.material_grey_800;
+			global::BlazorMobile.Droid.Resource.Color.material_grey_850 = global::BlazorMobile.InteropApp.Droid.Resource.Color.material_grey_850;
+			global::BlazorMobile.Droid.Resource.Color.material_grey_900 = global::BlazorMobile.InteropApp.Droid.Resource.Color.material_grey_900;
+			global::BlazorMobile.Droid.Resource.Color.mtrl_bottom_nav_colored_item_tint = global::BlazorMobile.InteropApp.Droid.Resource.Color.mtrl_bottom_nav_colored_item_tint;
+			global::BlazorMobile.Droid.Resource.Color.mtrl_bottom_nav_item_tint = global::BlazorMobile.InteropApp.Droid.Resource.Color.mtrl_bottom_nav_item_tint;
+			global::BlazorMobile.Droid.Resource.Color.mtrl_btn_bg_color_disabled = global::BlazorMobile.InteropApp.Droid.Resource.Color.mtrl_btn_bg_color_disabled;
+			global::BlazorMobile.Droid.Resource.Color.mtrl_btn_bg_color_selector = global::BlazorMobile.InteropApp.Droid.Resource.Color.mtrl_btn_bg_color_selector;
+			global::BlazorMobile.Droid.Resource.Color.mtrl_btn_ripple_color = global::BlazorMobile.InteropApp.Droid.Resource.Color.mtrl_btn_ripple_color;
+			global::BlazorMobile.Droid.Resource.Color.mtrl_btn_stroke_color_selector = global::BlazorMobile.InteropApp.Droid.Resource.Color.mtrl_btn_stroke_color_selector;
+			global::BlazorMobile.Droid.Resource.Color.mtrl_btn_text_btn_ripple_color = global::BlazorMobile.InteropApp.Droid.Resource.Color.mtrl_btn_text_btn_ripple_color;
+			global::BlazorMobile.Droid.Resource.Color.mtrl_btn_text_color_disabled = global::BlazorMobile.InteropApp.Droid.Resource.Color.mtrl_btn_text_color_disabled;
+			global::BlazorMobile.Droid.Resource.Color.mtrl_btn_text_color_selector = global::BlazorMobile.InteropApp.Droid.Resource.Color.mtrl_btn_text_color_selector;
+			global::BlazorMobile.Droid.Resource.Color.mtrl_btn_transparent_bg_color = global::BlazorMobile.InteropApp.Droid.Resource.Color.mtrl_btn_transparent_bg_color;
+			global::BlazorMobile.Droid.Resource.Color.mtrl_chip_background_color = global::BlazorMobile.InteropApp.Droid.Resource.Color.mtrl_chip_background_color;
+			global::BlazorMobile.Droid.Resource.Color.mtrl_chip_close_icon_tint = global::BlazorMobile.InteropApp.Droid.Resource.Color.mtrl_chip_close_icon_tint;
+			global::BlazorMobile.Droid.Resource.Color.mtrl_chip_ripple_color = global::BlazorMobile.InteropApp.Droid.Resource.Color.mtrl_chip_ripple_color;
+			global::BlazorMobile.Droid.Resource.Color.mtrl_chip_text_color = global::BlazorMobile.InteropApp.Droid.Resource.Color.mtrl_chip_text_color;
+			global::BlazorMobile.Droid.Resource.Color.mtrl_fab_ripple_color = global::BlazorMobile.InteropApp.Droid.Resource.Color.mtrl_fab_ripple_color;
+			global::BlazorMobile.Droid.Resource.Color.mtrl_scrim_color = global::BlazorMobile.InteropApp.Droid.Resource.Color.mtrl_scrim_color;
+			global::BlazorMobile.Droid.Resource.Color.mtrl_tabs_colored_ripple_color = global::BlazorMobile.InteropApp.Droid.Resource.Color.mtrl_tabs_colored_ripple_color;
+			global::BlazorMobile.Droid.Resource.Color.mtrl_tabs_icon_color_selector = global::BlazorMobile.InteropApp.Droid.Resource.Color.mtrl_tabs_icon_color_selector;
+			global::BlazorMobile.Droid.Resource.Color.mtrl_tabs_icon_color_selector_colored = global::BlazorMobile.InteropApp.Droid.Resource.Color.mtrl_tabs_icon_color_selector_colored;
+			global::BlazorMobile.Droid.Resource.Color.mtrl_tabs_legacy_text_color_selector = global::BlazorMobile.InteropApp.Droid.Resource.Color.mtrl_tabs_legacy_text_color_selector;
+			global::BlazorMobile.Droid.Resource.Color.mtrl_tabs_ripple_color = global::BlazorMobile.InteropApp.Droid.Resource.Color.mtrl_tabs_ripple_color;
+			global::BlazorMobile.Droid.Resource.Color.mtrl_textinput_default_box_stroke_color = global::BlazorMobile.InteropApp.Droid.Resource.Color.mtrl_textinput_default_box_stroke_color;
+			global::BlazorMobile.Droid.Resource.Color.mtrl_textinput_disabled_color = global::BlazorMobile.InteropApp.Droid.Resource.Color.mtrl_textinput_disabled_color;
+			global::BlazorMobile.Droid.Resource.Color.mtrl_textinput_filled_box_default_background_color = global::BlazorMobile.InteropApp.Droid.Resource.Color.mtrl_textinput_filled_box_default_background_color;
+			global::BlazorMobile.Droid.Resource.Color.mtrl_textinput_hovered_box_stroke_color = global::BlazorMobile.InteropApp.Droid.Resource.Color.mtrl_textinput_hovered_box_stroke_color;
+			global::BlazorMobile.Droid.Resource.Color.mtrl_text_btn_text_color_selector = global::BlazorMobile.InteropApp.Droid.Resource.Color.mtrl_text_btn_text_color_selector;
+			global::BlazorMobile.Droid.Resource.Color.notification_action_color_filter = global::BlazorMobile.InteropApp.Droid.Resource.Color.notification_action_color_filter;
+			global::BlazorMobile.Droid.Resource.Color.notification_icon_bg_color = global::BlazorMobile.InteropApp.Droid.Resource.Color.notification_icon_bg_color;
+			global::BlazorMobile.Droid.Resource.Color.notification_material_background_media_default_color = global::BlazorMobile.InteropApp.Droid.Resource.Color.notification_material_background_media_default_color;
+			global::BlazorMobile.Droid.Resource.Color.primary_dark_material_dark = global::BlazorMobile.InteropApp.Droid.Resource.Color.primary_dark_material_dark;
+			global::BlazorMobile.Droid.Resource.Color.primary_dark_material_light = global::BlazorMobile.InteropApp.Droid.Resource.Color.primary_dark_material_light;
+			global::BlazorMobile.Droid.Resource.Color.primary_material_dark = global::BlazorMobile.InteropApp.Droid.Resource.Color.primary_material_dark;
+			global::BlazorMobile.Droid.Resource.Color.primary_material_light = global::BlazorMobile.InteropApp.Droid.Resource.Color.primary_material_light;
+			global::BlazorMobile.Droid.Resource.Color.primary_text_default_material_dark = global::BlazorMobile.InteropApp.Droid.Resource.Color.primary_text_default_material_dark;
+			global::BlazorMobile.Droid.Resource.Color.primary_text_default_material_light = global::BlazorMobile.InteropApp.Droid.Resource.Color.primary_text_default_material_light;
+			global::BlazorMobile.Droid.Resource.Color.primary_text_disabled_material_dark = global::BlazorMobile.InteropApp.Droid.Resource.Color.primary_text_disabled_material_dark;
+			global::BlazorMobile.Droid.Resource.Color.primary_text_disabled_material_light = global::BlazorMobile.InteropApp.Droid.Resource.Color.primary_text_disabled_material_light;
+			global::BlazorMobile.Droid.Resource.Color.ripple_material_dark = global::BlazorMobile.InteropApp.Droid.Resource.Color.ripple_material_dark;
+			global::BlazorMobile.Droid.Resource.Color.ripple_material_light = global::BlazorMobile.InteropApp.Droid.Resource.Color.ripple_material_light;
+			global::BlazorMobile.Droid.Resource.Color.secondary_text_default_material_dark = global::BlazorMobile.InteropApp.Droid.Resource.Color.secondary_text_default_material_dark;
+			global::BlazorMobile.Droid.Resource.Color.secondary_text_default_material_light = global::BlazorMobile.InteropApp.Droid.Resource.Color.secondary_text_default_material_light;
+			global::BlazorMobile.Droid.Resource.Color.secondary_text_disabled_material_dark = global::BlazorMobile.InteropApp.Droid.Resource.Color.secondary_text_disabled_material_dark;
+			global::BlazorMobile.Droid.Resource.Color.secondary_text_disabled_material_light = global::BlazorMobile.InteropApp.Droid.Resource.Color.secondary_text_disabled_material_light;
+			global::BlazorMobile.Droid.Resource.Color.switch_thumb_disabled_material_dark = global::BlazorMobile.InteropApp.Droid.Resource.Color.switch_thumb_disabled_material_dark;
+			global::BlazorMobile.Droid.Resource.Color.switch_thumb_disabled_material_light = global::BlazorMobile.InteropApp.Droid.Resource.Color.switch_thumb_disabled_material_light;
+			global::BlazorMobile.Droid.Resource.Color.switch_thumb_material_dark = global::BlazorMobile.InteropApp.Droid.Resource.Color.switch_thumb_material_dark;
+			global::BlazorMobile.Droid.Resource.Color.switch_thumb_material_light = global::BlazorMobile.InteropApp.Droid.Resource.Color.switch_thumb_material_light;
+			global::BlazorMobile.Droid.Resource.Color.switch_thumb_normal_material_dark = global::BlazorMobile.InteropApp.Droid.Resource.Color.switch_thumb_normal_material_dark;
+			global::BlazorMobile.Droid.Resource.Color.switch_thumb_normal_material_light = global::BlazorMobile.InteropApp.Droid.Resource.Color.switch_thumb_normal_material_light;
+			global::BlazorMobile.Droid.Resource.Color.tooltip_background_dark = global::BlazorMobile.InteropApp.Droid.Resource.Color.tooltip_background_dark;
+			global::BlazorMobile.Droid.Resource.Color.tooltip_background_light = global::BlazorMobile.InteropApp.Droid.Resource.Color.tooltip_background_light;
+			global::BlazorMobile.Droid.Resource.Dimension.abc_action_bar_content_inset_material = global::BlazorMobile.InteropApp.Droid.Resource.Dimension.abc_action_bar_content_inset_material;
+			global::BlazorMobile.Droid.Resource.Dimension.abc_action_bar_content_inset_with_nav = global::BlazorMobile.InteropApp.Droid.Resource.Dimension.abc_action_bar_content_inset_with_nav;
+			global::BlazorMobile.Droid.Resource.Dimension.abc_action_bar_default_height_material = global::BlazorMobile.InteropApp.Droid.Resource.Dimension.abc_action_bar_default_height_material;
+			global::BlazorMobile.Droid.Resource.Dimension.abc_action_bar_default_padding_end_material = global::BlazorMobile.InteropApp.Droid.Resource.Dimension.abc_action_bar_default_padding_end_material;
+			global::BlazorMobile.Droid.Resource.Dimension.abc_action_bar_default_padding_start_material = global::BlazorMobile.InteropApp.Droid.Resource.Dimension.abc_action_bar_default_padding_start_material;
+			global::BlazorMobile.Droid.Resource.Dimension.abc_action_bar_elevation_material = global::BlazorMobile.InteropApp.Droid.Resource.Dimension.abc_action_bar_elevation_material;
+			global::BlazorMobile.Droid.Resource.Dimension.abc_action_bar_icon_vertical_padding_material = global::BlazorMobile.InteropApp.Droid.Resource.Dimension.abc_action_bar_icon_vertical_padding_material;
+			global::BlazorMobile.Droid.Resource.Dimension.abc_action_bar_overflow_padding_end_material = global::BlazorMobile.InteropApp.Droid.Resource.Dimension.abc_action_bar_overflow_padding_end_material;
+			global::BlazorMobile.Droid.Resource.Dimension.abc_action_bar_overflow_padding_start_material = global::BlazorMobile.InteropApp.Droid.Resource.Dimension.abc_action_bar_overflow_padding_start_material;
+			global::BlazorMobile.Droid.Resource.Dimension.abc_action_bar_stacked_max_height = global::BlazorMobile.InteropApp.Droid.Resource.Dimension.abc_action_bar_stacked_max_height;
+			global::BlazorMobile.Droid.Resource.Dimension.abc_action_bar_stacked_tab_max_width = global::BlazorMobile.InteropApp.Droid.Resource.Dimension.abc_action_bar_stacked_tab_max_width;
+			global::BlazorMobile.Droid.Resource.Dimension.abc_action_bar_subtitle_bottom_margin_material = global::BlazorMobile.InteropApp.Droid.Resource.Dimension.abc_action_bar_subtitle_bottom_margin_material;
+			global::BlazorMobile.Droid.Resource.Dimension.abc_action_bar_subtitle_top_margin_material = global::BlazorMobile.InteropApp.Droid.Resource.Dimension.abc_action_bar_subtitle_top_margin_material;
+			global::BlazorMobile.Droid.Resource.Dimension.abc_action_button_min_height_material = global::BlazorMobile.InteropApp.Droid.Resource.Dimension.abc_action_button_min_height_material;
+			global::BlazorMobile.Droid.Resource.Dimension.abc_action_button_min_width_material = global::BlazorMobile.InteropApp.Droid.Resource.Dimension.abc_action_button_min_width_material;
+			global::BlazorMobile.Droid.Resource.Dimension.abc_action_button_min_width_overflow_material = global::BlazorMobile.InteropApp.Droid.Resource.Dimension.abc_action_button_min_width_overflow_material;
+			global::BlazorMobile.Droid.Resource.Dimension.abc_alert_dialog_button_bar_height = global::BlazorMobile.InteropApp.Droid.Resource.Dimension.abc_alert_dialog_button_bar_height;
+			global::BlazorMobile.Droid.Resource.Dimension.abc_alert_dialog_button_dimen = global::BlazorMobile.InteropApp.Droid.Resource.Dimension.abc_alert_dialog_button_dimen;
+			global::BlazorMobile.Droid.Resource.Dimension.abc_button_inset_horizontal_material = global::BlazorMobile.InteropApp.Droid.Resource.Dimension.abc_button_inset_horizontal_material;
+			global::BlazorMobile.Droid.Resource.Dimension.abc_button_inset_vertical_material = global::BlazorMobile.InteropApp.Droid.Resource.Dimension.abc_button_inset_vertical_material;
+			global::BlazorMobile.Droid.Resource.Dimension.abc_button_padding_horizontal_material = global::BlazorMobile.InteropApp.Droid.Resource.Dimension.abc_button_padding_horizontal_material;
+			global::BlazorMobile.Droid.Resource.Dimension.abc_button_padding_vertical_material = global::BlazorMobile.InteropApp.Droid.Resource.Dimension.abc_button_padding_vertical_material;
+			global::BlazorMobile.Droid.Resource.Dimension.abc_cascading_menus_min_smallest_width = global::BlazorMobile.InteropApp.Droid.Resource.Dimension.abc_cascading_menus_min_smallest_width;
+			global::BlazorMobile.Droid.Resource.Dimension.abc_config_prefDialogWidth = global::BlazorMobile.InteropApp.Droid.Resource.Dimension.abc_config_prefDialogWidth;
+			global::BlazorMobile.Droid.Resource.Dimension.abc_control_corner_material = global::BlazorMobile.InteropApp.Droid.Resource.Dimension.abc_control_corner_material;
+			global::BlazorMobile.Droid.Resource.Dimension.abc_control_inset_material = global::BlazorMobile.InteropApp.Droid.Resource.Dimension.abc_control_inset_material;
+			global::BlazorMobile.Droid.Resource.Dimension.abc_control_padding_material = global::BlazorMobile.InteropApp.Droid.Resource.Dimension.abc_control_padding_material;
+			global::BlazorMobile.Droid.Resource.Dimension.abc_dialog_corner_radius_material = global::BlazorMobile.InteropApp.Droid.Resource.Dimension.abc_dialog_corner_radius_material;
+			global::BlazorMobile.Droid.Resource.Dimension.abc_dialog_fixed_height_major = global::BlazorMobile.InteropApp.Droid.Resource.Dimension.abc_dialog_fixed_height_major;
+			global::BlazorMobile.Droid.Resource.Dimension.abc_dialog_fixed_height_minor = global::BlazorMobile.InteropApp.Droid.Resource.Dimension.abc_dialog_fixed_height_minor;
+			global::BlazorMobile.Droid.Resource.Dimension.abc_dialog_fixed_width_major = global::BlazorMobile.InteropApp.Droid.Resource.Dimension.abc_dialog_fixed_width_major;
+			global::BlazorMobile.Droid.Resource.Dimension.abc_dialog_fixed_width_minor = global::BlazorMobile.InteropApp.Droid.Resource.Dimension.abc_dialog_fixed_width_minor;
+			global::BlazorMobile.Droid.Resource.Dimension.abc_dialog_list_padding_bottom_no_buttons = global::BlazorMobile.InteropApp.Droid.Resource.Dimension.abc_dialog_list_padding_bottom_no_buttons;
+			global::BlazorMobile.Droid.Resource.Dimension.abc_dialog_list_padding_top_no_title = global::BlazorMobile.InteropApp.Droid.Resource.Dimension.abc_dialog_list_padding_top_no_title;
+			global::BlazorMobile.Droid.Resource.Dimension.abc_dialog_min_width_major = global::BlazorMobile.InteropApp.Droid.Resource.Dimension.abc_dialog_min_width_major;
+			global::BlazorMobile.Droid.Resource.Dimension.abc_dialog_min_width_minor = global::BlazorMobile.InteropApp.Droid.Resource.Dimension.abc_dialog_min_width_minor;
+			global::BlazorMobile.Droid.Resource.Dimension.abc_dialog_padding_material = global::BlazorMobile.InteropApp.Droid.Resource.Dimension.abc_dialog_padding_material;
+			global::BlazorMobile.Droid.Resource.Dimension.abc_dialog_padding_top_material = global::BlazorMobile.InteropApp.Droid.Resource.Dimension.abc_dialog_padding_top_material;
+			global::BlazorMobile.Droid.Resource.Dimension.abc_dialog_title_divider_material = global::BlazorMobile.InteropApp.Droid.Resource.Dimension.abc_dialog_title_divider_material;
+			global::BlazorMobile.Droid.Resource.Dimension.abc_disabled_alpha_material_dark = global::BlazorMobile.InteropApp.Droid.Resource.Dimension.abc_disabled_alpha_material_dark;
+			global::BlazorMobile.Droid.Resource.Dimension.abc_disabled_alpha_material_light = global::BlazorMobile.InteropApp.Droid.Resource.Dimension.abc_disabled_alpha_material_light;
+			global::BlazorMobile.Droid.Resource.Dimension.abc_dropdownitem_icon_width = global::BlazorMobile.InteropApp.Droid.Resource.Dimension.abc_dropdownitem_icon_width;
+			global::BlazorMobile.Droid.Resource.Dimension.abc_dropdownitem_text_padding_left = global::BlazorMobile.InteropApp.Droid.Resource.Dimension.abc_dropdownitem_text_padding_left;
+			global::BlazorMobile.Droid.Resource.Dimension.abc_dropdownitem_text_padding_right = global::BlazorMobile.InteropApp.Droid.Resource.Dimension.abc_dropdownitem_text_padding_right;
+			global::BlazorMobile.Droid.Resource.Dimension.abc_edit_text_inset_bottom_material = global::BlazorMobile.InteropApp.Droid.Resource.Dimension.abc_edit_text_inset_bottom_material;
+			global::BlazorMobile.Droid.Resource.Dimension.abc_edit_text_inset_horizontal_material = global::BlazorMobile.InteropApp.Droid.Resource.Dimension.abc_edit_text_inset_horizontal_material;
+			global::BlazorMobile.Droid.Resource.Dimension.abc_edit_text_inset_top_material = global::BlazorMobile.InteropApp.Droid.Resource.Dimension.abc_edit_text_inset_top_material;
+			global::BlazorMobile.Droid.Resource.Dimension.abc_floating_window_z = global::BlazorMobile.InteropApp.Droid.Resource.Dimension.abc_floating_window_z;
+			global::BlazorMobile.Droid.Resource.Dimension.abc_list_item_padding_horizontal_material = global::BlazorMobile.InteropApp.Droid.Resource.Dimension.abc_list_item_padding_horizontal_material;
+			global::BlazorMobile.Droid.Resource.Dimension.abc_panel_menu_list_width = global::BlazorMobile.InteropApp.Droid.Resource.Dimension.abc_panel_menu_list_width;
+			global::BlazorMobile.Droid.Resource.Dimension.abc_progress_bar_height_material = global::BlazorMobile.InteropApp.Droid.Resource.Dimension.abc_progress_bar_height_material;
+			global::BlazorMobile.Droid.Resource.Dimension.abc_search_view_preferred_height = global::BlazorMobile.InteropApp.Droid.Resource.Dimension.abc_search_view_preferred_height;
+			global::BlazorMobile.Droid.Resource.Dimension.abc_search_view_preferred_width = global::BlazorMobile.InteropApp.Droid.Resource.Dimension.abc_search_view_preferred_width;
+			global::BlazorMobile.Droid.Resource.Dimension.abc_seekbar_track_background_height_material = global::BlazorMobile.InteropApp.Droid.Resource.Dimension.abc_seekbar_track_background_height_material;
+			global::BlazorMobile.Droid.Resource.Dimension.abc_seekbar_track_progress_height_material = global::BlazorMobile.InteropApp.Droid.Resource.Dimension.abc_seekbar_track_progress_height_material;
+			global::BlazorMobile.Droid.Resource.Dimension.abc_select_dialog_padding_start_material = global::BlazorMobile.InteropApp.Droid.Resource.Dimension.abc_select_dialog_padding_start_material;
+			global::BlazorMobile.Droid.Resource.Dimension.abc_switch_padding = global::BlazorMobile.InteropApp.Droid.Resource.Dimension.abc_switch_padding;
+			global::BlazorMobile.Droid.Resource.Dimension.abc_text_size_body_1_material = global::BlazorMobile.InteropApp.Droid.Resource.Dimension.abc_text_size_body_1_material;
+			global::BlazorMobile.Droid.Resource.Dimension.abc_text_size_body_2_material = global::BlazorMobile.InteropApp.Droid.Resource.Dimension.abc_text_size_body_2_material;
+			global::BlazorMobile.Droid.Resource.Dimension.abc_text_size_button_material = global::BlazorMobile.InteropApp.Droid.Resource.Dimension.abc_text_size_button_material;
+			global::BlazorMobile.Droid.Resource.Dimension.abc_text_size_caption_material = global::BlazorMobile.InteropApp.Droid.Resource.Dimension.abc_text_size_caption_material;
+			global::BlazorMobile.Droid.Resource.Dimension.abc_text_size_display_1_material = global::BlazorMobile.InteropApp.Droid.Resource.Dimension.abc_text_size_display_1_material;
+			global::BlazorMobile.Droid.Resource.Dimension.abc_text_size_display_2_material = global::BlazorMobile.InteropApp.Droid.Resource.Dimension.abc_text_size_display_2_material;
+			global::BlazorMobile.Droid.Resource.Dimension.abc_text_size_display_3_material = global::BlazorMobile.InteropApp.Droid.Resource.Dimension.abc_text_size_display_3_material;
+			global::BlazorMobile.Droid.Resource.Dimension.abc_text_size_display_4_material = global::BlazorMobile.InteropApp.Droid.Resource.Dimension.abc_text_size_display_4_material;
+			global::BlazorMobile.Droid.Resource.Dimension.abc_text_size_headline_material = global::BlazorMobile.InteropApp.Droid.Resource.Dimension.abc_text_size_headline_material;
+			global::BlazorMobile.Droid.Resource.Dimension.abc_text_size_large_material = global::BlazorMobile.InteropApp.Droid.Resource.Dimension.abc_text_size_large_material;
+			global::BlazorMobile.Droid.Resource.Dimension.abc_text_size_medium_material = global::BlazorMobile.InteropApp.Droid.Resource.Dimension.abc_text_size_medium_material;
+			global::BlazorMobile.Droid.Resource.Dimension.abc_text_size_menu_header_material = global::BlazorMobile.InteropApp.Droid.Resource.Dimension.abc_text_size_menu_header_material;
+			global::BlazorMobile.Droid.Resource.Dimension.abc_text_size_menu_material = global::BlazorMobile.InteropApp.Droid.Resource.Dimension.abc_text_size_menu_material;
+			global::BlazorMobile.Droid.Resource.Dimension.abc_text_size_small_material = global::BlazorMobile.InteropApp.Droid.Resource.Dimension.abc_text_size_small_material;
+			global::BlazorMobile.Droid.Resource.Dimension.abc_text_size_subhead_material = global::BlazorMobile.InteropApp.Droid.Resource.Dimension.abc_text_size_subhead_material;
+			global::BlazorMobile.Droid.Resource.Dimension.abc_text_size_subtitle_material_toolbar = global::BlazorMobile.InteropApp.Droid.Resource.Dimension.abc_text_size_subtitle_material_toolbar;
+			global::BlazorMobile.Droid.Resource.Dimension.abc_text_size_title_material = global::BlazorMobile.InteropApp.Droid.Resource.Dimension.abc_text_size_title_material;
+			global::BlazorMobile.Droid.Resource.Dimension.abc_text_size_title_material_toolbar = global::BlazorMobile.InteropApp.Droid.Resource.Dimension.abc_text_size_title_material_toolbar;
+			global::BlazorMobile.Droid.Resource.Dimension.browser_actions_context_menu_max_width = global::BlazorMobile.InteropApp.Droid.Resource.Dimension.browser_actions_context_menu_max_width;
+			global::BlazorMobile.Droid.Resource.Dimension.browser_actions_context_menu_min_padding = global::BlazorMobile.InteropApp.Droid.Resource.Dimension.browser_actions_context_menu_min_padding;
+			global::BlazorMobile.Droid.Resource.Dimension.cardview_compat_inset_shadow = global::BlazorMobile.InteropApp.Droid.Resource.Dimension.cardview_compat_inset_shadow;
+			global::BlazorMobile.Droid.Resource.Dimension.cardview_default_elevation = global::BlazorMobile.InteropApp.Droid.Resource.Dimension.cardview_default_elevation;
+			global::BlazorMobile.Droid.Resource.Dimension.cardview_default_radius = global::BlazorMobile.InteropApp.Droid.Resource.Dimension.cardview_default_radius;
+			global::BlazorMobile.Droid.Resource.Dimension.compat_button_inset_horizontal_material = global::BlazorMobile.InteropApp.Droid.Resource.Dimension.compat_button_inset_horizontal_material;
+			global::BlazorMobile.Droid.Resource.Dimension.compat_button_inset_vertical_material = global::BlazorMobile.InteropApp.Droid.Resource.Dimension.compat_button_inset_vertical_material;
+			global::BlazorMobile.Droid.Resource.Dimension.compat_button_padding_horizontal_material = global::BlazorMobile.InteropApp.Droid.Resource.Dimension.compat_button_padding_horizontal_material;
+			global::BlazorMobile.Droid.Resource.Dimension.compat_button_padding_vertical_material = global::BlazorMobile.InteropApp.Droid.Resource.Dimension.compat_button_padding_vertical_material;
+			global::BlazorMobile.Droid.Resource.Dimension.compat_control_corner_material = global::BlazorMobile.InteropApp.Droid.Resource.Dimension.compat_control_corner_material;
+			global::BlazorMobile.Droid.Resource.Dimension.compat_notification_large_icon_max_height = global::BlazorMobile.InteropApp.Droid.Resource.Dimension.compat_notification_large_icon_max_height;
+			global::BlazorMobile.Droid.Resource.Dimension.compat_notification_large_icon_max_width = global::BlazorMobile.InteropApp.Droid.Resource.Dimension.compat_notification_large_icon_max_width;
+			global::BlazorMobile.Droid.Resource.Dimension.design_appbar_elevation = global::BlazorMobile.InteropApp.Droid.Resource.Dimension.design_appbar_elevation;
+			global::BlazorMobile.Droid.Resource.Dimension.design_bottom_navigation_active_item_max_width = global::BlazorMobile.InteropApp.Droid.Resource.Dimension.design_bottom_navigation_active_item_max_width;
+			global::BlazorMobile.Droid.Resource.Dimension.design_bottom_navigation_active_item_min_width = global::BlazorMobile.InteropApp.Droid.Resource.Dimension.design_bottom_navigation_active_item_min_width;
+			global::BlazorMobile.Droid.Resource.Dimension.design_bottom_navigation_active_text_size = global::BlazorMobile.InteropApp.Droid.Resource.Dimension.design_bottom_navigation_active_text_size;
+			global::BlazorMobile.Droid.Resource.Dimension.design_bottom_navigation_elevation = global::BlazorMobile.InteropApp.Droid.Resource.Dimension.design_bottom_navigation_elevation;
+			global::BlazorMobile.Droid.Resource.Dimension.design_bottom_navigation_height = global::BlazorMobile.InteropApp.Droid.Resource.Dimension.design_bottom_navigation_height;
+			global::BlazorMobile.Droid.Resource.Dimension.design_bottom_navigation_icon_size = global::BlazorMobile.InteropApp.Droid.Resource.Dimension.design_bottom_navigation_icon_size;
+			global::BlazorMobile.Droid.Resource.Dimension.design_bottom_navigation_item_max_width = global::BlazorMobile.InteropApp.Droid.Resource.Dimension.design_bottom_navigation_item_max_width;
+			global::BlazorMobile.Droid.Resource.Dimension.design_bottom_navigation_item_min_width = global::BlazorMobile.InteropApp.Droid.Resource.Dimension.design_bottom_navigation_item_min_width;
+			global::BlazorMobile.Droid.Resource.Dimension.design_bottom_navigation_margin = global::BlazorMobile.InteropApp.Droid.Resource.Dimension.design_bottom_navigation_margin;
+			global::BlazorMobile.Droid.Resource.Dimension.design_bottom_navigation_shadow_height = global::BlazorMobile.InteropApp.Droid.Resource.Dimension.design_bottom_navigation_shadow_height;
+			global::BlazorMobile.Droid.Resource.Dimension.design_bottom_navigation_text_size = global::BlazorMobile.InteropApp.Droid.Resource.Dimension.design_bottom_navigation_text_size;
+			global::BlazorMobile.Droid.Resource.Dimension.design_bottom_sheet_modal_elevation = global::BlazorMobile.InteropApp.Droid.Resource.Dimension.design_bottom_sheet_modal_elevation;
+			global::BlazorMobile.Droid.Resource.Dimension.design_bottom_sheet_peek_height_min = global::BlazorMobile.InteropApp.Droid.Resource.Dimension.design_bottom_sheet_peek_height_min;
+			global::BlazorMobile.Droid.Resource.Dimension.design_fab_border_width = global::BlazorMobile.InteropApp.Droid.Resource.Dimension.design_fab_border_width;
+			global::BlazorMobile.Droid.Resource.Dimension.design_fab_elevation = global::BlazorMobile.InteropApp.Droid.Resource.Dimension.design_fab_elevation;
+			global::BlazorMobile.Droid.Resource.Dimension.design_fab_image_size = global::BlazorMobile.InteropApp.Droid.Resource.Dimension.design_fab_image_size;
+			global::BlazorMobile.Droid.Resource.Dimension.design_fab_size_mini = global::BlazorMobile.InteropApp.Droid.Resource.Dimension.design_fab_size_mini;
+			global::BlazorMobile.Droid.Resource.Dimension.design_fab_size_normal = global::BlazorMobile.InteropApp.Droid.Resource.Dimension.design_fab_size_normal;
+			global::BlazorMobile.Droid.Resource.Dimension.design_fab_translation_z_hovered_focused = global::BlazorMobile.InteropApp.Droid.Resource.Dimension.design_fab_translation_z_hovered_focused;
+			global::BlazorMobile.Droid.Resource.Dimension.design_fab_translation_z_pressed = global::BlazorMobile.InteropApp.Droid.Resource.Dimension.design_fab_translation_z_pressed;
+			global::BlazorMobile.Droid.Resource.Dimension.design_navigation_elevation = global::BlazorMobile.InteropApp.Droid.Resource.Dimension.design_navigation_elevation;
+			global::BlazorMobile.Droid.Resource.Dimension.design_navigation_icon_padding = global::BlazorMobile.InteropApp.Droid.Resource.Dimension.design_navigation_icon_padding;
+			global::BlazorMobile.Droid.Resource.Dimension.design_navigation_icon_size = global::BlazorMobile.InteropApp.Droid.Resource.Dimension.design_navigation_icon_size;
+			global::BlazorMobile.Droid.Resource.Dimension.design_navigation_item_horizontal_padding = global::BlazorMobile.InteropApp.Droid.Resource.Dimension.design_navigation_item_horizontal_padding;
+			global::BlazorMobile.Droid.Resource.Dimension.design_navigation_item_icon_padding = global::BlazorMobile.InteropApp.Droid.Resource.Dimension.design_navigation_item_icon_padding;
+			global::BlazorMobile.Droid.Resource.Dimension.design_navigation_max_width = global::BlazorMobile.InteropApp.Droid.Resource.Dimension.design_navigation_max_width;
+			global::BlazorMobile.Droid.Resource.Dimension.design_navigation_padding_bottom = global::BlazorMobile.InteropApp.Droid.Resource.Dimension.design_navigation_padding_bottom;
+			global::BlazorMobile.Droid.Resource.Dimension.design_navigation_separator_vertical_padding = global::BlazorMobile.InteropApp.Droid.Resource.Dimension.design_navigation_separator_vertical_padding;
+			global::BlazorMobile.Droid.Resource.Dimension.design_snackbar_action_inline_max_width = global::BlazorMobile.InteropApp.Droid.Resource.Dimension.design_snackbar_action_inline_max_width;
+			global::BlazorMobile.Droid.Resource.Dimension.design_snackbar_background_corner_radius = global::BlazorMobile.InteropApp.Droid.Resource.Dimension.design_snackbar_background_corner_radius;
+			global::BlazorMobile.Droid.Resource.Dimension.design_snackbar_elevation = global::BlazorMobile.InteropApp.Droid.Resource.Dimension.design_snackbar_elevation;
+			global::BlazorMobile.Droid.Resource.Dimension.design_snackbar_extra_spacing_horizontal = global::BlazorMobile.InteropApp.Droid.Resource.Dimension.design_snackbar_extra_spacing_horizontal;
+			global::BlazorMobile.Droid.Resource.Dimension.design_snackbar_max_width = global::BlazorMobile.InteropApp.Droid.Resource.Dimension.design_snackbar_max_width;
+			global::BlazorMobile.Droid.Resource.Dimension.design_snackbar_min_width = global::BlazorMobile.InteropApp.Droid.Resource.Dimension.design_snackbar_min_width;
+			global::BlazorMobile.Droid.Resource.Dimension.design_snackbar_padding_horizontal = global::BlazorMobile.InteropApp.Droid.Resource.Dimension.design_snackbar_padding_horizontal;
+			global::BlazorMobile.Droid.Resource.Dimension.design_snackbar_padding_vertical = global::BlazorMobile.InteropApp.Droid.Resource.Dimension.design_snackbar_padding_vertical;
+			global::BlazorMobile.Droid.Resource.Dimension.design_snackbar_padding_vertical_2lines = global::BlazorMobile.InteropApp.Droid.Resource.Dimension.design_snackbar_padding_vertical_2lines;
+			global::BlazorMobile.Droid.Resource.Dimension.design_snackbar_text_size = global::BlazorMobile.InteropApp.Droid.Resource.Dimension.design_snackbar_text_size;
+			global::BlazorMobile.Droid.Resource.Dimension.design_tab_max_width = global::BlazorMobile.InteropApp.Droid.Resource.Dimension.design_tab_max_width;
+			global::BlazorMobile.Droid.Resource.Dimension.design_tab_scrollable_min_width = global::BlazorMobile.InteropApp.Droid.Resource.Dimension.design_tab_scrollable_min_width;
+			global::BlazorMobile.Droid.Resource.Dimension.design_tab_text_size = global::BlazorMobile.InteropApp.Droid.Resource.Dimension.design_tab_text_size;
+			global::BlazorMobile.Droid.Resource.Dimension.design_tab_text_size_2line = global::BlazorMobile.InteropApp.Droid.Resource.Dimension.design_tab_text_size_2line;
+			global::BlazorMobile.Droid.Resource.Dimension.design_textinput_caption_translate_y = global::BlazorMobile.InteropApp.Droid.Resource.Dimension.design_textinput_caption_translate_y;
+			global::BlazorMobile.Droid.Resource.Dimension.disabled_alpha_material_dark = global::BlazorMobile.InteropApp.Droid.Resource.Dimension.disabled_alpha_material_dark;
+			global::BlazorMobile.Droid.Resource.Dimension.disabled_alpha_material_light = global::BlazorMobile.InteropApp.Droid.Resource.Dimension.disabled_alpha_material_light;
+			global::BlazorMobile.Droid.Resource.Dimension.fastscroll_default_thickness = global::BlazorMobile.InteropApp.Droid.Resource.Dimension.fastscroll_default_thickness;
+			global::BlazorMobile.Droid.Resource.Dimension.fastscroll_margin = global::BlazorMobile.InteropApp.Droid.Resource.Dimension.fastscroll_margin;
+			global::BlazorMobile.Droid.Resource.Dimension.fastscroll_minimum_range = global::BlazorMobile.InteropApp.Droid.Resource.Dimension.fastscroll_minimum_range;
+			global::BlazorMobile.Droid.Resource.Dimension.highlight_alpha_material_colored = global::BlazorMobile.InteropApp.Droid.Resource.Dimension.highlight_alpha_material_colored;
+			global::BlazorMobile.Droid.Resource.Dimension.highlight_alpha_material_dark = global::BlazorMobile.InteropApp.Droid.Resource.Dimension.highlight_alpha_material_dark;
+			global::BlazorMobile.Droid.Resource.Dimension.highlight_alpha_material_light = global::BlazorMobile.InteropApp.Droid.Resource.Dimension.highlight_alpha_material_light;
+			global::BlazorMobile.Droid.Resource.Dimension.hint_alpha_material_dark = global::BlazorMobile.InteropApp.Droid.Resource.Dimension.hint_alpha_material_dark;
+			global::BlazorMobile.Droid.Resource.Dimension.hint_alpha_material_light = global::BlazorMobile.InteropApp.Droid.Resource.Dimension.hint_alpha_material_light;
+			global::BlazorMobile.Droid.Resource.Dimension.hint_pressed_alpha_material_dark = global::BlazorMobile.InteropApp.Droid.Resource.Dimension.hint_pressed_alpha_material_dark;
+			global::BlazorMobile.Droid.Resource.Dimension.hint_pressed_alpha_material_light = global::BlazorMobile.InteropApp.Droid.Resource.Dimension.hint_pressed_alpha_material_light;
+			global::BlazorMobile.Droid.Resource.Dimension.item_touch_helper_max_drag_scroll_per_frame = global::BlazorMobile.InteropApp.Droid.Resource.Dimension.item_touch_helper_max_drag_scroll_per_frame;
+			global::BlazorMobile.Droid.Resource.Dimension.item_touch_helper_swipe_escape_max_velocity = global::BlazorMobile.InteropApp.Droid.Resource.Dimension.item_touch_helper_swipe_escape_max_velocity;
+			global::BlazorMobile.Droid.Resource.Dimension.item_touch_helper_swipe_escape_velocity = global::BlazorMobile.InteropApp.Droid.Resource.Dimension.item_touch_helper_swipe_escape_velocity;
+			global::BlazorMobile.Droid.Resource.Dimension.mr_controller_volume_group_list_item_height = global::BlazorMobile.InteropApp.Droid.Resource.Dimension.mr_controller_volume_group_list_item_height;
+			global::BlazorMobile.Droid.Resource.Dimension.mr_controller_volume_group_list_item_icon_size = global::BlazorMobile.InteropApp.Droid.Resource.Dimension.mr_controller_volume_group_list_item_icon_size;
+			global::BlazorMobile.Droid.Resource.Dimension.mr_controller_volume_group_list_max_height = global::BlazorMobile.InteropApp.Droid.Resource.Dimension.mr_controller_volume_group_list_max_height;
+			global::BlazorMobile.Droid.Resource.Dimension.mr_controller_volume_group_list_padding_top = global::BlazorMobile.InteropApp.Droid.Resource.Dimension.mr_controller_volume_group_list_padding_top;
+			global::BlazorMobile.Droid.Resource.Dimension.mr_dialog_fixed_width_major = global::BlazorMobile.InteropApp.Droid.Resource.Dimension.mr_dialog_fixed_width_major;
+			global::BlazorMobile.Droid.Resource.Dimension.mr_dialog_fixed_width_minor = global::BlazorMobile.InteropApp.Droid.Resource.Dimension.mr_dialog_fixed_width_minor;
+			global::BlazorMobile.Droid.Resource.Dimension.mtrl_bottomappbar_fabOffsetEndMode = global::BlazorMobile.InteropApp.Droid.Resource.Dimension.mtrl_bottomappbar_fabOffsetEndMode;
+			global::BlazorMobile.Droid.Resource.Dimension.mtrl_bottomappbar_fab_cradle_margin = global::BlazorMobile.InteropApp.Droid.Resource.Dimension.mtrl_bottomappbar_fab_cradle_margin;
+			global::BlazorMobile.Droid.Resource.Dimension.mtrl_bottomappbar_fab_cradle_rounded_corner_radius = global::BlazorMobile.InteropApp.Droid.Resource.Dimension.mtrl_bottomappbar_fab_cradle_rounded_corner_radius;
+			global::BlazorMobile.Droid.Resource.Dimension.mtrl_bottomappbar_fab_cradle_vertical_offset = global::BlazorMobile.InteropApp.Droid.Resource.Dimension.mtrl_bottomappbar_fab_cradle_vertical_offset;
+			global::BlazorMobile.Droid.Resource.Dimension.mtrl_bottomappbar_height = global::BlazorMobile.InteropApp.Droid.Resource.Dimension.mtrl_bottomappbar_height;
+			global::BlazorMobile.Droid.Resource.Dimension.mtrl_btn_corner_radius = global::BlazorMobile.InteropApp.Droid.Resource.Dimension.mtrl_btn_corner_radius;
+			global::BlazorMobile.Droid.Resource.Dimension.mtrl_btn_dialog_btn_min_width = global::BlazorMobile.InteropApp.Droid.Resource.Dimension.mtrl_btn_dialog_btn_min_width;
+			global::BlazorMobile.Droid.Resource.Dimension.mtrl_btn_disabled_elevation = global::BlazorMobile.InteropApp.Droid.Resource.Dimension.mtrl_btn_disabled_elevation;
+			global::BlazorMobile.Droid.Resource.Dimension.mtrl_btn_disabled_z = global::BlazorMobile.InteropApp.Droid.Resource.Dimension.mtrl_btn_disabled_z;
+			global::BlazorMobile.Droid.Resource.Dimension.mtrl_btn_elevation = global::BlazorMobile.InteropApp.Droid.Resource.Dimension.mtrl_btn_elevation;
+			global::BlazorMobile.Droid.Resource.Dimension.mtrl_btn_focused_z = global::BlazorMobile.InteropApp.Droid.Resource.Dimension.mtrl_btn_focused_z;
+			global::BlazorMobile.Droid.Resource.Dimension.mtrl_btn_hovered_z = global::BlazorMobile.InteropApp.Droid.Resource.Dimension.mtrl_btn_hovered_z;
+			global::BlazorMobile.Droid.Resource.Dimension.mtrl_btn_icon_btn_padding_left = global::BlazorMobile.InteropApp.Droid.Resource.Dimension.mtrl_btn_icon_btn_padding_left;
+			global::BlazorMobile.Droid.Resource.Dimension.mtrl_btn_icon_padding = global::BlazorMobile.InteropApp.Droid.Resource.Dimension.mtrl_btn_icon_padding;
+			global::BlazorMobile.Droid.Resource.Dimension.mtrl_btn_inset = global::BlazorMobile.InteropApp.Droid.Resource.Dimension.mtrl_btn_inset;
+			global::BlazorMobile.Droid.Resource.Dimension.mtrl_btn_letter_spacing = global::BlazorMobile.InteropApp.Droid.Resource.Dimension.mtrl_btn_letter_spacing;
+			global::BlazorMobile.Droid.Resource.Dimension.mtrl_btn_padding_bottom = global::BlazorMobile.InteropApp.Droid.Resource.Dimension.mtrl_btn_padding_bottom;
+			global::BlazorMobile.Droid.Resource.Dimension.mtrl_btn_padding_left = global::BlazorMobile.InteropApp.Droid.Resource.Dimension.mtrl_btn_padding_left;
+			global::BlazorMobile.Droid.Resource.Dimension.mtrl_btn_padding_right = global::BlazorMobile.InteropApp.Droid.Resource.Dimension.mtrl_btn_padding_right;
+			global::BlazorMobile.Droid.Resource.Dimension.mtrl_btn_padding_top = global::BlazorMobile.InteropApp.Droid.Resource.Dimension.mtrl_btn_padding_top;
+			global::BlazorMobile.Droid.Resource.Dimension.mtrl_btn_pressed_z = global::BlazorMobile.InteropApp.Droid.Resource.Dimension.mtrl_btn_pressed_z;
+			global::BlazorMobile.Droid.Resource.Dimension.mtrl_btn_stroke_size = global::BlazorMobile.InteropApp.Droid.Resource.Dimension.mtrl_btn_stroke_size;
+			global::BlazorMobile.Droid.Resource.Dimension.mtrl_btn_text_btn_icon_padding = global::BlazorMobile.InteropApp.Droid.Resource.Dimension.mtrl_btn_text_btn_icon_padding;
+			global::BlazorMobile.Droid.Resource.Dimension.mtrl_btn_text_btn_padding_left = global::BlazorMobile.InteropApp.Droid.Resource.Dimension.mtrl_btn_text_btn_padding_left;
+			global::BlazorMobile.Droid.Resource.Dimension.mtrl_btn_text_btn_padding_right = global::BlazorMobile.InteropApp.Droid.Resource.Dimension.mtrl_btn_text_btn_padding_right;
+			global::BlazorMobile.Droid.Resource.Dimension.mtrl_btn_text_size = global::BlazorMobile.InteropApp.Droid.Resource.Dimension.mtrl_btn_text_size;
+			global::BlazorMobile.Droid.Resource.Dimension.mtrl_btn_z = global::BlazorMobile.InteropApp.Droid.Resource.Dimension.mtrl_btn_z;
+			global::BlazorMobile.Droid.Resource.Dimension.mtrl_card_elevation = global::BlazorMobile.InteropApp.Droid.Resource.Dimension.mtrl_card_elevation;
+			global::BlazorMobile.Droid.Resource.Dimension.mtrl_card_spacing = global::BlazorMobile.InteropApp.Droid.Resource.Dimension.mtrl_card_spacing;
+			global::BlazorMobile.Droid.Resource.Dimension.mtrl_chip_pressed_translation_z = global::BlazorMobile.InteropApp.Droid.Resource.Dimension.mtrl_chip_pressed_translation_z;
+			global::BlazorMobile.Droid.Resource.Dimension.mtrl_chip_text_size = global::BlazorMobile.InteropApp.Droid.Resource.Dimension.mtrl_chip_text_size;
+			global::BlazorMobile.Droid.Resource.Dimension.mtrl_fab_elevation = global::BlazorMobile.InteropApp.Droid.Resource.Dimension.mtrl_fab_elevation;
+			global::BlazorMobile.Droid.Resource.Dimension.mtrl_fab_translation_z_hovered_focused = global::BlazorMobile.InteropApp.Droid.Resource.Dimension.mtrl_fab_translation_z_hovered_focused;
+			global::BlazorMobile.Droid.Resource.Dimension.mtrl_fab_translation_z_pressed = global::BlazorMobile.InteropApp.Droid.Resource.Dimension.mtrl_fab_translation_z_pressed;
+			global::BlazorMobile.Droid.Resource.Dimension.mtrl_navigation_elevation = global::BlazorMobile.InteropApp.Droid.Resource.Dimension.mtrl_navigation_elevation;
+			global::BlazorMobile.Droid.Resource.Dimension.mtrl_navigation_item_horizontal_padding = global::BlazorMobile.InteropApp.Droid.Resource.Dimension.mtrl_navigation_item_horizontal_padding;
+			global::BlazorMobile.Droid.Resource.Dimension.mtrl_navigation_item_icon_padding = global::BlazorMobile.InteropApp.Droid.Resource.Dimension.mtrl_navigation_item_icon_padding;
+			global::BlazorMobile.Droid.Resource.Dimension.mtrl_snackbar_background_corner_radius = global::BlazorMobile.InteropApp.Droid.Resource.Dimension.mtrl_snackbar_background_corner_radius;
+			global::BlazorMobile.Droid.Resource.Dimension.mtrl_snackbar_margin = global::BlazorMobile.InteropApp.Droid.Resource.Dimension.mtrl_snackbar_margin;
+			global::BlazorMobile.Droid.Resource.Dimension.mtrl_textinput_box_bottom_offset = global::BlazorMobile.InteropApp.Droid.Resource.Dimension.mtrl_textinput_box_bottom_offset;
+			global::BlazorMobile.Droid.Resource.Dimension.mtrl_textinput_box_corner_radius_medium = global::BlazorMobile.InteropApp.Droid.Resource.Dimension.mtrl_textinput_box_corner_radius_medium;
+			global::BlazorMobile.Droid.Resource.Dimension.mtrl_textinput_box_corner_radius_small = global::BlazorMobile.InteropApp.Droid.Resource.Dimension.mtrl_textinput_box_corner_radius_small;
+			global::BlazorMobile.Droid.Resource.Dimension.mtrl_textinput_box_label_cutout_padding = global::BlazorMobile.InteropApp.Droid.Resource.Dimension.mtrl_textinput_box_label_cutout_padding;
+			global::BlazorMobile.Droid.Resource.Dimension.mtrl_textinput_box_padding_end = global::BlazorMobile.InteropApp.Droid.Resource.Dimension.mtrl_textinput_box_padding_end;
+			global::BlazorMobile.Droid.Resource.Dimension.mtrl_textinput_box_stroke_width_default = global::BlazorMobile.InteropApp.Droid.Resource.Dimension.mtrl_textinput_box_stroke_width_default;
+			global::BlazorMobile.Droid.Resource.Dimension.mtrl_textinput_box_stroke_width_focused = global::BlazorMobile.InteropApp.Droid.Resource.Dimension.mtrl_textinput_box_stroke_width_focused;
+			global::BlazorMobile.Droid.Resource.Dimension.mtrl_textinput_outline_box_expanded_padding = global::BlazorMobile.InteropApp.Droid.Resource.Dimension.mtrl_textinput_outline_box_expanded_padding;
+			global::BlazorMobile.Droid.Resource.Dimension.mtrl_toolbar_default_height = global::BlazorMobile.InteropApp.Droid.Resource.Dimension.mtrl_toolbar_default_height;
+			global::BlazorMobile.Droid.Resource.Dimension.notification_action_icon_size = global::BlazorMobile.InteropApp.Droid.Resource.Dimension.notification_action_icon_size;
+			global::BlazorMobile.Droid.Resource.Dimension.notification_action_text_size = global::BlazorMobile.InteropApp.Droid.Resource.Dimension.notification_action_text_size;
+			global::BlazorMobile.Droid.Resource.Dimension.notification_big_circle_margin = global::BlazorMobile.InteropApp.Droid.Resource.Dimension.notification_big_circle_margin;
+			global::BlazorMobile.Droid.Resource.Dimension.notification_content_margin_start = global::BlazorMobile.InteropApp.Droid.Resource.Dimension.notification_content_margin_start;
+			global::BlazorMobile.Droid.Resource.Dimension.notification_large_icon_height = global::BlazorMobile.InteropApp.Droid.Resource.Dimension.notification_large_icon_height;
+			global::BlazorMobile.Droid.Resource.Dimension.notification_large_icon_width = global::BlazorMobile.InteropApp.Droid.Resource.Dimension.notification_large_icon_width;
+			global::BlazorMobile.Droid.Resource.Dimension.notification_main_column_padding_top = global::BlazorMobile.InteropApp.Droid.Resource.Dimension.notification_main_column_padding_top;
+			global::BlazorMobile.Droid.Resource.Dimension.notification_media_narrow_margin = global::BlazorMobile.InteropApp.Droid.Resource.Dimension.notification_media_narrow_margin;
+			global::BlazorMobile.Droid.Resource.Dimension.notification_right_icon_size = global::BlazorMobile.InteropApp.Droid.Resource.Dimension.notification_right_icon_size;
+			global::BlazorMobile.Droid.Resource.Dimension.notification_right_side_padding_top = global::BlazorMobile.InteropApp.Droid.Resource.Dimension.notification_right_side_padding_top;
+			global::BlazorMobile.Droid.Resource.Dimension.notification_small_icon_background_padding = global::BlazorMobile.InteropApp.Droid.Resource.Dimension.notification_small_icon_background_padding;
+			global::BlazorMobile.Droid.Resource.Dimension.notification_small_icon_size_as_large = global::BlazorMobile.InteropApp.Droid.Resource.Dimension.notification_small_icon_size_as_large;
+			global::BlazorMobile.Droid.Resource.Dimension.notification_subtext_size = global::BlazorMobile.InteropApp.Droid.Resource.Dimension.notification_subtext_size;
+			global::BlazorMobile.Droid.Resource.Dimension.notification_top_pad = global::BlazorMobile.InteropApp.Droid.Resource.Dimension.notification_top_pad;
+			global::BlazorMobile.Droid.Resource.Dimension.notification_top_pad_large_text = global::BlazorMobile.InteropApp.Droid.Resource.Dimension.notification_top_pad_large_text;
+			global::BlazorMobile.Droid.Resource.Dimension.subtitle_corner_radius = global::BlazorMobile.InteropApp.Droid.Resource.Dimension.subtitle_corner_radius;
+			global::BlazorMobile.Droid.Resource.Dimension.subtitle_outline_width = global::BlazorMobile.InteropApp.Droid.Resource.Dimension.subtitle_outline_width;
+			global::BlazorMobile.Droid.Resource.Dimension.subtitle_shadow_offset = global::BlazorMobile.InteropApp.Droid.Resource.Dimension.subtitle_shadow_offset;
+			global::BlazorMobile.Droid.Resource.Dimension.subtitle_shadow_radius = global::BlazorMobile.InteropApp.Droid.Resource.Dimension.subtitle_shadow_radius;
+			global::BlazorMobile.Droid.Resource.Dimension.tooltip_corner_radius = global::BlazorMobile.InteropApp.Droid.Resource.Dimension.tooltip_corner_radius;
+			global::BlazorMobile.Droid.Resource.Dimension.tooltip_horizontal_padding = global::BlazorMobile.InteropApp.Droid.Resource.Dimension.tooltip_horizontal_padding;
+			global::BlazorMobile.Droid.Resource.Dimension.tooltip_margin = global::BlazorMobile.InteropApp.Droid.Resource.Dimension.tooltip_margin;
+			global::BlazorMobile.Droid.Resource.Dimension.tooltip_precise_anchor_extra_offset = global::BlazorMobile.InteropApp.Droid.Resource.Dimension.tooltip_precise_anchor_extra_offset;
+			global::BlazorMobile.Droid.Resource.Dimension.tooltip_precise_anchor_threshold = global::BlazorMobile.InteropApp.Droid.Resource.Dimension.tooltip_precise_anchor_threshold;
+			global::BlazorMobile.Droid.Resource.Dimension.tooltip_vertical_padding = global::BlazorMobile.InteropApp.Droid.Resource.Dimension.tooltip_vertical_padding;
+			global::BlazorMobile.Droid.Resource.Dimension.tooltip_y_offset_non_touch = global::BlazorMobile.InteropApp.Droid.Resource.Dimension.tooltip_y_offset_non_touch;
+			global::BlazorMobile.Droid.Resource.Dimension.tooltip_y_offset_touch = global::BlazorMobile.InteropApp.Droid.Resource.Dimension.tooltip_y_offset_touch;
+			global::BlazorMobile.Droid.Resource.Drawable.abc_ab_share_pack_mtrl_alpha = global::BlazorMobile.InteropApp.Droid.Resource.Drawable.abc_ab_share_pack_mtrl_alpha;
+			global::BlazorMobile.Droid.Resource.Drawable.abc_action_bar_item_background_material = global::BlazorMobile.InteropApp.Droid.Resource.Drawable.abc_action_bar_item_background_material;
+			global::BlazorMobile.Droid.Resource.Drawable.abc_btn_borderless_material = global::BlazorMobile.InteropApp.Droid.Resource.Drawable.abc_btn_borderless_material;
+			global::BlazorMobile.Droid.Resource.Drawable.abc_btn_check_material = global::BlazorMobile.InteropApp.Droid.Resource.Drawable.abc_btn_check_material;
+			global::BlazorMobile.Droid.Resource.Drawable.abc_btn_check_to_on_mtrl_000 = global::BlazorMobile.InteropApp.Droid.Resource.Drawable.abc_btn_check_to_on_mtrl_000;
+			global::BlazorMobile.Droid.Resource.Drawable.abc_btn_check_to_on_mtrl_015 = global::BlazorMobile.InteropApp.Droid.Resource.Drawable.abc_btn_check_to_on_mtrl_015;
+			global::BlazorMobile.Droid.Resource.Drawable.abc_btn_colored_material = global::BlazorMobile.InteropApp.Droid.Resource.Drawable.abc_btn_colored_material;
+			global::BlazorMobile.Droid.Resource.Drawable.abc_btn_default_mtrl_shape = global::BlazorMobile.InteropApp.Droid.Resource.Drawable.abc_btn_default_mtrl_shape;
+			global::BlazorMobile.Droid.Resource.Drawable.abc_btn_radio_material = global::BlazorMobile.InteropApp.Droid.Resource.Drawable.abc_btn_radio_material;
+			global::BlazorMobile.Droid.Resource.Drawable.abc_btn_radio_to_on_mtrl_000 = global::BlazorMobile.InteropApp.Droid.Resource.Drawable.abc_btn_radio_to_on_mtrl_000;
+			global::BlazorMobile.Droid.Resource.Drawable.abc_btn_radio_to_on_mtrl_015 = global::BlazorMobile.InteropApp.Droid.Resource.Drawable.abc_btn_radio_to_on_mtrl_015;
+			global::BlazorMobile.Droid.Resource.Drawable.abc_btn_switch_to_on_mtrl_00001 = global::BlazorMobile.InteropApp.Droid.Resource.Drawable.abc_btn_switch_to_on_mtrl_00001;
+			global::BlazorMobile.Droid.Resource.Drawable.abc_btn_switch_to_on_mtrl_00012 = global::BlazorMobile.InteropApp.Droid.Resource.Drawable.abc_btn_switch_to_on_mtrl_00012;
+			global::BlazorMobile.Droid.Resource.Drawable.abc_cab_background_internal_bg = global::BlazorMobile.InteropApp.Droid.Resource.Drawable.abc_cab_background_internal_bg;
+			global::BlazorMobile.Droid.Resource.Drawable.abc_cab_background_top_material = global::BlazorMobile.InteropApp.Droid.Resource.Drawable.abc_cab_background_top_material;
+			global::BlazorMobile.Droid.Resource.Drawable.abc_cab_background_top_mtrl_alpha = global::BlazorMobile.InteropApp.Droid.Resource.Drawable.abc_cab_background_top_mtrl_alpha;
+			global::BlazorMobile.Droid.Resource.Drawable.abc_control_background_material = global::BlazorMobile.InteropApp.Droid.Resource.Drawable.abc_control_background_material;
+			global::BlazorMobile.Droid.Resource.Drawable.abc_dialog_material_background = global::BlazorMobile.InteropApp.Droid.Resource.Drawable.abc_dialog_material_background;
+			global::BlazorMobile.Droid.Resource.Drawable.abc_edit_text_material = global::BlazorMobile.InteropApp.Droid.Resource.Drawable.abc_edit_text_material;
+			global::BlazorMobile.Droid.Resource.Drawable.abc_ic_ab_back_material = global::BlazorMobile.InteropApp.Droid.Resource.Drawable.abc_ic_ab_back_material;
+			global::BlazorMobile.Droid.Resource.Drawable.abc_ic_arrow_drop_right_black_24dp = global::BlazorMobile.InteropApp.Droid.Resource.Drawable.abc_ic_arrow_drop_right_black_24dp;
+			global::BlazorMobile.Droid.Resource.Drawable.abc_ic_clear_material = global::BlazorMobile.InteropApp.Droid.Resource.Drawable.abc_ic_clear_material;
+			global::BlazorMobile.Droid.Resource.Drawable.abc_ic_commit_search_api_mtrl_alpha = global::BlazorMobile.InteropApp.Droid.Resource.Drawable.abc_ic_commit_search_api_mtrl_alpha;
+			global::BlazorMobile.Droid.Resource.Drawable.abc_ic_go_search_api_material = global::BlazorMobile.InteropApp.Droid.Resource.Drawable.abc_ic_go_search_api_material;
+			global::BlazorMobile.Droid.Resource.Drawable.abc_ic_menu_copy_mtrl_am_alpha = global::BlazorMobile.InteropApp.Droid.Resource.Drawable.abc_ic_menu_copy_mtrl_am_alpha;
+			global::BlazorMobile.Droid.Resource.Drawable.abc_ic_menu_cut_mtrl_alpha = global::BlazorMobile.InteropApp.Droid.Resource.Drawable.abc_ic_menu_cut_mtrl_alpha;
+			global::BlazorMobile.Droid.Resource.Drawable.abc_ic_menu_overflow_material = global::BlazorMobile.InteropApp.Droid.Resource.Drawable.abc_ic_menu_overflow_material;
+			global::BlazorMobile.Droid.Resource.Drawable.abc_ic_menu_paste_mtrl_am_alpha = global::BlazorMobile.InteropApp.Droid.Resource.Drawable.abc_ic_menu_paste_mtrl_am_alpha;
+			global::BlazorMobile.Droid.Resource.Drawable.abc_ic_menu_selectall_mtrl_alpha = global::BlazorMobile.InteropApp.Droid.Resource.Drawable.abc_ic_menu_selectall_mtrl_alpha;
+			global::BlazorMobile.Droid.Resource.Drawable.abc_ic_menu_share_mtrl_alpha = global::BlazorMobile.InteropApp.Droid.Resource.Drawable.abc_ic_menu_share_mtrl_alpha;
+			global::BlazorMobile.Droid.Resource.Drawable.abc_ic_search_api_material = global::BlazorMobile.InteropApp.Droid.Resource.Drawable.abc_ic_search_api_material;
+			global::BlazorMobile.Droid.Resource.Drawable.abc_ic_star_black_16dp = global::BlazorMobile.InteropApp.Droid.Resource.Drawable.abc_ic_star_black_16dp;
+			global::BlazorMobile.Droid.Resource.Drawable.abc_ic_star_black_36dp = global::BlazorMobile.InteropApp.Droid.Resource.Drawable.abc_ic_star_black_36dp;
+			global::BlazorMobile.Droid.Resource.Drawable.abc_ic_star_black_48dp = global::BlazorMobile.InteropApp.Droid.Resource.Drawable.abc_ic_star_black_48dp;
+			global::BlazorMobile.Droid.Resource.Drawable.abc_ic_star_half_black_16dp = global::BlazorMobile.InteropApp.Droid.Resource.Drawable.abc_ic_star_half_black_16dp;
+			global::BlazorMobile.Droid.Resource.Drawable.abc_ic_star_half_black_36dp = global::BlazorMobile.InteropApp.Droid.Resource.Drawable.abc_ic_star_half_black_36dp;
+			global::BlazorMobile.Droid.Resource.Drawable.abc_ic_star_half_black_48dp = global::BlazorMobile.InteropApp.Droid.Resource.Drawable.abc_ic_star_half_black_48dp;
+			global::BlazorMobile.Droid.Resource.Drawable.abc_ic_voice_search_api_material = global::BlazorMobile.InteropApp.Droid.Resource.Drawable.abc_ic_voice_search_api_material;
+			global::BlazorMobile.Droid.Resource.Drawable.abc_item_background_holo_dark = global::BlazorMobile.InteropApp.Droid.Resource.Drawable.abc_item_background_holo_dark;
+			global::BlazorMobile.Droid.Resource.Drawable.abc_item_background_holo_light = global::BlazorMobile.InteropApp.Droid.Resource.Drawable.abc_item_background_holo_light;
+			global::BlazorMobile.Droid.Resource.Drawable.abc_list_divider_material = global::BlazorMobile.InteropApp.Droid.Resource.Drawable.abc_list_divider_material;
+			global::BlazorMobile.Droid.Resource.Drawable.abc_list_divider_mtrl_alpha = global::BlazorMobile.InteropApp.Droid.Resource.Drawable.abc_list_divider_mtrl_alpha;
+			global::BlazorMobile.Droid.Resource.Drawable.abc_list_focused_holo = global::BlazorMobile.InteropApp.Droid.Resource.Drawable.abc_list_focused_holo;
+			global::BlazorMobile.Droid.Resource.Drawable.abc_list_longpressed_holo = global::BlazorMobile.InteropApp.Droid.Resource.Drawable.abc_list_longpressed_holo;
+			global::BlazorMobile.Droid.Resource.Drawable.abc_list_pressed_holo_dark = global::BlazorMobile.InteropApp.Droid.Resource.Drawable.abc_list_pressed_holo_dark;
+			global::BlazorMobile.Droid.Resource.Drawable.abc_list_pressed_holo_light = global::BlazorMobile.InteropApp.Droid.Resource.Drawable.abc_list_pressed_holo_light;
+			global::BlazorMobile.Droid.Resource.Drawable.abc_list_selector_background_transition_holo_dark = global::BlazorMobile.InteropApp.Droid.Resource.Drawable.abc_list_selector_background_transition_holo_dark;
+			global::BlazorMobile.Droid.Resource.Drawable.abc_list_selector_background_transition_holo_light = global::BlazorMobile.InteropApp.Droid.Resource.Drawable.abc_list_selector_background_transition_holo_light;
+			global::BlazorMobile.Droid.Resource.Drawable.abc_list_selector_disabled_holo_dark = global::BlazorMobile.InteropApp.Droid.Resource.Drawable.abc_list_selector_disabled_holo_dark;
+			global::BlazorMobile.Droid.Resource.Drawable.abc_list_selector_disabled_holo_light = global::BlazorMobile.InteropApp.Droid.Resource.Drawable.abc_list_selector_disabled_holo_light;
+			global::BlazorMobile.Droid.Resource.Drawable.abc_list_selector_holo_dark = global::BlazorMobile.InteropApp.Droid.Resource.Drawable.abc_list_selector_holo_dark;
+			global::BlazorMobile.Droid.Resource.Drawable.abc_list_selector_holo_light = global::BlazorMobile.InteropApp.Droid.Resource.Drawable.abc_list_selector_holo_light;
+			global::BlazorMobile.Droid.Resource.Drawable.abc_menu_hardkey_panel_mtrl_mult = global::BlazorMobile.InteropApp.Droid.Resource.Drawable.abc_menu_hardkey_panel_mtrl_mult;
+			global::BlazorMobile.Droid.Resource.Drawable.abc_popup_background_mtrl_mult = global::BlazorMobile.InteropApp.Droid.Resource.Drawable.abc_popup_background_mtrl_mult;
+			global::BlazorMobile.Droid.Resource.Drawable.abc_ratingbar_indicator_material = global::BlazorMobile.InteropApp.Droid.Resource.Drawable.abc_ratingbar_indicator_material;
+			global::BlazorMobile.Droid.Resource.Drawable.abc_ratingbar_material = global::BlazorMobile.InteropApp.Droid.Resource.Drawable.abc_ratingbar_material;
+			global::BlazorMobile.Droid.Resource.Drawable.abc_ratingbar_small_material = global::BlazorMobile.InteropApp.Droid.Resource.Drawable.abc_ratingbar_small_material;
+			global::BlazorMobile.Droid.Resource.Drawable.abc_scrubber_control_off_mtrl_alpha = global::BlazorMobile.InteropApp.Droid.Resource.Drawable.abc_scrubber_control_off_mtrl_alpha;
+			global::BlazorMobile.Droid.Resource.Drawable.abc_scrubber_control_to_pressed_mtrl_000 = global::BlazorMobile.InteropApp.Droid.Resource.Drawable.abc_scrubber_control_to_pressed_mtrl_000;
+			global::BlazorMobile.Droid.Resource.Drawable.abc_scrubber_control_to_pressed_mtrl_005 = global::BlazorMobile.InteropApp.Droid.Resource.Drawable.abc_scrubber_control_to_pressed_mtrl_005;
+			global::BlazorMobile.Droid.Resource.Drawable.abc_scrubber_primary_mtrl_alpha = global::BlazorMobile.InteropApp.Droid.Resource.Drawable.abc_scrubber_primary_mtrl_alpha;
+			global::BlazorMobile.Droid.Resource.Drawable.abc_scrubber_track_mtrl_alpha = global::BlazorMobile.InteropApp.Droid.Resource.Drawable.abc_scrubber_track_mtrl_alpha;
+			global::BlazorMobile.Droid.Resource.Drawable.abc_seekbar_thumb_material = global::BlazorMobile.InteropApp.Droid.Resource.Drawable.abc_seekbar_thumb_material;
+			global::BlazorMobile.Droid.Resource.Drawable.abc_seekbar_tick_mark_material = global::BlazorMobile.InteropApp.Droid.Resource.Drawable.abc_seekbar_tick_mark_material;
+			global::BlazorMobile.Droid.Resource.Drawable.abc_seekbar_track_material = global::BlazorMobile.InteropApp.Droid.Resource.Drawable.abc_seekbar_track_material;
+			global::BlazorMobile.Droid.Resource.Drawable.abc_spinner_mtrl_am_alpha = global::BlazorMobile.InteropApp.Droid.Resource.Drawable.abc_spinner_mtrl_am_alpha;
+			global::BlazorMobile.Droid.Resource.Drawable.abc_spinner_textfield_background_material = global::BlazorMobile.InteropApp.Droid.Resource.Drawable.abc_spinner_textfield_background_material;
+			global::BlazorMobile.Droid.Resource.Drawable.abc_switch_thumb_material = global::BlazorMobile.InteropApp.Droid.Resource.Drawable.abc_switch_thumb_material;
+			global::BlazorMobile.Droid.Resource.Drawable.abc_switch_track_mtrl_alpha = global::BlazorMobile.InteropApp.Droid.Resource.Drawable.abc_switch_track_mtrl_alpha;
+			global::BlazorMobile.Droid.Resource.Drawable.abc_tab_indicator_material = global::BlazorMobile.InteropApp.Droid.Resource.Drawable.abc_tab_indicator_material;
+			global::BlazorMobile.Droid.Resource.Drawable.abc_tab_indicator_mtrl_alpha = global::BlazorMobile.InteropApp.Droid.Resource.Drawable.abc_tab_indicator_mtrl_alpha;
+			global::BlazorMobile.Droid.Resource.Drawable.abc_textfield_activated_mtrl_alpha = global::BlazorMobile.InteropApp.Droid.Resource.Drawable.abc_textfield_activated_mtrl_alpha;
+			global::BlazorMobile.Droid.Resource.Drawable.abc_textfield_default_mtrl_alpha = global::BlazorMobile.InteropApp.Droid.Resource.Drawable.abc_textfield_default_mtrl_alpha;
+			global::BlazorMobile.Droid.Resource.Drawable.abc_textfield_search_activated_mtrl_alpha = global::BlazorMobile.InteropApp.Droid.Resource.Drawable.abc_textfield_search_activated_mtrl_alpha;
+			global::BlazorMobile.Droid.Resource.Drawable.abc_textfield_search_default_mtrl_alpha = global::BlazorMobile.InteropApp.Droid.Resource.Drawable.abc_textfield_search_default_mtrl_alpha;
+			global::BlazorMobile.Droid.Resource.Drawable.abc_textfield_search_material = global::BlazorMobile.InteropApp.Droid.Resource.Drawable.abc_textfield_search_material;
+			global::BlazorMobile.Droid.Resource.Drawable.abc_text_cursor_material = global::BlazorMobile.InteropApp.Droid.Resource.Drawable.abc_text_cursor_material;
+			global::BlazorMobile.Droid.Resource.Drawable.abc_text_select_handle_left_mtrl_dark = global::BlazorMobile.InteropApp.Droid.Resource.Drawable.abc_text_select_handle_left_mtrl_dark;
+			global::BlazorMobile.Droid.Resource.Drawable.abc_text_select_handle_left_mtrl_light = global::BlazorMobile.InteropApp.Droid.Resource.Drawable.abc_text_select_handle_left_mtrl_light;
+			global::BlazorMobile.Droid.Resource.Drawable.abc_text_select_handle_middle_mtrl_dark = global::BlazorMobile.InteropApp.Droid.Resource.Drawable.abc_text_select_handle_middle_mtrl_dark;
+			global::BlazorMobile.Droid.Resource.Drawable.abc_text_select_handle_middle_mtrl_light = global::BlazorMobile.InteropApp.Droid.Resource.Drawable.abc_text_select_handle_middle_mtrl_light;
+			global::BlazorMobile.Droid.Resource.Drawable.abc_text_select_handle_right_mtrl_dark = global::BlazorMobile.InteropApp.Droid.Resource.Drawable.abc_text_select_handle_right_mtrl_dark;
+			global::BlazorMobile.Droid.Resource.Drawable.abc_text_select_handle_right_mtrl_light = global::BlazorMobile.InteropApp.Droid.Resource.Drawable.abc_text_select_handle_right_mtrl_light;
+			global::BlazorMobile.Droid.Resource.Drawable.abc_vector_test = global::BlazorMobile.InteropApp.Droid.Resource.Drawable.abc_vector_test;
+			global::BlazorMobile.Droid.Resource.Drawable.avd_hide_password = global::BlazorMobile.InteropApp.Droid.Resource.Drawable.avd_hide_password;
+			global::BlazorMobile.Droid.Resource.Drawable.avd_show_password = global::BlazorMobile.InteropApp.Droid.Resource.Drawable.avd_show_password;
+			global::BlazorMobile.Droid.Resource.Drawable.design_bottom_navigation_item_background = global::BlazorMobile.InteropApp.Droid.Resource.Drawable.design_bottom_navigation_item_background;
+			global::BlazorMobile.Droid.Resource.Drawable.design_fab_background = global::BlazorMobile.InteropApp.Droid.Resource.Drawable.design_fab_background;
+			global::BlazorMobile.Droid.Resource.Drawable.design_ic_visibility = global::BlazorMobile.InteropApp.Droid.Resource.Drawable.design_ic_visibility;
+			global::BlazorMobile.Droid.Resource.Drawable.design_ic_visibility_off = global::BlazorMobile.InteropApp.Droid.Resource.Drawable.design_ic_visibility_off;
+			global::BlazorMobile.Droid.Resource.Drawable.design_password_eye = global::BlazorMobile.InteropApp.Droid.Resource.Drawable.design_password_eye;
+			global::BlazorMobile.Droid.Resource.Drawable.design_snackbar_background = global::BlazorMobile.InteropApp.Droid.Resource.Drawable.design_snackbar_background;
+			global::BlazorMobile.Droid.Resource.Drawable.ic_audiotrack_dark = global::BlazorMobile.InteropApp.Droid.Resource.Drawable.ic_audiotrack_dark;
+			global::BlazorMobile.Droid.Resource.Drawable.ic_audiotrack_light = global::BlazorMobile.InteropApp.Droid.Resource.Drawable.ic_audiotrack_light;
+			global::BlazorMobile.Droid.Resource.Drawable.ic_dialog_close_dark = global::BlazorMobile.InteropApp.Droid.Resource.Drawable.ic_dialog_close_dark;
+			global::BlazorMobile.Droid.Resource.Drawable.ic_dialog_close_light = global::BlazorMobile.InteropApp.Droid.Resource.Drawable.ic_dialog_close_light;
+			global::BlazorMobile.Droid.Resource.Drawable.ic_group_collapse_00 = global::BlazorMobile.InteropApp.Droid.Resource.Drawable.ic_group_collapse_00;
+			global::BlazorMobile.Droid.Resource.Drawable.ic_group_collapse_01 = global::BlazorMobile.InteropApp.Droid.Resource.Drawable.ic_group_collapse_01;
+			global::BlazorMobile.Droid.Resource.Drawable.ic_group_collapse_02 = global::BlazorMobile.InteropApp.Droid.Resource.Drawable.ic_group_collapse_02;
+			global::BlazorMobile.Droid.Resource.Drawable.ic_group_collapse_03 = global::BlazorMobile.InteropApp.Droid.Resource.Drawable.ic_group_collapse_03;
+			global::BlazorMobile.Droid.Resource.Drawable.ic_group_collapse_04 = global::BlazorMobile.InteropApp.Droid.Resource.Drawable.ic_group_collapse_04;
+			global::BlazorMobile.Droid.Resource.Drawable.ic_group_collapse_05 = global::BlazorMobile.InteropApp.Droid.Resource.Drawable.ic_group_collapse_05;
+			global::BlazorMobile.Droid.Resource.Drawable.ic_group_collapse_06 = global::BlazorMobile.InteropApp.Droid.Resource.Drawable.ic_group_collapse_06;
+			global::BlazorMobile.Droid.Resource.Drawable.ic_group_collapse_07 = global::BlazorMobile.InteropApp.Droid.Resource.Drawable.ic_group_collapse_07;
+			global::BlazorMobile.Droid.Resource.Drawable.ic_group_collapse_08 = global::BlazorMobile.InteropApp.Droid.Resource.Drawable.ic_group_collapse_08;
+			global::BlazorMobile.Droid.Resource.Drawable.ic_group_collapse_09 = global::BlazorMobile.InteropApp.Droid.Resource.Drawable.ic_group_collapse_09;
+			global::BlazorMobile.Droid.Resource.Drawable.ic_group_collapse_10 = global::BlazorMobile.InteropApp.Droid.Resource.Drawable.ic_group_collapse_10;
+			global::BlazorMobile.Droid.Resource.Drawable.ic_group_collapse_11 = global::BlazorMobile.InteropApp.Droid.Resource.Drawable.ic_group_collapse_11;
+			global::BlazorMobile.Droid.Resource.Drawable.ic_group_collapse_12 = global::BlazorMobile.InteropApp.Droid.Resource.Drawable.ic_group_collapse_12;
+			global::BlazorMobile.Droid.Resource.Drawable.ic_group_collapse_13 = global::BlazorMobile.InteropApp.Droid.Resource.Drawable.ic_group_collapse_13;
+			global::BlazorMobile.Droid.Resource.Drawable.ic_group_collapse_14 = global::BlazorMobile.InteropApp.Droid.Resource.Drawable.ic_group_collapse_14;
+			global::BlazorMobile.Droid.Resource.Drawable.ic_group_collapse_15 = global::BlazorMobile.InteropApp.Droid.Resource.Drawable.ic_group_collapse_15;
+			global::BlazorMobile.Droid.Resource.Drawable.ic_group_expand_00 = global::BlazorMobile.InteropApp.Droid.Resource.Drawable.ic_group_expand_00;
+			global::BlazorMobile.Droid.Resource.Drawable.ic_group_expand_01 = global::BlazorMobile.InteropApp.Droid.Resource.Drawable.ic_group_expand_01;
+			global::BlazorMobile.Droid.Resource.Drawable.ic_group_expand_02 = global::BlazorMobile.InteropApp.Droid.Resource.Drawable.ic_group_expand_02;
+			global::BlazorMobile.Droid.Resource.Drawable.ic_group_expand_03 = global::BlazorMobile.InteropApp.Droid.Resource.Drawable.ic_group_expand_03;
+			global::BlazorMobile.Droid.Resource.Drawable.ic_group_expand_04 = global::BlazorMobile.InteropApp.Droid.Resource.Drawable.ic_group_expand_04;
+			global::BlazorMobile.Droid.Resource.Drawable.ic_group_expand_05 = global::BlazorMobile.InteropApp.Droid.Resource.Drawable.ic_group_expand_05;
+			global::BlazorMobile.Droid.Resource.Drawable.ic_group_expand_06 = global::BlazorMobile.InteropApp.Droid.Resource.Drawable.ic_group_expand_06;
+			global::BlazorMobile.Droid.Resource.Drawable.ic_group_expand_07 = global::BlazorMobile.InteropApp.Droid.Resource.Drawable.ic_group_expand_07;
+			global::BlazorMobile.Droid.Resource.Drawable.ic_group_expand_08 = global::BlazorMobile.InteropApp.Droid.Resource.Drawable.ic_group_expand_08;
+			global::BlazorMobile.Droid.Resource.Drawable.ic_group_expand_09 = global::BlazorMobile.InteropApp.Droid.Resource.Drawable.ic_group_expand_09;
+			global::BlazorMobile.Droid.Resource.Drawable.ic_group_expand_10 = global::BlazorMobile.InteropApp.Droid.Resource.Drawable.ic_group_expand_10;
+			global::BlazorMobile.Droid.Resource.Drawable.ic_group_expand_11 = global::BlazorMobile.InteropApp.Droid.Resource.Drawable.ic_group_expand_11;
+			global::BlazorMobile.Droid.Resource.Drawable.ic_group_expand_12 = global::BlazorMobile.InteropApp.Droid.Resource.Drawable.ic_group_expand_12;
+			global::BlazorMobile.Droid.Resource.Drawable.ic_group_expand_13 = global::BlazorMobile.InteropApp.Droid.Resource.Drawable.ic_group_expand_13;
+			global::BlazorMobile.Droid.Resource.Drawable.ic_group_expand_14 = global::BlazorMobile.InteropApp.Droid.Resource.Drawable.ic_group_expand_14;
+			global::BlazorMobile.Droid.Resource.Drawable.ic_group_expand_15 = global::BlazorMobile.InteropApp.Droid.Resource.Drawable.ic_group_expand_15;
+			global::BlazorMobile.Droid.Resource.Drawable.ic_media_pause_dark = global::BlazorMobile.InteropApp.Droid.Resource.Drawable.ic_media_pause_dark;
+			global::BlazorMobile.Droid.Resource.Drawable.ic_media_pause_light = global::BlazorMobile.InteropApp.Droid.Resource.Drawable.ic_media_pause_light;
+			global::BlazorMobile.Droid.Resource.Drawable.ic_media_play_dark = global::BlazorMobile.InteropApp.Droid.Resource.Drawable.ic_media_play_dark;
+			global::BlazorMobile.Droid.Resource.Drawable.ic_media_play_light = global::BlazorMobile.InteropApp.Droid.Resource.Drawable.ic_media_play_light;
+			global::BlazorMobile.Droid.Resource.Drawable.ic_media_stop_dark = global::BlazorMobile.InteropApp.Droid.Resource.Drawable.ic_media_stop_dark;
+			global::BlazorMobile.Droid.Resource.Drawable.ic_media_stop_light = global::BlazorMobile.InteropApp.Droid.Resource.Drawable.ic_media_stop_light;
+			global::BlazorMobile.Droid.Resource.Drawable.ic_mr_button_connected_00_dark = global::BlazorMobile.InteropApp.Droid.Resource.Drawable.ic_mr_button_connected_00_dark;
+			global::BlazorMobile.Droid.Resource.Drawable.ic_mr_button_connected_00_light = global::BlazorMobile.InteropApp.Droid.Resource.Drawable.ic_mr_button_connected_00_light;
+			global::BlazorMobile.Droid.Resource.Drawable.ic_mr_button_connected_01_dark = global::BlazorMobile.InteropApp.Droid.Resource.Drawable.ic_mr_button_connected_01_dark;
+			global::BlazorMobile.Droid.Resource.Drawable.ic_mr_button_connected_01_light = global::BlazorMobile.InteropApp.Droid.Resource.Drawable.ic_mr_button_connected_01_light;
+			global::BlazorMobile.Droid.Resource.Drawable.ic_mr_button_connected_02_dark = global::BlazorMobile.InteropApp.Droid.Resource.Drawable.ic_mr_button_connected_02_dark;
+			global::BlazorMobile.Droid.Resource.Drawable.ic_mr_button_connected_02_light = global::BlazorMobile.InteropApp.Droid.Resource.Drawable.ic_mr_button_connected_02_light;
+			global::BlazorMobile.Droid.Resource.Drawable.ic_mr_button_connected_03_dark = global::BlazorMobile.InteropApp.Droid.Resource.Drawable.ic_mr_button_connected_03_dark;
+			global::BlazorMobile.Droid.Resource.Drawable.ic_mr_button_connected_03_light = global::BlazorMobile.InteropApp.Droid.Resource.Drawable.ic_mr_button_connected_03_light;
+			global::BlazorMobile.Droid.Resource.Drawable.ic_mr_button_connected_04_dark = global::BlazorMobile.InteropApp.Droid.Resource.Drawable.ic_mr_button_connected_04_dark;
+			global::BlazorMobile.Droid.Resource.Drawable.ic_mr_button_connected_04_light = global::BlazorMobile.InteropApp.Droid.Resource.Drawable.ic_mr_button_connected_04_light;
+			global::BlazorMobile.Droid.Resource.Drawable.ic_mr_button_connected_05_dark = global::BlazorMobile.InteropApp.Droid.Resource.Drawable.ic_mr_button_connected_05_dark;
+			global::BlazorMobile.Droid.Resource.Drawable.ic_mr_button_connected_05_light = global::BlazorMobile.InteropApp.Droid.Resource.Drawable.ic_mr_button_connected_05_light;
+			global::BlazorMobile.Droid.Resource.Drawable.ic_mr_button_connected_06_dark = global::BlazorMobile.InteropApp.Droid.Resource.Drawable.ic_mr_button_connected_06_dark;
+			global::BlazorMobile.Droid.Resource.Drawable.ic_mr_button_connected_06_light = global::BlazorMobile.InteropApp.Droid.Resource.Drawable.ic_mr_button_connected_06_light;
+			global::BlazorMobile.Droid.Resource.Drawable.ic_mr_button_connected_07_dark = global::BlazorMobile.InteropApp.Droid.Resource.Drawable.ic_mr_button_connected_07_dark;
+			global::BlazorMobile.Droid.Resource.Drawable.ic_mr_button_connected_07_light = global::BlazorMobile.InteropApp.Droid.Resource.Drawable.ic_mr_button_connected_07_light;
+			global::BlazorMobile.Droid.Resource.Drawable.ic_mr_button_connected_08_dark = global::BlazorMobile.InteropApp.Droid.Resource.Drawable.ic_mr_button_connected_08_dark;
+			global::BlazorMobile.Droid.Resource.Drawable.ic_mr_button_connected_08_light = global::BlazorMobile.InteropApp.Droid.Resource.Drawable.ic_mr_button_connected_08_light;
+			global::BlazorMobile.Droid.Resource.Drawable.ic_mr_button_connected_09_dark = global::BlazorMobile.InteropApp.Droid.Resource.Drawable.ic_mr_button_connected_09_dark;
+			global::BlazorMobile.Droid.Resource.Drawable.ic_mr_button_connected_09_light = global::BlazorMobile.InteropApp.Droid.Resource.Drawable.ic_mr_button_connected_09_light;
+			global::BlazorMobile.Droid.Resource.Drawable.ic_mr_button_connected_10_dark = global::BlazorMobile.InteropApp.Droid.Resource.Drawable.ic_mr_button_connected_10_dark;
+			global::BlazorMobile.Droid.Resource.Drawable.ic_mr_button_connected_10_light = global::BlazorMobile.InteropApp.Droid.Resource.Drawable.ic_mr_button_connected_10_light;
+			global::BlazorMobile.Droid.Resource.Drawable.ic_mr_button_connected_11_dark = global::BlazorMobile.InteropApp.Droid.Resource.Drawable.ic_mr_button_connected_11_dark;
+			global::BlazorMobile.Droid.Resource.Drawable.ic_mr_button_connected_11_light = global::BlazorMobile.InteropApp.Droid.Resource.Drawable.ic_mr_button_connected_11_light;
+			global::BlazorMobile.Droid.Resource.Drawable.ic_mr_button_connected_12_dark = global::BlazorMobile.InteropApp.Droid.Resource.Drawable.ic_mr_button_connected_12_dark;
+			global::BlazorMobile.Droid.Resource.Drawable.ic_mr_button_connected_12_light = global::BlazorMobile.InteropApp.Droid.Resource.Drawable.ic_mr_button_connected_12_light;
+			global::BlazorMobile.Droid.Resource.Drawable.ic_mr_button_connected_13_dark = global::BlazorMobile.InteropApp.Droid.Resource.Drawable.ic_mr_button_connected_13_dark;
+			global::BlazorMobile.Droid.Resource.Drawable.ic_mr_button_connected_13_light = global::BlazorMobile.InteropApp.Droid.Resource.Drawable.ic_mr_button_connected_13_light;
+			global::BlazorMobile.Droid.Resource.Drawable.ic_mr_button_connected_14_dark = global::BlazorMobile.InteropApp.Droid.Resource.Drawable.ic_mr_button_connected_14_dark;
+			global::BlazorMobile.Droid.Resource.Drawable.ic_mr_button_connected_14_light = global::BlazorMobile.InteropApp.Droid.Resource.Drawable.ic_mr_button_connected_14_light;
+			global::BlazorMobile.Droid.Resource.Drawable.ic_mr_button_connected_15_dark = global::BlazorMobile.InteropApp.Droid.Resource.Drawable.ic_mr_button_connected_15_dark;
+			global::BlazorMobile.Droid.Resource.Drawable.ic_mr_button_connected_15_light = global::BlazorMobile.InteropApp.Droid.Resource.Drawable.ic_mr_button_connected_15_light;
+			global::BlazorMobile.Droid.Resource.Drawable.ic_mr_button_connected_16_dark = global::BlazorMobile.InteropApp.Droid.Resource.Drawable.ic_mr_button_connected_16_dark;
+			global::BlazorMobile.Droid.Resource.Drawable.ic_mr_button_connected_16_light = global::BlazorMobile.InteropApp.Droid.Resource.Drawable.ic_mr_button_connected_16_light;
+			global::BlazorMobile.Droid.Resource.Drawable.ic_mr_button_connected_17_dark = global::BlazorMobile.InteropApp.Droid.Resource.Drawable.ic_mr_button_connected_17_dark;
+			global::BlazorMobile.Droid.Resource.Drawable.ic_mr_button_connected_17_light = global::BlazorMobile.InteropApp.Droid.Resource.Drawable.ic_mr_button_connected_17_light;
+			global::BlazorMobile.Droid.Resource.Drawable.ic_mr_button_connected_18_dark = global::BlazorMobile.InteropApp.Droid.Resource.Drawable.ic_mr_button_connected_18_dark;
+			global::BlazorMobile.Droid.Resource.Drawable.ic_mr_button_connected_18_light = global::BlazorMobile.InteropApp.Droid.Resource.Drawable.ic_mr_button_connected_18_light;
+			global::BlazorMobile.Droid.Resource.Drawable.ic_mr_button_connected_19_dark = global::BlazorMobile.InteropApp.Droid.Resource.Drawable.ic_mr_button_connected_19_dark;
+			global::BlazorMobile.Droid.Resource.Drawable.ic_mr_button_connected_19_light = global::BlazorMobile.InteropApp.Droid.Resource.Drawable.ic_mr_button_connected_19_light;
+			global::BlazorMobile.Droid.Resource.Drawable.ic_mr_button_connected_20_dark = global::BlazorMobile.InteropApp.Droid.Resource.Drawable.ic_mr_button_connected_20_dark;
+			global::BlazorMobile.Droid.Resource.Drawable.ic_mr_button_connected_20_light = global::BlazorMobile.InteropApp.Droid.Resource.Drawable.ic_mr_button_connected_20_light;
+			global::BlazorMobile.Droid.Resource.Drawable.ic_mr_button_connected_21_dark = global::BlazorMobile.InteropApp.Droid.Resource.Drawable.ic_mr_button_connected_21_dark;
+			global::BlazorMobile.Droid.Resource.Drawable.ic_mr_button_connected_21_light = global::BlazorMobile.InteropApp.Droid.Resource.Drawable.ic_mr_button_connected_21_light;
+			global::BlazorMobile.Droid.Resource.Drawable.ic_mr_button_connected_22_dark = global::BlazorMobile.InteropApp.Droid.Resource.Drawable.ic_mr_button_connected_22_dark;
+			global::BlazorMobile.Droid.Resource.Drawable.ic_mr_button_connected_22_light = global::BlazorMobile.InteropApp.Droid.Resource.Drawable.ic_mr_button_connected_22_light;
+			global::BlazorMobile.Droid.Resource.Drawable.ic_mr_button_connected_23_dark = global::BlazorMobile.InteropApp.Droid.Resource.Drawable.ic_mr_button_connected_23_dark;
+			global::BlazorMobile.Droid.Resource.Drawable.ic_mr_button_connected_23_light = global::BlazorMobile.InteropApp.Droid.Resource.Drawable.ic_mr_button_connected_23_light;
+			global::BlazorMobile.Droid.Resource.Drawable.ic_mr_button_connected_24_dark = global::BlazorMobile.InteropApp.Droid.Resource.Drawable.ic_mr_button_connected_24_dark;
+			global::BlazorMobile.Droid.Resource.Drawable.ic_mr_button_connected_24_light = global::BlazorMobile.InteropApp.Droid.Resource.Drawable.ic_mr_button_connected_24_light;
+			global::BlazorMobile.Droid.Resource.Drawable.ic_mr_button_connected_25_dark = global::BlazorMobile.InteropApp.Droid.Resource.Drawable.ic_mr_button_connected_25_dark;
+			global::BlazorMobile.Droid.Resource.Drawable.ic_mr_button_connected_25_light = global::BlazorMobile.InteropApp.Droid.Resource.Drawable.ic_mr_button_connected_25_light;
+			global::BlazorMobile.Droid.Resource.Drawable.ic_mr_button_connected_26_dark = global::BlazorMobile.InteropApp.Droid.Resource.Drawable.ic_mr_button_connected_26_dark;
+			global::BlazorMobile.Droid.Resource.Drawable.ic_mr_button_connected_26_light = global::BlazorMobile.InteropApp.Droid.Resource.Drawable.ic_mr_button_connected_26_light;
+			global::BlazorMobile.Droid.Resource.Drawable.ic_mr_button_connected_27_dark = global::BlazorMobile.InteropApp.Droid.Resource.Drawable.ic_mr_button_connected_27_dark;
+			global::BlazorMobile.Droid.Resource.Drawable.ic_mr_button_connected_27_light = global::BlazorMobile.InteropApp.Droid.Resource.Drawable.ic_mr_button_connected_27_light;
+			global::BlazorMobile.Droid.Resource.Drawable.ic_mr_button_connected_28_dark = global::BlazorMobile.InteropApp.Droid.Resource.Drawable.ic_mr_button_connected_28_dark;
+			global::BlazorMobile.Droid.Resource.Drawable.ic_mr_button_connected_28_light = global::BlazorMobile.InteropApp.Droid.Resource.Drawable.ic_mr_button_connected_28_light;
+			global::BlazorMobile.Droid.Resource.Drawable.ic_mr_button_connected_29_dark = global::BlazorMobile.InteropApp.Droid.Resource.Drawable.ic_mr_button_connected_29_dark;
+			global::BlazorMobile.Droid.Resource.Drawable.ic_mr_button_connected_29_light = global::BlazorMobile.InteropApp.Droid.Resource.Drawable.ic_mr_button_connected_29_light;
+			global::BlazorMobile.Droid.Resource.Drawable.ic_mr_button_connected_30_dark = global::BlazorMobile.InteropApp.Droid.Resource.Drawable.ic_mr_button_connected_30_dark;
+			global::BlazorMobile.Droid.Resource.Drawable.ic_mr_button_connected_30_light = global::BlazorMobile.InteropApp.Droid.Resource.Drawable.ic_mr_button_connected_30_light;
+			global::BlazorMobile.Droid.Resource.Drawable.ic_mr_button_connecting_00_dark = global::BlazorMobile.InteropApp.Droid.Resource.Drawable.ic_mr_button_connecting_00_dark;
+			global::BlazorMobile.Droid.Resource.Drawable.ic_mr_button_connecting_00_light = global::BlazorMobile.InteropApp.Droid.Resource.Drawable.ic_mr_button_connecting_00_light;
+			global::BlazorMobile.Droid.Resource.Drawable.ic_mr_button_connecting_01_dark = global::BlazorMobile.InteropApp.Droid.Resource.Drawable.ic_mr_button_connecting_01_dark;
+			global::BlazorMobile.Droid.Resource.Drawable.ic_mr_button_connecting_01_light = global::BlazorMobile.InteropApp.Droid.Resource.Drawable.ic_mr_button_connecting_01_light;
+			global::BlazorMobile.Droid.Resource.Drawable.ic_mr_button_connecting_02_dark = global::BlazorMobile.InteropApp.Droid.Resource.Drawable.ic_mr_button_connecting_02_dark;
+			global::BlazorMobile.Droid.Resource.Drawable.ic_mr_button_connecting_02_light = global::BlazorMobile.InteropApp.Droid.Resource.Drawable.ic_mr_button_connecting_02_light;
+			global::BlazorMobile.Droid.Resource.Drawable.ic_mr_button_connecting_03_dark = global::BlazorMobile.InteropApp.Droid.Resource.Drawable.ic_mr_button_connecting_03_dark;
+			global::BlazorMobile.Droid.Resource.Drawable.ic_mr_button_connecting_03_light = global::BlazorMobile.InteropApp.Droid.Resource.Drawable.ic_mr_button_connecting_03_light;
+			global::BlazorMobile.Droid.Resource.Drawable.ic_mr_button_connecting_04_dark = global::BlazorMobile.InteropApp.Droid.Resource.Drawable.ic_mr_button_connecting_04_dark;
+			global::BlazorMobile.Droid.Resource.Drawable.ic_mr_button_connecting_04_light = global::BlazorMobile.InteropApp.Droid.Resource.Drawable.ic_mr_button_connecting_04_light;
+			global::BlazorMobile.Droid.Resource.Drawable.ic_mr_button_connecting_05_dark = global::BlazorMobile.InteropApp.Droid.Resource.Drawable.ic_mr_button_connecting_05_dark;
+			global::BlazorMobile.Droid.Resource.Drawable.ic_mr_button_connecting_05_light = global::BlazorMobile.InteropApp.Droid.Resource.Drawable.ic_mr_button_connecting_05_light;
+			global::BlazorMobile.Droid.Resource.Drawable.ic_mr_button_connecting_06_dark = global::BlazorMobile.InteropApp.Droid.Resource.Drawable.ic_mr_button_connecting_06_dark;
+			global::BlazorMobile.Droid.Resource.Drawable.ic_mr_button_connecting_06_light = global::BlazorMobile.InteropApp.Droid.Resource.Drawable.ic_mr_button_connecting_06_light;
+			global::BlazorMobile.Droid.Resource.Drawable.ic_mr_button_connecting_07_dark = global::BlazorMobile.InteropApp.Droid.Resource.Drawable.ic_mr_button_connecting_07_dark;
+			global::BlazorMobile.Droid.Resource.Drawable.ic_mr_button_connecting_07_light = global::BlazorMobile.InteropApp.Droid.Resource.Drawable.ic_mr_button_connecting_07_light;
+			global::BlazorMobile.Droid.Resource.Drawable.ic_mr_button_connecting_08_dark = global::BlazorMobile.InteropApp.Droid.Resource.Drawable.ic_mr_button_connecting_08_dark;
+			global::BlazorMobile.Droid.Resource.Drawable.ic_mr_button_connecting_08_light = global::BlazorMobile.InteropApp.Droid.Resource.Drawable.ic_mr_button_connecting_08_light;
+			global::BlazorMobile.Droid.Resource.Drawable.ic_mr_button_connecting_09_dark = global::BlazorMobile.InteropApp.Droid.Resource.Drawable.ic_mr_button_connecting_09_dark;
+			global::BlazorMobile.Droid.Resource.Drawable.ic_mr_button_connecting_09_light = global::BlazorMobile.InteropApp.Droid.Resource.Drawable.ic_mr_button_connecting_09_light;
+			global::BlazorMobile.Droid.Resource.Drawable.ic_mr_button_connecting_10_dark = global::BlazorMobile.InteropApp.Droid.Resource.Drawable.ic_mr_button_connecting_10_dark;
+			global::BlazorMobile.Droid.Resource.Drawable.ic_mr_button_connecting_10_light = global::BlazorMobile.InteropApp.Droid.Resource.Drawable.ic_mr_button_connecting_10_light;
+			global::BlazorMobile.Droid.Resource.Drawable.ic_mr_button_connecting_11_dark = global::BlazorMobile.InteropApp.Droid.Resource.Drawable.ic_mr_button_connecting_11_dark;
+			global::BlazorMobile.Droid.Resource.Drawable.ic_mr_button_connecting_11_light = global::BlazorMobile.InteropApp.Droid.Resource.Drawable.ic_mr_button_connecting_11_light;
+			global::BlazorMobile.Droid.Resource.Drawable.ic_mr_button_connecting_12_dark = global::BlazorMobile.InteropApp.Droid.Resource.Drawable.ic_mr_button_connecting_12_dark;
+			global::BlazorMobile.Droid.Resource.Drawable.ic_mr_button_connecting_12_light = global::BlazorMobile.InteropApp.Droid.Resource.Drawable.ic_mr_button_connecting_12_light;
+			global::BlazorMobile.Droid.Resource.Drawable.ic_mr_button_connecting_13_dark = global::BlazorMobile.InteropApp.Droid.Resource.Drawable.ic_mr_button_connecting_13_dark;
+			global::BlazorMobile.Droid.Resource.Drawable.ic_mr_button_connecting_13_light = global::BlazorMobile.InteropApp.Droid.Resource.Drawable.ic_mr_button_connecting_13_light;
+			global::BlazorMobile.Droid.Resource.Drawable.ic_mr_button_connecting_14_dark = global::BlazorMobile.InteropApp.Droid.Resource.Drawable.ic_mr_button_connecting_14_dark;
+			global::BlazorMobile.Droid.Resource.Drawable.ic_mr_button_connecting_14_light = global::BlazorMobile.InteropApp.Droid.Resource.Drawable.ic_mr_button_connecting_14_light;
+			global::BlazorMobile.Droid.Resource.Drawable.ic_mr_button_connecting_15_dark = global::BlazorMobile.InteropApp.Droid.Resource.Drawable.ic_mr_button_connecting_15_dark;
+			global::BlazorMobile.Droid.Resource.Drawable.ic_mr_button_connecting_15_light = global::BlazorMobile.InteropApp.Droid.Resource.Drawable.ic_mr_button_connecting_15_light;
+			global::BlazorMobile.Droid.Resource.Drawable.ic_mr_button_connecting_16_dark = global::BlazorMobile.InteropApp.Droid.Resource.Drawable.ic_mr_button_connecting_16_dark;
+			global::BlazorMobile.Droid.Resource.Drawable.ic_mr_button_connecting_16_light = global::BlazorMobile.InteropApp.Droid.Resource.Drawable.ic_mr_button_connecting_16_light;
+			global::BlazorMobile.Droid.Resource.Drawable.ic_mr_button_connecting_17_dark = global::BlazorMobile.InteropApp.Droid.Resource.Drawable.ic_mr_button_connecting_17_dark;
+			global::BlazorMobile.Droid.Resource.Drawable.ic_mr_button_connecting_17_light = global::BlazorMobile.InteropApp.Droid.Resource.Drawable.ic_mr_button_connecting_17_light;
+			global::BlazorMobile.Droid.Resource.Drawable.ic_mr_button_connecting_18_dark = global::BlazorMobile.InteropApp.Droid.Resource.Drawable.ic_mr_button_connecting_18_dark;
+			global::BlazorMobile.Droid.Resource.Drawable.ic_mr_button_connecting_18_light = global::BlazorMobile.InteropApp.Droid.Resource.Drawable.ic_mr_button_connecting_18_light;
+			global::BlazorMobile.Droid.Resource.Drawable.ic_mr_button_connecting_19_dark = global::BlazorMobile.InteropApp.Droid.Resource.Drawable.ic_mr_button_connecting_19_dark;
+			global::BlazorMobile.Droid.Resource.Drawable.ic_mr_button_connecting_19_light = global::BlazorMobile.InteropApp.Droid.Resource.Drawable.ic_mr_button_connecting_19_light;
+			global::BlazorMobile.Droid.Resource.Drawable.ic_mr_button_connecting_20_dark = global::BlazorMobile.InteropApp.Droid.Resource.Drawable.ic_mr_button_connecting_20_dark;
+			global::BlazorMobile.Droid.Resource.Drawable.ic_mr_button_connecting_20_light = global::BlazorMobile.InteropApp.Droid.Resource.Drawable.ic_mr_button_connecting_20_light;
+			global::BlazorMobile.Droid.Resource.Drawable.ic_mr_button_connecting_21_dark = global::BlazorMobile.InteropApp.Droid.Resource.Drawable.ic_mr_button_connecting_21_dark;
+			global::BlazorMobile.Droid.Resource.Drawable.ic_mr_button_connecting_21_light = global::BlazorMobile.InteropApp.Droid.Resource.Drawable.ic_mr_button_connecting_21_light;
+			global::BlazorMobile.Droid.Resource.Drawable.ic_mr_button_connecting_22_dark = global::BlazorMobile.InteropApp.Droid.Resource.Drawable.ic_mr_button_connecting_22_dark;
+			global::BlazorMobile.Droid.Resource.Drawable.ic_mr_button_connecting_22_light = global::BlazorMobile.InteropApp.Droid.Resource.Drawable.ic_mr_button_connecting_22_light;
+			global::BlazorMobile.Droid.Resource.Drawable.ic_mr_button_connecting_23_dark = global::BlazorMobile.InteropApp.Droid.Resource.Drawable.ic_mr_button_connecting_23_dark;
+			global::BlazorMobile.Droid.Resource.Drawable.ic_mr_button_connecting_23_light = global::BlazorMobile.InteropApp.Droid.Resource.Drawable.ic_mr_button_connecting_23_light;
+			global::BlazorMobile.Droid.Resource.Drawable.ic_mr_button_connecting_24_dark = global::BlazorMobile.InteropApp.Droid.Resource.Drawable.ic_mr_button_connecting_24_dark;
+			global::BlazorMobile.Droid.Resource.Drawable.ic_mr_button_connecting_24_light = global::BlazorMobile.InteropApp.Droid.Resource.Drawable.ic_mr_button_connecting_24_light;
+			global::BlazorMobile.Droid.Resource.Drawable.ic_mr_button_connecting_25_dark = global::BlazorMobile.InteropApp.Droid.Resource.Drawable.ic_mr_button_connecting_25_dark;
+			global::BlazorMobile.Droid.Resource.Drawable.ic_mr_button_connecting_25_light = global::BlazorMobile.InteropApp.Droid.Resource.Drawable.ic_mr_button_connecting_25_light;
+			global::BlazorMobile.Droid.Resource.Drawable.ic_mr_button_connecting_26_dark = global::BlazorMobile.InteropApp.Droid.Resource.Drawable.ic_mr_button_connecting_26_dark;
+			global::BlazorMobile.Droid.Resource.Drawable.ic_mr_button_connecting_26_light = global::BlazorMobile.InteropApp.Droid.Resource.Drawable.ic_mr_button_connecting_26_light;
+			global::BlazorMobile.Droid.Resource.Drawable.ic_mr_button_connecting_27_dark = global::BlazorMobile.InteropApp.Droid.Resource.Drawable.ic_mr_button_connecting_27_dark;
+			global::BlazorMobile.Droid.Resource.Drawable.ic_mr_button_connecting_27_light = global::BlazorMobile.InteropApp.Droid.Resource.Drawable.ic_mr_button_connecting_27_light;
+			global::BlazorMobile.Droid.Resource.Drawable.ic_mr_button_connecting_28_dark = global::BlazorMobile.InteropApp.Droid.Resource.Drawable.ic_mr_button_connecting_28_dark;
+			global::BlazorMobile.Droid.Resource.Drawable.ic_mr_button_connecting_28_light = global::BlazorMobile.InteropApp.Droid.Resource.Drawable.ic_mr_button_connecting_28_light;
+			global::BlazorMobile.Droid.Resource.Drawable.ic_mr_button_connecting_29_dark = global::BlazorMobile.InteropApp.Droid.Resource.Drawable.ic_mr_button_connecting_29_dark;
+			global::BlazorMobile.Droid.Resource.Drawable.ic_mr_button_connecting_29_light = global::BlazorMobile.InteropApp.Droid.Resource.Drawable.ic_mr_button_connecting_29_light;
+			global::BlazorMobile.Droid.Resource.Drawable.ic_mr_button_connecting_30_dark = global::BlazorMobile.InteropApp.Droid.Resource.Drawable.ic_mr_button_connecting_30_dark;
+			global::BlazorMobile.Droid.Resource.Drawable.ic_mr_button_connecting_30_light = global::BlazorMobile.InteropApp.Droid.Resource.Drawable.ic_mr_button_connecting_30_light;
+			global::BlazorMobile.Droid.Resource.Drawable.ic_mr_button_disabled_dark = global::BlazorMobile.InteropApp.Droid.Resource.Drawable.ic_mr_button_disabled_dark;
+			global::BlazorMobile.Droid.Resource.Drawable.ic_mr_button_disabled_light = global::BlazorMobile.InteropApp.Droid.Resource.Drawable.ic_mr_button_disabled_light;
+			global::BlazorMobile.Droid.Resource.Drawable.ic_mr_button_disconnected_dark = global::BlazorMobile.InteropApp.Droid.Resource.Drawable.ic_mr_button_disconnected_dark;
+			global::BlazorMobile.Droid.Resource.Drawable.ic_mr_button_disconnected_light = global::BlazorMobile.InteropApp.Droid.Resource.Drawable.ic_mr_button_disconnected_light;
+			global::BlazorMobile.Droid.Resource.Drawable.ic_mr_button_grey = global::BlazorMobile.InteropApp.Droid.Resource.Drawable.ic_mr_button_grey;
+			global::BlazorMobile.Droid.Resource.Drawable.ic_mtrl_chip_checked_black = global::BlazorMobile.InteropApp.Droid.Resource.Drawable.ic_mtrl_chip_checked_black;
+			global::BlazorMobile.Droid.Resource.Drawable.ic_mtrl_chip_checked_circle = global::BlazorMobile.InteropApp.Droid.Resource.Drawable.ic_mtrl_chip_checked_circle;
+			global::BlazorMobile.Droid.Resource.Drawable.ic_mtrl_chip_close_circle = global::BlazorMobile.InteropApp.Droid.Resource.Drawable.ic_mtrl_chip_close_circle;
+			global::BlazorMobile.Droid.Resource.Drawable.ic_vol_type_speaker_dark = global::BlazorMobile.InteropApp.Droid.Resource.Drawable.ic_vol_type_speaker_dark;
+			global::BlazorMobile.Droid.Resource.Drawable.ic_vol_type_speaker_group_dark = global::BlazorMobile.InteropApp.Droid.Resource.Drawable.ic_vol_type_speaker_group_dark;
+			global::BlazorMobile.Droid.Resource.Drawable.ic_vol_type_speaker_group_light = global::BlazorMobile.InteropApp.Droid.Resource.Drawable.ic_vol_type_speaker_group_light;
+			global::BlazorMobile.Droid.Resource.Drawable.ic_vol_type_speaker_light = global::BlazorMobile.InteropApp.Droid.Resource.Drawable.ic_vol_type_speaker_light;
+			global::BlazorMobile.Droid.Resource.Drawable.ic_vol_type_tv_dark = global::BlazorMobile.InteropApp.Droid.Resource.Drawable.ic_vol_type_tv_dark;
+			global::BlazorMobile.Droid.Resource.Drawable.ic_vol_type_tv_light = global::BlazorMobile.InteropApp.Droid.Resource.Drawable.ic_vol_type_tv_light;
+			global::BlazorMobile.Droid.Resource.Drawable.mr_button_connected_dark = global::BlazorMobile.InteropApp.Droid.Resource.Drawable.mr_button_connected_dark;
+			global::BlazorMobile.Droid.Resource.Drawable.mr_button_connected_light = global::BlazorMobile.InteropApp.Droid.Resource.Drawable.mr_button_connected_light;
+			global::BlazorMobile.Droid.Resource.Drawable.mr_button_connecting_dark = global::BlazorMobile.InteropApp.Droid.Resource.Drawable.mr_button_connecting_dark;
+			global::BlazorMobile.Droid.Resource.Drawable.mr_button_connecting_light = global::BlazorMobile.InteropApp.Droid.Resource.Drawable.mr_button_connecting_light;
+			global::BlazorMobile.Droid.Resource.Drawable.mr_button_dark = global::BlazorMobile.InteropApp.Droid.Resource.Drawable.mr_button_dark;
+			global::BlazorMobile.Droid.Resource.Drawable.mr_button_light = global::BlazorMobile.InteropApp.Droid.Resource.Drawable.mr_button_light;
+			global::BlazorMobile.Droid.Resource.Drawable.mr_dialog_close_dark = global::BlazorMobile.InteropApp.Droid.Resource.Drawable.mr_dialog_close_dark;
+			global::BlazorMobile.Droid.Resource.Drawable.mr_dialog_close_light = global::BlazorMobile.InteropApp.Droid.Resource.Drawable.mr_dialog_close_light;
+			global::BlazorMobile.Droid.Resource.Drawable.mr_dialog_material_background_dark = global::BlazorMobile.InteropApp.Droid.Resource.Drawable.mr_dialog_material_background_dark;
+			global::BlazorMobile.Droid.Resource.Drawable.mr_dialog_material_background_light = global::BlazorMobile.InteropApp.Droid.Resource.Drawable.mr_dialog_material_background_light;
+			global::BlazorMobile.Droid.Resource.Drawable.mr_group_collapse = global::BlazorMobile.InteropApp.Droid.Resource.Drawable.mr_group_collapse;
+			global::BlazorMobile.Droid.Resource.Drawable.mr_group_expand = global::BlazorMobile.InteropApp.Droid.Resource.Drawable.mr_group_expand;
+			global::BlazorMobile.Droid.Resource.Drawable.mr_media_pause_dark = global::BlazorMobile.InteropApp.Droid.Resource.Drawable.mr_media_pause_dark;
+			global::BlazorMobile.Droid.Resource.Drawable.mr_media_pause_light = global::BlazorMobile.InteropApp.Droid.Resource.Drawable.mr_media_pause_light;
+			global::BlazorMobile.Droid.Resource.Drawable.mr_media_play_dark = global::BlazorMobile.InteropApp.Droid.Resource.Drawable.mr_media_play_dark;
+			global::BlazorMobile.Droid.Resource.Drawable.mr_media_play_light = global::BlazorMobile.InteropApp.Droid.Resource.Drawable.mr_media_play_light;
+			global::BlazorMobile.Droid.Resource.Drawable.mr_media_stop_dark = global::BlazorMobile.InteropApp.Droid.Resource.Drawable.mr_media_stop_dark;
+			global::BlazorMobile.Droid.Resource.Drawable.mr_media_stop_light = global::BlazorMobile.InteropApp.Droid.Resource.Drawable.mr_media_stop_light;
+			global::BlazorMobile.Droid.Resource.Drawable.mr_vol_type_audiotrack_dark = global::BlazorMobile.InteropApp.Droid.Resource.Drawable.mr_vol_type_audiotrack_dark;
+			global::BlazorMobile.Droid.Resource.Drawable.mr_vol_type_audiotrack_light = global::BlazorMobile.InteropApp.Droid.Resource.Drawable.mr_vol_type_audiotrack_light;
+			global::BlazorMobile.Droid.Resource.Drawable.mtrl_snackbar_background = global::BlazorMobile.InteropApp.Droid.Resource.Drawable.mtrl_snackbar_background;
+			global::BlazorMobile.Droid.Resource.Drawable.mtrl_tabs_default_indicator = global::BlazorMobile.InteropApp.Droid.Resource.Drawable.mtrl_tabs_default_indicator;
+			global::BlazorMobile.Droid.Resource.Drawable.navigation_empty_icon = global::BlazorMobile.InteropApp.Droid.Resource.Drawable.navigation_empty_icon;
+			global::BlazorMobile.Droid.Resource.Drawable.notification_action_background = global::BlazorMobile.InteropApp.Droid.Resource.Drawable.notification_action_background;
+			global::BlazorMobile.Droid.Resource.Drawable.notification_bg = global::BlazorMobile.InteropApp.Droid.Resource.Drawable.notification_bg;
+			global::BlazorMobile.Droid.Resource.Drawable.notification_bg_low = global::BlazorMobile.InteropApp.Droid.Resource.Drawable.notification_bg_low;
+			global::BlazorMobile.Droid.Resource.Drawable.notification_bg_low_normal = global::BlazorMobile.InteropApp.Droid.Resource.Drawable.notification_bg_low_normal;
+			global::BlazorMobile.Droid.Resource.Drawable.notification_bg_low_pressed = global::BlazorMobile.InteropApp.Droid.Resource.Drawable.notification_bg_low_pressed;
+			global::BlazorMobile.Droid.Resource.Drawable.notification_bg_normal = global::BlazorMobile.InteropApp.Droid.Resource.Drawable.notification_bg_normal;
+			global::BlazorMobile.Droid.Resource.Drawable.notification_bg_normal_pressed = global::BlazorMobile.InteropApp.Droid.Resource.Drawable.notification_bg_normal_pressed;
+			global::BlazorMobile.Droid.Resource.Drawable.notification_icon_background = global::BlazorMobile.InteropApp.Droid.Resource.Drawable.notification_icon_background;
+			global::BlazorMobile.Droid.Resource.Drawable.notification_template_icon_bg = global::BlazorMobile.InteropApp.Droid.Resource.Drawable.notification_template_icon_bg;
+			global::BlazorMobile.Droid.Resource.Drawable.notification_template_icon_low_bg = global::BlazorMobile.InteropApp.Droid.Resource.Drawable.notification_template_icon_low_bg;
+			global::BlazorMobile.Droid.Resource.Drawable.notification_tile_bg = global::BlazorMobile.InteropApp.Droid.Resource.Drawable.notification_tile_bg;
+			global::BlazorMobile.Droid.Resource.Drawable.notify_panel_notification_icon_bg = global::BlazorMobile.InteropApp.Droid.Resource.Drawable.notify_panel_notification_icon_bg;
+			global::BlazorMobile.Droid.Resource.Drawable.tooltip_frame_dark = global::BlazorMobile.InteropApp.Droid.Resource.Drawable.tooltip_frame_dark;
+			global::BlazorMobile.Droid.Resource.Drawable.tooltip_frame_light = global::BlazorMobile.InteropApp.Droid.Resource.Drawable.tooltip_frame_light;
+			global::BlazorMobile.Droid.Resource.Id.action0 = global::BlazorMobile.InteropApp.Droid.Resource.Id.action0;
+			global::BlazorMobile.Droid.Resource.Id.actions = global::BlazorMobile.InteropApp.Droid.Resource.Id.actions;
+			global::BlazorMobile.Droid.Resource.Id.action_bar = global::BlazorMobile.InteropApp.Droid.Resource.Id.action_bar;
+			global::BlazorMobile.Droid.Resource.Id.action_bar_activity_content = global::BlazorMobile.InteropApp.Droid.Resource.Id.action_bar_activity_content;
+			global::BlazorMobile.Droid.Resource.Id.action_bar_container = global::BlazorMobile.InteropApp.Droid.Resource.Id.action_bar_container;
+			global::BlazorMobile.Droid.Resource.Id.action_bar_root = global::BlazorMobile.InteropApp.Droid.Resource.Id.action_bar_root;
+			global::BlazorMobile.Droid.Resource.Id.action_bar_spinner = global::BlazorMobile.InteropApp.Droid.Resource.Id.action_bar_spinner;
+			global::BlazorMobile.Droid.Resource.Id.action_bar_subtitle = global::BlazorMobile.InteropApp.Droid.Resource.Id.action_bar_subtitle;
+			global::BlazorMobile.Droid.Resource.Id.action_bar_title = global::BlazorMobile.InteropApp.Droid.Resource.Id.action_bar_title;
+			global::BlazorMobile.Droid.Resource.Id.action_container = global::BlazorMobile.InteropApp.Droid.Resource.Id.action_container;
+			global::BlazorMobile.Droid.Resource.Id.action_context_bar = global::BlazorMobile.InteropApp.Droid.Resource.Id.action_context_bar;
+			global::BlazorMobile.Droid.Resource.Id.action_divider = global::BlazorMobile.InteropApp.Droid.Resource.Id.action_divider;
+			global::BlazorMobile.Droid.Resource.Id.action_image = global::BlazorMobile.InteropApp.Droid.Resource.Id.action_image;
+			global::BlazorMobile.Droid.Resource.Id.action_menu_divider = global::BlazorMobile.InteropApp.Droid.Resource.Id.action_menu_divider;
+			global::BlazorMobile.Droid.Resource.Id.action_menu_presenter = global::BlazorMobile.InteropApp.Droid.Resource.Id.action_menu_presenter;
+			global::BlazorMobile.Droid.Resource.Id.action_mode_bar = global::BlazorMobile.InteropApp.Droid.Resource.Id.action_mode_bar;
+			global::BlazorMobile.Droid.Resource.Id.action_mode_bar_stub = global::BlazorMobile.InteropApp.Droid.Resource.Id.action_mode_bar_stub;
+			global::BlazorMobile.Droid.Resource.Id.action_mode_close_button = global::BlazorMobile.InteropApp.Droid.Resource.Id.action_mode_close_button;
+			global::BlazorMobile.Droid.Resource.Id.action_text = global::BlazorMobile.InteropApp.Droid.Resource.Id.action_text;
+			global::BlazorMobile.Droid.Resource.Id.activity_chooser_view_content = global::BlazorMobile.InteropApp.Droid.Resource.Id.activity_chooser_view_content;
+			global::BlazorMobile.Droid.Resource.Id.add = global::BlazorMobile.InteropApp.Droid.Resource.Id.add;
+			global::BlazorMobile.Droid.Resource.Id.alertTitle = global::BlazorMobile.InteropApp.Droid.Resource.Id.alertTitle;
+			global::BlazorMobile.Droid.Resource.Id.all = global::BlazorMobile.InteropApp.Droid.Resource.Id.all;
+			global::BlazorMobile.Droid.Resource.Id.ALT = global::BlazorMobile.InteropApp.Droid.Resource.Id.ALT;
+			global::BlazorMobile.Droid.Resource.Id.always = global::BlazorMobile.InteropApp.Droid.Resource.Id.always;
+			global::BlazorMobile.Droid.Resource.Id.async = global::BlazorMobile.InteropApp.Droid.Resource.Id.async;
+			global::BlazorMobile.Droid.Resource.Id.auto = global::BlazorMobile.InteropApp.Droid.Resource.Id.auto;
+			global::BlazorMobile.Droid.Resource.Id.beginning = global::BlazorMobile.InteropApp.Droid.Resource.Id.beginning;
+			global::BlazorMobile.Droid.Resource.Id.blocking = global::BlazorMobile.InteropApp.Droid.Resource.Id.blocking;
+			global::BlazorMobile.Droid.Resource.Id.bottom = global::BlazorMobile.InteropApp.Droid.Resource.Id.bottom;
+			global::BlazorMobile.Droid.Resource.Id.bottomtab_navarea = global::BlazorMobile.InteropApp.Droid.Resource.Id.bottomtab_navarea;
+			global::BlazorMobile.Droid.Resource.Id.bottomtab_tabbar = global::BlazorMobile.InteropApp.Droid.Resource.Id.bottomtab_tabbar;
+			global::BlazorMobile.Droid.Resource.Id.browser_actions_header_text = global::BlazorMobile.InteropApp.Droid.Resource.Id.browser_actions_header_text;
+			global::BlazorMobile.Droid.Resource.Id.browser_actions_menu_items = global::BlazorMobile.InteropApp.Droid.Resource.Id.browser_actions_menu_items;
+			global::BlazorMobile.Droid.Resource.Id.browser_actions_menu_item_icon = global::BlazorMobile.InteropApp.Droid.Resource.Id.browser_actions_menu_item_icon;
+			global::BlazorMobile.Droid.Resource.Id.browser_actions_menu_item_text = global::BlazorMobile.InteropApp.Droid.Resource.Id.browser_actions_menu_item_text;
+			global::BlazorMobile.Droid.Resource.Id.browser_actions_menu_view = global::BlazorMobile.InteropApp.Droid.Resource.Id.browser_actions_menu_view;
+			global::BlazorMobile.Droid.Resource.Id.buttonPanel = global::BlazorMobile.InteropApp.Droid.Resource.Id.buttonPanel;
+			global::BlazorMobile.Droid.Resource.Id.cancel_action = global::BlazorMobile.InteropApp.Droid.Resource.Id.cancel_action;
+			global::BlazorMobile.Droid.Resource.Id.center = global::BlazorMobile.InteropApp.Droid.Resource.Id.center;
+			global::BlazorMobile.Droid.Resource.Id.center_horizontal = global::BlazorMobile.InteropApp.Droid.Resource.Id.center_horizontal;
+			global::BlazorMobile.Droid.Resource.Id.center_vertical = global::BlazorMobile.InteropApp.Droid.Resource.Id.center_vertical;
+			global::BlazorMobile.Droid.Resource.Id.checkbox = global::BlazorMobile.InteropApp.Droid.Resource.Id.checkbox;
+			global::BlazorMobile.Droid.Resource.Id.chronometer = global::BlazorMobile.InteropApp.Droid.Resource.Id.chronometer;
+			global::BlazorMobile.Droid.Resource.Id.clip_horizontal = global::BlazorMobile.InteropApp.Droid.Resource.Id.clip_horizontal;
+			global::BlazorMobile.Droid.Resource.Id.clip_vertical = global::BlazorMobile.InteropApp.Droid.Resource.Id.clip_vertical;
+			global::BlazorMobile.Droid.Resource.Id.collapseActionView = global::BlazorMobile.InteropApp.Droid.Resource.Id.collapseActionView;
+			global::BlazorMobile.Droid.Resource.Id.container = global::BlazorMobile.InteropApp.Droid.Resource.Id.container;
+			global::BlazorMobile.Droid.Resource.Id.content = global::BlazorMobile.InteropApp.Droid.Resource.Id.content;
+			global::BlazorMobile.Droid.Resource.Id.contentPanel = global::BlazorMobile.InteropApp.Droid.Resource.Id.contentPanel;
+			global::BlazorMobile.Droid.Resource.Id.coordinator = global::BlazorMobile.InteropApp.Droid.Resource.Id.coordinator;
+			global::BlazorMobile.Droid.Resource.Id.CTRL = global::BlazorMobile.InteropApp.Droid.Resource.Id.CTRL;
+			global::BlazorMobile.Droid.Resource.Id.custom = global::BlazorMobile.InteropApp.Droid.Resource.Id.custom;
+			global::BlazorMobile.Droid.Resource.Id.customPanel = global::BlazorMobile.InteropApp.Droid.Resource.Id.customPanel;
+			global::BlazorMobile.Droid.Resource.Id.decor_content_parent = global::BlazorMobile.InteropApp.Droid.Resource.Id.decor_content_parent;
+			global::BlazorMobile.Droid.Resource.Id.default_activity_button = global::BlazorMobile.InteropApp.Droid.Resource.Id.default_activity_button;
+			global::BlazorMobile.Droid.Resource.Id.design_bottom_sheet = global::BlazorMobile.InteropApp.Droid.Resource.Id.design_bottom_sheet;
+			global::BlazorMobile.Droid.Resource.Id.design_menu_item_action_area = global::BlazorMobile.InteropApp.Droid.Resource.Id.design_menu_item_action_area;
+			global::BlazorMobile.Droid.Resource.Id.design_menu_item_action_area_stub = global::BlazorMobile.InteropApp.Droid.Resource.Id.design_menu_item_action_area_stub;
+			global::BlazorMobile.Droid.Resource.Id.design_menu_item_text = global::BlazorMobile.InteropApp.Droid.Resource.Id.design_menu_item_text;
+			global::BlazorMobile.Droid.Resource.Id.design_navigation_view = global::BlazorMobile.InteropApp.Droid.Resource.Id.design_navigation_view;
+			global::BlazorMobile.Droid.Resource.Id.disableHome = global::BlazorMobile.InteropApp.Droid.Resource.Id.disableHome;
+			global::BlazorMobile.Droid.Resource.Id.edit_query = global::BlazorMobile.InteropApp.Droid.Resource.Id.edit_query;
+			global::BlazorMobile.Droid.Resource.Id.end = global::BlazorMobile.InteropApp.Droid.Resource.Id.end;
+			global::BlazorMobile.Droid.Resource.Id.end_padder = global::BlazorMobile.InteropApp.Droid.Resource.Id.end_padder;
+			global::BlazorMobile.Droid.Resource.Id.enterAlways = global::BlazorMobile.InteropApp.Droid.Resource.Id.enterAlways;
+			global::BlazorMobile.Droid.Resource.Id.enterAlwaysCollapsed = global::BlazorMobile.InteropApp.Droid.Resource.Id.enterAlwaysCollapsed;
+			global::BlazorMobile.Droid.Resource.Id.exitUntilCollapsed = global::BlazorMobile.InteropApp.Droid.Resource.Id.exitUntilCollapsed;
+			global::BlazorMobile.Droid.Resource.Id.expanded_menu = global::BlazorMobile.InteropApp.Droid.Resource.Id.expanded_menu;
+			global::BlazorMobile.Droid.Resource.Id.expand_activities_button = global::BlazorMobile.InteropApp.Droid.Resource.Id.expand_activities_button;
+			global::BlazorMobile.Droid.Resource.Id.fill = global::BlazorMobile.InteropApp.Droid.Resource.Id.fill;
+			global::BlazorMobile.Droid.Resource.Id.filled = global::BlazorMobile.InteropApp.Droid.Resource.Id.filled;
+			global::BlazorMobile.Droid.Resource.Id.fill_horizontal = global::BlazorMobile.InteropApp.Droid.Resource.Id.fill_horizontal;
+			global::BlazorMobile.Droid.Resource.Id.fill_vertical = global::BlazorMobile.InteropApp.Droid.Resource.Id.fill_vertical;
+			global::BlazorMobile.Droid.Resource.Id.@fixed = global::BlazorMobile.InteropApp.Droid.Resource.Id.@fixed;
+			global::BlazorMobile.Droid.Resource.Id.flyoutcontent_appbar = global::BlazorMobile.InteropApp.Droid.Resource.Id.flyoutcontent_appbar;
+			global::BlazorMobile.Droid.Resource.Id.flyoutcontent_recycler = global::BlazorMobile.InteropApp.Droid.Resource.Id.flyoutcontent_recycler;
+			global::BlazorMobile.Droid.Resource.Id.forever = global::BlazorMobile.InteropApp.Droid.Resource.Id.forever;
+			global::BlazorMobile.Droid.Resource.Id.FUNCTION = global::BlazorMobile.InteropApp.Droid.Resource.Id.FUNCTION;
+			global::BlazorMobile.Droid.Resource.Id.ghost_view = global::BlazorMobile.InteropApp.Droid.Resource.Id.ghost_view;
+			global::BlazorMobile.Droid.Resource.Id.group_divider = global::BlazorMobile.InteropApp.Droid.Resource.Id.group_divider;
+			global::BlazorMobile.Droid.Resource.Id.home = global::BlazorMobile.InteropApp.Droid.Resource.Id.home;
+			global::BlazorMobile.Droid.Resource.Id.homeAsUp = global::BlazorMobile.InteropApp.Droid.Resource.Id.homeAsUp;
+			global::BlazorMobile.Droid.Resource.Id.icon = global::BlazorMobile.InteropApp.Droid.Resource.Id.icon;
+			global::BlazorMobile.Droid.Resource.Id.icon_group = global::BlazorMobile.InteropApp.Droid.Resource.Id.icon_group;
+			global::BlazorMobile.Droid.Resource.Id.ifRoom = global::BlazorMobile.InteropApp.Droid.Resource.Id.ifRoom;
+			global::BlazorMobile.Droid.Resource.Id.image = global::BlazorMobile.InteropApp.Droid.Resource.Id.image;
+			global::BlazorMobile.Droid.Resource.Id.info = global::BlazorMobile.InteropApp.Droid.Resource.Id.info;
+			global::BlazorMobile.Droid.Resource.Id.intent_listview_icon = global::BlazorMobile.InteropApp.Droid.Resource.Id.intent_listview_icon;
+			global::BlazorMobile.Droid.Resource.Id.intent_listview_title = global::BlazorMobile.InteropApp.Droid.Resource.Id.intent_listview_title;
+			global::BlazorMobile.Droid.Resource.Id.italic = global::BlazorMobile.InteropApp.Droid.Resource.Id.italic;
+			global::BlazorMobile.Droid.Resource.Id.item_touch_helper_previous_elevation = global::BlazorMobile.InteropApp.Droid.Resource.Id.item_touch_helper_previous_elevation;
+			global::BlazorMobile.Droid.Resource.Id.labeled = global::BlazorMobile.InteropApp.Droid.Resource.Id.labeled;
+			global::BlazorMobile.Droid.Resource.Id.largeLabel = global::BlazorMobile.InteropApp.Droid.Resource.Id.largeLabel;
+			global::BlazorMobile.Droid.Resource.Id.left = global::BlazorMobile.InteropApp.Droid.Resource.Id.left;
+			global::BlazorMobile.Droid.Resource.Id.line1 = global::BlazorMobile.InteropApp.Droid.Resource.Id.line1;
+			global::BlazorMobile.Droid.Resource.Id.line3 = global::BlazorMobile.InteropApp.Droid.Resource.Id.line3;
+			global::BlazorMobile.Droid.Resource.Id.listMode = global::BlazorMobile.InteropApp.Droid.Resource.Id.listMode;
+			global::BlazorMobile.Droid.Resource.Id.list_item = global::BlazorMobile.InteropApp.Droid.Resource.Id.list_item;
+			global::BlazorMobile.Droid.Resource.Id.main_appbar = global::BlazorMobile.InteropApp.Droid.Resource.Id.main_appbar;
+			global::BlazorMobile.Droid.Resource.Id.main_scrollview = global::BlazorMobile.InteropApp.Droid.Resource.Id.main_scrollview;
+			global::BlazorMobile.Droid.Resource.Id.main_tablayout = global::BlazorMobile.InteropApp.Droid.Resource.Id.main_tablayout;
+			global::BlazorMobile.Droid.Resource.Id.main_toolbar = global::BlazorMobile.InteropApp.Droid.Resource.Id.main_toolbar;
+			global::BlazorMobile.Droid.Resource.Id.masked = global::BlazorMobile.InteropApp.Droid.Resource.Id.masked;
+			global::BlazorMobile.Droid.Resource.Id.materialformsedittext = global::BlazorMobile.InteropApp.Droid.Resource.Id.materialformsedittext;
+			global::BlazorMobile.Droid.Resource.Id.media_actions = global::BlazorMobile.InteropApp.Droid.Resource.Id.media_actions;
+			global::BlazorMobile.Droid.Resource.Id.message = global::BlazorMobile.InteropApp.Droid.Resource.Id.message;
+			global::BlazorMobile.Droid.Resource.Id.META = global::BlazorMobile.InteropApp.Droid.Resource.Id.META;
+			global::BlazorMobile.Droid.Resource.Id.middle = global::BlazorMobile.InteropApp.Droid.Resource.Id.middle;
+			global::BlazorMobile.Droid.Resource.Id.mini = global::BlazorMobile.InteropApp.Droid.Resource.Id.mini;
+			global::BlazorMobile.Droid.Resource.Id.mr_art = global::BlazorMobile.InteropApp.Droid.Resource.Id.mr_art;
+			global::BlazorMobile.Droid.Resource.Id.mr_cast_checkbox = global::BlazorMobile.InteropApp.Droid.Resource.Id.mr_cast_checkbox;
+			global::BlazorMobile.Droid.Resource.Id.mr_cast_close_button = global::BlazorMobile.InteropApp.Droid.Resource.Id.mr_cast_close_button;
+			global::BlazorMobile.Droid.Resource.Id.mr_cast_group_icon = global::BlazorMobile.InteropApp.Droid.Resource.Id.mr_cast_group_icon;
+			global::BlazorMobile.Droid.Resource.Id.mr_cast_group_name = global::BlazorMobile.InteropApp.Droid.Resource.Id.mr_cast_group_name;
+			global::BlazorMobile.Droid.Resource.Id.mr_cast_list = global::BlazorMobile.InteropApp.Droid.Resource.Id.mr_cast_list;
+			global::BlazorMobile.Droid.Resource.Id.mr_cast_meta = global::BlazorMobile.InteropApp.Droid.Resource.Id.mr_cast_meta;
+			global::BlazorMobile.Droid.Resource.Id.mr_cast_meta_art = global::BlazorMobile.InteropApp.Droid.Resource.Id.mr_cast_meta_art;
+			global::BlazorMobile.Droid.Resource.Id.mr_cast_meta_subtitle = global::BlazorMobile.InteropApp.Droid.Resource.Id.mr_cast_meta_subtitle;
+			global::BlazorMobile.Droid.Resource.Id.mr_cast_meta_title = global::BlazorMobile.InteropApp.Droid.Resource.Id.mr_cast_meta_title;
+			global::BlazorMobile.Droid.Resource.Id.mr_cast_route_icon = global::BlazorMobile.InteropApp.Droid.Resource.Id.mr_cast_route_icon;
+			global::BlazorMobile.Droid.Resource.Id.mr_cast_route_name = global::BlazorMobile.InteropApp.Droid.Resource.Id.mr_cast_route_name;
+			global::BlazorMobile.Droid.Resource.Id.mr_cast_stop_button = global::BlazorMobile.InteropApp.Droid.Resource.Id.mr_cast_stop_button;
+			global::BlazorMobile.Droid.Resource.Id.mr_cast_volume_layout = global::BlazorMobile.InteropApp.Droid.Resource.Id.mr_cast_volume_layout;
+			global::BlazorMobile.Droid.Resource.Id.mr_cast_volume_slider = global::BlazorMobile.InteropApp.Droid.Resource.Id.mr_cast_volume_slider;
+			global::BlazorMobile.Droid.Resource.Id.mr_chooser_list = global::BlazorMobile.InteropApp.Droid.Resource.Id.mr_chooser_list;
+			global::BlazorMobile.Droid.Resource.Id.mr_chooser_route_desc = global::BlazorMobile.InteropApp.Droid.Resource.Id.mr_chooser_route_desc;
+			global::BlazorMobile.Droid.Resource.Id.mr_chooser_route_icon = global::BlazorMobile.InteropApp.Droid.Resource.Id.mr_chooser_route_icon;
+			global::BlazorMobile.Droid.Resource.Id.mr_chooser_route_name = global::BlazorMobile.InteropApp.Droid.Resource.Id.mr_chooser_route_name;
+			global::BlazorMobile.Droid.Resource.Id.mr_chooser_title = global::BlazorMobile.InteropApp.Droid.Resource.Id.mr_chooser_title;
+			global::BlazorMobile.Droid.Resource.Id.mr_close = global::BlazorMobile.InteropApp.Droid.Resource.Id.mr_close;
+			global::BlazorMobile.Droid.Resource.Id.mr_control_divider = global::BlazorMobile.InteropApp.Droid.Resource.Id.mr_control_divider;
+			global::BlazorMobile.Droid.Resource.Id.mr_control_playback_ctrl = global::BlazorMobile.InteropApp.Droid.Resource.Id.mr_control_playback_ctrl;
+			global::BlazorMobile.Droid.Resource.Id.mr_control_subtitle = global::BlazorMobile.InteropApp.Droid.Resource.Id.mr_control_subtitle;
+			global::BlazorMobile.Droid.Resource.Id.mr_control_title = global::BlazorMobile.InteropApp.Droid.Resource.Id.mr_control_title;
+			global::BlazorMobile.Droid.Resource.Id.mr_control_title_container = global::BlazorMobile.InteropApp.Droid.Resource.Id.mr_control_title_container;
+			global::BlazorMobile.Droid.Resource.Id.mr_custom_control = global::BlazorMobile.InteropApp.Droid.Resource.Id.mr_custom_control;
+			global::BlazorMobile.Droid.Resource.Id.mr_default_control = global::BlazorMobile.InteropApp.Droid.Resource.Id.mr_default_control;
+			global::BlazorMobile.Droid.Resource.Id.mr_dialog_area = global::BlazorMobile.InteropApp.Droid.Resource.Id.mr_dialog_area;
+			global::BlazorMobile.Droid.Resource.Id.mr_dialog_header_name = global::BlazorMobile.InteropApp.Droid.Resource.Id.mr_dialog_header_name;
+			global::BlazorMobile.Droid.Resource.Id.mr_expandable_area = global::BlazorMobile.InteropApp.Droid.Resource.Id.mr_expandable_area;
+			global::BlazorMobile.Droid.Resource.Id.mr_group_expand_collapse = global::BlazorMobile.InteropApp.Droid.Resource.Id.mr_group_expand_collapse;
+			global::BlazorMobile.Droid.Resource.Id.mr_group_volume_route_name = global::BlazorMobile.InteropApp.Droid.Resource.Id.mr_group_volume_route_name;
+			global::BlazorMobile.Droid.Resource.Id.mr_group_volume_slider = global::BlazorMobile.InteropApp.Droid.Resource.Id.mr_group_volume_slider;
+			global::BlazorMobile.Droid.Resource.Id.mr_media_main_control = global::BlazorMobile.InteropApp.Droid.Resource.Id.mr_media_main_control;
+			global::BlazorMobile.Droid.Resource.Id.mr_name = global::BlazorMobile.InteropApp.Droid.Resource.Id.mr_name;
+			global::BlazorMobile.Droid.Resource.Id.mr_picker_close_button = global::BlazorMobile.InteropApp.Droid.Resource.Id.mr_picker_close_button;
+			global::BlazorMobile.Droid.Resource.Id.mr_picker_list = global::BlazorMobile.InteropApp.Droid.Resource.Id.mr_picker_list;
+			global::BlazorMobile.Droid.Resource.Id.mr_picker_route_icon = global::BlazorMobile.InteropApp.Droid.Resource.Id.mr_picker_route_icon;
+			global::BlazorMobile.Droid.Resource.Id.mr_picker_route_name = global::BlazorMobile.InteropApp.Droid.Resource.Id.mr_picker_route_name;
+			global::BlazorMobile.Droid.Resource.Id.mr_playback_control = global::BlazorMobile.InteropApp.Droid.Resource.Id.mr_playback_control;
+			global::BlazorMobile.Droid.Resource.Id.mr_title_bar = global::BlazorMobile.InteropApp.Droid.Resource.Id.mr_title_bar;
+			global::BlazorMobile.Droid.Resource.Id.mr_volume_control = global::BlazorMobile.InteropApp.Droid.Resource.Id.mr_volume_control;
+			global::BlazorMobile.Droid.Resource.Id.mr_volume_group_list = global::BlazorMobile.InteropApp.Droid.Resource.Id.mr_volume_group_list;
+			global::BlazorMobile.Droid.Resource.Id.mr_volume_item_icon = global::BlazorMobile.InteropApp.Droid.Resource.Id.mr_volume_item_icon;
+			global::BlazorMobile.Droid.Resource.Id.mr_volume_slider = global::BlazorMobile.InteropApp.Droid.Resource.Id.mr_volume_slider;
+			global::BlazorMobile.Droid.Resource.Id.mtrl_child_content_container = global::BlazorMobile.InteropApp.Droid.Resource.Id.mtrl_child_content_container;
+			global::BlazorMobile.Droid.Resource.Id.mtrl_internal_children_alpha_tag = global::BlazorMobile.InteropApp.Droid.Resource.Id.mtrl_internal_children_alpha_tag;
+			global::BlazorMobile.Droid.Resource.Id.multiply = global::BlazorMobile.InteropApp.Droid.Resource.Id.multiply;
+			global::BlazorMobile.Droid.Resource.Id.navigation_header_container = global::BlazorMobile.InteropApp.Droid.Resource.Id.navigation_header_container;
+			global::BlazorMobile.Droid.Resource.Id.never = global::BlazorMobile.InteropApp.Droid.Resource.Id.never;
+			global::BlazorMobile.Droid.Resource.Id.none = global::BlazorMobile.InteropApp.Droid.Resource.Id.none;
+			global::BlazorMobile.Droid.Resource.Id.normal = global::BlazorMobile.InteropApp.Droid.Resource.Id.normal;
+			global::BlazorMobile.Droid.Resource.Id.notification_background = global::BlazorMobile.InteropApp.Droid.Resource.Id.notification_background;
+			global::BlazorMobile.Droid.Resource.Id.notification_main_column = global::BlazorMobile.InteropApp.Droid.Resource.Id.notification_main_column;
+			global::BlazorMobile.Droid.Resource.Id.notification_main_column_container = global::BlazorMobile.InteropApp.Droid.Resource.Id.notification_main_column_container;
+			global::BlazorMobile.Droid.Resource.Id.outline = global::BlazorMobile.InteropApp.Droid.Resource.Id.outline;
+			global::BlazorMobile.Droid.Resource.Id.parallax = global::BlazorMobile.InteropApp.Droid.Resource.Id.parallax;
+			global::BlazorMobile.Droid.Resource.Id.parentPanel = global::BlazorMobile.InteropApp.Droid.Resource.Id.parentPanel;
+			global::BlazorMobile.Droid.Resource.Id.parent_matrix = global::BlazorMobile.InteropApp.Droid.Resource.Id.parent_matrix;
+			global::BlazorMobile.Droid.Resource.Id.pin = global::BlazorMobile.InteropApp.Droid.Resource.Id.pin;
+			global::BlazorMobile.Droid.Resource.Id.progress_circular = global::BlazorMobile.InteropApp.Droid.Resource.Id.progress_circular;
+			global::BlazorMobile.Droid.Resource.Id.progress_horizontal = global::BlazorMobile.InteropApp.Droid.Resource.Id.progress_horizontal;
+			global::BlazorMobile.Droid.Resource.Id.radio = global::BlazorMobile.InteropApp.Droid.Resource.Id.radio;
+			global::BlazorMobile.Droid.Resource.Id.right = global::BlazorMobile.InteropApp.Droid.Resource.Id.right;
+			global::BlazorMobile.Droid.Resource.Id.right_icon = global::BlazorMobile.InteropApp.Droid.Resource.Id.right_icon;
+			global::BlazorMobile.Droid.Resource.Id.right_side = global::BlazorMobile.InteropApp.Droid.Resource.Id.right_side;
+			global::BlazorMobile.Droid.Resource.Id.save_image_matrix = global::BlazorMobile.InteropApp.Droid.Resource.Id.save_image_matrix;
+			global::BlazorMobile.Droid.Resource.Id.save_non_transition_alpha = global::BlazorMobile.InteropApp.Droid.Resource.Id.save_non_transition_alpha;
+			global::BlazorMobile.Droid.Resource.Id.save_scale_type = global::BlazorMobile.InteropApp.Droid.Resource.Id.save_scale_type;
+			global::BlazorMobile.Droid.Resource.Id.screen = global::BlazorMobile.InteropApp.Droid.Resource.Id.screen;
+			global::BlazorMobile.Droid.Resource.Id.scroll = global::BlazorMobile.InteropApp.Droid.Resource.Id.scroll;
+			global::BlazorMobile.Droid.Resource.Id.scrollable = global::BlazorMobile.InteropApp.Droid.Resource.Id.scrollable;
+			global::BlazorMobile.Droid.Resource.Id.scrollIndicatorDown = global::BlazorMobile.InteropApp.Droid.Resource.Id.scrollIndicatorDown;
+			global::BlazorMobile.Droid.Resource.Id.scrollIndicatorUp = global::BlazorMobile.InteropApp.Droid.Resource.Id.scrollIndicatorUp;
+			global::BlazorMobile.Droid.Resource.Id.scrollView = global::BlazorMobile.InteropApp.Droid.Resource.Id.scrollView;
+			global::BlazorMobile.Droid.Resource.Id.search_badge = global::BlazorMobile.InteropApp.Droid.Resource.Id.search_badge;
+			global::BlazorMobile.Droid.Resource.Id.search_bar = global::BlazorMobile.InteropApp.Droid.Resource.Id.search_bar;
+			global::BlazorMobile.Droid.Resource.Id.search_button = global::BlazorMobile.InteropApp.Droid.Resource.Id.search_button;
+			global::BlazorMobile.Droid.Resource.Id.search_close_btn = global::BlazorMobile.InteropApp.Droid.Resource.Id.search_close_btn;
+			global::BlazorMobile.Droid.Resource.Id.search_edit_frame = global::BlazorMobile.InteropApp.Droid.Resource.Id.search_edit_frame;
+			global::BlazorMobile.Droid.Resource.Id.search_go_btn = global::BlazorMobile.InteropApp.Droid.Resource.Id.search_go_btn;
+			global::BlazorMobile.Droid.Resource.Id.search_mag_icon = global::BlazorMobile.InteropApp.Droid.Resource.Id.search_mag_icon;
+			global::BlazorMobile.Droid.Resource.Id.search_plate = global::BlazorMobile.InteropApp.Droid.Resource.Id.search_plate;
+			global::BlazorMobile.Droid.Resource.Id.search_src_text = global::BlazorMobile.InteropApp.Droid.Resource.Id.search_src_text;
+			global::BlazorMobile.Droid.Resource.Id.search_voice_btn = global::BlazorMobile.InteropApp.Droid.Resource.Id.search_voice_btn;
+			global::BlazorMobile.Droid.Resource.Id.selected = global::BlazorMobile.InteropApp.Droid.Resource.Id.selected;
+			global::BlazorMobile.Droid.Resource.Id.select_dialog_listview = global::BlazorMobile.InteropApp.Droid.Resource.Id.select_dialog_listview;
+			global::BlazorMobile.Droid.Resource.Id.shellcontent_appbar = global::BlazorMobile.InteropApp.Droid.Resource.Id.shellcontent_appbar;
+			global::BlazorMobile.Droid.Resource.Id.shellcontent_scrollview = global::BlazorMobile.InteropApp.Droid.Resource.Id.shellcontent_scrollview;
+			global::BlazorMobile.Droid.Resource.Id.shellcontent_toolbar = global::BlazorMobile.InteropApp.Droid.Resource.Id.shellcontent_toolbar;
+			global::BlazorMobile.Droid.Resource.Id.SHIFT = global::BlazorMobile.InteropApp.Droid.Resource.Id.SHIFT;
+			global::BlazorMobile.Droid.Resource.Id.shortcut = global::BlazorMobile.InteropApp.Droid.Resource.Id.shortcut;
+			global::BlazorMobile.Droid.Resource.Id.showCustom = global::BlazorMobile.InteropApp.Droid.Resource.Id.showCustom;
+			global::BlazorMobile.Droid.Resource.Id.showHome = global::BlazorMobile.InteropApp.Droid.Resource.Id.showHome;
+			global::BlazorMobile.Droid.Resource.Id.showTitle = global::BlazorMobile.InteropApp.Droid.Resource.Id.showTitle;
+			global::BlazorMobile.Droid.Resource.Id.smallLabel = global::BlazorMobile.InteropApp.Droid.Resource.Id.smallLabel;
+			global::BlazorMobile.Droid.Resource.Id.snackbar_action = global::BlazorMobile.InteropApp.Droid.Resource.Id.snackbar_action;
+			global::BlazorMobile.Droid.Resource.Id.snackbar_text = global::BlazorMobile.InteropApp.Droid.Resource.Id.snackbar_text;
+			global::BlazorMobile.Droid.Resource.Id.snap = global::BlazorMobile.InteropApp.Droid.Resource.Id.snap;
+			global::BlazorMobile.Droid.Resource.Id.snapMargins = global::BlazorMobile.InteropApp.Droid.Resource.Id.snapMargins;
+			global::BlazorMobile.Droid.Resource.Id.spacer = global::BlazorMobile.InteropApp.Droid.Resource.Id.spacer;
+			global::BlazorMobile.Droid.Resource.Id.split_action_bar = global::BlazorMobile.InteropApp.Droid.Resource.Id.split_action_bar;
+			global::BlazorMobile.Droid.Resource.Id.src_atop = global::BlazorMobile.InteropApp.Droid.Resource.Id.src_atop;
+			global::BlazorMobile.Droid.Resource.Id.src_in = global::BlazorMobile.InteropApp.Droid.Resource.Id.src_in;
+			global::BlazorMobile.Droid.Resource.Id.src_over = global::BlazorMobile.InteropApp.Droid.Resource.Id.src_over;
+			global::BlazorMobile.Droid.Resource.Id.start = global::BlazorMobile.InteropApp.Droid.Resource.Id.start;
+			global::BlazorMobile.Droid.Resource.Id.status_bar_latest_event_content = global::BlazorMobile.InteropApp.Droid.Resource.Id.status_bar_latest_event_content;
+			global::BlazorMobile.Droid.Resource.Id.stretch = global::BlazorMobile.InteropApp.Droid.Resource.Id.stretch;
+			global::BlazorMobile.Droid.Resource.Id.submenuarrow = global::BlazorMobile.InteropApp.Droid.Resource.Id.submenuarrow;
+			global::BlazorMobile.Droid.Resource.Id.submit_area = global::BlazorMobile.InteropApp.Droid.Resource.Id.submit_area;
+			global::BlazorMobile.Droid.Resource.Id.SYM = global::BlazorMobile.InteropApp.Droid.Resource.Id.SYM;
+			global::BlazorMobile.Droid.Resource.Id.tabMode = global::BlazorMobile.InteropApp.Droid.Resource.Id.tabMode;
+			global::BlazorMobile.Droid.Resource.Id.tag_transition_group = global::BlazorMobile.InteropApp.Droid.Resource.Id.tag_transition_group;
+			global::BlazorMobile.Droid.Resource.Id.tag_unhandled_key_event_manager = global::BlazorMobile.InteropApp.Droid.Resource.Id.tag_unhandled_key_event_manager;
+			global::BlazorMobile.Droid.Resource.Id.tag_unhandled_key_listeners = global::BlazorMobile.InteropApp.Droid.Resource.Id.tag_unhandled_key_listeners;
+			global::BlazorMobile.Droid.Resource.Id.text = global::BlazorMobile.InteropApp.Droid.Resource.Id.text;
+			global::BlazorMobile.Droid.Resource.Id.text2 = global::BlazorMobile.InteropApp.Droid.Resource.Id.text2;
+			global::BlazorMobile.Droid.Resource.Id.textinput_counter = global::BlazorMobile.InteropApp.Droid.Resource.Id.textinput_counter;
+			global::BlazorMobile.Droid.Resource.Id.textinput_error = global::BlazorMobile.InteropApp.Droid.Resource.Id.textinput_error;
+			global::BlazorMobile.Droid.Resource.Id.textinput_helper_text = global::BlazorMobile.InteropApp.Droid.Resource.Id.textinput_helper_text;
+			global::BlazorMobile.Droid.Resource.Id.textSpacerNoButtons = global::BlazorMobile.InteropApp.Droid.Resource.Id.textSpacerNoButtons;
+			global::BlazorMobile.Droid.Resource.Id.textSpacerNoTitle = global::BlazorMobile.InteropApp.Droid.Resource.Id.textSpacerNoTitle;
+			global::BlazorMobile.Droid.Resource.Id.textStart = global::BlazorMobile.InteropApp.Droid.Resource.Id.textStart;
+			global::BlazorMobile.Droid.Resource.Id.text_input_password_toggle = global::BlazorMobile.InteropApp.Droid.Resource.Id.text_input_password_toggle;
+			global::BlazorMobile.Droid.Resource.Id.time = global::BlazorMobile.InteropApp.Droid.Resource.Id.time;
+			global::BlazorMobile.Droid.Resource.Id.title = global::BlazorMobile.InteropApp.Droid.Resource.Id.title;
+			global::BlazorMobile.Droid.Resource.Id.titleDividerNoCustom = global::BlazorMobile.InteropApp.Droid.Resource.Id.titleDividerNoCustom;
+			global::BlazorMobile.Droid.Resource.Id.title_template = global::BlazorMobile.InteropApp.Droid.Resource.Id.title_template;
+			global::BlazorMobile.Droid.Resource.Id.top = global::BlazorMobile.InteropApp.Droid.Resource.Id.top;
+			global::BlazorMobile.Droid.Resource.Id.topPanel = global::BlazorMobile.InteropApp.Droid.Resource.Id.topPanel;
+			global::BlazorMobile.Droid.Resource.Id.touch_outside = global::BlazorMobile.InteropApp.Droid.Resource.Id.touch_outside;
+			global::BlazorMobile.Droid.Resource.Id.transition_current_scene = global::BlazorMobile.InteropApp.Droid.Resource.Id.transition_current_scene;
+			global::BlazorMobile.Droid.Resource.Id.transition_layout_save = global::BlazorMobile.InteropApp.Droid.Resource.Id.transition_layout_save;
+			global::BlazorMobile.Droid.Resource.Id.transition_position = global::BlazorMobile.InteropApp.Droid.Resource.Id.transition_position;
+			global::BlazorMobile.Droid.Resource.Id.transition_scene_layoutid_cache = global::BlazorMobile.InteropApp.Droid.Resource.Id.transition_scene_layoutid_cache;
+			global::BlazorMobile.Droid.Resource.Id.transition_transform = global::BlazorMobile.InteropApp.Droid.Resource.Id.transition_transform;
+			global::BlazorMobile.Droid.Resource.Id.uniform = global::BlazorMobile.InteropApp.Droid.Resource.Id.uniform;
+			global::BlazorMobile.Droid.Resource.Id.unlabeled = global::BlazorMobile.InteropApp.Droid.Resource.Id.unlabeled;
+			global::BlazorMobile.Droid.Resource.Id.up = global::BlazorMobile.InteropApp.Droid.Resource.Id.up;
+			global::BlazorMobile.Droid.Resource.Id.useLogo = global::BlazorMobile.InteropApp.Droid.Resource.Id.useLogo;
+			global::BlazorMobile.Droid.Resource.Id.view_offset_helper = global::BlazorMobile.InteropApp.Droid.Resource.Id.view_offset_helper;
+			global::BlazorMobile.Droid.Resource.Id.visible = global::BlazorMobile.InteropApp.Droid.Resource.Id.visible;
+			global::BlazorMobile.Droid.Resource.Id.volume_item_container = global::BlazorMobile.InteropApp.Droid.Resource.Id.volume_item_container;
+			global::BlazorMobile.Droid.Resource.Id.withText = global::BlazorMobile.InteropApp.Droid.Resource.Id.withText;
+			global::BlazorMobile.Droid.Resource.Id.wrap_content = global::BlazorMobile.InteropApp.Droid.Resource.Id.wrap_content;
+			global::BlazorMobile.Droid.Resource.Integer.abc_config_activityDefaultDur = global::BlazorMobile.InteropApp.Droid.Resource.Integer.abc_config_activityDefaultDur;
+			global::BlazorMobile.Droid.Resource.Integer.abc_config_activityShortDur = global::BlazorMobile.InteropApp.Droid.Resource.Integer.abc_config_activityShortDur;
+			global::BlazorMobile.Droid.Resource.Integer.app_bar_elevation_anim_duration = global::BlazorMobile.InteropApp.Droid.Resource.Integer.app_bar_elevation_anim_duration;
+			global::BlazorMobile.Droid.Resource.Integer.bottom_sheet_slide_duration = global::BlazorMobile.InteropApp.Droid.Resource.Integer.bottom_sheet_slide_duration;
+			global::BlazorMobile.Droid.Resource.Integer.cancel_button_image_alpha = global::BlazorMobile.InteropApp.Droid.Resource.Integer.cancel_button_image_alpha;
+			global::BlazorMobile.Droid.Resource.Integer.config_tooltipAnimTime = global::BlazorMobile.InteropApp.Droid.Resource.Integer.config_tooltipAnimTime;
+			global::BlazorMobile.Droid.Resource.Integer.design_snackbar_text_max_lines = global::BlazorMobile.InteropApp.Droid.Resource.Integer.design_snackbar_text_max_lines;
+			global::BlazorMobile.Droid.Resource.Integer.design_tab_indicator_anim_duration_ms = global::BlazorMobile.InteropApp.Droid.Resource.Integer.design_tab_indicator_anim_duration_ms;
+			global::BlazorMobile.Droid.Resource.Integer.hide_password_duration = global::BlazorMobile.InteropApp.Droid.Resource.Integer.hide_password_duration;
+			global::BlazorMobile.Droid.Resource.Integer.mr_controller_volume_group_list_animation_duration_ms = global::BlazorMobile.InteropApp.Droid.Resource.Integer.mr_controller_volume_group_list_animation_duration_ms;
+			global::BlazorMobile.Droid.Resource.Integer.mr_controller_volume_group_list_fade_in_duration_ms = global::BlazorMobile.InteropApp.Droid.Resource.Integer.mr_controller_volume_group_list_fade_in_duration_ms;
+			global::BlazorMobile.Droid.Resource.Integer.mr_controller_volume_group_list_fade_out_duration_ms = global::BlazorMobile.InteropApp.Droid.Resource.Integer.mr_controller_volume_group_list_fade_out_duration_ms;
+			global::BlazorMobile.Droid.Resource.Integer.mr_update_routes_delay_ms = global::BlazorMobile.InteropApp.Droid.Resource.Integer.mr_update_routes_delay_ms;
+			global::BlazorMobile.Droid.Resource.Integer.mtrl_btn_anim_delay_ms = global::BlazorMobile.InteropApp.Droid.Resource.Integer.mtrl_btn_anim_delay_ms;
+			global::BlazorMobile.Droid.Resource.Integer.mtrl_btn_anim_duration_ms = global::BlazorMobile.InteropApp.Droid.Resource.Integer.mtrl_btn_anim_duration_ms;
+			global::BlazorMobile.Droid.Resource.Integer.mtrl_chip_anim_duration = global::BlazorMobile.InteropApp.Droid.Resource.Integer.mtrl_chip_anim_duration;
+			global::BlazorMobile.Droid.Resource.Integer.mtrl_tab_indicator_anim_duration_ms = global::BlazorMobile.InteropApp.Droid.Resource.Integer.mtrl_tab_indicator_anim_duration_ms;
+			global::BlazorMobile.Droid.Resource.Integer.show_password_duration = global::BlazorMobile.InteropApp.Droid.Resource.Integer.show_password_duration;
+			global::BlazorMobile.Droid.Resource.Integer.status_bar_notification_info_maxnum = global::BlazorMobile.InteropApp.Droid.Resource.Integer.status_bar_notification_info_maxnum;
+			global::BlazorMobile.Droid.Resource.Interpolator.mr_fast_out_slow_in = global::BlazorMobile.InteropApp.Droid.Resource.Interpolator.mr_fast_out_slow_in;
+			global::BlazorMobile.Droid.Resource.Interpolator.mr_linear_out_slow_in = global::BlazorMobile.InteropApp.Droid.Resource.Interpolator.mr_linear_out_slow_in;
+			global::BlazorMobile.Droid.Resource.Interpolator.mtrl_fast_out_linear_in = global::BlazorMobile.InteropApp.Droid.Resource.Interpolator.mtrl_fast_out_linear_in;
+			global::BlazorMobile.Droid.Resource.Interpolator.mtrl_fast_out_slow_in = global::BlazorMobile.InteropApp.Droid.Resource.Interpolator.mtrl_fast_out_slow_in;
+			global::BlazorMobile.Droid.Resource.Interpolator.mtrl_linear = global::BlazorMobile.InteropApp.Droid.Resource.Interpolator.mtrl_linear;
+			global::BlazorMobile.Droid.Resource.Interpolator.mtrl_linear_out_slow_in = global::BlazorMobile.InteropApp.Droid.Resource.Interpolator.mtrl_linear_out_slow_in;
+			global::BlazorMobile.Droid.Resource.Layout.abc_action_bar_title_item = global::BlazorMobile.InteropApp.Droid.Resource.Layout.abc_action_bar_title_item;
+			global::BlazorMobile.Droid.Resource.Layout.abc_action_bar_up_container = global::BlazorMobile.InteropApp.Droid.Resource.Layout.abc_action_bar_up_container;
+			global::BlazorMobile.Droid.Resource.Layout.abc_action_menu_item_layout = global::BlazorMobile.InteropApp.Droid.Resource.Layout.abc_action_menu_item_layout;
+			global::BlazorMobile.Droid.Resource.Layout.abc_action_menu_layout = global::BlazorMobile.InteropApp.Droid.Resource.Layout.abc_action_menu_layout;
+			global::BlazorMobile.Droid.Resource.Layout.abc_action_mode_bar = global::BlazorMobile.InteropApp.Droid.Resource.Layout.abc_action_mode_bar;
+			global::BlazorMobile.Droid.Resource.Layout.abc_action_mode_close_item_material = global::BlazorMobile.InteropApp.Droid.Resource.Layout.abc_action_mode_close_item_material;
+			global::BlazorMobile.Droid.Resource.Layout.abc_activity_chooser_view = global::BlazorMobile.InteropApp.Droid.Resource.Layout.abc_activity_chooser_view;
+			global::BlazorMobile.Droid.Resource.Layout.abc_activity_chooser_view_list_item = global::BlazorMobile.InteropApp.Droid.Resource.Layout.abc_activity_chooser_view_list_item;
+			global::BlazorMobile.Droid.Resource.Layout.abc_alert_dialog_button_bar_material = global::BlazorMobile.InteropApp.Droid.Resource.Layout.abc_alert_dialog_button_bar_material;
+			global::BlazorMobile.Droid.Resource.Layout.abc_alert_dialog_material = global::BlazorMobile.InteropApp.Droid.Resource.Layout.abc_alert_dialog_material;
+			global::BlazorMobile.Droid.Resource.Layout.abc_alert_dialog_title_material = global::BlazorMobile.InteropApp.Droid.Resource.Layout.abc_alert_dialog_title_material;
+			global::BlazorMobile.Droid.Resource.Layout.abc_cascading_menu_item_layout = global::BlazorMobile.InteropApp.Droid.Resource.Layout.abc_cascading_menu_item_layout;
+			global::BlazorMobile.Droid.Resource.Layout.abc_dialog_title_material = global::BlazorMobile.InteropApp.Droid.Resource.Layout.abc_dialog_title_material;
+			global::BlazorMobile.Droid.Resource.Layout.abc_expanded_menu_layout = global::BlazorMobile.InteropApp.Droid.Resource.Layout.abc_expanded_menu_layout;
+			global::BlazorMobile.Droid.Resource.Layout.abc_list_menu_item_checkbox = global::BlazorMobile.InteropApp.Droid.Resource.Layout.abc_list_menu_item_checkbox;
+			global::BlazorMobile.Droid.Resource.Layout.abc_list_menu_item_icon = global::BlazorMobile.InteropApp.Droid.Resource.Layout.abc_list_menu_item_icon;
+			global::BlazorMobile.Droid.Resource.Layout.abc_list_menu_item_layout = global::BlazorMobile.InteropApp.Droid.Resource.Layout.abc_list_menu_item_layout;
+			global::BlazorMobile.Droid.Resource.Layout.abc_list_menu_item_radio = global::BlazorMobile.InteropApp.Droid.Resource.Layout.abc_list_menu_item_radio;
+			global::BlazorMobile.Droid.Resource.Layout.abc_popup_menu_header_item_layout = global::BlazorMobile.InteropApp.Droid.Resource.Layout.abc_popup_menu_header_item_layout;
+			global::BlazorMobile.Droid.Resource.Layout.abc_popup_menu_item_layout = global::BlazorMobile.InteropApp.Droid.Resource.Layout.abc_popup_menu_item_layout;
+			global::BlazorMobile.Droid.Resource.Layout.abc_screen_content_include = global::BlazorMobile.InteropApp.Droid.Resource.Layout.abc_screen_content_include;
+			global::BlazorMobile.Droid.Resource.Layout.abc_screen_simple = global::BlazorMobile.InteropApp.Droid.Resource.Layout.abc_screen_simple;
+			global::BlazorMobile.Droid.Resource.Layout.abc_screen_simple_overlay_action_mode = global::BlazorMobile.InteropApp.Droid.Resource.Layout.abc_screen_simple_overlay_action_mode;
+			global::BlazorMobile.Droid.Resource.Layout.abc_screen_toolbar = global::BlazorMobile.InteropApp.Droid.Resource.Layout.abc_screen_toolbar;
+			global::BlazorMobile.Droid.Resource.Layout.abc_search_dropdown_item_icons_2line = global::BlazorMobile.InteropApp.Droid.Resource.Layout.abc_search_dropdown_item_icons_2line;
+			global::BlazorMobile.Droid.Resource.Layout.abc_search_view = global::BlazorMobile.InteropApp.Droid.Resource.Layout.abc_search_view;
+			global::BlazorMobile.Droid.Resource.Layout.abc_select_dialog_material = global::BlazorMobile.InteropApp.Droid.Resource.Layout.abc_select_dialog_material;
+			global::BlazorMobile.Droid.Resource.Layout.abc_tooltip = global::BlazorMobile.InteropApp.Droid.Resource.Layout.abc_tooltip;
+			global::BlazorMobile.Droid.Resource.Layout.BottomTabLayout = global::BlazorMobile.InteropApp.Droid.Resource.Layout.BottomTabLayout;
+			global::BlazorMobile.Droid.Resource.Layout.browser_actions_context_menu_page = global::BlazorMobile.InteropApp.Droid.Resource.Layout.browser_actions_context_menu_page;
+			global::BlazorMobile.Droid.Resource.Layout.browser_actions_context_menu_row = global::BlazorMobile.InteropApp.Droid.Resource.Layout.browser_actions_context_menu_row;
+			global::BlazorMobile.Droid.Resource.Layout.design_bottom_navigation_item = global::BlazorMobile.InteropApp.Droid.Resource.Layout.design_bottom_navigation_item;
+			global::BlazorMobile.Droid.Resource.Layout.design_bottom_sheet_dialog = global::BlazorMobile.InteropApp.Droid.Resource.Layout.design_bottom_sheet_dialog;
+			global::BlazorMobile.Droid.Resource.Layout.design_layout_snackbar = global::BlazorMobile.InteropApp.Droid.Resource.Layout.design_layout_snackbar;
+			global::BlazorMobile.Droid.Resource.Layout.design_layout_snackbar_include = global::BlazorMobile.InteropApp.Droid.Resource.Layout.design_layout_snackbar_include;
+			global::BlazorMobile.Droid.Resource.Layout.design_layout_tab_icon = global::BlazorMobile.InteropApp.Droid.Resource.Layout.design_layout_tab_icon;
+			global::BlazorMobile.Droid.Resource.Layout.design_layout_tab_text = global::BlazorMobile.InteropApp.Droid.Resource.Layout.design_layout_tab_text;
+			global::BlazorMobile.Droid.Resource.Layout.design_menu_item_action_area = global::BlazorMobile.InteropApp.Droid.Resource.Layout.design_menu_item_action_area;
+			global::BlazorMobile.Droid.Resource.Layout.design_navigation_item = global::BlazorMobile.InteropApp.Droid.Resource.Layout.design_navigation_item;
+			global::BlazorMobile.Droid.Resource.Layout.design_navigation_item_header = global::BlazorMobile.InteropApp.Droid.Resource.Layout.design_navigation_item_header;
+			global::BlazorMobile.Droid.Resource.Layout.design_navigation_item_separator = global::BlazorMobile.InteropApp.Droid.Resource.Layout.design_navigation_item_separator;
+			global::BlazorMobile.Droid.Resource.Layout.design_navigation_item_subheader = global::BlazorMobile.InteropApp.Droid.Resource.Layout.design_navigation_item_subheader;
+			global::BlazorMobile.Droid.Resource.Layout.design_navigation_menu = global::BlazorMobile.InteropApp.Droid.Resource.Layout.design_navigation_menu;
+			global::BlazorMobile.Droid.Resource.Layout.design_navigation_menu_item = global::BlazorMobile.InteropApp.Droid.Resource.Layout.design_navigation_menu_item;
+			global::BlazorMobile.Droid.Resource.Layout.design_text_input_password_icon = global::BlazorMobile.InteropApp.Droid.Resource.Layout.design_text_input_password_icon;
+			global::BlazorMobile.Droid.Resource.Layout.FlyoutContent = global::BlazorMobile.InteropApp.Droid.Resource.Layout.FlyoutContent;
+			global::BlazorMobile.Droid.Resource.Layout.intent_listview_row = global::BlazorMobile.InteropApp.Droid.Resource.Layout.intent_listview_row;
+			global::BlazorMobile.Droid.Resource.Layout.mr_cast_dialog = global::BlazorMobile.InteropApp.Droid.Resource.Layout.mr_cast_dialog;
+			global::BlazorMobile.Droid.Resource.Layout.mr_cast_group_item = global::BlazorMobile.InteropApp.Droid.Resource.Layout.mr_cast_group_item;
+			global::BlazorMobile.Droid.Resource.Layout.mr_cast_group_volume_item = global::BlazorMobile.InteropApp.Droid.Resource.Layout.mr_cast_group_volume_item;
+			global::BlazorMobile.Droid.Resource.Layout.mr_cast_media_metadata = global::BlazorMobile.InteropApp.Droid.Resource.Layout.mr_cast_media_metadata;
+			global::BlazorMobile.Droid.Resource.Layout.mr_cast_route_item = global::BlazorMobile.InteropApp.Droid.Resource.Layout.mr_cast_route_item;
+			global::BlazorMobile.Droid.Resource.Layout.mr_chooser_dialog = global::BlazorMobile.InteropApp.Droid.Resource.Layout.mr_chooser_dialog;
+			global::BlazorMobile.Droid.Resource.Layout.mr_chooser_list_item = global::BlazorMobile.InteropApp.Droid.Resource.Layout.mr_chooser_list_item;
+			global::BlazorMobile.Droid.Resource.Layout.mr_controller_material_dialog_b = global::BlazorMobile.InteropApp.Droid.Resource.Layout.mr_controller_material_dialog_b;
+			global::BlazorMobile.Droid.Resource.Layout.mr_controller_volume_item = global::BlazorMobile.InteropApp.Droid.Resource.Layout.mr_controller_volume_item;
+			global::BlazorMobile.Droid.Resource.Layout.mr_dialog_header_item = global::BlazorMobile.InteropApp.Droid.Resource.Layout.mr_dialog_header_item;
+			global::BlazorMobile.Droid.Resource.Layout.mr_picker_dialog = global::BlazorMobile.InteropApp.Droid.Resource.Layout.mr_picker_dialog;
+			global::BlazorMobile.Droid.Resource.Layout.mr_picker_route_item = global::BlazorMobile.InteropApp.Droid.Resource.Layout.mr_picker_route_item;
+			global::BlazorMobile.Droid.Resource.Layout.mr_playback_control = global::BlazorMobile.InteropApp.Droid.Resource.Layout.mr_playback_control;
+			global::BlazorMobile.Droid.Resource.Layout.mr_volume_control = global::BlazorMobile.InteropApp.Droid.Resource.Layout.mr_volume_control;
+			global::BlazorMobile.Droid.Resource.Layout.mtrl_layout_snackbar = global::BlazorMobile.InteropApp.Droid.Resource.Layout.mtrl_layout_snackbar;
+			global::BlazorMobile.Droid.Resource.Layout.mtrl_layout_snackbar_include = global::BlazorMobile.InteropApp.Droid.Resource.Layout.mtrl_layout_snackbar_include;
+			global::BlazorMobile.Droid.Resource.Layout.notification_action = global::BlazorMobile.InteropApp.Droid.Resource.Layout.notification_action;
+			global::BlazorMobile.Droid.Resource.Layout.notification_action_tombstone = global::BlazorMobile.InteropApp.Droid.Resource.Layout.notification_action_tombstone;
+			global::BlazorMobile.Droid.Resource.Layout.notification_media_action = global::BlazorMobile.InteropApp.Droid.Resource.Layout.notification_media_action;
+			global::BlazorMobile.Droid.Resource.Layout.notification_media_cancel_action = global::BlazorMobile.InteropApp.Droid.Resource.Layout.notification_media_cancel_action;
+			global::BlazorMobile.Droid.Resource.Layout.notification_template_big_media = global::BlazorMobile.InteropApp.Droid.Resource.Layout.notification_template_big_media;
+			global::BlazorMobile.Droid.Resource.Layout.notification_template_big_media_custom = global::BlazorMobile.InteropApp.Droid.Resource.Layout.notification_template_big_media_custom;
+			global::BlazorMobile.Droid.Resource.Layout.notification_template_big_media_narrow = global::BlazorMobile.InteropApp.Droid.Resource.Layout.notification_template_big_media_narrow;
+			global::BlazorMobile.Droid.Resource.Layout.notification_template_big_media_narrow_custom = global::BlazorMobile.InteropApp.Droid.Resource.Layout.notification_template_big_media_narrow_custom;
+			global::BlazorMobile.Droid.Resource.Layout.notification_template_custom_big = global::BlazorMobile.InteropApp.Droid.Resource.Layout.notification_template_custom_big;
+			global::BlazorMobile.Droid.Resource.Layout.notification_template_icon_group = global::BlazorMobile.InteropApp.Droid.Resource.Layout.notification_template_icon_group;
+			global::BlazorMobile.Droid.Resource.Layout.notification_template_lines_media = global::BlazorMobile.InteropApp.Droid.Resource.Layout.notification_template_lines_media;
+			global::BlazorMobile.Droid.Resource.Layout.notification_template_media = global::BlazorMobile.InteropApp.Droid.Resource.Layout.notification_template_media;
+			global::BlazorMobile.Droid.Resource.Layout.notification_template_media_custom = global::BlazorMobile.InteropApp.Droid.Resource.Layout.notification_template_media_custom;
+			global::BlazorMobile.Droid.Resource.Layout.notification_template_part_chronometer = global::BlazorMobile.InteropApp.Droid.Resource.Layout.notification_template_part_chronometer;
+			global::BlazorMobile.Droid.Resource.Layout.notification_template_part_time = global::BlazorMobile.InteropApp.Droid.Resource.Layout.notification_template_part_time;
+			global::BlazorMobile.Droid.Resource.Layout.RootLayout = global::BlazorMobile.InteropApp.Droid.Resource.Layout.RootLayout;
+			global::BlazorMobile.Droid.Resource.Layout.select_dialog_item_material = global::BlazorMobile.InteropApp.Droid.Resource.Layout.select_dialog_item_material;
+			global::BlazorMobile.Droid.Resource.Layout.select_dialog_multichoice_material = global::BlazorMobile.InteropApp.Droid.Resource.Layout.select_dialog_multichoice_material;
+			global::BlazorMobile.Droid.Resource.Layout.select_dialog_singlechoice_material = global::BlazorMobile.InteropApp.Droid.Resource.Layout.select_dialog_singlechoice_material;
+			global::BlazorMobile.Droid.Resource.Layout.ShellContent = global::BlazorMobile.InteropApp.Droid.Resource.Layout.ShellContent;
+			global::BlazorMobile.Droid.Resource.Layout.support_simple_spinner_dropdown_item = global::BlazorMobile.InteropApp.Droid.Resource.Layout.support_simple_spinner_dropdown_item;
+			global::BlazorMobile.Droid.Resource.Layout.TextInputLayoutFilledBox = global::BlazorMobile.InteropApp.Droid.Resource.Layout.TextInputLayoutFilledBox;
+			global::BlazorMobile.Droid.Resource.Layout.TextInputLayoutOutlinedBox = global::BlazorMobile.InteropApp.Droid.Resource.Layout.TextInputLayoutOutlinedBox;
+			global::BlazorMobile.Droid.Resource.String.abc_action_bar_home_description = global::BlazorMobile.InteropApp.Droid.Resource.String.abc_action_bar_home_description;
+			global::BlazorMobile.Droid.Resource.String.abc_action_bar_up_description = global::BlazorMobile.InteropApp.Droid.Resource.String.abc_action_bar_up_description;
+			global::BlazorMobile.Droid.Resource.String.abc_action_menu_overflow_description = global::BlazorMobile.InteropApp.Droid.Resource.String.abc_action_menu_overflow_description;
+			global::BlazorMobile.Droid.Resource.String.abc_action_mode_done = global::BlazorMobile.InteropApp.Droid.Resource.String.abc_action_mode_done;
+			global::BlazorMobile.Droid.Resource.String.abc_activitychooserview_choose_application = global::BlazorMobile.InteropApp.Droid.Resource.String.abc_activitychooserview_choose_application;
+			global::BlazorMobile.Droid.Resource.String.abc_activity_chooser_view_see_all = global::BlazorMobile.InteropApp.Droid.Resource.String.abc_activity_chooser_view_see_all;
+			global::BlazorMobile.Droid.Resource.String.abc_capital_off = global::BlazorMobile.InteropApp.Droid.Resource.String.abc_capital_off;
+			global::BlazorMobile.Droid.Resource.String.abc_capital_on = global::BlazorMobile.InteropApp.Droid.Resource.String.abc_capital_on;
+			global::BlazorMobile.Droid.Resource.String.abc_font_family_body_1_material = global::BlazorMobile.InteropApp.Droid.Resource.String.abc_font_family_body_1_material;
+			global::BlazorMobile.Droid.Resource.String.abc_font_family_body_2_material = global::BlazorMobile.InteropApp.Droid.Resource.String.abc_font_family_body_2_material;
+			global::BlazorMobile.Droid.Resource.String.abc_font_family_button_material = global::BlazorMobile.InteropApp.Droid.Resource.String.abc_font_family_button_material;
+			global::BlazorMobile.Droid.Resource.String.abc_font_family_caption_material = global::BlazorMobile.InteropApp.Droid.Resource.String.abc_font_family_caption_material;
+			global::BlazorMobile.Droid.Resource.String.abc_font_family_display_1_material = global::BlazorMobile.InteropApp.Droid.Resource.String.abc_font_family_display_1_material;
+			global::BlazorMobile.Droid.Resource.String.abc_font_family_display_2_material = global::BlazorMobile.InteropApp.Droid.Resource.String.abc_font_family_display_2_material;
+			global::BlazorMobile.Droid.Resource.String.abc_font_family_display_3_material = global::BlazorMobile.InteropApp.Droid.Resource.String.abc_font_family_display_3_material;
+			global::BlazorMobile.Droid.Resource.String.abc_font_family_display_4_material = global::BlazorMobile.InteropApp.Droid.Resource.String.abc_font_family_display_4_material;
+			global::BlazorMobile.Droid.Resource.String.abc_font_family_headline_material = global::BlazorMobile.InteropApp.Droid.Resource.String.abc_font_family_headline_material;
+			global::BlazorMobile.Droid.Resource.String.abc_font_family_menu_material = global::BlazorMobile.InteropApp.Droid.Resource.String.abc_font_family_menu_material;
+			global::BlazorMobile.Droid.Resource.String.abc_font_family_subhead_material = global::BlazorMobile.InteropApp.Droid.Resource.String.abc_font_family_subhead_material;
+			global::BlazorMobile.Droid.Resource.String.abc_font_family_title_material = global::BlazorMobile.InteropApp.Droid.Resource.String.abc_font_family_title_material;
+			global::BlazorMobile.Droid.Resource.String.abc_menu_alt_shortcut_label = global::BlazorMobile.InteropApp.Droid.Resource.String.abc_menu_alt_shortcut_label;
+			global::BlazorMobile.Droid.Resource.String.abc_menu_ctrl_shortcut_label = global::BlazorMobile.InteropApp.Droid.Resource.String.abc_menu_ctrl_shortcut_label;
+			global::BlazorMobile.Droid.Resource.String.abc_menu_delete_shortcut_label = global::BlazorMobile.InteropApp.Droid.Resource.String.abc_menu_delete_shortcut_label;
+			global::BlazorMobile.Droid.Resource.String.abc_menu_enter_shortcut_label = global::BlazorMobile.InteropApp.Droid.Resource.String.abc_menu_enter_shortcut_label;
+			global::BlazorMobile.Droid.Resource.String.abc_menu_function_shortcut_label = global::BlazorMobile.InteropApp.Droid.Resource.String.abc_menu_function_shortcut_label;
+			global::BlazorMobile.Droid.Resource.String.abc_menu_meta_shortcut_label = global::BlazorMobile.InteropApp.Droid.Resource.String.abc_menu_meta_shortcut_label;
+			global::BlazorMobile.Droid.Resource.String.abc_menu_shift_shortcut_label = global::BlazorMobile.InteropApp.Droid.Resource.String.abc_menu_shift_shortcut_label;
+			global::BlazorMobile.Droid.Resource.String.abc_menu_space_shortcut_label = global::BlazorMobile.InteropApp.Droid.Resource.String.abc_menu_space_shortcut_label;
+			global::BlazorMobile.Droid.Resource.String.abc_menu_sym_shortcut_label = global::BlazorMobile.InteropApp.Droid.Resource.String.abc_menu_sym_shortcut_label;
+			global::BlazorMobile.Droid.Resource.String.abc_prepend_shortcut_label = global::BlazorMobile.InteropApp.Droid.Resource.String.abc_prepend_shortcut_label;
+			global::BlazorMobile.Droid.Resource.String.abc_searchview_description_clear = global::BlazorMobile.InteropApp.Droid.Resource.String.abc_searchview_description_clear;
+			global::BlazorMobile.Droid.Resource.String.abc_searchview_description_query = global::BlazorMobile.InteropApp.Droid.Resource.String.abc_searchview_description_query;
+			global::BlazorMobile.Droid.Resource.String.abc_searchview_description_search = global::BlazorMobile.InteropApp.Droid.Resource.String.abc_searchview_description_search;
+			global::BlazorMobile.Droid.Resource.String.abc_searchview_description_submit = global::BlazorMobile.InteropApp.Droid.Resource.String.abc_searchview_description_submit;
+			global::BlazorMobile.Droid.Resource.String.abc_searchview_description_voice = global::BlazorMobile.InteropApp.Droid.Resource.String.abc_searchview_description_voice;
+			global::BlazorMobile.Droid.Resource.String.abc_search_hint = global::BlazorMobile.InteropApp.Droid.Resource.String.abc_search_hint;
+			global::BlazorMobile.Droid.Resource.String.abc_shareactionprovider_share_with = global::BlazorMobile.InteropApp.Droid.Resource.String.abc_shareactionprovider_share_with;
+			global::BlazorMobile.Droid.Resource.String.abc_shareactionprovider_share_with_application = global::BlazorMobile.InteropApp.Droid.Resource.String.abc_shareactionprovider_share_with_application;
+			global::BlazorMobile.Droid.Resource.String.abc_toolbar_collapse_description = global::BlazorMobile.InteropApp.Droid.Resource.String.abc_toolbar_collapse_description;
+			global::BlazorMobile.Droid.Resource.String.appbar_scrolling_view_behavior = global::BlazorMobile.InteropApp.Droid.Resource.String.appbar_scrolling_view_behavior;
+			global::BlazorMobile.Droid.Resource.String.bottom_sheet_behavior = global::BlazorMobile.InteropApp.Droid.Resource.String.bottom_sheet_behavior;
+			global::BlazorMobile.Droid.Resource.String.character_counter_content_description = global::BlazorMobile.InteropApp.Droid.Resource.String.character_counter_content_description;
+			global::BlazorMobile.Droid.Resource.String.character_counter_pattern = global::BlazorMobile.InteropApp.Droid.Resource.String.character_counter_pattern;
+			global::BlazorMobile.Droid.Resource.String.fab_transformation_scrim_behavior = global::BlazorMobile.InteropApp.Droid.Resource.String.fab_transformation_scrim_behavior;
+			global::BlazorMobile.Droid.Resource.String.fab_transformation_sheet_behavior = global::BlazorMobile.InteropApp.Droid.Resource.String.fab_transformation_sheet_behavior;
+			global::BlazorMobile.Droid.Resource.String.hide_bottom_view_on_scroll_behavior = global::BlazorMobile.InteropApp.Droid.Resource.String.hide_bottom_view_on_scroll_behavior;
+			global::BlazorMobile.Droid.Resource.String.mr_button_content_description = global::BlazorMobile.InteropApp.Droid.Resource.String.mr_button_content_description;
+			global::BlazorMobile.Droid.Resource.String.mr_cast_button_connected = global::BlazorMobile.InteropApp.Droid.Resource.String.mr_cast_button_connected;
+			global::BlazorMobile.Droid.Resource.String.mr_cast_button_connecting = global::BlazorMobile.InteropApp.Droid.Resource.String.mr_cast_button_connecting;
+			global::BlazorMobile.Droid.Resource.String.mr_cast_button_disconnected = global::BlazorMobile.InteropApp.Droid.Resource.String.mr_cast_button_disconnected;
+			global::BlazorMobile.Droid.Resource.String.mr_cast_dialog_title_view_placeholder = global::BlazorMobile.InteropApp.Droid.Resource.String.mr_cast_dialog_title_view_placeholder;
+			global::BlazorMobile.Droid.Resource.String.mr_chooser_searching = global::BlazorMobile.InteropApp.Droid.Resource.String.mr_chooser_searching;
+			global::BlazorMobile.Droid.Resource.String.mr_chooser_title = global::BlazorMobile.InteropApp.Droid.Resource.String.mr_chooser_title;
+			global::BlazorMobile.Droid.Resource.String.mr_controller_album_art = global::BlazorMobile.InteropApp.Droid.Resource.String.mr_controller_album_art;
+			global::BlazorMobile.Droid.Resource.String.mr_controller_casting_screen = global::BlazorMobile.InteropApp.Droid.Resource.String.mr_controller_casting_screen;
+			global::BlazorMobile.Droid.Resource.String.mr_controller_close_description = global::BlazorMobile.InteropApp.Droid.Resource.String.mr_controller_close_description;
+			global::BlazorMobile.Droid.Resource.String.mr_controller_collapse_group = global::BlazorMobile.InteropApp.Droid.Resource.String.mr_controller_collapse_group;
+			global::BlazorMobile.Droid.Resource.String.mr_controller_disconnect = global::BlazorMobile.InteropApp.Droid.Resource.String.mr_controller_disconnect;
+			global::BlazorMobile.Droid.Resource.String.mr_controller_expand_group = global::BlazorMobile.InteropApp.Droid.Resource.String.mr_controller_expand_group;
+			global::BlazorMobile.Droid.Resource.String.mr_controller_no_info_available = global::BlazorMobile.InteropApp.Droid.Resource.String.mr_controller_no_info_available;
+			global::BlazorMobile.Droid.Resource.String.mr_controller_no_media_selected = global::BlazorMobile.InteropApp.Droid.Resource.String.mr_controller_no_media_selected;
+			global::BlazorMobile.Droid.Resource.String.mr_controller_pause = global::BlazorMobile.InteropApp.Droid.Resource.String.mr_controller_pause;
+			global::BlazorMobile.Droid.Resource.String.mr_controller_play = global::BlazorMobile.InteropApp.Droid.Resource.String.mr_controller_play;
+			global::BlazorMobile.Droid.Resource.String.mr_controller_stop = global::BlazorMobile.InteropApp.Droid.Resource.String.mr_controller_stop;
+			global::BlazorMobile.Droid.Resource.String.mr_controller_stop_casting = global::BlazorMobile.InteropApp.Droid.Resource.String.mr_controller_stop_casting;
+			global::BlazorMobile.Droid.Resource.String.mr_controller_volume_slider = global::BlazorMobile.InteropApp.Droid.Resource.String.mr_controller_volume_slider;
+			global::BlazorMobile.Droid.Resource.String.mr_dialog_device_header = global::BlazorMobile.InteropApp.Droid.Resource.String.mr_dialog_device_header;
+			global::BlazorMobile.Droid.Resource.String.mr_dialog_route_header = global::BlazorMobile.InteropApp.Droid.Resource.String.mr_dialog_route_header;
+			global::BlazorMobile.Droid.Resource.String.mr_system_route_name = global::BlazorMobile.InteropApp.Droid.Resource.String.mr_system_route_name;
+			global::BlazorMobile.Droid.Resource.String.mr_user_route_category_name = global::BlazorMobile.InteropApp.Droid.Resource.String.mr_user_route_category_name;
+			global::BlazorMobile.Droid.Resource.String.mtrl_chip_close_icon_content_description = global::BlazorMobile.InteropApp.Droid.Resource.String.mtrl_chip_close_icon_content_description;
+			global::BlazorMobile.Droid.Resource.String.password_toggle_content_description = global::BlazorMobile.InteropApp.Droid.Resource.String.password_toggle_content_description;
+			global::BlazorMobile.Droid.Resource.String.path_password_eye = global::BlazorMobile.InteropApp.Droid.Resource.String.path_password_eye;
+			global::BlazorMobile.Droid.Resource.String.path_password_eye_mask_strike_through = global::BlazorMobile.InteropApp.Droid.Resource.String.path_password_eye_mask_strike_through;
+			global::BlazorMobile.Droid.Resource.String.path_password_eye_mask_visible = global::BlazorMobile.InteropApp.Droid.Resource.String.path_password_eye_mask_visible;
+			global::BlazorMobile.Droid.Resource.String.path_password_strike_through = global::BlazorMobile.InteropApp.Droid.Resource.String.path_password_strike_through;
+			global::BlazorMobile.Droid.Resource.String.search_menu_title = global::BlazorMobile.InteropApp.Droid.Resource.String.search_menu_title;
+			global::BlazorMobile.Droid.Resource.String.status_bar_notification_info_overflow = global::BlazorMobile.InteropApp.Droid.Resource.String.status_bar_notification_info_overflow;
+			global::BlazorMobile.Droid.Resource.Style.AlertDialog_AppCompat = global::BlazorMobile.InteropApp.Droid.Resource.Style.AlertDialog_AppCompat;
+			global::BlazorMobile.Droid.Resource.Style.AlertDialog_AppCompat_Light = global::BlazorMobile.InteropApp.Droid.Resource.Style.AlertDialog_AppCompat_Light;
+			global::BlazorMobile.Droid.Resource.Style.Animation_AppCompat_Dialog = global::BlazorMobile.InteropApp.Droid.Resource.Style.Animation_AppCompat_Dialog;
+			global::BlazorMobile.Droid.Resource.Style.Animation_AppCompat_DropDownUp = global::BlazorMobile.InteropApp.Droid.Resource.Style.Animation_AppCompat_DropDownUp;
+			global::BlazorMobile.Droid.Resource.Style.Animation_AppCompat_Tooltip = global::BlazorMobile.InteropApp.Droid.Resource.Style.Animation_AppCompat_Tooltip;
+			global::BlazorMobile.Droid.Resource.Style.Animation_Design_BottomSheetDialog = global::BlazorMobile.InteropApp.Droid.Resource.Style.Animation_Design_BottomSheetDialog;
+			global::BlazorMobile.Droid.Resource.Style.Base_AlertDialog_AppCompat = global::BlazorMobile.InteropApp.Droid.Resource.Style.Base_AlertDialog_AppCompat;
+			global::BlazorMobile.Droid.Resource.Style.Base_AlertDialog_AppCompat_Light = global::BlazorMobile.InteropApp.Droid.Resource.Style.Base_AlertDialog_AppCompat_Light;
+			global::BlazorMobile.Droid.Resource.Style.Base_Animation_AppCompat_Dialog = global::BlazorMobile.InteropApp.Droid.Resource.Style.Base_Animation_AppCompat_Dialog;
+			global::BlazorMobile.Droid.Resource.Style.Base_Animation_AppCompat_DropDownUp = global::BlazorMobile.InteropApp.Droid.Resource.Style.Base_Animation_AppCompat_DropDownUp;
+			global::BlazorMobile.Droid.Resource.Style.Base_Animation_AppCompat_Tooltip = global::BlazorMobile.InteropApp.Droid.Resource.Style.Base_Animation_AppCompat_Tooltip;
+			global::BlazorMobile.Droid.Resource.Style.Base_CardView = global::BlazorMobile.InteropApp.Droid.Resource.Style.Base_CardView;
+			global::BlazorMobile.Droid.Resource.Style.Base_DialogWindowTitleBackground_AppCompat = global::BlazorMobile.InteropApp.Droid.Resource.Style.Base_DialogWindowTitleBackground_AppCompat;
+			global::BlazorMobile.Droid.Resource.Style.Base_DialogWindowTitle_AppCompat = global::BlazorMobile.InteropApp.Droid.Resource.Style.Base_DialogWindowTitle_AppCompat;
+			global::BlazorMobile.Droid.Resource.Style.Base_TextAppearance_AppCompat = global::BlazorMobile.InteropApp.Droid.Resource.Style.Base_TextAppearance_AppCompat;
+			global::BlazorMobile.Droid.Resource.Style.Base_TextAppearance_AppCompat_Body1 = global::BlazorMobile.InteropApp.Droid.Resource.Style.Base_TextAppearance_AppCompat_Body1;
+			global::BlazorMobile.Droid.Resource.Style.Base_TextAppearance_AppCompat_Body2 = global::BlazorMobile.InteropApp.Droid.Resource.Style.Base_TextAppearance_AppCompat_Body2;
+			global::BlazorMobile.Droid.Resource.Style.Base_TextAppearance_AppCompat_Button = global::BlazorMobile.InteropApp.Droid.Resource.Style.Base_TextAppearance_AppCompat_Button;
+			global::BlazorMobile.Droid.Resource.Style.Base_TextAppearance_AppCompat_Caption = global::BlazorMobile.InteropApp.Droid.Resource.Style.Base_TextAppearance_AppCompat_Caption;
+			global::BlazorMobile.Droid.Resource.Style.Base_TextAppearance_AppCompat_Display1 = global::BlazorMobile.InteropApp.Droid.Resource.Style.Base_TextAppearance_AppCompat_Display1;
+			global::BlazorMobile.Droid.Resource.Style.Base_TextAppearance_AppCompat_Display2 = global::BlazorMobile.InteropApp.Droid.Resource.Style.Base_TextAppearance_AppCompat_Display2;
+			global::BlazorMobile.Droid.Resource.Style.Base_TextAppearance_AppCompat_Display3 = global::BlazorMobile.InteropApp.Droid.Resource.Style.Base_TextAppearance_AppCompat_Display3;
+			global::BlazorMobile.Droid.Resource.Style.Base_TextAppearance_AppCompat_Display4 = global::BlazorMobile.InteropApp.Droid.Resource.Style.Base_TextAppearance_AppCompat_Display4;
+			global::BlazorMobile.Droid.Resource.Style.Base_TextAppearance_AppCompat_Headline = global::BlazorMobile.InteropApp.Droid.Resource.Style.Base_TextAppearance_AppCompat_Headline;
+			global::BlazorMobile.Droid.Resource.Style.Base_TextAppearance_AppCompat_Inverse = global::BlazorMobile.InteropApp.Droid.Resource.Style.Base_TextAppearance_AppCompat_Inverse;
+			global::BlazorMobile.Droid.Resource.Style.Base_TextAppearance_AppCompat_Large = global::BlazorMobile.InteropApp.Droid.Resource.Style.Base_TextAppearance_AppCompat_Large;
+			global::BlazorMobile.Droid.Resource.Style.Base_TextAppearance_AppCompat_Large_Inverse = global::BlazorMobile.InteropApp.Droid.Resource.Style.Base_TextAppearance_AppCompat_Large_Inverse;
+			global::BlazorMobile.Droid.Resource.Style.Base_TextAppearance_AppCompat_Light_Widget_PopupMenu_Large = global::BlazorMobile.InteropApp.Droid.Resource.Style.Base_TextAppearance_AppCompat_Light_Widget_PopupMenu_Large;
+			global::BlazorMobile.Droid.Resource.Style.Base_TextAppearance_AppCompat_Light_Widget_PopupMenu_Small = global::BlazorMobile.InteropApp.Droid.Resource.Style.Base_TextAppearance_AppCompat_Light_Widget_PopupMenu_Small;
+			global::BlazorMobile.Droid.Resource.Style.Base_TextAppearance_AppCompat_Medium = global::BlazorMobile.InteropApp.Droid.Resource.Style.Base_TextAppearance_AppCompat_Medium;
+			global::BlazorMobile.Droid.Resource.Style.Base_TextAppearance_AppCompat_Medium_Inverse = global::BlazorMobile.InteropApp.Droid.Resource.Style.Base_TextAppearance_AppCompat_Medium_Inverse;
+			global::BlazorMobile.Droid.Resource.Style.Base_TextAppearance_AppCompat_Menu = global::BlazorMobile.InteropApp.Droid.Resource.Style.Base_TextAppearance_AppCompat_Menu;
+			global::BlazorMobile.Droid.Resource.Style.Base_TextAppearance_AppCompat_SearchResult = global::BlazorMobile.InteropApp.Droid.Resource.Style.Base_TextAppearance_AppCompat_SearchResult;
+			global::BlazorMobile.Droid.Resource.Style.Base_TextAppearance_AppCompat_SearchResult_Subtitle = global::BlazorMobile.InteropApp.Droid.Resource.Style.Base_TextAppearance_AppCompat_SearchResult_Subtitle;
+			global::BlazorMobile.Droid.Resource.Style.Base_TextAppearance_AppCompat_SearchResult_Title = global::BlazorMobile.InteropApp.Droid.Resource.Style.Base_TextAppearance_AppCompat_SearchResult_Title;
+			global::BlazorMobile.Droid.Resource.Style.Base_TextAppearance_AppCompat_Small = global::BlazorMobile.InteropApp.Droid.Resource.Style.Base_TextAppearance_AppCompat_Small;
+			global::BlazorMobile.Droid.Resource.Style.Base_TextAppearance_AppCompat_Small_Inverse = global::BlazorMobile.InteropApp.Droid.Resource.Style.Base_TextAppearance_AppCompat_Small_Inverse;
+			global::BlazorMobile.Droid.Resource.Style.Base_TextAppearance_AppCompat_Subhead = global::BlazorMobile.InteropApp.Droid.Resource.Style.Base_TextAppearance_AppCompat_Subhead;
+			global::BlazorMobile.Droid.Resource.Style.Base_TextAppearance_AppCompat_Subhead_Inverse = global::BlazorMobile.InteropApp.Droid.Resource.Style.Base_TextAppearance_AppCompat_Subhead_Inverse;
+			global::BlazorMobile.Droid.Resource.Style.Base_TextAppearance_AppCompat_Title = global::BlazorMobile.InteropApp.Droid.Resource.Style.Base_TextAppearance_AppCompat_Title;
+			global::BlazorMobile.Droid.Resource.Style.Base_TextAppearance_AppCompat_Title_Inverse = global::BlazorMobile.InteropApp.Droid.Resource.Style.Base_TextAppearance_AppCompat_Title_Inverse;
+			global::BlazorMobile.Droid.Resource.Style.Base_TextAppearance_AppCompat_Tooltip = global::BlazorMobile.InteropApp.Droid.Resource.Style.Base_TextAppearance_AppCompat_Tooltip;
+			global::BlazorMobile.Droid.Resource.Style.Base_TextAppearance_AppCompat_Widget_ActionBar_Menu = global::BlazorMobile.InteropApp.Droid.Resource.Style.Base_TextAppearance_AppCompat_Widget_ActionBar_Menu;
+			global::BlazorMobile.Droid.Resource.Style.Base_TextAppearance_AppCompat_Widget_ActionBar_Subtitle = global::BlazorMobile.InteropApp.Droid.Resource.Style.Base_TextAppearance_AppCompat_Widget_ActionBar_Subtitle;
+			global::BlazorMobile.Droid.Resource.Style.Base_TextAppearance_AppCompat_Widget_ActionBar_Subtitle_Inverse = global::BlazorMobile.InteropApp.Droid.Resource.Style.Base_TextAppearance_AppCompat_Widget_ActionBar_Subtitle_Inverse;
+			global::BlazorMobile.Droid.Resource.Style.Base_TextAppearance_AppCompat_Widget_ActionBar_Title = global::BlazorMobile.InteropApp.Droid.Resource.Style.Base_TextAppearance_AppCompat_Widget_ActionBar_Title;
+			global::BlazorMobile.Droid.Resource.Style.Base_TextAppearance_AppCompat_Widget_ActionBar_Title_Inverse = global::BlazorMobile.InteropApp.Droid.Resource.Style.Base_TextAppearance_AppCompat_Widget_ActionBar_Title_Inverse;
+			global::BlazorMobile.Droid.Resource.Style.Base_TextAppearance_AppCompat_Widget_ActionMode_Subtitle = global::BlazorMobile.InteropApp.Droid.Resource.Style.Base_TextAppearance_AppCompat_Widget_ActionMode_Subtitle;
+			global::BlazorMobile.Droid.Resource.Style.Base_TextAppearance_AppCompat_Widget_ActionMode_Title = global::BlazorMobile.InteropApp.Droid.Resource.Style.Base_TextAppearance_AppCompat_Widget_ActionMode_Title;
+			global::BlazorMobile.Droid.Resource.Style.Base_TextAppearance_AppCompat_Widget_Button = global::BlazorMobile.InteropApp.Droid.Resource.Style.Base_TextAppearance_AppCompat_Widget_Button;
+			global::BlazorMobile.Droid.Resource.Style.Base_TextAppearance_AppCompat_Widget_Button_Borderless_Colored = global::BlazorMobile.InteropApp.Droid.Resource.Style.Base_TextAppearance_AppCompat_Widget_Button_Borderless_Colored;
+			global::BlazorMobile.Droid.Resource.Style.Base_TextAppearance_AppCompat_Widget_Button_Colored = global::BlazorMobile.InteropApp.Droid.Resource.Style.Base_TextAppearance_AppCompat_Widget_Button_Colored;
+			global::BlazorMobile.Droid.Resource.Style.Base_TextAppearance_AppCompat_Widget_Button_Inverse = global::BlazorMobile.InteropApp.Droid.Resource.Style.Base_TextAppearance_AppCompat_Widget_Button_Inverse;
+			global::BlazorMobile.Droid.Resource.Style.Base_TextAppearance_AppCompat_Widget_DropDownItem = global::BlazorMobile.InteropApp.Droid.Resource.Style.Base_TextAppearance_AppCompat_Widget_DropDownItem;
+			global::BlazorMobile.Droid.Resource.Style.Base_TextAppearance_AppCompat_Widget_PopupMenu_Header = global::BlazorMobile.InteropApp.Droid.Resource.Style.Base_TextAppearance_AppCompat_Widget_PopupMenu_Header;
+			global::BlazorMobile.Droid.Resource.Style.Base_TextAppearance_AppCompat_Widget_PopupMenu_Large = global::BlazorMobile.InteropApp.Droid.Resource.Style.Base_TextAppearance_AppCompat_Widget_PopupMenu_Large;
+			global::BlazorMobile.Droid.Resource.Style.Base_TextAppearance_AppCompat_Widget_PopupMenu_Small = global::BlazorMobile.InteropApp.Droid.Resource.Style.Base_TextAppearance_AppCompat_Widget_PopupMenu_Small;
+			global::BlazorMobile.Droid.Resource.Style.Base_TextAppearance_AppCompat_Widget_Switch = global::BlazorMobile.InteropApp.Droid.Resource.Style.Base_TextAppearance_AppCompat_Widget_Switch;
+			global::BlazorMobile.Droid.Resource.Style.Base_TextAppearance_AppCompat_Widget_TextView_SpinnerItem = global::BlazorMobile.InteropApp.Droid.Resource.Style.Base_TextAppearance_AppCompat_Widget_TextView_SpinnerItem;
+			global::BlazorMobile.Droid.Resource.Style.Base_TextAppearance_Widget_AppCompat_ExpandedMenu_Item = global::BlazorMobile.InteropApp.Droid.Resource.Style.Base_TextAppearance_Widget_AppCompat_ExpandedMenu_Item;
+			global::BlazorMobile.Droid.Resource.Style.Base_TextAppearance_Widget_AppCompat_Toolbar_Subtitle = global::BlazorMobile.InteropApp.Droid.Resource.Style.Base_TextAppearance_Widget_AppCompat_Toolbar_Subtitle;
+			global::BlazorMobile.Droid.Resource.Style.Base_TextAppearance_Widget_AppCompat_Toolbar_Title = global::BlazorMobile.InteropApp.Droid.Resource.Style.Base_TextAppearance_Widget_AppCompat_Toolbar_Title;
+			global::BlazorMobile.Droid.Resource.Style.Base_ThemeOverlay_AppCompat = global::BlazorMobile.InteropApp.Droid.Resource.Style.Base_ThemeOverlay_AppCompat;
+			global::BlazorMobile.Droid.Resource.Style.Base_ThemeOverlay_AppCompat_ActionBar = global::BlazorMobile.InteropApp.Droid.Resource.Style.Base_ThemeOverlay_AppCompat_ActionBar;
+			global::BlazorMobile.Droid.Resource.Style.Base_ThemeOverlay_AppCompat_Dark = global::BlazorMobile.InteropApp.Droid.Resource.Style.Base_ThemeOverlay_AppCompat_Dark;
+			global::BlazorMobile.Droid.Resource.Style.Base_ThemeOverlay_AppCompat_Dark_ActionBar = global::BlazorMobile.InteropApp.Droid.Resource.Style.Base_ThemeOverlay_AppCompat_Dark_ActionBar;
+			global::BlazorMobile.Droid.Resource.Style.Base_ThemeOverlay_AppCompat_Dialog = global::BlazorMobile.InteropApp.Droid.Resource.Style.Base_ThemeOverlay_AppCompat_Dialog;
+			global::BlazorMobile.Droid.Resource.Style.Base_ThemeOverlay_AppCompat_Dialog_Alert = global::BlazorMobile.InteropApp.Droid.Resource.Style.Base_ThemeOverlay_AppCompat_Dialog_Alert;
+			global::BlazorMobile.Droid.Resource.Style.Base_ThemeOverlay_AppCompat_Light = global::BlazorMobile.InteropApp.Droid.Resource.Style.Base_ThemeOverlay_AppCompat_Light;
+			global::BlazorMobile.Droid.Resource.Style.Base_ThemeOverlay_MaterialComponents_Dialog = global::BlazorMobile.InteropApp.Droid.Resource.Style.Base_ThemeOverlay_MaterialComponents_Dialog;
+			global::BlazorMobile.Droid.Resource.Style.Base_ThemeOverlay_MaterialComponents_Dialog_Alert = global::BlazorMobile.InteropApp.Droid.Resource.Style.Base_ThemeOverlay_MaterialComponents_Dialog_Alert;
+			global::BlazorMobile.Droid.Resource.Style.Base_Theme_AppCompat = global::BlazorMobile.InteropApp.Droid.Resource.Style.Base_Theme_AppCompat;
+			global::BlazorMobile.Droid.Resource.Style.Base_Theme_AppCompat_CompactMenu = global::BlazorMobile.InteropApp.Droid.Resource.Style.Base_Theme_AppCompat_CompactMenu;
+			global::BlazorMobile.Droid.Resource.Style.Base_Theme_AppCompat_Dialog = global::BlazorMobile.InteropApp.Droid.Resource.Style.Base_Theme_AppCompat_Dialog;
+			global::BlazorMobile.Droid.Resource.Style.Base_Theme_AppCompat_DialogWhenLarge = global::BlazorMobile.InteropApp.Droid.Resource.Style.Base_Theme_AppCompat_DialogWhenLarge;
+			global::BlazorMobile.Droid.Resource.Style.Base_Theme_AppCompat_Dialog_Alert = global::BlazorMobile.InteropApp.Droid.Resource.Style.Base_Theme_AppCompat_Dialog_Alert;
+			global::BlazorMobile.Droid.Resource.Style.Base_Theme_AppCompat_Dialog_FixedSize = global::BlazorMobile.InteropApp.Droid.Resource.Style.Base_Theme_AppCompat_Dialog_FixedSize;
+			global::BlazorMobile.Droid.Resource.Style.Base_Theme_AppCompat_Dialog_MinWidth = global::BlazorMobile.InteropApp.Droid.Resource.Style.Base_Theme_AppCompat_Dialog_MinWidth;
+			global::BlazorMobile.Droid.Resource.Style.Base_Theme_AppCompat_Light = global::BlazorMobile.InteropApp.Droid.Resource.Style.Base_Theme_AppCompat_Light;
+			global::BlazorMobile.Droid.Resource.Style.Base_Theme_AppCompat_Light_DarkActionBar = global::BlazorMobile.InteropApp.Droid.Resource.Style.Base_Theme_AppCompat_Light_DarkActionBar;
+			global::BlazorMobile.Droid.Resource.Style.Base_Theme_AppCompat_Light_Dialog = global::BlazorMobile.InteropApp.Droid.Resource.Style.Base_Theme_AppCompat_Light_Dialog;
+			global::BlazorMobile.Droid.Resource.Style.Base_Theme_AppCompat_Light_DialogWhenLarge = global::BlazorMobile.InteropApp.Droid.Resource.Style.Base_Theme_AppCompat_Light_DialogWhenLarge;
+			global::BlazorMobile.Droid.Resource.Style.Base_Theme_AppCompat_Light_Dialog_Alert = global::BlazorMobile.InteropApp.Droid.Resource.Style.Base_Theme_AppCompat_Light_Dialog_Alert;
+			global::BlazorMobile.Droid.Resource.Style.Base_Theme_AppCompat_Light_Dialog_FixedSize = global::BlazorMobile.InteropApp.Droid.Resource.Style.Base_Theme_AppCompat_Light_Dialog_FixedSize;
+			global::BlazorMobile.Droid.Resource.Style.Base_Theme_AppCompat_Light_Dialog_MinWidth = global::BlazorMobile.InteropApp.Droid.Resource.Style.Base_Theme_AppCompat_Light_Dialog_MinWidth;
+			global::BlazorMobile.Droid.Resource.Style.Base_Theme_MaterialComponents = global::BlazorMobile.InteropApp.Droid.Resource.Style.Base_Theme_MaterialComponents;
+			global::BlazorMobile.Droid.Resource.Style.Base_Theme_MaterialComponents_Bridge = global::BlazorMobile.InteropApp.Droid.Resource.Style.Base_Theme_MaterialComponents_Bridge;
+			global::BlazorMobile.Droid.Resource.Style.Base_Theme_MaterialComponents_CompactMenu = global::BlazorMobile.InteropApp.Droid.Resource.Style.Base_Theme_MaterialComponents_CompactMenu;
+			global::BlazorMobile.Droid.Resource.Style.Base_Theme_MaterialComponents_Dialog = global::BlazorMobile.InteropApp.Droid.Resource.Style.Base_Theme_MaterialComponents_Dialog;
+			global::BlazorMobile.Droid.Resource.Style.Base_Theme_MaterialComponents_DialogWhenLarge = global::BlazorMobile.InteropApp.Droid.Resource.Style.Base_Theme_MaterialComponents_DialogWhenLarge;
+			global::BlazorMobile.Droid.Resource.Style.Base_Theme_MaterialComponents_Dialog_Alert = global::BlazorMobile.InteropApp.Droid.Resource.Style.Base_Theme_MaterialComponents_Dialog_Alert;
+			global::BlazorMobile.Droid.Resource.Style.Base_Theme_MaterialComponents_Dialog_FixedSize = global::BlazorMobile.InteropApp.Droid.Resource.Style.Base_Theme_MaterialComponents_Dialog_FixedSize;
+			global::BlazorMobile.Droid.Resource.Style.Base_Theme_MaterialComponents_Dialog_MinWidth = global::BlazorMobile.InteropApp.Droid.Resource.Style.Base_Theme_MaterialComponents_Dialog_MinWidth;
+			global::BlazorMobile.Droid.Resource.Style.Base_Theme_MaterialComponents_Light = global::BlazorMobile.InteropApp.Droid.Resource.Style.Base_Theme_MaterialComponents_Light;
+			global::BlazorMobile.Droid.Resource.Style.Base_Theme_MaterialComponents_Light_Bridge = global::BlazorMobile.InteropApp.Droid.Resource.Style.Base_Theme_MaterialComponents_Light_Bridge;
+			global::BlazorMobile.Droid.Resource.Style.Base_Theme_MaterialComponents_Light_DarkActionBar = global::BlazorMobile.InteropApp.Droid.Resource.Style.Base_Theme_MaterialComponents_Light_DarkActionBar;
+			global::BlazorMobile.Droid.Resource.Style.Base_Theme_MaterialComponents_Light_DarkActionBar_Bridge = global::BlazorMobile.InteropApp.Droid.Resource.Style.Base_Theme_MaterialComponents_Light_DarkActionBar_Bridge;
+			global::BlazorMobile.Droid.Resource.Style.Base_Theme_MaterialComponents_Light_Dialog = global::BlazorMobile.InteropApp.Droid.Resource.Style.Base_Theme_MaterialComponents_Light_Dialog;
+			global::BlazorMobile.Droid.Resource.Style.Base_Theme_MaterialComponents_Light_DialogWhenLarge = global::BlazorMobile.InteropApp.Droid.Resource.Style.Base_Theme_MaterialComponents_Light_DialogWhenLarge;
+			global::BlazorMobile.Droid.Resource.Style.Base_Theme_MaterialComponents_Light_Dialog_Alert = global::BlazorMobile.InteropApp.Droid.Resource.Style.Base_Theme_MaterialComponents_Light_Dialog_Alert;
+			global::BlazorMobile.Droid.Resource.Style.Base_Theme_MaterialComponents_Light_Dialog_FixedSize = global::BlazorMobile.InteropApp.Droid.Resource.Style.Base_Theme_MaterialComponents_Light_Dialog_FixedSize;
+			global::BlazorMobile.Droid.Resource.Style.Base_Theme_MaterialComponents_Light_Dialog_MinWidth = global::BlazorMobile.InteropApp.Droid.Resource.Style.Base_Theme_MaterialComponents_Light_Dialog_MinWidth;
+			global::BlazorMobile.Droid.Resource.Style.Base_V14_ThemeOverlay_MaterialComponents_Dialog = global::BlazorMobile.InteropApp.Droid.Resource.Style.Base_V14_ThemeOverlay_MaterialComponents_Dialog;
+			global::BlazorMobile.Droid.Resource.Style.Base_V14_ThemeOverlay_MaterialComponents_Dialog_Alert = global::BlazorMobile.InteropApp.Droid.Resource.Style.Base_V14_ThemeOverlay_MaterialComponents_Dialog_Alert;
+			global::BlazorMobile.Droid.Resource.Style.Base_V14_Theme_MaterialComponents = global::BlazorMobile.InteropApp.Droid.Resource.Style.Base_V14_Theme_MaterialComponents;
+			global::BlazorMobile.Droid.Resource.Style.Base_V14_Theme_MaterialComponents_Bridge = global::BlazorMobile.InteropApp.Droid.Resource.Style.Base_V14_Theme_MaterialComponents_Bridge;
+			global::BlazorMobile.Droid.Resource.Style.Base_V14_Theme_MaterialComponents_Dialog = global::BlazorMobile.InteropApp.Droid.Resource.Style.Base_V14_Theme_MaterialComponents_Dialog;
+			global::BlazorMobile.Droid.Resource.Style.Base_V14_Theme_MaterialComponents_Light = global::BlazorMobile.InteropApp.Droid.Resource.Style.Base_V14_Theme_MaterialComponents_Light;
+			global::BlazorMobile.Droid.Resource.Style.Base_V14_Theme_MaterialComponents_Light_Bridge = global::BlazorMobile.InteropApp.Droid.Resource.Style.Base_V14_Theme_MaterialComponents_Light_Bridge;
+			global::BlazorMobile.Droid.Resource.Style.Base_V14_Theme_MaterialComponents_Light_DarkActionBar_Bridge = global::BlazorMobile.InteropApp.Droid.Resource.Style.Base_V14_Theme_MaterialComponents_Light_DarkActionBar_Bridge;
+			global::BlazorMobile.Droid.Resource.Style.Base_V14_Theme_MaterialComponents_Light_Dialog = global::BlazorMobile.InteropApp.Droid.Resource.Style.Base_V14_Theme_MaterialComponents_Light_Dialog;
+			global::BlazorMobile.Droid.Resource.Style.Base_V21_ThemeOverlay_AppCompat_Dialog = global::BlazorMobile.InteropApp.Droid.Resource.Style.Base_V21_ThemeOverlay_AppCompat_Dialog;
+			global::BlazorMobile.Droid.Resource.Style.Base_V21_Theme_AppCompat = global::BlazorMobile.InteropApp.Droid.Resource.Style.Base_V21_Theme_AppCompat;
+			global::BlazorMobile.Droid.Resource.Style.Base_V21_Theme_AppCompat_Dialog = global::BlazorMobile.InteropApp.Droid.Resource.Style.Base_V21_Theme_AppCompat_Dialog;
+			global::BlazorMobile.Droid.Resource.Style.Base_V21_Theme_AppCompat_Light = global::BlazorMobile.InteropApp.Droid.Resource.Style.Base_V21_Theme_AppCompat_Light;
+			global::BlazorMobile.Droid.Resource.Style.Base_V21_Theme_AppCompat_Light_Dialog = global::BlazorMobile.InteropApp.Droid.Resource.Style.Base_V21_Theme_AppCompat_Light_Dialog;
+			global::BlazorMobile.Droid.Resource.Style.Base_V22_Theme_AppCompat = global::BlazorMobile.InteropApp.Droid.Resource.Style.Base_V22_Theme_AppCompat;
+			global::BlazorMobile.Droid.Resource.Style.Base_V22_Theme_AppCompat_Light = global::BlazorMobile.InteropApp.Droid.Resource.Style.Base_V22_Theme_AppCompat_Light;
+			global::BlazorMobile.Droid.Resource.Style.Base_V23_Theme_AppCompat = global::BlazorMobile.InteropApp.Droid.Resource.Style.Base_V23_Theme_AppCompat;
+			global::BlazorMobile.Droid.Resource.Style.Base_V23_Theme_AppCompat_Light = global::BlazorMobile.InteropApp.Droid.Resource.Style.Base_V23_Theme_AppCompat_Light;
+			global::BlazorMobile.Droid.Resource.Style.Base_V26_Theme_AppCompat = global::BlazorMobile.InteropApp.Droid.Resource.Style.Base_V26_Theme_AppCompat;
+			global::BlazorMobile.Droid.Resource.Style.Base_V26_Theme_AppCompat_Light = global::BlazorMobile.InteropApp.Droid.Resource.Style.Base_V26_Theme_AppCompat_Light;
+			global::BlazorMobile.Droid.Resource.Style.Base_V26_Widget_AppCompat_Toolbar = global::BlazorMobile.InteropApp.Droid.Resource.Style.Base_V26_Widget_AppCompat_Toolbar;
+			global::BlazorMobile.Droid.Resource.Style.Base_V28_Theme_AppCompat = global::BlazorMobile.InteropApp.Droid.Resource.Style.Base_V28_Theme_AppCompat;
+			global::BlazorMobile.Droid.Resource.Style.Base_V28_Theme_AppCompat_Light = global::BlazorMobile.InteropApp.Droid.Resource.Style.Base_V28_Theme_AppCompat_Light;
+			global::BlazorMobile.Droid.Resource.Style.Base_V7_ThemeOverlay_AppCompat_Dialog = global::BlazorMobile.InteropApp.Droid.Resource.Style.Base_V7_ThemeOverlay_AppCompat_Dialog;
+			global::BlazorMobile.Droid.Resource.Style.Base_V7_Theme_AppCompat = global::BlazorMobile.InteropApp.Droid.Resource.Style.Base_V7_Theme_AppCompat;
+			global::BlazorMobile.Droid.Resource.Style.Base_V7_Theme_AppCompat_Dialog = global::BlazorMobile.InteropApp.Droid.Resource.Style.Base_V7_Theme_AppCompat_Dialog;
+			global::BlazorMobile.Droid.Resource.Style.Base_V7_Theme_AppCompat_Light = global::BlazorMobile.InteropApp.Droid.Resource.Style.Base_V7_Theme_AppCompat_Light;
+			global::BlazorMobile.Droid.Resource.Style.Base_V7_Theme_AppCompat_Light_Dialog = global::BlazorMobile.InteropApp.Droid.Resource.Style.Base_V7_Theme_AppCompat_Light_Dialog;
+			global::BlazorMobile.Droid.Resource.Style.Base_V7_Widget_AppCompat_AutoCompleteTextView = global::BlazorMobile.InteropApp.Droid.Resource.Style.Base_V7_Widget_AppCompat_AutoCompleteTextView;
+			global::BlazorMobile.Droid.Resource.Style.Base_V7_Widget_AppCompat_EditText = global::BlazorMobile.InteropApp.Droid.Resource.Style.Base_V7_Widget_AppCompat_EditText;
+			global::BlazorMobile.Droid.Resource.Style.Base_V7_Widget_AppCompat_Toolbar = global::BlazorMobile.InteropApp.Droid.Resource.Style.Base_V7_Widget_AppCompat_Toolbar;
+			global::BlazorMobile.Droid.Resource.Style.Base_Widget_AppCompat_ActionBar = global::BlazorMobile.InteropApp.Droid.Resource.Style.Base_Widget_AppCompat_ActionBar;
+			global::BlazorMobile.Droid.Resource.Style.Base_Widget_AppCompat_ActionBar_Solid = global::BlazorMobile.InteropApp.Droid.Resource.Style.Base_Widget_AppCompat_ActionBar_Solid;
+			global::BlazorMobile.Droid.Resource.Style.Base_Widget_AppCompat_ActionBar_TabBar = global::BlazorMobile.InteropApp.Droid.Resource.Style.Base_Widget_AppCompat_ActionBar_TabBar;
+			global::BlazorMobile.Droid.Resource.Style.Base_Widget_AppCompat_ActionBar_TabText = global::BlazorMobile.InteropApp.Droid.Resource.Style.Base_Widget_AppCompat_ActionBar_TabText;
+			global::BlazorMobile.Droid.Resource.Style.Base_Widget_AppCompat_ActionBar_TabView = global::BlazorMobile.InteropApp.Droid.Resource.Style.Base_Widget_AppCompat_ActionBar_TabView;
+			global::BlazorMobile.Droid.Resource.Style.Base_Widget_AppCompat_ActionButton = global::BlazorMobile.InteropApp.Droid.Resource.Style.Base_Widget_AppCompat_ActionButton;
+			global::BlazorMobile.Droid.Resource.Style.Base_Widget_AppCompat_ActionButton_CloseMode = global::BlazorMobile.InteropApp.Droid.Resource.Style.Base_Widget_AppCompat_ActionButton_CloseMode;
+			global::BlazorMobile.Droid.Resource.Style.Base_Widget_AppCompat_ActionButton_Overflow = global::BlazorMobile.InteropApp.Droid.Resource.Style.Base_Widget_AppCompat_ActionButton_Overflow;
+			global::BlazorMobile.Droid.Resource.Style.Base_Widget_AppCompat_ActionMode = global::BlazorMobile.InteropApp.Droid.Resource.Style.Base_Widget_AppCompat_ActionMode;
+			global::BlazorMobile.Droid.Resource.Style.Base_Widget_AppCompat_ActivityChooserView = global::BlazorMobile.InteropApp.Droid.Resource.Style.Base_Widget_AppCompat_ActivityChooserView;
+			global::BlazorMobile.Droid.Resource.Style.Base_Widget_AppCompat_AutoCompleteTextView = global::BlazorMobile.InteropApp.Droid.Resource.Style.Base_Widget_AppCompat_AutoCompleteTextView;
+			global::BlazorMobile.Droid.Resource.Style.Base_Widget_AppCompat_Button = global::BlazorMobile.InteropApp.Droid.Resource.Style.Base_Widget_AppCompat_Button;
+			global::BlazorMobile.Droid.Resource.Style.Base_Widget_AppCompat_ButtonBar = global::BlazorMobile.InteropApp.Droid.Resource.Style.Base_Widget_AppCompat_ButtonBar;
+			global::BlazorMobile.Droid.Resource.Style.Base_Widget_AppCompat_ButtonBar_AlertDialog = global::BlazorMobile.InteropApp.Droid.Resource.Style.Base_Widget_AppCompat_ButtonBar_AlertDialog;
+			global::BlazorMobile.Droid.Resource.Style.Base_Widget_AppCompat_Button_Borderless = global::BlazorMobile.InteropApp.Droid.Resource.Style.Base_Widget_AppCompat_Button_Borderless;
+			global::BlazorMobile.Droid.Resource.Style.Base_Widget_AppCompat_Button_Borderless_Colored = global::BlazorMobile.InteropApp.Droid.Resource.Style.Base_Widget_AppCompat_Button_Borderless_Colored;
+			global::BlazorMobile.Droid.Resource.Style.Base_Widget_AppCompat_Button_ButtonBar_AlertDialog = global::BlazorMobile.InteropApp.Droid.Resource.Style.Base_Widget_AppCompat_Button_ButtonBar_AlertDialog;
+			global::BlazorMobile.Droid.Resource.Style.Base_Widget_AppCompat_Button_Colored = global::BlazorMobile.InteropApp.Droid.Resource.Style.Base_Widget_AppCompat_Button_Colored;
+			global::BlazorMobile.Droid.Resource.Style.Base_Widget_AppCompat_Button_Small = global::BlazorMobile.InteropApp.Droid.Resource.Style.Base_Widget_AppCompat_Button_Small;
+			global::BlazorMobile.Droid.Resource.Style.Base_Widget_AppCompat_CompoundButton_CheckBox = global::BlazorMobile.InteropApp.Droid.Resource.Style.Base_Widget_AppCompat_CompoundButton_CheckBox;
+			global::BlazorMobile.Droid.Resource.Style.Base_Widget_AppCompat_CompoundButton_RadioButton = global::BlazorMobile.InteropApp.Droid.Resource.Style.Base_Widget_AppCompat_CompoundButton_RadioButton;
+			global::BlazorMobile.Droid.Resource.Style.Base_Widget_AppCompat_CompoundButton_Switch = global::BlazorMobile.InteropApp.Droid.Resource.Style.Base_Widget_AppCompat_CompoundButton_Switch;
+			global::BlazorMobile.Droid.Resource.Style.Base_Widget_AppCompat_DrawerArrowToggle = global::BlazorMobile.InteropApp.Droid.Resource.Style.Base_Widget_AppCompat_DrawerArrowToggle;
+			global::BlazorMobile.Droid.Resource.Style.Base_Widget_AppCompat_DrawerArrowToggle_Common = global::BlazorMobile.InteropApp.Droid.Resource.Style.Base_Widget_AppCompat_DrawerArrowToggle_Common;
+			global::BlazorMobile.Droid.Resource.Style.Base_Widget_AppCompat_DropDownItem_Spinner = global::BlazorMobile.InteropApp.Droid.Resource.Style.Base_Widget_AppCompat_DropDownItem_Spinner;
+			global::BlazorMobile.Droid.Resource.Style.Base_Widget_AppCompat_EditText = global::BlazorMobile.InteropApp.Droid.Resource.Style.Base_Widget_AppCompat_EditText;
+			global::BlazorMobile.Droid.Resource.Style.Base_Widget_AppCompat_ImageButton = global::BlazorMobile.InteropApp.Droid.Resource.Style.Base_Widget_AppCompat_ImageButton;
+			global::BlazorMobile.Droid.Resource.Style.Base_Widget_AppCompat_Light_ActionBar = global::BlazorMobile.InteropApp.Droid.Resource.Style.Base_Widget_AppCompat_Light_ActionBar;
+			global::BlazorMobile.Droid.Resource.Style.Base_Widget_AppCompat_Light_ActionBar_Solid = global::BlazorMobile.InteropApp.Droid.Resource.Style.Base_Widget_AppCompat_Light_ActionBar_Solid;
+			global::BlazorMobile.Droid.Resource.Style.Base_Widget_AppCompat_Light_ActionBar_TabBar = global::BlazorMobile.InteropApp.Droid.Resource.Style.Base_Widget_AppCompat_Light_ActionBar_TabBar;
+			global::BlazorMobile.Droid.Resource.Style.Base_Widget_AppCompat_Light_ActionBar_TabText = global::BlazorMobile.InteropApp.Droid.Resource.Style.Base_Widget_AppCompat_Light_ActionBar_TabText;
+			global::BlazorMobile.Droid.Resource.Style.Base_Widget_AppCompat_Light_ActionBar_TabText_Inverse = global::BlazorMobile.InteropApp.Droid.Resource.Style.Base_Widget_AppCompat_Light_ActionBar_TabText_Inverse;
+			global::BlazorMobile.Droid.Resource.Style.Base_Widget_AppCompat_Light_ActionBar_TabView = global::BlazorMobile.InteropApp.Droid.Resource.Style.Base_Widget_AppCompat_Light_ActionBar_TabView;
+			global::BlazorMobile.Droid.Resource.Style.Base_Widget_AppCompat_Light_PopupMenu = global::BlazorMobile.InteropApp.Droid.Resource.Style.Base_Widget_AppCompat_Light_PopupMenu;
+			global::BlazorMobile.Droid.Resource.Style.Base_Widget_AppCompat_Light_PopupMenu_Overflow = global::BlazorMobile.InteropApp.Droid.Resource.Style.Base_Widget_AppCompat_Light_PopupMenu_Overflow;
+			global::BlazorMobile.Droid.Resource.Style.Base_Widget_AppCompat_ListMenuView = global::BlazorMobile.InteropApp.Droid.Resource.Style.Base_Widget_AppCompat_ListMenuView;
+			global::BlazorMobile.Droid.Resource.Style.Base_Widget_AppCompat_ListPopupWindow = global::BlazorMobile.InteropApp.Droid.Resource.Style.Base_Widget_AppCompat_ListPopupWindow;
+			global::BlazorMobile.Droid.Resource.Style.Base_Widget_AppCompat_ListView = global::BlazorMobile.InteropApp.Droid.Resource.Style.Base_Widget_AppCompat_ListView;
+			global::BlazorMobile.Droid.Resource.Style.Base_Widget_AppCompat_ListView_DropDown = global::BlazorMobile.InteropApp.Droid.Resource.Style.Base_Widget_AppCompat_ListView_DropDown;
+			global::BlazorMobile.Droid.Resource.Style.Base_Widget_AppCompat_ListView_Menu = global::BlazorMobile.InteropApp.Droid.Resource.Style.Base_Widget_AppCompat_ListView_Menu;
+			global::BlazorMobile.Droid.Resource.Style.Base_Widget_AppCompat_PopupMenu = global::BlazorMobile.InteropApp.Droid.Resource.Style.Base_Widget_AppCompat_PopupMenu;
+			global::BlazorMobile.Droid.Resource.Style.Base_Widget_AppCompat_PopupMenu_Overflow = global::BlazorMobile.InteropApp.Droid.Resource.Style.Base_Widget_AppCompat_PopupMenu_Overflow;
+			global::BlazorMobile.Droid.Resource.Style.Base_Widget_AppCompat_PopupWindow = global::BlazorMobile.InteropApp.Droid.Resource.Style.Base_Widget_AppCompat_PopupWindow;
+			global::BlazorMobile.Droid.Resource.Style.Base_Widget_AppCompat_ProgressBar = global::BlazorMobile.InteropApp.Droid.Resource.Style.Base_Widget_AppCompat_ProgressBar;
+			global::BlazorMobile.Droid.Resource.Style.Base_Widget_AppCompat_ProgressBar_Horizontal = global::BlazorMobile.InteropApp.Droid.Resource.Style.Base_Widget_AppCompat_ProgressBar_Horizontal;
+			global::BlazorMobile.Droid.Resource.Style.Base_Widget_AppCompat_RatingBar = global::BlazorMobile.InteropApp.Droid.Resource.Style.Base_Widget_AppCompat_RatingBar;
+			global::BlazorMobile.Droid.Resource.Style.Base_Widget_AppCompat_RatingBar_Indicator = global::BlazorMobile.InteropApp.Droid.Resource.Style.Base_Widget_AppCompat_RatingBar_Indicator;
+			global::BlazorMobile.Droid.Resource.Style.Base_Widget_AppCompat_RatingBar_Small = global::BlazorMobile.InteropApp.Droid.Resource.Style.Base_Widget_AppCompat_RatingBar_Small;
+			global::BlazorMobile.Droid.Resource.Style.Base_Widget_AppCompat_SearchView = global::BlazorMobile.InteropApp.Droid.Resource.Style.Base_Widget_AppCompat_SearchView;
+			global::BlazorMobile.Droid.Resource.Style.Base_Widget_AppCompat_SearchView_ActionBar = global::BlazorMobile.InteropApp.Droid.Resource.Style.Base_Widget_AppCompat_SearchView_ActionBar;
+			global::BlazorMobile.Droid.Resource.Style.Base_Widget_AppCompat_SeekBar = global::BlazorMobile.InteropApp.Droid.Resource.Style.Base_Widget_AppCompat_SeekBar;
+			global::BlazorMobile.Droid.Resource.Style.Base_Widget_AppCompat_SeekBar_Discrete = global::BlazorMobile.InteropApp.Droid.Resource.Style.Base_Widget_AppCompat_SeekBar_Discrete;
+			global::BlazorMobile.Droid.Resource.Style.Base_Widget_AppCompat_Spinner = global::BlazorMobile.InteropApp.Droid.Resource.Style.Base_Widget_AppCompat_Spinner;
+			global::BlazorMobile.Droid.Resource.Style.Base_Widget_AppCompat_Spinner_Underlined = global::BlazorMobile.InteropApp.Droid.Resource.Style.Base_Widget_AppCompat_Spinner_Underlined;
+			global::BlazorMobile.Droid.Resource.Style.Base_Widget_AppCompat_TextView_SpinnerItem = global::BlazorMobile.InteropApp.Droid.Resource.Style.Base_Widget_AppCompat_TextView_SpinnerItem;
+			global::BlazorMobile.Droid.Resource.Style.Base_Widget_AppCompat_Toolbar = global::BlazorMobile.InteropApp.Droid.Resource.Style.Base_Widget_AppCompat_Toolbar;
+			global::BlazorMobile.Droid.Resource.Style.Base_Widget_AppCompat_Toolbar_Button_Navigation = global::BlazorMobile.InteropApp.Droid.Resource.Style.Base_Widget_AppCompat_Toolbar_Button_Navigation;
+			global::BlazorMobile.Droid.Resource.Style.Base_Widget_Design_TabLayout = global::BlazorMobile.InteropApp.Droid.Resource.Style.Base_Widget_Design_TabLayout;
+			global::BlazorMobile.Droid.Resource.Style.Base_Widget_MaterialComponents_Chip = global::BlazorMobile.InteropApp.Droid.Resource.Style.Base_Widget_MaterialComponents_Chip;
+			global::BlazorMobile.Droid.Resource.Style.Base_Widget_MaterialComponents_TextInputEditText = global::BlazorMobile.InteropApp.Droid.Resource.Style.Base_Widget_MaterialComponents_TextInputEditText;
+			global::BlazorMobile.Droid.Resource.Style.Base_Widget_MaterialComponents_TextInputLayout = global::BlazorMobile.InteropApp.Droid.Resource.Style.Base_Widget_MaterialComponents_TextInputLayout;
+			global::BlazorMobile.Droid.Resource.Style.CardView = global::BlazorMobile.InteropApp.Droid.Resource.Style.CardView;
+			global::BlazorMobile.Droid.Resource.Style.CardView_Dark = global::BlazorMobile.InteropApp.Droid.Resource.Style.CardView_Dark;
+			global::BlazorMobile.Droid.Resource.Style.CardView_Light = global::BlazorMobile.InteropApp.Droid.Resource.Style.CardView_Light;
+			global::BlazorMobile.Droid.Resource.Style.Platform_AppCompat = global::BlazorMobile.InteropApp.Droid.Resource.Style.Platform_AppCompat;
+			global::BlazorMobile.Droid.Resource.Style.Platform_AppCompat_Light = global::BlazorMobile.InteropApp.Droid.Resource.Style.Platform_AppCompat_Light;
+			global::BlazorMobile.Droid.Resource.Style.Platform_MaterialComponents = global::BlazorMobile.InteropApp.Droid.Resource.Style.Platform_MaterialComponents;
+			global::BlazorMobile.Droid.Resource.Style.Platform_MaterialComponents_Dialog = global::BlazorMobile.InteropApp.Droid.Resource.Style.Platform_MaterialComponents_Dialog;
+			global::BlazorMobile.Droid.Resource.Style.Platform_MaterialComponents_Light = global::BlazorMobile.InteropApp.Droid.Resource.Style.Platform_MaterialComponents_Light;
+			global::BlazorMobile.Droid.Resource.Style.Platform_MaterialComponents_Light_Dialog = global::BlazorMobile.InteropApp.Droid.Resource.Style.Platform_MaterialComponents_Light_Dialog;
+			global::BlazorMobile.Droid.Resource.Style.Platform_ThemeOverlay_AppCompat = global::BlazorMobile.InteropApp.Droid.Resource.Style.Platform_ThemeOverlay_AppCompat;
+			global::BlazorMobile.Droid.Resource.Style.Platform_ThemeOverlay_AppCompat_Dark = global::BlazorMobile.InteropApp.Droid.Resource.Style.Platform_ThemeOverlay_AppCompat_Dark;
+			global::BlazorMobile.Droid.Resource.Style.Platform_ThemeOverlay_AppCompat_Light = global::BlazorMobile.InteropApp.Droid.Resource.Style.Platform_ThemeOverlay_AppCompat_Light;
+			global::BlazorMobile.Droid.Resource.Style.Platform_V21_AppCompat = global::BlazorMobile.InteropApp.Droid.Resource.Style.Platform_V21_AppCompat;
+			global::BlazorMobile.Droid.Resource.Style.Platform_V21_AppCompat_Light = global::BlazorMobile.InteropApp.Droid.Resource.Style.Platform_V21_AppCompat_Light;
+			global::BlazorMobile.Droid.Resource.Style.Platform_V25_AppCompat = global::BlazorMobile.InteropApp.Droid.Resource.Style.Platform_V25_AppCompat;
+			global::BlazorMobile.Droid.Resource.Style.Platform_V25_AppCompat_Light = global::BlazorMobile.InteropApp.Droid.Resource.Style.Platform_V25_AppCompat_Light;
+			global::BlazorMobile.Droid.Resource.Style.Platform_Widget_AppCompat_Spinner = global::BlazorMobile.InteropApp.Droid.Resource.Style.Platform_Widget_AppCompat_Spinner;
+			global::BlazorMobile.Droid.Resource.Style.RtlOverlay_DialogWindowTitle_AppCompat = global::BlazorMobile.InteropApp.Droid.Resource.Style.RtlOverlay_DialogWindowTitle_AppCompat;
+			global::BlazorMobile.Droid.Resource.Style.RtlOverlay_Widget_AppCompat_ActionBar_TitleItem = global::BlazorMobile.InteropApp.Droid.Resource.Style.RtlOverlay_Widget_AppCompat_ActionBar_TitleItem;
+			global::BlazorMobile.Droid.Resource.Style.RtlOverlay_Widget_AppCompat_DialogTitle_Icon = global::BlazorMobile.InteropApp.Droid.Resource.Style.RtlOverlay_Widget_AppCompat_DialogTitle_Icon;
+			global::BlazorMobile.Droid.Resource.Style.RtlOverlay_Widget_AppCompat_PopupMenuItem = global::BlazorMobile.InteropApp.Droid.Resource.Style.RtlOverlay_Widget_AppCompat_PopupMenuItem;
+			global::BlazorMobile.Droid.Resource.Style.RtlOverlay_Widget_AppCompat_PopupMenuItem_InternalGroup = global::BlazorMobile.InteropApp.Droid.Resource.Style.RtlOverlay_Widget_AppCompat_PopupMenuItem_InternalGroup;
+			global::BlazorMobile.Droid.Resource.Style.RtlOverlay_Widget_AppCompat_PopupMenuItem_Shortcut = global::BlazorMobile.InteropApp.Droid.Resource.Style.RtlOverlay_Widget_AppCompat_PopupMenuItem_Shortcut;
+			global::BlazorMobile.Droid.Resource.Style.RtlOverlay_Widget_AppCompat_PopupMenuItem_SubmenuArrow = global::BlazorMobile.InteropApp.Droid.Resource.Style.RtlOverlay_Widget_AppCompat_PopupMenuItem_SubmenuArrow;
+			global::BlazorMobile.Droid.Resource.Style.RtlOverlay_Widget_AppCompat_PopupMenuItem_Text = global::BlazorMobile.InteropApp.Droid.Resource.Style.RtlOverlay_Widget_AppCompat_PopupMenuItem_Text;
+			global::BlazorMobile.Droid.Resource.Style.RtlOverlay_Widget_AppCompat_PopupMenuItem_Title = global::BlazorMobile.InteropApp.Droid.Resource.Style.RtlOverlay_Widget_AppCompat_PopupMenuItem_Title;
+			global::BlazorMobile.Droid.Resource.Style.RtlOverlay_Widget_AppCompat_SearchView_MagIcon = global::BlazorMobile.InteropApp.Droid.Resource.Style.RtlOverlay_Widget_AppCompat_SearchView_MagIcon;
+			global::BlazorMobile.Droid.Resource.Style.RtlOverlay_Widget_AppCompat_Search_DropDown = global::BlazorMobile.InteropApp.Droid.Resource.Style.RtlOverlay_Widget_AppCompat_Search_DropDown;
+			global::BlazorMobile.Droid.Resource.Style.RtlOverlay_Widget_AppCompat_Search_DropDown_Icon1 = global::BlazorMobile.InteropApp.Droid.Resource.Style.RtlOverlay_Widget_AppCompat_Search_DropDown_Icon1;
+			global::BlazorMobile.Droid.Resource.Style.RtlOverlay_Widget_AppCompat_Search_DropDown_Icon2 = global::BlazorMobile.InteropApp.Droid.Resource.Style.RtlOverlay_Widget_AppCompat_Search_DropDown_Icon2;
+			global::BlazorMobile.Droid.Resource.Style.RtlOverlay_Widget_AppCompat_Search_DropDown_Query = global::BlazorMobile.InteropApp.Droid.Resource.Style.RtlOverlay_Widget_AppCompat_Search_DropDown_Query;
+			global::BlazorMobile.Droid.Resource.Style.RtlOverlay_Widget_AppCompat_Search_DropDown_Text = global::BlazorMobile.InteropApp.Droid.Resource.Style.RtlOverlay_Widget_AppCompat_Search_DropDown_Text;
+			global::BlazorMobile.Droid.Resource.Style.RtlUnderlay_Widget_AppCompat_ActionButton = global::BlazorMobile.InteropApp.Droid.Resource.Style.RtlUnderlay_Widget_AppCompat_ActionButton;
+			global::BlazorMobile.Droid.Resource.Style.RtlUnderlay_Widget_AppCompat_ActionButton_Overflow = global::BlazorMobile.InteropApp.Droid.Resource.Style.RtlUnderlay_Widget_AppCompat_ActionButton_Overflow;
+			global::BlazorMobile.Droid.Resource.Style.TextAppearance_AppCompat = global::BlazorMobile.InteropApp.Droid.Resource.Style.TextAppearance_AppCompat;
+			global::BlazorMobile.Droid.Resource.Style.TextAppearance_AppCompat_Body1 = global::BlazorMobile.InteropApp.Droid.Resource.Style.TextAppearance_AppCompat_Body1;
+			global::BlazorMobile.Droid.Resource.Style.TextAppearance_AppCompat_Body2 = global::BlazorMobile.InteropApp.Droid.Resource.Style.TextAppearance_AppCompat_Body2;
+			global::BlazorMobile.Droid.Resource.Style.TextAppearance_AppCompat_Button = global::BlazorMobile.InteropApp.Droid.Resource.Style.TextAppearance_AppCompat_Button;
+			global::BlazorMobile.Droid.Resource.Style.TextAppearance_AppCompat_Caption = global::BlazorMobile.InteropApp.Droid.Resource.Style.TextAppearance_AppCompat_Caption;
+			global::BlazorMobile.Droid.Resource.Style.TextAppearance_AppCompat_Display1 = global::BlazorMobile.InteropApp.Droid.Resource.Style.TextAppearance_AppCompat_Display1;
+			global::BlazorMobile.Droid.Resource.Style.TextAppearance_AppCompat_Display2 = global::BlazorMobile.InteropApp.Droid.Resource.Style.TextAppearance_AppCompat_Display2;
+			global::BlazorMobile.Droid.Resource.Style.TextAppearance_AppCompat_Display3 = global::BlazorMobile.InteropApp.Droid.Resource.Style.TextAppearance_AppCompat_Display3;
+			global::BlazorMobile.Droid.Resource.Style.TextAppearance_AppCompat_Display4 = global::BlazorMobile.InteropApp.Droid.Resource.Style.TextAppearance_AppCompat_Display4;
+			global::BlazorMobile.Droid.Resource.Style.TextAppearance_AppCompat_Headline = global::BlazorMobile.InteropApp.Droid.Resource.Style.TextAppearance_AppCompat_Headline;
+			global::BlazorMobile.Droid.Resource.Style.TextAppearance_AppCompat_Inverse = global::BlazorMobile.InteropApp.Droid.Resource.Style.TextAppearance_AppCompat_Inverse;
+			global::BlazorMobile.Droid.Resource.Style.TextAppearance_AppCompat_Large = global::BlazorMobile.InteropApp.Droid.Resource.Style.TextAppearance_AppCompat_Large;
+			global::BlazorMobile.Droid.Resource.Style.TextAppearance_AppCompat_Large_Inverse = global::BlazorMobile.InteropApp.Droid.Resource.Style.TextAppearance_AppCompat_Large_Inverse;
+			global::BlazorMobile.Droid.Resource.Style.TextAppearance_AppCompat_Light_SearchResult_Subtitle = global::BlazorMobile.InteropApp.Droid.Resource.Style.TextAppearance_AppCompat_Light_SearchResult_Subtitle;
+			global::BlazorMobile.Droid.Resource.Style.TextAppearance_AppCompat_Light_SearchResult_Title = global::BlazorMobile.InteropApp.Droid.Resource.Style.TextAppearance_AppCompat_Light_SearchResult_Title;
+			global::BlazorMobile.Droid.Resource.Style.TextAppearance_AppCompat_Light_Widget_PopupMenu_Large = global::BlazorMobile.InteropApp.Droid.Resource.Style.TextAppearance_AppCompat_Light_Widget_PopupMenu_Large;
+			global::BlazorMobile.Droid.Resource.Style.TextAppearance_AppCompat_Light_Widget_PopupMenu_Small = global::BlazorMobile.InteropApp.Droid.Resource.Style.TextAppearance_AppCompat_Light_Widget_PopupMenu_Small;
+			global::BlazorMobile.Droid.Resource.Style.TextAppearance_AppCompat_Medium = global::BlazorMobile.InteropApp.Droid.Resource.Style.TextAppearance_AppCompat_Medium;
+			global::BlazorMobile.Droid.Resource.Style.TextAppearance_AppCompat_Medium_Inverse = global::BlazorMobile.InteropApp.Droid.Resource.Style.TextAppearance_AppCompat_Medium_Inverse;
+			global::BlazorMobile.Droid.Resource.Style.TextAppearance_AppCompat_Menu = global::BlazorMobile.InteropApp.Droid.Resource.Style.TextAppearance_AppCompat_Menu;
+			global::BlazorMobile.Droid.Resource.Style.TextAppearance_AppCompat_SearchResult_Subtitle = global::BlazorMobile.InteropApp.Droid.Resource.Style.TextAppearance_AppCompat_SearchResult_Subtitle;
+			global::BlazorMobile.Droid.Resource.Style.TextAppearance_AppCompat_SearchResult_Title = global::BlazorMobile.InteropApp.Droid.Resource.Style.TextAppearance_AppCompat_SearchResult_Title;
+			global::BlazorMobile.Droid.Resource.Style.TextAppearance_AppCompat_Small = global::BlazorMobile.InteropApp.Droid.Resource.Style.TextAppearance_AppCompat_Small;
+			global::BlazorMobile.Droid.Resource.Style.TextAppearance_AppCompat_Small_Inverse = global::BlazorMobile.InteropApp.Droid.Resource.Style.TextAppearance_AppCompat_Small_Inverse;
+			global::BlazorMobile.Droid.Resource.Style.TextAppearance_AppCompat_Subhead = global::BlazorMobile.InteropApp.Droid.Resource.Style.TextAppearance_AppCompat_Subhead;
+			global::BlazorMobile.Droid.Resource.Style.TextAppearance_AppCompat_Subhead_Inverse = global::BlazorMobile.InteropApp.Droid.Resource.Style.TextAppearance_AppCompat_Subhead_Inverse;
+			global::BlazorMobile.Droid.Resource.Style.TextAppearance_AppCompat_Title = global::BlazorMobile.InteropApp.Droid.Resource.Style.TextAppearance_AppCompat_Title;
+			global::BlazorMobile.Droid.Resource.Style.TextAppearance_AppCompat_Title_Inverse = global::BlazorMobile.InteropApp.Droid.Resource.Style.TextAppearance_AppCompat_Title_Inverse;
+			global::BlazorMobile.Droid.Resource.Style.TextAppearance_AppCompat_Tooltip = global::BlazorMobile.InteropApp.Droid.Resource.Style.TextAppearance_AppCompat_Tooltip;
+			global::BlazorMobile.Droid.Resource.Style.TextAppearance_AppCompat_Widget_ActionBar_Menu = global::BlazorMobile.InteropApp.Droid.Resource.Style.TextAppearance_AppCompat_Widget_ActionBar_Menu;
+			global::BlazorMobile.Droid.Resource.Style.TextAppearance_AppCompat_Widget_ActionBar_Subtitle = global::BlazorMobile.InteropApp.Droid.Resource.Style.TextAppearance_AppCompat_Widget_ActionBar_Subtitle;
+			global::BlazorMobile.Droid.Resource.Style.TextAppearance_AppCompat_Widget_ActionBar_Subtitle_Inverse = global::BlazorMobile.InteropApp.Droid.Resource.Style.TextAppearance_AppCompat_Widget_ActionBar_Subtitle_Inverse;
+			global::BlazorMobile.Droid.Resource.Style.TextAppearance_AppCompat_Widget_ActionBar_Title = global::BlazorMobile.InteropApp.Droid.Resource.Style.TextAppearance_AppCompat_Widget_ActionBar_Title;
+			global::BlazorMobile.Droid.Resource.Style.TextAppearance_AppCompat_Widget_ActionBar_Title_Inverse = global::BlazorMobile.InteropApp.Droid.Resource.Style.TextAppearance_AppCompat_Widget_ActionBar_Title_Inverse;
+			global::BlazorMobile.Droid.Resource.Style.TextAppearance_AppCompat_Widget_ActionMode_Subtitle = global::BlazorMobile.InteropApp.Droid.Resource.Style.TextAppearance_AppCompat_Widget_ActionMode_Subtitle;
+			global::BlazorMobile.Droid.Resource.Style.TextAppearance_AppCompat_Widget_ActionMode_Subtitle_Inverse = global::BlazorMobile.InteropApp.Droid.Resource.Style.TextAppearance_AppCompat_Widget_ActionMode_Subtitle_Inverse;
+			global::BlazorMobile.Droid.Resource.Style.TextAppearance_AppCompat_Widget_ActionMode_Title = global::BlazorMobile.InteropApp.Droid.Resource.Style.TextAppearance_AppCompat_Widget_ActionMode_Title;
+			global::BlazorMobile.Droid.Resource.Style.TextAppearance_AppCompat_Widget_ActionMode_Title_Inverse = global::BlazorMobile.InteropApp.Droid.Resource.Style.TextAppearance_AppCompat_Widget_ActionMode_Title_Inverse;
+			global::BlazorMobile.Droid.Resource.Style.TextAppearance_AppCompat_Widget_Button = global::BlazorMobile.InteropApp.Droid.Resource.Style.TextAppearance_AppCompat_Widget_Button;
+			global::BlazorMobile.Droid.Resource.Style.TextAppearance_AppCompat_Widget_Button_Borderless_Colored = global::BlazorMobile.InteropApp.Droid.Resource.Style.TextAppearance_AppCompat_Widget_Button_Borderless_Colored;
+			global::BlazorMobile.Droid.Resource.Style.TextAppearance_AppCompat_Widget_Button_Colored = global::BlazorMobile.InteropApp.Droid.Resource.Style.TextAppearance_AppCompat_Widget_Button_Colored;
+			global::BlazorMobile.Droid.Resource.Style.TextAppearance_AppCompat_Widget_Button_Inverse = global::BlazorMobile.InteropApp.Droid.Resource.Style.TextAppearance_AppCompat_Widget_Button_Inverse;
+			global::BlazorMobile.Droid.Resource.Style.TextAppearance_AppCompat_Widget_DropDownItem = global::BlazorMobile.InteropApp.Droid.Resource.Style.TextAppearance_AppCompat_Widget_DropDownItem;
+			global::BlazorMobile.Droid.Resource.Style.TextAppearance_AppCompat_Widget_PopupMenu_Header = global::BlazorMobile.InteropApp.Droid.Resource.Style.TextAppearance_AppCompat_Widget_PopupMenu_Header;
+			global::BlazorMobile.Droid.Resource.Style.TextAppearance_AppCompat_Widget_PopupMenu_Large = global::BlazorMobile.InteropApp.Droid.Resource.Style.TextAppearance_AppCompat_Widget_PopupMenu_Large;
+			global::BlazorMobile.Droid.Resource.Style.TextAppearance_AppCompat_Widget_PopupMenu_Small = global::BlazorMobile.InteropApp.Droid.Resource.Style.TextAppearance_AppCompat_Widget_PopupMenu_Small;
+			global::BlazorMobile.Droid.Resource.Style.TextAppearance_AppCompat_Widget_Switch = global::BlazorMobile.InteropApp.Droid.Resource.Style.TextAppearance_AppCompat_Widget_Switch;
+			global::BlazorMobile.Droid.Resource.Style.TextAppearance_AppCompat_Widget_TextView_SpinnerItem = global::BlazorMobile.InteropApp.Droid.Resource.Style.TextAppearance_AppCompat_Widget_TextView_SpinnerItem;
+			global::BlazorMobile.Droid.Resource.Style.TextAppearance_Compat_Notification = global::BlazorMobile.InteropApp.Droid.Resource.Style.TextAppearance_Compat_Notification;
+			global::BlazorMobile.Droid.Resource.Style.TextAppearance_Compat_Notification_Info = global::BlazorMobile.InteropApp.Droid.Resource.Style.TextAppearance_Compat_Notification_Info;
+			global::BlazorMobile.Droid.Resource.Style.TextAppearance_Compat_Notification_Info_Media = global::BlazorMobile.InteropApp.Droid.Resource.Style.TextAppearance_Compat_Notification_Info_Media;
+			global::BlazorMobile.Droid.Resource.Style.TextAppearance_Compat_Notification_Line2 = global::BlazorMobile.InteropApp.Droid.Resource.Style.TextAppearance_Compat_Notification_Line2;
+			global::BlazorMobile.Droid.Resource.Style.TextAppearance_Compat_Notification_Line2_Media = global::BlazorMobile.InteropApp.Droid.Resource.Style.TextAppearance_Compat_Notification_Line2_Media;
+			global::BlazorMobile.Droid.Resource.Style.TextAppearance_Compat_Notification_Media = global::BlazorMobile.InteropApp.Droid.Resource.Style.TextAppearance_Compat_Notification_Media;
+			global::BlazorMobile.Droid.Resource.Style.TextAppearance_Compat_Notification_Time = global::BlazorMobile.InteropApp.Droid.Resource.Style.TextAppearance_Compat_Notification_Time;
+			global::BlazorMobile.Droid.Resource.Style.TextAppearance_Compat_Notification_Time_Media = global::BlazorMobile.InteropApp.Droid.Resource.Style.TextAppearance_Compat_Notification_Time_Media;
+			global::BlazorMobile.Droid.Resource.Style.TextAppearance_Compat_Notification_Title = global::BlazorMobile.InteropApp.Droid.Resource.Style.TextAppearance_Compat_Notification_Title;
+			global::BlazorMobile.Droid.Resource.Style.TextAppearance_Compat_Notification_Title_Media = global::BlazorMobile.InteropApp.Droid.Resource.Style.TextAppearance_Compat_Notification_Title_Media;
+			global::BlazorMobile.Droid.Resource.Style.TextAppearance_Design_CollapsingToolbar_Expanded = global::BlazorMobile.InteropApp.Droid.Resource.Style.TextAppearance_Design_CollapsingToolbar_Expanded;
+			global::BlazorMobile.Droid.Resource.Style.TextAppearance_Design_Counter = global::BlazorMobile.InteropApp.Droid.Resource.Style.TextAppearance_Design_Counter;
+			global::BlazorMobile.Droid.Resource.Style.TextAppearance_Design_Counter_Overflow = global::BlazorMobile.InteropApp.Droid.Resource.Style.TextAppearance_Design_Counter_Overflow;
+			global::BlazorMobile.Droid.Resource.Style.TextAppearance_Design_Error = global::BlazorMobile.InteropApp.Droid.Resource.Style.TextAppearance_Design_Error;
+			global::BlazorMobile.Droid.Resource.Style.TextAppearance_Design_HelperText = global::BlazorMobile.InteropApp.Droid.Resource.Style.TextAppearance_Design_HelperText;
+			global::BlazorMobile.Droid.Resource.Style.TextAppearance_Design_Hint = global::BlazorMobile.InteropApp.Droid.Resource.Style.TextAppearance_Design_Hint;
+			global::BlazorMobile.Droid.Resource.Style.TextAppearance_Design_Snackbar_Message = global::BlazorMobile.InteropApp.Droid.Resource.Style.TextAppearance_Design_Snackbar_Message;
+			global::BlazorMobile.Droid.Resource.Style.TextAppearance_Design_Tab = global::BlazorMobile.InteropApp.Droid.Resource.Style.TextAppearance_Design_Tab;
+			global::BlazorMobile.Droid.Resource.Style.TextAppearance_MaterialComponents_Body1 = global::BlazorMobile.InteropApp.Droid.Resource.Style.TextAppearance_MaterialComponents_Body1;
+			global::BlazorMobile.Droid.Resource.Style.TextAppearance_MaterialComponents_Body2 = global::BlazorMobile.InteropApp.Droid.Resource.Style.TextAppearance_MaterialComponents_Body2;
+			global::BlazorMobile.Droid.Resource.Style.TextAppearance_MaterialComponents_Button = global::BlazorMobile.InteropApp.Droid.Resource.Style.TextAppearance_MaterialComponents_Button;
+			global::BlazorMobile.Droid.Resource.Style.TextAppearance_MaterialComponents_Caption = global::BlazorMobile.InteropApp.Droid.Resource.Style.TextAppearance_MaterialComponents_Caption;
+			global::BlazorMobile.Droid.Resource.Style.TextAppearance_MaterialComponents_Chip = global::BlazorMobile.InteropApp.Droid.Resource.Style.TextAppearance_MaterialComponents_Chip;
+			global::BlazorMobile.Droid.Resource.Style.TextAppearance_MaterialComponents_Headline1 = global::BlazorMobile.InteropApp.Droid.Resource.Style.TextAppearance_MaterialComponents_Headline1;
+			global::BlazorMobile.Droid.Resource.Style.TextAppearance_MaterialComponents_Headline2 = global::BlazorMobile.InteropApp.Droid.Resource.Style.TextAppearance_MaterialComponents_Headline2;
+			global::BlazorMobile.Droid.Resource.Style.TextAppearance_MaterialComponents_Headline3 = global::BlazorMobile.InteropApp.Droid.Resource.Style.TextAppearance_MaterialComponents_Headline3;
+			global::BlazorMobile.Droid.Resource.Style.TextAppearance_MaterialComponents_Headline4 = global::BlazorMobile.InteropApp.Droid.Resource.Style.TextAppearance_MaterialComponents_Headline4;
+			global::BlazorMobile.Droid.Resource.Style.TextAppearance_MaterialComponents_Headline5 = global::BlazorMobile.InteropApp.Droid.Resource.Style.TextAppearance_MaterialComponents_Headline5;
+			global::BlazorMobile.Droid.Resource.Style.TextAppearance_MaterialComponents_Headline6 = global::BlazorMobile.InteropApp.Droid.Resource.Style.TextAppearance_MaterialComponents_Headline6;
+			global::BlazorMobile.Droid.Resource.Style.TextAppearance_MaterialComponents_Overline = global::BlazorMobile.InteropApp.Droid.Resource.Style.TextAppearance_MaterialComponents_Overline;
+			global::BlazorMobile.Droid.Resource.Style.TextAppearance_MaterialComponents_Subtitle1 = global::BlazorMobile.InteropApp.Droid.Resource.Style.TextAppearance_MaterialComponents_Subtitle1;
+			global::BlazorMobile.Droid.Resource.Style.TextAppearance_MaterialComponents_Subtitle2 = global::BlazorMobile.InteropApp.Droid.Resource.Style.TextAppearance_MaterialComponents_Subtitle2;
+			global::BlazorMobile.Droid.Resource.Style.TextAppearance_MaterialComponents_Tab = global::BlazorMobile.InteropApp.Droid.Resource.Style.TextAppearance_MaterialComponents_Tab;
+			global::BlazorMobile.Droid.Resource.Style.TextAppearance_MediaRouter_PrimaryText = global::BlazorMobile.InteropApp.Droid.Resource.Style.TextAppearance_MediaRouter_PrimaryText;
+			global::BlazorMobile.Droid.Resource.Style.TextAppearance_MediaRouter_SecondaryText = global::BlazorMobile.InteropApp.Droid.Resource.Style.TextAppearance_MediaRouter_SecondaryText;
+			global::BlazorMobile.Droid.Resource.Style.TextAppearance_MediaRouter_Title = global::BlazorMobile.InteropApp.Droid.Resource.Style.TextAppearance_MediaRouter_Title;
+			global::BlazorMobile.Droid.Resource.Style.TextAppearance_Widget_AppCompat_ExpandedMenu_Item = global::BlazorMobile.InteropApp.Droid.Resource.Style.TextAppearance_Widget_AppCompat_ExpandedMenu_Item;
+			global::BlazorMobile.Droid.Resource.Style.TextAppearance_Widget_AppCompat_Toolbar_Subtitle = global::BlazorMobile.InteropApp.Droid.Resource.Style.TextAppearance_Widget_AppCompat_Toolbar_Subtitle;
+			global::BlazorMobile.Droid.Resource.Style.TextAppearance_Widget_AppCompat_Toolbar_Title = global::BlazorMobile.InteropApp.Droid.Resource.Style.TextAppearance_Widget_AppCompat_Toolbar_Title;
+			global::BlazorMobile.Droid.Resource.Style.ThemeOverlay_AppCompat = global::BlazorMobile.InteropApp.Droid.Resource.Style.ThemeOverlay_AppCompat;
+			global::BlazorMobile.Droid.Resource.Style.ThemeOverlay_AppCompat_ActionBar = global::BlazorMobile.InteropApp.Droid.Resource.Style.ThemeOverlay_AppCompat_ActionBar;
+			global::BlazorMobile.Droid.Resource.Style.ThemeOverlay_AppCompat_Dark = global::BlazorMobile.InteropApp.Droid.Resource.Style.ThemeOverlay_AppCompat_Dark;
+			global::BlazorMobile.Droid.Resource.Style.ThemeOverlay_AppCompat_Dark_ActionBar = global::BlazorMobile.InteropApp.Droid.Resource.Style.ThemeOverlay_AppCompat_Dark_ActionBar;
+			global::BlazorMobile.Droid.Resource.Style.ThemeOverlay_AppCompat_Dialog = global::BlazorMobile.InteropApp.Droid.Resource.Style.ThemeOverlay_AppCompat_Dialog;
+			global::BlazorMobile.Droid.Resource.Style.ThemeOverlay_AppCompat_Dialog_Alert = global::BlazorMobile.InteropApp.Droid.Resource.Style.ThemeOverlay_AppCompat_Dialog_Alert;
+			global::BlazorMobile.Droid.Resource.Style.ThemeOverlay_AppCompat_Light = global::BlazorMobile.InteropApp.Droid.Resource.Style.ThemeOverlay_AppCompat_Light;
+			global::BlazorMobile.Droid.Resource.Style.ThemeOverlay_MaterialComponents = global::BlazorMobile.InteropApp.Droid.Resource.Style.ThemeOverlay_MaterialComponents;
+			global::BlazorMobile.Droid.Resource.Style.ThemeOverlay_MaterialComponents_ActionBar = global::BlazorMobile.InteropApp.Droid.Resource.Style.ThemeOverlay_MaterialComponents_ActionBar;
+			global::BlazorMobile.Droid.Resource.Style.ThemeOverlay_MaterialComponents_Dark = global::BlazorMobile.InteropApp.Droid.Resource.Style.ThemeOverlay_MaterialComponents_Dark;
+			global::BlazorMobile.Droid.Resource.Style.ThemeOverlay_MaterialComponents_Dark_ActionBar = global::BlazorMobile.InteropApp.Droid.Resource.Style.ThemeOverlay_MaterialComponents_Dark_ActionBar;
+			global::BlazorMobile.Droid.Resource.Style.ThemeOverlay_MaterialComponents_Dialog = global::BlazorMobile.InteropApp.Droid.Resource.Style.ThemeOverlay_MaterialComponents_Dialog;
+			global::BlazorMobile.Droid.Resource.Style.ThemeOverlay_MaterialComponents_Dialog_Alert = global::BlazorMobile.InteropApp.Droid.Resource.Style.ThemeOverlay_MaterialComponents_Dialog_Alert;
+			global::BlazorMobile.Droid.Resource.Style.ThemeOverlay_MaterialComponents_Light = global::BlazorMobile.InteropApp.Droid.Resource.Style.ThemeOverlay_MaterialComponents_Light;
+			global::BlazorMobile.Droid.Resource.Style.ThemeOverlay_MaterialComponents_TextInputEditText = global::BlazorMobile.InteropApp.Droid.Resource.Style.ThemeOverlay_MaterialComponents_TextInputEditText;
+			global::BlazorMobile.Droid.Resource.Style.ThemeOverlay_MaterialComponents_TextInputEditText_FilledBox = global::BlazorMobile.InteropApp.Droid.Resource.Style.ThemeOverlay_MaterialComponents_TextInputEditText_FilledBox;
+			global::BlazorMobile.Droid.Resource.Style.ThemeOverlay_MaterialComponents_TextInputEditText_FilledBox_Dense = global::BlazorMobile.InteropApp.Droid.Resource.Style.ThemeOverlay_MaterialComponents_TextInputEditText_FilledBox_Dense;
+			global::BlazorMobile.Droid.Resource.Style.ThemeOverlay_MaterialComponents_TextInputEditText_OutlinedBox = global::BlazorMobile.InteropApp.Droid.Resource.Style.ThemeOverlay_MaterialComponents_TextInputEditText_OutlinedBox;
+			global::BlazorMobile.Droid.Resource.Style.ThemeOverlay_MaterialComponents_TextInputEditText_OutlinedBox_Dense = global::BlazorMobile.InteropApp.Droid.Resource.Style.ThemeOverlay_MaterialComponents_TextInputEditText_OutlinedBox_Dense;
+			global::BlazorMobile.Droid.Resource.Style.ThemeOverlay_MediaRouter_Dark = global::BlazorMobile.InteropApp.Droid.Resource.Style.ThemeOverlay_MediaRouter_Dark;
+			global::BlazorMobile.Droid.Resource.Style.ThemeOverlay_MediaRouter_Light = global::BlazorMobile.InteropApp.Droid.Resource.Style.ThemeOverlay_MediaRouter_Light;
+			global::BlazorMobile.Droid.Resource.Style.Theme_AppCompat = global::BlazorMobile.InteropApp.Droid.Resource.Style.Theme_AppCompat;
+			global::BlazorMobile.Droid.Resource.Style.Theme_AppCompat_CompactMenu = global::BlazorMobile.InteropApp.Droid.Resource.Style.Theme_AppCompat_CompactMenu;
+			global::BlazorMobile.Droid.Resource.Style.Theme_AppCompat_DayNight = global::BlazorMobile.InteropApp.Droid.Resource.Style.Theme_AppCompat_DayNight;
+			global::BlazorMobile.Droid.Resource.Style.Theme_AppCompat_DayNight_DarkActionBar = global::BlazorMobile.InteropApp.Droid.Resource.Style.Theme_AppCompat_DayNight_DarkActionBar;
+			global::BlazorMobile.Droid.Resource.Style.Theme_AppCompat_DayNight_Dialog = global::BlazorMobile.InteropApp.Droid.Resource.Style.Theme_AppCompat_DayNight_Dialog;
+			global::BlazorMobile.Droid.Resource.Style.Theme_AppCompat_DayNight_DialogWhenLarge = global::BlazorMobile.InteropApp.Droid.Resource.Style.Theme_AppCompat_DayNight_DialogWhenLarge;
+			global::BlazorMobile.Droid.Resource.Style.Theme_AppCompat_DayNight_Dialog_Alert = global::BlazorMobile.InteropApp.Droid.Resource.Style.Theme_AppCompat_DayNight_Dialog_Alert;
+			global::BlazorMobile.Droid.Resource.Style.Theme_AppCompat_DayNight_Dialog_MinWidth = global::BlazorMobile.InteropApp.Droid.Resource.Style.Theme_AppCompat_DayNight_Dialog_MinWidth;
+			global::BlazorMobile.Droid.Resource.Style.Theme_AppCompat_DayNight_NoActionBar = global::BlazorMobile.InteropApp.Droid.Resource.Style.Theme_AppCompat_DayNight_NoActionBar;
+			global::BlazorMobile.Droid.Resource.Style.Theme_AppCompat_Dialog = global::BlazorMobile.InteropApp.Droid.Resource.Style.Theme_AppCompat_Dialog;
+			global::BlazorMobile.Droid.Resource.Style.Theme_AppCompat_DialogWhenLarge = global::BlazorMobile.InteropApp.Droid.Resource.Style.Theme_AppCompat_DialogWhenLarge;
+			global::BlazorMobile.Droid.Resource.Style.Theme_AppCompat_Dialog_Alert = global::BlazorMobile.InteropApp.Droid.Resource.Style.Theme_AppCompat_Dialog_Alert;
+			global::BlazorMobile.Droid.Resource.Style.Theme_AppCompat_Dialog_MinWidth = global::BlazorMobile.InteropApp.Droid.Resource.Style.Theme_AppCompat_Dialog_MinWidth;
+			global::BlazorMobile.Droid.Resource.Style.Theme_AppCompat_Light = global::BlazorMobile.InteropApp.Droid.Resource.Style.Theme_AppCompat_Light;
+			global::BlazorMobile.Droid.Resource.Style.Theme_AppCompat_Light_DarkActionBar = global::BlazorMobile.InteropApp.Droid.Resource.Style.Theme_AppCompat_Light_DarkActionBar;
+			global::BlazorMobile.Droid.Resource.Style.Theme_AppCompat_Light_Dialog = global::BlazorMobile.InteropApp.Droid.Resource.Style.Theme_AppCompat_Light_Dialog;
+			global::BlazorMobile.Droid.Resource.Style.Theme_AppCompat_Light_DialogWhenLarge = global::BlazorMobile.InteropApp.Droid.Resource.Style.Theme_AppCompat_Light_DialogWhenLarge;
+			global::BlazorMobile.Droid.Resource.Style.Theme_AppCompat_Light_Dialog_Alert = global::BlazorMobile.InteropApp.Droid.Resource.Style.Theme_AppCompat_Light_Dialog_Alert;
+			global::BlazorMobile.Droid.Resource.Style.Theme_AppCompat_Light_Dialog_MinWidth = global::BlazorMobile.InteropApp.Droid.Resource.Style.Theme_AppCompat_Light_Dialog_MinWidth;
+			global::BlazorMobile.Droid.Resource.Style.Theme_AppCompat_Light_NoActionBar = global::BlazorMobile.InteropApp.Droid.Resource.Style.Theme_AppCompat_Light_NoActionBar;
+			global::BlazorMobile.Droid.Resource.Style.Theme_AppCompat_NoActionBar = global::BlazorMobile.InteropApp.Droid.Resource.Style.Theme_AppCompat_NoActionBar;
+			global::BlazorMobile.Droid.Resource.Style.Theme_Design = global::BlazorMobile.InteropApp.Droid.Resource.Style.Theme_Design;
+			global::BlazorMobile.Droid.Resource.Style.Theme_Design_BottomSheetDialog = global::BlazorMobile.InteropApp.Droid.Resource.Style.Theme_Design_BottomSheetDialog;
+			global::BlazorMobile.Droid.Resource.Style.Theme_Design_Light = global::BlazorMobile.InteropApp.Droid.Resource.Style.Theme_Design_Light;
+			global::BlazorMobile.Droid.Resource.Style.Theme_Design_Light_BottomSheetDialog = global::BlazorMobile.InteropApp.Droid.Resource.Style.Theme_Design_Light_BottomSheetDialog;
+			global::BlazorMobile.Droid.Resource.Style.Theme_Design_Light_NoActionBar = global::BlazorMobile.InteropApp.Droid.Resource.Style.Theme_Design_Light_NoActionBar;
+			global::BlazorMobile.Droid.Resource.Style.Theme_Design_NoActionBar = global::BlazorMobile.InteropApp.Droid.Resource.Style.Theme_Design_NoActionBar;
+			global::BlazorMobile.Droid.Resource.Style.Theme_MaterialComponents = global::BlazorMobile.InteropApp.Droid.Resource.Style.Theme_MaterialComponents;
+			global::BlazorMobile.Droid.Resource.Style.Theme_MaterialComponents_BottomSheetDialog = global::BlazorMobile.InteropApp.Droid.Resource.Style.Theme_MaterialComponents_BottomSheetDialog;
+			global::BlazorMobile.Droid.Resource.Style.Theme_MaterialComponents_Bridge = global::BlazorMobile.InteropApp.Droid.Resource.Style.Theme_MaterialComponents_Bridge;
+			global::BlazorMobile.Droid.Resource.Style.Theme_MaterialComponents_CompactMenu = global::BlazorMobile.InteropApp.Droid.Resource.Style.Theme_MaterialComponents_CompactMenu;
+			global::BlazorMobile.Droid.Resource.Style.Theme_MaterialComponents_Dialog = global::BlazorMobile.InteropApp.Droid.Resource.Style.Theme_MaterialComponents_Dialog;
+			global::BlazorMobile.Droid.Resource.Style.Theme_MaterialComponents_DialogWhenLarge = global::BlazorMobile.InteropApp.Droid.Resource.Style.Theme_MaterialComponents_DialogWhenLarge;
+			global::BlazorMobile.Droid.Resource.Style.Theme_MaterialComponents_Dialog_Alert = global::BlazorMobile.InteropApp.Droid.Resource.Style.Theme_MaterialComponents_Dialog_Alert;
+			global::BlazorMobile.Droid.Resource.Style.Theme_MaterialComponents_Dialog_MinWidth = global::BlazorMobile.InteropApp.Droid.Resource.Style.Theme_MaterialComponents_Dialog_MinWidth;
+			global::BlazorMobile.Droid.Resource.Style.Theme_MaterialComponents_Light = global::BlazorMobile.InteropApp.Droid.Resource.Style.Theme_MaterialComponents_Light;
+			global::BlazorMobile.Droid.Resource.Style.Theme_MaterialComponents_Light_BottomSheetDialog = global::BlazorMobile.InteropApp.Droid.Resource.Style.Theme_MaterialComponents_Light_BottomSheetDialog;
+			global::BlazorMobile.Droid.Resource.Style.Theme_MaterialComponents_Light_Bridge = global::BlazorMobile.InteropApp.Droid.Resource.Style.Theme_MaterialComponents_Light_Bridge;
+			global::BlazorMobile.Droid.Resource.Style.Theme_MaterialComponents_Light_DarkActionBar = global::BlazorMobile.InteropApp.Droid.Resource.Style.Theme_MaterialComponents_Light_DarkActionBar;
+			global::BlazorMobile.Droid.Resource.Style.Theme_MaterialComponents_Light_DarkActionBar_Bridge = global::BlazorMobile.InteropApp.Droid.Resource.Style.Theme_MaterialComponents_Light_DarkActionBar_Bridge;
+			global::BlazorMobile.Droid.Resource.Style.Theme_MaterialComponents_Light_Dialog = global::BlazorMobile.InteropApp.Droid.Resource.Style.Theme_MaterialComponents_Light_Dialog;
+			global::BlazorMobile.Droid.Resource.Style.Theme_MaterialComponents_Light_DialogWhenLarge = global::BlazorMobile.InteropApp.Droid.Resource.Style.Theme_MaterialComponents_Light_DialogWhenLarge;
+			global::BlazorMobile.Droid.Resource.Style.Theme_MaterialComponents_Light_Dialog_Alert = global::BlazorMobile.InteropApp.Droid.Resource.Style.Theme_MaterialComponents_Light_Dialog_Alert;
+			global::BlazorMobile.Droid.Resource.Style.Theme_MaterialComponents_Light_Dialog_MinWidth = global::BlazorMobile.InteropApp.Droid.Resource.Style.Theme_MaterialComponents_Light_Dialog_MinWidth;
+			global::BlazorMobile.Droid.Resource.Style.Theme_MaterialComponents_Light_NoActionBar = global::BlazorMobile.InteropApp.Droid.Resource.Style.Theme_MaterialComponents_Light_NoActionBar;
+			global::BlazorMobile.Droid.Resource.Style.Theme_MaterialComponents_Light_NoActionBar_Bridge = global::BlazorMobile.InteropApp.Droid.Resource.Style.Theme_MaterialComponents_Light_NoActionBar_Bridge;
+			global::BlazorMobile.Droid.Resource.Style.Theme_MaterialComponents_NoActionBar = global::BlazorMobile.InteropApp.Droid.Resource.Style.Theme_MaterialComponents_NoActionBar;
+			global::BlazorMobile.Droid.Resource.Style.Theme_MaterialComponents_NoActionBar_Bridge = global::BlazorMobile.InteropApp.Droid.Resource.Style.Theme_MaterialComponents_NoActionBar_Bridge;
+			global::BlazorMobile.Droid.Resource.Style.Theme_MediaRouter = global::BlazorMobile.InteropApp.Droid.Resource.Style.Theme_MediaRouter;
+			global::BlazorMobile.Droid.Resource.Style.Theme_MediaRouter_Light = global::BlazorMobile.InteropApp.Droid.Resource.Style.Theme_MediaRouter_Light;
+			global::BlazorMobile.Droid.Resource.Style.Theme_MediaRouter_LightControlPanel = global::BlazorMobile.InteropApp.Droid.Resource.Style.Theme_MediaRouter_LightControlPanel;
+			global::BlazorMobile.Droid.Resource.Style.Theme_MediaRouter_Light_DarkControlPanel = global::BlazorMobile.InteropApp.Droid.Resource.Style.Theme_MediaRouter_Light_DarkControlPanel;
+			global::BlazorMobile.Droid.Resource.Style.Widget_AppCompat_ActionBar = global::BlazorMobile.InteropApp.Droid.Resource.Style.Widget_AppCompat_ActionBar;
+			global::BlazorMobile.Droid.Resource.Style.Widget_AppCompat_ActionBar_Solid = global::BlazorMobile.InteropApp.Droid.Resource.Style.Widget_AppCompat_ActionBar_Solid;
+			global::BlazorMobile.Droid.Resource.Style.Widget_AppCompat_ActionBar_TabBar = global::BlazorMobile.InteropApp.Droid.Resource.Style.Widget_AppCompat_ActionBar_TabBar;
+			global::BlazorMobile.Droid.Resource.Style.Widget_AppCompat_ActionBar_TabText = global::BlazorMobile.InteropApp.Droid.Resource.Style.Widget_AppCompat_ActionBar_TabText;
+			global::BlazorMobile.Droid.Resource.Style.Widget_AppCompat_ActionBar_TabView = global::BlazorMobile.InteropApp.Droid.Resource.Style.Widget_AppCompat_ActionBar_TabView;
+			global::BlazorMobile.Droid.Resource.Style.Widget_AppCompat_ActionButton = global::BlazorMobile.InteropApp.Droid.Resource.Style.Widget_AppCompat_ActionButton;
+			global::BlazorMobile.Droid.Resource.Style.Widget_AppCompat_ActionButton_CloseMode = global::BlazorMobile.InteropApp.Droid.Resource.Style.Widget_AppCompat_ActionButton_CloseMode;
+			global::BlazorMobile.Droid.Resource.Style.Widget_AppCompat_ActionButton_Overflow = global::BlazorMobile.InteropApp.Droid.Resource.Style.Widget_AppCompat_ActionButton_Overflow;
+			global::BlazorMobile.Droid.Resource.Style.Widget_AppCompat_ActionMode = global::BlazorMobile.InteropApp.Droid.Resource.Style.Widget_AppCompat_ActionMode;
+			global::BlazorMobile.Droid.Resource.Style.Widget_AppCompat_ActivityChooserView = global::BlazorMobile.InteropApp.Droid.Resource.Style.Widget_AppCompat_ActivityChooserView;
+			global::BlazorMobile.Droid.Resource.Style.Widget_AppCompat_AutoCompleteTextView = global::BlazorMobile.InteropApp.Droid.Resource.Style.Widget_AppCompat_AutoCompleteTextView;
+			global::BlazorMobile.Droid.Resource.Style.Widget_AppCompat_Button = global::BlazorMobile.InteropApp.Droid.Resource.Style.Widget_AppCompat_Button;
+			global::BlazorMobile.Droid.Resource.Style.Widget_AppCompat_ButtonBar = global::BlazorMobile.InteropApp.Droid.Resource.Style.Widget_AppCompat_ButtonBar;
+			global::BlazorMobile.Droid.Resource.Style.Widget_AppCompat_ButtonBar_AlertDialog = global::BlazorMobile.InteropApp.Droid.Resource.Style.Widget_AppCompat_ButtonBar_AlertDialog;
+			global::BlazorMobile.Droid.Resource.Style.Widget_AppCompat_Button_Borderless = global::BlazorMobile.InteropApp.Droid.Resource.Style.Widget_AppCompat_Button_Borderless;
+			global::BlazorMobile.Droid.Resource.Style.Widget_AppCompat_Button_Borderless_Colored = global::BlazorMobile.InteropApp.Droid.Resource.Style.Widget_AppCompat_Button_Borderless_Colored;
+			global::BlazorMobile.Droid.Resource.Style.Widget_AppCompat_Button_ButtonBar_AlertDialog = global::BlazorMobile.InteropApp.Droid.Resource.Style.Widget_AppCompat_Button_ButtonBar_AlertDialog;
+			global::BlazorMobile.Droid.Resource.Style.Widget_AppCompat_Button_Colored = global::BlazorMobile.InteropApp.Droid.Resource.Style.Widget_AppCompat_Button_Colored;
+			global::BlazorMobile.Droid.Resource.Style.Widget_AppCompat_Button_Small = global::BlazorMobile.InteropApp.Droid.Resource.Style.Widget_AppCompat_Button_Small;
+			global::BlazorMobile.Droid.Resource.Style.Widget_AppCompat_CompoundButton_CheckBox = global::BlazorMobile.InteropApp.Droid.Resource.Style.Widget_AppCompat_CompoundButton_CheckBox;
+			global::BlazorMobile.Droid.Resource.Style.Widget_AppCompat_CompoundButton_RadioButton = global::BlazorMobile.InteropApp.Droid.Resource.Style.Widget_AppCompat_CompoundButton_RadioButton;
+			global::BlazorMobile.Droid.Resource.Style.Widget_AppCompat_CompoundButton_Switch = global::BlazorMobile.InteropApp.Droid.Resource.Style.Widget_AppCompat_CompoundButton_Switch;
+			global::BlazorMobile.Droid.Resource.Style.Widget_AppCompat_DrawerArrowToggle = global::BlazorMobile.InteropApp.Droid.Resource.Style.Widget_AppCompat_DrawerArrowToggle;
+			global::BlazorMobile.Droid.Resource.Style.Widget_AppCompat_DropDownItem_Spinner = global::BlazorMobile.InteropApp.Droid.Resource.Style.Widget_AppCompat_DropDownItem_Spinner;
+			global::BlazorMobile.Droid.Resource.Style.Widget_AppCompat_EditText = global::BlazorMobile.InteropApp.Droid.Resource.Style.Widget_AppCompat_EditText;
+			global::BlazorMobile.Droid.Resource.Style.Widget_AppCompat_ImageButton = global::BlazorMobile.InteropApp.Droid.Resource.Style.Widget_AppCompat_ImageButton;
+			global::BlazorMobile.Droid.Resource.Style.Widget_AppCompat_Light_ActionBar = global::BlazorMobile.InteropApp.Droid.Resource.Style.Widget_AppCompat_Light_ActionBar;
+			global::BlazorMobile.Droid.Resource.Style.Widget_AppCompat_Light_ActionBar_Solid = global::BlazorMobile.InteropApp.Droid.Resource.Style.Widget_AppCompat_Light_ActionBar_Solid;
+			global::BlazorMobile.Droid.Resource.Style.Widget_AppCompat_Light_ActionBar_Solid_Inverse = global::BlazorMobile.InteropApp.Droid.Resource.Style.Widget_AppCompat_Light_ActionBar_Solid_Inverse;
+			global::BlazorMobile.Droid.Resource.Style.Widget_AppCompat_Light_ActionBar_TabBar = global::BlazorMobile.InteropApp.Droid.Resource.Style.Widget_AppCompat_Light_ActionBar_TabBar;
+			global::BlazorMobile.Droid.Resource.Style.Widget_AppCompat_Light_ActionBar_TabBar_Inverse = global::BlazorMobile.InteropApp.Droid.Resource.Style.Widget_AppCompat_Light_ActionBar_TabBar_Inverse;
+			global::BlazorMobile.Droid.Resource.Style.Widget_AppCompat_Light_ActionBar_TabText = global::BlazorMobile.InteropApp.Droid.Resource.Style.Widget_AppCompat_Light_ActionBar_TabText;
+			global::BlazorMobile.Droid.Resource.Style.Widget_AppCompat_Light_ActionBar_TabText_Inverse = global::BlazorMobile.InteropApp.Droid.Resource.Style.Widget_AppCompat_Light_ActionBar_TabText_Inverse;
+			global::BlazorMobile.Droid.Resource.Style.Widget_AppCompat_Light_ActionBar_TabView = global::BlazorMobile.InteropApp.Droid.Resource.Style.Widget_AppCompat_Light_ActionBar_TabView;
+			global::BlazorMobile.Droid.Resource.Style.Widget_AppCompat_Light_ActionBar_TabView_Inverse = global::BlazorMobile.InteropApp.Droid.Resource.Style.Widget_AppCompat_Light_ActionBar_TabView_Inverse;
+			global::BlazorMobile.Droid.Resource.Style.Widget_AppCompat_Light_ActionButton = global::BlazorMobile.InteropApp.Droid.Resource.Style.Widget_AppCompat_Light_ActionButton;
+			global::BlazorMobile.Droid.Resource.Style.Widget_AppCompat_Light_ActionButton_CloseMode = global::BlazorMobile.InteropApp.Droid.Resource.Style.Widget_AppCompat_Light_ActionButton_CloseMode;
+			global::BlazorMobile.Droid.Resource.Style.Widget_AppCompat_Light_ActionButton_Overflow = global::BlazorMobile.InteropApp.Droid.Resource.Style.Widget_AppCompat_Light_ActionButton_Overflow;
+			global::BlazorMobile.Droid.Resource.Style.Widget_AppCompat_Light_ActionMode_Inverse = global::BlazorMobile.InteropApp.Droid.Resource.Style.Widget_AppCompat_Light_ActionMode_Inverse;
+			global::BlazorMobile.Droid.Resource.Style.Widget_AppCompat_Light_ActivityChooserView = global::BlazorMobile.InteropApp.Droid.Resource.Style.Widget_AppCompat_Light_ActivityChooserView;
+			global::BlazorMobile.Droid.Resource.Style.Widget_AppCompat_Light_AutoCompleteTextView = global::BlazorMobile.InteropApp.Droid.Resource.Style.Widget_AppCompat_Light_AutoCompleteTextView;
+			global::BlazorMobile.Droid.Resource.Style.Widget_AppCompat_Light_DropDownItem_Spinner = global::BlazorMobile.InteropApp.Droid.Resource.Style.Widget_AppCompat_Light_DropDownItem_Spinner;
+			global::BlazorMobile.Droid.Resource.Style.Widget_AppCompat_Light_ListPopupWindow = global::BlazorMobile.InteropApp.Droid.Resource.Style.Widget_AppCompat_Light_ListPopupWindow;
+			global::BlazorMobile.Droid.Resource.Style.Widget_AppCompat_Light_ListView_DropDown = global::BlazorMobile.InteropApp.Droid.Resource.Style.Widget_AppCompat_Light_ListView_DropDown;
+			global::BlazorMobile.Droid.Resource.Style.Widget_AppCompat_Light_PopupMenu = global::BlazorMobile.InteropApp.Droid.Resource.Style.Widget_AppCompat_Light_PopupMenu;
+			global::BlazorMobile.Droid.Resource.Style.Widget_AppCompat_Light_PopupMenu_Overflow = global::BlazorMobile.InteropApp.Droid.Resource.Style.Widget_AppCompat_Light_PopupMenu_Overflow;
+			global::BlazorMobile.Droid.Resource.Style.Widget_AppCompat_Light_SearchView = global::BlazorMobile.InteropApp.Droid.Resource.Style.Widget_AppCompat_Light_SearchView;
+			global::BlazorMobile.Droid.Resource.Style.Widget_AppCompat_Light_Spinner_DropDown_ActionBar = global::BlazorMobile.InteropApp.Droid.Resource.Style.Widget_AppCompat_Light_Spinner_DropDown_ActionBar;
+			global::BlazorMobile.Droid.Resource.Style.Widget_AppCompat_ListMenuView = global::BlazorMobile.InteropApp.Droid.Resource.Style.Widget_AppCompat_ListMenuView;
+			global::BlazorMobile.Droid.Resource.Style.Widget_AppCompat_ListPopupWindow = global::BlazorMobile.InteropApp.Droid.Resource.Style.Widget_AppCompat_ListPopupWindow;
+			global::BlazorMobile.Droid.Resource.Style.Widget_AppCompat_ListView = global::BlazorMobile.InteropApp.Droid.Resource.Style.Widget_AppCompat_ListView;
+			global::BlazorMobile.Droid.Resource.Style.Widget_AppCompat_ListView_DropDown = global::BlazorMobile.InteropApp.Droid.Resource.Style.Widget_AppCompat_ListView_DropDown;
+			global::BlazorMobile.Droid.Resource.Style.Widget_AppCompat_ListView_Menu = global::BlazorMobile.InteropApp.Droid.Resource.Style.Widget_AppCompat_ListView_Menu;
+			global::BlazorMobile.Droid.Resource.Style.Widget_AppCompat_PopupMenu = global::BlazorMobile.InteropApp.Droid.Resource.Style.Widget_AppCompat_PopupMenu;
+			global::BlazorMobile.Droid.Resource.Style.Widget_AppCompat_PopupMenu_Overflow = global::BlazorMobile.InteropApp.Droid.Resource.Style.Widget_AppCompat_PopupMenu_Overflow;
+			global::BlazorMobile.Droid.Resource.Style.Widget_AppCompat_PopupWindow = global::BlazorMobile.InteropApp.Droid.Resource.Style.Widget_AppCompat_PopupWindow;
+			global::BlazorMobile.Droid.Resource.Style.Widget_AppCompat_ProgressBar = global::BlazorMobile.InteropApp.Droid.Resource.Style.Widget_AppCompat_ProgressBar;
+			global::BlazorMobile.Droid.Resource.Style.Widget_AppCompat_ProgressBar_Horizontal = global::BlazorMobile.InteropApp.Droid.Resource.Style.Widget_AppCompat_ProgressBar_Horizontal;
+			global::BlazorMobile.Droid.Resource.Style.Widget_AppCompat_RatingBar = global::BlazorMobile.InteropApp.Droid.Resource.Style.Widget_AppCompat_RatingBar;
+			global::BlazorMobile.Droid.Resource.Style.Widget_AppCompat_RatingBar_Indicator = global::BlazorMobile.InteropApp.Droid.Resource.Style.Widget_AppCompat_RatingBar_Indicator;
+			global::BlazorMobile.Droid.Resource.Style.Widget_AppCompat_RatingBar_Small = global::BlazorMobile.InteropApp.Droid.Resource.Style.Widget_AppCompat_RatingBar_Small;
+			global::BlazorMobile.Droid.Resource.Style.Widget_AppCompat_SearchView = global::BlazorMobile.InteropApp.Droid.Resource.Style.Widget_AppCompat_SearchView;
+			global::BlazorMobile.Droid.Resource.Style.Widget_AppCompat_SearchView_ActionBar = global::BlazorMobile.InteropApp.Droid.Resource.Style.Widget_AppCompat_SearchView_ActionBar;
+			global::BlazorMobile.Droid.Resource.Style.Widget_AppCompat_SeekBar = global::BlazorMobile.InteropApp.Droid.Resource.Style.Widget_AppCompat_SeekBar;
+			global::BlazorMobile.Droid.Resource.Style.Widget_AppCompat_SeekBar_Discrete = global::BlazorMobile.InteropApp.Droid.Resource.Style.Widget_AppCompat_SeekBar_Discrete;
+			global::BlazorMobile.Droid.Resource.Style.Widget_AppCompat_Spinner = global::BlazorMobile.InteropApp.Droid.Resource.Style.Widget_AppCompat_Spinner;
+			global::BlazorMobile.Droid.Resource.Style.Widget_AppCompat_Spinner_DropDown = global::BlazorMobile.InteropApp.Droid.Resource.Style.Widget_AppCompat_Spinner_DropDown;
+			global::BlazorMobile.Droid.Resource.Style.Widget_AppCompat_Spinner_DropDown_ActionBar = global::BlazorMobile.InteropApp.Droid.Resource.Style.Widget_AppCompat_Spinner_DropDown_ActionBar;
+			global::BlazorMobile.Droid.Resource.Style.Widget_AppCompat_Spinner_Underlined = global::BlazorMobile.InteropApp.Droid.Resource.Style.Widget_AppCompat_Spinner_Underlined;
+			global::BlazorMobile.Droid.Resource.Style.Widget_AppCompat_TextView_SpinnerItem = global::BlazorMobile.InteropApp.Droid.Resource.Style.Widget_AppCompat_TextView_SpinnerItem;
+			global::BlazorMobile.Droid.Resource.Style.Widget_AppCompat_Toolbar = global::BlazorMobile.InteropApp.Droid.Resource.Style.Widget_AppCompat_Toolbar;
+			global::BlazorMobile.Droid.Resource.Style.Widget_AppCompat_Toolbar_Button_Navigation = global::BlazorMobile.InteropApp.Droid.Resource.Style.Widget_AppCompat_Toolbar_Button_Navigation;
+			global::BlazorMobile.Droid.Resource.Style.Widget_Compat_NotificationActionContainer = global::BlazorMobile.InteropApp.Droid.Resource.Style.Widget_Compat_NotificationActionContainer;
+			global::BlazorMobile.Droid.Resource.Style.Widget_Compat_NotificationActionText = global::BlazorMobile.InteropApp.Droid.Resource.Style.Widget_Compat_NotificationActionText;
+			global::BlazorMobile.Droid.Resource.Style.Widget_Design_AppBarLayout = global::BlazorMobile.InteropApp.Droid.Resource.Style.Widget_Design_AppBarLayout;
+			global::BlazorMobile.Droid.Resource.Style.Widget_Design_BottomNavigationView = global::BlazorMobile.InteropApp.Droid.Resource.Style.Widget_Design_BottomNavigationView;
+			global::BlazorMobile.Droid.Resource.Style.Widget_Design_BottomSheet_Modal = global::BlazorMobile.InteropApp.Droid.Resource.Style.Widget_Design_BottomSheet_Modal;
+			global::BlazorMobile.Droid.Resource.Style.Widget_Design_CollapsingToolbar = global::BlazorMobile.InteropApp.Droid.Resource.Style.Widget_Design_CollapsingToolbar;
+			global::BlazorMobile.Droid.Resource.Style.Widget_Design_FloatingActionButton = global::BlazorMobile.InteropApp.Droid.Resource.Style.Widget_Design_FloatingActionButton;
+			global::BlazorMobile.Droid.Resource.Style.Widget_Design_NavigationView = global::BlazorMobile.InteropApp.Droid.Resource.Style.Widget_Design_NavigationView;
+			global::BlazorMobile.Droid.Resource.Style.Widget_Design_ScrimInsetsFrameLayout = global::BlazorMobile.InteropApp.Droid.Resource.Style.Widget_Design_ScrimInsetsFrameLayout;
+			global::BlazorMobile.Droid.Resource.Style.Widget_Design_Snackbar = global::BlazorMobile.InteropApp.Droid.Resource.Style.Widget_Design_Snackbar;
+			global::BlazorMobile.Droid.Resource.Style.Widget_Design_TabLayout = global::BlazorMobile.InteropApp.Droid.Resource.Style.Widget_Design_TabLayout;
+			global::BlazorMobile.Droid.Resource.Style.Widget_Design_TextInputLayout = global::BlazorMobile.InteropApp.Droid.Resource.Style.Widget_Design_TextInputLayout;
+			global::BlazorMobile.Droid.Resource.Style.Widget_MaterialComponents_BottomAppBar = global::BlazorMobile.InteropApp.Droid.Resource.Style.Widget_MaterialComponents_BottomAppBar;
+			global::BlazorMobile.Droid.Resource.Style.Widget_MaterialComponents_BottomAppBar_Colored = global::BlazorMobile.InteropApp.Droid.Resource.Style.Widget_MaterialComponents_BottomAppBar_Colored;
+			global::BlazorMobile.Droid.Resource.Style.Widget_MaterialComponents_BottomNavigationView = global::BlazorMobile.InteropApp.Droid.Resource.Style.Widget_MaterialComponents_BottomNavigationView;
+			global::BlazorMobile.Droid.Resource.Style.Widget_MaterialComponents_BottomNavigationView_Colored = global::BlazorMobile.InteropApp.Droid.Resource.Style.Widget_MaterialComponents_BottomNavigationView_Colored;
+			global::BlazorMobile.Droid.Resource.Style.Widget_MaterialComponents_BottomSheet_Modal = global::BlazorMobile.InteropApp.Droid.Resource.Style.Widget_MaterialComponents_BottomSheet_Modal;
+			global::BlazorMobile.Droid.Resource.Style.Widget_MaterialComponents_Button = global::BlazorMobile.InteropApp.Droid.Resource.Style.Widget_MaterialComponents_Button;
+			global::BlazorMobile.Droid.Resource.Style.Widget_MaterialComponents_Button_Icon = global::BlazorMobile.InteropApp.Droid.Resource.Style.Widget_MaterialComponents_Button_Icon;
+			global::BlazorMobile.Droid.Resource.Style.Widget_MaterialComponents_Button_OutlinedButton = global::BlazorMobile.InteropApp.Droid.Resource.Style.Widget_MaterialComponents_Button_OutlinedButton;
+			global::BlazorMobile.Droid.Resource.Style.Widget_MaterialComponents_Button_OutlinedButton_Icon = global::BlazorMobile.InteropApp.Droid.Resource.Style.Widget_MaterialComponents_Button_OutlinedButton_Icon;
+			global::BlazorMobile.Droid.Resource.Style.Widget_MaterialComponents_Button_TextButton = global::BlazorMobile.InteropApp.Droid.Resource.Style.Widget_MaterialComponents_Button_TextButton;
+			global::BlazorMobile.Droid.Resource.Style.Widget_MaterialComponents_Button_TextButton_Dialog = global::BlazorMobile.InteropApp.Droid.Resource.Style.Widget_MaterialComponents_Button_TextButton_Dialog;
+			global::BlazorMobile.Droid.Resource.Style.Widget_MaterialComponents_Button_TextButton_Dialog_Icon = global::BlazorMobile.InteropApp.Droid.Resource.Style.Widget_MaterialComponents_Button_TextButton_Dialog_Icon;
+			global::BlazorMobile.Droid.Resource.Style.Widget_MaterialComponents_Button_TextButton_Icon = global::BlazorMobile.InteropApp.Droid.Resource.Style.Widget_MaterialComponents_Button_TextButton_Icon;
+			global::BlazorMobile.Droid.Resource.Style.Widget_MaterialComponents_Button_UnelevatedButton = global::BlazorMobile.InteropApp.Droid.Resource.Style.Widget_MaterialComponents_Button_UnelevatedButton;
+			global::BlazorMobile.Droid.Resource.Style.Widget_MaterialComponents_Button_UnelevatedButton_Icon = global::BlazorMobile.InteropApp.Droid.Resource.Style.Widget_MaterialComponents_Button_UnelevatedButton_Icon;
+			global::BlazorMobile.Droid.Resource.Style.Widget_MaterialComponents_CardView = global::BlazorMobile.InteropApp.Droid.Resource.Style.Widget_MaterialComponents_CardView;
+			global::BlazorMobile.Droid.Resource.Style.Widget_MaterialComponents_ChipGroup = global::BlazorMobile.InteropApp.Droid.Resource.Style.Widget_MaterialComponents_ChipGroup;
+			global::BlazorMobile.Droid.Resource.Style.Widget_MaterialComponents_Chip_Action = global::BlazorMobile.InteropApp.Droid.Resource.Style.Widget_MaterialComponents_Chip_Action;
+			global::BlazorMobile.Droid.Resource.Style.Widget_MaterialComponents_Chip_Choice = global::BlazorMobile.InteropApp.Droid.Resource.Style.Widget_MaterialComponents_Chip_Choice;
+			global::BlazorMobile.Droid.Resource.Style.Widget_MaterialComponents_Chip_Entry = global::BlazorMobile.InteropApp.Droid.Resource.Style.Widget_MaterialComponents_Chip_Entry;
+			global::BlazorMobile.Droid.Resource.Style.Widget_MaterialComponents_Chip_Filter = global::BlazorMobile.InteropApp.Droid.Resource.Style.Widget_MaterialComponents_Chip_Filter;
+			global::BlazorMobile.Droid.Resource.Style.Widget_MaterialComponents_FloatingActionButton = global::BlazorMobile.InteropApp.Droid.Resource.Style.Widget_MaterialComponents_FloatingActionButton;
+			global::BlazorMobile.Droid.Resource.Style.Widget_MaterialComponents_NavigationView = global::BlazorMobile.InteropApp.Droid.Resource.Style.Widget_MaterialComponents_NavigationView;
+			global::BlazorMobile.Droid.Resource.Style.Widget_MaterialComponents_Snackbar = global::BlazorMobile.InteropApp.Droid.Resource.Style.Widget_MaterialComponents_Snackbar;
+			global::BlazorMobile.Droid.Resource.Style.Widget_MaterialComponents_Snackbar_FullWidth = global::BlazorMobile.InteropApp.Droid.Resource.Style.Widget_MaterialComponents_Snackbar_FullWidth;
+			global::BlazorMobile.Droid.Resource.Style.Widget_MaterialComponents_TabLayout = global::BlazorMobile.InteropApp.Droid.Resource.Style.Widget_MaterialComponents_TabLayout;
+			global::BlazorMobile.Droid.Resource.Style.Widget_MaterialComponents_TabLayout_Colored = global::BlazorMobile.InteropApp.Droid.Resource.Style.Widget_MaterialComponents_TabLayout_Colored;
+			global::BlazorMobile.Droid.Resource.Style.Widget_MaterialComponents_TextInputEditText_FilledBox = global::BlazorMobile.InteropApp.Droid.Resource.Style.Widget_MaterialComponents_TextInputEditText_FilledBox;
+			global::BlazorMobile.Droid.Resource.Style.Widget_MaterialComponents_TextInputEditText_FilledBox_Dense = global::BlazorMobile.InteropApp.Droid.Resource.Style.Widget_MaterialComponents_TextInputEditText_FilledBox_Dense;
+			global::BlazorMobile.Droid.Resource.Style.Widget_MaterialComponents_TextInputEditText_OutlinedBox = global::BlazorMobile.InteropApp.Droid.Resource.Style.Widget_MaterialComponents_TextInputEditText_OutlinedBox;
+			global::BlazorMobile.Droid.Resource.Style.Widget_MaterialComponents_TextInputEditText_OutlinedBox_Dense = global::BlazorMobile.InteropApp.Droid.Resource.Style.Widget_MaterialComponents_TextInputEditText_OutlinedBox_Dense;
+			global::BlazorMobile.Droid.Resource.Style.Widget_MaterialComponents_TextInputLayout_FilledBox = global::BlazorMobile.InteropApp.Droid.Resource.Style.Widget_MaterialComponents_TextInputLayout_FilledBox;
+			global::BlazorMobile.Droid.Resource.Style.Widget_MaterialComponents_TextInputLayout_FilledBox_Dense = global::BlazorMobile.InteropApp.Droid.Resource.Style.Widget_MaterialComponents_TextInputLayout_FilledBox_Dense;
+			global::BlazorMobile.Droid.Resource.Style.Widget_MaterialComponents_TextInputLayout_OutlinedBox = global::BlazorMobile.InteropApp.Droid.Resource.Style.Widget_MaterialComponents_TextInputLayout_OutlinedBox;
+			global::BlazorMobile.Droid.Resource.Style.Widget_MaterialComponents_TextInputLayout_OutlinedBox_Dense = global::BlazorMobile.InteropApp.Droid.Resource.Style.Widget_MaterialComponents_TextInputLayout_OutlinedBox_Dense;
+			global::BlazorMobile.Droid.Resource.Style.Widget_MaterialComponents_Toolbar = global::BlazorMobile.InteropApp.Droid.Resource.Style.Widget_MaterialComponents_Toolbar;
+			global::BlazorMobile.Droid.Resource.Style.Widget_MediaRouter_Light_MediaRouteButton = global::BlazorMobile.InteropApp.Droid.Resource.Style.Widget_MediaRouter_Light_MediaRouteButton;
+			global::BlazorMobile.Droid.Resource.Style.Widget_MediaRouter_MediaRouteButton = global::BlazorMobile.InteropApp.Droid.Resource.Style.Widget_MediaRouter_MediaRouteButton;
+			global::BlazorMobile.Droid.Resource.Style.Widget_Support_CoordinatorLayout = global::BlazorMobile.InteropApp.Droid.Resource.Style.Widget_Support_CoordinatorLayout;
+			global::BlazorMobile.Droid.Resource.Style.XamarinFormsMaterialProgressBarCircular = global::BlazorMobile.InteropApp.Droid.Resource.Style.XamarinFormsMaterialProgressBarCircular;
+			global::BlazorMobile.Droid.Resource.Style.XamarinFormsMaterialProgressBarHorizontal = global::BlazorMobile.InteropApp.Droid.Resource.Style.XamarinFormsMaterialProgressBarHorizontal;
+			global::BlazorMobile.Droid.Resource.Style.XamarinFormsMaterialTextInputLayoutFilledBox = global::BlazorMobile.InteropApp.Droid.Resource.Style.XamarinFormsMaterialTextInputLayoutFilledBox;
+			global::BlazorMobile.Droid.Resource.Style.XamarinFormsMaterialTheme = global::BlazorMobile.InteropApp.Droid.Resource.Style.XamarinFormsMaterialTheme;
+			global::BlazorMobile.Droid.Resource.Styleable.ActionBar = global::BlazorMobile.InteropApp.Droid.Resource.Styleable.ActionBar;
+			global::BlazorMobile.Droid.Resource.Styleable.ActionBarLayout = global::BlazorMobile.InteropApp.Droid.Resource.Styleable.ActionBarLayout;
+			global::BlazorMobile.Droid.Resource.Styleable.ActionBarLayout_android_layout_gravity = global::BlazorMobile.InteropApp.Droid.Resource.Styleable.ActionBarLayout_android_layout_gravity;
+			global::BlazorMobile.Droid.Resource.Styleable.ActionBar_background = global::BlazorMobile.InteropApp.Droid.Resource.Styleable.ActionBar_background;
+			global::BlazorMobile.Droid.Resource.Styleable.ActionBar_backgroundSplit = global::BlazorMobile.InteropApp.Droid.Resource.Styleable.ActionBar_backgroundSplit;
+			global::BlazorMobile.Droid.Resource.Styleable.ActionBar_backgroundStacked = global::BlazorMobile.InteropApp.Droid.Resource.Styleable.ActionBar_backgroundStacked;
+			global::BlazorMobile.Droid.Resource.Styleable.ActionBar_contentInsetEnd = global::BlazorMobile.InteropApp.Droid.Resource.Styleable.ActionBar_contentInsetEnd;
+			global::BlazorMobile.Droid.Resource.Styleable.ActionBar_contentInsetEndWithActions = global::BlazorMobile.InteropApp.Droid.Resource.Styleable.ActionBar_contentInsetEndWithActions;
+			global::BlazorMobile.Droid.Resource.Styleable.ActionBar_contentInsetLeft = global::BlazorMobile.InteropApp.Droid.Resource.Styleable.ActionBar_contentInsetLeft;
+			global::BlazorMobile.Droid.Resource.Styleable.ActionBar_contentInsetRight = global::BlazorMobile.InteropApp.Droid.Resource.Styleable.ActionBar_contentInsetRight;
+			global::BlazorMobile.Droid.Resource.Styleable.ActionBar_contentInsetStart = global::BlazorMobile.InteropApp.Droid.Resource.Styleable.ActionBar_contentInsetStart;
+			global::BlazorMobile.Droid.Resource.Styleable.ActionBar_contentInsetStartWithNavigation = global::BlazorMobile.InteropApp.Droid.Resource.Styleable.ActionBar_contentInsetStartWithNavigation;
+			global::BlazorMobile.Droid.Resource.Styleable.ActionBar_customNavigationLayout = global::BlazorMobile.InteropApp.Droid.Resource.Styleable.ActionBar_customNavigationLayout;
+			global::BlazorMobile.Droid.Resource.Styleable.ActionBar_displayOptions = global::BlazorMobile.InteropApp.Droid.Resource.Styleable.ActionBar_displayOptions;
+			global::BlazorMobile.Droid.Resource.Styleable.ActionBar_divider = global::BlazorMobile.InteropApp.Droid.Resource.Styleable.ActionBar_divider;
+			global::BlazorMobile.Droid.Resource.Styleable.ActionBar_elevation = global::BlazorMobile.InteropApp.Droid.Resource.Styleable.ActionBar_elevation;
+			global::BlazorMobile.Droid.Resource.Styleable.ActionBar_height = global::BlazorMobile.InteropApp.Droid.Resource.Styleable.ActionBar_height;
+			global::BlazorMobile.Droid.Resource.Styleable.ActionBar_hideOnContentScroll = global::BlazorMobile.InteropApp.Droid.Resource.Styleable.ActionBar_hideOnContentScroll;
+			global::BlazorMobile.Droid.Resource.Styleable.ActionBar_homeAsUpIndicator = global::BlazorMobile.InteropApp.Droid.Resource.Styleable.ActionBar_homeAsUpIndicator;
+			global::BlazorMobile.Droid.Resource.Styleable.ActionBar_homeLayout = global::BlazorMobile.InteropApp.Droid.Resource.Styleable.ActionBar_homeLayout;
+			global::BlazorMobile.Droid.Resource.Styleable.ActionBar_icon = global::BlazorMobile.InteropApp.Droid.Resource.Styleable.ActionBar_icon;
+			global::BlazorMobile.Droid.Resource.Styleable.ActionBar_indeterminateProgressStyle = global::BlazorMobile.InteropApp.Droid.Resource.Styleable.ActionBar_indeterminateProgressStyle;
+			global::BlazorMobile.Droid.Resource.Styleable.ActionBar_itemPadding = global::BlazorMobile.InteropApp.Droid.Resource.Styleable.ActionBar_itemPadding;
+			global::BlazorMobile.Droid.Resource.Styleable.ActionBar_logo = global::BlazorMobile.InteropApp.Droid.Resource.Styleable.ActionBar_logo;
+			global::BlazorMobile.Droid.Resource.Styleable.ActionBar_navigationMode = global::BlazorMobile.InteropApp.Droid.Resource.Styleable.ActionBar_navigationMode;
+			global::BlazorMobile.Droid.Resource.Styleable.ActionBar_popupTheme = global::BlazorMobile.InteropApp.Droid.Resource.Styleable.ActionBar_popupTheme;
+			global::BlazorMobile.Droid.Resource.Styleable.ActionBar_progressBarPadding = global::BlazorMobile.InteropApp.Droid.Resource.Styleable.ActionBar_progressBarPadding;
+			global::BlazorMobile.Droid.Resource.Styleable.ActionBar_progressBarStyle = global::BlazorMobile.InteropApp.Droid.Resource.Styleable.ActionBar_progressBarStyle;
+			global::BlazorMobile.Droid.Resource.Styleable.ActionBar_subtitle = global::BlazorMobile.InteropApp.Droid.Resource.Styleable.ActionBar_subtitle;
+			global::BlazorMobile.Droid.Resource.Styleable.ActionBar_subtitleTextStyle = global::BlazorMobile.InteropApp.Droid.Resource.Styleable.ActionBar_subtitleTextStyle;
+			global::BlazorMobile.Droid.Resource.Styleable.ActionBar_title = global::BlazorMobile.InteropApp.Droid.Resource.Styleable.ActionBar_title;
+			global::BlazorMobile.Droid.Resource.Styleable.ActionBar_titleTextStyle = global::BlazorMobile.InteropApp.Droid.Resource.Styleable.ActionBar_titleTextStyle;
+			global::BlazorMobile.Droid.Resource.Styleable.ActionMenuItemView = global::BlazorMobile.InteropApp.Droid.Resource.Styleable.ActionMenuItemView;
+			global::BlazorMobile.Droid.Resource.Styleable.ActionMenuItemView_android_minWidth = global::BlazorMobile.InteropApp.Droid.Resource.Styleable.ActionMenuItemView_android_minWidth;
+			global::BlazorMobile.Droid.Resource.Styleable.ActionMenuView = global::BlazorMobile.InteropApp.Droid.Resource.Styleable.ActionMenuView;
+			global::BlazorMobile.Droid.Resource.Styleable.ActionMode = global::BlazorMobile.InteropApp.Droid.Resource.Styleable.ActionMode;
+			global::BlazorMobile.Droid.Resource.Styleable.ActionMode_background = global::BlazorMobile.InteropApp.Droid.Resource.Styleable.ActionMode_background;
+			global::BlazorMobile.Droid.Resource.Styleable.ActionMode_backgroundSplit = global::BlazorMobile.InteropApp.Droid.Resource.Styleable.ActionMode_backgroundSplit;
+			global::BlazorMobile.Droid.Resource.Styleable.ActionMode_closeItemLayout = global::BlazorMobile.InteropApp.Droid.Resource.Styleable.ActionMode_closeItemLayout;
+			global::BlazorMobile.Droid.Resource.Styleable.ActionMode_height = global::BlazorMobile.InteropApp.Droid.Resource.Styleable.ActionMode_height;
+			global::BlazorMobile.Droid.Resource.Styleable.ActionMode_subtitleTextStyle = global::BlazorMobile.InteropApp.Droid.Resource.Styleable.ActionMode_subtitleTextStyle;
+			global::BlazorMobile.Droid.Resource.Styleable.ActionMode_titleTextStyle = global::BlazorMobile.InteropApp.Droid.Resource.Styleable.ActionMode_titleTextStyle;
+			global::BlazorMobile.Droid.Resource.Styleable.ActivityChooserView = global::BlazorMobile.InteropApp.Droid.Resource.Styleable.ActivityChooserView;
+			global::BlazorMobile.Droid.Resource.Styleable.ActivityChooserView_expandActivityOverflowButtonDrawable = global::BlazorMobile.InteropApp.Droid.Resource.Styleable.ActivityChooserView_expandActivityOverflowButtonDrawable;
+			global::BlazorMobile.Droid.Resource.Styleable.ActivityChooserView_initialActivityCount = global::BlazorMobile.InteropApp.Droid.Resource.Styleable.ActivityChooserView_initialActivityCount;
+			global::BlazorMobile.Droid.Resource.Styleable.AlertDialog = global::BlazorMobile.InteropApp.Droid.Resource.Styleable.AlertDialog;
+			global::BlazorMobile.Droid.Resource.Styleable.AlertDialog_android_layout = global::BlazorMobile.InteropApp.Droid.Resource.Styleable.AlertDialog_android_layout;
+			global::BlazorMobile.Droid.Resource.Styleable.AlertDialog_buttonIconDimen = global::BlazorMobile.InteropApp.Droid.Resource.Styleable.AlertDialog_buttonIconDimen;
+			global::BlazorMobile.Droid.Resource.Styleable.AlertDialog_buttonPanelSideLayout = global::BlazorMobile.InteropApp.Droid.Resource.Styleable.AlertDialog_buttonPanelSideLayout;
+			global::BlazorMobile.Droid.Resource.Styleable.AlertDialog_listItemLayout = global::BlazorMobile.InteropApp.Droid.Resource.Styleable.AlertDialog_listItemLayout;
+			global::BlazorMobile.Droid.Resource.Styleable.AlertDialog_listLayout = global::BlazorMobile.InteropApp.Droid.Resource.Styleable.AlertDialog_listLayout;
+			global::BlazorMobile.Droid.Resource.Styleable.AlertDialog_multiChoiceItemLayout = global::BlazorMobile.InteropApp.Droid.Resource.Styleable.AlertDialog_multiChoiceItemLayout;
+			global::BlazorMobile.Droid.Resource.Styleable.AlertDialog_showTitle = global::BlazorMobile.InteropApp.Droid.Resource.Styleable.AlertDialog_showTitle;
+			global::BlazorMobile.Droid.Resource.Styleable.AlertDialog_singleChoiceItemLayout = global::BlazorMobile.InteropApp.Droid.Resource.Styleable.AlertDialog_singleChoiceItemLayout;
+			global::BlazorMobile.Droid.Resource.Styleable.AnimatedStateListDrawableCompat = global::BlazorMobile.InteropApp.Droid.Resource.Styleable.AnimatedStateListDrawableCompat;
+			global::BlazorMobile.Droid.Resource.Styleable.AnimatedStateListDrawableCompat_android_constantSize = global::BlazorMobile.InteropApp.Droid.Resource.Styleable.AnimatedStateListDrawableCompat_android_constantSize;
+			global::BlazorMobile.Droid.Resource.Styleable.AnimatedStateListDrawableCompat_android_dither = global::BlazorMobile.InteropApp.Droid.Resource.Styleable.AnimatedStateListDrawableCompat_android_dither;
+			global::BlazorMobile.Droid.Resource.Styleable.AnimatedStateListDrawableCompat_android_enterFadeDuration = global::BlazorMobile.InteropApp.Droid.Resource.Styleable.AnimatedStateListDrawableCompat_android_enterFadeDuration;
+			global::BlazorMobile.Droid.Resource.Styleable.AnimatedStateListDrawableCompat_android_exitFadeDuration = global::BlazorMobile.InteropApp.Droid.Resource.Styleable.AnimatedStateListDrawableCompat_android_exitFadeDuration;
+			global::BlazorMobile.Droid.Resource.Styleable.AnimatedStateListDrawableCompat_android_variablePadding = global::BlazorMobile.InteropApp.Droid.Resource.Styleable.AnimatedStateListDrawableCompat_android_variablePadding;
+			global::BlazorMobile.Droid.Resource.Styleable.AnimatedStateListDrawableCompat_android_visible = global::BlazorMobile.InteropApp.Droid.Resource.Styleable.AnimatedStateListDrawableCompat_android_visible;
+			global::BlazorMobile.Droid.Resource.Styleable.AnimatedStateListDrawableItem = global::BlazorMobile.InteropApp.Droid.Resource.Styleable.AnimatedStateListDrawableItem;
+			global::BlazorMobile.Droid.Resource.Styleable.AnimatedStateListDrawableItem_android_drawable = global::BlazorMobile.InteropApp.Droid.Resource.Styleable.AnimatedStateListDrawableItem_android_drawable;
+			global::BlazorMobile.Droid.Resource.Styleable.AnimatedStateListDrawableItem_android_id = global::BlazorMobile.InteropApp.Droid.Resource.Styleable.AnimatedStateListDrawableItem_android_id;
+			global::BlazorMobile.Droid.Resource.Styleable.AnimatedStateListDrawableTransition = global::BlazorMobile.InteropApp.Droid.Resource.Styleable.AnimatedStateListDrawableTransition;
+			global::BlazorMobile.Droid.Resource.Styleable.AnimatedStateListDrawableTransition_android_drawable = global::BlazorMobile.InteropApp.Droid.Resource.Styleable.AnimatedStateListDrawableTransition_android_drawable;
+			global::BlazorMobile.Droid.Resource.Styleable.AnimatedStateListDrawableTransition_android_fromId = global::BlazorMobile.InteropApp.Droid.Resource.Styleable.AnimatedStateListDrawableTransition_android_fromId;
+			global::BlazorMobile.Droid.Resource.Styleable.AnimatedStateListDrawableTransition_android_reversible = global::BlazorMobile.InteropApp.Droid.Resource.Styleable.AnimatedStateListDrawableTransition_android_reversible;
+			global::BlazorMobile.Droid.Resource.Styleable.AnimatedStateListDrawableTransition_android_toId = global::BlazorMobile.InteropApp.Droid.Resource.Styleable.AnimatedStateListDrawableTransition_android_toId;
+			global::BlazorMobile.Droid.Resource.Styleable.AppBarLayout = global::BlazorMobile.InteropApp.Droid.Resource.Styleable.AppBarLayout;
+			global::BlazorMobile.Droid.Resource.Styleable.AppBarLayoutStates = global::BlazorMobile.InteropApp.Droid.Resource.Styleable.AppBarLayoutStates;
+			global::BlazorMobile.Droid.Resource.Styleable.AppBarLayoutStates_state_collapsed = global::BlazorMobile.InteropApp.Droid.Resource.Styleable.AppBarLayoutStates_state_collapsed;
+			global::BlazorMobile.Droid.Resource.Styleable.AppBarLayoutStates_state_collapsible = global::BlazorMobile.InteropApp.Droid.Resource.Styleable.AppBarLayoutStates_state_collapsible;
+			global::BlazorMobile.Droid.Resource.Styleable.AppBarLayoutStates_state_liftable = global::BlazorMobile.InteropApp.Droid.Resource.Styleable.AppBarLayoutStates_state_liftable;
+			global::BlazorMobile.Droid.Resource.Styleable.AppBarLayoutStates_state_lifted = global::BlazorMobile.InteropApp.Droid.Resource.Styleable.AppBarLayoutStates_state_lifted;
+			global::BlazorMobile.Droid.Resource.Styleable.AppBarLayout_android_background = global::BlazorMobile.InteropApp.Droid.Resource.Styleable.AppBarLayout_android_background;
+			global::BlazorMobile.Droid.Resource.Styleable.AppBarLayout_android_keyboardNavigationCluster = global::BlazorMobile.InteropApp.Droid.Resource.Styleable.AppBarLayout_android_keyboardNavigationCluster;
+			global::BlazorMobile.Droid.Resource.Styleable.AppBarLayout_android_touchscreenBlocksFocus = global::BlazorMobile.InteropApp.Droid.Resource.Styleable.AppBarLayout_android_touchscreenBlocksFocus;
+			global::BlazorMobile.Droid.Resource.Styleable.AppBarLayout_elevation = global::BlazorMobile.InteropApp.Droid.Resource.Styleable.AppBarLayout_elevation;
+			global::BlazorMobile.Droid.Resource.Styleable.AppBarLayout_expanded = global::BlazorMobile.InteropApp.Droid.Resource.Styleable.AppBarLayout_expanded;
+			global::BlazorMobile.Droid.Resource.Styleable.AppBarLayout_Layout = global::BlazorMobile.InteropApp.Droid.Resource.Styleable.AppBarLayout_Layout;
+			global::BlazorMobile.Droid.Resource.Styleable.AppBarLayout_Layout_layout_scrollFlags = global::BlazorMobile.InteropApp.Droid.Resource.Styleable.AppBarLayout_Layout_layout_scrollFlags;
+			global::BlazorMobile.Droid.Resource.Styleable.AppBarLayout_Layout_layout_scrollInterpolator = global::BlazorMobile.InteropApp.Droid.Resource.Styleable.AppBarLayout_Layout_layout_scrollInterpolator;
+			global::BlazorMobile.Droid.Resource.Styleable.AppBarLayout_liftOnScroll = global::BlazorMobile.InteropApp.Droid.Resource.Styleable.AppBarLayout_liftOnScroll;
+			global::BlazorMobile.Droid.Resource.Styleable.AppCompatImageView = global::BlazorMobile.InteropApp.Droid.Resource.Styleable.AppCompatImageView;
+			global::BlazorMobile.Droid.Resource.Styleable.AppCompatImageView_android_src = global::BlazorMobile.InteropApp.Droid.Resource.Styleable.AppCompatImageView_android_src;
+			global::BlazorMobile.Droid.Resource.Styleable.AppCompatImageView_srcCompat = global::BlazorMobile.InteropApp.Droid.Resource.Styleable.AppCompatImageView_srcCompat;
+			global::BlazorMobile.Droid.Resource.Styleable.AppCompatImageView_tint = global::BlazorMobile.InteropApp.Droid.Resource.Styleable.AppCompatImageView_tint;
+			global::BlazorMobile.Droid.Resource.Styleable.AppCompatImageView_tintMode = global::BlazorMobile.InteropApp.Droid.Resource.Styleable.AppCompatImageView_tintMode;
+			global::BlazorMobile.Droid.Resource.Styleable.AppCompatSeekBar = global::BlazorMobile.InteropApp.Droid.Resource.Styleable.AppCompatSeekBar;
+			global::BlazorMobile.Droid.Resource.Styleable.AppCompatSeekBar_android_thumb = global::BlazorMobile.InteropApp.Droid.Resource.Styleable.AppCompatSeekBar_android_thumb;
+			global::BlazorMobile.Droid.Resource.Styleable.AppCompatSeekBar_tickMark = global::BlazorMobile.InteropApp.Droid.Resource.Styleable.AppCompatSeekBar_tickMark;
+			global::BlazorMobile.Droid.Resource.Styleable.AppCompatSeekBar_tickMarkTint = global::BlazorMobile.InteropApp.Droid.Resource.Styleable.AppCompatSeekBar_tickMarkTint;
+			global::BlazorMobile.Droid.Resource.Styleable.AppCompatSeekBar_tickMarkTintMode = global::BlazorMobile.InteropApp.Droid.Resource.Styleable.AppCompatSeekBar_tickMarkTintMode;
+			global::BlazorMobile.Droid.Resource.Styleable.AppCompatTextHelper = global::BlazorMobile.InteropApp.Droid.Resource.Styleable.AppCompatTextHelper;
+			global::BlazorMobile.Droid.Resource.Styleable.AppCompatTextHelper_android_drawableBottom = global::BlazorMobile.InteropApp.Droid.Resource.Styleable.AppCompatTextHelper_android_drawableBottom;
+			global::BlazorMobile.Droid.Resource.Styleable.AppCompatTextHelper_android_drawableEnd = global::BlazorMobile.InteropApp.Droid.Resource.Styleable.AppCompatTextHelper_android_drawableEnd;
+			global::BlazorMobile.Droid.Resource.Styleable.AppCompatTextHelper_android_drawableLeft = global::BlazorMobile.InteropApp.Droid.Resource.Styleable.AppCompatTextHelper_android_drawableLeft;
+			global::BlazorMobile.Droid.Resource.Styleable.AppCompatTextHelper_android_drawableRight = global::BlazorMobile.InteropApp.Droid.Resource.Styleable.AppCompatTextHelper_android_drawableRight;
+			global::BlazorMobile.Droid.Resource.Styleable.AppCompatTextHelper_android_drawableStart = global::BlazorMobile.InteropApp.Droid.Resource.Styleable.AppCompatTextHelper_android_drawableStart;
+			global::BlazorMobile.Droid.Resource.Styleable.AppCompatTextHelper_android_drawableTop = global::BlazorMobile.InteropApp.Droid.Resource.Styleable.AppCompatTextHelper_android_drawableTop;
+			global::BlazorMobile.Droid.Resource.Styleable.AppCompatTextHelper_android_textAppearance = global::BlazorMobile.InteropApp.Droid.Resource.Styleable.AppCompatTextHelper_android_textAppearance;
+			global::BlazorMobile.Droid.Resource.Styleable.AppCompatTextView = global::BlazorMobile.InteropApp.Droid.Resource.Styleable.AppCompatTextView;
+			global::BlazorMobile.Droid.Resource.Styleable.AppCompatTextView_android_textAppearance = global::BlazorMobile.InteropApp.Droid.Resource.Styleable.AppCompatTextView_android_textAppearance;
+			global::BlazorMobile.Droid.Resource.Styleable.AppCompatTextView_autoSizeMaxTextSize = global::BlazorMobile.InteropApp.Droid.Resource.Styleable.AppCompatTextView_autoSizeMaxTextSize;
+			global::BlazorMobile.Droid.Resource.Styleable.AppCompatTextView_autoSizeMinTextSize = global::BlazorMobile.InteropApp.Droid.Resource.Styleable.AppCompatTextView_autoSizeMinTextSize;
+			global::BlazorMobile.Droid.Resource.Styleable.AppCompatTextView_autoSizePresetSizes = global::BlazorMobile.InteropApp.Droid.Resource.Styleable.AppCompatTextView_autoSizePresetSizes;
+			global::BlazorMobile.Droid.Resource.Styleable.AppCompatTextView_autoSizeStepGranularity = global::BlazorMobile.InteropApp.Droid.Resource.Styleable.AppCompatTextView_autoSizeStepGranularity;
+			global::BlazorMobile.Droid.Resource.Styleable.AppCompatTextView_autoSizeTextType = global::BlazorMobile.InteropApp.Droid.Resource.Styleable.AppCompatTextView_autoSizeTextType;
+			global::BlazorMobile.Droid.Resource.Styleable.AppCompatTextView_firstBaselineToTopHeight = global::BlazorMobile.InteropApp.Droid.Resource.Styleable.AppCompatTextView_firstBaselineToTopHeight;
+			global::BlazorMobile.Droid.Resource.Styleable.AppCompatTextView_fontFamily = global::BlazorMobile.InteropApp.Droid.Resource.Styleable.AppCompatTextView_fontFamily;
+			global::BlazorMobile.Droid.Resource.Styleable.AppCompatTextView_lastBaselineToBottomHeight = global::BlazorMobile.InteropApp.Droid.Resource.Styleable.AppCompatTextView_lastBaselineToBottomHeight;
+			global::BlazorMobile.Droid.Resource.Styleable.AppCompatTextView_lineHeight = global::BlazorMobile.InteropApp.Droid.Resource.Styleable.AppCompatTextView_lineHeight;
+			global::BlazorMobile.Droid.Resource.Styleable.AppCompatTextView_textAllCaps = global::BlazorMobile.InteropApp.Droid.Resource.Styleable.AppCompatTextView_textAllCaps;
+			global::BlazorMobile.Droid.Resource.Styleable.AppCompatTheme = global::BlazorMobile.InteropApp.Droid.Resource.Styleable.AppCompatTheme;
+			global::BlazorMobile.Droid.Resource.Styleable.AppCompatTheme_actionBarDivider = global::BlazorMobile.InteropApp.Droid.Resource.Styleable.AppCompatTheme_actionBarDivider;
+			global::BlazorMobile.Droid.Resource.Styleable.AppCompatTheme_actionBarItemBackground = global::BlazorMobile.InteropApp.Droid.Resource.Styleable.AppCompatTheme_actionBarItemBackground;
+			global::BlazorMobile.Droid.Resource.Styleable.AppCompatTheme_actionBarPopupTheme = global::BlazorMobile.InteropApp.Droid.Resource.Styleable.AppCompatTheme_actionBarPopupTheme;
+			global::BlazorMobile.Droid.Resource.Styleable.AppCompatTheme_actionBarSize = global::BlazorMobile.InteropApp.Droid.Resource.Styleable.AppCompatTheme_actionBarSize;
+			global::BlazorMobile.Droid.Resource.Styleable.AppCompatTheme_actionBarSplitStyle = global::BlazorMobile.InteropApp.Droid.Resource.Styleable.AppCompatTheme_actionBarSplitStyle;
+			global::BlazorMobile.Droid.Resource.Styleable.AppCompatTheme_actionBarStyle = global::BlazorMobile.InteropApp.Droid.Resource.Styleable.AppCompatTheme_actionBarStyle;
+			global::BlazorMobile.Droid.Resource.Styleable.AppCompatTheme_actionBarTabBarStyle = global::BlazorMobile.InteropApp.Droid.Resource.Styleable.AppCompatTheme_actionBarTabBarStyle;
+			global::BlazorMobile.Droid.Resource.Styleable.AppCompatTheme_actionBarTabStyle = global::BlazorMobile.InteropApp.Droid.Resource.Styleable.AppCompatTheme_actionBarTabStyle;
+			global::BlazorMobile.Droid.Resource.Styleable.AppCompatTheme_actionBarTabTextStyle = global::BlazorMobile.InteropApp.Droid.Resource.Styleable.AppCompatTheme_actionBarTabTextStyle;
+			global::BlazorMobile.Droid.Resource.Styleable.AppCompatTheme_actionBarTheme = global::BlazorMobile.InteropApp.Droid.Resource.Styleable.AppCompatTheme_actionBarTheme;
+			global::BlazorMobile.Droid.Resource.Styleable.AppCompatTheme_actionBarWidgetTheme = global::BlazorMobile.InteropApp.Droid.Resource.Styleable.AppCompatTheme_actionBarWidgetTheme;
+			global::BlazorMobile.Droid.Resource.Styleable.AppCompatTheme_actionButtonStyle = global::BlazorMobile.InteropApp.Droid.Resource.Styleable.AppCompatTheme_actionButtonStyle;
+			global::BlazorMobile.Droid.Resource.Styleable.AppCompatTheme_actionDropDownStyle = global::BlazorMobile.InteropApp.Droid.Resource.Styleable.AppCompatTheme_actionDropDownStyle;
+			global::BlazorMobile.Droid.Resource.Styleable.AppCompatTheme_actionMenuTextAppearance = global::BlazorMobile.InteropApp.Droid.Resource.Styleable.AppCompatTheme_actionMenuTextAppearance;
+			global::BlazorMobile.Droid.Resource.Styleable.AppCompatTheme_actionMenuTextColor = global::BlazorMobile.InteropApp.Droid.Resource.Styleable.AppCompatTheme_actionMenuTextColor;
+			global::BlazorMobile.Droid.Resource.Styleable.AppCompatTheme_actionModeBackground = global::BlazorMobile.InteropApp.Droid.Resource.Styleable.AppCompatTheme_actionModeBackground;
+			global::BlazorMobile.Droid.Resource.Styleable.AppCompatTheme_actionModeCloseButtonStyle = global::BlazorMobile.InteropApp.Droid.Resource.Styleable.AppCompatTheme_actionModeCloseButtonStyle;
+			global::BlazorMobile.Droid.Resource.Styleable.AppCompatTheme_actionModeCloseDrawable = global::BlazorMobile.InteropApp.Droid.Resource.Styleable.AppCompatTheme_actionModeCloseDrawable;
+			global::BlazorMobile.Droid.Resource.Styleable.AppCompatTheme_actionModeCopyDrawable = global::BlazorMobile.InteropApp.Droid.Resource.Styleable.AppCompatTheme_actionModeCopyDrawable;
+			global::BlazorMobile.Droid.Resource.Styleable.AppCompatTheme_actionModeCutDrawable = global::BlazorMobile.InteropApp.Droid.Resource.Styleable.AppCompatTheme_actionModeCutDrawable;
+			global::BlazorMobile.Droid.Resource.Styleable.AppCompatTheme_actionModeFindDrawable = global::BlazorMobile.InteropApp.Droid.Resource.Styleable.AppCompatTheme_actionModeFindDrawable;
+			global::BlazorMobile.Droid.Resource.Styleable.AppCompatTheme_actionModePasteDrawable = global::BlazorMobile.InteropApp.Droid.Resource.Styleable.AppCompatTheme_actionModePasteDrawable;
+			global::BlazorMobile.Droid.Resource.Styleable.AppCompatTheme_actionModePopupWindowStyle = global::BlazorMobile.InteropApp.Droid.Resource.Styleable.AppCompatTheme_actionModePopupWindowStyle;
+			global::BlazorMobile.Droid.Resource.Styleable.AppCompatTheme_actionModeSelectAllDrawable = global::BlazorMobile.InteropApp.Droid.Resource.Styleable.AppCompatTheme_actionModeSelectAllDrawable;
+			global::BlazorMobile.Droid.Resource.Styleable.AppCompatTheme_actionModeShareDrawable = global::BlazorMobile.InteropApp.Droid.Resource.Styleable.AppCompatTheme_actionModeShareDrawable;
+			global::BlazorMobile.Droid.Resource.Styleable.AppCompatTheme_actionModeSplitBackground = global::BlazorMobile.InteropApp.Droid.Resource.Styleable.AppCompatTheme_actionModeSplitBackground;
+			global::BlazorMobile.Droid.Resource.Styleable.AppCompatTheme_actionModeStyle = global::BlazorMobile.InteropApp.Droid.Resource.Styleable.AppCompatTheme_actionModeStyle;
+			global::BlazorMobile.Droid.Resource.Styleable.AppCompatTheme_actionModeWebSearchDrawable = global::BlazorMobile.InteropApp.Droid.Resource.Styleable.AppCompatTheme_actionModeWebSearchDrawable;
+			global::BlazorMobile.Droid.Resource.Styleable.AppCompatTheme_actionOverflowButtonStyle = global::BlazorMobile.InteropApp.Droid.Resource.Styleable.AppCompatTheme_actionOverflowButtonStyle;
+			global::BlazorMobile.Droid.Resource.Styleable.AppCompatTheme_actionOverflowMenuStyle = global::BlazorMobile.InteropApp.Droid.Resource.Styleable.AppCompatTheme_actionOverflowMenuStyle;
+			global::BlazorMobile.Droid.Resource.Styleable.AppCompatTheme_activityChooserViewStyle = global::BlazorMobile.InteropApp.Droid.Resource.Styleable.AppCompatTheme_activityChooserViewStyle;
+			global::BlazorMobile.Droid.Resource.Styleable.AppCompatTheme_alertDialogButtonGroupStyle = global::BlazorMobile.InteropApp.Droid.Resource.Styleable.AppCompatTheme_alertDialogButtonGroupStyle;
+			global::BlazorMobile.Droid.Resource.Styleable.AppCompatTheme_alertDialogCenterButtons = global::BlazorMobile.InteropApp.Droid.Resource.Styleable.AppCompatTheme_alertDialogCenterButtons;
+			global::BlazorMobile.Droid.Resource.Styleable.AppCompatTheme_alertDialogStyle = global::BlazorMobile.InteropApp.Droid.Resource.Styleable.AppCompatTheme_alertDialogStyle;
+			global::BlazorMobile.Droid.Resource.Styleable.AppCompatTheme_alertDialogTheme = global::BlazorMobile.InteropApp.Droid.Resource.Styleable.AppCompatTheme_alertDialogTheme;
+			global::BlazorMobile.Droid.Resource.Styleable.AppCompatTheme_android_windowAnimationStyle = global::BlazorMobile.InteropApp.Droid.Resource.Styleable.AppCompatTheme_android_windowAnimationStyle;
+			global::BlazorMobile.Droid.Resource.Styleable.AppCompatTheme_android_windowIsFloating = global::BlazorMobile.InteropApp.Droid.Resource.Styleable.AppCompatTheme_android_windowIsFloating;
+			global::BlazorMobile.Droid.Resource.Styleable.AppCompatTheme_autoCompleteTextViewStyle = global::BlazorMobile.InteropApp.Droid.Resource.Styleable.AppCompatTheme_autoCompleteTextViewStyle;
+			global::BlazorMobile.Droid.Resource.Styleable.AppCompatTheme_borderlessButtonStyle = global::BlazorMobile.InteropApp.Droid.Resource.Styleable.AppCompatTheme_borderlessButtonStyle;
+			global::BlazorMobile.Droid.Resource.Styleable.AppCompatTheme_buttonBarButtonStyle = global::BlazorMobile.InteropApp.Droid.Resource.Styleable.AppCompatTheme_buttonBarButtonStyle;
+			global::BlazorMobile.Droid.Resource.Styleable.AppCompatTheme_buttonBarNegativeButtonStyle = global::BlazorMobile.InteropApp.Droid.Resource.Styleable.AppCompatTheme_buttonBarNegativeButtonStyle;
+			global::BlazorMobile.Droid.Resource.Styleable.AppCompatTheme_buttonBarNeutralButtonStyle = global::BlazorMobile.InteropApp.Droid.Resource.Styleable.AppCompatTheme_buttonBarNeutralButtonStyle;
+			global::BlazorMobile.Droid.Resource.Styleable.AppCompatTheme_buttonBarPositiveButtonStyle = global::BlazorMobile.InteropApp.Droid.Resource.Styleable.AppCompatTheme_buttonBarPositiveButtonStyle;
+			global::BlazorMobile.Droid.Resource.Styleable.AppCompatTheme_buttonBarStyle = global::BlazorMobile.InteropApp.Droid.Resource.Styleable.AppCompatTheme_buttonBarStyle;
+			global::BlazorMobile.Droid.Resource.Styleable.AppCompatTheme_buttonStyle = global::BlazorMobile.InteropApp.Droid.Resource.Styleable.AppCompatTheme_buttonStyle;
+			global::BlazorMobile.Droid.Resource.Styleable.AppCompatTheme_buttonStyleSmall = global::BlazorMobile.InteropApp.Droid.Resource.Styleable.AppCompatTheme_buttonStyleSmall;
+			global::BlazorMobile.Droid.Resource.Styleable.AppCompatTheme_checkboxStyle = global::BlazorMobile.InteropApp.Droid.Resource.Styleable.AppCompatTheme_checkboxStyle;
+			global::BlazorMobile.Droid.Resource.Styleable.AppCompatTheme_checkedTextViewStyle = global::BlazorMobile.InteropApp.Droid.Resource.Styleable.AppCompatTheme_checkedTextViewStyle;
+			global::BlazorMobile.Droid.Resource.Styleable.AppCompatTheme_colorAccent = global::BlazorMobile.InteropApp.Droid.Resource.Styleable.AppCompatTheme_colorAccent;
+			global::BlazorMobile.Droid.Resource.Styleable.AppCompatTheme_colorBackgroundFloating = global::BlazorMobile.InteropApp.Droid.Resource.Styleable.AppCompatTheme_colorBackgroundFloating;
+			global::BlazorMobile.Droid.Resource.Styleable.AppCompatTheme_colorButtonNormal = global::BlazorMobile.InteropApp.Droid.Resource.Styleable.AppCompatTheme_colorButtonNormal;
+			global::BlazorMobile.Droid.Resource.Styleable.AppCompatTheme_colorControlActivated = global::BlazorMobile.InteropApp.Droid.Resource.Styleable.AppCompatTheme_colorControlActivated;
+			global::BlazorMobile.Droid.Resource.Styleable.AppCompatTheme_colorControlHighlight = global::BlazorMobile.InteropApp.Droid.Resource.Styleable.AppCompatTheme_colorControlHighlight;
+			global::BlazorMobile.Droid.Resource.Styleable.AppCompatTheme_colorControlNormal = global::BlazorMobile.InteropApp.Droid.Resource.Styleable.AppCompatTheme_colorControlNormal;
+			global::BlazorMobile.Droid.Resource.Styleable.AppCompatTheme_colorError = global::BlazorMobile.InteropApp.Droid.Resource.Styleable.AppCompatTheme_colorError;
+			global::BlazorMobile.Droid.Resource.Styleable.AppCompatTheme_colorPrimary = global::BlazorMobile.InteropApp.Droid.Resource.Styleable.AppCompatTheme_colorPrimary;
+			global::BlazorMobile.Droid.Resource.Styleable.AppCompatTheme_colorPrimaryDark = global::BlazorMobile.InteropApp.Droid.Resource.Styleable.AppCompatTheme_colorPrimaryDark;
+			global::BlazorMobile.Droid.Resource.Styleable.AppCompatTheme_colorSwitchThumbNormal = global::BlazorMobile.InteropApp.Droid.Resource.Styleable.AppCompatTheme_colorSwitchThumbNormal;
+			global::BlazorMobile.Droid.Resource.Styleable.AppCompatTheme_controlBackground = global::BlazorMobile.InteropApp.Droid.Resource.Styleable.AppCompatTheme_controlBackground;
+			global::BlazorMobile.Droid.Resource.Styleable.AppCompatTheme_dialogCornerRadius = global::BlazorMobile.InteropApp.Droid.Resource.Styleable.AppCompatTheme_dialogCornerRadius;
+			global::BlazorMobile.Droid.Resource.Styleable.AppCompatTheme_dialogPreferredPadding = global::BlazorMobile.InteropApp.Droid.Resource.Styleable.AppCompatTheme_dialogPreferredPadding;
+			global::BlazorMobile.Droid.Resource.Styleable.AppCompatTheme_dialogTheme = global::BlazorMobile.InteropApp.Droid.Resource.Styleable.AppCompatTheme_dialogTheme;
+			global::BlazorMobile.Droid.Resource.Styleable.AppCompatTheme_dividerHorizontal = global::BlazorMobile.InteropApp.Droid.Resource.Styleable.AppCompatTheme_dividerHorizontal;
+			global::BlazorMobile.Droid.Resource.Styleable.AppCompatTheme_dividerVertical = global::BlazorMobile.InteropApp.Droid.Resource.Styleable.AppCompatTheme_dividerVertical;
+			global::BlazorMobile.Droid.Resource.Styleable.AppCompatTheme_dropdownListPreferredItemHeight = global::BlazorMobile.InteropApp.Droid.Resource.Styleable.AppCompatTheme_dropdownListPreferredItemHeight;
+			global::BlazorMobile.Droid.Resource.Styleable.AppCompatTheme_dropDownListViewStyle = global::BlazorMobile.InteropApp.Droid.Resource.Styleable.AppCompatTheme_dropDownListViewStyle;
+			global::BlazorMobile.Droid.Resource.Styleable.AppCompatTheme_editTextBackground = global::BlazorMobile.InteropApp.Droid.Resource.Styleable.AppCompatTheme_editTextBackground;
+			global::BlazorMobile.Droid.Resource.Styleable.AppCompatTheme_editTextColor = global::BlazorMobile.InteropApp.Droid.Resource.Styleable.AppCompatTheme_editTextColor;
+			global::BlazorMobile.Droid.Resource.Styleable.AppCompatTheme_editTextStyle = global::BlazorMobile.InteropApp.Droid.Resource.Styleable.AppCompatTheme_editTextStyle;
+			global::BlazorMobile.Droid.Resource.Styleable.AppCompatTheme_homeAsUpIndicator = global::BlazorMobile.InteropApp.Droid.Resource.Styleable.AppCompatTheme_homeAsUpIndicator;
+			global::BlazorMobile.Droid.Resource.Styleable.AppCompatTheme_imageButtonStyle = global::BlazorMobile.InteropApp.Droid.Resource.Styleable.AppCompatTheme_imageButtonStyle;
+			global::BlazorMobile.Droid.Resource.Styleable.AppCompatTheme_listChoiceBackgroundIndicator = global::BlazorMobile.InteropApp.Droid.Resource.Styleable.AppCompatTheme_listChoiceBackgroundIndicator;
+			global::BlazorMobile.Droid.Resource.Styleable.AppCompatTheme_listDividerAlertDialog = global::BlazorMobile.InteropApp.Droid.Resource.Styleable.AppCompatTheme_listDividerAlertDialog;
+			global::BlazorMobile.Droid.Resource.Styleable.AppCompatTheme_listMenuViewStyle = global::BlazorMobile.InteropApp.Droid.Resource.Styleable.AppCompatTheme_listMenuViewStyle;
+			global::BlazorMobile.Droid.Resource.Styleable.AppCompatTheme_listPopupWindowStyle = global::BlazorMobile.InteropApp.Droid.Resource.Styleable.AppCompatTheme_listPopupWindowStyle;
+			global::BlazorMobile.Droid.Resource.Styleable.AppCompatTheme_listPreferredItemHeight = global::BlazorMobile.InteropApp.Droid.Resource.Styleable.AppCompatTheme_listPreferredItemHeight;
+			global::BlazorMobile.Droid.Resource.Styleable.AppCompatTheme_listPreferredItemHeightLarge = global::BlazorMobile.InteropApp.Droid.Resource.Styleable.AppCompatTheme_listPreferredItemHeightLarge;
+			global::BlazorMobile.Droid.Resource.Styleable.AppCompatTheme_listPreferredItemHeightSmall = global::BlazorMobile.InteropApp.Droid.Resource.Styleable.AppCompatTheme_listPreferredItemHeightSmall;
+			global::BlazorMobile.Droid.Resource.Styleable.AppCompatTheme_listPreferredItemPaddingLeft = global::BlazorMobile.InteropApp.Droid.Resource.Styleable.AppCompatTheme_listPreferredItemPaddingLeft;
+			global::BlazorMobile.Droid.Resource.Styleable.AppCompatTheme_listPreferredItemPaddingRight = global::BlazorMobile.InteropApp.Droid.Resource.Styleable.AppCompatTheme_listPreferredItemPaddingRight;
+			global::BlazorMobile.Droid.Resource.Styleable.AppCompatTheme_panelBackground = global::BlazorMobile.InteropApp.Droid.Resource.Styleable.AppCompatTheme_panelBackground;
+			global::BlazorMobile.Droid.Resource.Styleable.AppCompatTheme_panelMenuListTheme = global::BlazorMobile.InteropApp.Droid.Resource.Styleable.AppCompatTheme_panelMenuListTheme;
+			global::BlazorMobile.Droid.Resource.Styleable.AppCompatTheme_panelMenuListWidth = global::BlazorMobile.InteropApp.Droid.Resource.Styleable.AppCompatTheme_panelMenuListWidth;
+			global::BlazorMobile.Droid.Resource.Styleable.AppCompatTheme_popupMenuStyle = global::BlazorMobile.InteropApp.Droid.Resource.Styleable.AppCompatTheme_popupMenuStyle;
+			global::BlazorMobile.Droid.Resource.Styleable.AppCompatTheme_popupWindowStyle = global::BlazorMobile.InteropApp.Droid.Resource.Styleable.AppCompatTheme_popupWindowStyle;
+			global::BlazorMobile.Droid.Resource.Styleable.AppCompatTheme_radioButtonStyle = global::BlazorMobile.InteropApp.Droid.Resource.Styleable.AppCompatTheme_radioButtonStyle;
+			global::BlazorMobile.Droid.Resource.Styleable.AppCompatTheme_ratingBarStyle = global::BlazorMobile.InteropApp.Droid.Resource.Styleable.AppCompatTheme_ratingBarStyle;
+			global::BlazorMobile.Droid.Resource.Styleable.AppCompatTheme_ratingBarStyleIndicator = global::BlazorMobile.InteropApp.Droid.Resource.Styleable.AppCompatTheme_ratingBarStyleIndicator;
+			global::BlazorMobile.Droid.Resource.Styleable.AppCompatTheme_ratingBarStyleSmall = global::BlazorMobile.InteropApp.Droid.Resource.Styleable.AppCompatTheme_ratingBarStyleSmall;
+			global::BlazorMobile.Droid.Resource.Styleable.AppCompatTheme_searchViewStyle = global::BlazorMobile.InteropApp.Droid.Resource.Styleable.AppCompatTheme_searchViewStyle;
+			global::BlazorMobile.Droid.Resource.Styleable.AppCompatTheme_seekBarStyle = global::BlazorMobile.InteropApp.Droid.Resource.Styleable.AppCompatTheme_seekBarStyle;
+			global::BlazorMobile.Droid.Resource.Styleable.AppCompatTheme_selectableItemBackground = global::BlazorMobile.InteropApp.Droid.Resource.Styleable.AppCompatTheme_selectableItemBackground;
+			global::BlazorMobile.Droid.Resource.Styleable.AppCompatTheme_selectableItemBackgroundBorderless = global::BlazorMobile.InteropApp.Droid.Resource.Styleable.AppCompatTheme_selectableItemBackgroundBorderless;
+			global::BlazorMobile.Droid.Resource.Styleable.AppCompatTheme_spinnerDropDownItemStyle = global::BlazorMobile.InteropApp.Droid.Resource.Styleable.AppCompatTheme_spinnerDropDownItemStyle;
+			global::BlazorMobile.Droid.Resource.Styleable.AppCompatTheme_spinnerStyle = global::BlazorMobile.InteropApp.Droid.Resource.Styleable.AppCompatTheme_spinnerStyle;
+			global::BlazorMobile.Droid.Resource.Styleable.AppCompatTheme_switchStyle = global::BlazorMobile.InteropApp.Droid.Resource.Styleable.AppCompatTheme_switchStyle;
+			global::BlazorMobile.Droid.Resource.Styleable.AppCompatTheme_textAppearanceLargePopupMenu = global::BlazorMobile.InteropApp.Droid.Resource.Styleable.AppCompatTheme_textAppearanceLargePopupMenu;
+			global::BlazorMobile.Droid.Resource.Styleable.AppCompatTheme_textAppearanceListItem = global::BlazorMobile.InteropApp.Droid.Resource.Styleable.AppCompatTheme_textAppearanceListItem;
+			global::BlazorMobile.Droid.Resource.Styleable.AppCompatTheme_textAppearanceListItemSecondary = global::BlazorMobile.InteropApp.Droid.Resource.Styleable.AppCompatTheme_textAppearanceListItemSecondary;
+			global::BlazorMobile.Droid.Resource.Styleable.AppCompatTheme_textAppearanceListItemSmall = global::BlazorMobile.InteropApp.Droid.Resource.Styleable.AppCompatTheme_textAppearanceListItemSmall;
+			global::BlazorMobile.Droid.Resource.Styleable.AppCompatTheme_textAppearancePopupMenuHeader = global::BlazorMobile.InteropApp.Droid.Resource.Styleable.AppCompatTheme_textAppearancePopupMenuHeader;
+			global::BlazorMobile.Droid.Resource.Styleable.AppCompatTheme_textAppearanceSearchResultSubtitle = global::BlazorMobile.InteropApp.Droid.Resource.Styleable.AppCompatTheme_textAppearanceSearchResultSubtitle;
+			global::BlazorMobile.Droid.Resource.Styleable.AppCompatTheme_textAppearanceSearchResultTitle = global::BlazorMobile.InteropApp.Droid.Resource.Styleable.AppCompatTheme_textAppearanceSearchResultTitle;
+			global::BlazorMobile.Droid.Resource.Styleable.AppCompatTheme_textAppearanceSmallPopupMenu = global::BlazorMobile.InteropApp.Droid.Resource.Styleable.AppCompatTheme_textAppearanceSmallPopupMenu;
+			global::BlazorMobile.Droid.Resource.Styleable.AppCompatTheme_textColorAlertDialogListItem = global::BlazorMobile.InteropApp.Droid.Resource.Styleable.AppCompatTheme_textColorAlertDialogListItem;
+			global::BlazorMobile.Droid.Resource.Styleable.AppCompatTheme_textColorSearchUrl = global::BlazorMobile.InteropApp.Droid.Resource.Styleable.AppCompatTheme_textColorSearchUrl;
+			global::BlazorMobile.Droid.Resource.Styleable.AppCompatTheme_toolbarNavigationButtonStyle = global::BlazorMobile.InteropApp.Droid.Resource.Styleable.AppCompatTheme_toolbarNavigationButtonStyle;
+			global::BlazorMobile.Droid.Resource.Styleable.AppCompatTheme_toolbarStyle = global::BlazorMobile.InteropApp.Droid.Resource.Styleable.AppCompatTheme_toolbarStyle;
+			global::BlazorMobile.Droid.Resource.Styleable.AppCompatTheme_tooltipForegroundColor = global::BlazorMobile.InteropApp.Droid.Resource.Styleable.AppCompatTheme_tooltipForegroundColor;
+			global::BlazorMobile.Droid.Resource.Styleable.AppCompatTheme_tooltipFrameBackground = global::BlazorMobile.InteropApp.Droid.Resource.Styleable.AppCompatTheme_tooltipFrameBackground;
+			global::BlazorMobile.Droid.Resource.Styleable.AppCompatTheme_viewInflaterClass = global::BlazorMobile.InteropApp.Droid.Resource.Styleable.AppCompatTheme_viewInflaterClass;
+			global::BlazorMobile.Droid.Resource.Styleable.AppCompatTheme_windowActionBar = global::BlazorMobile.InteropApp.Droid.Resource.Styleable.AppCompatTheme_windowActionBar;
+			global::BlazorMobile.Droid.Resource.Styleable.AppCompatTheme_windowActionBarOverlay = global::BlazorMobile.InteropApp.Droid.Resource.Styleable.AppCompatTheme_windowActionBarOverlay;
+			global::BlazorMobile.Droid.Resource.Styleable.AppCompatTheme_windowActionModeOverlay = global::BlazorMobile.InteropApp.Droid.Resource.Styleable.AppCompatTheme_windowActionModeOverlay;
+			global::BlazorMobile.Droid.Resource.Styleable.AppCompatTheme_windowFixedHeightMajor = global::BlazorMobile.InteropApp.Droid.Resource.Styleable.AppCompatTheme_windowFixedHeightMajor;
+			global::BlazorMobile.Droid.Resource.Styleable.AppCompatTheme_windowFixedHeightMinor = global::BlazorMobile.InteropApp.Droid.Resource.Styleable.AppCompatTheme_windowFixedHeightMinor;
+			global::BlazorMobile.Droid.Resource.Styleable.AppCompatTheme_windowFixedWidthMajor = global::BlazorMobile.InteropApp.Droid.Resource.Styleable.AppCompatTheme_windowFixedWidthMajor;
+			global::BlazorMobile.Droid.Resource.Styleable.AppCompatTheme_windowFixedWidthMinor = global::BlazorMobile.InteropApp.Droid.Resource.Styleable.AppCompatTheme_windowFixedWidthMinor;
+			global::BlazorMobile.Droid.Resource.Styleable.AppCompatTheme_windowMinWidthMajor = global::BlazorMobile.InteropApp.Droid.Resource.Styleable.AppCompatTheme_windowMinWidthMajor;
+			global::BlazorMobile.Droid.Resource.Styleable.AppCompatTheme_windowMinWidthMinor = global::BlazorMobile.InteropApp.Droid.Resource.Styleable.AppCompatTheme_windowMinWidthMinor;
+			global::BlazorMobile.Droid.Resource.Styleable.AppCompatTheme_windowNoTitle = global::BlazorMobile.InteropApp.Droid.Resource.Styleable.AppCompatTheme_windowNoTitle;
+			global::BlazorMobile.Droid.Resource.Styleable.BottomAppBar = global::BlazorMobile.InteropApp.Droid.Resource.Styleable.BottomAppBar;
+			global::BlazorMobile.Droid.Resource.Styleable.BottomAppBar_backgroundTint = global::BlazorMobile.InteropApp.Droid.Resource.Styleable.BottomAppBar_backgroundTint;
+			global::BlazorMobile.Droid.Resource.Styleable.BottomAppBar_fabAlignmentMode = global::BlazorMobile.InteropApp.Droid.Resource.Styleable.BottomAppBar_fabAlignmentMode;
+			global::BlazorMobile.Droid.Resource.Styleable.BottomAppBar_fabCradleMargin = global::BlazorMobile.InteropApp.Droid.Resource.Styleable.BottomAppBar_fabCradleMargin;
+			global::BlazorMobile.Droid.Resource.Styleable.BottomAppBar_fabCradleRoundedCornerRadius = global::BlazorMobile.InteropApp.Droid.Resource.Styleable.BottomAppBar_fabCradleRoundedCornerRadius;
+			global::BlazorMobile.Droid.Resource.Styleable.BottomAppBar_fabCradleVerticalOffset = global::BlazorMobile.InteropApp.Droid.Resource.Styleable.BottomAppBar_fabCradleVerticalOffset;
+			global::BlazorMobile.Droid.Resource.Styleable.BottomAppBar_hideOnScroll = global::BlazorMobile.InteropApp.Droid.Resource.Styleable.BottomAppBar_hideOnScroll;
+			global::BlazorMobile.Droid.Resource.Styleable.BottomNavigationView = global::BlazorMobile.InteropApp.Droid.Resource.Styleable.BottomNavigationView;
+			global::BlazorMobile.Droid.Resource.Styleable.BottomNavigationView_elevation = global::BlazorMobile.InteropApp.Droid.Resource.Styleable.BottomNavigationView_elevation;
+			global::BlazorMobile.Droid.Resource.Styleable.BottomNavigationView_itemBackground = global::BlazorMobile.InteropApp.Droid.Resource.Styleable.BottomNavigationView_itemBackground;
+			global::BlazorMobile.Droid.Resource.Styleable.BottomNavigationView_itemHorizontalTranslationEnabled = global::BlazorMobile.InteropApp.Droid.Resource.Styleable.BottomNavigationView_itemHorizontalTranslationEnabled;
+			global::BlazorMobile.Droid.Resource.Styleable.BottomNavigationView_itemIconSize = global::BlazorMobile.InteropApp.Droid.Resource.Styleable.BottomNavigationView_itemIconSize;
+			global::BlazorMobile.Droid.Resource.Styleable.BottomNavigationView_itemIconTint = global::BlazorMobile.InteropApp.Droid.Resource.Styleable.BottomNavigationView_itemIconTint;
+			global::BlazorMobile.Droid.Resource.Styleable.BottomNavigationView_itemTextAppearanceActive = global::BlazorMobile.InteropApp.Droid.Resource.Styleable.BottomNavigationView_itemTextAppearanceActive;
+			global::BlazorMobile.Droid.Resource.Styleable.BottomNavigationView_itemTextAppearanceInactive = global::BlazorMobile.InteropApp.Droid.Resource.Styleable.BottomNavigationView_itemTextAppearanceInactive;
+			global::BlazorMobile.Droid.Resource.Styleable.BottomNavigationView_itemTextColor = global::BlazorMobile.InteropApp.Droid.Resource.Styleable.BottomNavigationView_itemTextColor;
+			global::BlazorMobile.Droid.Resource.Styleable.BottomNavigationView_labelVisibilityMode = global::BlazorMobile.InteropApp.Droid.Resource.Styleable.BottomNavigationView_labelVisibilityMode;
+			global::BlazorMobile.Droid.Resource.Styleable.BottomNavigationView_menu = global::BlazorMobile.InteropApp.Droid.Resource.Styleable.BottomNavigationView_menu;
+			global::BlazorMobile.Droid.Resource.Styleable.BottomSheetBehavior_Layout = global::BlazorMobile.InteropApp.Droid.Resource.Styleable.BottomSheetBehavior_Layout;
+			global::BlazorMobile.Droid.Resource.Styleable.BottomSheetBehavior_Layout_behavior_fitToContents = global::BlazorMobile.InteropApp.Droid.Resource.Styleable.BottomSheetBehavior_Layout_behavior_fitToContents;
+			global::BlazorMobile.Droid.Resource.Styleable.BottomSheetBehavior_Layout_behavior_hideable = global::BlazorMobile.InteropApp.Droid.Resource.Styleable.BottomSheetBehavior_Layout_behavior_hideable;
+			global::BlazorMobile.Droid.Resource.Styleable.BottomSheetBehavior_Layout_behavior_peekHeight = global::BlazorMobile.InteropApp.Droid.Resource.Styleable.BottomSheetBehavior_Layout_behavior_peekHeight;
+			global::BlazorMobile.Droid.Resource.Styleable.BottomSheetBehavior_Layout_behavior_skipCollapsed = global::BlazorMobile.InteropApp.Droid.Resource.Styleable.BottomSheetBehavior_Layout_behavior_skipCollapsed;
+			global::BlazorMobile.Droid.Resource.Styleable.ButtonBarLayout = global::BlazorMobile.InteropApp.Droid.Resource.Styleable.ButtonBarLayout;
+			global::BlazorMobile.Droid.Resource.Styleable.ButtonBarLayout_allowStacking = global::BlazorMobile.InteropApp.Droid.Resource.Styleable.ButtonBarLayout_allowStacking;
+			global::BlazorMobile.Droid.Resource.Styleable.CardView = global::BlazorMobile.InteropApp.Droid.Resource.Styleable.CardView;
+			global::BlazorMobile.Droid.Resource.Styleable.CardView_android_minHeight = global::BlazorMobile.InteropApp.Droid.Resource.Styleable.CardView_android_minHeight;
+			global::BlazorMobile.Droid.Resource.Styleable.CardView_android_minWidth = global::BlazorMobile.InteropApp.Droid.Resource.Styleable.CardView_android_minWidth;
+			global::BlazorMobile.Droid.Resource.Styleable.CardView_cardBackgroundColor = global::BlazorMobile.InteropApp.Droid.Resource.Styleable.CardView_cardBackgroundColor;
+			global::BlazorMobile.Droid.Resource.Styleable.CardView_cardCornerRadius = global::BlazorMobile.InteropApp.Droid.Resource.Styleable.CardView_cardCornerRadius;
+			global::BlazorMobile.Droid.Resource.Styleable.CardView_cardElevation = global::BlazorMobile.InteropApp.Droid.Resource.Styleable.CardView_cardElevation;
+			global::BlazorMobile.Droid.Resource.Styleable.CardView_cardMaxElevation = global::BlazorMobile.InteropApp.Droid.Resource.Styleable.CardView_cardMaxElevation;
+			global::BlazorMobile.Droid.Resource.Styleable.CardView_cardPreventCornerOverlap = global::BlazorMobile.InteropApp.Droid.Resource.Styleable.CardView_cardPreventCornerOverlap;
+			global::BlazorMobile.Droid.Resource.Styleable.CardView_cardUseCompatPadding = global::BlazorMobile.InteropApp.Droid.Resource.Styleable.CardView_cardUseCompatPadding;
+			global::BlazorMobile.Droid.Resource.Styleable.CardView_contentPadding = global::BlazorMobile.InteropApp.Droid.Resource.Styleable.CardView_contentPadding;
+			global::BlazorMobile.Droid.Resource.Styleable.CardView_contentPaddingBottom = global::BlazorMobile.InteropApp.Droid.Resource.Styleable.CardView_contentPaddingBottom;
+			global::BlazorMobile.Droid.Resource.Styleable.CardView_contentPaddingLeft = global::BlazorMobile.InteropApp.Droid.Resource.Styleable.CardView_contentPaddingLeft;
+			global::BlazorMobile.Droid.Resource.Styleable.CardView_contentPaddingRight = global::BlazorMobile.InteropApp.Droid.Resource.Styleable.CardView_contentPaddingRight;
+			global::BlazorMobile.Droid.Resource.Styleable.CardView_contentPaddingTop = global::BlazorMobile.InteropApp.Droid.Resource.Styleable.CardView_contentPaddingTop;
+			global::BlazorMobile.Droid.Resource.Styleable.Chip = global::BlazorMobile.InteropApp.Droid.Resource.Styleable.Chip;
+			global::BlazorMobile.Droid.Resource.Styleable.ChipGroup = global::BlazorMobile.InteropApp.Droid.Resource.Styleable.ChipGroup;
+			global::BlazorMobile.Droid.Resource.Styleable.ChipGroup_checkedChip = global::BlazorMobile.InteropApp.Droid.Resource.Styleable.ChipGroup_checkedChip;
+			global::BlazorMobile.Droid.Resource.Styleable.ChipGroup_chipSpacing = global::BlazorMobile.InteropApp.Droid.Resource.Styleable.ChipGroup_chipSpacing;
+			global::BlazorMobile.Droid.Resource.Styleable.ChipGroup_chipSpacingHorizontal = global::BlazorMobile.InteropApp.Droid.Resource.Styleable.ChipGroup_chipSpacingHorizontal;
+			global::BlazorMobile.Droid.Resource.Styleable.ChipGroup_chipSpacingVertical = global::BlazorMobile.InteropApp.Droid.Resource.Styleable.ChipGroup_chipSpacingVertical;
+			global::BlazorMobile.Droid.Resource.Styleable.ChipGroup_singleLine = global::BlazorMobile.InteropApp.Droid.Resource.Styleable.ChipGroup_singleLine;
+			global::BlazorMobile.Droid.Resource.Styleable.ChipGroup_singleSelection = global::BlazorMobile.InteropApp.Droid.Resource.Styleable.ChipGroup_singleSelection;
+			global::BlazorMobile.Droid.Resource.Styleable.Chip_android_checkable = global::BlazorMobile.InteropApp.Droid.Resource.Styleable.Chip_android_checkable;
+			global::BlazorMobile.Droid.Resource.Styleable.Chip_android_ellipsize = global::BlazorMobile.InteropApp.Droid.Resource.Styleable.Chip_android_ellipsize;
+			global::BlazorMobile.Droid.Resource.Styleable.Chip_android_maxWidth = global::BlazorMobile.InteropApp.Droid.Resource.Styleable.Chip_android_maxWidth;
+			global::BlazorMobile.Droid.Resource.Styleable.Chip_android_text = global::BlazorMobile.InteropApp.Droid.Resource.Styleable.Chip_android_text;
+			global::BlazorMobile.Droid.Resource.Styleable.Chip_android_textAppearance = global::BlazorMobile.InteropApp.Droid.Resource.Styleable.Chip_android_textAppearance;
+			global::BlazorMobile.Droid.Resource.Styleable.Chip_checkedIcon = global::BlazorMobile.InteropApp.Droid.Resource.Styleable.Chip_checkedIcon;
+			global::BlazorMobile.Droid.Resource.Styleable.Chip_checkedIconEnabled = global::BlazorMobile.InteropApp.Droid.Resource.Styleable.Chip_checkedIconEnabled;
+			global::BlazorMobile.Droid.Resource.Styleable.Chip_checkedIconVisible = global::BlazorMobile.InteropApp.Droid.Resource.Styleable.Chip_checkedIconVisible;
+			global::BlazorMobile.Droid.Resource.Styleable.Chip_chipBackgroundColor = global::BlazorMobile.InteropApp.Droid.Resource.Styleable.Chip_chipBackgroundColor;
+			global::BlazorMobile.Droid.Resource.Styleable.Chip_chipCornerRadius = global::BlazorMobile.InteropApp.Droid.Resource.Styleable.Chip_chipCornerRadius;
+			global::BlazorMobile.Droid.Resource.Styleable.Chip_chipEndPadding = global::BlazorMobile.InteropApp.Droid.Resource.Styleable.Chip_chipEndPadding;
+			global::BlazorMobile.Droid.Resource.Styleable.Chip_chipIcon = global::BlazorMobile.InteropApp.Droid.Resource.Styleable.Chip_chipIcon;
+			global::BlazorMobile.Droid.Resource.Styleable.Chip_chipIconEnabled = global::BlazorMobile.InteropApp.Droid.Resource.Styleable.Chip_chipIconEnabled;
+			global::BlazorMobile.Droid.Resource.Styleable.Chip_chipIconSize = global::BlazorMobile.InteropApp.Droid.Resource.Styleable.Chip_chipIconSize;
+			global::BlazorMobile.Droid.Resource.Styleable.Chip_chipIconTint = global::BlazorMobile.InteropApp.Droid.Resource.Styleable.Chip_chipIconTint;
+			global::BlazorMobile.Droid.Resource.Styleable.Chip_chipIconVisible = global::BlazorMobile.InteropApp.Droid.Resource.Styleable.Chip_chipIconVisible;
+			global::BlazorMobile.Droid.Resource.Styleable.Chip_chipMinHeight = global::BlazorMobile.InteropApp.Droid.Resource.Styleable.Chip_chipMinHeight;
+			global::BlazorMobile.Droid.Resource.Styleable.Chip_chipStartPadding = global::BlazorMobile.InteropApp.Droid.Resource.Styleable.Chip_chipStartPadding;
+			global::BlazorMobile.Droid.Resource.Styleable.Chip_chipStrokeColor = global::BlazorMobile.InteropApp.Droid.Resource.Styleable.Chip_chipStrokeColor;
+			global::BlazorMobile.Droid.Resource.Styleable.Chip_chipStrokeWidth = global::BlazorMobile.InteropApp.Droid.Resource.Styleable.Chip_chipStrokeWidth;
+			global::BlazorMobile.Droid.Resource.Styleable.Chip_closeIcon = global::BlazorMobile.InteropApp.Droid.Resource.Styleable.Chip_closeIcon;
+			global::BlazorMobile.Droid.Resource.Styleable.Chip_closeIconEnabled = global::BlazorMobile.InteropApp.Droid.Resource.Styleable.Chip_closeIconEnabled;
+			global::BlazorMobile.Droid.Resource.Styleable.Chip_closeIconEndPadding = global::BlazorMobile.InteropApp.Droid.Resource.Styleable.Chip_closeIconEndPadding;
+			global::BlazorMobile.Droid.Resource.Styleable.Chip_closeIconSize = global::BlazorMobile.InteropApp.Droid.Resource.Styleable.Chip_closeIconSize;
+			global::BlazorMobile.Droid.Resource.Styleable.Chip_closeIconStartPadding = global::BlazorMobile.InteropApp.Droid.Resource.Styleable.Chip_closeIconStartPadding;
+			global::BlazorMobile.Droid.Resource.Styleable.Chip_closeIconTint = global::BlazorMobile.InteropApp.Droid.Resource.Styleable.Chip_closeIconTint;
+			global::BlazorMobile.Droid.Resource.Styleable.Chip_closeIconVisible = global::BlazorMobile.InteropApp.Droid.Resource.Styleable.Chip_closeIconVisible;
+			global::BlazorMobile.Droid.Resource.Styleable.Chip_hideMotionSpec = global::BlazorMobile.InteropApp.Droid.Resource.Styleable.Chip_hideMotionSpec;
+			global::BlazorMobile.Droid.Resource.Styleable.Chip_iconEndPadding = global::BlazorMobile.InteropApp.Droid.Resource.Styleable.Chip_iconEndPadding;
+			global::BlazorMobile.Droid.Resource.Styleable.Chip_iconStartPadding = global::BlazorMobile.InteropApp.Droid.Resource.Styleable.Chip_iconStartPadding;
+			global::BlazorMobile.Droid.Resource.Styleable.Chip_rippleColor = global::BlazorMobile.InteropApp.Droid.Resource.Styleable.Chip_rippleColor;
+			global::BlazorMobile.Droid.Resource.Styleable.Chip_showMotionSpec = global::BlazorMobile.InteropApp.Droid.Resource.Styleable.Chip_showMotionSpec;
+			global::BlazorMobile.Droid.Resource.Styleable.Chip_textEndPadding = global::BlazorMobile.InteropApp.Droid.Resource.Styleable.Chip_textEndPadding;
+			global::BlazorMobile.Droid.Resource.Styleable.Chip_textStartPadding = global::BlazorMobile.InteropApp.Droid.Resource.Styleable.Chip_textStartPadding;
+			global::BlazorMobile.Droid.Resource.Styleable.CollapsingToolbarLayout = global::BlazorMobile.InteropApp.Droid.Resource.Styleable.CollapsingToolbarLayout;
+			global::BlazorMobile.Droid.Resource.Styleable.CollapsingToolbarLayout_collapsedTitleGravity = global::BlazorMobile.InteropApp.Droid.Resource.Styleable.CollapsingToolbarLayout_collapsedTitleGravity;
+			global::BlazorMobile.Droid.Resource.Styleable.CollapsingToolbarLayout_collapsedTitleTextAppearance = global::BlazorMobile.InteropApp.Droid.Resource.Styleable.CollapsingToolbarLayout_collapsedTitleTextAppearance;
+			global::BlazorMobile.Droid.Resource.Styleable.CollapsingToolbarLayout_contentScrim = global::BlazorMobile.InteropApp.Droid.Resource.Styleable.CollapsingToolbarLayout_contentScrim;
+			global::BlazorMobile.Droid.Resource.Styleable.CollapsingToolbarLayout_expandedTitleGravity = global::BlazorMobile.InteropApp.Droid.Resource.Styleable.CollapsingToolbarLayout_expandedTitleGravity;
+			global::BlazorMobile.Droid.Resource.Styleable.CollapsingToolbarLayout_expandedTitleMargin = global::BlazorMobile.InteropApp.Droid.Resource.Styleable.CollapsingToolbarLayout_expandedTitleMargin;
+			global::BlazorMobile.Droid.Resource.Styleable.CollapsingToolbarLayout_expandedTitleMarginBottom = global::BlazorMobile.InteropApp.Droid.Resource.Styleable.CollapsingToolbarLayout_expandedTitleMarginBottom;
+			global::BlazorMobile.Droid.Resource.Styleable.CollapsingToolbarLayout_expandedTitleMarginEnd = global::BlazorMobile.InteropApp.Droid.Resource.Styleable.CollapsingToolbarLayout_expandedTitleMarginEnd;
+			global::BlazorMobile.Droid.Resource.Styleable.CollapsingToolbarLayout_expandedTitleMarginStart = global::BlazorMobile.InteropApp.Droid.Resource.Styleable.CollapsingToolbarLayout_expandedTitleMarginStart;
+			global::BlazorMobile.Droid.Resource.Styleable.CollapsingToolbarLayout_expandedTitleMarginTop = global::BlazorMobile.InteropApp.Droid.Resource.Styleable.CollapsingToolbarLayout_expandedTitleMarginTop;
+			global::BlazorMobile.Droid.Resource.Styleable.CollapsingToolbarLayout_expandedTitleTextAppearance = global::BlazorMobile.InteropApp.Droid.Resource.Styleable.CollapsingToolbarLayout_expandedTitleTextAppearance;
+			global::BlazorMobile.Droid.Resource.Styleable.CollapsingToolbarLayout_Layout = global::BlazorMobile.InteropApp.Droid.Resource.Styleable.CollapsingToolbarLayout_Layout;
+			global::BlazorMobile.Droid.Resource.Styleable.CollapsingToolbarLayout_Layout_layout_collapseMode = global::BlazorMobile.InteropApp.Droid.Resource.Styleable.CollapsingToolbarLayout_Layout_layout_collapseMode;
+			global::BlazorMobile.Droid.Resource.Styleable.CollapsingToolbarLayout_Layout_layout_collapseParallaxMultiplier = global::BlazorMobile.InteropApp.Droid.Resource.Styleable.CollapsingToolbarLayout_Layout_layout_collapseParallaxMultiplier;
+			global::BlazorMobile.Droid.Resource.Styleable.CollapsingToolbarLayout_scrimAnimationDuration = global::BlazorMobile.InteropApp.Droid.Resource.Styleable.CollapsingToolbarLayout_scrimAnimationDuration;
+			global::BlazorMobile.Droid.Resource.Styleable.CollapsingToolbarLayout_scrimVisibleHeightTrigger = global::BlazorMobile.InteropApp.Droid.Resource.Styleable.CollapsingToolbarLayout_scrimVisibleHeightTrigger;
+			global::BlazorMobile.Droid.Resource.Styleable.CollapsingToolbarLayout_statusBarScrim = global::BlazorMobile.InteropApp.Droid.Resource.Styleable.CollapsingToolbarLayout_statusBarScrim;
+			global::BlazorMobile.Droid.Resource.Styleable.CollapsingToolbarLayout_title = global::BlazorMobile.InteropApp.Droid.Resource.Styleable.CollapsingToolbarLayout_title;
+			global::BlazorMobile.Droid.Resource.Styleable.CollapsingToolbarLayout_titleEnabled = global::BlazorMobile.InteropApp.Droid.Resource.Styleable.CollapsingToolbarLayout_titleEnabled;
+			global::BlazorMobile.Droid.Resource.Styleable.CollapsingToolbarLayout_toolbarId = global::BlazorMobile.InteropApp.Droid.Resource.Styleable.CollapsingToolbarLayout_toolbarId;
+			global::BlazorMobile.Droid.Resource.Styleable.ColorStateListItem = global::BlazorMobile.InteropApp.Droid.Resource.Styleable.ColorStateListItem;
+			global::BlazorMobile.Droid.Resource.Styleable.ColorStateListItem_alpha = global::BlazorMobile.InteropApp.Droid.Resource.Styleable.ColorStateListItem_alpha;
+			global::BlazorMobile.Droid.Resource.Styleable.ColorStateListItem_android_alpha = global::BlazorMobile.InteropApp.Droid.Resource.Styleable.ColorStateListItem_android_alpha;
+			global::BlazorMobile.Droid.Resource.Styleable.ColorStateListItem_android_color = global::BlazorMobile.InteropApp.Droid.Resource.Styleable.ColorStateListItem_android_color;
+			global::BlazorMobile.Droid.Resource.Styleable.CompoundButton = global::BlazorMobile.InteropApp.Droid.Resource.Styleable.CompoundButton;
+			global::BlazorMobile.Droid.Resource.Styleable.CompoundButton_android_button = global::BlazorMobile.InteropApp.Droid.Resource.Styleable.CompoundButton_android_button;
+			global::BlazorMobile.Droid.Resource.Styleable.CompoundButton_buttonTint = global::BlazorMobile.InteropApp.Droid.Resource.Styleable.CompoundButton_buttonTint;
+			global::BlazorMobile.Droid.Resource.Styleable.CompoundButton_buttonTintMode = global::BlazorMobile.InteropApp.Droid.Resource.Styleable.CompoundButton_buttonTintMode;
+			global::BlazorMobile.Droid.Resource.Styleable.CoordinatorLayout = global::BlazorMobile.InteropApp.Droid.Resource.Styleable.CoordinatorLayout;
+			global::BlazorMobile.Droid.Resource.Styleable.CoordinatorLayout_keylines = global::BlazorMobile.InteropApp.Droid.Resource.Styleable.CoordinatorLayout_keylines;
+			global::BlazorMobile.Droid.Resource.Styleable.CoordinatorLayout_Layout = global::BlazorMobile.InteropApp.Droid.Resource.Styleable.CoordinatorLayout_Layout;
+			global::BlazorMobile.Droid.Resource.Styleable.CoordinatorLayout_Layout_android_layout_gravity = global::BlazorMobile.InteropApp.Droid.Resource.Styleable.CoordinatorLayout_Layout_android_layout_gravity;
+			global::BlazorMobile.Droid.Resource.Styleable.CoordinatorLayout_Layout_layout_anchor = global::BlazorMobile.InteropApp.Droid.Resource.Styleable.CoordinatorLayout_Layout_layout_anchor;
+			global::BlazorMobile.Droid.Resource.Styleable.CoordinatorLayout_Layout_layout_anchorGravity = global::BlazorMobile.InteropApp.Droid.Resource.Styleable.CoordinatorLayout_Layout_layout_anchorGravity;
+			global::BlazorMobile.Droid.Resource.Styleable.CoordinatorLayout_Layout_layout_behavior = global::BlazorMobile.InteropApp.Droid.Resource.Styleable.CoordinatorLayout_Layout_layout_behavior;
+			global::BlazorMobile.Droid.Resource.Styleable.CoordinatorLayout_Layout_layout_dodgeInsetEdges = global::BlazorMobile.InteropApp.Droid.Resource.Styleable.CoordinatorLayout_Layout_layout_dodgeInsetEdges;
+			global::BlazorMobile.Droid.Resource.Styleable.CoordinatorLayout_Layout_layout_insetEdge = global::BlazorMobile.InteropApp.Droid.Resource.Styleable.CoordinatorLayout_Layout_layout_insetEdge;
+			global::BlazorMobile.Droid.Resource.Styleable.CoordinatorLayout_Layout_layout_keyline = global::BlazorMobile.InteropApp.Droid.Resource.Styleable.CoordinatorLayout_Layout_layout_keyline;
+			global::BlazorMobile.Droid.Resource.Styleable.CoordinatorLayout_statusBarBackground = global::BlazorMobile.InteropApp.Droid.Resource.Styleable.CoordinatorLayout_statusBarBackground;
+			global::BlazorMobile.Droid.Resource.Styleable.DesignTheme = global::BlazorMobile.InteropApp.Droid.Resource.Styleable.DesignTheme;
+			global::BlazorMobile.Droid.Resource.Styleable.DesignTheme_bottomSheetDialogTheme = global::BlazorMobile.InteropApp.Droid.Resource.Styleable.DesignTheme_bottomSheetDialogTheme;
+			global::BlazorMobile.Droid.Resource.Styleable.DesignTheme_bottomSheetStyle = global::BlazorMobile.InteropApp.Droid.Resource.Styleable.DesignTheme_bottomSheetStyle;
+			global::BlazorMobile.Droid.Resource.Styleable.DrawerArrowToggle = global::BlazorMobile.InteropApp.Droid.Resource.Styleable.DrawerArrowToggle;
+			global::BlazorMobile.Droid.Resource.Styleable.DrawerArrowToggle_arrowHeadLength = global::BlazorMobile.InteropApp.Droid.Resource.Styleable.DrawerArrowToggle_arrowHeadLength;
+			global::BlazorMobile.Droid.Resource.Styleable.DrawerArrowToggle_arrowShaftLength = global::BlazorMobile.InteropApp.Droid.Resource.Styleable.DrawerArrowToggle_arrowShaftLength;
+			global::BlazorMobile.Droid.Resource.Styleable.DrawerArrowToggle_barLength = global::BlazorMobile.InteropApp.Droid.Resource.Styleable.DrawerArrowToggle_barLength;
+			global::BlazorMobile.Droid.Resource.Styleable.DrawerArrowToggle_color = global::BlazorMobile.InteropApp.Droid.Resource.Styleable.DrawerArrowToggle_color;
+			global::BlazorMobile.Droid.Resource.Styleable.DrawerArrowToggle_drawableSize = global::BlazorMobile.InteropApp.Droid.Resource.Styleable.DrawerArrowToggle_drawableSize;
+			global::BlazorMobile.Droid.Resource.Styleable.DrawerArrowToggle_gapBetweenBars = global::BlazorMobile.InteropApp.Droid.Resource.Styleable.DrawerArrowToggle_gapBetweenBars;
+			global::BlazorMobile.Droid.Resource.Styleable.DrawerArrowToggle_spinBars = global::BlazorMobile.InteropApp.Droid.Resource.Styleable.DrawerArrowToggle_spinBars;
+			global::BlazorMobile.Droid.Resource.Styleable.DrawerArrowToggle_thickness = global::BlazorMobile.InteropApp.Droid.Resource.Styleable.DrawerArrowToggle_thickness;
+			global::BlazorMobile.Droid.Resource.Styleable.FloatingActionButton = global::BlazorMobile.InteropApp.Droid.Resource.Styleable.FloatingActionButton;
+			global::BlazorMobile.Droid.Resource.Styleable.FloatingActionButton_backgroundTint = global::BlazorMobile.InteropApp.Droid.Resource.Styleable.FloatingActionButton_backgroundTint;
+			global::BlazorMobile.Droid.Resource.Styleable.FloatingActionButton_backgroundTintMode = global::BlazorMobile.InteropApp.Droid.Resource.Styleable.FloatingActionButton_backgroundTintMode;
+			global::BlazorMobile.Droid.Resource.Styleable.FloatingActionButton_Behavior_Layout = global::BlazorMobile.InteropApp.Droid.Resource.Styleable.FloatingActionButton_Behavior_Layout;
+			global::BlazorMobile.Droid.Resource.Styleable.FloatingActionButton_Behavior_Layout_behavior_autoHide = global::BlazorMobile.InteropApp.Droid.Resource.Styleable.FloatingActionButton_Behavior_Layout_behavior_autoHide;
+			global::BlazorMobile.Droid.Resource.Styleable.FloatingActionButton_borderWidth = global::BlazorMobile.InteropApp.Droid.Resource.Styleable.FloatingActionButton_borderWidth;
+			global::BlazorMobile.Droid.Resource.Styleable.FloatingActionButton_elevation = global::BlazorMobile.InteropApp.Droid.Resource.Styleable.FloatingActionButton_elevation;
+			global::BlazorMobile.Droid.Resource.Styleable.FloatingActionButton_fabCustomSize = global::BlazorMobile.InteropApp.Droid.Resource.Styleable.FloatingActionButton_fabCustomSize;
+			global::BlazorMobile.Droid.Resource.Styleable.FloatingActionButton_fabSize = global::BlazorMobile.InteropApp.Droid.Resource.Styleable.FloatingActionButton_fabSize;
+			global::BlazorMobile.Droid.Resource.Styleable.FloatingActionButton_hideMotionSpec = global::BlazorMobile.InteropApp.Droid.Resource.Styleable.FloatingActionButton_hideMotionSpec;
+			global::BlazorMobile.Droid.Resource.Styleable.FloatingActionButton_hoveredFocusedTranslationZ = global::BlazorMobile.InteropApp.Droid.Resource.Styleable.FloatingActionButton_hoveredFocusedTranslationZ;
+			global::BlazorMobile.Droid.Resource.Styleable.FloatingActionButton_maxImageSize = global::BlazorMobile.InteropApp.Droid.Resource.Styleable.FloatingActionButton_maxImageSize;
+			global::BlazorMobile.Droid.Resource.Styleable.FloatingActionButton_pressedTranslationZ = global::BlazorMobile.InteropApp.Droid.Resource.Styleable.FloatingActionButton_pressedTranslationZ;
+			global::BlazorMobile.Droid.Resource.Styleable.FloatingActionButton_rippleColor = global::BlazorMobile.InteropApp.Droid.Resource.Styleable.FloatingActionButton_rippleColor;
+			global::BlazorMobile.Droid.Resource.Styleable.FloatingActionButton_showMotionSpec = global::BlazorMobile.InteropApp.Droid.Resource.Styleable.FloatingActionButton_showMotionSpec;
+			global::BlazorMobile.Droid.Resource.Styleable.FloatingActionButton_useCompatPadding = global::BlazorMobile.InteropApp.Droid.Resource.Styleable.FloatingActionButton_useCompatPadding;
+			global::BlazorMobile.Droid.Resource.Styleable.FlowLayout = global::BlazorMobile.InteropApp.Droid.Resource.Styleable.FlowLayout;
+			global::BlazorMobile.Droid.Resource.Styleable.FlowLayout_itemSpacing = global::BlazorMobile.InteropApp.Droid.Resource.Styleable.FlowLayout_itemSpacing;
+			global::BlazorMobile.Droid.Resource.Styleable.FlowLayout_lineSpacing = global::BlazorMobile.InteropApp.Droid.Resource.Styleable.FlowLayout_lineSpacing;
+			global::BlazorMobile.Droid.Resource.Styleable.FontFamily = global::BlazorMobile.InteropApp.Droid.Resource.Styleable.FontFamily;
+			global::BlazorMobile.Droid.Resource.Styleable.FontFamilyFont = global::BlazorMobile.InteropApp.Droid.Resource.Styleable.FontFamilyFont;
+			global::BlazorMobile.Droid.Resource.Styleable.FontFamilyFont_android_font = global::BlazorMobile.InteropApp.Droid.Resource.Styleable.FontFamilyFont_android_font;
+			global::BlazorMobile.Droid.Resource.Styleable.FontFamilyFont_android_fontStyle = global::BlazorMobile.InteropApp.Droid.Resource.Styleable.FontFamilyFont_android_fontStyle;
+			global::BlazorMobile.Droid.Resource.Styleable.FontFamilyFont_android_fontVariationSettings = global::BlazorMobile.InteropApp.Droid.Resource.Styleable.FontFamilyFont_android_fontVariationSettings;
+			global::BlazorMobile.Droid.Resource.Styleable.FontFamilyFont_android_fontWeight = global::BlazorMobile.InteropApp.Droid.Resource.Styleable.FontFamilyFont_android_fontWeight;
+			global::BlazorMobile.Droid.Resource.Styleable.FontFamilyFont_android_ttcIndex = global::BlazorMobile.InteropApp.Droid.Resource.Styleable.FontFamilyFont_android_ttcIndex;
+			global::BlazorMobile.Droid.Resource.Styleable.FontFamilyFont_font = global::BlazorMobile.InteropApp.Droid.Resource.Styleable.FontFamilyFont_font;
+			global::BlazorMobile.Droid.Resource.Styleable.FontFamilyFont_fontStyle = global::BlazorMobile.InteropApp.Droid.Resource.Styleable.FontFamilyFont_fontStyle;
+			global::BlazorMobile.Droid.Resource.Styleable.FontFamilyFont_fontVariationSettings = global::BlazorMobile.InteropApp.Droid.Resource.Styleable.FontFamilyFont_fontVariationSettings;
+			global::BlazorMobile.Droid.Resource.Styleable.FontFamilyFont_fontWeight = global::BlazorMobile.InteropApp.Droid.Resource.Styleable.FontFamilyFont_fontWeight;
+			global::BlazorMobile.Droid.Resource.Styleable.FontFamilyFont_ttcIndex = global::BlazorMobile.InteropApp.Droid.Resource.Styleable.FontFamilyFont_ttcIndex;
+			global::BlazorMobile.Droid.Resource.Styleable.FontFamily_fontProviderAuthority = global::BlazorMobile.InteropApp.Droid.Resource.Styleable.FontFamily_fontProviderAuthority;
+			global::BlazorMobile.Droid.Resource.Styleable.FontFamily_fontProviderCerts = global::BlazorMobile.InteropApp.Droid.Resource.Styleable.FontFamily_fontProviderCerts;
+			global::BlazorMobile.Droid.Resource.Styleable.FontFamily_fontProviderFetchStrategy = global::BlazorMobile.InteropApp.Droid.Resource.Styleable.FontFamily_fontProviderFetchStrategy;
+			global::BlazorMobile.Droid.Resource.Styleable.FontFamily_fontProviderFetchTimeout = global::BlazorMobile.InteropApp.Droid.Resource.Styleable.FontFamily_fontProviderFetchTimeout;
+			global::BlazorMobile.Droid.Resource.Styleable.FontFamily_fontProviderPackage = global::BlazorMobile.InteropApp.Droid.Resource.Styleable.FontFamily_fontProviderPackage;
+			global::BlazorMobile.Droid.Resource.Styleable.FontFamily_fontProviderQuery = global::BlazorMobile.InteropApp.Droid.Resource.Styleable.FontFamily_fontProviderQuery;
+			global::BlazorMobile.Droid.Resource.Styleable.ForegroundLinearLayout = global::BlazorMobile.InteropApp.Droid.Resource.Styleable.ForegroundLinearLayout;
+			global::BlazorMobile.Droid.Resource.Styleable.ForegroundLinearLayout_android_foreground = global::BlazorMobile.InteropApp.Droid.Resource.Styleable.ForegroundLinearLayout_android_foreground;
+			global::BlazorMobile.Droid.Resource.Styleable.ForegroundLinearLayout_android_foregroundGravity = global::BlazorMobile.InteropApp.Droid.Resource.Styleable.ForegroundLinearLayout_android_foregroundGravity;
+			global::BlazorMobile.Droid.Resource.Styleable.ForegroundLinearLayout_foregroundInsidePadding = global::BlazorMobile.InteropApp.Droid.Resource.Styleable.ForegroundLinearLayout_foregroundInsidePadding;
+			global::BlazorMobile.Droid.Resource.Styleable.GradientColor = global::BlazorMobile.InteropApp.Droid.Resource.Styleable.GradientColor;
+			global::BlazorMobile.Droid.Resource.Styleable.GradientColorItem = global::BlazorMobile.InteropApp.Droid.Resource.Styleable.GradientColorItem;
+			global::BlazorMobile.Droid.Resource.Styleable.GradientColorItem_android_color = global::BlazorMobile.InteropApp.Droid.Resource.Styleable.GradientColorItem_android_color;
+			global::BlazorMobile.Droid.Resource.Styleable.GradientColorItem_android_offset = global::BlazorMobile.InteropApp.Droid.Resource.Styleable.GradientColorItem_android_offset;
+			global::BlazorMobile.Droid.Resource.Styleable.GradientColor_android_centerColor = global::BlazorMobile.InteropApp.Droid.Resource.Styleable.GradientColor_android_centerColor;
+			global::BlazorMobile.Droid.Resource.Styleable.GradientColor_android_centerX = global::BlazorMobile.InteropApp.Droid.Resource.Styleable.GradientColor_android_centerX;
+			global::BlazorMobile.Droid.Resource.Styleable.GradientColor_android_centerY = global::BlazorMobile.InteropApp.Droid.Resource.Styleable.GradientColor_android_centerY;
+			global::BlazorMobile.Droid.Resource.Styleable.GradientColor_android_endColor = global::BlazorMobile.InteropApp.Droid.Resource.Styleable.GradientColor_android_endColor;
+			global::BlazorMobile.Droid.Resource.Styleable.GradientColor_android_endX = global::BlazorMobile.InteropApp.Droid.Resource.Styleable.GradientColor_android_endX;
+			global::BlazorMobile.Droid.Resource.Styleable.GradientColor_android_endY = global::BlazorMobile.InteropApp.Droid.Resource.Styleable.GradientColor_android_endY;
+			global::BlazorMobile.Droid.Resource.Styleable.GradientColor_android_gradientRadius = global::BlazorMobile.InteropApp.Droid.Resource.Styleable.GradientColor_android_gradientRadius;
+			global::BlazorMobile.Droid.Resource.Styleable.GradientColor_android_startColor = global::BlazorMobile.InteropApp.Droid.Resource.Styleable.GradientColor_android_startColor;
+			global::BlazorMobile.Droid.Resource.Styleable.GradientColor_android_startX = global::BlazorMobile.InteropApp.Droid.Resource.Styleable.GradientColor_android_startX;
+			global::BlazorMobile.Droid.Resource.Styleable.GradientColor_android_startY = global::BlazorMobile.InteropApp.Droid.Resource.Styleable.GradientColor_android_startY;
+			global::BlazorMobile.Droid.Resource.Styleable.GradientColor_android_tileMode = global::BlazorMobile.InteropApp.Droid.Resource.Styleable.GradientColor_android_tileMode;
+			global::BlazorMobile.Droid.Resource.Styleable.GradientColor_android_type = global::BlazorMobile.InteropApp.Droid.Resource.Styleable.GradientColor_android_type;
+			global::BlazorMobile.Droid.Resource.Styleable.LinearLayoutCompat = global::BlazorMobile.InteropApp.Droid.Resource.Styleable.LinearLayoutCompat;
+			global::BlazorMobile.Droid.Resource.Styleable.LinearLayoutCompat_android_baselineAligned = global::BlazorMobile.InteropApp.Droid.Resource.Styleable.LinearLayoutCompat_android_baselineAligned;
+			global::BlazorMobile.Droid.Resource.Styleable.LinearLayoutCompat_android_baselineAlignedChildIndex = global::BlazorMobile.InteropApp.Droid.Resource.Styleable.LinearLayoutCompat_android_baselineAlignedChildIndex;
+			global::BlazorMobile.Droid.Resource.Styleable.LinearLayoutCompat_android_gravity = global::BlazorMobile.InteropApp.Droid.Resource.Styleable.LinearLayoutCompat_android_gravity;
+			global::BlazorMobile.Droid.Resource.Styleable.LinearLayoutCompat_android_orientation = global::BlazorMobile.InteropApp.Droid.Resource.Styleable.LinearLayoutCompat_android_orientation;
+			global::BlazorMobile.Droid.Resource.Styleable.LinearLayoutCompat_android_weightSum = global::BlazorMobile.InteropApp.Droid.Resource.Styleable.LinearLayoutCompat_android_weightSum;
+			global::BlazorMobile.Droid.Resource.Styleable.LinearLayoutCompat_divider = global::BlazorMobile.InteropApp.Droid.Resource.Styleable.LinearLayoutCompat_divider;
+			global::BlazorMobile.Droid.Resource.Styleable.LinearLayoutCompat_dividerPadding = global::BlazorMobile.InteropApp.Droid.Resource.Styleable.LinearLayoutCompat_dividerPadding;
+			global::BlazorMobile.Droid.Resource.Styleable.LinearLayoutCompat_Layout = global::BlazorMobile.InteropApp.Droid.Resource.Styleable.LinearLayoutCompat_Layout;
+			global::BlazorMobile.Droid.Resource.Styleable.LinearLayoutCompat_Layout_android_layout_gravity = global::BlazorMobile.InteropApp.Droid.Resource.Styleable.LinearLayoutCompat_Layout_android_layout_gravity;
+			global::BlazorMobile.Droid.Resource.Styleable.LinearLayoutCompat_Layout_android_layout_height = global::BlazorMobile.InteropApp.Droid.Resource.Styleable.LinearLayoutCompat_Layout_android_layout_height;
+			global::BlazorMobile.Droid.Resource.Styleable.LinearLayoutCompat_Layout_android_layout_weight = global::BlazorMobile.InteropApp.Droid.Resource.Styleable.LinearLayoutCompat_Layout_android_layout_weight;
+			global::BlazorMobile.Droid.Resource.Styleable.LinearLayoutCompat_Layout_android_layout_width = global::BlazorMobile.InteropApp.Droid.Resource.Styleable.LinearLayoutCompat_Layout_android_layout_width;
+			global::BlazorMobile.Droid.Resource.Styleable.LinearLayoutCompat_measureWithLargestChild = global::BlazorMobile.InteropApp.Droid.Resource.Styleable.LinearLayoutCompat_measureWithLargestChild;
+			global::BlazorMobile.Droid.Resource.Styleable.LinearLayoutCompat_showDividers = global::BlazorMobile.InteropApp.Droid.Resource.Styleable.LinearLayoutCompat_showDividers;
+			global::BlazorMobile.Droid.Resource.Styleable.ListPopupWindow = global::BlazorMobile.InteropApp.Droid.Resource.Styleable.ListPopupWindow;
+			global::BlazorMobile.Droid.Resource.Styleable.ListPopupWindow_android_dropDownHorizontalOffset = global::BlazorMobile.InteropApp.Droid.Resource.Styleable.ListPopupWindow_android_dropDownHorizontalOffset;
+			global::BlazorMobile.Droid.Resource.Styleable.ListPopupWindow_android_dropDownVerticalOffset = global::BlazorMobile.InteropApp.Droid.Resource.Styleable.ListPopupWindow_android_dropDownVerticalOffset;
+			global::BlazorMobile.Droid.Resource.Styleable.MaterialButton = global::BlazorMobile.InteropApp.Droid.Resource.Styleable.MaterialButton;
+			global::BlazorMobile.Droid.Resource.Styleable.MaterialButton_android_insetBottom = global::BlazorMobile.InteropApp.Droid.Resource.Styleable.MaterialButton_android_insetBottom;
+			global::BlazorMobile.Droid.Resource.Styleable.MaterialButton_android_insetLeft = global::BlazorMobile.InteropApp.Droid.Resource.Styleable.MaterialButton_android_insetLeft;
+			global::BlazorMobile.Droid.Resource.Styleable.MaterialButton_android_insetRight = global::BlazorMobile.InteropApp.Droid.Resource.Styleable.MaterialButton_android_insetRight;
+			global::BlazorMobile.Droid.Resource.Styleable.MaterialButton_android_insetTop = global::BlazorMobile.InteropApp.Droid.Resource.Styleable.MaterialButton_android_insetTop;
+			global::BlazorMobile.Droid.Resource.Styleable.MaterialButton_backgroundTint = global::BlazorMobile.InteropApp.Droid.Resource.Styleable.MaterialButton_backgroundTint;
+			global::BlazorMobile.Droid.Resource.Styleable.MaterialButton_backgroundTintMode = global::BlazorMobile.InteropApp.Droid.Resource.Styleable.MaterialButton_backgroundTintMode;
+			global::BlazorMobile.Droid.Resource.Styleable.MaterialButton_cornerRadius = global::BlazorMobile.InteropApp.Droid.Resource.Styleable.MaterialButton_cornerRadius;
+			global::BlazorMobile.Droid.Resource.Styleable.MaterialButton_icon = global::BlazorMobile.InteropApp.Droid.Resource.Styleable.MaterialButton_icon;
+			global::BlazorMobile.Droid.Resource.Styleable.MaterialButton_iconGravity = global::BlazorMobile.InteropApp.Droid.Resource.Styleable.MaterialButton_iconGravity;
+			global::BlazorMobile.Droid.Resource.Styleable.MaterialButton_iconPadding = global::BlazorMobile.InteropApp.Droid.Resource.Styleable.MaterialButton_iconPadding;
+			global::BlazorMobile.Droid.Resource.Styleable.MaterialButton_iconSize = global::BlazorMobile.InteropApp.Droid.Resource.Styleable.MaterialButton_iconSize;
+			global::BlazorMobile.Droid.Resource.Styleable.MaterialButton_iconTint = global::BlazorMobile.InteropApp.Droid.Resource.Styleable.MaterialButton_iconTint;
+			global::BlazorMobile.Droid.Resource.Styleable.MaterialButton_iconTintMode = global::BlazorMobile.InteropApp.Droid.Resource.Styleable.MaterialButton_iconTintMode;
+			global::BlazorMobile.Droid.Resource.Styleable.MaterialButton_rippleColor = global::BlazorMobile.InteropApp.Droid.Resource.Styleable.MaterialButton_rippleColor;
+			global::BlazorMobile.Droid.Resource.Styleable.MaterialButton_strokeColor = global::BlazorMobile.InteropApp.Droid.Resource.Styleable.MaterialButton_strokeColor;
+			global::BlazorMobile.Droid.Resource.Styleable.MaterialButton_strokeWidth = global::BlazorMobile.InteropApp.Droid.Resource.Styleable.MaterialButton_strokeWidth;
+			global::BlazorMobile.Droid.Resource.Styleable.MaterialCardView = global::BlazorMobile.InteropApp.Droid.Resource.Styleable.MaterialCardView;
+			global::BlazorMobile.Droid.Resource.Styleable.MaterialCardView_strokeColor = global::BlazorMobile.InteropApp.Droid.Resource.Styleable.MaterialCardView_strokeColor;
+			global::BlazorMobile.Droid.Resource.Styleable.MaterialCardView_strokeWidth = global::BlazorMobile.InteropApp.Droid.Resource.Styleable.MaterialCardView_strokeWidth;
+			global::BlazorMobile.Droid.Resource.Styleable.MaterialComponentsTheme = global::BlazorMobile.InteropApp.Droid.Resource.Styleable.MaterialComponentsTheme;
+			global::BlazorMobile.Droid.Resource.Styleable.MaterialComponentsTheme_bottomSheetDialogTheme = global::BlazorMobile.InteropApp.Droid.Resource.Styleable.MaterialComponentsTheme_bottomSheetDialogTheme;
+			global::BlazorMobile.Droid.Resource.Styleable.MaterialComponentsTheme_bottomSheetStyle = global::BlazorMobile.InteropApp.Droid.Resource.Styleable.MaterialComponentsTheme_bottomSheetStyle;
+			global::BlazorMobile.Droid.Resource.Styleable.MaterialComponentsTheme_chipGroupStyle = global::BlazorMobile.InteropApp.Droid.Resource.Styleable.MaterialComponentsTheme_chipGroupStyle;
+			global::BlazorMobile.Droid.Resource.Styleable.MaterialComponentsTheme_chipStandaloneStyle = global::BlazorMobile.InteropApp.Droid.Resource.Styleable.MaterialComponentsTheme_chipStandaloneStyle;
+			global::BlazorMobile.Droid.Resource.Styleable.MaterialComponentsTheme_chipStyle = global::BlazorMobile.InteropApp.Droid.Resource.Styleable.MaterialComponentsTheme_chipStyle;
+			global::BlazorMobile.Droid.Resource.Styleable.MaterialComponentsTheme_colorAccent = global::BlazorMobile.InteropApp.Droid.Resource.Styleable.MaterialComponentsTheme_colorAccent;
+			global::BlazorMobile.Droid.Resource.Styleable.MaterialComponentsTheme_colorBackgroundFloating = global::BlazorMobile.InteropApp.Droid.Resource.Styleable.MaterialComponentsTheme_colorBackgroundFloating;
+			global::BlazorMobile.Droid.Resource.Styleable.MaterialComponentsTheme_colorPrimary = global::BlazorMobile.InteropApp.Droid.Resource.Styleable.MaterialComponentsTheme_colorPrimary;
+			global::BlazorMobile.Droid.Resource.Styleable.MaterialComponentsTheme_colorPrimaryDark = global::BlazorMobile.InteropApp.Droid.Resource.Styleable.MaterialComponentsTheme_colorPrimaryDark;
+			global::BlazorMobile.Droid.Resource.Styleable.MaterialComponentsTheme_colorSecondary = global::BlazorMobile.InteropApp.Droid.Resource.Styleable.MaterialComponentsTheme_colorSecondary;
+			global::BlazorMobile.Droid.Resource.Styleable.MaterialComponentsTheme_editTextStyle = global::BlazorMobile.InteropApp.Droid.Resource.Styleable.MaterialComponentsTheme_editTextStyle;
+			global::BlazorMobile.Droid.Resource.Styleable.MaterialComponentsTheme_floatingActionButtonStyle = global::BlazorMobile.InteropApp.Droid.Resource.Styleable.MaterialComponentsTheme_floatingActionButtonStyle;
+			global::BlazorMobile.Droid.Resource.Styleable.MaterialComponentsTheme_materialButtonStyle = global::BlazorMobile.InteropApp.Droid.Resource.Styleable.MaterialComponentsTheme_materialButtonStyle;
+			global::BlazorMobile.Droid.Resource.Styleable.MaterialComponentsTheme_materialCardViewStyle = global::BlazorMobile.InteropApp.Droid.Resource.Styleable.MaterialComponentsTheme_materialCardViewStyle;
+			global::BlazorMobile.Droid.Resource.Styleable.MaterialComponentsTheme_navigationViewStyle = global::BlazorMobile.InteropApp.Droid.Resource.Styleable.MaterialComponentsTheme_navigationViewStyle;
+			global::BlazorMobile.Droid.Resource.Styleable.MaterialComponentsTheme_scrimBackground = global::BlazorMobile.InteropApp.Droid.Resource.Styleable.MaterialComponentsTheme_scrimBackground;
+			global::BlazorMobile.Droid.Resource.Styleable.MaterialComponentsTheme_snackbarButtonStyle = global::BlazorMobile.InteropApp.Droid.Resource.Styleable.MaterialComponentsTheme_snackbarButtonStyle;
+			global::BlazorMobile.Droid.Resource.Styleable.MaterialComponentsTheme_tabStyle = global::BlazorMobile.InteropApp.Droid.Resource.Styleable.MaterialComponentsTheme_tabStyle;
+			global::BlazorMobile.Droid.Resource.Styleable.MaterialComponentsTheme_textAppearanceBody1 = global::BlazorMobile.InteropApp.Droid.Resource.Styleable.MaterialComponentsTheme_textAppearanceBody1;
+			global::BlazorMobile.Droid.Resource.Styleable.MaterialComponentsTheme_textAppearanceBody2 = global::BlazorMobile.InteropApp.Droid.Resource.Styleable.MaterialComponentsTheme_textAppearanceBody2;
+			global::BlazorMobile.Droid.Resource.Styleable.MaterialComponentsTheme_textAppearanceButton = global::BlazorMobile.InteropApp.Droid.Resource.Styleable.MaterialComponentsTheme_textAppearanceButton;
+			global::BlazorMobile.Droid.Resource.Styleable.MaterialComponentsTheme_textAppearanceCaption = global::BlazorMobile.InteropApp.Droid.Resource.Styleable.MaterialComponentsTheme_textAppearanceCaption;
+			global::BlazorMobile.Droid.Resource.Styleable.MaterialComponentsTheme_textAppearanceHeadline1 = global::BlazorMobile.InteropApp.Droid.Resource.Styleable.MaterialComponentsTheme_textAppearanceHeadline1;
+			global::BlazorMobile.Droid.Resource.Styleable.MaterialComponentsTheme_textAppearanceHeadline2 = global::BlazorMobile.InteropApp.Droid.Resource.Styleable.MaterialComponentsTheme_textAppearanceHeadline2;
+			global::BlazorMobile.Droid.Resource.Styleable.MaterialComponentsTheme_textAppearanceHeadline3 = global::BlazorMobile.InteropApp.Droid.Resource.Styleable.MaterialComponentsTheme_textAppearanceHeadline3;
+			global::BlazorMobile.Droid.Resource.Styleable.MaterialComponentsTheme_textAppearanceHeadline4 = global::BlazorMobile.InteropApp.Droid.Resource.Styleable.MaterialComponentsTheme_textAppearanceHeadline4;
+			global::BlazorMobile.Droid.Resource.Styleable.MaterialComponentsTheme_textAppearanceHeadline5 = global::BlazorMobile.InteropApp.Droid.Resource.Styleable.MaterialComponentsTheme_textAppearanceHeadline5;
+			global::BlazorMobile.Droid.Resource.Styleable.MaterialComponentsTheme_textAppearanceHeadline6 = global::BlazorMobile.InteropApp.Droid.Resource.Styleable.MaterialComponentsTheme_textAppearanceHeadline6;
+			global::BlazorMobile.Droid.Resource.Styleable.MaterialComponentsTheme_textAppearanceOverline = global::BlazorMobile.InteropApp.Droid.Resource.Styleable.MaterialComponentsTheme_textAppearanceOverline;
+			global::BlazorMobile.Droid.Resource.Styleable.MaterialComponentsTheme_textAppearanceSubtitle1 = global::BlazorMobile.InteropApp.Droid.Resource.Styleable.MaterialComponentsTheme_textAppearanceSubtitle1;
+			global::BlazorMobile.Droid.Resource.Styleable.MaterialComponentsTheme_textAppearanceSubtitle2 = global::BlazorMobile.InteropApp.Droid.Resource.Styleable.MaterialComponentsTheme_textAppearanceSubtitle2;
+			global::BlazorMobile.Droid.Resource.Styleable.MaterialComponentsTheme_textInputStyle = global::BlazorMobile.InteropApp.Droid.Resource.Styleable.MaterialComponentsTheme_textInputStyle;
+			global::BlazorMobile.Droid.Resource.Styleable.MediaRouteButton = global::BlazorMobile.InteropApp.Droid.Resource.Styleable.MediaRouteButton;
+			global::BlazorMobile.Droid.Resource.Styleable.MediaRouteButton_android_minHeight = global::BlazorMobile.InteropApp.Droid.Resource.Styleable.MediaRouteButton_android_minHeight;
+			global::BlazorMobile.Droid.Resource.Styleable.MediaRouteButton_android_minWidth = global::BlazorMobile.InteropApp.Droid.Resource.Styleable.MediaRouteButton_android_minWidth;
+			global::BlazorMobile.Droid.Resource.Styleable.MediaRouteButton_externalRouteEnabledDrawable = global::BlazorMobile.InteropApp.Droid.Resource.Styleable.MediaRouteButton_externalRouteEnabledDrawable;
+			global::BlazorMobile.Droid.Resource.Styleable.MediaRouteButton_mediaRouteButtonTint = global::BlazorMobile.InteropApp.Droid.Resource.Styleable.MediaRouteButton_mediaRouteButtonTint;
+			global::BlazorMobile.Droid.Resource.Styleable.MenuGroup = global::BlazorMobile.InteropApp.Droid.Resource.Styleable.MenuGroup;
+			global::BlazorMobile.Droid.Resource.Styleable.MenuGroup_android_checkableBehavior = global::BlazorMobile.InteropApp.Droid.Resource.Styleable.MenuGroup_android_checkableBehavior;
+			global::BlazorMobile.Droid.Resource.Styleable.MenuGroup_android_enabled = global::BlazorMobile.InteropApp.Droid.Resource.Styleable.MenuGroup_android_enabled;
+			global::BlazorMobile.Droid.Resource.Styleable.MenuGroup_android_id = global::BlazorMobile.InteropApp.Droid.Resource.Styleable.MenuGroup_android_id;
+			global::BlazorMobile.Droid.Resource.Styleable.MenuGroup_android_menuCategory = global::BlazorMobile.InteropApp.Droid.Resource.Styleable.MenuGroup_android_menuCategory;
+			global::BlazorMobile.Droid.Resource.Styleable.MenuGroup_android_orderInCategory = global::BlazorMobile.InteropApp.Droid.Resource.Styleable.MenuGroup_android_orderInCategory;
+			global::BlazorMobile.Droid.Resource.Styleable.MenuGroup_android_visible = global::BlazorMobile.InteropApp.Droid.Resource.Styleable.MenuGroup_android_visible;
+			global::BlazorMobile.Droid.Resource.Styleable.MenuItem = global::BlazorMobile.InteropApp.Droid.Resource.Styleable.MenuItem;
+			global::BlazorMobile.Droid.Resource.Styleable.MenuItem_actionLayout = global::BlazorMobile.InteropApp.Droid.Resource.Styleable.MenuItem_actionLayout;
+			global::BlazorMobile.Droid.Resource.Styleable.MenuItem_actionProviderClass = global::BlazorMobile.InteropApp.Droid.Resource.Styleable.MenuItem_actionProviderClass;
+			global::BlazorMobile.Droid.Resource.Styleable.MenuItem_actionViewClass = global::BlazorMobile.InteropApp.Droid.Resource.Styleable.MenuItem_actionViewClass;
+			global::BlazorMobile.Droid.Resource.Styleable.MenuItem_alphabeticModifiers = global::BlazorMobile.InteropApp.Droid.Resource.Styleable.MenuItem_alphabeticModifiers;
+			global::BlazorMobile.Droid.Resource.Styleable.MenuItem_android_alphabeticShortcut = global::BlazorMobile.InteropApp.Droid.Resource.Styleable.MenuItem_android_alphabeticShortcut;
+			global::BlazorMobile.Droid.Resource.Styleable.MenuItem_android_checkable = global::BlazorMobile.InteropApp.Droid.Resource.Styleable.MenuItem_android_checkable;
+			global::BlazorMobile.Droid.Resource.Styleable.MenuItem_android_checked = global::BlazorMobile.InteropApp.Droid.Resource.Styleable.MenuItem_android_checked;
+			global::BlazorMobile.Droid.Resource.Styleable.MenuItem_android_enabled = global::BlazorMobile.InteropApp.Droid.Resource.Styleable.MenuItem_android_enabled;
+			global::BlazorMobile.Droid.Resource.Styleable.MenuItem_android_icon = global::BlazorMobile.InteropApp.Droid.Resource.Styleable.MenuItem_android_icon;
+			global::BlazorMobile.Droid.Resource.Styleable.MenuItem_android_id = global::BlazorMobile.InteropApp.Droid.Resource.Styleable.MenuItem_android_id;
+			global::BlazorMobile.Droid.Resource.Styleable.MenuItem_android_menuCategory = global::BlazorMobile.InteropApp.Droid.Resource.Styleable.MenuItem_android_menuCategory;
+			global::BlazorMobile.Droid.Resource.Styleable.MenuItem_android_numericShortcut = global::BlazorMobile.InteropApp.Droid.Resource.Styleable.MenuItem_android_numericShortcut;
+			global::BlazorMobile.Droid.Resource.Styleable.MenuItem_android_onClick = global::BlazorMobile.InteropApp.Droid.Resource.Styleable.MenuItem_android_onClick;
+			global::BlazorMobile.Droid.Resource.Styleable.MenuItem_android_orderInCategory = global::BlazorMobile.InteropApp.Droid.Resource.Styleable.MenuItem_android_orderInCategory;
+			global::BlazorMobile.Droid.Resource.Styleable.MenuItem_android_title = global::BlazorMobile.InteropApp.Droid.Resource.Styleable.MenuItem_android_title;
+			global::BlazorMobile.Droid.Resource.Styleable.MenuItem_android_titleCondensed = global::BlazorMobile.InteropApp.Droid.Resource.Styleable.MenuItem_android_titleCondensed;
+			global::BlazorMobile.Droid.Resource.Styleable.MenuItem_android_visible = global::BlazorMobile.InteropApp.Droid.Resource.Styleable.MenuItem_android_visible;
+			global::BlazorMobile.Droid.Resource.Styleable.MenuItem_contentDescription = global::BlazorMobile.InteropApp.Droid.Resource.Styleable.MenuItem_contentDescription;
+			global::BlazorMobile.Droid.Resource.Styleable.MenuItem_iconTint = global::BlazorMobile.InteropApp.Droid.Resource.Styleable.MenuItem_iconTint;
+			global::BlazorMobile.Droid.Resource.Styleable.MenuItem_iconTintMode = global::BlazorMobile.InteropApp.Droid.Resource.Styleable.MenuItem_iconTintMode;
+			global::BlazorMobile.Droid.Resource.Styleable.MenuItem_numericModifiers = global::BlazorMobile.InteropApp.Droid.Resource.Styleable.MenuItem_numericModifiers;
+			global::BlazorMobile.Droid.Resource.Styleable.MenuItem_showAsAction = global::BlazorMobile.InteropApp.Droid.Resource.Styleable.MenuItem_showAsAction;
+			global::BlazorMobile.Droid.Resource.Styleable.MenuItem_tooltipText = global::BlazorMobile.InteropApp.Droid.Resource.Styleable.MenuItem_tooltipText;
+			global::BlazorMobile.Droid.Resource.Styleable.MenuView = global::BlazorMobile.InteropApp.Droid.Resource.Styleable.MenuView;
+			global::BlazorMobile.Droid.Resource.Styleable.MenuView_android_headerBackground = global::BlazorMobile.InteropApp.Droid.Resource.Styleable.MenuView_android_headerBackground;
+			global::BlazorMobile.Droid.Resource.Styleable.MenuView_android_horizontalDivider = global::BlazorMobile.InteropApp.Droid.Resource.Styleable.MenuView_android_horizontalDivider;
+			global::BlazorMobile.Droid.Resource.Styleable.MenuView_android_itemBackground = global::BlazorMobile.InteropApp.Droid.Resource.Styleable.MenuView_android_itemBackground;
+			global::BlazorMobile.Droid.Resource.Styleable.MenuView_android_itemIconDisabledAlpha = global::BlazorMobile.InteropApp.Droid.Resource.Styleable.MenuView_android_itemIconDisabledAlpha;
+			global::BlazorMobile.Droid.Resource.Styleable.MenuView_android_itemTextAppearance = global::BlazorMobile.InteropApp.Droid.Resource.Styleable.MenuView_android_itemTextAppearance;
+			global::BlazorMobile.Droid.Resource.Styleable.MenuView_android_verticalDivider = global::BlazorMobile.InteropApp.Droid.Resource.Styleable.MenuView_android_verticalDivider;
+			global::BlazorMobile.Droid.Resource.Styleable.MenuView_android_windowAnimationStyle = global::BlazorMobile.InteropApp.Droid.Resource.Styleable.MenuView_android_windowAnimationStyle;
+			global::BlazorMobile.Droid.Resource.Styleable.MenuView_preserveIconSpacing = global::BlazorMobile.InteropApp.Droid.Resource.Styleable.MenuView_preserveIconSpacing;
+			global::BlazorMobile.Droid.Resource.Styleable.MenuView_subMenuArrow = global::BlazorMobile.InteropApp.Droid.Resource.Styleable.MenuView_subMenuArrow;
+			global::BlazorMobile.Droid.Resource.Styleable.NavigationView = global::BlazorMobile.InteropApp.Droid.Resource.Styleable.NavigationView;
+			global::BlazorMobile.Droid.Resource.Styleable.NavigationView_android_background = global::BlazorMobile.InteropApp.Droid.Resource.Styleable.NavigationView_android_background;
+			global::BlazorMobile.Droid.Resource.Styleable.NavigationView_android_fitsSystemWindows = global::BlazorMobile.InteropApp.Droid.Resource.Styleable.NavigationView_android_fitsSystemWindows;
+			global::BlazorMobile.Droid.Resource.Styleable.NavigationView_android_maxWidth = global::BlazorMobile.InteropApp.Droid.Resource.Styleable.NavigationView_android_maxWidth;
+			global::BlazorMobile.Droid.Resource.Styleable.NavigationView_elevation = global::BlazorMobile.InteropApp.Droid.Resource.Styleable.NavigationView_elevation;
+			global::BlazorMobile.Droid.Resource.Styleable.NavigationView_headerLayout = global::BlazorMobile.InteropApp.Droid.Resource.Styleable.NavigationView_headerLayout;
+			global::BlazorMobile.Droid.Resource.Styleable.NavigationView_itemBackground = global::BlazorMobile.InteropApp.Droid.Resource.Styleable.NavigationView_itemBackground;
+			global::BlazorMobile.Droid.Resource.Styleable.NavigationView_itemHorizontalPadding = global::BlazorMobile.InteropApp.Droid.Resource.Styleable.NavigationView_itemHorizontalPadding;
+			global::BlazorMobile.Droid.Resource.Styleable.NavigationView_itemIconPadding = global::BlazorMobile.InteropApp.Droid.Resource.Styleable.NavigationView_itemIconPadding;
+			global::BlazorMobile.Droid.Resource.Styleable.NavigationView_itemIconTint = global::BlazorMobile.InteropApp.Droid.Resource.Styleable.NavigationView_itemIconTint;
+			global::BlazorMobile.Droid.Resource.Styleable.NavigationView_itemTextAppearance = global::BlazorMobile.InteropApp.Droid.Resource.Styleable.NavigationView_itemTextAppearance;
+			global::BlazorMobile.Droid.Resource.Styleable.NavigationView_itemTextColor = global::BlazorMobile.InteropApp.Droid.Resource.Styleable.NavigationView_itemTextColor;
+			global::BlazorMobile.Droid.Resource.Styleable.NavigationView_menu = global::BlazorMobile.InteropApp.Droid.Resource.Styleable.NavigationView_menu;
+			global::BlazorMobile.Droid.Resource.Styleable.PopupWindow = global::BlazorMobile.InteropApp.Droid.Resource.Styleable.PopupWindow;
+			global::BlazorMobile.Droid.Resource.Styleable.PopupWindowBackgroundState = global::BlazorMobile.InteropApp.Droid.Resource.Styleable.PopupWindowBackgroundState;
+			global::BlazorMobile.Droid.Resource.Styleable.PopupWindowBackgroundState_state_above_anchor = global::BlazorMobile.InteropApp.Droid.Resource.Styleable.PopupWindowBackgroundState_state_above_anchor;
+			global::BlazorMobile.Droid.Resource.Styleable.PopupWindow_android_popupAnimationStyle = global::BlazorMobile.InteropApp.Droid.Resource.Styleable.PopupWindow_android_popupAnimationStyle;
+			global::BlazorMobile.Droid.Resource.Styleable.PopupWindow_android_popupBackground = global::BlazorMobile.InteropApp.Droid.Resource.Styleable.PopupWindow_android_popupBackground;
+			global::BlazorMobile.Droid.Resource.Styleable.PopupWindow_overlapAnchor = global::BlazorMobile.InteropApp.Droid.Resource.Styleable.PopupWindow_overlapAnchor;
+			global::BlazorMobile.Droid.Resource.Styleable.RecycleListView = global::BlazorMobile.InteropApp.Droid.Resource.Styleable.RecycleListView;
+			global::BlazorMobile.Droid.Resource.Styleable.RecycleListView_paddingBottomNoButtons = global::BlazorMobile.InteropApp.Droid.Resource.Styleable.RecycleListView_paddingBottomNoButtons;
+			global::BlazorMobile.Droid.Resource.Styleable.RecycleListView_paddingTopNoTitle = global::BlazorMobile.InteropApp.Droid.Resource.Styleable.RecycleListView_paddingTopNoTitle;
+			global::BlazorMobile.Droid.Resource.Styleable.RecyclerView = global::BlazorMobile.InteropApp.Droid.Resource.Styleable.RecyclerView;
+			global::BlazorMobile.Droid.Resource.Styleable.RecyclerView_android_descendantFocusability = global::BlazorMobile.InteropApp.Droid.Resource.Styleable.RecyclerView_android_descendantFocusability;
+			global::BlazorMobile.Droid.Resource.Styleable.RecyclerView_android_orientation = global::BlazorMobile.InteropApp.Droid.Resource.Styleable.RecyclerView_android_orientation;
+			global::BlazorMobile.Droid.Resource.Styleable.RecyclerView_fastScrollEnabled = global::BlazorMobile.InteropApp.Droid.Resource.Styleable.RecyclerView_fastScrollEnabled;
+			global::BlazorMobile.Droid.Resource.Styleable.RecyclerView_fastScrollHorizontalThumbDrawable = global::BlazorMobile.InteropApp.Droid.Resource.Styleable.RecyclerView_fastScrollHorizontalThumbDrawable;
+			global::BlazorMobile.Droid.Resource.Styleable.RecyclerView_fastScrollHorizontalTrackDrawable = global::BlazorMobile.InteropApp.Droid.Resource.Styleable.RecyclerView_fastScrollHorizontalTrackDrawable;
+			global::BlazorMobile.Droid.Resource.Styleable.RecyclerView_fastScrollVerticalThumbDrawable = global::BlazorMobile.InteropApp.Droid.Resource.Styleable.RecyclerView_fastScrollVerticalThumbDrawable;
+			global::BlazorMobile.Droid.Resource.Styleable.RecyclerView_fastScrollVerticalTrackDrawable = global::BlazorMobile.InteropApp.Droid.Resource.Styleable.RecyclerView_fastScrollVerticalTrackDrawable;
+			global::BlazorMobile.Droid.Resource.Styleable.RecyclerView_layoutManager = global::BlazorMobile.InteropApp.Droid.Resource.Styleable.RecyclerView_layoutManager;
+			global::BlazorMobile.Droid.Resource.Styleable.RecyclerView_reverseLayout = global::BlazorMobile.InteropApp.Droid.Resource.Styleable.RecyclerView_reverseLayout;
+			global::BlazorMobile.Droid.Resource.Styleable.RecyclerView_spanCount = global::BlazorMobile.InteropApp.Droid.Resource.Styleable.RecyclerView_spanCount;
+			global::BlazorMobile.Droid.Resource.Styleable.RecyclerView_stackFromEnd = global::BlazorMobile.InteropApp.Droid.Resource.Styleable.RecyclerView_stackFromEnd;
+			global::BlazorMobile.Droid.Resource.Styleable.ScrimInsetsFrameLayout = global::BlazorMobile.InteropApp.Droid.Resource.Styleable.ScrimInsetsFrameLayout;
+			global::BlazorMobile.Droid.Resource.Styleable.ScrimInsetsFrameLayout_insetForeground = global::BlazorMobile.InteropApp.Droid.Resource.Styleable.ScrimInsetsFrameLayout_insetForeground;
+			global::BlazorMobile.Droid.Resource.Styleable.ScrollingViewBehavior_Layout = global::BlazorMobile.InteropApp.Droid.Resource.Styleable.ScrollingViewBehavior_Layout;
+			global::BlazorMobile.Droid.Resource.Styleable.ScrollingViewBehavior_Layout_behavior_overlapTop = global::BlazorMobile.InteropApp.Droid.Resource.Styleable.ScrollingViewBehavior_Layout_behavior_overlapTop;
+			global::BlazorMobile.Droid.Resource.Styleable.SearchView = global::BlazorMobile.InteropApp.Droid.Resource.Styleable.SearchView;
+			global::BlazorMobile.Droid.Resource.Styleable.SearchView_android_focusable = global::BlazorMobile.InteropApp.Droid.Resource.Styleable.SearchView_android_focusable;
+			global::BlazorMobile.Droid.Resource.Styleable.SearchView_android_imeOptions = global::BlazorMobile.InteropApp.Droid.Resource.Styleable.SearchView_android_imeOptions;
+			global::BlazorMobile.Droid.Resource.Styleable.SearchView_android_inputType = global::BlazorMobile.InteropApp.Droid.Resource.Styleable.SearchView_android_inputType;
+			global::BlazorMobile.Droid.Resource.Styleable.SearchView_android_maxWidth = global::BlazorMobile.InteropApp.Droid.Resource.Styleable.SearchView_android_maxWidth;
+			global::BlazorMobile.Droid.Resource.Styleable.SearchView_closeIcon = global::BlazorMobile.InteropApp.Droid.Resource.Styleable.SearchView_closeIcon;
+			global::BlazorMobile.Droid.Resource.Styleable.SearchView_commitIcon = global::BlazorMobile.InteropApp.Droid.Resource.Styleable.SearchView_commitIcon;
+			global::BlazorMobile.Droid.Resource.Styleable.SearchView_defaultQueryHint = global::BlazorMobile.InteropApp.Droid.Resource.Styleable.SearchView_defaultQueryHint;
+			global::BlazorMobile.Droid.Resource.Styleable.SearchView_goIcon = global::BlazorMobile.InteropApp.Droid.Resource.Styleable.SearchView_goIcon;
+			global::BlazorMobile.Droid.Resource.Styleable.SearchView_iconifiedByDefault = global::BlazorMobile.InteropApp.Droid.Resource.Styleable.SearchView_iconifiedByDefault;
+			global::BlazorMobile.Droid.Resource.Styleable.SearchView_layout = global::BlazorMobile.InteropApp.Droid.Resource.Styleable.SearchView_layout;
+			global::BlazorMobile.Droid.Resource.Styleable.SearchView_queryBackground = global::BlazorMobile.InteropApp.Droid.Resource.Styleable.SearchView_queryBackground;
+			global::BlazorMobile.Droid.Resource.Styleable.SearchView_queryHint = global::BlazorMobile.InteropApp.Droid.Resource.Styleable.SearchView_queryHint;
+			global::BlazorMobile.Droid.Resource.Styleable.SearchView_searchHintIcon = global::BlazorMobile.InteropApp.Droid.Resource.Styleable.SearchView_searchHintIcon;
+			global::BlazorMobile.Droid.Resource.Styleable.SearchView_searchIcon = global::BlazorMobile.InteropApp.Droid.Resource.Styleable.SearchView_searchIcon;
+			global::BlazorMobile.Droid.Resource.Styleable.SearchView_submitBackground = global::BlazorMobile.InteropApp.Droid.Resource.Styleable.SearchView_submitBackground;
+			global::BlazorMobile.Droid.Resource.Styleable.SearchView_suggestionRowLayout = global::BlazorMobile.InteropApp.Droid.Resource.Styleable.SearchView_suggestionRowLayout;
+			global::BlazorMobile.Droid.Resource.Styleable.SearchView_voiceIcon = global::BlazorMobile.InteropApp.Droid.Resource.Styleable.SearchView_voiceIcon;
+			global::BlazorMobile.Droid.Resource.Styleable.Snackbar = global::BlazorMobile.InteropApp.Droid.Resource.Styleable.Snackbar;
+			global::BlazorMobile.Droid.Resource.Styleable.SnackbarLayout = global::BlazorMobile.InteropApp.Droid.Resource.Styleable.SnackbarLayout;
+			global::BlazorMobile.Droid.Resource.Styleable.SnackbarLayout_android_maxWidth = global::BlazorMobile.InteropApp.Droid.Resource.Styleable.SnackbarLayout_android_maxWidth;
+			global::BlazorMobile.Droid.Resource.Styleable.SnackbarLayout_elevation = global::BlazorMobile.InteropApp.Droid.Resource.Styleable.SnackbarLayout_elevation;
+			global::BlazorMobile.Droid.Resource.Styleable.SnackbarLayout_maxActionInlineWidth = global::BlazorMobile.InteropApp.Droid.Resource.Styleable.SnackbarLayout_maxActionInlineWidth;
+			global::BlazorMobile.Droid.Resource.Styleable.Snackbar_snackbarButtonStyle = global::BlazorMobile.InteropApp.Droid.Resource.Styleable.Snackbar_snackbarButtonStyle;
+			global::BlazorMobile.Droid.Resource.Styleable.Snackbar_snackbarStyle = global::BlazorMobile.InteropApp.Droid.Resource.Styleable.Snackbar_snackbarStyle;
+			global::BlazorMobile.Droid.Resource.Styleable.Spinner = global::BlazorMobile.InteropApp.Droid.Resource.Styleable.Spinner;
+			global::BlazorMobile.Droid.Resource.Styleable.Spinner_android_dropDownWidth = global::BlazorMobile.InteropApp.Droid.Resource.Styleable.Spinner_android_dropDownWidth;
+			global::BlazorMobile.Droid.Resource.Styleable.Spinner_android_entries = global::BlazorMobile.InteropApp.Droid.Resource.Styleable.Spinner_android_entries;
+			global::BlazorMobile.Droid.Resource.Styleable.Spinner_android_popupBackground = global::BlazorMobile.InteropApp.Droid.Resource.Styleable.Spinner_android_popupBackground;
+			global::BlazorMobile.Droid.Resource.Styleable.Spinner_android_prompt = global::BlazorMobile.InteropApp.Droid.Resource.Styleable.Spinner_android_prompt;
+			global::BlazorMobile.Droid.Resource.Styleable.Spinner_popupTheme = global::BlazorMobile.InteropApp.Droid.Resource.Styleable.Spinner_popupTheme;
+			global::BlazorMobile.Droid.Resource.Styleable.StateListDrawable = global::BlazorMobile.InteropApp.Droid.Resource.Styleable.StateListDrawable;
+			global::BlazorMobile.Droid.Resource.Styleable.StateListDrawableItem = global::BlazorMobile.InteropApp.Droid.Resource.Styleable.StateListDrawableItem;
+			global::BlazorMobile.Droid.Resource.Styleable.StateListDrawableItem_android_drawable = global::BlazorMobile.InteropApp.Droid.Resource.Styleable.StateListDrawableItem_android_drawable;
+			global::BlazorMobile.Droid.Resource.Styleable.StateListDrawable_android_constantSize = global::BlazorMobile.InteropApp.Droid.Resource.Styleable.StateListDrawable_android_constantSize;
+			global::BlazorMobile.Droid.Resource.Styleable.StateListDrawable_android_dither = global::BlazorMobile.InteropApp.Droid.Resource.Styleable.StateListDrawable_android_dither;
+			global::BlazorMobile.Droid.Resource.Styleable.StateListDrawable_android_enterFadeDuration = global::BlazorMobile.InteropApp.Droid.Resource.Styleable.StateListDrawable_android_enterFadeDuration;
+			global::BlazorMobile.Droid.Resource.Styleable.StateListDrawable_android_exitFadeDuration = global::BlazorMobile.InteropApp.Droid.Resource.Styleable.StateListDrawable_android_exitFadeDuration;
+			global::BlazorMobile.Droid.Resource.Styleable.StateListDrawable_android_variablePadding = global::BlazorMobile.InteropApp.Droid.Resource.Styleable.StateListDrawable_android_variablePadding;
+			global::BlazorMobile.Droid.Resource.Styleable.StateListDrawable_android_visible = global::BlazorMobile.InteropApp.Droid.Resource.Styleable.StateListDrawable_android_visible;
+			global::BlazorMobile.Droid.Resource.Styleable.SwitchCompat = global::BlazorMobile.InteropApp.Droid.Resource.Styleable.SwitchCompat;
+			global::BlazorMobile.Droid.Resource.Styleable.SwitchCompat_android_textOff = global::BlazorMobile.InteropApp.Droid.Resource.Styleable.SwitchCompat_android_textOff;
+			global::BlazorMobile.Droid.Resource.Styleable.SwitchCompat_android_textOn = global::BlazorMobile.InteropApp.Droid.Resource.Styleable.SwitchCompat_android_textOn;
+			global::BlazorMobile.Droid.Resource.Styleable.SwitchCompat_android_thumb = global::BlazorMobile.InteropApp.Droid.Resource.Styleable.SwitchCompat_android_thumb;
+			global::BlazorMobile.Droid.Resource.Styleable.SwitchCompat_showText = global::BlazorMobile.InteropApp.Droid.Resource.Styleable.SwitchCompat_showText;
+			global::BlazorMobile.Droid.Resource.Styleable.SwitchCompat_splitTrack = global::BlazorMobile.InteropApp.Droid.Resource.Styleable.SwitchCompat_splitTrack;
+			global::BlazorMobile.Droid.Resource.Styleable.SwitchCompat_switchMinWidth = global::BlazorMobile.InteropApp.Droid.Resource.Styleable.SwitchCompat_switchMinWidth;
+			global::BlazorMobile.Droid.Resource.Styleable.SwitchCompat_switchPadding = global::BlazorMobile.InteropApp.Droid.Resource.Styleable.SwitchCompat_switchPadding;
+			global::BlazorMobile.Droid.Resource.Styleable.SwitchCompat_switchTextAppearance = global::BlazorMobile.InteropApp.Droid.Resource.Styleable.SwitchCompat_switchTextAppearance;
+			global::BlazorMobile.Droid.Resource.Styleable.SwitchCompat_thumbTextPadding = global::BlazorMobile.InteropApp.Droid.Resource.Styleable.SwitchCompat_thumbTextPadding;
+			global::BlazorMobile.Droid.Resource.Styleable.SwitchCompat_thumbTint = global::BlazorMobile.InteropApp.Droid.Resource.Styleable.SwitchCompat_thumbTint;
+			global::BlazorMobile.Droid.Resource.Styleable.SwitchCompat_thumbTintMode = global::BlazorMobile.InteropApp.Droid.Resource.Styleable.SwitchCompat_thumbTintMode;
+			global::BlazorMobile.Droid.Resource.Styleable.SwitchCompat_track = global::BlazorMobile.InteropApp.Droid.Resource.Styleable.SwitchCompat_track;
+			global::BlazorMobile.Droid.Resource.Styleable.SwitchCompat_trackTint = global::BlazorMobile.InteropApp.Droid.Resource.Styleable.SwitchCompat_trackTint;
+			global::BlazorMobile.Droid.Resource.Styleable.SwitchCompat_trackTintMode = global::BlazorMobile.InteropApp.Droid.Resource.Styleable.SwitchCompat_trackTintMode;
+			global::BlazorMobile.Droid.Resource.Styleable.TabItem = global::BlazorMobile.InteropApp.Droid.Resource.Styleable.TabItem;
+			global::BlazorMobile.Droid.Resource.Styleable.TabItem_android_icon = global::BlazorMobile.InteropApp.Droid.Resource.Styleable.TabItem_android_icon;
+			global::BlazorMobile.Droid.Resource.Styleable.TabItem_android_layout = global::BlazorMobile.InteropApp.Droid.Resource.Styleable.TabItem_android_layout;
+			global::BlazorMobile.Droid.Resource.Styleable.TabItem_android_text = global::BlazorMobile.InteropApp.Droid.Resource.Styleable.TabItem_android_text;
+			global::BlazorMobile.Droid.Resource.Styleable.TabLayout = global::BlazorMobile.InteropApp.Droid.Resource.Styleable.TabLayout;
+			global::BlazorMobile.Droid.Resource.Styleable.TabLayout_tabBackground = global::BlazorMobile.InteropApp.Droid.Resource.Styleable.TabLayout_tabBackground;
+			global::BlazorMobile.Droid.Resource.Styleable.TabLayout_tabContentStart = global::BlazorMobile.InteropApp.Droid.Resource.Styleable.TabLayout_tabContentStart;
+			global::BlazorMobile.Droid.Resource.Styleable.TabLayout_tabGravity = global::BlazorMobile.InteropApp.Droid.Resource.Styleable.TabLayout_tabGravity;
+			global::BlazorMobile.Droid.Resource.Styleable.TabLayout_tabIconTint = global::BlazorMobile.InteropApp.Droid.Resource.Styleable.TabLayout_tabIconTint;
+			global::BlazorMobile.Droid.Resource.Styleable.TabLayout_tabIconTintMode = global::BlazorMobile.InteropApp.Droid.Resource.Styleable.TabLayout_tabIconTintMode;
+			global::BlazorMobile.Droid.Resource.Styleable.TabLayout_tabIndicator = global::BlazorMobile.InteropApp.Droid.Resource.Styleable.TabLayout_tabIndicator;
+			global::BlazorMobile.Droid.Resource.Styleable.TabLayout_tabIndicatorAnimationDuration = global::BlazorMobile.InteropApp.Droid.Resource.Styleable.TabLayout_tabIndicatorAnimationDuration;
+			global::BlazorMobile.Droid.Resource.Styleable.TabLayout_tabIndicatorColor = global::BlazorMobile.InteropApp.Droid.Resource.Styleable.TabLayout_tabIndicatorColor;
+			global::BlazorMobile.Droid.Resource.Styleable.TabLayout_tabIndicatorFullWidth = global::BlazorMobile.InteropApp.Droid.Resource.Styleable.TabLayout_tabIndicatorFullWidth;
+			global::BlazorMobile.Droid.Resource.Styleable.TabLayout_tabIndicatorGravity = global::BlazorMobile.InteropApp.Droid.Resource.Styleable.TabLayout_tabIndicatorGravity;
+			global::BlazorMobile.Droid.Resource.Styleable.TabLayout_tabIndicatorHeight = global::BlazorMobile.InteropApp.Droid.Resource.Styleable.TabLayout_tabIndicatorHeight;
+			global::BlazorMobile.Droid.Resource.Styleable.TabLayout_tabInlineLabel = global::BlazorMobile.InteropApp.Droid.Resource.Styleable.TabLayout_tabInlineLabel;
+			global::BlazorMobile.Droid.Resource.Styleable.TabLayout_tabMaxWidth = global::BlazorMobile.InteropApp.Droid.Resource.Styleable.TabLayout_tabMaxWidth;
+			global::BlazorMobile.Droid.Resource.Styleable.TabLayout_tabMinWidth = global::BlazorMobile.InteropApp.Droid.Resource.Styleable.TabLayout_tabMinWidth;
+			global::BlazorMobile.Droid.Resource.Styleable.TabLayout_tabMode = global::BlazorMobile.InteropApp.Droid.Resource.Styleable.TabLayout_tabMode;
+			global::BlazorMobile.Droid.Resource.Styleable.TabLayout_tabPadding = global::BlazorMobile.InteropApp.Droid.Resource.Styleable.TabLayout_tabPadding;
+			global::BlazorMobile.Droid.Resource.Styleable.TabLayout_tabPaddingBottom = global::BlazorMobile.InteropApp.Droid.Resource.Styleable.TabLayout_tabPaddingBottom;
+			global::BlazorMobile.Droid.Resource.Styleable.TabLayout_tabPaddingEnd = global::BlazorMobile.InteropApp.Droid.Resource.Styleable.TabLayout_tabPaddingEnd;
+			global::BlazorMobile.Droid.Resource.Styleable.TabLayout_tabPaddingStart = global::BlazorMobile.InteropApp.Droid.Resource.Styleable.TabLayout_tabPaddingStart;
+			global::BlazorMobile.Droid.Resource.Styleable.TabLayout_tabPaddingTop = global::BlazorMobile.InteropApp.Droid.Resource.Styleable.TabLayout_tabPaddingTop;
+			global::BlazorMobile.Droid.Resource.Styleable.TabLayout_tabRippleColor = global::BlazorMobile.InteropApp.Droid.Resource.Styleable.TabLayout_tabRippleColor;
+			global::BlazorMobile.Droid.Resource.Styleable.TabLayout_tabSelectedTextColor = global::BlazorMobile.InteropApp.Droid.Resource.Styleable.TabLayout_tabSelectedTextColor;
+			global::BlazorMobile.Droid.Resource.Styleable.TabLayout_tabTextAppearance = global::BlazorMobile.InteropApp.Droid.Resource.Styleable.TabLayout_tabTextAppearance;
+			global::BlazorMobile.Droid.Resource.Styleable.TabLayout_tabTextColor = global::BlazorMobile.InteropApp.Droid.Resource.Styleable.TabLayout_tabTextColor;
+			global::BlazorMobile.Droid.Resource.Styleable.TabLayout_tabUnboundedRipple = global::BlazorMobile.InteropApp.Droid.Resource.Styleable.TabLayout_tabUnboundedRipple;
+			global::BlazorMobile.Droid.Resource.Styleable.TextAppearance = global::BlazorMobile.InteropApp.Droid.Resource.Styleable.TextAppearance;
+			global::BlazorMobile.Droid.Resource.Styleable.TextAppearance_android_fontFamily = global::BlazorMobile.InteropApp.Droid.Resource.Styleable.TextAppearance_android_fontFamily;
+			global::BlazorMobile.Droid.Resource.Styleable.TextAppearance_android_shadowColor = global::BlazorMobile.InteropApp.Droid.Resource.Styleable.TextAppearance_android_shadowColor;
+			global::BlazorMobile.Droid.Resource.Styleable.TextAppearance_android_shadowDx = global::BlazorMobile.InteropApp.Droid.Resource.Styleable.TextAppearance_android_shadowDx;
+			global::BlazorMobile.Droid.Resource.Styleable.TextAppearance_android_shadowDy = global::BlazorMobile.InteropApp.Droid.Resource.Styleable.TextAppearance_android_shadowDy;
+			global::BlazorMobile.Droid.Resource.Styleable.TextAppearance_android_shadowRadius = global::BlazorMobile.InteropApp.Droid.Resource.Styleable.TextAppearance_android_shadowRadius;
+			global::BlazorMobile.Droid.Resource.Styleable.TextAppearance_android_textColor = global::BlazorMobile.InteropApp.Droid.Resource.Styleable.TextAppearance_android_textColor;
+			global::BlazorMobile.Droid.Resource.Styleable.TextAppearance_android_textColorHint = global::BlazorMobile.InteropApp.Droid.Resource.Styleable.TextAppearance_android_textColorHint;
+			global::BlazorMobile.Droid.Resource.Styleable.TextAppearance_android_textColorLink = global::BlazorMobile.InteropApp.Droid.Resource.Styleable.TextAppearance_android_textColorLink;
+			global::BlazorMobile.Droid.Resource.Styleable.TextAppearance_android_textSize = global::BlazorMobile.InteropApp.Droid.Resource.Styleable.TextAppearance_android_textSize;
+			global::BlazorMobile.Droid.Resource.Styleable.TextAppearance_android_textStyle = global::BlazorMobile.InteropApp.Droid.Resource.Styleable.TextAppearance_android_textStyle;
+			global::BlazorMobile.Droid.Resource.Styleable.TextAppearance_android_typeface = global::BlazorMobile.InteropApp.Droid.Resource.Styleable.TextAppearance_android_typeface;
+			global::BlazorMobile.Droid.Resource.Styleable.TextAppearance_fontFamily = global::BlazorMobile.InteropApp.Droid.Resource.Styleable.TextAppearance_fontFamily;
+			global::BlazorMobile.Droid.Resource.Styleable.TextAppearance_textAllCaps = global::BlazorMobile.InteropApp.Droid.Resource.Styleable.TextAppearance_textAllCaps;
+			global::BlazorMobile.Droid.Resource.Styleable.TextInputLayout = global::BlazorMobile.InteropApp.Droid.Resource.Styleable.TextInputLayout;
+			global::BlazorMobile.Droid.Resource.Styleable.TextInputLayout_android_hint = global::BlazorMobile.InteropApp.Droid.Resource.Styleable.TextInputLayout_android_hint;
+			global::BlazorMobile.Droid.Resource.Styleable.TextInputLayout_android_textColorHint = global::BlazorMobile.InteropApp.Droid.Resource.Styleable.TextInputLayout_android_textColorHint;
+			global::BlazorMobile.Droid.Resource.Styleable.TextInputLayout_boxBackgroundColor = global::BlazorMobile.InteropApp.Droid.Resource.Styleable.TextInputLayout_boxBackgroundColor;
+			global::BlazorMobile.Droid.Resource.Styleable.TextInputLayout_boxBackgroundMode = global::BlazorMobile.InteropApp.Droid.Resource.Styleable.TextInputLayout_boxBackgroundMode;
+			global::BlazorMobile.Droid.Resource.Styleable.TextInputLayout_boxCollapsedPaddingTop = global::BlazorMobile.InteropApp.Droid.Resource.Styleable.TextInputLayout_boxCollapsedPaddingTop;
+			global::BlazorMobile.Droid.Resource.Styleable.TextInputLayout_boxCornerRadiusBottomEnd = global::BlazorMobile.InteropApp.Droid.Resource.Styleable.TextInputLayout_boxCornerRadiusBottomEnd;
+			global::BlazorMobile.Droid.Resource.Styleable.TextInputLayout_boxCornerRadiusBottomStart = global::BlazorMobile.InteropApp.Droid.Resource.Styleable.TextInputLayout_boxCornerRadiusBottomStart;
+			global::BlazorMobile.Droid.Resource.Styleable.TextInputLayout_boxCornerRadiusTopEnd = global::BlazorMobile.InteropApp.Droid.Resource.Styleable.TextInputLayout_boxCornerRadiusTopEnd;
+			global::BlazorMobile.Droid.Resource.Styleable.TextInputLayout_boxCornerRadiusTopStart = global::BlazorMobile.InteropApp.Droid.Resource.Styleable.TextInputLayout_boxCornerRadiusTopStart;
+			global::BlazorMobile.Droid.Resource.Styleable.TextInputLayout_boxStrokeColor = global::BlazorMobile.InteropApp.Droid.Resource.Styleable.TextInputLayout_boxStrokeColor;
+			global::BlazorMobile.Droid.Resource.Styleable.TextInputLayout_boxStrokeWidth = global::BlazorMobile.InteropApp.Droid.Resource.Styleable.TextInputLayout_boxStrokeWidth;
+			global::BlazorMobile.Droid.Resource.Styleable.TextInputLayout_counterEnabled = global::BlazorMobile.InteropApp.Droid.Resource.Styleable.TextInputLayout_counterEnabled;
+			global::BlazorMobile.Droid.Resource.Styleable.TextInputLayout_counterMaxLength = global::BlazorMobile.InteropApp.Droid.Resource.Styleable.TextInputLayout_counterMaxLength;
+			global::BlazorMobile.Droid.Resource.Styleable.TextInputLayout_counterOverflowTextAppearance = global::BlazorMobile.InteropApp.Droid.Resource.Styleable.TextInputLayout_counterOverflowTextAppearance;
+			global::BlazorMobile.Droid.Resource.Styleable.TextInputLayout_counterTextAppearance = global::BlazorMobile.InteropApp.Droid.Resource.Styleable.TextInputLayout_counterTextAppearance;
+			global::BlazorMobile.Droid.Resource.Styleable.TextInputLayout_errorEnabled = global::BlazorMobile.InteropApp.Droid.Resource.Styleable.TextInputLayout_errorEnabled;
+			global::BlazorMobile.Droid.Resource.Styleable.TextInputLayout_errorTextAppearance = global::BlazorMobile.InteropApp.Droid.Resource.Styleable.TextInputLayout_errorTextAppearance;
+			global::BlazorMobile.Droid.Resource.Styleable.TextInputLayout_helperText = global::BlazorMobile.InteropApp.Droid.Resource.Styleable.TextInputLayout_helperText;
+			global::BlazorMobile.Droid.Resource.Styleable.TextInputLayout_helperTextEnabled = global::BlazorMobile.InteropApp.Droid.Resource.Styleable.TextInputLayout_helperTextEnabled;
+			global::BlazorMobile.Droid.Resource.Styleable.TextInputLayout_helperTextTextAppearance = global::BlazorMobile.InteropApp.Droid.Resource.Styleable.TextInputLayout_helperTextTextAppearance;
+			global::BlazorMobile.Droid.Resource.Styleable.TextInputLayout_hintAnimationEnabled = global::BlazorMobile.InteropApp.Droid.Resource.Styleable.TextInputLayout_hintAnimationEnabled;
+			global::BlazorMobile.Droid.Resource.Styleable.TextInputLayout_hintEnabled = global::BlazorMobile.InteropApp.Droid.Resource.Styleable.TextInputLayout_hintEnabled;
+			global::BlazorMobile.Droid.Resource.Styleable.TextInputLayout_hintTextAppearance = global::BlazorMobile.InteropApp.Droid.Resource.Styleable.TextInputLayout_hintTextAppearance;
+			global::BlazorMobile.Droid.Resource.Styleable.TextInputLayout_passwordToggleContentDescription = global::BlazorMobile.InteropApp.Droid.Resource.Styleable.TextInputLayout_passwordToggleContentDescription;
+			global::BlazorMobile.Droid.Resource.Styleable.TextInputLayout_passwordToggleDrawable = global::BlazorMobile.InteropApp.Droid.Resource.Styleable.TextInputLayout_passwordToggleDrawable;
+			global::BlazorMobile.Droid.Resource.Styleable.TextInputLayout_passwordToggleEnabled = global::BlazorMobile.InteropApp.Droid.Resource.Styleable.TextInputLayout_passwordToggleEnabled;
+			global::BlazorMobile.Droid.Resource.Styleable.TextInputLayout_passwordToggleTint = global::BlazorMobile.InteropApp.Droid.Resource.Styleable.TextInputLayout_passwordToggleTint;
+			global::BlazorMobile.Droid.Resource.Styleable.TextInputLayout_passwordToggleTintMode = global::BlazorMobile.InteropApp.Droid.Resource.Styleable.TextInputLayout_passwordToggleTintMode;
+			global::BlazorMobile.Droid.Resource.Styleable.ThemeEnforcement = global::BlazorMobile.InteropApp.Droid.Resource.Styleable.ThemeEnforcement;
+			global::BlazorMobile.Droid.Resource.Styleable.ThemeEnforcement_android_textAppearance = global::BlazorMobile.InteropApp.Droid.Resource.Styleable.ThemeEnforcement_android_textAppearance;
+			global::BlazorMobile.Droid.Resource.Styleable.ThemeEnforcement_enforceMaterialTheme = global::BlazorMobile.InteropApp.Droid.Resource.Styleable.ThemeEnforcement_enforceMaterialTheme;
+			global::BlazorMobile.Droid.Resource.Styleable.ThemeEnforcement_enforceTextAppearance = global::BlazorMobile.InteropApp.Droid.Resource.Styleable.ThemeEnforcement_enforceTextAppearance;
+			global::BlazorMobile.Droid.Resource.Styleable.Toolbar = global::BlazorMobile.InteropApp.Droid.Resource.Styleable.Toolbar;
+			global::BlazorMobile.Droid.Resource.Styleable.Toolbar_android_gravity = global::BlazorMobile.InteropApp.Droid.Resource.Styleable.Toolbar_android_gravity;
+			global::BlazorMobile.Droid.Resource.Styleable.Toolbar_android_minHeight = global::BlazorMobile.InteropApp.Droid.Resource.Styleable.Toolbar_android_minHeight;
+			global::BlazorMobile.Droid.Resource.Styleable.Toolbar_buttonGravity = global::BlazorMobile.InteropApp.Droid.Resource.Styleable.Toolbar_buttonGravity;
+			global::BlazorMobile.Droid.Resource.Styleable.Toolbar_collapseContentDescription = global::BlazorMobile.InteropApp.Droid.Resource.Styleable.Toolbar_collapseContentDescription;
+			global::BlazorMobile.Droid.Resource.Styleable.Toolbar_collapseIcon = global::BlazorMobile.InteropApp.Droid.Resource.Styleable.Toolbar_collapseIcon;
+			global::BlazorMobile.Droid.Resource.Styleable.Toolbar_contentInsetEnd = global::BlazorMobile.InteropApp.Droid.Resource.Styleable.Toolbar_contentInsetEnd;
+			global::BlazorMobile.Droid.Resource.Styleable.Toolbar_contentInsetEndWithActions = global::BlazorMobile.InteropApp.Droid.Resource.Styleable.Toolbar_contentInsetEndWithActions;
+			global::BlazorMobile.Droid.Resource.Styleable.Toolbar_contentInsetLeft = global::BlazorMobile.InteropApp.Droid.Resource.Styleable.Toolbar_contentInsetLeft;
+			global::BlazorMobile.Droid.Resource.Styleable.Toolbar_contentInsetRight = global::BlazorMobile.InteropApp.Droid.Resource.Styleable.Toolbar_contentInsetRight;
+			global::BlazorMobile.Droid.Resource.Styleable.Toolbar_contentInsetStart = global::BlazorMobile.InteropApp.Droid.Resource.Styleable.Toolbar_contentInsetStart;
+			global::BlazorMobile.Droid.Resource.Styleable.Toolbar_contentInsetStartWithNavigation = global::BlazorMobile.InteropApp.Droid.Resource.Styleable.Toolbar_contentInsetStartWithNavigation;
+			global::BlazorMobile.Droid.Resource.Styleable.Toolbar_logo = global::BlazorMobile.InteropApp.Droid.Resource.Styleable.Toolbar_logo;
+			global::BlazorMobile.Droid.Resource.Styleable.Toolbar_logoDescription = global::BlazorMobile.InteropApp.Droid.Resource.Styleable.Toolbar_logoDescription;
+			global::BlazorMobile.Droid.Resource.Styleable.Toolbar_maxButtonHeight = global::BlazorMobile.InteropApp.Droid.Resource.Styleable.Toolbar_maxButtonHeight;
+			global::BlazorMobile.Droid.Resource.Styleable.Toolbar_navigationContentDescription = global::BlazorMobile.InteropApp.Droid.Resource.Styleable.Toolbar_navigationContentDescription;
+			global::BlazorMobile.Droid.Resource.Styleable.Toolbar_navigationIcon = global::BlazorMobile.InteropApp.Droid.Resource.Styleable.Toolbar_navigationIcon;
+			global::BlazorMobile.Droid.Resource.Styleable.Toolbar_popupTheme = global::BlazorMobile.InteropApp.Droid.Resource.Styleable.Toolbar_popupTheme;
+			global::BlazorMobile.Droid.Resource.Styleable.Toolbar_subtitle = global::BlazorMobile.InteropApp.Droid.Resource.Styleable.Toolbar_subtitle;
+			global::BlazorMobile.Droid.Resource.Styleable.Toolbar_subtitleTextAppearance = global::BlazorMobile.InteropApp.Droid.Resource.Styleable.Toolbar_subtitleTextAppearance;
+			global::BlazorMobile.Droid.Resource.Styleable.Toolbar_subtitleTextColor = global::BlazorMobile.InteropApp.Droid.Resource.Styleable.Toolbar_subtitleTextColor;
+			global::BlazorMobile.Droid.Resource.Styleable.Toolbar_title = global::BlazorMobile.InteropApp.Droid.Resource.Styleable.Toolbar_title;
+			global::BlazorMobile.Droid.Resource.Styleable.Toolbar_titleMargin = global::BlazorMobile.InteropApp.Droid.Resource.Styleable.Toolbar_titleMargin;
+			global::BlazorMobile.Droid.Resource.Styleable.Toolbar_titleMarginBottom = global::BlazorMobile.InteropApp.Droid.Resource.Styleable.Toolbar_titleMarginBottom;
+			global::BlazorMobile.Droid.Resource.Styleable.Toolbar_titleMarginEnd = global::BlazorMobile.InteropApp.Droid.Resource.Styleable.Toolbar_titleMarginEnd;
+			global::BlazorMobile.Droid.Resource.Styleable.Toolbar_titleMargins = global::BlazorMobile.InteropApp.Droid.Resource.Styleable.Toolbar_titleMargins;
+			global::BlazorMobile.Droid.Resource.Styleable.Toolbar_titleMarginStart = global::BlazorMobile.InteropApp.Droid.Resource.Styleable.Toolbar_titleMarginStart;
+			global::BlazorMobile.Droid.Resource.Styleable.Toolbar_titleMarginTop = global::BlazorMobile.InteropApp.Droid.Resource.Styleable.Toolbar_titleMarginTop;
+			global::BlazorMobile.Droid.Resource.Styleable.Toolbar_titleTextAppearance = global::BlazorMobile.InteropApp.Droid.Resource.Styleable.Toolbar_titleTextAppearance;
+			global::BlazorMobile.Droid.Resource.Styleable.Toolbar_titleTextColor = global::BlazorMobile.InteropApp.Droid.Resource.Styleable.Toolbar_titleTextColor;
+			global::BlazorMobile.Droid.Resource.Styleable.View = global::BlazorMobile.InteropApp.Droid.Resource.Styleable.View;
+			global::BlazorMobile.Droid.Resource.Styleable.ViewBackgroundHelper = global::BlazorMobile.InteropApp.Droid.Resource.Styleable.ViewBackgroundHelper;
+			global::BlazorMobile.Droid.Resource.Styleable.ViewBackgroundHelper_android_background = global::BlazorMobile.InteropApp.Droid.Resource.Styleable.ViewBackgroundHelper_android_background;
+			global::BlazorMobile.Droid.Resource.Styleable.ViewBackgroundHelper_backgroundTint = global::BlazorMobile.InteropApp.Droid.Resource.Styleable.ViewBackgroundHelper_backgroundTint;
+			global::BlazorMobile.Droid.Resource.Styleable.ViewBackgroundHelper_backgroundTintMode = global::BlazorMobile.InteropApp.Droid.Resource.Styleable.ViewBackgroundHelper_backgroundTintMode;
+			global::BlazorMobile.Droid.Resource.Styleable.ViewStubCompat = global::BlazorMobile.InteropApp.Droid.Resource.Styleable.ViewStubCompat;
+			global::BlazorMobile.Droid.Resource.Styleable.ViewStubCompat_android_id = global::BlazorMobile.InteropApp.Droid.Resource.Styleable.ViewStubCompat_android_id;
+			global::BlazorMobile.Droid.Resource.Styleable.ViewStubCompat_android_inflatedId = global::BlazorMobile.InteropApp.Droid.Resource.Styleable.ViewStubCompat_android_inflatedId;
+			global::BlazorMobile.Droid.Resource.Styleable.ViewStubCompat_android_layout = global::BlazorMobile.InteropApp.Droid.Resource.Styleable.ViewStubCompat_android_layout;
+			global::BlazorMobile.Droid.Resource.Styleable.View_android_focusable = global::BlazorMobile.InteropApp.Droid.Resource.Styleable.View_android_focusable;
+			global::BlazorMobile.Droid.Resource.Styleable.View_android_theme = global::BlazorMobile.InteropApp.Droid.Resource.Styleable.View_android_theme;
+			global::BlazorMobile.Droid.Resource.Styleable.View_paddingEnd = global::BlazorMobile.InteropApp.Droid.Resource.Styleable.View_paddingEnd;
+			global::BlazorMobile.Droid.Resource.Styleable.View_paddingStart = global::BlazorMobile.InteropApp.Droid.Resource.Styleable.View_paddingStart;
+			global::BlazorMobile.Droid.Resource.Styleable.View_theme = global::BlazorMobile.InteropApp.Droid.Resource.Styleable.View_theme;
 			global::Xamarin.Forms.Platform.Android.Resource.Animation.abc_fade_in = global::BlazorMobile.InteropApp.Droid.Resource.Animation.abc_fade_in;
 			global::Xamarin.Forms.Platform.Android.Resource.Animation.abc_fade_out = global::BlazorMobile.InteropApp.Droid.Resource.Animation.abc_fade_out;
 			global::Xamarin.Forms.Platform.Android.Resource.Animation.abc_grow_fade_in_from_bottom = global::BlazorMobile.InteropApp.Droid.Resource.Animation.abc_grow_fade_in_from_bottom;
@@ -6546,508 +9455,514 @@ namespace BlazorMobile.InteropApp.Droid
 			public const int info = 2131230810;
 			
 			// aapt resource value: 0x7F08005B
-			public const int italic = 2131230811;
+			public const int intent_listview_icon = 2131230811;
 			
 			// aapt resource value: 0x7F08005C
-			public const int item_touch_helper_previous_elevation = 2131230812;
+			public const int intent_listview_title = 2131230812;
 			
 			// aapt resource value: 0x7F08005D
-			public const int labeled = 2131230813;
+			public const int italic = 2131230813;
 			
 			// aapt resource value: 0x7F08005E
-			public const int largeLabel = 2131230814;
+			public const int item_touch_helper_previous_elevation = 2131230814;
 			
 			// aapt resource value: 0x7F08005F
-			public const int left = 2131230815;
+			public const int labeled = 2131230815;
 			
 			// aapt resource value: 0x7F080060
-			public const int line1 = 2131230816;
+			public const int largeLabel = 2131230816;
 			
 			// aapt resource value: 0x7F080061
-			public const int line3 = 2131230817;
+			public const int left = 2131230817;
 			
 			// aapt resource value: 0x7F080062
-			public const int listMode = 2131230818;
+			public const int line1 = 2131230818;
 			
 			// aapt resource value: 0x7F080063
-			public const int list_item = 2131230819;
+			public const int line3 = 2131230819;
 			
 			// aapt resource value: 0x7F080064
-			public const int main_appbar = 2131230820;
+			public const int listMode = 2131230820;
 			
 			// aapt resource value: 0x7F080065
-			public const int main_scrollview = 2131230821;
+			public const int list_item = 2131230821;
 			
 			// aapt resource value: 0x7F080066
-			public const int main_tablayout = 2131230822;
+			public const int main_appbar = 2131230822;
 			
 			// aapt resource value: 0x7F080067
-			public const int main_toolbar = 2131230823;
+			public const int main_scrollview = 2131230823;
 			
 			// aapt resource value: 0x7F080068
-			public const int masked = 2131230824;
+			public const int main_tablayout = 2131230824;
 			
 			// aapt resource value: 0x7F080069
-			public const int materialformsedittext = 2131230825;
+			public const int main_toolbar = 2131230825;
 			
 			// aapt resource value: 0x7F08006A
-			public const int media_actions = 2131230826;
+			public const int masked = 2131230826;
 			
 			// aapt resource value: 0x7F08006B
-			public const int message = 2131230827;
+			public const int materialformsedittext = 2131230827;
+			
+			// aapt resource value: 0x7F08006C
+			public const int media_actions = 2131230828;
+			
+			// aapt resource value: 0x7F08006D
+			public const int message = 2131230829;
 			
 			// aapt resource value: 0x7F080003
 			public const int META = 2131230723;
 			
-			// aapt resource value: 0x7F08006C
-			public const int middle = 2131230828;
-			
-			// aapt resource value: 0x7F08006D
-			public const int mini = 2131230829;
-			
 			// aapt resource value: 0x7F08006E
-			public const int mr_art = 2131230830;
+			public const int middle = 2131230830;
 			
 			// aapt resource value: 0x7F08006F
-			public const int mr_cast_checkbox = 2131230831;
+			public const int mini = 2131230831;
 			
 			// aapt resource value: 0x7F080070
-			public const int mr_cast_close_button = 2131230832;
+			public const int mr_art = 2131230832;
 			
 			// aapt resource value: 0x7F080071
-			public const int mr_cast_group_icon = 2131230833;
+			public const int mr_cast_checkbox = 2131230833;
 			
 			// aapt resource value: 0x7F080072
-			public const int mr_cast_group_name = 2131230834;
+			public const int mr_cast_close_button = 2131230834;
 			
 			// aapt resource value: 0x7F080073
-			public const int mr_cast_list = 2131230835;
+			public const int mr_cast_group_icon = 2131230835;
 			
 			// aapt resource value: 0x7F080074
-			public const int mr_cast_meta = 2131230836;
+			public const int mr_cast_group_name = 2131230836;
 			
 			// aapt resource value: 0x7F080075
-			public const int mr_cast_meta_art = 2131230837;
+			public const int mr_cast_list = 2131230837;
 			
 			// aapt resource value: 0x7F080076
-			public const int mr_cast_meta_subtitle = 2131230838;
+			public const int mr_cast_meta = 2131230838;
 			
 			// aapt resource value: 0x7F080077
-			public const int mr_cast_meta_title = 2131230839;
+			public const int mr_cast_meta_art = 2131230839;
 			
 			// aapt resource value: 0x7F080078
-			public const int mr_cast_route_icon = 2131230840;
+			public const int mr_cast_meta_subtitle = 2131230840;
 			
 			// aapt resource value: 0x7F080079
-			public const int mr_cast_route_name = 2131230841;
+			public const int mr_cast_meta_title = 2131230841;
 			
 			// aapt resource value: 0x7F08007A
-			public const int mr_cast_stop_button = 2131230842;
+			public const int mr_cast_route_icon = 2131230842;
 			
 			// aapt resource value: 0x7F08007B
-			public const int mr_cast_volume_layout = 2131230843;
+			public const int mr_cast_route_name = 2131230843;
 			
 			// aapt resource value: 0x7F08007C
-			public const int mr_cast_volume_slider = 2131230844;
+			public const int mr_cast_stop_button = 2131230844;
 			
 			// aapt resource value: 0x7F08007D
-			public const int mr_chooser_list = 2131230845;
+			public const int mr_cast_volume_layout = 2131230845;
 			
 			// aapt resource value: 0x7F08007E
-			public const int mr_chooser_route_desc = 2131230846;
+			public const int mr_cast_volume_slider = 2131230846;
 			
 			// aapt resource value: 0x7F08007F
-			public const int mr_chooser_route_icon = 2131230847;
+			public const int mr_chooser_list = 2131230847;
 			
 			// aapt resource value: 0x7F080080
-			public const int mr_chooser_route_name = 2131230848;
+			public const int mr_chooser_route_desc = 2131230848;
 			
 			// aapt resource value: 0x7F080081
-			public const int mr_chooser_title = 2131230849;
+			public const int mr_chooser_route_icon = 2131230849;
 			
 			// aapt resource value: 0x7F080082
-			public const int mr_close = 2131230850;
+			public const int mr_chooser_route_name = 2131230850;
 			
 			// aapt resource value: 0x7F080083
-			public const int mr_control_divider = 2131230851;
+			public const int mr_chooser_title = 2131230851;
 			
 			// aapt resource value: 0x7F080084
-			public const int mr_control_playback_ctrl = 2131230852;
+			public const int mr_close = 2131230852;
 			
 			// aapt resource value: 0x7F080085
-			public const int mr_control_subtitle = 2131230853;
+			public const int mr_control_divider = 2131230853;
 			
 			// aapt resource value: 0x7F080086
-			public const int mr_control_title = 2131230854;
+			public const int mr_control_playback_ctrl = 2131230854;
 			
 			// aapt resource value: 0x7F080087
-			public const int mr_control_title_container = 2131230855;
+			public const int mr_control_subtitle = 2131230855;
 			
 			// aapt resource value: 0x7F080088
-			public const int mr_custom_control = 2131230856;
+			public const int mr_control_title = 2131230856;
 			
 			// aapt resource value: 0x7F080089
-			public const int mr_default_control = 2131230857;
+			public const int mr_control_title_container = 2131230857;
 			
 			// aapt resource value: 0x7F08008A
-			public const int mr_dialog_area = 2131230858;
+			public const int mr_custom_control = 2131230858;
 			
 			// aapt resource value: 0x7F08008B
-			public const int mr_dialog_header_name = 2131230859;
+			public const int mr_default_control = 2131230859;
 			
 			// aapt resource value: 0x7F08008C
-			public const int mr_expandable_area = 2131230860;
+			public const int mr_dialog_area = 2131230860;
 			
 			// aapt resource value: 0x7F08008D
-			public const int mr_group_expand_collapse = 2131230861;
+			public const int mr_dialog_header_name = 2131230861;
 			
 			// aapt resource value: 0x7F08008E
-			public const int mr_group_volume_route_name = 2131230862;
+			public const int mr_expandable_area = 2131230862;
 			
 			// aapt resource value: 0x7F08008F
-			public const int mr_group_volume_slider = 2131230863;
+			public const int mr_group_expand_collapse = 2131230863;
 			
 			// aapt resource value: 0x7F080090
-			public const int mr_media_main_control = 2131230864;
+			public const int mr_group_volume_route_name = 2131230864;
 			
 			// aapt resource value: 0x7F080091
-			public const int mr_name = 2131230865;
+			public const int mr_group_volume_slider = 2131230865;
 			
 			// aapt resource value: 0x7F080092
-			public const int mr_picker_close_button = 2131230866;
+			public const int mr_media_main_control = 2131230866;
 			
 			// aapt resource value: 0x7F080093
-			public const int mr_picker_list = 2131230867;
+			public const int mr_name = 2131230867;
 			
 			// aapt resource value: 0x7F080094
-			public const int mr_picker_route_icon = 2131230868;
+			public const int mr_picker_close_button = 2131230868;
 			
 			// aapt resource value: 0x7F080095
-			public const int mr_picker_route_name = 2131230869;
+			public const int mr_picker_list = 2131230869;
 			
 			// aapt resource value: 0x7F080096
-			public const int mr_playback_control = 2131230870;
+			public const int mr_picker_route_icon = 2131230870;
 			
 			// aapt resource value: 0x7F080097
-			public const int mr_title_bar = 2131230871;
+			public const int mr_picker_route_name = 2131230871;
 			
 			// aapt resource value: 0x7F080098
-			public const int mr_volume_control = 2131230872;
+			public const int mr_playback_control = 2131230872;
 			
 			// aapt resource value: 0x7F080099
-			public const int mr_volume_group_list = 2131230873;
+			public const int mr_title_bar = 2131230873;
 			
 			// aapt resource value: 0x7F08009A
-			public const int mr_volume_item_icon = 2131230874;
+			public const int mr_volume_control = 2131230874;
 			
 			// aapt resource value: 0x7F08009B
-			public const int mr_volume_slider = 2131230875;
+			public const int mr_volume_group_list = 2131230875;
 			
 			// aapt resource value: 0x7F08009C
-			public const int mtrl_child_content_container = 2131230876;
+			public const int mr_volume_item_icon = 2131230876;
 			
 			// aapt resource value: 0x7F08009D
-			public const int mtrl_internal_children_alpha_tag = 2131230877;
+			public const int mr_volume_slider = 2131230877;
 			
 			// aapt resource value: 0x7F08009E
-			public const int multiply = 2131230878;
+			public const int mtrl_child_content_container = 2131230878;
 			
 			// aapt resource value: 0x7F08009F
-			public const int navigation_header_container = 2131230879;
+			public const int mtrl_internal_children_alpha_tag = 2131230879;
 			
 			// aapt resource value: 0x7F0800A0
-			public const int never = 2131230880;
+			public const int multiply = 2131230880;
 			
 			// aapt resource value: 0x7F0800A1
-			public const int none = 2131230881;
+			public const int navigation_header_container = 2131230881;
 			
 			// aapt resource value: 0x7F0800A2
-			public const int normal = 2131230882;
+			public const int never = 2131230882;
 			
 			// aapt resource value: 0x7F0800A3
-			public const int notification_background = 2131230883;
+			public const int none = 2131230883;
 			
 			// aapt resource value: 0x7F0800A4
-			public const int notification_main_column = 2131230884;
+			public const int normal = 2131230884;
 			
 			// aapt resource value: 0x7F0800A5
-			public const int notification_main_column_container = 2131230885;
+			public const int notification_background = 2131230885;
 			
 			// aapt resource value: 0x7F0800A6
-			public const int outline = 2131230886;
+			public const int notification_main_column = 2131230886;
 			
 			// aapt resource value: 0x7F0800A7
-			public const int parallax = 2131230887;
+			public const int notification_main_column_container = 2131230887;
 			
 			// aapt resource value: 0x7F0800A8
-			public const int parentPanel = 2131230888;
+			public const int outline = 2131230888;
 			
 			// aapt resource value: 0x7F0800A9
-			public const int parent_matrix = 2131230889;
+			public const int parallax = 2131230889;
 			
 			// aapt resource value: 0x7F0800AA
-			public const int pin = 2131230890;
+			public const int parentPanel = 2131230890;
 			
 			// aapt resource value: 0x7F0800AB
-			public const int progress_circular = 2131230891;
+			public const int parent_matrix = 2131230891;
 			
 			// aapt resource value: 0x7F0800AC
-			public const int progress_horizontal = 2131230892;
+			public const int pin = 2131230892;
 			
 			// aapt resource value: 0x7F0800AD
-			public const int radio = 2131230893;
+			public const int progress_circular = 2131230893;
 			
 			// aapt resource value: 0x7F0800AE
-			public const int right = 2131230894;
+			public const int progress_horizontal = 2131230894;
 			
 			// aapt resource value: 0x7F0800AF
-			public const int right_icon = 2131230895;
+			public const int radio = 2131230895;
 			
 			// aapt resource value: 0x7F0800B0
-			public const int right_side = 2131230896;
+			public const int right = 2131230896;
 			
 			// aapt resource value: 0x7F0800B1
-			public const int save_image_matrix = 2131230897;
+			public const int right_icon = 2131230897;
 			
 			// aapt resource value: 0x7F0800B2
-			public const int save_non_transition_alpha = 2131230898;
+			public const int right_side = 2131230898;
 			
 			// aapt resource value: 0x7F0800B3
-			public const int save_scale_type = 2131230899;
+			public const int save_image_matrix = 2131230899;
 			
 			// aapt resource value: 0x7F0800B4
-			public const int screen = 2131230900;
+			public const int save_non_transition_alpha = 2131230900;
 			
 			// aapt resource value: 0x7F0800B5
-			public const int scroll = 2131230901;
-			
-			// aapt resource value: 0x7F0800B9
-			public const int scrollable = 2131230905;
+			public const int save_scale_type = 2131230901;
 			
 			// aapt resource value: 0x7F0800B6
-			public const int scrollIndicatorDown = 2131230902;
+			public const int screen = 2131230902;
 			
 			// aapt resource value: 0x7F0800B7
-			public const int scrollIndicatorUp = 2131230903;
-			
-			// aapt resource value: 0x7F0800B8
-			public const int scrollView = 2131230904;
-			
-			// aapt resource value: 0x7F0800BA
-			public const int search_badge = 2131230906;
+			public const int scroll = 2131230903;
 			
 			// aapt resource value: 0x7F0800BB
-			public const int search_bar = 2131230907;
+			public const int scrollable = 2131230907;
+			
+			// aapt resource value: 0x7F0800B8
+			public const int scrollIndicatorDown = 2131230904;
+			
+			// aapt resource value: 0x7F0800B9
+			public const int scrollIndicatorUp = 2131230905;
+			
+			// aapt resource value: 0x7F0800BA
+			public const int scrollView = 2131230906;
 			
 			// aapt resource value: 0x7F0800BC
-			public const int search_button = 2131230908;
+			public const int search_badge = 2131230908;
 			
 			// aapt resource value: 0x7F0800BD
-			public const int search_close_btn = 2131230909;
+			public const int search_bar = 2131230909;
 			
 			// aapt resource value: 0x7F0800BE
-			public const int search_edit_frame = 2131230910;
+			public const int search_button = 2131230910;
 			
 			// aapt resource value: 0x7F0800BF
-			public const int search_go_btn = 2131230911;
+			public const int search_close_btn = 2131230911;
 			
 			// aapt resource value: 0x7F0800C0
-			public const int search_mag_icon = 2131230912;
+			public const int search_edit_frame = 2131230912;
 			
 			// aapt resource value: 0x7F0800C1
-			public const int search_plate = 2131230913;
+			public const int search_go_btn = 2131230913;
 			
 			// aapt resource value: 0x7F0800C2
-			public const int search_src_text = 2131230914;
+			public const int search_mag_icon = 2131230914;
 			
 			// aapt resource value: 0x7F0800C3
-			public const int search_voice_btn = 2131230915;
-			
-			// aapt resource value: 0x7F0800C5
-			public const int selected = 2131230917;
+			public const int search_plate = 2131230915;
 			
 			// aapt resource value: 0x7F0800C4
-			public const int select_dialog_listview = 2131230916;
+			public const int search_src_text = 2131230916;
 			
-			// aapt resource value: 0x7F0800C6
-			public const int shellcontent_appbar = 2131230918;
+			// aapt resource value: 0x7F0800C5
+			public const int search_voice_btn = 2131230917;
 			
 			// aapt resource value: 0x7F0800C7
-			public const int shellcontent_scrollview = 2131230919;
+			public const int selected = 2131230919;
+			
+			// aapt resource value: 0x7F0800C6
+			public const int select_dialog_listview = 2131230918;
 			
 			// aapt resource value: 0x7F0800C8
-			public const int shellcontent_toolbar = 2131230920;
+			public const int shellcontent_appbar = 2131230920;
+			
+			// aapt resource value: 0x7F0800C9
+			public const int shellcontent_scrollview = 2131230921;
+			
+			// aapt resource value: 0x7F0800CA
+			public const int shellcontent_toolbar = 2131230922;
 			
 			// aapt resource value: 0x7F080004
 			public const int SHIFT = 2131230724;
 			
-			// aapt resource value: 0x7F0800C9
-			public const int shortcut = 2131230921;
-			
-			// aapt resource value: 0x7F0800CA
-			public const int showCustom = 2131230922;
-			
 			// aapt resource value: 0x7F0800CB
-			public const int showHome = 2131230923;
+			public const int shortcut = 2131230923;
 			
 			// aapt resource value: 0x7F0800CC
-			public const int showTitle = 2131230924;
+			public const int showCustom = 2131230924;
 			
 			// aapt resource value: 0x7F0800CD
-			public const int sliding_tabs = 2131230925;
+			public const int showHome = 2131230925;
 			
 			// aapt resource value: 0x7F0800CE
-			public const int smallLabel = 2131230926;
+			public const int showTitle = 2131230926;
 			
 			// aapt resource value: 0x7F0800CF
-			public const int snackbar_action = 2131230927;
+			public const int sliding_tabs = 2131230927;
 			
 			// aapt resource value: 0x7F0800D0
-			public const int snackbar_text = 2131230928;
+			public const int smallLabel = 2131230928;
 			
 			// aapt resource value: 0x7F0800D1
-			public const int snap = 2131230929;
+			public const int snackbar_action = 2131230929;
 			
 			// aapt resource value: 0x7F0800D2
-			public const int snapMargins = 2131230930;
+			public const int snackbar_text = 2131230930;
 			
 			// aapt resource value: 0x7F0800D3
-			public const int spacer = 2131230931;
+			public const int snap = 2131230931;
 			
 			// aapt resource value: 0x7F0800D4
-			public const int split_action_bar = 2131230932;
+			public const int snapMargins = 2131230932;
 			
 			// aapt resource value: 0x7F0800D5
-			public const int src_atop = 2131230933;
+			public const int spacer = 2131230933;
 			
 			// aapt resource value: 0x7F0800D6
-			public const int src_in = 2131230934;
+			public const int split_action_bar = 2131230934;
 			
 			// aapt resource value: 0x7F0800D7
-			public const int src_over = 2131230935;
+			public const int src_atop = 2131230935;
 			
 			// aapt resource value: 0x7F0800D8
-			public const int start = 2131230936;
+			public const int src_in = 2131230936;
 			
 			// aapt resource value: 0x7F0800D9
-			public const int status_bar_latest_event_content = 2131230937;
+			public const int src_over = 2131230937;
 			
 			// aapt resource value: 0x7F0800DA
-			public const int stretch = 2131230938;
+			public const int start = 2131230938;
 			
 			// aapt resource value: 0x7F0800DB
-			public const int submenuarrow = 2131230939;
+			public const int status_bar_latest_event_content = 2131230939;
 			
 			// aapt resource value: 0x7F0800DC
-			public const int submit_area = 2131230940;
+			public const int stretch = 2131230940;
+			
+			// aapt resource value: 0x7F0800DD
+			public const int submenuarrow = 2131230941;
+			
+			// aapt resource value: 0x7F0800DE
+			public const int submit_area = 2131230942;
 			
 			// aapt resource value: 0x7F080005
 			public const int SYM = 2131230725;
 			
-			// aapt resource value: 0x7F0800DD
-			public const int tabMode = 2131230941;
-			
-			// aapt resource value: 0x7F0800DE
-			public const int tag_transition_group = 2131230942;
-			
 			// aapt resource value: 0x7F0800DF
-			public const int tag_unhandled_key_event_manager = 2131230943;
+			public const int tabMode = 2131230943;
 			
 			// aapt resource value: 0x7F0800E0
-			public const int tag_unhandled_key_listeners = 2131230944;
+			public const int tag_transition_group = 2131230944;
 			
 			// aapt resource value: 0x7F0800E1
-			public const int text = 2131230945;
+			public const int tag_unhandled_key_event_manager = 2131230945;
 			
 			// aapt resource value: 0x7F0800E2
-			public const int text2 = 2131230946;
-			
-			// aapt resource value: 0x7F0800E7
-			public const int textinput_counter = 2131230951;
-			
-			// aapt resource value: 0x7F0800E8
-			public const int textinput_error = 2131230952;
-			
-			// aapt resource value: 0x7F0800E9
-			public const int textinput_helper_text = 2131230953;
+			public const int tag_unhandled_key_listeners = 2131230946;
 			
 			// aapt resource value: 0x7F0800E3
-			public const int textSpacerNoButtons = 2131230947;
+			public const int text = 2131230947;
 			
 			// aapt resource value: 0x7F0800E4
-			public const int textSpacerNoTitle = 2131230948;
+			public const int text2 = 2131230948;
 			
-			// aapt resource value: 0x7F0800E5
-			public const int textStart = 2131230949;
-			
-			// aapt resource value: 0x7F0800E6
-			public const int text_input_password_toggle = 2131230950;
+			// aapt resource value: 0x7F0800E9
+			public const int textinput_counter = 2131230953;
 			
 			// aapt resource value: 0x7F0800EA
-			public const int time = 2131230954;
+			public const int textinput_error = 2131230954;
 			
 			// aapt resource value: 0x7F0800EB
-			public const int title = 2131230955;
+			public const int textinput_helper_text = 2131230955;
+			
+			// aapt resource value: 0x7F0800E5
+			public const int textSpacerNoButtons = 2131230949;
+			
+			// aapt resource value: 0x7F0800E6
+			public const int textSpacerNoTitle = 2131230950;
+			
+			// aapt resource value: 0x7F0800E7
+			public const int textStart = 2131230951;
+			
+			// aapt resource value: 0x7F0800E8
+			public const int text_input_password_toggle = 2131230952;
 			
 			// aapt resource value: 0x7F0800EC
-			public const int titleDividerNoCustom = 2131230956;
+			public const int time = 2131230956;
 			
 			// aapt resource value: 0x7F0800ED
-			public const int title_template = 2131230957;
+			public const int title = 2131230957;
 			
 			// aapt resource value: 0x7F0800EE
-			public const int toolbar = 2131230958;
+			public const int titleDividerNoCustom = 2131230958;
 			
 			// aapt resource value: 0x7F0800EF
-			public const int top = 2131230959;
+			public const int title_template = 2131230959;
 			
 			// aapt resource value: 0x7F0800F0
-			public const int topPanel = 2131230960;
+			public const int toolbar = 2131230960;
 			
 			// aapt resource value: 0x7F0800F1
-			public const int touch_outside = 2131230961;
+			public const int top = 2131230961;
 			
 			// aapt resource value: 0x7F0800F2
-			public const int transition_current_scene = 2131230962;
+			public const int topPanel = 2131230962;
 			
 			// aapt resource value: 0x7F0800F3
-			public const int transition_layout_save = 2131230963;
+			public const int touch_outside = 2131230963;
 			
 			// aapt resource value: 0x7F0800F4
-			public const int transition_position = 2131230964;
+			public const int transition_current_scene = 2131230964;
 			
 			// aapt resource value: 0x7F0800F5
-			public const int transition_scene_layoutid_cache = 2131230965;
+			public const int transition_layout_save = 2131230965;
 			
 			// aapt resource value: 0x7F0800F6
-			public const int transition_transform = 2131230966;
+			public const int transition_position = 2131230966;
 			
 			// aapt resource value: 0x7F0800F7
-			public const int uniform = 2131230967;
+			public const int transition_scene_layoutid_cache = 2131230967;
 			
 			// aapt resource value: 0x7F0800F8
-			public const int unlabeled = 2131230968;
+			public const int transition_transform = 2131230968;
 			
 			// aapt resource value: 0x7F0800F9
-			public const int up = 2131230969;
+			public const int uniform = 2131230969;
 			
 			// aapt resource value: 0x7F0800FA
-			public const int useLogo = 2131230970;
+			public const int unlabeled = 2131230970;
 			
 			// aapt resource value: 0x7F0800FB
-			public const int view_offset_helper = 2131230971;
+			public const int up = 2131230971;
 			
 			// aapt resource value: 0x7F0800FC
-			public const int visible = 2131230972;
+			public const int useLogo = 2131230972;
 			
 			// aapt resource value: 0x7F0800FD
-			public const int volume_item_container = 2131230973;
+			public const int view_offset_helper = 2131230973;
 			
 			// aapt resource value: 0x7F0800FE
-			public const int withText = 2131230974;
+			public const int visible = 2131230974;
 			
 			// aapt resource value: 0x7F0800FF
-			public const int wrap_content = 2131230975;
+			public const int volume_item_container = 2131230975;
+			
+			// aapt resource value: 0x7F080100
+			public const int withText = 2131230976;
+			
+			// aapt resource value: 0x7F080101
+			public const int wrap_content = 2131230977;
 			
 			static Id()
 			{
@@ -7302,127 +10217,130 @@ namespace BlazorMobile.InteropApp.Droid
 			public const int FlyoutContent = 2131427373;
 			
 			// aapt resource value: 0x7F0B002E
-			public const int mr_cast_dialog = 2131427374;
+			public const int intent_listview_row = 2131427374;
 			
 			// aapt resource value: 0x7F0B002F
-			public const int mr_cast_group_item = 2131427375;
+			public const int mr_cast_dialog = 2131427375;
 			
 			// aapt resource value: 0x7F0B0030
-			public const int mr_cast_group_volume_item = 2131427376;
+			public const int mr_cast_group_item = 2131427376;
 			
 			// aapt resource value: 0x7F0B0031
-			public const int mr_cast_media_metadata = 2131427377;
+			public const int mr_cast_group_volume_item = 2131427377;
 			
 			// aapt resource value: 0x7F0B0032
-			public const int mr_cast_route_item = 2131427378;
+			public const int mr_cast_media_metadata = 2131427378;
 			
 			// aapt resource value: 0x7F0B0033
-			public const int mr_chooser_dialog = 2131427379;
+			public const int mr_cast_route_item = 2131427379;
 			
 			// aapt resource value: 0x7F0B0034
-			public const int mr_chooser_list_item = 2131427380;
+			public const int mr_chooser_dialog = 2131427380;
 			
 			// aapt resource value: 0x7F0B0035
-			public const int mr_controller_material_dialog_b = 2131427381;
+			public const int mr_chooser_list_item = 2131427381;
 			
 			// aapt resource value: 0x7F0B0036
-			public const int mr_controller_volume_item = 2131427382;
+			public const int mr_controller_material_dialog_b = 2131427382;
 			
 			// aapt resource value: 0x7F0B0037
-			public const int mr_dialog_header_item = 2131427383;
+			public const int mr_controller_volume_item = 2131427383;
 			
 			// aapt resource value: 0x7F0B0038
-			public const int mr_picker_dialog = 2131427384;
+			public const int mr_dialog_header_item = 2131427384;
 			
 			// aapt resource value: 0x7F0B0039
-			public const int mr_picker_route_item = 2131427385;
+			public const int mr_picker_dialog = 2131427385;
 			
 			// aapt resource value: 0x7F0B003A
-			public const int mr_playback_control = 2131427386;
+			public const int mr_picker_route_item = 2131427386;
 			
 			// aapt resource value: 0x7F0B003B
-			public const int mr_volume_control = 2131427387;
+			public const int mr_playback_control = 2131427387;
 			
 			// aapt resource value: 0x7F0B003C
-			public const int mtrl_layout_snackbar = 2131427388;
+			public const int mr_volume_control = 2131427388;
 			
 			// aapt resource value: 0x7F0B003D
-			public const int mtrl_layout_snackbar_include = 2131427389;
+			public const int mtrl_layout_snackbar = 2131427389;
 			
 			// aapt resource value: 0x7F0B003E
-			public const int notification_action = 2131427390;
+			public const int mtrl_layout_snackbar_include = 2131427390;
 			
 			// aapt resource value: 0x7F0B003F
-			public const int notification_action_tombstone = 2131427391;
+			public const int notification_action = 2131427391;
 			
 			// aapt resource value: 0x7F0B0040
-			public const int notification_media_action = 2131427392;
+			public const int notification_action_tombstone = 2131427392;
 			
 			// aapt resource value: 0x7F0B0041
-			public const int notification_media_cancel_action = 2131427393;
+			public const int notification_media_action = 2131427393;
 			
 			// aapt resource value: 0x7F0B0042
-			public const int notification_template_big_media = 2131427394;
+			public const int notification_media_cancel_action = 2131427394;
 			
 			// aapt resource value: 0x7F0B0043
-			public const int notification_template_big_media_custom = 2131427395;
+			public const int notification_template_big_media = 2131427395;
 			
 			// aapt resource value: 0x7F0B0044
-			public const int notification_template_big_media_narrow = 2131427396;
+			public const int notification_template_big_media_custom = 2131427396;
 			
 			// aapt resource value: 0x7F0B0045
-			public const int notification_template_big_media_narrow_custom = 2131427397;
+			public const int notification_template_big_media_narrow = 2131427397;
 			
 			// aapt resource value: 0x7F0B0046
-			public const int notification_template_custom_big = 2131427398;
+			public const int notification_template_big_media_narrow_custom = 2131427398;
 			
 			// aapt resource value: 0x7F0B0047
-			public const int notification_template_icon_group = 2131427399;
+			public const int notification_template_custom_big = 2131427399;
 			
 			// aapt resource value: 0x7F0B0048
-			public const int notification_template_lines_media = 2131427400;
+			public const int notification_template_icon_group = 2131427400;
 			
 			// aapt resource value: 0x7F0B0049
-			public const int notification_template_media = 2131427401;
+			public const int notification_template_lines_media = 2131427401;
 			
 			// aapt resource value: 0x7F0B004A
-			public const int notification_template_media_custom = 2131427402;
+			public const int notification_template_media = 2131427402;
 			
 			// aapt resource value: 0x7F0B004B
-			public const int notification_template_part_chronometer = 2131427403;
+			public const int notification_template_media_custom = 2131427403;
 			
 			// aapt resource value: 0x7F0B004C
-			public const int notification_template_part_time = 2131427404;
+			public const int notification_template_part_chronometer = 2131427404;
 			
 			// aapt resource value: 0x7F0B004D
-			public const int RootLayout = 2131427405;
+			public const int notification_template_part_time = 2131427405;
 			
 			// aapt resource value: 0x7F0B004E
-			public const int select_dialog_item_material = 2131427406;
+			public const int RootLayout = 2131427406;
 			
 			// aapt resource value: 0x7F0B004F
-			public const int select_dialog_multichoice_material = 2131427407;
+			public const int select_dialog_item_material = 2131427407;
 			
 			// aapt resource value: 0x7F0B0050
-			public const int select_dialog_singlechoice_material = 2131427408;
+			public const int select_dialog_multichoice_material = 2131427408;
 			
 			// aapt resource value: 0x7F0B0051
-			public const int ShellContent = 2131427409;
+			public const int select_dialog_singlechoice_material = 2131427409;
 			
 			// aapt resource value: 0x7F0B0052
-			public const int support_simple_spinner_dropdown_item = 2131427410;
+			public const int ShellContent = 2131427410;
 			
 			// aapt resource value: 0x7F0B0053
-			public const int Tabbar = 2131427411;
+			public const int support_simple_spinner_dropdown_item = 2131427411;
 			
 			// aapt resource value: 0x7F0B0054
-			public const int TextInputLayoutFilledBox = 2131427412;
+			public const int Tabbar = 2131427412;
 			
 			// aapt resource value: 0x7F0B0055
-			public const int TextInputLayoutOutlinedBox = 2131427413;
+			public const int TextInputLayoutFilledBox = 2131427413;
 			
 			// aapt resource value: 0x7F0B0056
-			public const int Toolbar = 2131427414;
+			public const int TextInputLayoutOutlinedBox = 2131427414;
+			
+			// aapt resource value: 0x7F0B0057
+			public const int Toolbar = 2131427415;
 			
 			static Layout()
 			{
