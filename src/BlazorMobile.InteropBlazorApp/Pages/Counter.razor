@@ -2,13 +2,25 @@
 @using BlazorMobile.Common
 @using BlazorMobile.InteropApp.Common.Interfaces
 @using BlazorMobile.Common.Services
-@using BlazorMobile.InteropBlazorApp.Helpers 
+@using BlazorMobile.InteropBlazorApp.Helpers
 @inject IXamarinBridge XamarinBridge
+@inject IJSRuntime JSRuntime
 @implements IDisposable
 
 <h1>Counter</h1>
 
 <p>Current count: @currentCount</p>
+
+<p>Single file</p>
+<input type="file" id="picField" />
+<br />
+<br />
+
+<p>Test image load</p>
+<img id="outImage" style="width: 500px; height: 500px;" />
+
+<br />
+<br />
 
 <button class="btn btn-primary" @onclick="IncrementCount">Click me</button>
 <button class="btn btn-primary" @onclick="AlertMe">Alert me</button>
@@ -19,7 +31,8 @@
 <button class="btn btn-primary" @onclick="PostMessageTestLocal">Local PostMessage Test With String</button>
 <br />
 <button class="btn btn-primary" @onclick="CallJSInvokableMethodTest">Remote CallJSInvokableMethod Test</button>
-<br /><br />
+<br />
+<br />
 <button class="btn btn-primary" @onclick="SwitchToAnotherAppPackage">Switch current app package to 'AnotherApp' package</button>
 
 @code {
@@ -144,5 +157,11 @@
             await XamarinBridge.DisplayAlert("SwitchToAnotherAppPackage", $"{ex.Message}", "OK");
             Console.WriteLine($"{ex.Message}");
         }
+    }
+
+    protected override void OnAfterRender(bool firstRender)
+    {
+        base.OnAfterRender(firstRender);
+        JSRuntime.InvokeVoidAsync("ApplyOnChangeEventOnFileSelector");
     }
 }

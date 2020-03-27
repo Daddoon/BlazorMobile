@@ -3,8 +3,10 @@ using Android.Graphics;
 using Android.OS;
 using Android.Views;
 using Android.Widget;
+using BlazorMobile.Common.Helpers;
 using BlazorMobile.Components;
 using BlazorMobile.Droid.Interop;
+using BlazorMobile.Droid.Platform;
 using BlazorMobile.Droid.Renderer;
 using BlazorMobile.Interop;
 using BlazorMobile.Services;
@@ -69,17 +71,46 @@ namespace BlazorMobile.Droid.Services
         }
     }
 
+    internal static class AndroidResourceType
+    {
+        public const string Raw = "raw";
+        public const string Drawable = "drawable";
+        public const string String = "string";
+        public const string Identifier = "id";
+    }
+
     [Android.Runtime.Preserve(AllMembers = true)]
     public static class BlazorWebViewService
     {
-        private static Activity _activity = null;
+        private static BlazorMobileFormsAppCompatActivity _activity = null;
 
-        internal static Activity GetCurrentActivity()
+        internal static BlazorMobileFormsAppCompatActivity GetCurrentActivity()
         {
             return _activity;
         }
 
-        private static void InitComponent(Android.App.Activity activity)
+        /// <summary>
+        /// Search a resource from his name and type. See possible resource types from <seealso cref="AndroidResourceType"/> class
+        /// </summary>
+        /// <param name="resourceName"></param>
+        /// <param name="resourceType"></param>
+        /// <returns></returns>
+        internal static int GetResourceId(string resourceName, string resourceType)
+        {
+            try
+            {
+                // I only access resources inside the "raw" folder
+                int resId = _activity.Resources.GetIdentifier(resourceName, resourceType, _activity.ApplicationContext.PackageName);
+                return resId;
+            }
+            catch (Exception e)
+            {
+                ConsoleHelper.WriteException(e);
+            }
+            return 0;
+        }
+
+        private static void InitComponent(BlazorMobileFormsAppCompatActivity activity)
         {
             _activity = activity;
 
@@ -101,13 +132,13 @@ namespace BlazorMobile.Droid.Services
         /// Shorthand for <see cref="WebApplicationFactory.RegisterAppStreamResolver" />
         /// </summary>
         /// <param name="appStreamResolver"></param>
-        public static void Init(Android.App.Activity activity, Func<Stream> appStreamResolver)
+        public static void Init(BlazorMobileFormsAppCompatActivity activity, Func<Stream> appStreamResolver)
         {
             InitComponent(activity);
             WebApplicationFactory.Init(appStreamResolver);
         }
 
-        public static void Init(Android.App.Activity activity)
+        public static void Init(BlazorMobileFormsAppCompatActivity activity)
         {
             InitComponent(activity);
             WebApplicationFactory.Init();
