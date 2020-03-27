@@ -1,6 +1,7 @@
 
 # Migration
 
+- [BlazorMobile 3.2.3-preview2.20160.5 to 3.2.4-preview2.20160.5](#blazormobile-323-preview2201605-to-324-preview2201605)
 - [BlazorMobile 3.2.2-preview1.20073.1 to 3.2.3-preview2.20160.5](#blazormobile-322-preview1200731-to-323-preview2201605)
 - [BlazorMobile 3.2.0-preview1.20073.1 to 3.2.2-preview1.20073.1](#blazormobile-320-preview1200731-to-322-preview1200731)
 - [BlazorMobile 3.1.0-preview3.19555.2 to 3.2.0-preview1.20073.1](#blazormobile-310-preview3195552-to-320-preview1200731)
@@ -1188,3 +1189,38 @@ dotnet new -i BlazorMobile.Templates::3.2.3-preview2.20160.5
 - Update your Blazor WebAssembly project to **3.2.0-preview2.20160.5**. See this [Microsoft migration guide to Blazor WebAssembly 3.2.0 Preview 2](https://devblogs.microsoft.com/aspnet/blazor-webassembly-3-2-0-preview-2-release-now-available/)
 
 - Update all your BlazorMobile.* NuGet packages to **3.2.3-preview2.20160.5**.
+
+### BlazorMobile 3.2.3-preview2.20160.5 to 3.2.4-preview2.20160.5
+
+#### Release note:
+
+- Add **select** tag behavior support missing on Android
+- Add **input** type **file** behavior support missing on Android
+
+#### Migration guide:
+
+- Update your installed BlazorMobile.Templates to this version by calling:
+
+```console
+dotnet new -i BlazorMobile.Templates::3.2.4-preview2.20160.5
+```
+
+- Update all your BlazorMobile.* NuGet packages to **3.2.4-preview2.20160.5**.
+
+- In your **MainActivity.cs** file in your Android project, make your **MainActivity** class inheriting from **BlazorMobileFormsAppCompatActivity** instead of **FormsAppCompatActivity**.
+  
+  Before:
+
+  ```csharp
+    public class MainActivity : global::Xamarin.Forms.Platform.Android.FormsAppCompatActivity
+    {
+  ```
+
+  After:
+
+  ```csharp
+    public class MainActivity : global::BlazorMobile.Droid.Platform.BlazorMobileFormsAppCompatActivity
+    {
+  ```
+
+- If you have your own overrides on **OnActivityResult** or **OnCreate** on your **MainActivity** class, be sure to not forget to call the base implementation.
