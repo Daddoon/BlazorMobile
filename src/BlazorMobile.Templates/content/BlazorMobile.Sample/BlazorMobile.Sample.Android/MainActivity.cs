@@ -4,11 +4,12 @@ using Android.OS;
 using BlazorMobile.Droid.Services;
 using BlazorMobile.Services;
 using BlazorMobile.Sample.AppPackage;
+using BlazorMobile.Droid.Platform;
 
 namespace BlazorMobile.Sample.Droid
 {
     [Activity(Label = "BlazorMobile.Sample", Icon = "@mipmap/icon", Theme = "@style/MainTheme", MainLauncher = true, ConfigurationChanges = ConfigChanges.ScreenSize | ConfigChanges.Orientation)]
-    public class MainActivity : global::Xamarin.Forms.Platform.Android.FormsAppCompatActivity
+    public class MainActivity : BlazorMobileFormsAppCompatActivity
     {
         protected override void OnCreate(Bundle savedInstanceState)
         {

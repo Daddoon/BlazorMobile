@@ -63,6 +63,7 @@ namespace BlazorMobile.Droid.Renderer
                 _session.Open(_runtime);
             }
 
+            _session.PromptDelegate = new BlazorGeckoViewPromptDelegate(this);
             _session.ProgressDelegate = new BlazorProgressDelegate(this);
             _session.ContentDelegate = new BlazorContentDelegate(this);
             _session.NavigationDelegate = new BlazorNavigationDelegate(this);

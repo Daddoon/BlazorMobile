@@ -14,11 +14,15 @@ using BlazorMobile.InteropApp.AppPackage;
 using BlazorMobile.InteropApp.Services;
 using Xamarin.Forms;
 using BlazorMobile.InteropApp.Droid.Services;
+using Android.Support.V4.App;
+using Android;
+using Android.Support.Design.Widget;
+using BlazorMobile.Droid.Platform;
 
 namespace BlazorMobile.InteropApp.Droid
 {
     [Activity(Label = "BlazorMobile.InteropApp", Icon = "@mipmap/icon", Theme = "@style/MainTheme", MainLauncher = true, ConfigurationChanges = ConfigChanges.ScreenSize | ConfigChanges.Orientation)]
-    public class MainActivity : global::Xamarin.Forms.Platform.Android.FormsAppCompatActivity
+    public class MainActivity : BlazorMobileFormsAppCompatActivity
     {
         protected override void OnCreate(Bundle savedInstanceState)
         {
@@ -36,6 +40,7 @@ namespace BlazorMobile.InteropApp.Droid
             WebApplicationFactory.RegisterAppStreamResolver(AppPackageHelper.ResolveAppPackageStream);
 
             LoadApplication(new App());
+
         }
     }
 }

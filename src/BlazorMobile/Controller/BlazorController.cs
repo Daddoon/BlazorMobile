@@ -21,6 +21,22 @@ namespace BlazorMobile.Controller
         {
         }
 
+        private bool ShouldExcludeFromNavigatingEvent(string uri, out bool shouldCancel)
+        {
+            shouldCancel = false;
+
+            if (!string.IsNullOrEmpty(uri))
+            {
+                if (uri.StartsWith("javascript:", StringComparison.OrdinalIgnoreCase))
+                {
+                    shouldCancel = true;
+                    return true;
+                }
+            }
+
+            return false;
+        }
+
         private async Task<bool> ValidateRequestAndroid(string webextensionId)
         {
             string cancel = "false";
@@ -33,16 +49,26 @@ namespace BlazorMobile.Controller
                     string uri = this.Request.QueryString.Get("uri");
                     string referrer = this.Request.QueryString.Get("referrer");
 
-                    var args = new WebNavigatingEventArgs(
+                    if (ShouldExcludeFromNavigatingEvent(uri, out bool shouldCancel))
+                    {
+                        if (shouldCancel)
+                        {
+                            cancel = "true";
+                        }
+                    }
+                    else
+                    {
+                        var args = new WebNavigatingEventArgs(
                         WebNavigationEvent.NewPage,
                         new UrlWebViewSource() { Url = referrer },
                         uri);
 
-                    webview.SendNavigating(args);
+                        webview.SendNavigating(args);
 
-                    if (args.Cancel)
-                    {
-                        cancel = "true";
+                        if (args.Cancel)
+                        {
+                            cancel = "true";
+                        }
                     }
                 }
             }

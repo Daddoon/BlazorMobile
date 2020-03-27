@@ -113,7 +113,7 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "BlazorMobile.Sample.AppPack
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "BlazorMobile.InteropBlazorApp.AnotherApp", "src\BlazorMobile.InteropBlazorApp.AnotherApp\BlazorMobile.InteropBlazorApp.AnotherApp.csproj", "{F68DAC97-2CC9-46FA-A7F5-BD71BBB271A2}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "BlazorMobile.InteropApp.DummyRCL", "src\BlazorMobile.InteropApp.DummyRCL\BlazorMobile.InteropApp.DummyRCL.csproj", "{9C93F9E4-99B6-405D-8E94-CFD4BD3C620C}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "BlazorMobile.InteropApp.DummyRCL", "src\BlazorMobile.InteropApp.DummyRCL\BlazorMobile.InteropApp.DummyRCL.csproj", "{9C93F9E4-99B6-405D-8E94-CFD4BD3C620C}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
