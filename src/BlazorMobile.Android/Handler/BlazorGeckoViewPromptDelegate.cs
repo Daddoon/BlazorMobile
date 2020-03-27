@@ -5,6 +5,7 @@ using System.Reflection;
 using System.Text;
 
 using Android.App;
+using Android.Arch.Lifecycle;
 using Android.Content;
 using Android.Content.PM;
 using Android.Content.Res;
@@ -574,11 +575,10 @@ namespace BlazorMobile.Droid.Handler
         {
             var currentActivity = BlazorWebViewService.GetCurrentActivity();
 
-            Action showActionsDialog = null;
-
             AlertDialog _futureDialog = null; //Workaround dismiss method not available on AlertDialog.Builder before Show();
 
             bool shouldDismiss = true;
+
             var dialogBuilder = new Android.App.AlertDialog.Builder(_renderer.Context);
             BlazorFileDialogDismissListener onDismissEvent = new BlazorFileDialogDismissListener();
 
@@ -663,8 +663,6 @@ namespace BlazorMobile.Droid.Handler
                 });
             shouldDismiss = true;
             _futureDialog = dialogBuilder.Show();
-
-            dialogBuilder.Show();
         }
 
         public virtual GeckoResult OnPopupRequest(GeckoSession session, string targetUri)
