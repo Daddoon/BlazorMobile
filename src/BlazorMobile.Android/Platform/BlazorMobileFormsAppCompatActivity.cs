@@ -1,7 +1,9 @@
 ﻿
 using Android.App;
 using Android.Content;
+using Android.OS;
 using Android.Views.Accessibility;
+using BlazorMobile.Droid.Helper;
 using System;
 
 namespace BlazorMobile.Droid.Platform
@@ -20,6 +22,17 @@ namespace BlazorMobile.Droid.Platform
             _onResult = onResult;
             _currentRequestCode = requestCode;
             StartActivityForResult(intent, requestCode);
+        }
+
+        protected override void OnCreate(Bundle savedInstanceState)
+        {
+            base.OnCreate(savedInstanceState);
+
+            #if DEBUG
+            FileCachingHelper.ClearCache();
+            #else
+            FileCachingHelper.ClearCache(TimeSpan.FromDays(1));
+            #endif
         }
 
         protected override void OnActivityResult(int requestCode, Result resultCode, Intent data)

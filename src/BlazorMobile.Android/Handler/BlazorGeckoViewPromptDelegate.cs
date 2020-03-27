@@ -546,7 +546,7 @@ namespace BlazorMobile.Droid.Handler
             {
                 string TempfileName = Guid.NewGuid().ToString("N") + ".file";
 
-                string outputFolder = System.IO.Path.Combine(System.Environment.GetFolderPath(System.Environment.SpecialFolder.Personal), "blazormobile_temp");
+                string outputFolder = FileCachingHelper.GetFileCacheFolder();
                 if (!System.IO.Directory.Exists(outputFolder))
                 {
                     System.IO.Directory.CreateDirectory(outputFolder);
@@ -577,186 +577,94 @@ namespace BlazorMobile.Droid.Handler
             Action showActionsDialog = null;
 
             AlertDialog _futureDialog = null; //Workaround dismiss method not available on AlertDialog.Builder before Show();
-            showActionsDialog = () =>
+
+            bool shouldDismiss = true;
+            var dialogBuilder = new Android.App.AlertDialog.Builder(_renderer.Context);
+            BlazorFileDialogDismissListener onDismissEvent = new BlazorFileDialogDismissListener();
+
+            onDismissEvent.SetDismissHandler(() =>
             {
-                bool shouldDismiss = true;
-                var dialogBuilder = new Android.App.AlertDialog.Builder(_renderer.Context);
-                BlazorFileDialogDismissListener onDismissEvent = new BlazorFileDialogDismissListener();
-
-                onDismissEvent.SetDismissHandler(() =>
+                if (shouldDismiss)
                 {
-                    if (shouldDismiss)
-                    {
-                        callback.Dismiss();
-                    }
+                    callback.Dismiss();
+                }
 
-                    dialogBuilder.Dispose();
+                dialogBuilder.Dispose();
+            });
+
+            dialogBuilder.SetOnDismissListener(onDismissEvent);
+
+            GetContentCompatibleIntents(type, out List<IntentMetadata> intentList, out List<ResolveInfo> activitiesInfo);
+            dialogBuilder.SetAdapter(BuilderAdapter(currentActivity, activitiesInfo),
+                (sender, e) =>
+                {
+                    //On Intent click
+
+                    shouldDismiss = false;
+                    IntentMetadata selectedIntent = intentList.ElementAt(e.Which);
+
+                    //Check for Android permissions for intents
+                    RequestPermissionHelper.CheckForPermission(selectedIntent.RequiredPermissions, () =>
+                    {
+                        //On Intent permission availables
+
+                        //We must manage multiple file selection too
+
+                        //TODO: Even by adding this intent
+                        //this seem to not working yet. Not sure if possible through launching external intents
+                        if (type == FilePromptType.MULTIPLE)
+                        {
+                            selectedIntent.Intent.PutExtra(Intent.ExtraAllowMultiple, true);
+                        }
+
+                        currentActivity.StartActivityForResult(selectedIntent.Intent, 1, (int requestCode, Result resultCode, Intent data) =>
+                        {
+                            if (resultCode != Result.Ok)
+                            {
+                                //Do nothing as the user is still now on the Intent dialog box chooser
+
+                                //As on Permission not granted, see comment below =>
+                                //We should reset this value to true if denied, as the user may don't click on Cancel but use a back button instead
+                                //As the back button will call the Dialog dismiss internally, we should emulate the cancel behavior (see SetNeutralButton code)
+                                shouldDismiss = true;
+                            }
+                            else
+                            {
+                                try
+                                {
+                                    callback.Confirm(currentActivity, GetFileForBrowser(data.Data));
+                                }
+                                catch (System.Exception e)
+                                {
+                                    ConsoleHelper.WriteException(e);
+                                    callback.Dismiss();
+                                }
+
+                                _futureDialog.Dismiss();
+                            }
+                        });
+
+                    }, () =>
+                    {
+                        //On Intent permission unavailable
+
+                        //We should reset this value to true if denied, as the user may don't click on Cancel but use a back button instead
+                        //As the back button will call the Dialog dismiss internally, we should emulate the cancel behavior (see SetNeutralButton code)
+                        shouldDismiss = true;
+                    });
                 });
 
-                dialogBuilder.SetOnDismissListener(onDismissEvent);
-
-                dialogBuilder.SetTitle("Select an action");
-                GetContentCompatibleIntents(type, out List<IntentMetadata> intentList, out List<ResolveInfo> activitiesInfo);
-                dialogBuilder.SetAdapter(BuilderAdapter(currentActivity, activitiesInfo),
-                    (sender, e) =>
-                    {
-                        //On Intent click
-
-                        shouldDismiss = false;
-                        IntentMetadata selectedIntent = intentList.ElementAt(e.Which);
-
-                        //Check for Android permissions for intents
-                        RequestPermissionHelper.CheckForPermission(selectedIntent.RequiredPermissions, () =>
-                        {
-                            //On Intent permission availables
-
-                            //We must manage multiple file selection too
-                            
-                            //TODO: Even by adding this intent
-                            //this seem to not working yet. Not sure if possible through launching external intents
-                            if (type == FilePromptType.MULTIPLE)
-                            {
-                                selectedIntent.Intent.PutExtra(Intent.ExtraAllowMultiple, true);
-                            }
-
-                            currentActivity.StartActivityForResult(selectedIntent.Intent, 1, (int requestCode, Result resultCode, Intent data) =>
-                            {
-                                if (resultCode != Result.Ok)
-                                {
-                                    //Do nothing as the user is still now on the Intent dialog box chooser
-                                    
-                                    //As on Permission not granted, see comment below =>
-                                    //We should reset this value to true if denied, as the user may don't click on Cancel but use a back button instead
-                                    //As the back button will call the Dialog dismiss internally, we should emulate the cancel behavior (see SetNeutralButton code)
-                                    shouldDismiss = true;
-                                }
-                                else
-                                {
-                                    try
-                                    {
-                                        callback.Confirm(currentActivity, GetFileForBrowser(data.Data));
-                                    }
-                                    catch (System.Exception e)
-                                    {
-                                        ConsoleHelper.WriteException(e);
-                                        callback.Dismiss();
-                                    }
-
-                                    _futureDialog.Dismiss();
-                                }
-                            });
-
-                        }, () =>
-                        {
-                            //On Intent permission unavailable
-
-                            //We should reset this value to true if denied, as the user may don't click on Cancel but use a back button instead
-                            //As the back button will call the Dialog dismiss internally, we should emulate the cancel behavior (see SetNeutralButton code)
-                            shouldDismiss = true;
-                        });
-                    });
-
                 
-                dialogBuilder.SetNeutralButton(currentActivity.Resources.GetString(Android.Resource.String.Cancel),
-                    (sender, e) =>
-                    {
-                        shouldDismiss = true;
-                        _futureDialog.Dismiss();
-                    });
-                shouldDismiss = true;
-                _futureDialog = dialogBuilder.Show();
+            dialogBuilder.SetNeutralButton(currentActivity.Resources.GetString(Android.Resource.String.Cancel),
+                (sender, e) =>
+                {
+                    shouldDismiss = true;
+                    _futureDialog.Dismiss();
+                });
+            shouldDismiss = true;
+            _futureDialog = dialogBuilder.Show();
 
-                //dialogBuilder.SetTitle("Select an action"); //TODO: To translate
-                //dialogBuilder.SetItems(items, (d, args) =>
-                //{
-                //    //We set this value to false as we are in a callback
-                //    //Every action of the callback will have to manage the dismiss of the file input with this value to false
-                //    //This is made in order to Dismiss on the fine input callback if the user use a back event on his device instead
-                //    shouldDismiss = false;
-
-                //    //Take photo
-                //    if (args.Which == 0)
-                //    {
-                //        RequestPermissionHelper.CheckForPermission(new[] {
-                //            Android.Manifest.Permission.WriteExternalStorage,
-                //            Android.Manifest.Permission.Camera
-                //            }, () =>
-                //        {
-                //            bool isMounted = Android.OS.Environment.ExternalStorageState == Android.OS.Environment.MediaMounted;
-
-                //            var uri = currentActivity.ContentResolver.Insert(isMounted ? MediaStore.Images.Media.ExternalContentUri
-                //            : MediaStore.Images.Media.InternalContentUri, new ContentValues());
-                //            _imageUri = uri.ToString();
-                //            var i = new Intent(MediaStore.ActionImageCapture);
-                //            i.PutExtra(MediaStore.ExtraOutput, uri);
-                //            currentActivity.StartActivityForResult(i, REQUEST_CAMERA_TEST);
-
-                //            //See https://stackoverflow.com/questions/21097312/android-xamarin-camera-intent-is-returning-with-null-data-in-callback
-
-                //            //TODO
-                //            //TO REMOVE AFTER DEV
-                //            callback.Dismiss();
-
-                //        }, () => showActionsDialog()); //If denied, we must show the previous window again
-
-                //    }
-                //    //Choose from gallery
-                //    else if (args.Which == 1)
-                //    {
-                //        RequestPermissionHelper.CheckForPermission(Android.Manifest.Permission.ReadExternalStorage, () =>
-                //        {
-                //            var intent = new Intent(Intent.ActionGetContent);
-                //            intent.SetType("*/*");
-                //            //Only get openable files
-                //            intent.AddCategory(Intent.CategoryOpenable);
-
-                //            //We must manage multiple file selection too
-                //            if (type == FilePromptType.MULTIPLE)
-                //            {
-                //                intent.PutExtra(Intent.ExtraAllowMultiple, true);
-                //            }
-
-                //            currentActivity.StartActivityForResult(Intent.CreateChooser(intent, "Choose file"), SELECT_FILE);
-
-                //            //TO REMOVE AFTER DEV
-                //            callback.Dismiss();
-
-                //        }, () => showActionsDialog()); //If denied, we must show the previous window again
-                //    }
-                //    else
-                //    {
-                //        callback.Dismiss();
-                //    }
-                //});
-
-                dialogBuilder.Show();
-            };
-
-            showActionsDialog();
-
-            //File myFile = new File(this.getFilesDir(), "temp.cube");
-
-            //try
-            //{
-            //    FileInputStream @in = (FileInputStream)getContentResolver().openInputStream(data.getData());
-            //    FileOutputStream @out = new FileOutputStream(myFile);
-            //    FileChannel inChannel = @in.Channel;
-            //    FileChannel outChannel = @out.Channel;
-            //    inChannel.TransferTo(0, inChannel.Size(), outChannel);
-            //    @in.Close();
-            //    @out.Close();
-
-            //    Android.Net.Uri uri = Android.Net.Uri.Parse("file:///" + myFile.AbsolutePath);
-            //    callback.Confirm(_renderer.Context, uri);
-            //}
-            //catch (Exception e) {
-            //    ConsoleHelper.WriteException(e);
-            //    callback.Dismiss();
-            //    if (_exceptionShouldThrow)
-            //    {
-            //        throw;
-            //    }
-            //}
+            dialogBuilder.Show();
         }
 
         public virtual GeckoResult OnPopupRequest(GeckoSession session, string targetUri)
