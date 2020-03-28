@@ -944,9 +944,9 @@ As stated at the top of the documentation, consider releasing your app as an **A
 
 There is actually two cases when this behavior may happen:
 
-- The app has been put in background, then foreground but the HTTP port of the webserver are not available anymore for whatever reason. As it can be problematic, the app restart on a new port
+- The app has been put in background, then foreground but the HTTP port of the webserver is not available anymore for whatever reason. As it can be problematic, the app restart on a new port
 
-- The app started loading in the WebView, but you put the app in foreground and BlazorMobile initialisation to native was not finished or Blazor WASM did not finish Blazor framework loading before getting put in background: In order to avoid inconsistent app state, the app restart.
+- The app started loading in the WebView, but you put the app in foreground and BlazorMobile initialization to native was not finished or Blazor WASM did not finish Blazor framework loading before getting put in background: In order to avoid inconsistent app state, the app restart.
 
 - Another possible issue is if you put a regular Blazor app without inheriting from **MobileApp** component, and without calling the **BlazorMobilService.Init()** code at your app start. Theses calls notify to Native that it has loaded when it's finished. If they are not present they may fallback in the second point listed here as the app believe it has not loaded properly.
 
