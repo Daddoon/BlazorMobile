@@ -57,6 +57,7 @@ Create full C# driven hybrid-apps for iOS, Android, UWP & Desktop with Blazor!
 - [ITMS-90809: Deprecated API Usage - Apple will stop accepting submissions of apps that use UIWebView APIs](#itms-90809-deprecated-api-usage---apple-will-stop-accepting-submissions-of-apps-that-use-uiwebview-apis)
 - [Apple Rejection - Your app uses or references the following non-public APIs: LinkPresentation.framework, QuickLookThumbnailing.framework](#apple-rejection---your-app-uses-or-references-the-following-non-public-apis-linkpresentationframework-quicklookthumbnailingframework)
 - [Android crash at boot on API 28](#android-crash-at-boot-on-api-28)
+- [Application refresh and restart after going in background](#application-refresh-and-restart-after-going-in-background)
 
 ## Updates and Migrations guides
 
@@ -938,6 +939,16 @@ In this case:
 This may be related if you are building your app as an **Android App Bundles** in release mode, API 28. Credits to [@shawndeggans](https://github.com/shawndeggans) - [See #137 for more info](https://github.com/Daddoon/BlazorMobile/issues/137).
 
 As stated at the top of the documentation, consider releasing your app as an **APK**. See also the [Android Build size optimization](#android-build-size-optimization) section.
+
+### Application refresh and restart after going in background
+
+There is actually two cases when this behavior may happen:
+
+- The app has been put in background, then foreground but the HTTP port of the webserver are not available anymore for whatever reason. As it can be problematic, the app restart on a new port
+
+- The app started loading in the WebView, but you put the app in foreground and BlazorMobile initialisation to native was not finished or Blazor WASM did not finish Blazor framework loading before getting put in background: In order to avoid inconsistent app state, the app restart.
+
+- Another possible issue is if you put a regular Blazor app without inheriting from **MobileApp** component, and without calling the **BlazorMobilService.Init()** code at your app start. Theses calls notify to Native that it has loaded when it's finished. If they are not present they may fallback in the second point listed here as the app believe it has not loaded properly.
 
 ## Community
 
