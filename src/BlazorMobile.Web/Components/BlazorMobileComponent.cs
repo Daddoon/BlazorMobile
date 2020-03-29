@@ -119,7 +119,7 @@ namespace BlazorMobile.Common.Components
 
             builder.OpenElement(0, "script");
             builder.AddAttribute(1, "type", "text/javascript");
-            builder.AddContent(1,
+            builder.AddMarkupContent(1,
                 ContextBridgeHelper.GetBlazorXamarinJavascript()
                 + ContextBridgeHelper.GetContextBridgeJavascript().Replace("%_contextBridgeURI%", BlazorMobileService.GetContextBridgeURI()));
             builder.CloseElement();
