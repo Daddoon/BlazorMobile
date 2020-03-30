@@ -591,7 +591,7 @@ Of you course you can't. But you can do remote debugging on your device in order
 - To validate any specific / faulty behavior due to the device browser
 
 For this last critical point, you should remember that you may have some tools shipped for device browser debugging.
-On **iOS**, you should debug from **Safari on OSX** (see online documentation), and on **Android**, you should debug from the **about:debugging** page in **Firefox** (**NOT WORKING: NEED TO UPDATE GECKOVIEW TO AT LEAST 72.0)**, starting from Firefox 70.0 (see online documentation).
+On **iOS**, you should debug from **Safari on OSX** (see online documentation), and on **Android**, you should debug from the **WebIDE** tool available on **Firefox 67** (SHIFT+F8 on Windows). New debugging tooling available from more recent Firefox version are not yet available for current GeckoView version, and WebIDE has been removed on more recent versions of Firefox.
 
 ### Enable remote debugging
 
