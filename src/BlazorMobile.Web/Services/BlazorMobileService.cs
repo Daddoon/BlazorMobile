@@ -1,4 +1,5 @@
-﻿using BlazorMobile.Common.Helpers;
+﻿using BlazorMobile.Common.Components;
+using BlazorMobile.Common.Helpers;
 using BlazorMobile.Common.Interop;
 using BlazorMobile.Interop;
 using Microsoft.JSInterop;
@@ -11,6 +12,11 @@ using System.Runtime.CompilerServices;
 [assembly: InternalsVisibleTo("BlazorMobile.ElectronNET")]
 namespace BlazorMobile.Common.Services
 {
+    public class BlazorMobileOnFinishEventArgs : EventArgs
+    {
+        public bool Success { get; set; }
+    }
+
     public static class BlazorMobileService
     {
         private static bool _isInit = false;
@@ -33,6 +39,29 @@ namespace BlazorMobile.Common.Services
         }
 
         /// <summary>
+        /// Add a display:none attribute to the selected element with the corresponding id attribute.
+        /// This is mainly used for hiding the extra placeholder used during BlazorMobile loading, after it has finished
+        /// </summary>
+        /// <param name="elementId"></param>
+        public static void HideElementById(string elementId)
+        {
+            var runtime = BlazorMobileComponent.GetJSRuntime();
+            if (runtime == null)
+            {
+                Console.WriteLine("Cannot call HideElementById, JSRuntime interop is not yet ready");
+                return;
+            }
+
+            try
+            {
+                BlazorMobileComponent.GetJSRuntime().InvokeVoidAsync("BlazorXamarin.HideElementById", elementId);
+            }
+            catch (Exception)
+            {
+            }
+        }
+
+        /// <summary>
         /// Enable server-side web application to connect to a remote allowed native client (iOS, Android) running on a BlazorMobile Xamarin.Forms application
         /// in order to simulate the Blazor client-side device communication, through web call
         /// </summary>
@@ -44,11 +73,6 @@ namespace BlazorMobile.Common.Services
             _serverSideClientPort = port;
         }
 
-        public class BlazorMobileOnFinishEventArgs : EventArgs
-        {
-            public bool Success { get; set; }
-        }
-
         public delegate void BlazorMobileEventHandler(object source, BlazorMobileOnFinishEventArgs args);
 
         /// <summary>
@@ -56,8 +80,12 @@ namespace BlazorMobile.Common.Services
         /// </summary>
         public static event BlazorMobileEventHandler OnBlazorMobileLoaded;
 
+        public static bool IsBlazorMobileLoaded { get; set; }
+
         internal static void SendOnBlazorMobileLoaded(object source, bool success)
         {
+            IsBlazorMobileLoaded = true;
+
             OnBlazorMobileLoaded?.Invoke(source,
                 new BlazorMobileOnFinishEventArgs()
                 {
