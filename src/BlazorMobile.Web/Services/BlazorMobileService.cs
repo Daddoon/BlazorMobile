@@ -40,7 +40,7 @@ namespace BlazorMobile.Common.Services
 
         /// <summary>
         /// Add a display:none attribute to the selected element with the corresponding id attribute.
-        /// This is mainly used for hiding the extra placeholder used during BlazorMobile loading, after it has finished
+        /// This is mainly used for hidding the extra placeholder used during BlazorMobile loading, after it has finished
         /// </summary>
         /// <param name="elementId"></param>
         public static void HideElementById(string elementId)

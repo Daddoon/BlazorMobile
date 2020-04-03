@@ -7,7 +7,7 @@
   </PropertyGroup>
 
   <ItemGroup>
-    <PackageReference Include="BlazorMobile.Common" Version="3.2.4-preview2.20160.5" />
+    <PackageReference Include="BlazorMobile.Common" Version="3.2.5-preview2.20160.5" />
   </ItemGroup>
 
 </Project>

@@ -21,8 +21,8 @@
   </ItemGroup>
 
   <ItemGroup>
-    <PackageReference Include="BlazorMobile.Build" Version="3.2.4-preview2.20160.5" />
-    <PackageReference Include="BlazorMobile.Web" Version="3.2.4-preview2.20160.5" />
+    <PackageReference Include="BlazorMobile.Build" Version="3.2.5-preview2.20160.5" />
+    <PackageReference Include="BlazorMobile.Web" Version="3.2.5-preview2.20160.5" />
     <PackageReference Include="Microsoft.AspNetCore.Components.WebAssembly" Version="3.2.0-preview2.20160.5" />
     <PackageReference Include="Microsoft.AspNetCore.Components.WebAssembly.Build" Version="3.2.0-preview2.20160.5" PrivateAssets="all" />
 	  <PackageReference Include="Microsoft.AspNetCore.Components.WebAssembly.DevServer" Version="3.2.0-preview2.20160.5" PrivateAssets="all" />

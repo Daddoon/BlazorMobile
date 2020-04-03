@@ -95,9 +95,9 @@ namespace BlazorMobile.Sample.Desktop
                 });
 
                 //Initialize Blazor app from .NET Core / Server-side
-                BlazorMobileService.Init((bool success) =>
+                BlazorMobileService.OnBlazorMobileLoaded += (object source, BlazorMobileOnFinishEventArgs eventArgs) =>
                 {
-                    Console.WriteLine($"Initialization success: {success}");
+                    Console.WriteLine($"Initialization success: {eventArgs.Success}");
                     Console.WriteLine("Device is: " + BlazorDevice.RuntimePlatform);
                 });
             }

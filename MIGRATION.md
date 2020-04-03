@@ -1,6 +1,7 @@
 
 # Migration
 
+- [BlazorMobile 3.2.3-preview2.20160.5 to 3.2.5-x](#blazormobile-324-preview2201605-to-325-x)
 - [BlazorMobile 3.2.3-preview2.20160.5 to 3.2.4-preview2.20160.5](#blazormobile-323-preview2201605-to-324-preview2201605)
 - [BlazorMobile 3.2.2-preview1.20073.1 to 3.2.3-preview2.20160.5](#blazormobile-322-preview1200731-to-323-preview2201605)
 - [BlazorMobile 3.2.0-preview1.20073.1 to 3.2.2-preview1.20073.1](#blazormobile-320-preview1200731-to-322-preview1200731)
@@ -1192,7 +1193,7 @@ dotnet new -i BlazorMobile.Templates::3.2.3-preview2.20160.5
 
 ### BlazorMobile 3.2.3-preview2.20160.5 to 3.2.4-preview2.20160.5
 
-#### Release note:
+#### Release notes:
 
 - Add **select** tag behavior support missing on Android
 - Add **input** type **file** behavior support missing on Android
@@ -1224,3 +1225,162 @@ dotnet new -i BlazorMobile.Templates::3.2.4-preview2.20160.5
   ```
 
 - If you have your own overrides on **OnActivityResult** or **OnCreate** on your **MainActivity** class, be sure to not forget to call the base implementation.
+
+### BlazorMobile 3.2.3-preview2.20160.5 to 3.2.5-x
+
+#### Release notes:
+
+- Fixed a potentially race condition preventing BlazorMobile to not boot properly on some apps configurations
+
+#### Migration guide:
+
+- Update your installed BlazorMobile.Templates to this version by calling:
+
+```console
+dotnet new -i BlazorMobile.Templates::3.2.5-preview2.20160.5
+```
+
+- Update all your BlazorMobile.* NuGet packages to **3.2.5-preview2.20160.5**.
+
+- Replace all **BlazorMobileService.Init** calls to **BlazorMobileService.OnBlazorMobileLoaded**.
+  You should go from this:
+
+  ```csharp
+    BlazorMobileService.Init((bool success) =>
+    {
+        Console.WriteLine($"Initialization success: {success}");
+        Console.WriteLine("Device is: " + BlazorDevice.RuntimePlatform);
+    });
+  ```
+
+  to this:
+
+  ```csharp
+    BlazorMobileService.OnBlazorMobileLoaded += (object source, BlazorMobileOnFinishEventArgs eventArgs) =>
+    {
+        Console.WriteLine($"Initialization success: {eventArgs.Success}");
+        Console.WriteLine("Device is: " + BlazorDevice.RuntimePlatform);
+    };
+  ```
+
+- Open your **MobileApp.cs** file. You should replace this:
+
+  ```csharp
+    using BlazorMobile.Common.Components;
+    using Microsoft.AspNetCore.Components;
+    using Microsoft.AspNetCore.Components.Rendering;
+    using Microsoft.AspNetCore.Components.RenderTree;
+    using System;
+    using System.Collections.Generic;
+    using System.Linq;
+    using System.Threading.Tasks;
+
+    namespace BlazorMobile.Sample.Blazor
+    {
+        public class MobileApp : App
+        {
+            protected override void BuildRenderTree(RenderTreeBuilder builder)
+            {
+                builder.OpenElement(0, nameof(BlazorMobileComponent));
+                builder.OpenComponent(1, typeof(BlazorMobileComponent));
+                builder.CloseComponent();
+                builder.CloseElement();
+
+                base.BuildRenderTree(builder);
+            }
+        }
+    }
+  ```
+
+  to this:
+
+  ```csharp
+    using BlazorMobile.Common.Components;
+    using BlazorMobile.Common.Services;
+    using Microsoft.AspNetCore.Components;
+    using Microsoft.AspNetCore.Components.Rendering;
+    using Microsoft.AspNetCore.Components.RenderTree;
+    using System;
+    using System.Collections.Generic;
+    using System.Linq;
+    using System.Threading.Tasks;
+
+    namespace BlazorMobile.Sample.Blazor
+    {
+        public class MobileApp : App
+        {
+            public MobileApp() : base()
+            {
+                //In the first sequence we must only load BlazorMobile component
+                //When BlazorMobile will be ready, we will render the app
+                BlazorMobileService.OnBlazorMobileLoaded += BlazorMobileService_OnBlazorMobileLoaded;
+            }
+
+            private void BlazorMobileService_OnBlazorMobileLoaded(object source, BlazorMobileOnFinishEventArgs args)
+            {
+                //BlazorMobile is ready. We should call StateHasChanged method in order to call BuildRenderTree again.
+                //This time, it should load your app with base.BuildRenderTree() method call.
+                BlazorMobileService.HideElementById("placeholder");
+                StateHasChanged();
+            }
+
+            protected override void BuildRenderTree(RenderTreeBuilder builder)
+            {
+                builder.OpenElement(0, nameof(BlazorMobileComponent));
+                builder.OpenComponent(1, typeof(BlazorMobileComponent));
+                builder.CloseComponent();
+                builder.CloseElement();
+
+                if (BlazorMobileService.IsBlazorMobileLoaded)
+                {
+                    base.BuildRenderTree(builder);
+                }
+            }
+        }
+    }
+  ```
+
+- Open **index.html** and move the loading placeholder content to a sibling tag with the **id** mentionned in the previous code in **BlazorMobileService.HideElementById("placeholder")**.
+  So if you have kept the default configuration from templates, this should go from this:
+
+  ```html
+    <!DOCTYPE html>
+    <html>
+    <head>
+        <meta charset="utf-8" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no" />
+        <title>BlazorMobile.BlazorApp</title>
+        <base href="/" />
+        <link href="css/bootstrap/bootstrap.min.css" rel="stylesheet" />
+        <link href="css/site.css" rel="stylesheet" />
+    </head>
+    <body>
+        <app>Loading...</app>
+        <script type="text/javascript" src="_framework/blazor.webassembly.js"></script>
+    </body> 
+    </html>
+  ```
+
+  to this:
+
+  ```html
+    <!DOCTYPE html>
+    <html>
+    <head>
+        <meta charset="utf-8" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no" />
+        <title>BlazorMobile.BlazorApp</title>
+        <base href="/" />
+        <link href="css/bootstrap/bootstrap.min.css" rel="stylesheet" />
+        <link href="css/site.css" rel="stylesheet" />
+    </head>
+    <body>
+        <app></app>
+        <div id="placeholder">Loading...</div>
+        <script type="text/javascript" src="_framework/blazor.webassembly.js"></script>
+    </body> 
+    </html>
+  ```
+
+  This final step was not mandatory, but as Blazor by design does not keep inner HTML content if a component start to be rendered, this change allow to keep the loading placeholder during BlazorMobile and BlazorMobileComponent initialization.
+  **BlazorMobileService.HideElementById("placeholder");** method call in **MobileApp.cs** hide the placeholder when everything is ready.
