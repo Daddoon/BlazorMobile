@@ -44,22 +44,25 @@ namespace BlazorMobile.Common.Services
             _serverSideClientPort = port;
         }
 
-        internal static bool IsInitCalled()
+        public class BlazorMobileOnFinishEventArgs : EventArgs
         {
-            return _isInit;
+            public bool Success { get; set; }
         }
 
+        public delegate void BlazorMobileEventHandler(object source, BlazorMobileOnFinishEventArgs args);
+
         /// <summary>
-        /// Set the delegate method to be executed when BlazorMobile finished loading
+        /// Subscribe to this event to be notified when BlazorMobile has finished loading
         /// </summary>
-        /// <param name="onFinish"></param>
-        public static void Init(Action<bool> onFinish = null)
+        public static event BlazorMobileEventHandler OnBlazorMobileLoaded;
+
+        internal static void SendOnBlazorMobileLoaded(object source, bool success)
         {
-            if (!_isInit)
-            {
-                BlazorDevice.Init(onFinish);
-                _isInit = true;
-            }
+            OnBlazorMobileLoaded?.Invoke(source,
+                new BlazorMobileOnFinishEventArgs()
+                {
+                    Success = success
+                });
         }
 
         #region Messaging Center

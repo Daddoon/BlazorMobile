@@ -161,7 +161,7 @@ namespace BlazorMobile.Common.Components
 
         internal void OnFinishEvent()
         {
-            BlazorDevice._onFinishCallback?.Invoke(BlazorMobileSuccess);
+            BlazorMobileService.SendOnBlazorMobileLoaded(this, BlazorMobileSuccess);
         }
 
         private async Task ValidateRequirements()
