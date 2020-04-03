@@ -99,7 +99,7 @@ namespace BlazorMobile.Sample.Desktop
                 {
                     Console.WriteLine($"Initialization success: {eventArgs.Success}");
                     Console.WriteLine("Device is: " + BlazorDevice.RuntimePlatform);
-                });
+                };
             }
 
             app.UseBlazorMobileWithElectronNET<App>(useWASM);
