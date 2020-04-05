@@ -1384,3 +1384,5 @@ dotnet new -i BlazorMobile.Templates::3.2.5-preview2.20160.5
 
   This final step was not mandatory, but as Blazor by design does not keep inner HTML content if a component start to be rendered, this change allow to keep the loading placeholder during BlazorMobile and BlazorMobileComponent initialization.
   **BlazorMobileService.HideElementById("placeholder");** method call in **MobileApp.cs** hide the placeholder when everything is ready.
+
+- Add the **BlazorMobile.Build.ElectronNET** NuGet package to the **.Desktop** project. This workaround / fix a publishing issue since some recent updates, preventing Desktop project to boot correctly.
