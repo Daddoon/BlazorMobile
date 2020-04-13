@@ -1231,6 +1231,7 @@ dotnet new -i BlazorMobile.Templates::3.2.4-preview2.20160.5
 #### Release notes:
 
 - Fixed a potentially race condition preventing BlazorMobile to not boot properly on some apps configurations
+- Fix Desktop (ElectronNET) app application not booting
 
 #### Migration guide:
 
