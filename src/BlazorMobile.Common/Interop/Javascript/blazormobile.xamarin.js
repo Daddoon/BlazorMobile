@@ -17,5 +17,15 @@ window.BlazorXamarin = {
 
     JSRuntimeHasElectronFeature: function () {
         return window.navigator.userAgent.toLocaleLowerCase().indexOf(" electron/") > -1;
+    },
+
+    HideElementById: function (elementId) {
+        if (elementId !== null && elementId !== undefined && elementId !== "") {
+            var selectedElement = window.document.getElementById(elementId);
+
+            if (selectedElement !== null) {
+                selectedElement.style.display = "none";
+            }
+        }
     }
 };

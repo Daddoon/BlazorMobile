@@ -189,6 +189,9 @@ namespace BlazorMobile.ElectronNET.Components
             if (ContextHelper.IsUsingWASM())
             {
                 //If using WASM, we must inherit from the BlazorMobile URI behavior
+
+                //Seem to having some race condition on WASM. Adding a little delay before launching the Window
+                await Task.Delay(100);
                 _browserWindow = await Electron.WindowManager.CreateWindowAsync(Forms.GetDefaultBrowserWindowOptions(), WebApplicationFactory.GetBaseURL());
             }
             else

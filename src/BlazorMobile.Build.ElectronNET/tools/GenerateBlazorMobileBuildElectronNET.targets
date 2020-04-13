@@ -1,0 +1,23 @@
+﻿<!-- GenerateBlazorMobileBuildElectronNET.targets -->
+<Project>
+
+  <!-- Require rebuild if the targets change -->
+  <PropertyGroup>
+    <MSBuildAllProjects>$(MSBuildAllProjects);$(MSBuildThisFileFullPath)</MSBuildAllProjects>
+  </PropertyGroup>
+
+  <!-- Fix missing assemblies while publishing for Electron -->
+  
+  <PropertyGroup>
+    <BlazorMobileBuildElectronNETDir Condition="'$(BlazorMobileBuildElectronNETDir)' == ''">$(MSBuildThisFileDirectory)netcoreapp3.1/</BlazorMobileBuildElectronNETDir>
+    <BlazorMobileBuildElectronNETFileExe>dotnet &quot;$([MSBuild]::Escape($(BlazorMobileBuildElectronNETDir)BlazorMobile.Build.ElectronNET.dll))&quot;</BlazorMobileBuildElectronNETFileExe>
+    <BlazorMobileBuildElectronNETProjectPath>&quot;$([MSBuild]::Escape($(MSBuildProjectFullPath)))&quot;</BlazorMobileBuildElectronNETProjectPath>
+    <BlazorMobileElectronNETBinDir>&quot;$([MSBuild]::Escape($(MSBuildProjectDirectory)/$(OutDir.Replace('\', '\\'))))&quot;</BlazorMobileElectronNETBinDir>
+    <BlazorMobileBuildElectronNETIntermediateOutputPath>$([MSBuild]::Escape($(IntermediateOutputPath.Replace('\', '\\'))))</BlazorMobileBuildElectronNETIntermediateOutputPath>
+  </PropertyGroup>
+
+  <Target Name="_CopyMissingBlazorMobileReferenceBeforePublish" AfterTargets="Compile">
+    <Exec Command="$(BlazorMobileBuildElectronNETFileExe) sync-blazormobile-assemblies --project-path $(BlazorMobileBuildElectronNETProjectPath) --input $(BlazorMobileElectronNETBinDir) --intermediate-output-path &quot;$(BlazorMobileBuildElectronNETIntermediateOutputPath)&quot;" />
+  </Target>
+  
+</Project>

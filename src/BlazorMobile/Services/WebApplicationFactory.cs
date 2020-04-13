@@ -795,7 +795,7 @@ namespace BlazorMobile.Services
 
             Task.Factory.StartNew(async () =>
             {
-                ConsoleHelper.WriteLine("BlazorMobile: Starting server...");
+                ConsoleHelper.WriteLine($"BlazorMobile: Starting server on port {GetHttpPort()}...");
         
                 try
                 {

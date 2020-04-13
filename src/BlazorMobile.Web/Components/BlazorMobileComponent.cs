@@ -113,7 +113,7 @@ namespace BlazorMobile.Common.Components
         protected override void BuildRenderTree(RenderTreeBuilder builder)
         {
             //This component must be rendered once!
-            //If the component is disposed and then re-rendered, then something is wrong with the current project configuration
+            //Even if the javascript script is not re-renderer if the component is called twice, it should be already available in the DOM
             if (_isInitialized)
                 return;
 
@@ -161,7 +161,7 @@ namespace BlazorMobile.Common.Components
 
         internal void OnFinishEvent()
         {
-            BlazorDevice._onFinishCallback?.Invoke(BlazorMobileSuccess);
+            BlazorMobileService.SendOnBlazorMobileLoaded(this, BlazorMobileSuccess);
         }
 
         private async Task ValidateRequirements()
