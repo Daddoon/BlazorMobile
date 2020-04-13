@@ -21,10 +21,14 @@ namespace BlazorMobile.Sample.Blazor
 
         private void BlazorMobileService_OnBlazorMobileLoaded(object source, BlazorMobileOnFinishEventArgs args)
         {
-            //BlazorMobile is ready. We should call StateHasChanged method in order to call BuildRenderTree again.
-            //This time, it should load your app with base.BuildRenderTree() method call.
-            BlazorMobileService.HideElementById("placeholder");
-            StateHasChanged();
+            //InvokeAsync is mainly needed for .NET Core implementation that need the renderer context
+            InvokeAsync(() =>
+            {
+                //BlazorMobile is ready. We should call StateHasChanged method in order to call BuildRenderTree again.
+                //This time, it should load your app with base.BuildRenderTree() method call.
+                BlazorMobileService.HideElementById("placeholder");
+                StateHasChanged();
+            });
         }
 
         protected override void BuildRenderTree(RenderTreeBuilder builder)

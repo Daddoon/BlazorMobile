@@ -1234,6 +1234,8 @@ dotnet new -i BlazorMobile.Templates::3.2.4-preview2.20160.5
 
 #### Migration guide:
 
+- Update your Blazor project version to Blazor 3.2.0-preview3.20168.3 by follow this [Microsoft migration](https://devblogs.microsoft.com/aspnet/blazor-webassembly-3-2-0-preview-3-release-now-available/)
+
 - Update your installed BlazorMobile.Templates to this version by calling:
 
 ```console
@@ -1318,10 +1320,14 @@ dotnet new -i BlazorMobile.Templates::3.2.5-preview2.20160.5
 
             private void BlazorMobileService_OnBlazorMobileLoaded(object source, BlazorMobileOnFinishEventArgs args)
             {
-                //BlazorMobile is ready. We should call StateHasChanged method in order to call BuildRenderTree again.
-                //This time, it should load your app with base.BuildRenderTree() method call.
-                BlazorMobileService.HideElementById("placeholder");
-                StateHasChanged();
+                //InvokeAsync is mainly needed for .NET Core implementation that need the renderer context
+                InvokeAsync(() =>
+                {
+                    //BlazorMobile is ready. We should call StateHasChanged method in order to call BuildRenderTree again.
+                    //This time, it should load your app with base.BuildRenderTree() method call.
+                    BlazorMobileService.HideElementById("placeholder");
+                    StateHasChanged();
+                }
             }
 
             protected override void BuildRenderTree(RenderTreeBuilder builder)
