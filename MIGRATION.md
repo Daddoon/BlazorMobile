@@ -1243,7 +1243,7 @@ dotnet new -i BlazorMobile.Templates::3.2.4-preview2.20160.5
 dotnet new -i BlazorMobile.Templates::3.2.5-preview3.20168.3
 ```
 
-- Update all your BlazorMobile.* NuGet packages to **3.2.5-preview2.20160.5**.
+- Update all your BlazorMobile.* NuGet packages to **3.2.5-preview3.20168.3**.
 
 - Replace all **BlazorMobileService.Init** calls to **BlazorMobileService.OnBlazorMobileLoaded**.
   You should go from this:
