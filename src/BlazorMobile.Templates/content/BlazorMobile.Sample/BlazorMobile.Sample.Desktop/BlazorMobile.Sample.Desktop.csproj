@@ -10,6 +10,7 @@
     <None Remove="wwwroot\**" />
   </ItemGroup>
   <ItemGroup>
+    <PackageReference Include="BlazorMobile.Build.ElectronNET" Version="3.2.5-preview3.20168.3" />
     <PackageReference Include="BlazorMobile.ElectronNET" Version="3.2.5-preview3.20168.3" />
     <PackageReference Include="Microsoft.AspNetCore.Components.WebAssembly.Server" Version="3.2.0-preview3.20168.3" />
     <PackageReference Include="Microsoft.AspNetCore.Mvc.NewtonsoftJson" Version="3.1.2" />
