@@ -1,0 +1,4 @@
+﻿<!-- BlazorMobile.Build.ElectronNET.targets -->
+<Project>
+  <Import Project="$(MSBuildThisFileDirectory)/../../tools/GenerateBlazorMobileBuildElectronNET.targets" />
+</Project>

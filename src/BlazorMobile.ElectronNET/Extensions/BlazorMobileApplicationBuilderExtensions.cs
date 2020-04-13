@@ -23,11 +23,6 @@ namespace Microsoft.AspNetCore.Builder
         /// </summary>
         public static IApplicationBuilder UseBlazorMobileWithElectronNET<TFormsApplication>(this IApplicationBuilder app, bool useWASM) where TFormsApplication : BlazorApplication
         {
-            if (!useWASM && !BlazorMobileService.IsInitCalled())
-            {
-                throw new InvalidOperationException($"BlazorMobileService.Init() method should be called before calling {nameof(UseBlazorMobileWithElectronNET)}");
-            }
-
             ContextHelper.SetElectronNETUsage(true, useWASM);
 
             PlatformHelper.SetIsElectronActive(() => HybridSupport.IsElectronActive);

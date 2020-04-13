@@ -22,13 +22,6 @@ namespace BlazorMobile.Common
         public const string Unknown = "Unknown";
         public static string RuntimePlatform { get; internal set; } = Unknown;
 
-        internal static Action<bool> _onFinishCallback = null;
-
-        internal static void Init(Action<bool> onFinish)
-        {
-            _onFinishCallback = onFinish;
-        }
-
         /// <summary>
         /// Return true if the current executing context is on ElectronNET
         /// </summary>

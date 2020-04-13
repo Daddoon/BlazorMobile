@@ -36,6 +36,13 @@ window.contextBridge = {
         openWSConnection: function (uri, onOpen, onError) {
             var webSocketURL = null;
             webSocketURL = uri;
+
+            if (webSocketURL === undefined || webSocketURL === null || webSocketURL === "") {
+                console.error("BlazorMobile: Endpoint connection to native not set! This may occur if you are launching your Blazor / BlazorMobile application from an external browser and you don't have set the debug endpoint to native. Consider calling 'BlazorMobileService.EnableClientToDeviceRemoteDebugging' to fix this issue while doing your debugging session");
+                onError();
+                return;
+            }
+
             console.log("BlazorMobile: Connecting to websocket server: " + webSocketURL);
             try {
                 window.contextBridge.connectivity._contextBridgeSocket = new WebSocket(webSocketURL);
@@ -58,7 +65,7 @@ window.contextBridge = {
                     window.contextBridge.connectivity._contextBridgeIsOpen = false;
                 };
                 window.contextBridge.connectivity._contextBridgeSocket.onerror = function (errorEvent) {
-                    console.log("BlazorMobile: Socket error: " + JSON.stringify(errorEvent, null, 4));
+                    console.error("BlazorMobile: Socket error: " + JSON.stringify(errorEvent, null, 4));
                 };
                 window.contextBridge.connectivity._contextBridgeSocket.onmessage = function (messageEvent) {
                     var wsMsg = messageEvent.data;
@@ -66,6 +73,7 @@ window.contextBridge = {
                 };
             } catch (exception) {
                 console.error(exception);
+                onError();
             }
         }
     },
@@ -95,7 +103,7 @@ window.contextBridge = {
 
         }, function () {
                 //On Error
-                console.log("BlazorMobile: Unable to connect to native, faulting current task");
+                console.error("BlazorMobile: Unable to connect to native, faulting current task");
                 DotNet.invokeMethodAsync(window.contextBridge.metadata.GetBlazorMobileWebAssemblyName(),
                     window.contextBridge.metadata.GetBlazorMobileReceiveMethodName(), csharpProxy, false);
         });
