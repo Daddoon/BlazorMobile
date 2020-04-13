@@ -7,7 +7,7 @@ Create full C# driven hybrid-apps for iOS, Android, UWP & Desktop with Blazor!
 ## Framework requirement
 
 
-- **Blazor 3.2.0-preview2.20160.5**
+- **Blazor 3.2.0-preview3.20168.3**
 - **.NET Core 3.1**
 
 ## Platform requirements
@@ -84,7 +84,7 @@ The main differences / advantages of BlazorMobile are:
 First install the template model with the following command from a command prompt:
 
 ```console
-dotnet new -i BlazorMobile.Templates::3.2.4-preview2.20160.5
+dotnet new -i BlazorMobile.Templates::3.2.5-preview3.20168.3
 ```
 
 Then go the folder where you want your project to be created, and from a command prompt type the following command, and of course replace **MyProjectName** to your desired project name:
@@ -801,7 +801,7 @@ If one of your APKs is marked as not being compliant, but is older and its not
 
 ## Electron.NET support with BlazorMobile
 
-Since **BlazorMobile 3.0.8-preview8.19405.7**, you can also deploy your application developped with Blazor & BlazorMobile as a desktop application with **Electron.NET**.
+You can also deploy your application developped with Blazor & BlazorMobile as a desktop application with **Electron.NET**.
 The plugin has been updated in order to be aware of an Electron.NET executing context and behave correctly, with your same codebase and project structure.
 
 Be aware that even if a Xamarin.Forms library is present on the Electron.NET desktop application, there is no deep support of the Xamarin.Forms API.

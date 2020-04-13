@@ -1,7 +1,7 @@
 
 # Migration
 
-- [BlazorMobile 3.2.3-preview2.20160.5 to 3.2.5-x](#blazormobile-324-preview2201605-to-325-x)
+- [BlazorMobile 3.2.3-preview2.20160.5 to 3.2.5-x](#blazormobile-324-preview2201605-to-325-preview3201683)
 - [BlazorMobile 3.2.3-preview2.20160.5 to 3.2.4-preview2.20160.5](#blazormobile-323-preview2201605-to-324-preview2201605)
 - [BlazorMobile 3.2.2-preview1.20073.1 to 3.2.3-preview2.20160.5](#blazormobile-322-preview1200731-to-323-preview2201605)
 - [BlazorMobile 3.2.0-preview1.20073.1 to 3.2.2-preview1.20073.1](#blazormobile-320-preview1200731-to-322-preview1200731)
@@ -1226,7 +1226,7 @@ dotnet new -i BlazorMobile.Templates::3.2.4-preview2.20160.5
 
 - If you have your own overrides on **OnActivityResult** or **OnCreate** on your **MainActivity** class, be sure to not forget to call the base implementation.
 
-### BlazorMobile 3.2.3-preview2.20160.5 to 3.2.5-x
+### BlazorMobile 3.2.3-preview2.20160.5 to 3.2.5-preview3.20168.3
 
 #### Release notes:
 
@@ -1239,7 +1239,7 @@ dotnet new -i BlazorMobile.Templates::3.2.4-preview2.20160.5
 - Update your installed BlazorMobile.Templates to this version by calling:
 
 ```console
-dotnet new -i BlazorMobile.Templates::3.2.5-preview2.20160.5
+dotnet new -i BlazorMobile.Templates::3.2.5-preview3.20168.3
 ```
 
 - Update all your BlazorMobile.* NuGet packages to **3.2.5-preview2.20160.5**.
