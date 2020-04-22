@@ -7,7 +7,7 @@ Create full C# driven hybrid-apps for iOS, Android, UWP & Desktop with Blazor!
 ## Framework requirement
 
 
-- **Blazor 3.2.0-preview3.20168.3**
+- **Blazor 3.2.0-preview4.20210.8**
 - **.NET Core 3.1**
 
 ## Platform requirements
@@ -84,7 +84,7 @@ The main differences / advantages of BlazorMobile are:
 First install the template model with the following command from a command prompt:
 
 ```console
-dotnet new -i BlazorMobile.Templates::3.2.5-preview3.20168.3
+dotnet new -i BlazorMobile.Templates::3.2.6-preview4.20210.8
 ```
 
 Then go the folder where you want your project to be created, and from a command prompt type the following command, and of course replace **MyProjectName** to your desired project name:
