@@ -3,6 +3,18 @@
   <PropertyGroup>
     <TargetFramework>netstandard2.1</TargetFramework>
     <RazorLangVersion>3.0</RazorLangVersion>
+    <GeneratePackageOnBuild>false</GeneratePackageOnBuild>
+    <Copyright>Copyright 2020</Copyright>
+    <Description>This NuGet package intended for the Blazor application side of the BlazorMobile package.</Description>
+    <Authors>Guillaume ZAHRA</Authors>
+    <Company>Daddoon</Company>
+    <PackageReleaseNotes>See release notes on BlazorMobile project page</PackageReleaseNotes>
+    <PackageTags>aspnet templates blazor spa web webassembly xamarin android ios uwp</PackageTags>
+    <RepositoryUrl></RepositoryUrl>
+    <PackageIcon>logo_blazormobile_256x256.png</PackageIcon>
+    <RepositoryType></RepositoryType>
+    <PackageProjectUrl>https://github.com/Daddoon/BlazorMobile</PackageProjectUrl>
+    <PackageRequireLicenseAcceptance>false</PackageRequireLicenseAcceptance>
   </PropertyGroup>
 
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|AnyCPU'">
@@ -13,8 +25,8 @@
   </PropertyGroup>
 
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|AnyCPU'">
-    <OutputPath>..\BlazorMobile\lib</OutputPath>
-    <DocumentationFile>..\BlazorMobile\lib\BlazorMobile.Web.xml</DocumentationFile>
+    <OutputPath>bin\</OutputPath>
+    <DocumentationFile>bin\BlazorMobile.Web.xml</DocumentationFile>
     <DebugType>portable</DebugType>
     <DebugSymbols>true</DebugSymbols>
   </PropertyGroup>
@@ -27,6 +39,13 @@
 
   <ItemGroup>
     <ProjectReference Include="..\BlazorMobile.Common\BlazorMobile.Common.csproj" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <None Include="..\..\logo_blazormobile_256x256.png">
+      <Pack>True</Pack>
+      <PackagePath></PackagePath>
+    </None>
   </ItemGroup>
 
 </Project>
