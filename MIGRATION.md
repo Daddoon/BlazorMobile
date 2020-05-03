@@ -1409,3 +1409,30 @@ dotnet new -i BlazorMobile.Templates::3.2.6-preview4.20210.8
 
 - Update all your BlazorMobile.* NuGet packages to **3.2.6-preview4.20210.8**.
 
+- Open the **index.html** file of your Blazor project and add the following line before the **blazor.webassembly.js** line:
+
+```html
+    <script type="text/javascript" src="_content/BlazorMobile.Web/blazormobile.js"></script>
+```
+
+  So your **index.html** may look like this:
+
+```html
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no" />
+    <title>BlazorMobile.BlazorApp</title>
+    <base href="/" />
+    <link href="css/bootstrap/bootstrap.min.css" rel="stylesheet" />
+    <link href="css/site.css" rel="stylesheet" />
+</head>
+<body>
+    <app></app>
+    <div id="placeholder">Loading...</div>
+    <script type="text/javascript" src="_content/BlazorMobile.Web/blazormobile.js"></script>
+    <script type="text/javascript" src="_framework/blazor.webassembly.js"></script>
+</body> 
+</html>
+```
