@@ -4,6 +4,7 @@ using BlazorMobile.InteropBlazorApp.Helpers;
 using Microsoft.AspNetCore.Components.WebAssembly.Hosting;
 using Microsoft.Extensions.DependencyInjection;
 using System;
+using System.Net.Http;
 using System.Threading.Tasks;
 
 namespace BlazorMobile.InteropBlazorApp
@@ -14,7 +15,7 @@ namespace BlazorMobile.InteropBlazorApp
         {
             var builder = WebAssemblyHostBuilder.CreateDefault(args);
 
-            builder.Services.AddBaseAddressHttpClient();
+            builder.Services.AddSingleton(new HttpClient { BaseAddress = new Uri(builder.HostEnvironment.BaseAddress) });
 
             #region Services registration
 

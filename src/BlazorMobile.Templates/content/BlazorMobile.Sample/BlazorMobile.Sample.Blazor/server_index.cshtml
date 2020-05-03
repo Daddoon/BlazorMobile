@@ -15,6 +15,7 @@
 <body>
     <app>@(await Html.RenderComponentAsync<MobileApp>(RenderMode.ServerPrerendered))</app>
     <div id="placeholder">Loading...</div>
+    <script type="text/javascript" src="_content/BlazorMobile.Web/blazormobile.js"></script>
     <script type="text/javascript" src="_framework/blazor.server.js"></script>
 </body> 
 </html>

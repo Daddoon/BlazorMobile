@@ -7,7 +7,7 @@ Create full C# driven hybrid-apps for iOS, Android, UWP & Desktop with Blazor!
 ## Framework requirement
 
 
-- **Blazor 3.2.0-preview3.20168.3**
+- **Blazor 3.2.0-preview4.20210.8**
 - **.NET Core 3.1**
 
 ## Platform requirements
@@ -84,7 +84,7 @@ The main differences / advantages of BlazorMobile are:
 First install the template model with the following command from a command prompt:
 
 ```console
-dotnet new -i BlazorMobile.Templates::3.2.5-preview3.20168.3
+dotnet new -i BlazorMobile.Templates::3.2.6-preview4.20210.8
 ```
 
 Then go the folder where you want your project to be created, and from a command prompt type the following command, and of course replace **MyProjectName** to your desired project name:
@@ -591,7 +591,7 @@ Of you course you can't. But you can do remote debugging on your device in order
 - To validate any specific / faulty behavior due to the device browser
 
 For this last critical point, you should remember that you may have some tools shipped for device browser debugging.
-On **iOS**, you should debug from **Safari on OSX** (see online documentation), and on **Android**, you should debug from **WebIDE** tool in **Firefox** (see online documentation).
+On **iOS**, you should debug from **Safari on OSX** (see online documentation), and on **Android**, you should debug from the **WebIDE** tool available on **Firefox 67** (SHIFT+F8 on Windows). New debugging tooling available from more recent Firefox version are not yet available for current GeckoView version, and WebIDE has been removed on more recent versions of Firefox.
 
 ### Enable remote debugging
 

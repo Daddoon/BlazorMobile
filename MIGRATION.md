@@ -1,7 +1,8 @@
 
 # Migration
 
-- [BlazorMobile 3.2.3-preview2.20160.5 to 3.2.5-x](#blazormobile-324-preview2201605-to-325-preview3201683)
+- [BlazorMobile 3.2.5-preview3.20168.3 to 3.2.6-preview4.20210.8](#blazormobile-325-preview3201683-to-326-preview4202108)
+- [BlazorMobile 3.2.4-preview2.20160.5 to 3.2.5-preview3.20168.3](#blazormobile-324-preview2201605-to-325-preview3201683)
 - [BlazorMobile 3.2.3-preview2.20160.5 to 3.2.4-preview2.20160.5](#blazormobile-323-preview2201605-to-324-preview2201605)
 - [BlazorMobile 3.2.2-preview1.20073.1 to 3.2.3-preview2.20160.5](#blazormobile-322-preview1200731-to-323-preview2201605)
 - [BlazorMobile 3.2.0-preview1.20073.1 to 3.2.2-preview1.20073.1](#blazormobile-320-preview1200731-to-322-preview1200731)
@@ -1226,11 +1227,12 @@ dotnet new -i BlazorMobile.Templates::3.2.4-preview2.20160.5
 
 - If you have your own overrides on **OnActivityResult** or **OnCreate** on your **MainActivity** class, be sure to not forget to call the base implementation.
 
-### BlazorMobile 3.2.3-preview2.20160.5 to 3.2.5-preview3.20168.3
+### BlazorMobile 3.2.4-preview2.20160.5 to 3.2.5-preview3.20168.3
 
 #### Release notes:
 
 - Fixed a potentially race condition preventing BlazorMobile to not boot properly on some apps configurations
+- Fix Desktop (ElectronNET) app application not booting
 
 #### Migration guide:
 
@@ -1242,7 +1244,7 @@ dotnet new -i BlazorMobile.Templates::3.2.4-preview2.20160.5
 dotnet new -i BlazorMobile.Templates::3.2.5-preview3.20168.3
 ```
 
-- Update all your BlazorMobile.* NuGet packages to **3.2.5-preview2.20160.5**.
+- Update all your BlazorMobile.* NuGet packages to **3.2.5-preview3.20168.3**.
 
 - Replace all **BlazorMobileService.Init** calls to **BlazorMobileService.OnBlazorMobileLoaded**.
   You should go from this:
@@ -1392,3 +1394,45 @@ dotnet new -i BlazorMobile.Templates::3.2.5-preview3.20168.3
   **BlazorMobileService.HideElementById("placeholder");** method call in **MobileApp.cs** hide the placeholder when everything is ready.
 
 - Add the **BlazorMobile.Build.ElectronNET** NuGet package to the **.Desktop** project. This workaround / fix a publishing issue since some recent updates, preventing Desktop project to boot correctly.
+
+### BlazorMobile 3.2.5-preview3.20168.3 to 3.2.6-preview4.20210.8
+
+#### Migration guide:
+
+- Update your Blazor project version to Blazor 3.2.0-preview4.20210.8 by follow this [Microsoft migration](https://devblogs.microsoft.com/aspnet/blazor-webassembly-3-2-0-preview-4-release-now-available/)
+
+- Update your installed BlazorMobile.Templates to this version by calling:
+
+```console
+dotnet new -i BlazorMobile.Templates::3.2.6-preview4.20210.8
+```
+
+- Update all your BlazorMobile.* NuGet packages to **3.2.6-preview4.20210.8**.
+
+- Open the **index.html** file of your Blazor project and add the following line before the **blazor.webassembly.js** line:
+
+```html
+    <script type="text/javascript" src="_content/BlazorMobile.Web/blazormobile.js"></script>
+```
+
+  So your **index.html** may look like this:
+
+```html
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no" />
+    <title>BlazorMobile.BlazorApp</title>
+    <base href="/" />
+    <link href="css/bootstrap/bootstrap.min.css" rel="stylesheet" />
+    <link href="css/site.css" rel="stylesheet" />
+</head>
+<body>
+    <app></app>
+    <div id="placeholder">Loading...</div>
+    <script type="text/javascript" src="_content/BlazorMobile.Web/blazormobile.js"></script>
+    <script type="text/javascript" src="_framework/blazor.webassembly.js"></script>
+</body> 
+</html>
+```

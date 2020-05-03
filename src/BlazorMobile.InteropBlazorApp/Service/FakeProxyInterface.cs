@@ -1,5 +1,4 @@
 ﻿using BlazorMobile.Common.Attributes;
-using BlazorMobile.InteropApp.DummyRCL;
 using BlazorMobile.InteropBlazorApp;
 using System;
 using System.Collections.Generic;
@@ -118,13 +117,4 @@ public interface MyInterface
 
     //Unsupported as its not Task / Async
     MobileApp MyThirdMethod();
-}
-
-public class DummyClassTest
-{
-    public DummyClassTest()
-    {
-        //Just a call to a RCL reference
-        new ExampleJsInterop();
-    }
 }
