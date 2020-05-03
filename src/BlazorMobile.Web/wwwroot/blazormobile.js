@@ -1,4 +1,35 @@
 ﻿
+window.BlazorXamarin = {
+    RuntimeCheck: function () {
+		if (window.contextBridge == null || window.contextBridge == undefined) {
+			return false;
+		}
+		return true;
+	},
+
+    ElectronGetCurrentURL: function () {
+        return require('electron').remote.getCurrentWebContents().getURL();
+    },
+
+    ElectronGetUserDataPath: function () {
+        return require('electron').remote.app.getPath("userData");
+    },
+
+    JSRuntimeHasElectronFeature: function () {
+        return window.navigator.userAgent.toLocaleLowerCase().indexOf(" electron/") > -1;
+    },
+
+    HideElementById: function (elementId) {
+        if (elementId !== null && elementId !== undefined && elementId !== "") {
+            var selectedElement = window.document.getElementById(elementId);
+
+            if (selectedElement !== null) {
+                selectedElement.style.display = "none";
+            }
+        }
+    }
+};
+
 window.contextBridge = {
 
     connectivity: {
@@ -101,12 +132,12 @@ window.contextBridge = {
                 //On success
                 wsSocket.send(csharpProxy);
 
-        }, function () {
+            }, function () {
                 //On Error
                 console.error("BlazorMobile: Unable to connect to native, faulting current task");
                 DotNet.invokeMethodAsync(window.contextBridge.metadata.GetBlazorMobileWebAssemblyName(),
                     window.contextBridge.metadata.GetBlazorMobileReceiveMethodName(), csharpProxy, false);
-        });
+            });
     },
     receive: function (csharpProxy) {
         DotNet.invokeMethodAsync(window.contextBridge.metadata.GetBlazorMobileWebAssemblyName(),
@@ -118,4 +149,3 @@ window.contextBridgeSend = function (data) {
     window.contextBridge.send(data);
     return true;
 };
-

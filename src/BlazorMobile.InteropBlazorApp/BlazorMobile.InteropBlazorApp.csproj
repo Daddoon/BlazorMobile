@@ -32,7 +32,6 @@
   <ItemGroup>
     <ProjectReference Include="..\BlazorMobile.Common\BlazorMobile.Common.csproj" />
     <ProjectReference Include="..\BlazorMobile.InteropApp.Common\BlazorMobile.InteropApp.Common.csproj" />
-    <ProjectReference Include="..\BlazorMobile.InteropApp.DummyRCL\BlazorMobile.InteropApp.DummyRCL.csproj" />
     <ProjectReference Include="..\BlazorMobile.Web\BlazorMobile.Web.csproj" />
   </ItemGroup>
 
