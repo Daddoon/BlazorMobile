@@ -96,8 +96,6 @@ namespace BlazorMobile.Common.Components
             return JSRuntime;
         }
 
-        private bool _isInitialized = false;
-
         internal bool _isWebAssembly = true;
 
         internal bool IsWebAssembly()
@@ -108,23 +106,6 @@ namespace BlazorMobile.Common.Components
         private async Task<bool> JSRuntimeHasElectronFeature()
         {
             return await Runtime.InvokeAsync<bool>("BlazorXamarin.JSRuntimeHasElectronFeature");
-        }
-
-        protected override void BuildRenderTree(RenderTreeBuilder builder)
-        {
-            //This component must be rendered once!
-            //Even if the javascript script is not re-renderer if the component is called twice, it should be already available in the DOM
-            if (_isInitialized)
-                return;
-
-            builder.OpenElement(0, "script");
-            builder.AddAttribute(1, "type", "text/javascript");
-            builder.AddMarkupContent(1,
-                ContextBridgeHelper.GetBlazorXamarinJavascript()
-                + ContextBridgeHelper.GetContextBridgeJavascript().Replace("%_contextBridgeURI%", BlazorMobileService.GetContextBridgeURI()));
-            builder.CloseElement();
-
-            _isInitialized = true;
         }
 
         private bool IsWASMJSRuntime(IJSRuntime runtime)
