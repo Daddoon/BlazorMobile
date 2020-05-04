@@ -6,7 +6,7 @@
   </PropertyGroup>
   
    <ItemGroup>
-    <PackageReference Include="BlazorMobile.Web" Version="3.2.6-preview4.20210.8" />
+    <PackageReference Include="BlazorMobile.Web" Version="3.2.7-preview4.20210.8" />
     <PackageReference Include="Microsoft.AspNetCore.Components.WebAssembly.Server" Version="3.2.0-preview4.20210.8" />
     <PackageReference Include="Microsoft.AspNetCore.Mvc.NewtonsoftJson" Version="3.1.2" />
   </ItemGroup>
