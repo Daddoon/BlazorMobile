@@ -103,6 +103,12 @@ namespace BlazorMobile.Common.Components
             return _isWebAssembly;
         }
 
+        private async Task SetRemoteDebugEndpoint()
+        {
+            string uri = BlazorMobileService.GetContextBridgeURI();
+            await Runtime.InvokeVoidAsync("BlazorXamarin.SetDebugRemoteEndpoint", uri);
+        }
+
         private async Task<bool> JSRuntimeHasElectronFeature()
         {
             return await Runtime.InvokeAsync<bool>("BlazorXamarin.JSRuntimeHasElectronFeature");
@@ -192,6 +198,9 @@ namespace BlazorMobile.Common.Components
             if (_FirstInit)
             {
                 _FirstInit = false;
+
+                //Adding remote endpoint for debugging
+                await SetRemoteDebugEndpoint();
 
                 JSRuntime = Runtime;
 
