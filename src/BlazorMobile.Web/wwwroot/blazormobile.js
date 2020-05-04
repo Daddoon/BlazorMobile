@@ -27,6 +27,12 @@ window.BlazorXamarin = {
                 selectedElement.style.display = "none";
             }
         }
+    },
+
+    SetDebugRemoteEndpoint: function (endpoint) {
+        if (endpoint !== undefined && endpoint !== null) {
+            window.contextBridge.connectivity._contextBridgeURI = endpoint;
+        }
     }
 };
 
