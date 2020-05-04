@@ -1,7 +1,7 @@
 
 # Migration
 
-- [BlazorMobile 3.2.5-preview3.20168.3 to 3.2.6-preview4.20210.8](#blazormobile-325-preview3201683-to-326-preview4202108)
+- [BlazorMobile 3.2.5-preview3.20168.3 to 3.2.7-preview4.20210.8](#blazormobile-325-preview3201683-to-327-preview4202108)
 - [BlazorMobile 3.2.4-preview2.20160.5 to 3.2.5-preview3.20168.3](#blazormobile-324-preview2201605-to-325-preview3201683)
 - [BlazorMobile 3.2.3-preview2.20160.5 to 3.2.4-preview2.20160.5](#blazormobile-323-preview2201605-to-324-preview2201605)
 - [BlazorMobile 3.2.2-preview1.20073.1 to 3.2.3-preview2.20160.5](#blazormobile-322-preview1200731-to-323-preview2201605)
@@ -1395,7 +1395,7 @@ dotnet new -i BlazorMobile.Templates::3.2.5-preview3.20168.3
 
 - Add the **BlazorMobile.Build.ElectronNET** NuGet package to the **.Desktop** project. This workaround / fix a publishing issue since some recent updates, preventing Desktop project to boot correctly.
 
-### BlazorMobile 3.2.5-preview3.20168.3 to 3.2.6-preview4.20210.8
+### BlazorMobile 3.2.5-preview3.20168.3 to 3.2.7-preview4.20210.8
 
 #### Migration guide:
 
@@ -1404,10 +1404,10 @@ dotnet new -i BlazorMobile.Templates::3.2.5-preview3.20168.3
 - Update your installed BlazorMobile.Templates to this version by calling:
 
 ```console
-dotnet new -i BlazorMobile.Templates::3.2.6-preview4.20210.8
+dotnet new -i BlazorMobile.Templates::3.2.7-preview4.20210.8
 ```
 
-- Update all your BlazorMobile.* NuGet packages to **3.2.6-preview4.20210.8**.
+- Update all your BlazorMobile.* NuGet packages to **3.2.7-preview4.20210.8**.
 
 - Open the **index.html** file of your Blazor project and add the following line before the **blazor.webassembly.js** line:
 
