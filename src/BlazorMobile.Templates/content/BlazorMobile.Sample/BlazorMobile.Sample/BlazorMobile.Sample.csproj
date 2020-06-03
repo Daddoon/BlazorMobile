@@ -13,7 +13,7 @@
   </ItemGroup>
 
   <ItemGroup>
-    <PackageReference Include="BlazorMobile" Version="3.2.7-preview4.20210.8" />
+    <PackageReference Include="BlazorMobile" Version="3.2.8-preview4.20210.8" />
     <PackageReference Include="Xamarin.Forms" Version="3.5.0.169047" />
   </ItemGroup>
 
