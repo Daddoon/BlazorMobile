@@ -15,7 +15,7 @@
     <copyright>Copyright 2020</copyright>
     <tags>Blazor BlazorMobile Xamarin iOS Android Hybrid</tags>
     <dependencies>
-      <dependency id="Microsoft.AspNetCore.Components.WebAssembly.Build" version="3.2.0-preview3.20168.3" include="all" />
+      <dependency id="Microsoft.AspNetCore.Components.WebAssembly.Build" version="3.2.0" include="all" />
     </dependencies>
   </metadata>
   <files>

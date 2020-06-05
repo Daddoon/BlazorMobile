@@ -1,6 +1,7 @@
 
 # Migration
 
+- [BlazorMobile 3.2.7-preview4.20210.8 to 3.2.8](#blazormobile-327-preview4202108-to-328)
 - [BlazorMobile 3.2.5-preview3.20168.3 to 3.2.7-preview4.20210.8](#blazormobile-325-preview3201683-to-327-preview4202108)
 - [BlazorMobile 3.2.4-preview2.20160.5 to 3.2.5-preview3.20168.3](#blazormobile-324-preview2201605-to-325-preview3201683)
 - [BlazorMobile 3.2.3-preview2.20160.5 to 3.2.4-preview2.20160.5](#blazormobile-323-preview2201605-to-324-preview2201605)
@@ -1436,3 +1437,25 @@ dotnet new -i BlazorMobile.Templates::3.2.7-preview4.20210.8
 </body> 
 </html>
 ```
+
+### BlazorMobile 3.2.7-preview4.20210.8 to 3.2.8
+
+#### Release notes:
+
+- Fix **Could not load file or assembly 'BlazorMobile.Common, Version=3.2.7.0, Culture=neutral, PublicKeyToken=null'. The located assembly's manifest definition does not match the assembly reference. (0x80131040)'** error on .NET Core / Server's project at startup.
+- Updated Blazor version to **3.2.0**
+
+#### Migration guide:
+
+- Update your Blazor project version to Blazor 3.2.0 by follow theses guides, if you upgrade from 3.2.4-preview4:
+  - [Blazor 3.2.0-preview5](https://devblogs.microsoft.com/aspnet/blazor-webassembly-3-2-0-preview-5-release-now-available/)
+  - [Blazor 3.2.0-RC](https://devblogs.microsoft.com/aspnet/blazor-webassembly-3-2-0-release-candidate-now-available/)
+  - [Blazor 3.2.0](https://devblogs.microsoft.com/aspnet/blazor-webassembly-3-2-0-now-available/)
+
+- Update your installed BlazorMobile.Templates to this version by calling:
+
+```console
+dotnet new -i BlazorMobile.Templates::3.2.8
+```
+
+- Update all your BlazorMobile.* NuGet packages to **3.2.8**.

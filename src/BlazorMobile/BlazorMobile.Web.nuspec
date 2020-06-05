@@ -16,7 +16,7 @@
         <tags>aspnet templates blazor spa web webassembly xamarin android ios uwp</tags>
         <dependencies>
             <group targetFramework="netstandard2.1">
-                <dependency id="Microsoft.AspNetCore.Components.WebAssembly" version="3.2.0-preview3.20168.3" />
+                <dependency id="Microsoft.AspNetCore.Components.WebAssembly" version="3.2.0" />
                 <dependency id="BlazorMobile.Common" version="$version$" />
             </group>
         </dependencies>
