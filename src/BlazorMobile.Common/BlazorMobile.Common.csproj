@@ -4,6 +4,14 @@
     <TargetFramework>netstandard2.0</TargetFramework>
     <RootNamespace>BlazorMobile.Common</RootNamespace>
     <AssemblyName>BlazorMobile.Common</AssemblyName>
+    <Authors>Guillaume ZAHRA</Authors>
+    <Company>Daddoon</Company>
+    <Copyright>Copyright 2020</Copyright>
+    <PackageProjectUrl>https://github.com/Daddoon/BlazorMobile</PackageProjectUrl>
+    <PackageIcon>logo_blazormobile_256x256.png</PackageIcon>
+    <PackageReleaseNotes>See release notes on BlazorMobile project page</PackageReleaseNotes>
+    <PackageTags>aspnet templates blazor spa web webassembly xamarin android ios uwp</PackageTags>
+    <Description>This package is used by BlazorMobile, BlazorMobile.Web &amp; BlazorMobile.ElectronNET. You don't have to reference it directly.</Description>
   </PropertyGroup>
 
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|AnyCPU'">
@@ -42,6 +50,13 @@
 
   <ItemGroup>
     <Folder Include="Interop\Javascript\" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <None Include="..\..\logo_blazormobile_256x256.png">
+      <Pack>True</Pack>
+      <PackagePath></PackagePath>
+    </None>
   </ItemGroup>
 
 </Project>
