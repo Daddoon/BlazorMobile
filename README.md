@@ -1,4 +1,4 @@
-## This project is discontinued as Microsoft now support Blazor Web through native directly with .NET MAUI Blazor
+## :warning: This project is discontinued as Microsoft now support Blazor Web through native directly with .NET MAUI Blazor :warning:
 
 Links for .NET MAUI:
 
