@@ -1,3 +1,10 @@
+## This project is discontinued as Microsoft now support Blazor Web through native directly with .NET MAUI Blazor
+
+Links for .NET MAUI:
+
+**.NET MAUI Blazor - Build Hybrid Mobile, Desktop, and Web apps - By Daniel Roth: [Youtube link](https://www.youtube.com/watch?v=swwWgFZJvEs)**
+**Introduction to .NET MAUI Blazor | The Xamarin Show: [Microsoft Docs](https://docs.microsoft.com/en-us/shows/xamarinshow/introduction-to-net-maui-blazor--the-xamarin-show)**
+
 # BlazorMobile[<img src="logo_blazormobile_256x256.png?raw=true" align="right" width="200">]() 
 
 Create full C# driven hybrid-apps for iOS, Android, UWP & Desktop with Blazor!
